@@ -1,0 +1,21 @@
+# Placeholder so GitHub registers release.yml and it can be dispatched on a work-in-progress branch
+# (workflow_dispatch needs the file on the default branch). No schedule: it never releases from here.
+# Replaced by the real workflow when tools/sdk-repo/seed.mjs pushes this repository's main.
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: unused here
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "dispatch this workflow on a branch that carries the real release.yml"
