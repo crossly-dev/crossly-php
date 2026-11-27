@@ -1,21 +1,168 @@
-# Placeholder so GitHub registers release.yml and it can be dispatched on a work-in-progress branch
-# (workflow_dispatch needs the file on the default branch). No schedule: it never releases from here.
-# Replaced by the real workflow when tools/sdk-repo/seed.mjs pushes this repository's main.
+# Regenerate from the public Crossly OpenAPI specs and release, with signed build provenance.
+#
+# Daily, on dispatch, or on a crossly-spec-updated repository_dispatch: if the specs changed since the last
+# release, generate, build, test, write the CHANGELOG entry and version (codegen/ci/next-version.mjs), commit
+# and tag with this repository's own GITHUB_TOKEN, then publish. Publishing uses OIDC trusted publishing where the
+# registry supports it, so no registry token is stored here.
+#
+# Dispatched on any other branch it is a DRY RUN: it always regenerates, builds and tests, uploads the artifacts,
+# and never commits, tags or publishes.
+#
+# Managed by tools/sdk-repo/seed.mjs in the Crossly monorepo: edits here are overwritten on the next seed.
 name: release
 
 on:
+  schedule:
+    - cron: '23 7 * * *'
   workflow_dispatch:
     inputs:
       force:
-        description: unused here
+        description: Regenerate and release even when the specs are unchanged
         type: boolean
         default: false
+  repository_dispatch:
+    types: [crossly-spec-updated]
+
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 permissions:
   contents: read
 
 jobs:
-  noop:
+  detect:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      changed: ${{ steps.specs.outputs.changed }}
     steps:
-      - run: echo "dispatch this workflow on a branch that carries the real release.yml"
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - id: specs
+        env:
+          FORCE: ${{ (inputs.force || github.ref != 'refs/heads/main') && 'true' || 'false' }}
+        run: node codegen/ci/fetch-specs.mjs
+
+  regen:
+    needs: detect
+    if: needs.detect.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+    env:
+      CROSSLY_SPEC_DIR: codegen/specs
+      # Every compile check so far was made against 5.4.0 output (it runs on Java 8).
+      OPENAPI_GENERATOR_VERSION: '5.4.0'
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      # Generator runtime. Zulu, because Temurin has no Java 8 for Apple silicon.
+      - uses: actions/setup-java@v6
+        with:
+          distribution: zulu
+          java-version: '8'
+      - uses: actions/cache@v6
+        with:
+          path: codegen/.tools
+          key: openapi-generator-${{ env.OPENAPI_GENERATOR_VERSION }}
+      - name: fetch specs
+        env:
+          FORCE: 'true'
+        run: node codegen/ci/fetch-specs.mjs
+      - name: version and changelog
+        id: version
+        run: node codegen/ci/next-version.mjs
+      - name: generate
+        env:
+          CROSSLY_SDK_VERSION: ${{ steps.version.outputs.version }}
+        run: node codegen/scripts/generate-sdks.mjs --lang php
+      - name: assemble and scan
+        run: node codegen/ci/assemble.mjs
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer
+      - name: build seller
+        run: bash codegen/ci/check.sh php seller
+      - name: build buyer
+        run: bash codegen/ci/check.sh php buyer
+      - name: webhook conformance vectors
+        working-directory: codegen/integrations/webhooks/php
+        run: php check_vectors.php
+      - name: package
+        run: |
+          V=$(node -p "require('./codegen/state.json').version")
+          composer validate --no-check-lock --no-check-publish
+          composer install -q --no-interaction --no-progress --no-dev
+          php -r '
+            require "vendor/autoload.php";
+            $want = ["Crossly\\Configuration", "Crossly\\Api\\ListingsApi", "Crossly\\Buyer\\Configuration", "Crossly\\Buyer\\Api\\BuyerApi"];
+            if (is_file("seller/lib/Crossly.php")) { $want = array_merge($want, ["Crossly\\Crossly", "Crossly\\CrosslyWebhooks", "Crossly\\WebhookVerificationError", "Crossly\\CrosslyError"]); }
+            foreach ($want as $c) { if (!class_exists($c)) { fwrite(STDERR, "root autoload: missing $c\n"); exit(1); } }
+            echo "root autoload ok: ", count($want), " classes\n";
+          '
+          rm -rf vendor composer.lock
+          mkdir -p dist
+          composer archive --format=zip --dir=dist --file="crossly-php-$V"
+          ls -l dist
+      - name: commit and tag
+        if: github.ref == 'refs/heads/main'
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A seller buyer webhooks CHANGELOG.md codegen/state.json codegen/index
+          git commit -q -m "$TAG: regenerate from the Crossly API" -m "$(head -c 4000 codegen/release-notes.md)"
+          git tag -a "$TAG" -m "$TAG"
+          git push origin HEAD:main
+          git push origin "$TAG"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: release
+          path: |
+            dist/
+            codegen/release-notes.md
+          retention-days: 30
+
+  publish:
+    needs: regen
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: release
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: release
+      # Signed SLSA build provenance for every artifact: gh attestation verify <file> --repo crossly-dev/crossly-php
+      - uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: 'dist/*'
+      - name: notify Packagist
+        if: vars.PUBLISH_PACKAGIST == 'true'
+        env:
+          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+          PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+        run: |
+          curl -fsS -X POST -H 'content-type: application/json' \
+            "https://packagist.org/api/update-package?username=$PACKAGIST_USERNAME&apiToken=$PACKAGIST_TOKEN" \
+            -d '{"repository":{"url":"https://github.com/crossly-dev/crossly-php"}}' > /dev/null
+          echo "Packagist notified"
+      - name: GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.regen.outputs.tag }}
+        run: gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --title "$TAG" --notes-file codegen/release-notes.md --verify-tag

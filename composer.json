@@ -1,0 +1,56 @@
+{
+    "name": "crossly/crossly",
+    "description": "Official PHP clients for the Crossly API (seller and buyer), with retries, idempotent writes, pagination and webhook verification.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "crossly",
+        "crosslisting",
+        "reselling",
+        "ecommerce",
+        "marketplace",
+        "api",
+        "sdk",
+        "webhooks"
+    ],
+    "homepage": "https://crossly.net/docs",
+    "support": {
+        "docs": "https://crossly.net/docs",
+        "issues": "https://github.com/crossly-dev/crossly-php/issues",
+        "source": "https://github.com/crossly-dev/crossly-php"
+    },
+    "authors": [
+        {
+            "name": "Crossly",
+            "homepage": "https://crossly.net"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^7.3",
+        "guzzlehttp/psr7": "^1.7 || ^2.0"
+    },
+    "suggest": {
+        "psr/http-server-middleware": "for Crossly\\Psr15WebhookMiddleware (any PSR-15 framework already has it)"
+    },
+    "autoload": {
+        "psr-4": {
+            "Crossly\\Buyer\\": "buyer/lib/",
+            "Crossly\\": "seller/lib/"
+        }
+    },
+    "archive": {
+        "exclude": [
+            "/codegen",
+            "/dist",
+            "/.github",
+            "/vendor",
+            "/composer.lock",
+            "/seller/composer.json",
+            "/buyer/composer.json"
+        ]
+    }
+}

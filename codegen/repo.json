@@ -1,0 +1,41 @@
+{
+  "lang": "php",
+  "vendor": [
+    {
+      "from": "webhooks/php/CrosslyWebhooks.php",
+      "to": "seller/lib/CrosslyWebhooks.php"
+    },
+    {
+      "from": "webhooks/php/WebhookVerificationError.php",
+      "to": "seller/lib/WebhookVerificationError.php"
+    },
+    {
+      "from": "extras/php/Crossly.php",
+      "to": "seller/lib/Crossly.php"
+    },
+    {
+      "from": "extras/php/CrosslyApi.php",
+      "to": "seller/lib/CrosslyApi.php"
+    },
+    {
+      "from": "extras/php/CrosslyError.php",
+      "to": "seller/lib/CrosslyError.php"
+    },
+    {
+      "from": "extras/php/CrosslyRetryMiddleware.php",
+      "to": "seller/lib/CrosslyRetryMiddleware.php"
+    },
+    {
+      "from": "extras/php/LaravelWebhookMiddleware.php",
+      "to": "seller/lib/LaravelWebhookMiddleware.php"
+    },
+    {
+      "from": "extras/php/SymfonyWebhookListener.php",
+      "to": "seller/lib/SymfonyWebhookListener.php"
+    },
+    {
+      "from": "extras/php/Psr15WebhookMiddleware.php",
+      "to": "seller/lib/Psr15WebhookMiddleware.php"
+    }
+  ]
+}
