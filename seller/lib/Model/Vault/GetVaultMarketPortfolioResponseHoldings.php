@@ -284,9 +284,9 @@ class GetVaultMarketPortfolioResponseHoldings implements ModelInterface, ArrayAc
     }
 
     const MARK_QUALITY_NONE = 'none';
+    const MARK_QUALITY_C = 'C';
     const MARK_QUALITY_A = 'A';
     const MARK_QUALITY_B = 'B';
-    const MARK_QUALITY_C = 'C';
 
     /**
      * Gets allowable values of the enum
@@ -297,9 +297,9 @@ class GetVaultMarketPortfolioResponseHoldings implements ModelInterface, ArrayAc
     {
         return [
             self::MARK_QUALITY_NONE,
+            self::MARK_QUALITY_C,
             self::MARK_QUALITY_A,
             self::MARK_QUALITY_B,
-            self::MARK_QUALITY_C,
         ];
     }
 

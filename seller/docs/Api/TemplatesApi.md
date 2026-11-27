@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**deleteMeTemplateShare()**](TemplatesApi.md#deleteMeTemplateShare) | **DELETE** /v1/me/templates/{id}/share | Revoke a template share link.
 [**getMeTemplate()**](TemplatesApi.md#getMeTemplate) | **GET** /v1/me/templates/{id} | Fetch one template in full.
 [**getMeTemplateSuggest()**](TemplatesApi.md#getMeTemplateSuggest) | **GET** /v1/me/templates/suggest | The seller&#39;s default template for a category.
+[**getPublicTemplate()**](TemplatesApi.md#getPublicTemplate) | **GET** /v1/public/templates/{token} | A shared template by its share token (public, no auth).
 [**listMeTemplates()**](TemplatesApi.md#listMeTemplates) | **GET** /v1/me/templates | List the seller&#39;s templates.
 [**updateMeTemplate()**](TemplatesApi.md#updateMeTemplate) | **PATCH** /v1/me/templates/{id} | Patch a template.
 
@@ -460,6 +461,59 @@ This endpoint does not need any parameter.
 ### Authorization
 
 [PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getPublicTemplate()`
+
+```php
+getPublicTemplate($token): \Crossly\Model\Publics\GetPublicTemplateResponse
+```
+
+A shared template by its share token (public, no auth).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new Crossly\Api\TemplatesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$token = 'token_example'; // string
+
+try {
+    $result = $apiInstance->getPublicTemplate($token);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TemplatesApi->getPublicTemplate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **string**|  |
+
+### Return type
+
+**\Crossly\Model\Publics\GetPublicTemplateResponse**
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 

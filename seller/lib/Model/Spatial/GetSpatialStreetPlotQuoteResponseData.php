@@ -68,7 +68,8 @@ class GetSpatialStreetPlotQuoteResponseData implements ModelInterface, ArrayAcce
         'owned' => 'bool',
         'vacant' => 'bool',
         'buyable' => 'bool',
-        'enabled' => 'bool'
+        'enabled' => 'bool',
+        'claim' => '\Crossly\Model\Spatial\GetSpatialStreetPlotQuoteResponseDataClaim'
     ];
 
     /**
@@ -87,7 +88,8 @@ class GetSpatialStreetPlotQuoteResponseData implements ModelInterface, ArrayAcce
         'owned' => null,
         'vacant' => null,
         'buyable' => null,
-        'enabled' => null
+        'enabled' => null,
+        'claim' => null
     ];
 
     /**
@@ -125,7 +127,8 @@ class GetSpatialStreetPlotQuoteResponseData implements ModelInterface, ArrayAcce
         'owned' => 'owned',
         'vacant' => 'vacant',
         'buyable' => 'buyable',
-        'enabled' => 'enabled'
+        'enabled' => 'enabled',
+        'claim' => 'claim'
     ];
 
     /**
@@ -142,7 +145,8 @@ class GetSpatialStreetPlotQuoteResponseData implements ModelInterface, ArrayAcce
         'owned' => 'setOwned',
         'vacant' => 'setVacant',
         'buyable' => 'setBuyable',
-        'enabled' => 'setEnabled'
+        'enabled' => 'setEnabled',
+        'claim' => 'setClaim'
     ];
 
     /**
@@ -159,7 +163,8 @@ class GetSpatialStreetPlotQuoteResponseData implements ModelInterface, ArrayAcce
         'owned' => 'getOwned',
         'vacant' => 'getVacant',
         'buyable' => 'getBuyable',
-        'enabled' => 'getEnabled'
+        'enabled' => 'getEnabled',
+        'claim' => 'getClaim'
     ];
 
     /**
@@ -228,6 +233,7 @@ class GetSpatialStreetPlotQuoteResponseData implements ModelInterface, ArrayAcce
         $this->container['vacant'] = $data['vacant'] ?? null;
         $this->container['buyable'] = $data['buyable'] ?? null;
         $this->container['enabled'] = $data['enabled'] ?? null;
+        $this->container['claim'] = $data['claim'] ?? null;
     }
 
     /**
@@ -493,6 +499,30 @@ class GetSpatialStreetPlotQuoteResponseData implements ModelInterface, ArrayAcce
     public function setEnabled($enabled)
     {
         $this->container['enabled'] = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets claim
+     *
+     * @return \Crossly\Model\Spatial\GetSpatialStreetPlotQuoteResponseDataClaim|null
+     */
+    public function getClaim()
+    {
+        return $this->container['claim'];
+    }
+
+    /**
+     * Sets claim
+     *
+     * @param \Crossly\Model\Spatial\GetSpatialStreetPlotQuoteResponseDataClaim|null $claim claim
+     *
+     * @return self
+     */
+    public function setClaim($claim)
+    {
+        $this->container['claim'] = $claim;
 
         return $this;
     }

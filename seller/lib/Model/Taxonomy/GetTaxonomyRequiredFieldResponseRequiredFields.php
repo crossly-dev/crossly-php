@@ -64,8 +64,8 @@ class GetTaxonomyRequiredFieldResponseRequiredFields implements ModelInterface, 
         'enum_values' => 'string[]',
         'label' => 'string',
         'key' => 'string',
-        'required' => 'bool',
         'hint' => 'string',
+        'required' => 'bool',
         'master' => 'bool',
         'selection_only' => 'bool'
     ];
@@ -82,8 +82,8 @@ class GetTaxonomyRequiredFieldResponseRequiredFields implements ModelInterface, 
         'enum_values' => null,
         'label' => null,
         'key' => null,
-        'required' => null,
         'hint' => null,
+        'required' => null,
         'master' => null,
         'selection_only' => null
     ];
@@ -119,8 +119,8 @@ class GetTaxonomyRequiredFieldResponseRequiredFields implements ModelInterface, 
         'enum_values' => 'enumValues',
         'label' => 'label',
         'key' => 'key',
-        'required' => 'required',
         'hint' => 'hint',
+        'required' => 'required',
         'master' => 'master',
         'selection_only' => 'selectionOnly'
     ];
@@ -135,8 +135,8 @@ class GetTaxonomyRequiredFieldResponseRequiredFields implements ModelInterface, 
         'enum_values' => 'setEnumValues',
         'label' => 'setLabel',
         'key' => 'setKey',
-        'required' => 'setRequired',
         'hint' => 'setHint',
+        'required' => 'setRequired',
         'master' => 'setMaster',
         'selection_only' => 'setSelectionOnly'
     ];
@@ -151,8 +151,8 @@ class GetTaxonomyRequiredFieldResponseRequiredFields implements ModelInterface, 
         'enum_values' => 'getEnumValues',
         'label' => 'getLabel',
         'key' => 'getKey',
-        'required' => 'getRequired',
         'hint' => 'getHint',
+        'required' => 'getRequired',
         'master' => 'getMaster',
         'selection_only' => 'getSelectionOnly'
     ];
@@ -235,8 +235,8 @@ class GetTaxonomyRequiredFieldResponseRequiredFields implements ModelInterface, 
         $this->container['enum_values'] = $data['enum_values'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['key'] = $data['key'] ?? null;
-        $this->container['required'] = $data['required'] ?? null;
         $this->container['hint'] = $data['hint'] ?? null;
+        $this->container['required'] = $data['required'] ?? null;
         $this->container['master'] = $data['master'] ?? null;
         $this->container['selection_only'] = $data['selection_only'] ?? null;
     }
@@ -399,30 +399,6 @@ class GetTaxonomyRequiredFieldResponseRequiredFields implements ModelInterface, 
     }
 
     /**
-     * Gets required
-     *
-     * @return bool
-     */
-    public function getRequired()
-    {
-        return $this->container['required'];
-    }
-
-    /**
-     * Sets required
-     *
-     * @param bool $required required
-     *
-     * @return self
-     */
-    public function setRequired($required)
-    {
-        $this->container['required'] = $required;
-
-        return $this;
-    }
-
-    /**
      * Gets hint
      *
      * @return string|null
@@ -442,6 +418,30 @@ class GetTaxonomyRequiredFieldResponseRequiredFields implements ModelInterface, 
     public function setHint($hint)
     {
         $this->container['hint'] = $hint;
+
+        return $this;
+    }
+
+    /**
+     * Gets required
+     *
+     * @return bool
+     */
+    public function getRequired()
+    {
+        return $this->container['required'];
+    }
+
+    /**
+     * Sets required
+     *
+     * @param bool $required required
+     *
+     * @return self
+     */
+    public function setRequired($required)
+    {
+        $this->container['required'] = $required;
 
         return $this;
     }

@@ -199,9 +199,10 @@ class CreateProductionDesignSpecResponsePrefsSpec implements ModelInterface, Arr
     const CATEGORY_SLIDES = 'slides';
     const CATEGORY_FIGURE_RESIN = 'figure_resin';
     const CATEGORY_FIGURE_VINYL = 'figure_vinyl';
+    const CATEGORY_TRADING_CARDS = 'trading_cards';
     const MATERIAL_TIER_STANDARD = 'standard';
-    const MATERIAL_TIER_LUXURY = 'luxury';
     const MATERIAL_TIER_PREMIUM = 'premium';
+    const MATERIAL_TIER_LUXURY = 'luxury';
     const COMPLEXITY_SIMPLE = 'simple';
     const COMPLEXITY_MODERATE = 'moderate';
     const COMPLEXITY_COMPLEX = 'complex';
@@ -233,6 +234,7 @@ class CreateProductionDesignSpecResponsePrefsSpec implements ModelInterface, Arr
             self::CATEGORY_SLIDES,
             self::CATEGORY_FIGURE_RESIN,
             self::CATEGORY_FIGURE_VINYL,
+            self::CATEGORY_TRADING_CARDS,
         ];
     }
 
@@ -245,8 +247,8 @@ class CreateProductionDesignSpecResponsePrefsSpec implements ModelInterface, Arr
     {
         return [
             self::MATERIAL_TIER_STANDARD,
-            self::MATERIAL_TIER_LUXURY,
             self::MATERIAL_TIER_PREMIUM,
+            self::MATERIAL_TIER_LUXURY,
         ];
     }
 

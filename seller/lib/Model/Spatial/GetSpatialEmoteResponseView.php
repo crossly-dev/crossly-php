@@ -188,6 +188,7 @@ class GetSpatialEmoteResponseView implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    const SLOT_PHONE = 'phone';
     const SLOT_SPIN = 'spin';
     const SLOT_WAVE = 'wave';
     const SLOT_POINT = 'point';
@@ -208,6 +209,33 @@ class GetSpatialEmoteResponseView implements ModelInterface, ArrayAccess, \JsonS
     const SLOT_HUG = 'hug';
     const SLOT_HIGH_FIVE = 'high_five';
     const SLOT_HANDSHAKE = 'handshake';
+    const SLOT_FACEPALM = 'facepalm';
+    const SLOT_THINK = 'think';
+    const SLOT_LAUGH = 'laugh';
+    const SLOT_SIGH = 'sigh';
+    const SLOT_NO = 'no';
+    const SLOT_FIST_PUMP = 'fist_pump';
+    const SLOT_VICTORY = 'victory';
+    const SLOT_YAWN = 'yawn';
+    const SLOT_SALUTE = 'salute';
+    const SLOT_BIG_WAVE = 'big_wave';
+    const SLOT_BECKON = 'beckon';
+    const SLOT_SHUSH = 'shush';
+    const SLOT_KISS = 'kiss';
+    const SLOT_PEACE = 'peace';
+    const SLOT_HEART = 'heart';
+    const SLOT_SWAY = 'sway';
+    const SLOT_VIBE = 'vibe';
+    const SLOT_AIR_GUITAR = 'air_guitar';
+    const SLOT_ROBOT = 'robot';
+    const SLOT_DISCO = 'disco';
+    const SLOT_GAVEL = 'gavel';
+    const SLOT_HAGGLE = 'haggle';
+    const SLOT_ARMS_CROSSED = 'arms_crossed';
+    const SLOT_HANDS_ON_HIPS = 'hands_on_hips';
+    const SLOT_KNEEL = 'kneel';
+    const SLOT_FIST_BUMP = 'fist_bump';
+    const SLOT_DANCE_OFF = 'dance_off';
     const SLOT_SHOWOFF = 'showoff';
     const SLOT_MOMENTHANDSHAKE = 'moment:handshake';
     const SLOT_MOMENTUNBOX = 'moment:unbox';
@@ -221,6 +249,7 @@ class GetSpatialEmoteResponseView implements ModelInterface, ArrayAccess, \JsonS
     public function getSlotAllowableValues()
     {
         return [
+            self::SLOT_PHONE,
             self::SLOT_SPIN,
             self::SLOT_WAVE,
             self::SLOT_POINT,
@@ -241,6 +270,33 @@ class GetSpatialEmoteResponseView implements ModelInterface, ArrayAccess, \JsonS
             self::SLOT_HUG,
             self::SLOT_HIGH_FIVE,
             self::SLOT_HANDSHAKE,
+            self::SLOT_FACEPALM,
+            self::SLOT_THINK,
+            self::SLOT_LAUGH,
+            self::SLOT_SIGH,
+            self::SLOT_NO,
+            self::SLOT_FIST_PUMP,
+            self::SLOT_VICTORY,
+            self::SLOT_YAWN,
+            self::SLOT_SALUTE,
+            self::SLOT_BIG_WAVE,
+            self::SLOT_BECKON,
+            self::SLOT_SHUSH,
+            self::SLOT_KISS,
+            self::SLOT_PEACE,
+            self::SLOT_HEART,
+            self::SLOT_SWAY,
+            self::SLOT_VIBE,
+            self::SLOT_AIR_GUITAR,
+            self::SLOT_ROBOT,
+            self::SLOT_DISCO,
+            self::SLOT_GAVEL,
+            self::SLOT_HAGGLE,
+            self::SLOT_ARMS_CROSSED,
+            self::SLOT_HANDS_ON_HIPS,
+            self::SLOT_KNEEL,
+            self::SLOT_FIST_BUMP,
+            self::SLOT_DANCE_OFF,
             self::SLOT_SHOWOFF,
             self::SLOT_MOMENTHANDSHAKE,
             self::SLOT_MOMENTUNBOX,

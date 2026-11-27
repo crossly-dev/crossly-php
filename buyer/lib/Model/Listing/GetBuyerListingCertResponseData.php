@@ -214,8 +214,8 @@ class GetBuyerListingCertResponseData implements ModelInterface, ArrayAccess, \J
     }
 
     const STATUS_VERIFIED = 'verified';
-    const STATUS_NOT_FOUND = 'not_found';
     const STATUS_MISMATCH = 'mismatch';
+    const STATUS_NOT_FOUND = 'not_found';
     const STATUS_UNCHECKED = 'unchecked';
 
     /**
@@ -227,8 +227,8 @@ class GetBuyerListingCertResponseData implements ModelInterface, ArrayAccess, \J
     {
         return [
             self::STATUS_VERIFIED,
-            self::STATUS_NOT_FOUND,
             self::STATUS_MISMATCH,
+            self::STATUS_NOT_FOUND,
             self::STATUS_UNCHECKED,
         ];
     }

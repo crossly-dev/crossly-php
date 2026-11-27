@@ -60,8 +60,8 @@ class CreateBuyerWishlistInviteResponseData implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url' => 'string',
         'token' => 'string',
+        'url' => 'string',
         'expires_at' => 'string'
     ];
 
@@ -73,8 +73,8 @@ class CreateBuyerWishlistInviteResponseData implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url' => null,
         'token' => null,
+        'url' => null,
         'expires_at' => null
     ];
 
@@ -105,8 +105,8 @@ class CreateBuyerWishlistInviteResponseData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
         'token' => 'token',
+        'url' => 'url',
         'expires_at' => 'expiresAt'
     ];
 
@@ -116,8 +116,8 @@ class CreateBuyerWishlistInviteResponseData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
         'token' => 'setToken',
+        'url' => 'setUrl',
         'expires_at' => 'setExpiresAt'
     ];
 
@@ -127,8 +127,8 @@ class CreateBuyerWishlistInviteResponseData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
         'token' => 'getToken',
+        'url' => 'getUrl',
         'expires_at' => 'getExpiresAt'
     ];
 
@@ -189,8 +189,8 @@ class CreateBuyerWishlistInviteResponseData implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
-        $this->container['url'] = $data['url'] ?? null;
         $this->container['token'] = $data['token'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
         $this->container['expires_at'] = $data['expires_at'] ?? null;
     }
 
@@ -203,11 +203,11 @@ class CreateBuyerWishlistInviteResponseData implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
         if ($this->container['token'] === null) {
             $invalidProperties[] = "'token' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         if ($this->container['expires_at'] === null) {
             $invalidProperties[] = "'expires_at' can't be null";
@@ -226,30 +226,6 @@ class CreateBuyerWishlistInviteResponseData implements ModelInterface, ArrayAcce
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url url
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
-
-        return $this;
-    }
 
     /**
      * Gets token
@@ -271,6 +247,30 @@ class CreateBuyerWishlistInviteResponseData implements ModelInterface, ArrayAcce
     public function setToken($token)
     {
         $this->container['token'] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url url
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }

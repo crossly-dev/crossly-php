@@ -215,9 +215,6 @@ class CreateWorldGamePackageResponseDataVersion implements ModelInterface, Array
         if ($this->container['semver'] === null) {
             $invalidProperties[] = "'semver' can't be null";
         }
-        if ($this->container['design_version'] === null) {
-            $invalidProperties[] = "'design_version' can't be null";
-        }
         if ($this->container['state'] === null) {
             $invalidProperties[] = "'state' can't be null";
         }
@@ -287,7 +284,7 @@ class CreateWorldGamePackageResponseDataVersion implements ModelInterface, Array
     /**
      * Gets design_version
      *
-     * @return float
+     * @return float|null
      */
     public function getDesignVersion()
     {
@@ -297,7 +294,7 @@ class CreateWorldGamePackageResponseDataVersion implements ModelInterface, Array
     /**
      * Sets design_version
      *
-     * @param float $design_version design_version
+     * @param float|null $design_version design_version
      *
      * @return self
      */

@@ -65,7 +65,8 @@ class GetMainStageResponseStream implements ModelInterface, ArrayAccess, \JsonSe
         'title' => 'string',
         'playback_url' => 'string',
         'cover_image_url' => 'string',
-        'host' => 'string'
+        'host' => 'string',
+        'lot' => '\Crossly\Model\Main\GetMainStageResponseStreamLot'
     ];
 
     /**
@@ -80,7 +81,8 @@ class GetMainStageResponseStream implements ModelInterface, ArrayAccess, \JsonSe
         'title' => null,
         'playback_url' => null,
         'cover_image_url' => null,
-        'host' => null
+        'host' => null,
+        'lot' => null
     ];
 
     /**
@@ -114,7 +116,8 @@ class GetMainStageResponseStream implements ModelInterface, ArrayAccess, \JsonSe
         'title' => 'title',
         'playback_url' => 'playbackUrl',
         'cover_image_url' => 'coverImageUrl',
-        'host' => 'host'
+        'host' => 'host',
+        'lot' => 'lot'
     ];
 
     /**
@@ -127,7 +130,8 @@ class GetMainStageResponseStream implements ModelInterface, ArrayAccess, \JsonSe
         'title' => 'setTitle',
         'playback_url' => 'setPlaybackUrl',
         'cover_image_url' => 'setCoverImageUrl',
-        'host' => 'setHost'
+        'host' => 'setHost',
+        'lot' => 'setLot'
     ];
 
     /**
@@ -140,7 +144,8 @@ class GetMainStageResponseStream implements ModelInterface, ArrayAccess, \JsonSe
         'title' => 'getTitle',
         'playback_url' => 'getPlaybackUrl',
         'cover_image_url' => 'getCoverImageUrl',
-        'host' => 'getHost'
+        'host' => 'getHost',
+        'lot' => 'getLot'
     ];
 
     /**
@@ -205,6 +210,7 @@ class GetMainStageResponseStream implements ModelInterface, ArrayAccess, \JsonSe
         $this->container['playback_url'] = $data['playback_url'] ?? null;
         $this->container['cover_image_url'] = $data['cover_image_url'] ?? null;
         $this->container['host'] = $data['host'] ?? null;
+        $this->container['lot'] = $data['lot'] ?? null;
     }
 
     /**
@@ -353,6 +359,30 @@ class GetMainStageResponseStream implements ModelInterface, ArrayAccess, \JsonSe
     public function setHost($host)
     {
         $this->container['host'] = $host;
+
+        return $this;
+    }
+
+    /**
+     * Gets lot
+     *
+     * @return \Crossly\Model\Main\GetMainStageResponseStreamLot|null
+     */
+    public function getLot()
+    {
+        return $this->container['lot'];
+    }
+
+    /**
+     * Sets lot
+     *
+     * @param \Crossly\Model\Main\GetMainStageResponseStreamLot|null $lot lot
+     *
+     * @return self
+     */
+    public function setLot($lot)
+    {
+        $this->container['lot'] = $lot;
 
         return $this;
     }

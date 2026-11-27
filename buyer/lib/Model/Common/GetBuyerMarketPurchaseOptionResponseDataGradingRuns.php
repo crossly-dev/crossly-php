@@ -61,10 +61,10 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns implements ModelInterf
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'price_cents' => 'float',
+        'grader_name' => 'string',
         'tier_name' => 'string',
-        'cutoff_at' => 'string',
-        'grader_name' => 'string'
+        'price_cents' => 'float',
+        'cutoff_at' => 'string'
     ];
 
     /**
@@ -76,10 +76,10 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns implements ModelInterf
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'price_cents' => null,
+        'grader_name' => null,
         'tier_name' => null,
-        'cutoff_at' => null,
-        'grader_name' => null
+        'price_cents' => null,
+        'cutoff_at' => null
     ];
 
     /**
@@ -110,10 +110,10 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns implements ModelInterf
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'price_cents' => 'priceCents',
+        'grader_name' => 'graderName',
         'tier_name' => 'tierName',
-        'cutoff_at' => 'cutoffAt',
-        'grader_name' => 'graderName'
+        'price_cents' => 'priceCents',
+        'cutoff_at' => 'cutoffAt'
     ];
 
     /**
@@ -123,10 +123,10 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns implements ModelInterf
      */
     protected static $setters = [
         'id' => 'setId',
-        'price_cents' => 'setPriceCents',
+        'grader_name' => 'setGraderName',
         'tier_name' => 'setTierName',
-        'cutoff_at' => 'setCutoffAt',
-        'grader_name' => 'setGraderName'
+        'price_cents' => 'setPriceCents',
+        'cutoff_at' => 'setCutoffAt'
     ];
 
     /**
@@ -136,10 +136,10 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns implements ModelInterf
      */
     protected static $getters = [
         'id' => 'getId',
-        'price_cents' => 'getPriceCents',
+        'grader_name' => 'getGraderName',
         'tier_name' => 'getTierName',
-        'cutoff_at' => 'getCutoffAt',
-        'grader_name' => 'getGraderName'
+        'price_cents' => 'getPriceCents',
+        'cutoff_at' => 'getCutoffAt'
     ];
 
     /**
@@ -200,10 +200,10 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns implements ModelInterf
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['price_cents'] = $data['price_cents'] ?? null;
-        $this->container['tier_name'] = $data['tier_name'] ?? null;
-        $this->container['cutoff_at'] = $data['cutoff_at'] ?? null;
         $this->container['grader_name'] = $data['grader_name'] ?? null;
+        $this->container['tier_name'] = $data['tier_name'] ?? null;
+        $this->container['price_cents'] = $data['price_cents'] ?? null;
+        $this->container['cutoff_at'] = $data['cutoff_at'] ?? null;
     }
 
     /**
@@ -218,17 +218,17 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns implements ModelInterf
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['price_cents'] === null) {
-            $invalidProperties[] = "'price_cents' can't be null";
+        if ($this->container['grader_name'] === null) {
+            $invalidProperties[] = "'grader_name' can't be null";
         }
         if ($this->container['tier_name'] === null) {
             $invalidProperties[] = "'tier_name' can't be null";
         }
+        if ($this->container['price_cents'] === null) {
+            $invalidProperties[] = "'price_cents' can't be null";
+        }
         if ($this->container['cutoff_at'] === null) {
             $invalidProperties[] = "'cutoff_at' can't be null";
-        }
-        if ($this->container['grader_name'] === null) {
-            $invalidProperties[] = "'grader_name' can't be null";
         }
         return $invalidProperties;
     }
@@ -270,25 +270,25 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns implements ModelInterf
     }
 
     /**
-     * Gets price_cents
+     * Gets grader_name
      *
-     * @return float
+     * @return string
      */
-    public function getPriceCents()
+    public function getGraderName()
     {
-        return $this->container['price_cents'];
+        return $this->container['grader_name'];
     }
 
     /**
-     * Sets price_cents
+     * Sets grader_name
      *
-     * @param float $price_cents price_cents
+     * @param string $grader_name grader_name
      *
      * @return self
      */
-    public function setPriceCents($price_cents)
+    public function setGraderName($grader_name)
     {
-        $this->container['price_cents'] = $price_cents;
+        $this->container['grader_name'] = $grader_name;
 
         return $this;
     }
@@ -318,6 +318,30 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns implements ModelInterf
     }
 
     /**
+     * Gets price_cents
+     *
+     * @return float
+     */
+    public function getPriceCents()
+    {
+        return $this->container['price_cents'];
+    }
+
+    /**
+     * Sets price_cents
+     *
+     * @param float $price_cents price_cents
+     *
+     * @return self
+     */
+    public function setPriceCents($price_cents)
+    {
+        $this->container['price_cents'] = $price_cents;
+
+        return $this;
+    }
+
+    /**
      * Gets cutoff_at
      *
      * @return string
@@ -337,30 +361,6 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns implements ModelInterf
     public function setCutoffAt($cutoff_at)
     {
         $this->container['cutoff_at'] = $cutoff_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets grader_name
-     *
-     * @return string
-     */
-    public function getGraderName()
-    {
-        return $this->container['grader_name'];
-    }
-
-    /**
-     * Sets grader_name
-     *
-     * @param string $grader_name grader_name
-     *
-     * @return self
-     */
-    public function setGraderName($grader_name)
-    {
-        $this->container['grader_name'] = $grader_name;
 
         return $this;
     }

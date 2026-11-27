@@ -63,7 +63,8 @@ class CreatePayoutConnectOnboardResponseData implements ModelInterface, ArrayAcc
         'url' => 'string',
         'country' => 'string',
         'agreement' => 'string',
-        'payouts_supported' => 'bool'
+        'payouts_supported' => 'bool',
+        'account_source' => 'string'
     ];
 
     /**
@@ -77,7 +78,8 @@ class CreatePayoutConnectOnboardResponseData implements ModelInterface, ArrayAcc
         'url' => null,
         'country' => null,
         'agreement' => null,
-        'payouts_supported' => null
+        'payouts_supported' => null,
+        'account_source' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class CreatePayoutConnectOnboardResponseData implements ModelInterface, ArrayAcc
         'url' => 'url',
         'country' => 'country',
         'agreement' => 'agreement',
-        'payouts_supported' => 'payoutsSupported'
+        'payouts_supported' => 'payoutsSupported',
+        'account_source' => 'accountSource'
     ];
 
     /**
@@ -122,7 +125,8 @@ class CreatePayoutConnectOnboardResponseData implements ModelInterface, ArrayAcc
         'url' => 'setUrl',
         'country' => 'setCountry',
         'agreement' => 'setAgreement',
-        'payouts_supported' => 'setPayoutsSupported'
+        'payouts_supported' => 'setPayoutsSupported',
+        'account_source' => 'setAccountSource'
     ];
 
     /**
@@ -134,7 +138,8 @@ class CreatePayoutConnectOnboardResponseData implements ModelInterface, ArrayAcc
         'url' => 'getUrl',
         'country' => 'getCountry',
         'agreement' => 'getAgreement',
-        'payouts_supported' => 'getPayoutsSupported'
+        'payouts_supported' => 'getPayoutsSupported',
+        'account_source' => 'getAccountSource'
     ];
 
     /**
@@ -213,6 +218,7 @@ class CreatePayoutConnectOnboardResponseData implements ModelInterface, ArrayAcc
         $this->container['country'] = $data['country'] ?? null;
         $this->container['agreement'] = $data['agreement'] ?? null;
         $this->container['payouts_supported'] = $data['payouts_supported'] ?? null;
+        $this->container['account_source'] = $data['account_source'] ?? null;
     }
 
     /**
@@ -244,6 +250,9 @@ class CreatePayoutConnectOnboardResponseData implements ModelInterface, ArrayAcc
 
         if ($this->container['payouts_supported'] === null) {
             $invalidProperties[] = "'payouts_supported' can't be null";
+        }
+        if ($this->container['account_source'] === null) {
+            $invalidProperties[] = "'account_source' can't be null";
         }
         return $invalidProperties;
     }
@@ -355,13 +364,37 @@ class CreatePayoutConnectOnboardResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets payouts_supported
      *
-     * @param bool $payouts_supported False when Stripe offers no way for Crossly to pay this account (see connect.ts).
+     * @param bool $payouts_supported payouts_supported
      *
      * @return self
      */
     public function setPayoutsSupported($payouts_supported)
     {
         $this->container['payouts_supported'] = $payouts_supported;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_source
+     *
+     * @return string
+     */
+    public function getAccountSource()
+    {
+        return $this->container['account_source'];
+    }
+
+    /**
+     * Sets account_source
+     *
+     * @param string $account_source account_source
+     *
+     * @return self
+     */
+    public function setAccountSource($account_source)
+    {
+        $this->container['account_source'] = $account_source;
 
         return $this;
     }

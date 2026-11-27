@@ -61,8 +61,8 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
       */
     protected static $openAPITypes = [
         'email' => 'string',
-        'webhook' => 'string',
         'push' => 'string',
+        'webhook' => 'string',
         'telegram' => 'string',
         'terminal' => 'string'
     ];
@@ -76,8 +76,8 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
       */
     protected static $openAPIFormats = [
         'email' => null,
-        'webhook' => null,
         'push' => null,
+        'webhook' => null,
         'telegram' => null,
         'terminal' => null
     ];
@@ -110,8 +110,8 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
      */
     protected static $attributeMap = [
         'email' => 'email',
-        'webhook' => 'webhook',
         'push' => 'push',
+        'webhook' => 'webhook',
         'telegram' => 'telegram',
         'terminal' => 'terminal'
     ];
@@ -123,8 +123,8 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
      */
     protected static $setters = [
         'email' => 'setEmail',
-        'webhook' => 'setWebhook',
         'push' => 'setPush',
+        'webhook' => 'setWebhook',
         'telegram' => 'setTelegram',
         'terminal' => 'setTerminal'
     ];
@@ -136,8 +136,8 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
      */
     protected static $getters = [
         'email' => 'getEmail',
-        'webhook' => 'getWebhook',
         'push' => 'getPush',
+        'webhook' => 'getWebhook',
         'telegram' => 'getTelegram',
         'terminal' => 'getTerminal'
     ];
@@ -187,14 +187,14 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
     const EMAIL_OFF = 'off';
     const EMAIL_SEND = 'send';
     const EMAIL_QUIET = 'quiet';
-    const WEBHOOK_UNAVAILABLE = 'unavailable';
-    const WEBHOOK_OFF = 'off';
-    const WEBHOOK_SEND = 'send';
-    const WEBHOOK_QUIET = 'quiet';
     const PUSH_UNAVAILABLE = 'unavailable';
     const PUSH_OFF = 'off';
     const PUSH_SEND = 'send';
     const PUSH_QUIET = 'quiet';
+    const WEBHOOK_UNAVAILABLE = 'unavailable';
+    const WEBHOOK_OFF = 'off';
+    const WEBHOOK_SEND = 'send';
+    const WEBHOOK_QUIET = 'quiet';
     const TELEGRAM_UNAVAILABLE = 'unavailable';
     const TELEGRAM_OFF = 'off';
     const TELEGRAM_SEND = 'send';
@@ -224,13 +224,13 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
      *
      * @return string[]
      */
-    public function getWebhookAllowableValues()
+    public function getPushAllowableValues()
     {
         return [
-            self::WEBHOOK_UNAVAILABLE,
-            self::WEBHOOK_OFF,
-            self::WEBHOOK_SEND,
-            self::WEBHOOK_QUIET,
+            self::PUSH_UNAVAILABLE,
+            self::PUSH_OFF,
+            self::PUSH_SEND,
+            self::PUSH_QUIET,
         ];
     }
 
@@ -239,13 +239,13 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
      *
      * @return string[]
      */
-    public function getPushAllowableValues()
+    public function getWebhookAllowableValues()
     {
         return [
-            self::PUSH_UNAVAILABLE,
-            self::PUSH_OFF,
-            self::PUSH_SEND,
-            self::PUSH_QUIET,
+            self::WEBHOOK_UNAVAILABLE,
+            self::WEBHOOK_OFF,
+            self::WEBHOOK_SEND,
+            self::WEBHOOK_QUIET,
         ];
     }
 
@@ -295,8 +295,8 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
     public function __construct(array $data = null)
     {
         $this->container['email'] = $data['email'] ?? null;
-        $this->container['webhook'] = $data['webhook'] ?? null;
         $this->container['push'] = $data['push'] ?? null;
+        $this->container['webhook'] = $data['webhook'] ?? null;
         $this->container['telegram'] = $data['telegram'] ?? null;
         $this->container['terminal'] = $data['terminal'] ?? null;
     }
@@ -322,18 +322,6 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
             );
         }
 
-        if ($this->container['webhook'] === null) {
-            $invalidProperties[] = "'webhook' can't be null";
-        }
-        $allowedValues = $this->getWebhookAllowableValues();
-        if (!is_null($this->container['webhook']) && !in_array($this->container['webhook'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'webhook', must be one of '%s'",
-                $this->container['webhook'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['push'] === null) {
             $invalidProperties[] = "'push' can't be null";
         }
@@ -342,6 +330,18 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'push', must be one of '%s'",
                 $this->container['push'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['webhook'] === null) {
+            $invalidProperties[] = "'webhook' can't be null";
+        }
+        $allowedValues = $this->getWebhookAllowableValues();
+        if (!is_null($this->container['webhook']) && !in_array($this->container['webhook'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'webhook', must be one of '%s'",
+                $this->container['webhook'],
                 implode("', '", $allowedValues)
             );
         }
@@ -420,40 +420,6 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
     }
 
     /**
-     * Gets webhook
-     *
-     * @return string
-     */
-    public function getWebhook()
-    {
-        return $this->container['webhook'];
-    }
-
-    /**
-     * Sets webhook
-     *
-     * @param string $webhook webhook
-     *
-     * @return self
-     */
-    public function setWebhook($webhook)
-    {
-        $allowedValues = $this->getWebhookAllowableValues();
-        if (!in_array($webhook, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'webhook', must be one of '%s'",
-                    $webhook,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['webhook'] = $webhook;
-
-        return $this;
-    }
-
-    /**
      * Gets push
      *
      * @return string
@@ -483,6 +449,40 @@ class CreateVaultMarketAlertPrefTestResponsePlan implements ModelInterface, Arra
             );
         }
         $this->container['push'] = $push;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhook
+     *
+     * @return string
+     */
+    public function getWebhook()
+    {
+        return $this->container['webhook'];
+    }
+
+    /**
+     * Sets webhook
+     *
+     * @param string $webhook webhook
+     *
+     * @return self
+     */
+    public function setWebhook($webhook)
+    {
+        $allowedValues = $this->getWebhookAllowableValues();
+        if (!in_array($webhook, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'webhook', must be one of '%s'",
+                    $webhook,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['webhook'] = $webhook;
 
         return $this;
     }

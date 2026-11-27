@@ -116,6 +116,1567 @@ class AnalyticsApi
     }
 
     /**
+     * Operation createAnalyticExperiment
+     *
+     * Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Common\AnalyticExperimentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function createAnalyticExperiment()
+    {
+        list($response) = $this->createAnalyticExperimentWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation createAnalyticExperimentWithHttpInfo
+     *
+     * Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Common\AnalyticExperimentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAnalyticExperimentWithHttpInfo()
+    {
+        $request = $this->createAnalyticExperimentRequest();
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Common\AnalyticExperimentResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\AnalyticExperimentResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Common\AnalyticExperimentResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\AnalyticExperimentResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAnalyticExperimentAsync
+     *
+     * Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAnalyticExperimentAsync()
+    {
+        return $this->createAnalyticExperimentAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAnalyticExperimentAsyncWithHttpInfo
+     *
+     * Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAnalyticExperimentAsyncWithHttpInfo()
+    {
+        $returnType = '\Crossly\Model\Common\AnalyticExperimentResponse';
+        $request = $this->createAnalyticExperimentRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAnalyticExperiment'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createAnalyticExperimentRequest()
+    {
+
+        $resourcePath = '/v1/analytics/experiments';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createAnalyticExperimentDeclare
+     *
+     * Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Common\AnalyticExperimentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function createAnalyticExperimentDeclare($id)
+    {
+        list($response) = $this->createAnalyticExperimentDeclareWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation createAnalyticExperimentDeclareWithHttpInfo
+     *
+     * Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Common\AnalyticExperimentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAnalyticExperimentDeclareWithHttpInfo($id)
+    {
+        $request = $this->createAnalyticExperimentDeclareRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Common\AnalyticExperimentResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\AnalyticExperimentResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Common\AnalyticExperimentResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\AnalyticExperimentResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAnalyticExperimentDeclareAsync
+     *
+     * Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAnalyticExperimentDeclareAsync($id)
+    {
+        return $this->createAnalyticExperimentDeclareAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAnalyticExperimentDeclareAsyncWithHttpInfo
+     *
+     * Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAnalyticExperimentDeclareAsyncWithHttpInfo($id)
+    {
+        $returnType = '\Crossly\Model\Common\AnalyticExperimentResponse';
+        $request = $this->createAnalyticExperimentDeclareRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAnalyticExperimentDeclare'
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createAnalyticExperimentDeclareRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling createAnalyticExperimentDeclare'
+            );
+        }
+
+        $resourcePath = '/v1/analytics/experiments/{id}/declare';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createAnalyticExperimentStop
+     *
+     * Stop an experiment: no more data is counted after now.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Common\AnalyticExperimentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function createAnalyticExperimentStop($id)
+    {
+        list($response) = $this->createAnalyticExperimentStopWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation createAnalyticExperimentStopWithHttpInfo
+     *
+     * Stop an experiment: no more data is counted after now.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Common\AnalyticExperimentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAnalyticExperimentStopWithHttpInfo($id)
+    {
+        $request = $this->createAnalyticExperimentStopRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Common\AnalyticExperimentResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\AnalyticExperimentResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Common\AnalyticExperimentResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\AnalyticExperimentResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAnalyticExperimentStopAsync
+     *
+     * Stop an experiment: no more data is counted after now.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAnalyticExperimentStopAsync($id)
+    {
+        return $this->createAnalyticExperimentStopAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAnalyticExperimentStopAsyncWithHttpInfo
+     *
+     * Stop an experiment: no more data is counted after now.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAnalyticExperimentStopAsyncWithHttpInfo($id)
+    {
+        $returnType = '\Crossly\Model\Common\AnalyticExperimentResponse';
+        $request = $this->createAnalyticExperimentStopRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAnalyticExperimentStop'
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createAnalyticExperimentStopRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling createAnalyticExperimentStop'
+            );
+        }
+
+        $resourcePath = '/v1/analytics/experiments/{id}/stop';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteAnalyticExperiment
+     *
+     * Delete an experiment. The listings are untouched.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Common\DeleteStoryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function deleteAnalyticExperiment($id)
+    {
+        list($response) = $this->deleteAnalyticExperimentWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation deleteAnalyticExperimentWithHttpInfo
+     *
+     * Delete an experiment. The listings are untouched.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Common\DeleteStoryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteAnalyticExperimentWithHttpInfo($id)
+    {
+        $request = $this->deleteAnalyticExperimentRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Common\DeleteStoryResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\DeleteStoryResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Common\DeleteStoryResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\DeleteStoryResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteAnalyticExperimentAsync
+     *
+     * Delete an experiment. The listings are untouched.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAnalyticExperimentAsync($id)
+    {
+        return $this->deleteAnalyticExperimentAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteAnalyticExperimentAsyncWithHttpInfo
+     *
+     * Delete an experiment. The listings are untouched.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAnalyticExperimentAsyncWithHttpInfo($id)
+    {
+        $returnType = '\Crossly\Model\Common\DeleteStoryResponse';
+        $request = $this->deleteAnalyticExperimentRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteAnalyticExperiment'
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteAnalyticExperimentRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling deleteAnalyticExperiment'
+            );
+        }
+
+        $resourcePath = '/v1/analytics/experiments/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getAnalyticBookkeeping
      *
      * Monthly P&amp;L + per-platform breakdown for a calendar year.
@@ -494,32 +2055,36 @@ class AnalyticsApi
     /**
      * Operation getAnalyticByPlatform
      *
-     * Sales + revenue grouped by platform for the last N days.
+     * Sales, net sales, fees and net profit by platform for the last N days.
      *
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Analytic\GetAnalyticByPlatformResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
-    public function getAnalyticByPlatform()
+    public function getAnalyticByPlatform($days = 30, $tz = null)
     {
-        list($response) = $this->getAnalyticByPlatformWithHttpInfo();
+        list($response) = $this->getAnalyticByPlatformWithHttpInfo($days, $tz);
         return $response;
     }
 
     /**
      * Operation getAnalyticByPlatformWithHttpInfo
      *
-     * Sales + revenue grouped by platform for the last N days.
+     * Sales, net sales, fees and net profit by platform for the last N days.
      *
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Analytic\GetAnalyticByPlatformResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAnalyticByPlatformWithHttpInfo()
+    public function getAnalyticByPlatformWithHttpInfo($days = 30, $tz = null)
     {
-        $request = $this->getAnalyticByPlatformRequest();
+        $request = $this->getAnalyticByPlatformRequest($days, $tz);
 
         try {
             $options = $this->createHttpClientOption();
@@ -722,15 +2287,17 @@ class AnalyticsApi
     /**
      * Operation getAnalyticByPlatformAsync
      *
-     * Sales + revenue grouped by platform for the last N days.
+     * Sales, net sales, fees and net profit by platform for the last N days.
      *
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnalyticByPlatformAsync()
+    public function getAnalyticByPlatformAsync($days = 30, $tz = null)
     {
-        return $this->getAnalyticByPlatformAsyncWithHttpInfo()
+        return $this->getAnalyticByPlatformAsyncWithHttpInfo($days, $tz)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -741,16 +2308,18 @@ class AnalyticsApi
     /**
      * Operation getAnalyticByPlatformAsyncWithHttpInfo
      *
-     * Sales + revenue grouped by platform for the last N days.
+     * Sales, net sales, fees and net profit by platform for the last N days.
      *
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnalyticByPlatformAsyncWithHttpInfo()
+    public function getAnalyticByPlatformAsyncWithHttpInfo($days = 30, $tz = null)
     {
         $returnType = '\Crossly\Model\Analytic\GetAnalyticByPlatformResponse';
-        $request = $this->getAnalyticByPlatformRequest();
+        $request = $this->getAnalyticByPlatformRequest($days, $tz);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -788,12 +2357,18 @@ class AnalyticsApi
     /**
      * Create request for operation 'getAnalyticByPlatform'
      *
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAnalyticByPlatformRequest()
+    public function getAnalyticByPlatformRequest($days = 30, $tz = null)
     {
+        if ($days !== null && $days < 1) {
+            throw new \InvalidArgumentException('invalid value for "$days" when calling AnalyticsApi.getAnalyticByPlatform, must be bigger than or equal to 1.');
+        }
+
 
         $resourcePath = '/v1/analytics/by-platform';
         $formParams = [];
@@ -802,6 +2377,474 @@ class AnalyticsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($days !== null) {
+            if('form' === 'form' && is_array($days)) {
+                foreach($days as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['days'] = $days;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAnalyticCompare
+     *
+     * Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+     *
+     * @param  string $ids Comma-separated listing ids, 2 to 4. The first is arm A. (required)
+     * @param  string $align age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)
+     * @param  string $platform Restrict engagement to one channel (platform id). (optional)
+     * @param  string $tz IANA time zone. Default UTC. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticCompareResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticCompare($ids, $align = null, $platform = null, $tz = null)
+    {
+        list($response) = $this->getAnalyticCompareWithHttpInfo($ids, $align, $platform, $tz);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticCompareWithHttpInfo
+     *
+     * Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+     *
+     * @param  string $ids Comma-separated listing ids, 2 to 4. The first is arm A. (required)
+     * @param  string $align age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)
+     * @param  string $platform Restrict engagement to one channel (platform id). (optional)
+     * @param  string $tz IANA time zone. Default UTC. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticCompareResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticCompareWithHttpInfo($ids, $align = null, $platform = null, $tz = null)
+    {
+        $request = $this->getAnalyticCompareRequest($ids, $align, $platform, $tz);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticCompareResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticCompareResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticCompareResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticCompareResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticCompareAsync
+     *
+     * Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+     *
+     * @param  string $ids Comma-separated listing ids, 2 to 4. The first is arm A. (required)
+     * @param  string $align age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)
+     * @param  string $platform Restrict engagement to one channel (platform id). (optional)
+     * @param  string $tz IANA time zone. Default UTC. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticCompareAsync($ids, $align = null, $platform = null, $tz = null)
+    {
+        return $this->getAnalyticCompareAsyncWithHttpInfo($ids, $align, $platform, $tz)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticCompareAsyncWithHttpInfo
+     *
+     * Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.
+     *
+     * @param  string $ids Comma-separated listing ids, 2 to 4. The first is arm A. (required)
+     * @param  string $align age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)
+     * @param  string $platform Restrict engagement to one channel (platform id). (optional)
+     * @param  string $tz IANA time zone. Default UTC. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticCompareAsyncWithHttpInfo($ids, $align = null, $platform = null, $tz = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticCompareResponse';
+        $request = $this->getAnalyticCompareRequest($ids, $align, $platform, $tz);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticCompare'
+     *
+     * @param  string $ids Comma-separated listing ids, 2 to 4. The first is arm A. (required)
+     * @param  string $align age &#x3D; x is days since first listed (default); calendar &#x3D; x is the date. (optional)
+     * @param  string $platform Restrict engagement to one channel (platform id). (optional)
+     * @param  string $tz IANA time zone. Default UTC. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticCompareRequest($ids, $align = null, $platform = null, $tz = null)
+    {
+        // verify the required parameter 'ids' is set
+        if ($ids === null || (is_array($ids) && count($ids) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ids when calling getAnalyticCompare'
+            );
+        }
+
+        $resourcePath = '/v1/analytics/compare';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($ids !== null) {
+            if('form' === 'form' && is_array($ids)) {
+                foreach($ids as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['ids'] = $ids;
+            }
+        }
+        // query params
+        if ($align !== null) {
+            if('form' === 'form' && is_array($align)) {
+                foreach($align as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['align'] = $align;
+            }
+        }
+        // query params
+        if ($platform !== null) {
+            if('form' === 'form' && is_array($platform)) {
+                foreach($platform as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['platform'] = $platform;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
 
 
 
@@ -1244,6 +3287,1404 @@ class AnalyticsApi
     }
 
     /**
+     * Operation getAnalyticExperiment
+     *
+     * Your listing A/B experiments, newest first, with status, days running and the current verdict.
+     *
+     * @param  string $status Default all. (optional)
+     * @param  int $page 1-indexed page. Default 1. (optional)
+     * @param  int $size Rows per page. Default 20. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticExperimentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticExperiment($status = null, $page = null, $size = null)
+    {
+        list($response) = $this->getAnalyticExperimentWithHttpInfo($status, $page, $size);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticExperimentWithHttpInfo
+     *
+     * Your listing A/B experiments, newest first, with status, days running and the current verdict.
+     *
+     * @param  string $status Default all. (optional)
+     * @param  int $page 1-indexed page. Default 1. (optional)
+     * @param  int $size Rows per page. Default 20. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticExperimentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticExperimentWithHttpInfo($status = null, $page = null, $size = null)
+    {
+        $request = $this->getAnalyticExperimentRequest($status, $page, $size);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticExperimentResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticExperimentResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticExperimentResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticExperimentResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticExperimentAsync
+     *
+     * Your listing A/B experiments, newest first, with status, days running and the current verdict.
+     *
+     * @param  string $status Default all. (optional)
+     * @param  int $page 1-indexed page. Default 1. (optional)
+     * @param  int $size Rows per page. Default 20. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticExperimentAsync($status = null, $page = null, $size = null)
+    {
+        return $this->getAnalyticExperimentAsyncWithHttpInfo($status, $page, $size)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticExperimentAsyncWithHttpInfo
+     *
+     * Your listing A/B experiments, newest first, with status, days running and the current verdict.
+     *
+     * @param  string $status Default all. (optional)
+     * @param  int $page 1-indexed page. Default 1. (optional)
+     * @param  int $size Rows per page. Default 20. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticExperimentAsyncWithHttpInfo($status = null, $page = null, $size = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticExperimentResponse';
+        $request = $this->getAnalyticExperimentRequest($status, $page, $size);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticExperiment'
+     *
+     * @param  string $status Default all. (optional)
+     * @param  int $page 1-indexed page. Default 1. (optional)
+     * @param  int $size Rows per page. Default 20. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticExperimentRequest($status = null, $page = null, $size = null)
+    {
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling AnalyticsApi.getAnalyticExperiment, must be bigger than or equal to 1.');
+        }
+
+        if ($size !== null && $size > 100) {
+            throw new \InvalidArgumentException('invalid value for "$size" when calling AnalyticsApi.getAnalyticExperiment, must be smaller than or equal to 100.');
+        }
+        if ($size !== null && $size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$size" when calling AnalyticsApi.getAnalyticExperiment, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/v1/analytics/experiments';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+        // query params
+        if ($size !== null) {
+            if('form' === 'form' && is_array($size)) {
+                foreach($size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['size'] = $size;
+            }
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAnalyticExperimentById
+     *
+     * One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+     *
+     * @param  string $id The experiment id (a uuid). (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticExperimentByIdResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticExperimentById($id)
+    {
+        list($response) = $this->getAnalyticExperimentByIdWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticExperimentByIdWithHttpInfo
+     *
+     * One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+     *
+     * @param  string $id The experiment id (a uuid). (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticExperimentByIdResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticExperimentByIdWithHttpInfo($id)
+    {
+        $request = $this->getAnalyticExperimentByIdRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticExperimentByIdResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticExperimentByIdResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticExperimentByIdResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticExperimentByIdResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticExperimentByIdAsync
+     *
+     * One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+     *
+     * @param  string $id The experiment id (a uuid). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticExperimentByIdAsync($id)
+    {
+        return $this->getAnalyticExperimentByIdAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticExperimentByIdAsyncWithHttpInfo
+     *
+     * One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.
+     *
+     * @param  string $id The experiment id (a uuid). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticExperimentByIdAsyncWithHttpInfo($id)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticExperimentByIdResponse';
+        $request = $this->getAnalyticExperimentByIdRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticExperimentById'
+     *
+     * @param  string $id The experiment id (a uuid). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticExperimentByIdRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getAnalyticExperimentById'
+            );
+        }
+
+        $resourcePath = '/v1/analytics/experiments/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAnalyticInventory
+     *
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  int $maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticInventoryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticInventory($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $maturity = null)
+    {
+        list($response) = $this->getAnalyticInventoryWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $maturity);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticInventoryWithHttpInfo
+     *
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  int $maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticInventoryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticInventoryWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $maturity = null)
+    {
+        $request = $this->getAnalyticInventoryRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $maturity);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticInventoryResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticInventoryResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticInventoryResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticInventoryResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticInventoryAsync
+     *
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  int $maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticInventoryAsync($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $maturity = null)
+    {
+        return $this->getAnalyticInventoryAsyncWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $maturity)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticInventoryAsyncWithHttpInfo
+     *
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  int $maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticInventoryAsyncWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $maturity = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticInventoryResponse';
+        $request = $this->getAnalyticInventoryRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $maturity);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticInventory'
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  int $maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticInventoryRequest($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $maturity = null)
+    {
+
+        $resourcePath = '/v1/analytics/inventory';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($range !== null) {
+            if('form' === 'form' && is_array($range)) {
+                foreach($range as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['range'] = $range;
+            }
+        }
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
+        }
+        // query params
+        if ($compare !== null) {
+            if('form' === 'form' && is_array($compare)) {
+                foreach($compare as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['compare'] = $compare;
+            }
+        }
+        // query params
+        if ($cmp_from !== null) {
+            if('form' === 'form' && is_array($cmp_from)) {
+                foreach($cmp_from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpFrom'] = $cmp_from;
+            }
+        }
+        // query params
+        if ($cmp_to !== null) {
+            if('form' === 'form' && is_array($cmp_to)) {
+                foreach($cmp_to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpTo'] = $cmp_to;
+            }
+        }
+        // query params
+        if ($labels !== null) {
+            if('form' === 'form' && is_array($labels)) {
+                foreach($labels as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['labels'] = $labels;
+            }
+        }
+        // query params
+        if ($platforms !== null) {
+            if('form' === 'form' && is_array($platforms)) {
+                foreach($platforms as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['platforms'] = $platforms;
+            }
+        }
+        // query params
+        if ($category !== null) {
+            if('form' === 'form' && is_array($category)) {
+                foreach($category as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['category'] = $category;
+            }
+        }
+        // query params
+        if ($brand !== null) {
+            if('form' === 'form' && is_array($brand)) {
+                foreach($brand as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['brand'] = $brand;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
+        // query params
+        if ($maturity !== null) {
+            if('form' === 'form' && is_array($maturity)) {
+                foreach($maturity as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['maturity'] = $maturity;
+            }
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getAnalyticItem
      *
      * Per-item P&amp;L for sold inventory.
@@ -1620,36 +5061,4545 @@ class AnalyticsApi
     }
 
     /**
+     * Operation getAnalyticItemByListingId
+     *
+     * One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
+     *
+     * @param  string $listing_id A listings.id you own (or an inventory item id with by&#x3D;inventory). (required)
+     * @param  string $by inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticItemByListingIdResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticItemByListingId($listing_id, $by = null, $tz = null)
+    {
+        list($response) = $this->getAnalyticItemByListingIdWithHttpInfo($listing_id, $by, $tz);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticItemByListingIdWithHttpInfo
+     *
+     * One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
+     *
+     * @param  string $listing_id A listings.id you own (or an inventory item id with by&#x3D;inventory). (required)
+     * @param  string $by inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticItemByListingIdResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticItemByListingIdWithHttpInfo($listing_id, $by = null, $tz = null)
+    {
+        $request = $this->getAnalyticItemByListingIdRequest($listing_id, $by, $tz);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticItemByListingIdResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticItemByListingIdResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticItemByListingIdResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticItemByListingIdResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticItemByListingIdAsync
+     *
+     * One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
+     *
+     * @param  string $listing_id A listings.id you own (or an inventory item id with by&#x3D;inventory). (required)
+     * @param  string $by inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticItemByListingIdAsync($listing_id, $by = null, $tz = null)
+    {
+        return $this->getAnalyticItemByListingIdAsyncWithHttpInfo($listing_id, $by, $tz)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticItemByListingIdAsyncWithHttpInfo
+     *
+     * One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
+     *
+     * @param  string $listing_id A listings.id you own (or an inventory item id with by&#x3D;inventory). (required)
+     * @param  string $by inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticItemByListingIdAsyncWithHttpInfo($listing_id, $by = null, $tz = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticItemByListingIdResponse';
+        $request = $this->getAnalyticItemByListingIdRequest($listing_id, $by, $tz);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticItemByListingId'
+     *
+     * @param  string $listing_id A listings.id you own (or an inventory item id with by&#x3D;inventory). (required)
+     * @param  string $by inventory &#x3D; the id is an inventory item id; the answer is { redirectListingId }. Default listing. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticItemByListingIdRequest($listing_id, $by = null, $tz = null)
+    {
+        // verify the required parameter 'listing_id' is set
+        if ($listing_id === null || (is_array($listing_id) && count($listing_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $listing_id when calling getAnalyticItemByListingId'
+            );
+        }
+
+        $resourcePath = '/v1/analytics/items/{listingId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($by !== null) {
+            if('form' === 'form' && is_array($by)) {
+                foreach($by as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['by'] = $by;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
+
+
+        // path params
+        if ($listing_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listingId' . '}',
+                ObjectSerializer::toPathValue($listing_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAnalyticMarketplace
+     *
+     * Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $vs Comma-separated 2-3 platform ids for the head-to-head. (optional)
+     * @param  string $sort Default netSales. (optional)
+     * @param  string $dir Default desc. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticMarketplaceResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticMarketplace($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $vs = null, $sort = null, $dir = null)
+    {
+        list($response) = $this->getAnalyticMarketplaceWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $vs, $sort, $dir);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticMarketplaceWithHttpInfo
+     *
+     * Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $vs Comma-separated 2-3 platform ids for the head-to-head. (optional)
+     * @param  string $sort Default netSales. (optional)
+     * @param  string $dir Default desc. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticMarketplaceResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticMarketplaceWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $vs = null, $sort = null, $dir = null)
+    {
+        $request = $this->getAnalyticMarketplaceRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $vs, $sort, $dir);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticMarketplaceResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticMarketplaceResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticMarketplaceResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticMarketplaceResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticMarketplaceAsync
+     *
+     * Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $vs Comma-separated 2-3 platform ids for the head-to-head. (optional)
+     * @param  string $sort Default netSales. (optional)
+     * @param  string $dir Default desc. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticMarketplaceAsync($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $vs = null, $sort = null, $dir = null)
+    {
+        return $this->getAnalyticMarketplaceAsyncWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $vs, $sort, $dir)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticMarketplaceAsyncWithHttpInfo
+     *
+     * Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs&#x3D;2-3 platforms, a head-to-head over listings live on all of them.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $vs Comma-separated 2-3 platform ids for the head-to-head. (optional)
+     * @param  string $sort Default netSales. (optional)
+     * @param  string $dir Default desc. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticMarketplaceAsyncWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $vs = null, $sort = null, $dir = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticMarketplaceResponse';
+        $request = $this->getAnalyticMarketplaceRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $vs, $sort, $dir);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticMarketplace'
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $vs Comma-separated 2-3 platform ids for the head-to-head. (optional)
+     * @param  string $sort Default netSales. (optional)
+     * @param  string $dir Default desc. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticMarketplaceRequest($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $vs = null, $sort = null, $dir = null)
+    {
+
+        $resourcePath = '/v1/analytics/marketplaces';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($range !== null) {
+            if('form' === 'form' && is_array($range)) {
+                foreach($range as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['range'] = $range;
+            }
+        }
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
+        }
+        // query params
+        if ($compare !== null) {
+            if('form' === 'form' && is_array($compare)) {
+                foreach($compare as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['compare'] = $compare;
+            }
+        }
+        // query params
+        if ($cmp_from !== null) {
+            if('form' === 'form' && is_array($cmp_from)) {
+                foreach($cmp_from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpFrom'] = $cmp_from;
+            }
+        }
+        // query params
+        if ($cmp_to !== null) {
+            if('form' === 'form' && is_array($cmp_to)) {
+                foreach($cmp_to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpTo'] = $cmp_to;
+            }
+        }
+        // query params
+        if ($labels !== null) {
+            if('form' === 'form' && is_array($labels)) {
+                foreach($labels as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['labels'] = $labels;
+            }
+        }
+        // query params
+        if ($platforms !== null) {
+            if('form' === 'form' && is_array($platforms)) {
+                foreach($platforms as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['platforms'] = $platforms;
+            }
+        }
+        // query params
+        if ($category !== null) {
+            if('form' === 'form' && is_array($category)) {
+                foreach($category as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['category'] = $category;
+            }
+        }
+        // query params
+        if ($brand !== null) {
+            if('form' === 'form' && is_array($brand)) {
+                foreach($brand as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['brand'] = $brand;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
+        // query params
+        if ($vs !== null) {
+            if('form' === 'form' && is_array($vs)) {
+                foreach($vs as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['vs'] = $vs;
+            }
+        }
+        // query params
+        if ($sort !== null) {
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort'] = $sort;
+            }
+        }
+        // query params
+        if ($dir !== null) {
+            if('form' === 'form' && is_array($dir)) {
+                foreach($dir as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['dir'] = $dir;
+            }
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAnalyticMarketplaceByPlatform
+     *
+     * One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+     *
+     * @param  string $platform A platform id, e.g. ebay, poshmark. (required)
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticMarketplaceByPlatformResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticMarketplaceByPlatform($platform, $range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null)
+    {
+        list($response) = $this->getAnalyticMarketplaceByPlatformWithHttpInfo($platform, $range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticMarketplaceByPlatformWithHttpInfo
+     *
+     * One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+     *
+     * @param  string $platform A platform id, e.g. ebay, poshmark. (required)
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticMarketplaceByPlatformResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticMarketplaceByPlatformWithHttpInfo($platform, $range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null)
+    {
+        $request = $this->getAnalyticMarketplaceByPlatformRequest($platform, $range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticMarketplaceByPlatformResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticMarketplaceByPlatformResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticMarketplaceByPlatformResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticMarketplaceByPlatformResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticMarketplaceByPlatformAsync
+     *
+     * One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+     *
+     * @param  string $platform A platform id, e.g. ebay, poshmark. (required)
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticMarketplaceByPlatformAsync($platform, $range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null)
+    {
+        return $this->getAnalyticMarketplaceByPlatformAsyncWithHttpInfo($platform, $range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticMarketplaceByPlatformAsyncWithHttpInfo
+     *
+     * One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.
+     *
+     * @param  string $platform A platform id, e.g. ebay, poshmark. (required)
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticMarketplaceByPlatformAsyncWithHttpInfo($platform, $range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticMarketplaceByPlatformResponse';
+        $request = $this->getAnalyticMarketplaceByPlatformRequest($platform, $range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticMarketplaceByPlatform'
+     *
+     * @param  string $platform A platform id, e.g. ebay, poshmark. (required)
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticMarketplaceByPlatformRequest($platform, $range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null)
+    {
+        // verify the required parameter 'platform' is set
+        if ($platform === null || (is_array($platform) && count($platform) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $platform when calling getAnalyticMarketplaceByPlatform'
+            );
+        }
+
+        $resourcePath = '/v1/analytics/marketplaces/{platform}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($range !== null) {
+            if('form' === 'form' && is_array($range)) {
+                foreach($range as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['range'] = $range;
+            }
+        }
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
+        }
+        // query params
+        if ($compare !== null) {
+            if('form' === 'form' && is_array($compare)) {
+                foreach($compare as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['compare'] = $compare;
+            }
+        }
+        // query params
+        if ($cmp_from !== null) {
+            if('form' === 'form' && is_array($cmp_from)) {
+                foreach($cmp_from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpFrom'] = $cmp_from;
+            }
+        }
+        // query params
+        if ($cmp_to !== null) {
+            if('form' === 'form' && is_array($cmp_to)) {
+                foreach($cmp_to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpTo'] = $cmp_to;
+            }
+        }
+        // query params
+        if ($labels !== null) {
+            if('form' === 'form' && is_array($labels)) {
+                foreach($labels as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['labels'] = $labels;
+            }
+        }
+        // query params
+        if ($platforms !== null) {
+            if('form' === 'form' && is_array($platforms)) {
+                foreach($platforms as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['platforms'] = $platforms;
+            }
+        }
+        // query params
+        if ($category !== null) {
+            if('form' === 'form' && is_array($category)) {
+                foreach($category as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['category'] = $category;
+            }
+        }
+        // query params
+        if ($brand !== null) {
+            if('form' === 'form' && is_array($brand)) {
+                foreach($brand as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['brand'] = $brand;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
+
+
+        // path params
+        if ($platform !== null) {
+            $resourcePath = str_replace(
+                '{' . 'platform' . '}',
+                ObjectSerializer::toPathValue($platform),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAnalyticOverview
+     *
+     * KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $stores Comma-separated store ids. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticOverviewResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticOverview($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $stores = null)
+    {
+        list($response) = $this->getAnalyticOverviewWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $stores);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticOverviewWithHttpInfo
+     *
+     * KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $stores Comma-separated store ids. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticOverviewResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticOverviewWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $stores = null)
+    {
+        $request = $this->getAnalyticOverviewRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $stores);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticOverviewResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticOverviewResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticOverviewResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticOverviewResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticOverviewAsync
+     *
+     * KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $stores Comma-separated store ids. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticOverviewAsync($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $stores = null)
+    {
+        return $this->getAnalyticOverviewAsyncWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $stores)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticOverviewAsyncWithHttpInfo
+     *
+     * KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $stores Comma-separated store ids. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticOverviewAsyncWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $stores = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticOverviewResponse';
+        $request = $this->getAnalyticOverviewRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $stores);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticOverview'
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $stores Comma-separated store ids. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticOverviewRequest($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $stores = null)
+    {
+
+        $resourcePath = '/v1/analytics/overview';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($range !== null) {
+            if('form' === 'form' && is_array($range)) {
+                foreach($range as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['range'] = $range;
+            }
+        }
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
+        }
+        // query params
+        if ($compare !== null) {
+            if('form' === 'form' && is_array($compare)) {
+                foreach($compare as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['compare'] = $compare;
+            }
+        }
+        // query params
+        if ($cmp_from !== null) {
+            if('form' === 'form' && is_array($cmp_from)) {
+                foreach($cmp_from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpFrom'] = $cmp_from;
+            }
+        }
+        // query params
+        if ($cmp_to !== null) {
+            if('form' === 'form' && is_array($cmp_to)) {
+                foreach($cmp_to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpTo'] = $cmp_to;
+            }
+        }
+        // query params
+        if ($labels !== null) {
+            if('form' === 'form' && is_array($labels)) {
+                foreach($labels as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['labels'] = $labels;
+            }
+        }
+        // query params
+        if ($platforms !== null) {
+            if('form' === 'form' && is_array($platforms)) {
+                foreach($platforms as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['platforms'] = $platforms;
+            }
+        }
+        // query params
+        if ($category !== null) {
+            if('form' === 'form' && is_array($category)) {
+                foreach($category as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['category'] = $category;
+            }
+        }
+        // query params
+        if ($brand !== null) {
+            if('form' === 'form' && is_array($brand)) {
+                foreach($brand as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['brand'] = $brand;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
+        // query params
+        if ($stores !== null) {
+            if('form' === 'form' && is_array($stores)) {
+                foreach($stores as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['stores'] = $stores;
+            }
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAnalyticPerformance
+     *
+     * Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $status unsold &#x3D; listed at least minDays with no completed sale. (optional)
+     * @param  string $q Title, SKU or brand contains. (optional)
+     * @param  string $sort Default lastActivity. (optional)
+     * @param  string $dir Default desc. (optional)
+     * @param  int $page 1-indexed page. Default 1. (optional)
+     * @param  int $size Rows per page. Default 50. (optional)
+     * @param  int $min_days Minimum days listed (for status&#x3D;unsold). Default 0. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticPerformanceResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticPerformance($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $status = null, $q = null, $sort = null, $dir = null, $page = null, $size = null, $min_days = null)
+    {
+        list($response) = $this->getAnalyticPerformanceWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $status, $q, $sort, $dir, $page, $size, $min_days);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticPerformanceWithHttpInfo
+     *
+     * Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $status unsold &#x3D; listed at least minDays with no completed sale. (optional)
+     * @param  string $q Title, SKU or brand contains. (optional)
+     * @param  string $sort Default lastActivity. (optional)
+     * @param  string $dir Default desc. (optional)
+     * @param  int $page 1-indexed page. Default 1. (optional)
+     * @param  int $size Rows per page. Default 50. (optional)
+     * @param  int $min_days Minimum days listed (for status&#x3D;unsold). Default 0. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticPerformanceResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticPerformanceWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $status = null, $q = null, $sort = null, $dir = null, $page = null, $size = null, $min_days = null)
+    {
+        $request = $this->getAnalyticPerformanceRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $status, $q, $sort, $dir, $page, $size, $min_days);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticPerformanceResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticPerformanceResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticPerformanceResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticPerformanceResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticPerformanceAsync
+     *
+     * Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $status unsold &#x3D; listed at least minDays with no completed sale. (optional)
+     * @param  string $q Title, SKU or brand contains. (optional)
+     * @param  string $sort Default lastActivity. (optional)
+     * @param  string $dir Default desc. (optional)
+     * @param  int $page 1-indexed page. Default 1. (optional)
+     * @param  int $size Rows per page. Default 50. (optional)
+     * @param  int $min_days Minimum days listed (for status&#x3D;unsold). Default 0. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticPerformanceAsync($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $status = null, $q = null, $sort = null, $dir = null, $page = null, $size = null, $min_days = null)
+    {
+        return $this->getAnalyticPerformanceAsyncWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $status, $q, $sort, $dir, $page, $size, $min_days)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticPerformanceAsyncWithHttpInfo
+     *
+     * Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $status unsold &#x3D; listed at least minDays with no completed sale. (optional)
+     * @param  string $q Title, SKU or brand contains. (optional)
+     * @param  string $sort Default lastActivity. (optional)
+     * @param  string $dir Default desc. (optional)
+     * @param  int $page 1-indexed page. Default 1. (optional)
+     * @param  int $size Rows per page. Default 50. (optional)
+     * @param  int $min_days Minimum days listed (for status&#x3D;unsold). Default 0. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticPerformanceAsyncWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $status = null, $q = null, $sort = null, $dir = null, $page = null, $size = null, $min_days = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticPerformanceResponse';
+        $request = $this->getAnalyticPerformanceRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $status, $q, $sort, $dir, $page, $size, $min_days);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticPerformance'
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $status unsold &#x3D; listed at least minDays with no completed sale. (optional)
+     * @param  string $q Title, SKU or brand contains. (optional)
+     * @param  string $sort Default lastActivity. (optional)
+     * @param  string $dir Default desc. (optional)
+     * @param  int $page 1-indexed page. Default 1. (optional)
+     * @param  int $size Rows per page. Default 50. (optional)
+     * @param  int $min_days Minimum days listed (for status&#x3D;unsold). Default 0. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticPerformanceRequest($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $status = null, $q = null, $sort = null, $dir = null, $page = null, $size = null, $min_days = null)
+    {
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling AnalyticsApi.getAnalyticPerformance, must be bigger than or equal to 1.');
+        }
+
+        if ($min_days !== null && $min_days < 0) {
+            throw new \InvalidArgumentException('invalid value for "$min_days" when calling AnalyticsApi.getAnalyticPerformance, must be bigger than or equal to 0.');
+        }
+
+
+        $resourcePath = '/v1/analytics/performance';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($range !== null) {
+            if('form' === 'form' && is_array($range)) {
+                foreach($range as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['range'] = $range;
+            }
+        }
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
+        }
+        // query params
+        if ($compare !== null) {
+            if('form' === 'form' && is_array($compare)) {
+                foreach($compare as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['compare'] = $compare;
+            }
+        }
+        // query params
+        if ($cmp_from !== null) {
+            if('form' === 'form' && is_array($cmp_from)) {
+                foreach($cmp_from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpFrom'] = $cmp_from;
+            }
+        }
+        // query params
+        if ($cmp_to !== null) {
+            if('form' === 'form' && is_array($cmp_to)) {
+                foreach($cmp_to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpTo'] = $cmp_to;
+            }
+        }
+        // query params
+        if ($labels !== null) {
+            if('form' === 'form' && is_array($labels)) {
+                foreach($labels as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['labels'] = $labels;
+            }
+        }
+        // query params
+        if ($platforms !== null) {
+            if('form' === 'form' && is_array($platforms)) {
+                foreach($platforms as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['platforms'] = $platforms;
+            }
+        }
+        // query params
+        if ($category !== null) {
+            if('form' === 'form' && is_array($category)) {
+                foreach($category as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['category'] = $category;
+            }
+        }
+        // query params
+        if ($brand !== null) {
+            if('form' === 'form' && is_array($brand)) {
+                foreach($brand as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['brand'] = $brand;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+        // query params
+        if ($q !== null) {
+            if('form' === 'form' && is_array($q)) {
+                foreach($q as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['q'] = $q;
+            }
+        }
+        // query params
+        if ($sort !== null) {
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort'] = $sort;
+            }
+        }
+        // query params
+        if ($dir !== null) {
+            if('form' === 'form' && is_array($dir)) {
+                foreach($dir as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['dir'] = $dir;
+            }
+        }
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+        // query params
+        if ($size !== null) {
+            if('form' === 'form' && is_array($size)) {
+                foreach($size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['size'] = $size;
+            }
+        }
+        // query params
+        if ($min_days !== null) {
+            if('form' === 'form' && is_array($min_days)) {
+                foreach($min_days as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['minDays'] = $min_days;
+            }
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAnalyticProgram
+     *
+     * One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+     *
+     * @param  string $program program (required)
+     * @param  \DateTime $from First UTC day (YYYY-MM-DD), inclusive. (optional)
+     * @param  \DateTime $to Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)
+     * @param  string $by Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticProgramResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticProgram($program, $from = null, $to = null, $by = null)
+    {
+        list($response) = $this->getAnalyticProgramWithHttpInfo($program, $from, $to, $by);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticProgramWithHttpInfo
+     *
+     * One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+     *
+     * @param  string $program (required)
+     * @param  \DateTime $from First UTC day (YYYY-MM-DD), inclusive. (optional)
+     * @param  \DateTime $to Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)
+     * @param  string $by Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticProgramResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticProgramWithHttpInfo($program, $from = null, $to = null, $by = null)
+    {
+        $request = $this->getAnalyticProgramRequest($program, $from, $to, $by);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticProgramResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticProgramResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticProgramResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticProgramResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticProgramAsync
+     *
+     * One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+     *
+     * @param  string $program (required)
+     * @param  \DateTime $from First UTC day (YYYY-MM-DD), inclusive. (optional)
+     * @param  \DateTime $to Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)
+     * @param  string $by Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticProgramAsync($program, $from = null, $to = null, $by = null)
+    {
+        return $this->getAnalyticProgramAsyncWithHttpInfo($program, $from, $to, $by)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticProgramAsyncWithHttpInfo
+     *
+     * One program&#39;s report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.
+     *
+     * @param  string $program (required)
+     * @param  \DateTime $from First UTC day (YYYY-MM-DD), inclusive. (optional)
+     * @param  \DateTime $to Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)
+     * @param  string $by Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticProgramAsyncWithHttpInfo($program, $from = null, $to = null, $by = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticProgramResponse';
+        $request = $this->getAnalyticProgramRequest($program, $from, $to, $by);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticProgram'
+     *
+     * @param  string $program (required)
+     * @param  \DateTime $from First UTC day (YYYY-MM-DD), inclusive. (optional)
+     * @param  \DateTime $to Last UTC day (YYYY-MM-DD), inclusive. Default today. (optional)
+     * @param  string $by Breakdown dimension, when the program offers one (worlds: showroom, property, event). (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticProgramRequest($program, $from = null, $to = null, $by = null)
+    {
+        // verify the required parameter 'program' is set
+        if ($program === null || (is_array($program) && count($program) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $program when calling getAnalyticProgram'
+            );
+        }
+
+        $resourcePath = '/v1/analytics/programs/{program}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
+        }
+        // query params
+        if ($by !== null) {
+            if('form' === 'form' && is_array($by)) {
+                foreach($by as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['by'] = $by;
+            }
+        }
+
+
+        // path params
+        if ($program !== null) {
+            $resourcePath = str_replace(
+                '{' . 'program' . '}',
+                ObjectSerializer::toPathValue($program),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAnalyticSegment
+     *
+     * Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $dim category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)
+     * @param  string $sort Default netSales. (optional)
+     * @param  string $dir Default desc. (optional)
+     * @param  int $min_n Minimum sample for a row to count as a winner or loser. Default 3. (optional)
+     * @param  string $q Segment label contains. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticSegmentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticSegment($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $dim = null, $sort = null, $dir = null, $min_n = null, $q = null)
+    {
+        list($response) = $this->getAnalyticSegmentWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $dim, $sort, $dir, $min_n, $q);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticSegmentWithHttpInfo
+     *
+     * Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $dim category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)
+     * @param  string $sort Default netSales. (optional)
+     * @param  string $dir Default desc. (optional)
+     * @param  int $min_n Minimum sample for a row to count as a winner or loser. Default 3. (optional)
+     * @param  string $q Segment label contains. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticSegmentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticSegmentWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $dim = null, $sort = null, $dir = null, $min_n = null, $q = null)
+    {
+        $request = $this->getAnalyticSegmentRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $dim, $sort, $dir, $min_n, $q);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticSegmentResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticSegmentResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticSegmentResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticSegmentResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticSegmentAsync
+     *
+     * Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $dim category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)
+     * @param  string $sort Default netSales. (optional)
+     * @param  string $dir Default desc. (optional)
+     * @param  int $min_n Minimum sample for a row to count as a winner or loser. Default 3. (optional)
+     * @param  string $q Segment label contains. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticSegmentAsync($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $dim = null, $sort = null, $dir = null, $min_n = null, $q = null)
+    {
+        return $this->getAnalyticSegmentAsyncWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $dim, $sort, $dir, $min_n, $q)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticSegmentAsyncWithHttpInfo
+     *
+     * Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $dim category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)
+     * @param  string $sort Default netSales. (optional)
+     * @param  string $dir Default desc. (optional)
+     * @param  int $min_n Minimum sample for a row to count as a winner or loser. Default 3. (optional)
+     * @param  string $q Segment label contains. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticSegmentAsyncWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $dim = null, $sort = null, $dir = null, $min_n = null, $q = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticSegmentResponse';
+        $request = $this->getAnalyticSegmentRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $dim, $sort, $dir, $min_n, $q);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticSegment'
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  string $dim category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (optional)
+     * @param  string $sort Default netSales. (optional)
+     * @param  string $dir Default desc. (optional)
+     * @param  int $min_n Minimum sample for a row to count as a winner or loser. Default 3. (optional)
+     * @param  string $q Segment label contains. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticSegmentRequest($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $dim = null, $sort = null, $dir = null, $min_n = null, $q = null)
+    {
+        if ($min_n !== null && $min_n < 1) {
+            throw new \InvalidArgumentException('invalid value for "$min_n" when calling AnalyticsApi.getAnalyticSegment, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/v1/analytics/segments';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($range !== null) {
+            if('form' === 'form' && is_array($range)) {
+                foreach($range as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['range'] = $range;
+            }
+        }
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
+        }
+        // query params
+        if ($compare !== null) {
+            if('form' === 'form' && is_array($compare)) {
+                foreach($compare as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['compare'] = $compare;
+            }
+        }
+        // query params
+        if ($cmp_from !== null) {
+            if('form' === 'form' && is_array($cmp_from)) {
+                foreach($cmp_from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpFrom'] = $cmp_from;
+            }
+        }
+        // query params
+        if ($cmp_to !== null) {
+            if('form' === 'form' && is_array($cmp_to)) {
+                foreach($cmp_to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpTo'] = $cmp_to;
+            }
+        }
+        // query params
+        if ($labels !== null) {
+            if('form' === 'form' && is_array($labels)) {
+                foreach($labels as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['labels'] = $labels;
+            }
+        }
+        // query params
+        if ($platforms !== null) {
+            if('form' === 'form' && is_array($platforms)) {
+                foreach($platforms as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['platforms'] = $platforms;
+            }
+        }
+        // query params
+        if ($category !== null) {
+            if('form' === 'form' && is_array($category)) {
+                foreach($category as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['category'] = $category;
+            }
+        }
+        // query params
+        if ($brand !== null) {
+            if('form' === 'form' && is_array($brand)) {
+                foreach($brand as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['brand'] = $brand;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
+        // query params
+        if ($dim !== null) {
+            if('form' === 'form' && is_array($dim)) {
+                foreach($dim as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['dim'] = $dim;
+            }
+        }
+        // query params
+        if ($sort !== null) {
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort'] = $sort;
+            }
+        }
+        // query params
+        if ($dir !== null) {
+            if('form' === 'form' && is_array($dir)) {
+                foreach($dir as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['dir'] = $dir;
+            }
+        }
+        // query params
+        if ($min_n !== null) {
+            if('form' === 'form' && is_array($min_n)) {
+                foreach($min_n as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['minN'] = $min_n;
+            }
+        }
+        // query params
+        if ($q !== null) {
+            if('form' === 'form' && is_array($q)) {
+                foreach($q as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['q'] = $q;
+            }
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAnalyticSegmentByKey
+     *
+     * One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+     *
+     * @param  string $dim One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (required)
+     * @param  string $key The segment key from a segments row (URL-encoded). A key with no data in scope is a 404. (required)
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticSegmentByKeyResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticSegmentByKey($dim, $key, $range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null)
+    {
+        list($response) = $this->getAnalyticSegmentByKeyWithHttpInfo($dim, $key, $range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticSegmentByKeyWithHttpInfo
+     *
+     * One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+     *
+     * @param  string $dim One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (required)
+     * @param  string $key The segment key from a segments row (URL-encoded). A key with no data in scope is a 404. (required)
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticSegmentByKeyResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticSegmentByKeyWithHttpInfo($dim, $key, $range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null)
+    {
+        $request = $this->getAnalyticSegmentByKeyRequest($dim, $key, $range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticSegmentByKeyResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticSegmentByKeyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticSegmentByKeyResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticSegmentByKeyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticSegmentByKeyAsync
+     *
+     * One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+     *
+     * @param  string $dim One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (required)
+     * @param  string $key The segment key from a segments row (URL-encoded). A key with no data in scope is a 404. (required)
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticSegmentByKeyAsync($dim, $key, $range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null)
+    {
+        return $this->getAnalyticSegmentByKeyAsyncWithHttpInfo($dim, $key, $range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticSegmentByKeyAsyncWithHttpInfo
+     *
+     * One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.
+     *
+     * @param  string $dim One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (required)
+     * @param  string $key The segment key from a segments row (URL-encoded). A key with no data in scope is a 404. (required)
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticSegmentByKeyAsyncWithHttpInfo($dim, $key, $range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticSegmentByKeyResponse';
+        $request = $this->getAnalyticSegmentByKeyRequest($dim, $key, $range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticSegmentByKey'
+     *
+     * @param  string $dim One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category &#x3D; main category; subcategory &#x3D; main &gt; sub; brand; condition; size; source &#x3D; where you acquired it; department; priceBand &#x3D; ask in &lt;$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand &#x3D; days live at sale or now (&lt;7, 7-30, 30-90, 90+). (required)
+     * @param  string $key The segment key from a segments row (URL-encoded). A key with no data in scope is a 404. (required)
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticSegmentByKeyRequest($dim, $key, $range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null)
+    {
+        // verify the required parameter 'dim' is set
+        if ($dim === null || (is_array($dim) && count($dim) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dim when calling getAnalyticSegmentByKey'
+            );
+        }
+        // verify the required parameter 'key' is set
+        if ($key === null || (is_array($key) && count($key) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $key when calling getAnalyticSegmentByKey'
+            );
+        }
+
+        $resourcePath = '/v1/analytics/segments/{dim}/{key}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($range !== null) {
+            if('form' === 'form' && is_array($range)) {
+                foreach($range as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['range'] = $range;
+            }
+        }
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
+        }
+        // query params
+        if ($compare !== null) {
+            if('form' === 'form' && is_array($compare)) {
+                foreach($compare as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['compare'] = $compare;
+            }
+        }
+        // query params
+        if ($cmp_from !== null) {
+            if('form' === 'form' && is_array($cmp_from)) {
+                foreach($cmp_from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpFrom'] = $cmp_from;
+            }
+        }
+        // query params
+        if ($cmp_to !== null) {
+            if('form' === 'form' && is_array($cmp_to)) {
+                foreach($cmp_to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpTo'] = $cmp_to;
+            }
+        }
+        // query params
+        if ($labels !== null) {
+            if('form' === 'form' && is_array($labels)) {
+                foreach($labels as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['labels'] = $labels;
+            }
+        }
+        // query params
+        if ($platforms !== null) {
+            if('form' === 'form' && is_array($platforms)) {
+                foreach($platforms as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['platforms'] = $platforms;
+            }
+        }
+        // query params
+        if ($category !== null) {
+            if('form' === 'form' && is_array($category)) {
+                foreach($category as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['category'] = $category;
+            }
+        }
+        // query params
+        if ($brand !== null) {
+            if('form' === 'form' && is_array($brand)) {
+                foreach($brand as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['brand'] = $brand;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
+
+
+        // path params
+        if ($dim !== null) {
+            $resourcePath = str_replace(
+                '{' . 'dim' . '}',
+                ObjectSerializer::toPathValue($dim),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($key !== null) {
+            $resourcePath = str_replace(
+                '{' . 'key' . '}',
+                ObjectSerializer::toPathValue($key),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getAnalyticSummary
      *
-     * Headline KPIs for the last N days.
+     * Headline KPIs for the last N days (the same numbers as the analytics overview).
      *
-     * @param  int $days days (optional, default to 30)
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Analytic\GetAnalyticSummaryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
-    public function getAnalyticSummary($days = 30)
+    public function getAnalyticSummary($days = 30, $tz = null)
     {
-        list($response) = $this->getAnalyticSummaryWithHttpInfo($days);
+        list($response) = $this->getAnalyticSummaryWithHttpInfo($days, $tz);
         return $response;
     }
 
     /**
      * Operation getAnalyticSummaryWithHttpInfo
      *
-     * Headline KPIs for the last N days.
+     * Headline KPIs for the last N days (the same numbers as the analytics overview).
      *
-     * @param  int $days (optional, default to 30)
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Analytic\GetAnalyticSummaryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAnalyticSummaryWithHttpInfo($days = 30)
+    public function getAnalyticSummaryWithHttpInfo($days = 30, $tz = null)
     {
-        $request = $this->getAnalyticSummaryRequest($days);
+        $request = $this->getAnalyticSummaryRequest($days, $tz);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1852,16 +9802,17 @@ class AnalyticsApi
     /**
      * Operation getAnalyticSummaryAsync
      *
-     * Headline KPIs for the last N days.
+     * Headline KPIs for the last N days (the same numbers as the analytics overview).
      *
-     * @param  int $days (optional, default to 30)
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnalyticSummaryAsync($days = 30)
+    public function getAnalyticSummaryAsync($days = 30, $tz = null)
     {
-        return $this->getAnalyticSummaryAsyncWithHttpInfo($days)
+        return $this->getAnalyticSummaryAsyncWithHttpInfo($days, $tz)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1872,17 +9823,18 @@ class AnalyticsApi
     /**
      * Operation getAnalyticSummaryAsyncWithHttpInfo
      *
-     * Headline KPIs for the last N days.
+     * Headline KPIs for the last N days (the same numbers as the analytics overview).
      *
-     * @param  int $days (optional, default to 30)
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnalyticSummaryAsyncWithHttpInfo($days = 30)
+    public function getAnalyticSummaryAsyncWithHttpInfo($days = 30, $tz = null)
     {
         $returnType = '\Crossly\Model\Analytic\GetAnalyticSummaryResponse';
-        $request = $this->getAnalyticSummaryRequest($days);
+        $request = $this->getAnalyticSummaryRequest($days, $tz);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1920,16 +9872,14 @@ class AnalyticsApi
     /**
      * Create request for operation 'getAnalyticSummary'
      *
-     * @param  int $days (optional, default to 30)
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAnalyticSummaryRequest($days = 30)
+    public function getAnalyticSummaryRequest($days = 30, $tz = null)
     {
-        if ($days !== null && $days > 365) {
-            throw new \InvalidArgumentException('invalid value for "$days" when calling AnalyticsApi.getAnalyticSummary, must be smaller than or equal to 365.');
-        }
         if ($days !== null && $days < 1) {
             throw new \InvalidArgumentException('invalid value for "$days" when calling AnalyticsApi.getAnalyticSummary, must be bigger than or equal to 1.');
         }
@@ -1951,6 +9901,17 @@ class AnalyticsApi
             }
             else {
                 $queryParams['days'] = $days;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
             }
         }
 
@@ -2021,32 +9982,36 @@ class AnalyticsApi
     /**
      * Operation getAnalyticTimesery
      *
-     * Daily sales + revenue series for the last N days.
+     * Sales and net sales over the last N days, zero-filled, one row per calendar day.
      *
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Analytic\GetAnalyticTimeseryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
-    public function getAnalyticTimesery()
+    public function getAnalyticTimesery($days = 30, $tz = null)
     {
-        list($response) = $this->getAnalyticTimeseryWithHttpInfo();
+        list($response) = $this->getAnalyticTimeseryWithHttpInfo($days, $tz);
         return $response;
     }
 
     /**
      * Operation getAnalyticTimeseryWithHttpInfo
      *
-     * Daily sales + revenue series for the last N days.
+     * Sales and net sales over the last N days, zero-filled, one row per calendar day.
      *
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Analytic\GetAnalyticTimeseryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAnalyticTimeseryWithHttpInfo()
+    public function getAnalyticTimeseryWithHttpInfo($days = 30, $tz = null)
     {
-        $request = $this->getAnalyticTimeseryRequest();
+        $request = $this->getAnalyticTimeseryRequest($days, $tz);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2249,15 +10214,17 @@ class AnalyticsApi
     /**
      * Operation getAnalyticTimeseryAsync
      *
-     * Daily sales + revenue series for the last N days.
+     * Sales and net sales over the last N days, zero-filled, one row per calendar day.
      *
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnalyticTimeseryAsync()
+    public function getAnalyticTimeseryAsync($days = 30, $tz = null)
     {
-        return $this->getAnalyticTimeseryAsyncWithHttpInfo()
+        return $this->getAnalyticTimeseryAsyncWithHttpInfo($days, $tz)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2268,16 +10235,18 @@ class AnalyticsApi
     /**
      * Operation getAnalyticTimeseryAsyncWithHttpInfo
      *
-     * Daily sales + revenue series for the last N days.
+     * Sales and net sales over the last N days, zero-filled, one row per calendar day.
      *
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnalyticTimeseryAsyncWithHttpInfo()
+    public function getAnalyticTimeseryAsyncWithHttpInfo($days = 30, $tz = null)
     {
         $returnType = '\Crossly\Model\Analytic\GetAnalyticTimeseryResponse';
-        $request = $this->getAnalyticTimeseryRequest();
+        $request = $this->getAnalyticTimeseryRequest($days, $tz);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2315,12 +10284,18 @@ class AnalyticsApi
     /**
      * Create request for operation 'getAnalyticTimesery'
      *
+     * @param  int $days Calendar days back, today included. Larger values are clamped to 365. (optional, default to 30)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAnalyticTimeseryRequest()
+    public function getAnalyticTimeseryRequest($days = 30, $tz = null)
     {
+        if ($days !== null && $days < 1) {
+            throw new \InvalidArgumentException('invalid value for "$days" when calling AnalyticsApi.getAnalyticTimesery, must be bigger than or equal to 1.');
+        }
+
 
         $resourcePath = '/v1/analytics/timeseries';
         $formParams = [];
@@ -2329,6 +10304,28 @@ class AnalyticsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($days !== null) {
+            if('form' === 'form' && is_array($days)) {
+                foreach($days as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['days'] = $days;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
 
 
 
@@ -2773,32 +10770,34 @@ class AnalyticsApi
     /**
      * Operation listInsightByPlatform
      *
-     * Platform velocity + margin insight (90-day window).
+     * Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
      *
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Common\ListInsightByPlatformResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
-    public function listInsightByPlatform()
+    public function listInsightByPlatform($tz = null)
     {
-        list($response) = $this->listInsightByPlatformWithHttpInfo();
+        list($response) = $this->listInsightByPlatformWithHttpInfo($tz);
         return $response;
     }
 
     /**
      * Operation listInsightByPlatformWithHttpInfo
      *
-     * Platform velocity + margin insight (90-day window).
+     * Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
      *
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Common\ListInsightByPlatformResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listInsightByPlatformWithHttpInfo()
+    public function listInsightByPlatformWithHttpInfo($tz = null)
     {
-        $request = $this->listInsightByPlatformRequest();
+        $request = $this->listInsightByPlatformRequest($tz);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3001,15 +11000,16 @@ class AnalyticsApi
     /**
      * Operation listInsightByPlatformAsync
      *
-     * Platform velocity + margin insight (90-day window).
+     * Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
      *
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listInsightByPlatformAsync()
+    public function listInsightByPlatformAsync($tz = null)
     {
-        return $this->listInsightByPlatformAsyncWithHttpInfo()
+        return $this->listInsightByPlatformAsyncWithHttpInfo($tz)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3020,16 +11020,17 @@ class AnalyticsApi
     /**
      * Operation listInsightByPlatformAsyncWithHttpInfo
      *
-     * Platform velocity + margin insight (90-day window).
+     * Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.
      *
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listInsightByPlatformAsyncWithHttpInfo()
+    public function listInsightByPlatformAsyncWithHttpInfo($tz = null)
     {
         $returnType = '\Crossly\Model\Common\ListInsightByPlatformResponse';
-        $request = $this->listInsightByPlatformRequest();
+        $request = $this->listInsightByPlatformRequest($tz);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3067,11 +11068,12 @@ class AnalyticsApi
     /**
      * Create request for operation 'listInsightByPlatform'
      *
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listInsightByPlatformRequest()
+    public function listInsightByPlatformRequest($tz = null)
     {
 
         $resourcePath = '/v1/insights/by-platform';
@@ -3081,6 +11083,17 @@ class AnalyticsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
 
 
 
@@ -3140,6 +11153,401 @@ class AnalyticsApi
         $query = \GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAnalyticExperiment
+     *
+     * Rename an experiment or change its hypothesis, notes or planned end.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Common\AnalyticExperimentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function updateAnalyticExperiment($id)
+    {
+        list($response) = $this->updateAnalyticExperimentWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation updateAnalyticExperimentWithHttpInfo
+     *
+     * Rename an experiment or change its hypothesis, notes or planned end.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Common\AnalyticExperimentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAnalyticExperimentWithHttpInfo($id)
+    {
+        $request = $this->updateAnalyticExperimentRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Common\AnalyticExperimentResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\AnalyticExperimentResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Common\AnalyticExperimentResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\AnalyticExperimentResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAnalyticExperimentAsync
+     *
+     * Rename an experiment or change its hypothesis, notes or planned end.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAnalyticExperimentAsync($id)
+    {
+        return $this->updateAnalyticExperimentAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAnalyticExperimentAsyncWithHttpInfo
+     *
+     * Rename an experiment or change its hypothesis, notes or planned end.
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAnalyticExperimentAsyncWithHttpInfo($id)
+    {
+        $returnType = '\Crossly\Model\Common\AnalyticExperimentResponse';
+        $request = $this->updateAnalyticExperimentRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAnalyticExperiment'
+     *
+     * @param  string $id The experiment id (a uuid; any other id is a 404). (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAnalyticExperimentRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling updateAnalyticExperiment'
+            );
+        }
+
+        $resourcePath = '/v1/analytics/experiments/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'PATCH',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

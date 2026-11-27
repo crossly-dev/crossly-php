@@ -25,14 +25,19 @@ Method | HTTP request | Description
 [**createBuyerCatalogListingRental()**](BuyerApi.md#createBuyerCatalogListingRental) | **POST** /v1/buyer/catalog/listings/{slug}/rental | Book a rental. Returns a Stripe PaymentIntent client secret for rent + shipping both ways + deposit; the dates are held 30 minutes for payment. Crossly buys both labels; the deposit comes back after the item does.
 [**createBuyerCatalogListingRentalQuote()**](BuyerApi.md#createBuyerCatalogListingRentalQuote) | **POST** /v1/buyer/catalog/listings/{slug}/rental/quote | Price a rental: rent (the cheaper of by-the-day and by-the-week), both shipping legs once a ship-to is given, and the deposit. &#x60;problem&#x60; says why the dates can’t be booked.
 [**createBuyerCatalogListingVideoRequest()**](BuyerApi.md#createBuyerCatalogListingVideoRequest) | **POST** /v1/buyer/catalog/listings/{slug}/video-requests | Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
+[**createBuyerCompany()**](BuyerApi.md#createBuyerCompany) | **POST** /v1/buyer/company | Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
+[**createBuyerCompanyApproval()**](BuyerApi.md#createBuyerCompanyApproval) | **POST** /v1/buyer/company/approvals | Ask for approval of a trade order above your limit: sellerUserId, amountCents, note?, poReference?. Good for 7 days, used once at checkout.
+[**createBuyerCompanyApprovalDecide()**](BuyerApi.md#createBuyerCompanyApprovalDecide) | **POST** /v1/buyer/company/approvals/{id}/decide | Approve or decline a pending request (owner, accounts payable): decision approved | declined, note?.
+[**createBuyerCompanyMember()**](BuyerApi.md#createBuyerCompanyMember) | **POST** /v1/buyer/company/members | Invite a teammate by email (owner): role owner | buyer | accounts_payable | viewer, approvalLimitCents for a buyer (orders above it need an approval).
 [**createBuyerConversationInvite()**](BuyerApi.md#createBuyerConversationInvite) | **POST** /v1/buyer/conversations/{id}/invite | Invite a friend into a chat with a seller: a single-use link (7 days) that makes whoever opens it a guest who can read and post. Only the thread’s buyer can invite; at most 5 guests.
 [**createBuyerConversationJoin()**](BuyerApi.md#createBuyerConversationJoin) | **POST** /v1/buyer/conversations/join/{token} | Join a chat you were invited into, as a guest.
+[**createBuyerEventRsvp()**](BuyerApi.md#createBuyerEventRsvp) | **POST** /v1/buyer/events/{slug}/rsvp | RSVP to an event: going (counts against its capacity) or interested.
 [**createBuyerFeedback()**](BuyerApi.md#createBuyerFeedback) | **POST** /v1/buyer/feedback | Leave feedback on up to 25 orders at once, with optional detailed seller ratings.
 [**createBuyerFitRef()**](BuyerApi.md#createBuyerFitRef) | **POST** /v1/buyer/fit/refs | Save a reference garment (flat measurements, inches) to compare listings against.
 [**createBuyerFollowingSellerSeen()**](BuyerApi.md#createBuyerFollowingSellerSeen) | **POST** /v1/buyer/following/sellers/seen | Clear the \&quot;new listings\&quot; count on a followed seller, or on all of them.
 [**createBuyerGiftCard()**](BuyerApi.md#createBuyerGiftCard) | **POST** /v1/buyer/gift-cards | Start a gift card purchase.
 [**createBuyerGiftCardRedeem()**](BuyerApi.md#createBuyerGiftCardRedeem) | **POST** /v1/buyer/gift-cards/redeem | Redeem a gift card code into your own balance.
-[**createBuyerGroupBuyJoin()**](BuyerApi.md#createBuyerGroupBuyJoin) | **POST** /v1/buyer/group-buys/{id}/join | Join a group buy: a hold at the starting price, captured at the price the group reaches. Checked against this key’s spending controls; send an Idempotency-Key.
+[**createBuyerGroupBuyJoin()**](BuyerApi.md#createBuyerGroupBuyJoin) | **POST** /v1/buyer/group-buys/{id}/join | Join a group buy with a quantity (up to its per-buyer max): a hold (or, for pay-now pools, a charge refunded the difference) at the starting price, settled at the price the group reaches. &#x60;linkToken&#x60; opens a link-only pool. Checked against this key’s spending controls; send an Idempotency-Key.
 [**createBuyerGroupBuyLeave()**](BuyerApi.md#createBuyerGroupBuyLeave) | **POST** /v1/buyer/group-buys/{id}/leave | Leave a group buy and release your hold.
 [**createBuyerHunt()**](BuyerApi.md#createBuyerHunt) | **POST** /v1/buyer/hunts | Start a buyer-agent hunt — over a search (filters), or auto-buy on one listing (listingSlug: buy it once its price, sale applied, is within maxPriceCents). &#x60;offer&#x60; and &#x60;buy&#x60; modes also need buyer:checkout:write, and the budget is checked against this key’s spending controls.
 [**createBuyerInstantOfferAccept()**](BuyerApi.md#createBuyerInstantOfferAccept) | **POST** /v1/buyer/instant-offers/{id}/accept | Accept Crossly’s instant offer on a collection item. Ops then send a prepaid label; the store credit is paid once the item arrives and checks out.
@@ -53,22 +58,28 @@ Method | HTTP request | Description
 [**createBuyerPackFairnessRotate()**](BuyerApi.md#createBuyerPackFairnessRotate) | **POST** /v1/buyer/packs/fairness/rotate | Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
 [**createBuyerPackOpen()**](BuyerApi.md#createBuyerPackOpen) | **POST** /v1/buyer/packs/{slug}/open | Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
 [**createBuyerPackOpeningSellBack()**](BuyerApi.md#createBuyerPackOpeningSellBack) | **POST** /v1/buyer/pack-openings/{id}/sell-back | Sell a pull straight back for Crossly credit at the pack’s buyback rate, within its window, while it is still in your vault.
-[**createBuyerPassportClaim()**](BuyerApi.md#createBuyerPassportClaim) | **POST** /v1/buyer/passports/{code}/claim | Claim a passport as the item’s current owner (the buyer of its latest sale) — shown as “in its owner’s hands” until it sells again.
+[**createBuyerPassportClaim()**](BuyerApi.md#createBuyerPassportClaim) | **POST** /v1/buyer/passports/{code}/claim | Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
 [**createBuyerProtectionPlanCancel()**](BuyerApi.md#createBuyerProtectionPlanCancel) | **POST** /v1/buyer/protection-plans/{id}/cancel | Cancel a protection plan. The insurer decides what is refundable (pro-rata after the free-look window); that amount goes back to the card.
-[**createBuyerPurchaseDownload()**](BuyerApi.md#createBuyerPurchaseDownload) | **POST** /v1/buyer/purchases/{id}/download | A ten-minute link to a digital purchase’s file; each call uses one of its downloads.
 [**createBuyerPurchaseFit()**](BuyerApi.md#createBuyerPurchaseFit) | **POST** /v1/buyer/purchases/{id}/fit | Say how a delivered purchase fit: true_to_size, small or large. It teaches your size memory and, pooled with other buyers, how the brand runs.
 [**createBuyerPurchaseReturn()**](BuyerApi.md#createBuyerPurchaseReturn) | **POST** /v1/buyer/purchases/{id}/return | Return a purchase under the seller’s policy, or send back a try-at-home item. With reason doesnt_fit, &#x60;fit&#x60; (small | large) says which way, and it feeds your size memory.
 [**createBuyerRegistry()**](BuyerApi.md#createBuyerRegistry) | **POST** /v1/buyer/registries | Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
 [**createBuyerRegistryGiftThanked()**](BuyerApi.md#createBuyerRegistryGiftThanked) | **POST** /v1/buyer/registries/{id}/gifts/{giftId}/thanked | Tick a gift as thanked (or untick it).
 [**createBuyerRentalArrivalPhoto()**](BuyerApi.md#createBuyerRentalArrivalPhoto) | **POST** /v1/buyer/rentals/{id}/arrival-photos | Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
+[**createBuyerRentalBuyout()**](BuyerApi.md#createBuyerRentalBuyout) | **POST** /v1/buyer/rentals/{id}/buyout | Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
 [**createBuyerRentalCancel()**](BuyerApi.md#createBuyerRentalCancel) | **POST** /v1/buyer/rentals/{id}/cancel | Cancel a rental that has not shipped: everything is refunded.
 [**createBuyerRentalClaimResponse()**](BuyerApi.md#createBuyerRentalClaimResponse) | **POST** /v1/buyer/rentals/{id}/claim-response | Answer a deposit claim: accept (the claim is paid, the rest refunded) or dispute (Crossly decides).
+[**createBuyerRentalDelivered()**](BuyerApi.md#createBuyerRentalDelivered) | **POST** /v1/buyer/rentals/{id}/delivered | Confirm your rental arrived.
+[**createBuyerRentalExtension()**](BuyerApi.md#createBuyerRentalExtension) | **POST** /v1/buyer/rentals/{id}/extensions | Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
+[**createBuyerRentalExtensionPay()**](BuyerApi.md#createBuyerRentalExtensionPay) | **POST** /v1/buyer/rentals/{id}/extensions/{extensionId}/pay | Pay for an extension the seller approved → clientSecret.
 [**createBuyerRentalIdentityStart()**](BuyerApi.md#createBuyerRentalIdentityStart) | **POST** /v1/buyer/rentals/identity/start | Start the ID check renting needs (Stripe Identity: photo ID + selfie). Open &#x60;url&#x60; (hosted) or use &#x60;clientSecret&#x60; with Stripe.js.
+[**createBuyerRentalReturnShipped()**](BuyerApi.md#createBuyerRentalReturnShipped) | **POST** /v1/buyer/rentals/{id}/return-shipped | Say you sent your rental back (optionally with photos).
 [**createBuyerReturnCancel()**](BuyerApi.md#createBuyerReturnCancel) | **POST** /v1/buyer/returns/{id}/cancel | Cancel a return before it ships.
 [**createBuyerReturnTracking()**](BuyerApi.md#createBuyerReturnTracking) | **POST** /v1/buyer/returns/{id}/tracking | Add tracking to a return you shipped on your own label.
 [**createBuyerSellerClubJoin()**](BuyerApi.md#createBuyerSellerClubJoin) | **POST** /v1/buyer/sellers/{sellerUserId}/club/join | Join a seller’s loyalty club (free). Your tier’s discount then applies to their items — the best of it and any other rate you have with them, never stacked.
+[**createBuyerSellerLoyaltyJoin()**](BuyerApi.md#createBuyerSellerLoyaltyJoin) | **POST** /v1/buyer/sellers/{sellerUserId}/loyalty/join | Join a seller’s loyalty club. Invite-only clubs take only invited buyers. Your tier and its perks are granted at once.
 [**createBuyerSellerReport()**](BuyerApi.md#createBuyerSellerReport) | **POST** /v1/buyer/sellers/{username}/report | Report a seller to Crossly’s trust team.
 [**createBuyerSplitCancel()**](BuyerApi.md#createBuyerSplitCancel) | **POST** /v1/buyer/splits/{id}/cancel | Cancel a split you organised; every held share is released.
+[**createBuyerStoreReport()**](BuyerApi.md#createBuyerStoreReport) | **POST** /v1/buyer/stores/{slug}/report | Report a store to Crossly’s trust team.
 [**createBuyerTogether()**](BuyerApi.md#createBuyerTogether) | **POST** /v1/buyer/together | Start a shop-together room.
 [**createBuyerTogetherItem()**](BuyerApi.md#createBuyerTogetherItem) | **POST** /v1/buyer/together/{code}/items | Add a listing to a shop-together board.
 [**createBuyerTogetherItemVote()**](BuyerApi.md#createBuyerTogetherItemVote) | **POST** /v1/buyer/together/{code}/items/{id}/vote | Vote an item on a room’s board up (1), down (-1) or clear (0).
@@ -79,6 +90,14 @@ Method | HTTP request | Description
 [**createBuyerVaultList()**](BuyerApi.md#createBuyerVaultList) | **POST** /v1/buyer/vault/{id}/list | Sell a vault item on the market at your price. It is already authenticated, so when it sells nothing ships in: the buyer keeps it vaulted or it ships straight to them.
 [**createBuyerVaultUnlist()**](BuyerApi.md#createBuyerVaultUnlist) | **POST** /v1/buyer/vault/{id}/unlist | Take a vault item off the market; it stays stored.
 [**createBuyerVaultWithdraw()**](BuyerApi.md#createBuyerVaultWithdraw) | **POST** /v1/buyer/vault/{id}/withdraw | Ship a vault item home, standard or expedited. The shipping, any storage it owes and the early-withdrawal fee (within 90 days of arriving) are charged to your saved card now, all checked against this key’s spending controls; send an Idempotency-Key.
+[**createBuyerWholesaleCatalogApply()**](BuyerApi.md#createBuyerWholesaleCatalogApply) | **POST** /v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply | Apply to a store&#39;s wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller&#39;s requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
+[**createBuyerWholesaleFreightRequest()**](BuyerApi.md#createBuyerWholesaleFreightRequest) | **POST** /v1/buyer/wholesale/freight-requests | Ask a seller to quote freight for their lines in your cart (an order over their pallet threshold): { sellerUserId, weightLbs?, shipTo? { postalCode, country, city?, region?, liftgate?, dock? }, note? }. One open request per seller.
+[**createBuyerWholesaleInvoicePayLink()**](BuyerApi.md#createBuyerWholesaleInvoicePayLink) | **POST** /v1/buyer/wholesale/invoices/{id}/pay-link | A hosted payment page for an on-account invoice: amountCents? (part of the balance, at least $1), method? card | ach. Nothing is charged until the buyer completes the page.
+[**createBuyerWholesaleOrderSheet()**](BuyerApi.md#createBuyerWholesaleOrderSheet) | **POST** /v1/buyer/wholesale/order-sheets | Save an order sheet: name, lines [{ platformListingId, listingVariantId?, catalogId?, quantity }] from one seller, optional catalogId, poReference, note.
+[**createBuyerWholesaleQuote()**](BuyerApi.md#createBuyerWholesaleQuote) | **POST** /v1/buyer/wholesale/quotes | Ask one seller for a quote: items [{ platformListingId, listingVariantId?, quantity, targetUnitPriceCents? }] (one seller per quote), optional catalogId, note, poReference.
+[**createBuyerWholesaleQuoteAccept()**](BuyerApi.md#createBuyerWholesaleQuoteAccept) | **POST** /v1/buyer/wholesale/quotes/{id}/accept | Accept an answered quote: its priced items go into your cart at the quoted quantities, locked at the quoted prices until the quote expires (changing a line&#39;s quantity drops the lock). Paying happens at checkout on Crossly.
+[**createBuyerWholesaleQuoteWithdraw()**](BuyerApi.md#createBuyerWholesaleQuoteWithdraw) | **POST** /v1/buyer/wholesale/quotes/{id}/withdraw | Withdraw a quote request that is still requested or answered.
+[**createBuyerWholesaleUploadValidate()**](BuyerApi.md#createBuyerWholesaleUploadValidate) | **POST** /v1/buyer/wholesale/upload/validate | Validate a CSV / PO against one catalog: rows [{ line, sku, quantity }] are matched by SKU (item or option SKU, or listing slug), merged per item and priced today; unmatched rows come back by line.
 [**createBuyerWishlist()**](BuyerApi.md#createBuyerWishlist) | **POST** /v1/buyer/wishlists | Create a wishlist.
 [**createBuyerWishlistInvite()**](BuyerApi.md#createBuyerWishlistInvite) | **POST** /v1/buyer/wishlists/{id}/invite | Share a wishlist with a co-editor: a single-use link (14 days). Members add and remove items; only the owner renames, deletes or removes members. At most 20.
 [**createBuyerWishlistItem()**](BuyerApi.md#createBuyerWishlistItem) | **POST** /v1/buyer/wishlists/{id}/items | Add a listing to a wishlist.
@@ -89,8 +108,12 @@ Method | HTTP request | Description
 [**deleteBuyerBreakSpotHold()**](BuyerApi.md#deleteBuyerBreakSpotHold) | **DELETE** /v1/buyer/breaks/{id}/spots/{spotId}/hold | Release a break spot you hold.
 [**deleteBuyerCartItem()**](BuyerApi.md#deleteBuyerCartItem) | **DELETE** /v1/buyer/cart/items/{id} | Remove a line from your cart.
 [**deleteBuyerCartSaved()**](BuyerApi.md#deleteBuyerCartSaved) | **DELETE** /v1/buyer/cart/saved/{id} | Remove an item from saved-for-later. Returns the remaining list.
+[**deleteBuyerCompanyMember()**](BuyerApi.md#deleteBuyerCompanyMember) | **DELETE** /v1/buyer/company/members/{id} | Remove a member or cancel an invite (owner), or leave the company (your own member id).
 [**deleteBuyerConversationGuest()**](BuyerApi.md#deleteBuyerConversationGuest) | **DELETE** /v1/buyer/conversations/{id}/guests/{userId} | Remove a guest (the thread’s buyer), or leave (a guest, with your own user id).
+[**deleteBuyerCreationReview()**](BuyerApi.md#deleteBuyerCreationReview) | **DELETE** /v1/buyer/creations/{format}/{id}/review | Remove your review of a creation (its vote leaves the rating with it).
+[**deleteBuyerEventRsvp()**](BuyerApi.md#deleteBuyerEventRsvp) | **DELETE** /v1/buyer/events/{slug}/rsvp | Take back your RSVP.
 [**deleteBuyerFitRef()**](BuyerApi.md#deleteBuyerFitRef) | **DELETE** /v1/buyer/fit/refs/{id} | Delete a reference garment.
+[**deleteBuyerHomeGuestbook()**](BuyerApi.md#deleteBuyerHomeGuestbook) | **DELETE** /v1/buyer/home/guestbook/{id} | Hide a line from your home’s guestbook.
 [**deleteBuyerMarketBid()**](BuyerApi.md#deleteBuyerMarketBid) | **DELETE** /v1/buyer/market/bids/{id} | Cancel a resting market bid.
 [**deleteBuyerMarketWatch()**](BuyerApi.md#deleteBuyerMarketWatch) | **DELETE** /v1/buyer/market/watches/{id} | Stop watching a market variant.
 [**deleteBuyerOffer()**](BuyerApi.md#deleteBuyerOffer) | **DELETE** /v1/buyer/offers/{id} | Withdraw an offer you made that the seller has not answered.
@@ -98,9 +121,11 @@ Method | HTTP request | Description
 [**deleteBuyerRecentlyViewed2()**](BuyerApi.md#deleteBuyerRecentlyViewed2) | **DELETE** /v1/buyer/recently-viewed | Clear your recently viewed list.
 [**deleteBuyerRegistry()**](BuyerApi.md#deleteBuyerRegistry) | **DELETE** /v1/buyer/registries/{id} | Delete a registry (and the wishlist behind it).
 [**deleteBuyerSellerClubJoin()**](BuyerApi.md#deleteBuyerSellerClubJoin) | **DELETE** /v1/buyer/sellers/{sellerUserId}/club/join | Leave a seller’s loyalty club.
+[**deleteBuyerSellerLoyaltyJoin()**](BuyerApi.md#deleteBuyerSellerLoyaltyJoin) | **DELETE** /v1/buyer/sellers/{sellerUserId}/loyalty/join | Leave a seller’s loyalty club.
 [**deleteBuyerTogetherItem()**](BuyerApi.md#deleteBuyerTogetherItem) | **DELETE** /v1/buyer/together/{code}/items/{id} | Take an item you added off a room’s board.
 [**deleteBuyerTotalRequest()**](BuyerApi.md#deleteBuyerTotalRequest) | **DELETE** /v1/buyer/total-requests/{id} | Cancel a total request you made.
 [**deleteBuyerTryOn()**](BuyerApi.md#deleteBuyerTryOn) | **DELETE** /v1/buyer/try-ons/{id} | Delete a try-on and its images — or pass &#x60;all&#x60; to delete every photo and result.
+[**deleteBuyerWholesaleOrderSheet()**](BuyerApi.md#deleteBuyerWholesaleOrderSheet) | **DELETE** /v1/buyer/wholesale/order-sheets/{id} | Delete an order sheet.
 [**deleteBuyerWishlist()**](BuyerApi.md#deleteBuyerWishlist) | **DELETE** /v1/buyer/wishlists/{id} | Delete a wishlist and everything on it.
 [**deleteBuyerWishlistItem()**](BuyerApi.md#deleteBuyerWishlistItem) | **DELETE** /v1/buyer/wishlists/{id}/items/{slug} | Take a listing off a wishlist.
 [**deleteBuyerWishlistMember()**](BuyerApi.md#deleteBuyerWishlistMember) | **DELETE** /v1/buyer/wishlists/{id}/members/{userId} | Remove a co-editor (the owner), or leave a list shared with you (your own user id).
@@ -116,9 +141,14 @@ Method | HTTP request | Description
 [**getBuyerCheckoutUsdc()**](BuyerApi.md#getBuyerCheckoutUsdc) | **GET** /v1/buyer/checkout/usdc | Whether Crossly takes USDC (Stripe stablecoin payments: Solana, Ethereum, Base, Polygon), and its per-order limit. Paying needs the buyer’s wallet, so it happens in the browser checkout, never unattended.
 [**getBuyerCollectionOffer()**](BuyerApi.md#getBuyerCollectionOffer) | **GET** /v1/buyer/collection/{id}/offer | What an item in your collection would fetch now: the top open bid on the market for the same variant, condition and grade, and Crossly’s instant offer in store credit when that is switched on (a quote valid for a limited time).
 [**getBuyerCollectionSet()**](BuyerApi.md#getBuyerCollectionSet) | **GET** /v1/buyer/collection/sets/{category}/{brand}/{model} | One set: every piece (owned or missing, with its lowest ask on the market), what completing it would cost now, and the leaderboard of collectors who opted in, with your rank.
+[**getBuyerCompany()**](BuyerApi.md#getBuyerCompany) | **GET** /v1/buyer/company | Your buyer company (members, roles, approval limits, shared addresses), or null when you are in none.
+[**getBuyerCreation()**](BuyerApi.md#getBuyerCreation) | **GET** /v1/buyer/creations/{format}/{id} | A live creation&#39;s public page: its rating breakdown, recent reviews and whether you can review it.
 [**getBuyerCreator()**](BuyerApi.md#getBuyerCreator) | **GET** /v1/buyer/creators/{handle} | A creator storefront: profile, affiliate code, and shelves of live picks.
+[**getBuyerEvent()**](BuyerApi.md#getBuyerEvent) | **GET** /v1/buyer/events/{slug} | A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
 [**getBuyerFitVocabulary()**](BuyerApi.md#getBuyerFitVocabulary) | **GET** /v1/buyer/fit/vocabulary | Garment kinds and the measurements each takes.
 [**getBuyerGiftFinderOption()**](BuyerApi.md#getBuyerGiftFinderOption) | **GET** /v1/buyer/gift-finder/options | The gift finder’s questions: recipients, interests, budgets.
+[**getBuyerHome()**](BuyerApi.md#getBuyerHome) | **GET** /v1/buyer/home | Your home in Crossly World (made on first read).
+[**getBuyerHomePlaceable()**](BuyerApi.md#getBuyerHomePlaceable) | **GET** /v1/buyer/home/placeable | What you could place in your home: your items and delivered furniture.
 [**getBuyerImpact()**](BuyerApi.md#getBuyerImpact) | **GET** /v1/buyer/impact | The sourced footprint your secondhand purchases avoided.
 [**getBuyerLayaway()**](BuyerApi.md#getBuyerLayaway) | **GET** /v1/buyer/layaways/{id} | One layaway and its schedule.
 [**getBuyerListingAudioSummary()**](BuyerApi.md#getBuyerListingAudioSummary) | **GET** /v1/buyer/listings/{slug}/audio-summary | A spoken summary of a listing (accessibility): the text, built only from the listing’s own fields and the seller’s description, and the recording of it when one exists.
@@ -139,7 +169,7 @@ Method | HTTP request | Description
 [**getBuyerPack()**](BuyerApi.md#getBuyerPack) | **GET** /v1/buyer/packs/{slug} | One pack: tiers and odds, items left, expected value, the chase items still in it.
 [**getBuyerPackFairness()**](BuyerApi.md#getBuyerPackFairness) | **GET** /v1/buyer/packs/fairness | Your provably-fair seeds: the active server-seed commitment (sha256), your client seed and nonce, and every retired seed in full so past openings can be re-run.
 [**getBuyerParty()**](BuyerApi.md#getBuyerParty) | **GET** /v1/buyer/parties/{slug} | One shopping party.
-[**getBuyerPassport()**](BuyerApi.md#getBuyerPassport) | **GET** /v1/buyer/passports/{code} | What a product passport tag opens: the item, whether it was authenticated, how many owners on Crossly and since when — never who or for how much.
+[**getBuyerPassport()**](BuyerApi.md#getBuyerPassport) | **GET** /v1/buyer/passports/{code} | What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid&#x3D;, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
 [**getBuyerPreference()**](BuyerApi.md#getBuyerPreference) | **GET** /v1/buyer/preferences | The shopping profile derived from that activity.
 [**getBuyerPriceGuide()**](BuyerApi.md#getBuyerPriceGuide) | **GET** /v1/buyer/price-guide | What matching items actually sold for on Crossly: median, quartiles, by month, and recent sales. Needs q, brand or category.
 [**getBuyerProfile()**](BuyerApi.md#getBuyerProfile) | **GET** /v1/buyer/profile | Your Crossly shopping profile — name, email, saved address, Bucks balance.
@@ -149,14 +179,38 @@ Method | HTTP request | Description
 [**getBuyerPurchaseStory()**](BuyerApi.md#getBuyerPurchaseStory) | **GET** /v1/buyer/purchases/{id}/story | Your owner story on a purchase, passed on to the next owner if you resell it.
 [**getBuyerRegistry()**](BuyerApi.md#getBuyerRegistry) | **GET** /v1/buyer/registries/{id} | One of your registries: items with how many are wanted and bought.
 [**getBuyerRegistryByToken()**](BuyerApi.md#getBuyerRegistryByToken) | **GET** /v1/buyer/registry/{token} | A registry as a guest sees it: items, how many are still wanted, and whether it can ship. Never the address.
+[**getBuyerRental()**](BuyerApi.md#getBuyerRental) | **GET** /v1/buyer/rentals/{id} | One of your rentals: timeline, payments, the return label, extension and buy-out terms.
 [**getBuyerRentalEligibility()**](BuyerApi.md#getBuyerRentalEligibility) | **GET** /v1/buyer/rentals/eligibility | Can you rent right now: ID-verified (a photo ID and a matching selfie, once), the verified name rentals ship to, and your standing (one rental at a time until your first comes back; none after one that never did).
 [**getBuyerSellerClub()**](BuyerApi.md#getBuyerSellerClub) | **GET** /v1/buyer/sellers/{sellerUserId}/club | A seller’s loyalty club: its tiers (spend threshold, discount, perks) and your standing. null when the seller has none.
+[**getBuyerSellerLoyalty()**](BuyerApi.md#getBuyerSellerLoyalty) | **GET** /v1/buyer/sellers/{sellerUserId}/loyalty | A seller’s loyalty club with its typed perks per tier, its join mode (automatic, opt-in, invite-only) and your standing. null when they run none.
 [**getBuyerSellerTrust()**](BuyerApi.md#getBuyerSellerTrust) | **GET** /v1/buyer/sellers/{username}/trust | Seller at a glance: member since, completed sales, independent rating, typical handling time, dispute rate, trust tier, badges — and the plain sentences the profile shows.
 [**getBuyerTogether()**](BuyerApi.md#getBuyerTogether) | **GET** /v1/buyer/together/{code} | A shop-together room: members, the board with votes, and chat.
 [**getBuyerVaultMarketHistory()**](BuyerApi.md#getBuyerVaultMarketHistory) | **GET** /v1/buyer/vault-markets/history | Your Vault Markets value by day at the marks (oldest first, today live) over &#x60;days&#x60; (default 90), and today’s change against yesterday’s close.
 [**getBuyerVaultMarketIndex()**](BuyerApi.md#getBuyerVaultMarketIndex) | **GET** /v1/buyer/vault-markets/indexes/{slug} | One index with its published daily closes (oldest first, &#x60;days&#x60; default 365) and its level now.
 [**getBuyerVaultMarketInstantExit()**](BuyerApi.md#getBuyerVaultMarketInstantExit) | **GET** /v1/buyer/vault-markets/instant-exit/{id} | The Instant Exit quote for one vault unit you hold, and whether it can be sold now.
+[**getBuyerVaultMarketOptionAnalytic()**](BuyerApi.md#getBuyerVaultMarketOptionAnalytic) | **GET** /v1/buyer/vault-markets/options/analytics/{underlying} | Options analytics on an underlying: vol surface and smile, IV rank and percentile, open interest and volume by strike and expiry, put/call ratios, expected move and historical vol. Derived, display only. Read only.
+[**getBuyerVaultMarketOptionChain()**](BuyerApi.md#getBuyerVaultMarketOptionChain) | **GET** /v1/buyer/vault-markets/options/chain/{underlying} | The option chain for an underlying (index slug or book key): expiries, and for one expiry each strike’s call and put with bid / ask, last, open interest, theoretical price, implied vol (display only) and Greeks. Prices are cents per contract.
+[**getBuyerVaultMarketOptionIv()**](BuyerApi.md#getBuyerVaultMarketOptionIv) | **GET** /v1/buyer/vault-markets/options/iv/{underlying} | The at-the-money implied vol on an underlying’s nearest expiry, for display: derived from the options book, quality C, never a mark.
+[**getBuyerVaultMarketOptionPosition()**](BuyerApi.md#getBuyerVaultMarketOptionPosition) | **GET** /v1/buyer/vault-markets/options/positions | Your fractional options positions with their marks, P&amp;L and Greeks (open by default; &#x60;status&#x60; all for closed and settled too). Read only.
+[**getBuyerVaultMarketOptionRisk()**](BuyerApi.md#getBuyerVaultMarketOptionRisk) | **GET** /v1/buyer/vault-markets/options/risk | Your options portfolio Greeks, a scenario&#39;s P&amp;L (&#x60;priceShift&#x60;, &#x60;volShift&#x60;, &#x60;daysForward&#x60;) and the beta-weighted delta against an index. Read only.
+[**getBuyerVaultMarketPredictionBoard()**](BuyerApi.md#getBuyerVaultMarketPredictionBoard) | **GET** /v1/buyer/vault-markets/predictions/board | The busiest open prediction markets and their odds (the Trading Floor board). Anonymous.
+[**getBuyerVaultMarketPredictionEvent()**](BuyerApi.md#getBuyerVaultMarketPredictionEvent) | **GET** /v1/buyer/vault-markets/predictions/events/{id} | One expiry’s markets with your holdings in each and their real worst and best case across them.
+[**getBuyerVaultMarketPredictionLeaderboard()**](BuyerApi.md#getBuyerVaultMarketPredictionLeaderboard) | **GET** /v1/buyer/vault-markets/predictions/leaderboard | Opt-in forecaster leaderboards (&#x60;period&#x60; week | month | all; &#x60;metric&#x60; pnl | accuracy | brier; &#x60;venue&#x60; live | paper).
+[**getBuyerVaultMarketPredictionMarket()**](BuyerApi.md#getBuyerVaultMarketPredictionMarket) | **GET** /v1/buyer/vault-markets/predictions/markets/{id} | One prediction market: terms, the Yes ladder (live and practice), recent trades, settlement history and the series rules with their hash.
+[**getBuyerVaultMarketPredictionMarketHistory()**](BuyerApi.md#getBuyerVaultMarketPredictionMarketHistory) | **GET** /v1/buyer/vault-markets/predictions/markets/{id}/history | A prediction market’s probability over time (display only, never a mark), candles on the Yes price, volume and open interest (&#x60;range&#x60; 1d, 1w, 1m, all; &#x60;venue&#x60; live or paper).
+[**getBuyerVaultMarketShare()**](BuyerApi.md#getBuyerVaultMarketShare) | **GET** /v1/buyer/vault-markets/shares | Your Vault Shares: shares and percent of each item, cost, implied value at the last share price (display only, never a mark), subscriptions and payouts.
+[**getBuyerVaultMarketShareBasket()**](BuyerApi.md#getBuyerVaultMarketShareBasket) | **GET** /v1/buyer/vault-markets/shares/baskets/{id} | One theme basket: its series, weights and prices, and your holdings against them.
+[**getBuyerVaultMarketShareSery()**](BuyerApi.md#getBuyerVaultMarketShareSery) | **GET** /v1/buyer/vault-markets/shares/series/{id} | One Vault Shares series: the offering, the share book, the latest fills, holders as percentages (nobody named) and buyouts.
+[**getBuyerVaultMarketShareSeryHistory()**](BuyerApi.md#getBuyerVaultMarketShareSeryHistory) | **GET** /v1/buyer/vault-markets/shares/series/{id}/history | A Vault Shares series’ full price history (candles), the offering price and the appraisal history. Display only, never a mark.
+[**getBuyerVaultMarketShareSeryPerk()**](BuyerApi.md#getBuyerVaultMarketShareSeryPerk) | **GET** /v1/buyer/vault-markets/shares/series/{id}/perks | Your holder perks on a series: badge, visit links, viewing days and your bookings.
 [**getBuyerVaultMarketWorth()**](BuyerApi.md#getBuyerVaultMarketWorth) | **GET** /v1/buyer/vault-markets/worth | What your vault is worth now: value at the market prices (marks come only from trades) split into reliable and indicative marks, cost and P&amp;L, today’s change, and an estimate of what the units free to sell would fetch from the bids resting on the book now. Read only.
+[**getBuyerWholesaleCart()**](BuyerApi.md#getBuyerWholesaleCart) | **GET** /v1/buyer/wholesale/cart | Your cart grouped per seller: trade terms, the order-minimum progress, every rule the cart breaks (the messages checkout would refuse with), PO reference, quote-locked lines, and the checkout methods, deposit and freight threshold for each group.
+[**getBuyerWholesaleCatalogApply()**](BuyerApi.md#getBuyerWholesaleCatalogApply) | **GET** /v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply | The application form for a store&#39;s wholesale catalog: the seller&#39;s requirements (resale certificate and accepted states, tax id, their custom questions) and your business info pre-filled. applicable&#x3D;false for a catalog you cannot apply to.
+[**getBuyerWholesaleDrop()**](BuyerApi.md#getBuyerWholesaleDrop) | **GET** /v1/buyer/wholesale/drops/{id} | One trade drop open to you: its listings once live (add one to your cart to reserve or buy it), and your reservations in it. 404 for a drop not open to you.
+[**getBuyerWholesaleInvoicePayQuote()**](BuyerApi.md#getBuyerWholesaleInvoicePayQuote) | **GET** /v1/buyer/wholesale/invoices/{id}/pay-quote | What paying an on-account invoice costs now: balance due, the early-pay discount if still open, the minimum part payment and the methods (card, ach).
+[**getBuyerWholesaleOrderSheet()**](BuyerApi.md#getBuyerWholesaleOrderSheet) | **GET** /v1/buyer/wholesale/order-sheets/{id} | One order sheet priced TODAY at its quantities, with stock, trade terms and flags (unavailable, out_of_stock, short_stock, price_hidden, needs_option).
+[**getBuyerWholesaleQuote()**](BuyerApi.md#getBuyerWholesaleQuote) | **GET** /v1/buyer/wholesale/quotes/{id} | One of your quotes with its items, the seller&#39;s prices and expiry.
+[**getBuyerWholesaleReorder()**](BuyerApi.md#getBuyerWholesaleReorder) | **GET** /v1/buyer/wholesale/reorder/{id} | Buy again: a past wholesale order (purchase or order id) as order-sheet lines at the same quantities, priced today, out-of-stock flagged.
 [**listBuyerActivity()**](BuyerApi.md#listBuyerActivity) | **GET** /v1/buyer/activity | What this buyer has compared lately.
 [**listBuyerAuctionBids()**](BuyerApi.md#listBuyerAuctionBids) | **GET** /v1/buyer/auctions/{slug}/bids | An auction’s bid history, highest first, bidders anonymised.
 [**listBuyerAuctions()**](BuyerApi.md#listBuyerAuctions) | **GET** /v1/buyer/auctions | Auctions you have bid in — bidding, won or lost (last 100).
@@ -170,8 +224,11 @@ Method | HTTP request | Description
 [**listBuyerCatalogListingVideos()**](BuyerApi.md#listBuyerCatalogListingVideos) | **GET** /v1/buyer/catalog/listings/{slug}/videos | Videos the seller recorded for this item on request, newest first, with the question each one answers.
 [**listBuyerClubs()**](BuyerApi.md#listBuyerClubs) | **GET** /v1/buyer/clubs | Sellers’ loyalty clubs you belong to: your spend with each, your tier and its discount, and the next tier.
 [**listBuyerCollectionSets()**](BuyerApi.md#listBuyerCollectionSets) | **GET** /v1/buyer/collection/sets | Sets you are collecting — a catalogue brand + model you own at least two pieces of — with owned / total and percent complete, most complete first; and whether you show on set leaderboards.
+[**listBuyerCompanyApprovals()**](BuyerApi.md#listBuyerCompanyApprovals) | **GET** /v1/buyer/company/approvals | Spend approval requests (owners and accounts payable see all; others their own). ?status&#x3D;pending|approved|declined|used|expired.
 [**listBuyerConsolidations()**](BuyerApi.md#listBuyerConsolidations) | **GET** /v1/buyer/consolidations | Your ship-together orders: parcels at the hub, and the one box out.
 [**listBuyerConversationGuests()**](BuyerApi.md#listBuyerConversationGuests) | **GET** /v1/buyer/conversations/{id}/guests | Guests in a chat.
+[**listBuyerCreationReviewable()**](BuyerApi.md#listBuyerCreationReviewable) | **GET** /v1/buyer/creations/reviewable | Creations you bought (decor, wearables, interactive objects, cards from packs) and your review of each.
+[**listBuyerEvents()**](BuyerApi.md#listBuyerEvents) | **GET** /v1/buyer/events | Upcoming and live seller events across Crossly, soonest first.
 [**listBuyerFeedback()**](BuyerApi.md#listBuyerFeedback) | **GET** /v1/buyer/feedback | Feedback you have left sellers, newest first — with the ids you revise by.
 [**listBuyerFeedbackPending()**](BuyerApi.md#listBuyerFeedbackPending) | **GET** /v1/buyer/feedback/pending | Orders from the last 60 days that are on their way or arrived and still need your feedback.
 [**listBuyerFitRefs()**](BuyerApi.md#listBuyerFitRefs) | **GET** /v1/buyer/fit/refs | Your saved reference garments for fit comparison.
@@ -180,6 +237,8 @@ Method | HTTP request | Description
 [**listBuyerGiftCards()**](BuyerApi.md#listBuyerGiftCards) | **GET** /v1/buyer/gift-cards | Gift cards you bought, newest first.
 [**listBuyerGiftFinder()**](BuyerApi.md#listBuyerGiftFinder) | **GET** /v1/buyer/gift-finder | Live listings for a recipient, interest and budget.
 [**listBuyerGiftSent()**](BuyerApi.md#listBuyerGiftSent) | **GET** /v1/buyer/gifts/sent | Items you sent as gifts: whether the teaser went out, whether it arrived and was opened, and any thank-you. Send one with &#x60;gift&#x60; on checkout.
+[**listBuyerHomeBuilders()**](BuyerApi.md#listBuyerHomeBuilders) | **GET** /v1/buyer/home/builders | Your co-builders: friends who may arrange your home with you.
+[**listBuyerHomeBuilding()**](BuyerApi.md#listBuyerHomeBuilding) | **GET** /v1/buyer/homes/building | The homes you co-build, to visit and arrange.
 [**listBuyerHotspots()**](BuyerApi.md#listBuyerHotspots) | **GET** /v1/buyer/hotspots | Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
 [**listBuyerHunts()**](BuyerApi.md#listBuyerHunts) | **GET** /v1/buyer/hunts | Your buyer-agent hunts and what they did.
 [**listBuyerInstantOffers()**](BuyerApi.md#listBuyerInstantOffers) | **GET** /v1/buyer/instant-offers | Your instant offers: live quotes, accepted ones awaiting a label, approved ones (with the prepaid label) and paid ones.
@@ -188,6 +247,7 @@ Method | HTTP request | Description
 [**listBuyerListingSellerReviews()**](BuyerApi.md#listBuyerListingSellerReviews) | **GET** /v1/buyer/listings/{slug}/seller-reviews | The seller’s public reviews: summary, text, photos, replies.
 [**listBuyerLiveShipments()**](BuyerApi.md#listBuyerLiveShipments) | **GET** /v1/buyer/live-shipments | Your one-box-per-show shipments: every order won in a show ships together, and postage is charged once (the rest refunded when it ships).
 [**listBuyerLiveStreamLineup()**](BuyerApi.md#listBuyerLiveStreamLineup) | **GET** /v1/buyer/live-streams/{id}/lineup | What a live show will sell, in order: each item, its price, and whether it is still available.
+[**listBuyerLoyalty()**](BuyerApi.md#listBuyerLoyalty) | **GET** /v1/buyer/loyalty | Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
 [**listBuyerMarketBids()**](BuyerApi.md#listBuyerMarketBids) | **GET** /v1/buyer/market/bids | Your resting market bids.
 [**listBuyerMarketWatches()**](BuyerApi.md#listBuyerMarketWatches) | **GET** /v1/buyer/market/watches | Market variants you watch, with the price you are waiting for.
 [**listBuyerOffers()**](BuyerApi.md#listBuyerOffers) | **GET** /v1/buyer/offers | Offers you have made, newest first (last 100).
@@ -196,6 +256,7 @@ Method | HTTP request | Description
 [**listBuyerPacks()**](BuyerApi.md#listBuyerPacks) | **GET** /v1/buyer/packs | Packs you can open: price, every tier with its published odds, what is left in it and its value range, and the expected value of one opening.
 [**listBuyerParties()**](BuyerApi.md#listBuyerParties) | **GET** /v1/buyer/parties | Themed shopping parties, live and upcoming.
 [**listBuyerPartyListings()**](BuyerApi.md#listBuyerPartyListings) | **GET** /v1/buyer/parties/{slug}/listings | Listings shared to a party, featured first.
+[**listBuyerPaymentMethods()**](BuyerApi.md#listBuyerPaymentMethods) | **GET** /v1/buyer/payment-methods | Your saved cards, the default first.
 [**listBuyerPickupPoints()**](BuyerApi.md#listBuyerPickupPoints) | **GET** /v1/buyer/pickup-points | Carrier pickup points (UPS Access Point / FedEx Hold at Location) near an address; pass one as &#x60;pickupPoint&#x60; to POST /v1/buyer/checkout.
 [**listBuyerProtectionPlans()**](BuyerApi.md#listBuyerProtectionPlans) | **GET** /v1/buyer/protection-plans | Your protection plans (bought at checkout with &#x60;protection&#x60;): status, term, coverage, contract id, and any refund.
 [**listBuyerRegistries()**](BuyerApi.md#listBuyerRegistries) | **GET** /v1/buyer/registries | Your gift registries.
@@ -205,6 +266,7 @@ Method | HTTP request | Description
 [**listBuyerSizeMemoryPrompts()**](BuyerApi.md#listBuyerSizeMemoryPrompts) | **GET** /v1/buyer/size-memory/prompts | Delivered orders with a size that you haven’t said how they fit (the last 60 days).
 [**listBuyerSizeMemorySizes()**](BuyerApi.md#listBuyerSizeMemorySizes) | **GET** /v1/buyer/size-memory/sizes | The sizes learned from what you bought and kept, by kind of item (shoes, tops, bottoms, dresses, outerwear) and department.
 [**listBuyerSplits()**](BuyerApi.md#listBuyerSplits) | **GET** /v1/buyer/splits | Purchases you split, with each share’s status.
+[**listBuyerStoreListings()**](BuyerApi.md#listBuyerStoreListings) | **GET** /v1/buyer/stores/{slug}/listings | A store&#39;s live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
 [**listBuyerSubscriptions()**](BuyerApi.md#listBuyerSubscriptions) | **GET** /v1/buyer/subscriptions | Your subscribe &amp; save standing orders.
 [**listBuyerTogether()**](BuyerApi.md#listBuyerTogether) | **GET** /v1/buyer/together | Shop-together rooms you are in.
 [**listBuyerTotalRequests()**](BuyerApi.md#listBuyerTotalRequests) | **GET** /v1/buyer/total-requests | Your combined-shipping total requests, newest per seller.
@@ -213,20 +275,51 @@ Method | HTTP request | Description
 [**listBuyerVaultMarketHoldings()**](BuyerApi.md#listBuyerVaultMarketHoldings) | **GET** /v1/buyer/vault-markets/holdings | Each unit you hold in the vault at its market price, with the mark’s quality (A or B reliable, C indicative, none), cost, P&amp;L and where it stands (stored, listed, lent, pledged, at the grader); &#x60;meta&#x60; carries the totals and the units you have out on loan.
 [**listBuyerVaultMarketIndexes()**](BuyerApi.md#listBuyerVaultMarketIndexes) | **GET** /v1/buyer/vault-markets/indexes | Crossly indexes over vault book keys (category, brand, curated, composite, segment, and your own), each with its level now and change since the last daily close. Index levels are valued only from the book’s marks.
 [**listBuyerVaultMarketInstantExit()**](BuyerApi.md#listBuyerVaultMarketInstantExit) | **GET** /v1/buyer/vault-markets/instant-exit | Instant Exit quotes for what you hold, one per book key: the best resting bid (yours left out), its share of the mark, the bid levels, units held and which are free to sell, and why a key cannot be sold instantly. A quote, not an order.
+[**listBuyerVaultMarketOptionCombos()**](BuyerApi.md#listBuyerVaultMarketOptionCombos) | **GET** /v1/buyer/vault-markets/options/combos | Your options strategies (working by default) with their legs, net price per unit and fills. Read only.
+[**listBuyerVaultMarketOptionNotices()**](BuyerApi.md#listBuyerVaultMarketOptionNotices) | **GET** /v1/buyer/vault-markets/options/notices | Your options notices: expiry warnings, auto-closes, exercises, assignments, expiries worthless and rolls. Read only.
+[**listBuyerVaultMarketOptionSeries()**](BuyerApi.md#listBuyerVaultMarketOptionSeries) | **GET** /v1/buyer/vault-markets/options/series | Fractional options series on Crossly prices (indexes, and tier A item keys with 90 days of reliable marks): underlying, status and eligibility. Read only.
+[**listBuyerVaultMarketOptionStrategies()**](BuyerApi.md#listBuyerVaultMarketOptionStrategies) | **GET** /v1/buyer/vault-markets/options/strategies | The options strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar) and what each does. Read only.
+[**listBuyerVaultMarketPredictionComments()**](BuyerApi.md#listBuyerVaultMarketPredictionComments) | **GET** /v1/buyer/vault-markets/predictions/comments | A prediction market’s (or series’) discussion thread. Read only.
+[**listBuyerVaultMarketPredictionMarkets()**](BuyerApi.md#listBuyerVaultMarketPredictionMarkets) | **GET** /v1/buyer/vault-markets/predictions/markets | \&quot;Will it hit?\&quot; prediction markets on Crossly prices (filter by book key, index slug, kind, status, expiry or text): strike, expiry, best Yes bid and ask, last price and the probability (the market&#39;s own price, display only).
+[**listBuyerVaultMarketPredictionPositions()**](BuyerApi.md#listBuyerVaultMarketPredictionPositions) | **GET** /v1/buyer/vault-markets/predictions/positions | Your prediction positions (practice and live): side, contracts, cost, value at the last price, payout or refund once settled.
+[**listBuyerVaultMarketShareAutoInvest()**](BuyerApi.md#listBuyerVaultMarketShareAutoInvest) | **GET** /v1/buyer/vault-markets/shares/auto-invest | Your recurring Vault Shares auto-invest plans.
+[**listBuyerVaultMarketShareBaskets()**](BuyerApi.md#listBuyerVaultMarketShareBaskets) | **GET** /v1/buyer/vault-markets/shares/baskets | Theme baskets: model portfolios of Vault Shares series you would own directly, never a fund.
+[**listBuyerVaultMarketShareDrops()**](BuyerApi.md#listBuyerVaultMarketShareDrops) | **GET** /v1/buyer/vault-markets/shares/drops | Upcoming and open Vault Shares drops: phase, countdown, allocation (first come, pro-rata or lottery), your Crossly One early-access time (never a better price).
+[**listBuyerVaultMarketShareGifts()**](BuyerApi.md#listBuyerVaultMarketShareGifts) | **GET** /v1/buyer/vault-markets/shares/gifts | Vault Shares gifts you sent or were offered.
+[**listBuyerVaultMarketShareSeries()**](BuyerApi.md#listBuyerVaultMarketShareSeries) | **GET** /v1/buyer/vault-markets/shares/series | Vault Shares series: open offerings first, then trading. Terms, progress, last share price and implied item value, and your holding.
 [**listBuyerVaultMarketWatchlist()**](BuyerApi.md#listBuyerVaultMarketWatchlist) | **GET** /v1/buyer/vault-markets/watchlist | The book keys you watch, with mark and its quality, 24 h and 7 d change, and the last 30 daily marks.
 [**listBuyerVideoRequests()**](BuyerApi.md#listBuyerVideoRequests) | **GET** /v1/buyer/video-requests | Your video requests and their answers.
+[**listBuyerWalletPerks()**](BuyerApi.md#listBuyerWalletPerks) | **GET** /v1/buyer/wallet/perks | The perks your wallets unlock: each Collection holders deal (a shop’s percent off for holders of a collection) and creator shop perk on a collection a linked wallet or your Crossly wallet holds, best first. Checkout applies the best one; perks never stack with each other.
+[**listBuyerWholesaleDrops()**](BuyerApi.md#listBuyerWholesaleDrops) | **GET** /v1/buyer/wholesale/drops | Upcoming and live trade drops open to you: drops sellers release only to their approved trade buyers or to a catalog audience. kind prebook &#x3D; reserve quantity now with a deposit (depositBps) at checkout; the balance is invoiced when the seller releases the stock.
+[**listBuyerWholesaleFreightRequests()**](BuyerApi.md#listBuyerWholesaleFreightRequests) | **GET** /v1/buyer/wholesale/freight-requests | Your freight (LTL) quote requests to sellers, with the seller&#39;s figure in cents once quoted.
+[**listBuyerWholesaleOrderSheets()**](BuyerApi.md#listBuyerWholesaleOrderSheets) | **GET** /v1/buyer/wholesale/order-sheets | Your saved wholesale order sheets (one seller each), newest first.
+[**listBuyerWholesaleOrders()**](BuyerApi.md#listBuyerWholesaleOrders) | **GET** /v1/buyer/wholesale/orders | Your past wholesale orders (trade-priced or on account), newest first — the starting point for reorder.
+[**listBuyerWholesalePrebooks()**](BuyerApi.md#listBuyerWholesalePrebooks) | **GET** /v1/buyer/wholesale/prebooks | Your pre-books: the drop, item, quantity, deposit paid, balance, status (awaiting_release, invoiced, paid, cancelled, failed) and the balance invoice once the seller released the stock.
+[**listBuyerWholesaleQuotes()**](BuyerApi.md#listBuyerWholesaleQuotes) | **GET** /v1/buyer/wholesale/quotes | Your requests for a quote (RFQ) to wholesale sellers. ?status&#x3D;open|all|requested|answered|accepted|declined|withdrawn|expired. An answered or accepted quote past expiresAt reads expired.
+[**listBuyerWholesaleStatement()**](BuyerApi.md#listBuyerWholesaleStatement) | **GET** /v1/buyer/wholesale/statement | Your open trade balances per seller in aging buckets (current, 1-30, 31-60, 61-90, 90+ days past due), with the invoices behind them.
+[**listBuyerWholesaleSuppliers()**](BuyerApi.md#listBuyerWholesaleSuppliers) | **GET** /v1/buyer/wholesale/suppliers | The sellers you trade with: catalogs you can open, your terms (net days, credit limit, discount), customer groups, and what you owe each.
 [**listBuyerWishlistItems()**](BuyerApi.md#listBuyerWishlistItems) | **GET** /v1/buyer/wishlists/{id}/items | What is on one wishlist.
 [**listBuyerWishlistMembers()**](BuyerApi.md#listBuyerWishlistMembers) | **GET** /v1/buyer/wishlists/{id}/members | Co-editors of a shared wishlist.
 [**listBuyerWishlists()**](BuyerApi.md#listBuyerWishlists) | **GET** /v1/buyer/wishlists | Your wishlists.
 [**updateBuyerBoard()**](BuyerApi.md#updateBuyerBoard) | **PATCH** /v1/buyer/boards/{id} | Rename a board, change its description, or make it public / private.
 [**updateBuyerBoardLayout()**](BuyerApi.md#updateBuyerBoardLayout) | **PUT** /v1/buyer/boards/{id}/layout | Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
 [**updateBuyerCollectionSetLeaderboard()**](BuyerApi.md#updateBuyerCollectionSetLeaderboard) | **PUT** /v1/buyer/collection/sets/leaderboard | Show or hide yourself (by your public handle) on set leaderboards.
+[**updateBuyerCompany()**](BuyerApi.md#updateBuyerCompany) | **PATCH** /v1/buyer/company | Rename the company or change its tax id / website (owner).
+[**updateBuyerCompanyAddress()**](BuyerApi.md#updateBuyerCompanyAddress) | **PUT** /v1/buyer/company/addresses | Replace the shared address book (owner): addresses [{ id, label, name, line1, line2?, city, region, postalCode, country, phone?, isDefault? }], at most 20.
+[**updateBuyerCompanyMember()**](BuyerApi.md#updateBuyerCompanyMember) | **PATCH** /v1/buyer/company/members/{id} | Change a member&#39;s role or approval limit (owner). The last owner stays an owner.
+[**updateBuyerCreationReview()**](BuyerApi.md#updateBuyerCreationReview) | **PUT** /v1/buyer/creations/{format}/{id}/review | Review a creation you bought (or change your review): 1-5 stars and an optional comment.
 [**updateBuyerFeedback()**](BuyerApi.md#updateBuyerFeedback) | **PATCH** /v1/buyer/feedback/{id} | Revise feedback you left, within 60 days.
+[**updateBuyerHome()**](BuyerApi.md#updateBuyerHome) | **PATCH** /v1/buyer/home | Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
+[**updateBuyerHomeBuilder()**](BuyerApi.md#updateBuyerHomeBuilder) | **PUT** /v1/buyer/home/builders | Set your co-builders (friends only, at most 4).
+[**updateBuyerHomeLayout()**](BuyerApi.md#updateBuyerHomeLayout) | **PUT** /v1/buyer/home/layout | Arrange your home: the whole layout, checked against what you own.
 [**updateBuyerHunt()**](BuyerApi.md#updateBuyerHunt) | **PATCH** /v1/buyer/hunts/{id} | Pause, resume or stop a hunt.
+[**updateBuyerPaymentMethodDefault()**](BuyerApi.md#updateBuyerPaymentMethodDefault) | **PUT** /v1/buyer/payment-methods/{id}/default | Make one of your saved cards the default.
 [**updateBuyerPurchaseStory()**](BuyerApi.md#updateBuyerPurchaseStory) | **PUT** /v1/buyer/purchases/{id}/story | Write your owner story (280 characters); it travels with the item if you resell it.
 [**updateBuyerRegistry()**](BuyerApi.md#updateBuyerRegistry) | **PATCH** /v1/buyer/registries/{id} | Edit a registry: title, kind, date, message, ship-to address.
 [**updateBuyerRegistryItem()**](BuyerApi.md#updateBuyerRegistryItem) | **PUT** /v1/buyer/registries/{id}/items/{platformListingId} | How many of an item you want (1–50).
 [**updateBuyerSubscription()**](BuyerApi.md#updateBuyerSubscription) | **PATCH** /v1/buyer/subscriptions/{id} | Pause, resume, skip the next delivery, change the interval, or cancel.
+[**updateBuyerWholesaleCartPo()**](BuyerApi.md#updateBuyerWholesaleCartPo) | **PUT** /v1/buyer/wholesale/cart/po | Set the PO reference for one seller&#39;s group of your cart: { sellerUserId, poReference } (empty clears it).
+[**updateBuyerWholesaleOrderSheet()**](BuyerApi.md#updateBuyerWholesaleOrderSheet) | **PATCH** /v1/buyer/wholesale/order-sheets/{id} | Rename an order sheet, change its PO reference or note, or replace its lines.
 [**updateBuyerWishlist()**](BuyerApi.md#updateBuyerWishlist) | **PATCH** /v1/buyer/wishlists/{id} | Rename a wishlist, or make it public / private.
 
 
@@ -1452,6 +1545,225 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `createBuyerCompany()`
+
+```php
+createBuyerCompany(): \Crossly\Buyer\Model\Common\BuyerCompanyResponse
+```
+
+Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createBuyerCompany();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerCompany: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerCompanyApproval()`
+
+```php
+createBuyerCompanyApproval(): \Crossly\Buyer\Model\Common\CreateBuyerCompanyApprovalResponse
+```
+
+Ask for approval of a trade order above your limit: sellerUserId, amountCents, note?, poReference?. Good for 7 days, used once at checkout.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createBuyerCompanyApproval();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerCompanyApproval: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\CreateBuyerCompanyApprovalResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerCompanyApprovalDecide()`
+
+```php
+createBuyerCompanyApprovalDecide($id): \Crossly\Buyer\Model\Common\CreateBuyerCompanyApprovalResponse
+```
+
+Approve or decline a pending request (owner, accounts payable): decision approved | declined, note?.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerCompanyApprovalDecide($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerCompanyApprovalDecide: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\CreateBuyerCompanyApprovalResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerCompanyMember()`
+
+```php
+createBuyerCompanyMember(): \Crossly\Buyer\Model\Common\BuyerCompanyResponse
+```
+
+Invite a teammate by email (owner): role owner | buyer | accounts_payable | viewer, approvalLimitCents for a buyer (orders above it need an approval).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createBuyerCompanyMember();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerCompanyMember: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `createBuyerConversationInvite()`
 
 ```php
@@ -1553,6 +1865,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Common\CreateBuyerConversationJoinResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerEventRsvp()`
+
+```php
+createBuyerEventRsvp($slug): \Crossly\Buyer\Model\Event\CreateBuyerEventRsvpResponse
+```
+
+RSVP to an event: going (counts against its capacity) or interested.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$slug = 'slug_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerEventRsvp($slug);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerEventRsvp: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Event\CreateBuyerEventRsvpResponse**
 
 ### Authorization
 
@@ -1860,7 +2229,7 @@ Name | Type | Description  | Notes
 createBuyerGroupBuyJoin($id): \Crossly\Buyer\Model\Common\CreateBuyerGroupBuyJoinResponse
 ```
 
-Join a group buy: a hold at the starting price, captured at the price the group reaches. Checked against this key’s spending controls; send an Idempotency-Key.
+Join a group buy with a quantity (up to its per-buyer max): a hold (or, for pay-now pools, a charge refunded the difference) at the starting price, settled at the price the group reaches. `linkToken` opens a link-only pool. Checked against this key’s spending controls; send an Idempotency-Key.
 
 ### Example
 
@@ -3056,10 +3425,10 @@ Name | Type | Description  | Notes
 ## `createBuyerPassportClaim()`
 
 ```php
-createBuyerPassportClaim($code): \Crossly\Buyer\Model\Common\GetBuyerPassportResponse
+createBuyerPassportClaim($code): \Crossly\Buyer\Model\Passport\GetBuyerPassportResponse
 ```
 
-Claim a passport as the item’s current owner (the buyer of its latest sale) — shown as “in its owner’s hands” until it sells again.
+Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
 
 ### Example
 
@@ -3096,7 +3465,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Buyer\Model\Common\GetBuyerPassportResponse**
+**\Crossly\Buyer\Model\Passport\GetBuyerPassportResponse**
 
 ### Authorization
 
@@ -3154,63 +3523,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Common\CreateBuyerProtectionPlanCancelResponse**
-
-### Authorization
-
-[BuyerOAuth](../../README.md#BuyerOAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-
-## `createBuyerPurchaseDownload()`
-
-```php
-createBuyerPurchaseDownload($id): \Crossly\Buyer\Model\Purchase\CreateBuyerPurchaseDownloadResponse
-```
-
-A ten-minute link to a digital purchase’s file; each call uses one of its downloads.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer authorization: BuyerOAuth
-$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Crossly\Buyer\Api\BuyerApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 'id_example'; // string
-
-try {
-    $result = $apiInstance->createBuyerPurchaseDownload($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling BuyerApi->createBuyerPurchaseDownload: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**|  |
-
-### Return type
-
-**\Crossly\Buyer\Model\Purchase\CreateBuyerPurchaseDownloadResponse**
 
 ### Authorization
 
@@ -3454,7 +3766,7 @@ Name | Type | Description  | Notes
 ## `createBuyerRentalArrivalPhoto()`
 
 ```php
-createBuyerRentalArrivalPhoto($id): \Crossly\Buyer\Model\Rental\CreateBuyerRentalArrivalPhotoResponse
+createBuyerRentalArrivalPhoto($id): \Crossly\Buyer\Model\Common\BuyerRentalResponse
 ```
 
 Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
@@ -3494,7 +3806,64 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Buyer\Model\Rental\CreateBuyerRentalArrivalPhotoResponse**
+**\Crossly\Buyer\Model\Common\BuyerRentalResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerRentalBuyout()`
+
+```php
+createBuyerRentalBuyout($id): \Crossly\Buyer\Model\Rental\CreateBuyerRentalBuyoutResponse
+```
+
+Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerRentalBuyout($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerRentalBuyout: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Rental\CreateBuyerRentalBuyoutResponse**
 
 ### Authorization
 
@@ -3622,6 +3991,179 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `createBuyerRentalDelivered()`
+
+```php
+createBuyerRentalDelivered($id): \Crossly\Buyer\Model\Common\BuyerRentalResponse
+```
+
+Confirm your rental arrived.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerRentalDelivered($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerRentalDelivered: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerRentalResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerRentalExtension()`
+
+```php
+createBuyerRentalExtension($id): \Crossly\Buyer\Model\Rental\CreateBuyerRentalExtensionResponse
+```
+
+Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerRentalExtension($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerRentalExtension: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Rental\CreateBuyerRentalExtensionResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerRentalExtensionPay()`
+
+```php
+createBuyerRentalExtensionPay($id, $extension_id): \Crossly\Buyer\Model\Rental\CreateBuyerRentalExtensionPayResponse
+```
+
+Pay for an extension the seller approved → clientSecret.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+$extension_id = 'extension_id_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerRentalExtensionPay($id, $extension_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerRentalExtensionPay: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+ **extension_id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Rental\CreateBuyerRentalExtensionPayResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `createBuyerRentalIdentityStart()`
 
 ```php
@@ -3663,6 +4205,63 @@ This endpoint does not need any parameter.
 ### Return type
 
 **\Crossly\Buyer\Model\Rental\CreateBuyerRentalIdentityStartResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerRentalReturnShipped()`
+
+```php
+createBuyerRentalReturnShipped($id): \Crossly\Buyer\Model\Common\BuyerRentalResponse
+```
+
+Say you sent your rental back (optionally with photos).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerRentalReturnShipped($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerRentalReturnShipped: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerRentalResponse**
 
 ### Authorization
 
@@ -3847,10 +4446,67 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `createBuyerSellerLoyaltyJoin()`
+
+```php
+createBuyerSellerLoyaltyJoin($seller_user_id): \Crossly\Buyer\Model\Seller\GetBuyerSellerLoyaltyResponse
+```
+
+Join a seller’s loyalty club. Invite-only clubs take only invited buyers. Your tier and its perks are granted at once.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$seller_user_id = 'seller_user_id_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerSellerLoyaltyJoin($seller_user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerSellerLoyaltyJoin: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **seller_user_id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Seller\GetBuyerSellerLoyaltyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `createBuyerSellerReport()`
 
 ```php
-createBuyerSellerReport($username, $create_buyer_seller_report_request): \Crossly\Buyer\Model\Seller\CreateBuyerSellerReportResponse
+createBuyerSellerReport($username, $create_buyer_seller_report_request): \Crossly\Buyer\Model\Common\CreateBuyerStoreReportResponse
 ```
 
 Report a seller to Crossly’s trust team.
@@ -3894,7 +4550,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Buyer\Model\Seller\CreateBuyerSellerReportResponse**
+**\Crossly\Buyer\Model\Common\CreateBuyerStoreReportResponse**
 
 ### Authorization
 
@@ -3960,6 +4616,67 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerStoreReport()`
+
+```php
+createBuyerStoreReport($slug, $create_buyer_seller_report_request): \Crossly\Buyer\Model\Common\CreateBuyerStoreReportResponse
+```
+
+Report a store to Crossly’s trust team.
+
+Files against whoever runs the store. A second report while your first is still under review updates that report instead of filing another. `purchaseId` is attached only if it is your order from this seller.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$slug = 'slug_example'; // string | The store’s slug (its /shop/s/<slug> address).
+$create_buyer_seller_report_request = new \Crossly\Buyer\Model\Seller\CreateBuyerSellerReportRequest(); // \Crossly\Buyer\Model\Seller\CreateBuyerSellerReportRequest
+
+try {
+    $result = $apiInstance->createBuyerStoreReport($slug, $create_buyer_seller_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerStoreReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**| The store’s slug (its /shop/s/&lt;slug&gt; address). |
+ **create_buyer_seller_report_request** | **\Crossly\Buyer\Model\Seller\CreateBuyerSellerReportRequest**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\CreateBuyerStoreReportResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -4523,6 +5240,452 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Vault\CreateBuyerVaultWithdrawResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerWholesaleCatalogApply()`
+
+```php
+createBuyerWholesaleCatalogApply($store_slug, $catalog_slug): \Crossly\Buyer\Model\Wholesale\CreateBuyerWholesaleCatalogApplyResponse
+```
+
+Apply to a store's wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller's requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$store_slug = 'store_slug_example'; // string
+$catalog_slug = 'catalog_slug_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerWholesaleCatalogApply($store_slug, $catalog_slug);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerWholesaleCatalogApply: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **store_slug** | **string**|  |
+ **catalog_slug** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\CreateBuyerWholesaleCatalogApplyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerWholesaleFreightRequest()`
+
+```php
+createBuyerWholesaleFreightRequest(): \Crossly\Buyer\Model\Wholesale\CreateBuyerWholesaleFreightRequestResponse
+```
+
+Ask a seller to quote freight for their lines in your cart (an order over their pallet threshold): { sellerUserId, weightLbs?, shipTo? { postalCode, country, city?, region?, liftgate?, dock? }, note? }. One open request per seller.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createBuyerWholesaleFreightRequest();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerWholesaleFreightRequest: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\CreateBuyerWholesaleFreightRequestResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerWholesaleInvoicePayLink()`
+
+```php
+createBuyerWholesaleInvoicePayLink($id): \Crossly\Buyer\Model\Wholesale\CreateBuyerWholesaleInvoicePayLinkResponse
+```
+
+A hosted payment page for an on-account invoice: amountCents? (part of the balance, at least $1), method? card | ach. Nothing is charged until the buyer completes the page.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerWholesaleInvoicePayLink($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerWholesaleInvoicePayLink: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\CreateBuyerWholesaleInvoicePayLinkResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerWholesaleOrderSheet()`
+
+```php
+createBuyerWholesaleOrderSheet(): \Crossly\Buyer\Model\Common\BuyerWholesaleOrderSheetResponse
+```
+
+Save an order sheet: name, lines [{ platformListingId, listingVariantId?, catalogId?, quantity }] from one seller, optional catalogId, poReference, note.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createBuyerWholesaleOrderSheet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerWholesaleOrderSheet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerWholesaleOrderSheetResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerWholesaleQuote()`
+
+```php
+createBuyerWholesaleQuote(): \Crossly\Buyer\Model\Common\BuyerWholesaleQuoteResponse
+```
+
+Ask one seller for a quote: items [{ platformListingId, listingVariantId?, quantity, targetUnitPriceCents? }] (one seller per quote), optional catalogId, note, poReference.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createBuyerWholesaleQuote();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerWholesaleQuote: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerWholesaleQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerWholesaleQuoteAccept()`
+
+```php
+createBuyerWholesaleQuoteAccept($id): \Crossly\Buyer\Model\Wholesale\CreateBuyerWholesaleQuoteAcceptResponse
+```
+
+Accept an answered quote: its priced items go into your cart at the quoted quantities, locked at the quoted prices until the quote expires (changing a line's quantity drops the lock). Paying happens at checkout on Crossly.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerWholesaleQuoteAccept($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerWholesaleQuoteAccept: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\CreateBuyerWholesaleQuoteAcceptResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerWholesaleQuoteWithdraw()`
+
+```php
+createBuyerWholesaleQuoteWithdraw($id): \Crossly\Buyer\Model\Common\BuyerWholesaleQuoteResponse
+```
+
+Withdraw a quote request that is still requested or answered.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->createBuyerWholesaleQuoteWithdraw($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerWholesaleQuoteWithdraw: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerWholesaleQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createBuyerWholesaleUploadValidate()`
+
+```php
+createBuyerWholesaleUploadValidate(): \Crossly\Buyer\Model\Wholesale\CreateBuyerWholesaleUploadValidateResponse
+```
+
+Validate a CSV / PO against one catalog: rows [{ line, sku, quantity }] are matched by SKU (item or option SKU, or listing slug), merged per item and priced today; unmatched rows come back by line.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createBuyerWholesaleUploadValidate();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->createBuyerWholesaleUploadValidate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\CreateBuyerWholesaleUploadValidateResponse**
 
 ### Authorization
 
@@ -5115,6 +6278,63 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `deleteBuyerCompanyMember()`
+
+```php
+deleteBuyerCompanyMember($id): \Crossly\Buyer\Model\Common\BuyerCompanyResponse
+```
+
+Remove a member or cancel an invite (owner), or leave the company (your own member id).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->deleteBuyerCompanyMember($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->deleteBuyerCompanyMember: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `deleteBuyerConversationGuest()`
 
 ```php
@@ -5157,6 +6377,122 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  |
  **user_id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `deleteBuyerCreationReview()`
+
+```php
+deleteBuyerCreationReview($format, $id): \Crossly\Buyer\Model\Common\BuyerResponse
+```
+
+Remove your review of a creation (its vote leaves the rating with it).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$format = 'format_example'; // string | The creation format.
+$id = 'id_example'; // string | The creation id (a card is <setId>.<slug>).
+
+try {
+    $result = $apiInstance->deleteBuyerCreationReview($format, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->deleteBuyerCreationReview: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| The creation format. |
+ **id** | **string**| The creation id (a card is &lt;setId&gt;.&lt;slug&gt;). |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `deleteBuyerEventRsvp()`
+
+```php
+deleteBuyerEventRsvp($slug): \Crossly\Buyer\Model\Common\BuyerResponse
+```
+
+Take back your RSVP.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$slug = 'slug_example'; // string
+
+try {
+    $result = $apiInstance->deleteBuyerEventRsvp($slug);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->deleteBuyerEventRsvp: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**|  |
 
 ### Return type
 
@@ -5218,6 +6554,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Common\BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `deleteBuyerHomeGuestbook()`
+
+```php
+deleteBuyerHomeGuestbook($id)
+```
+
+Hide a line from your home’s guestbook.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $apiInstance->deleteBuyerHomeGuestbook($id);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->deleteBuyerHomeGuestbook: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -5631,6 +7023,63 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `deleteBuyerSellerLoyaltyJoin()`
+
+```php
+deleteBuyerSellerLoyaltyJoin($seller_user_id): \Crossly\Buyer\Model\Common\BuyerResponse
+```
+
+Leave a seller’s loyalty club.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$seller_user_id = 'seller_user_id_example'; // string
+
+try {
+    $result = $apiInstance->deleteBuyerSellerLoyaltyJoin($seller_user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->deleteBuyerSellerLoyaltyJoin: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **seller_user_id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `deleteBuyerTogetherItem()`
 
 ```php
@@ -5791,6 +7240,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Common\DeleteBuyerTryOnResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `deleteBuyerWholesaleOrderSheet()`
+
+```php
+deleteBuyerWholesaleOrderSheet($id): \Crossly\Buyer\Model\Wholesale\DeleteBuyerWholesaleOrderSheetResponse
+```
+
+Delete an order sheet.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->deleteBuyerWholesaleOrderSheet($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->deleteBuyerWholesaleOrderSheet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\DeleteBuyerWholesaleOrderSheetResponse**
 
 ### Authorization
 
@@ -6661,6 +8167,119 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `getBuyerCompany()`
+
+```php
+getBuyerCompany(): \Crossly\Buyer\Model\Common\BuyerCompanyResponse
+```
+
+Your buyer company (members, roles, approval limits, shared addresses), or null when you are in none.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBuyerCompany();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerCompany: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerCreation()`
+
+```php
+getBuyerCreation($format, $id): \Crossly\Buyer\Model\Creation\GetBuyerCreationResponse
+```
+
+A live creation's public page: its rating breakdown, recent reviews and whether you can review it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$format = 'format_example'; // string | The creation format.
+$id = 'id_example'; // string | The creation id (a card is <setId>.<slug>).
+
+try {
+    $result = $apiInstance->getBuyerCreation($format, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerCreation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| The creation format. |
+ **id** | **string**| The creation id (a card is &lt;setId&gt;.&lt;slug&gt;). |
+
+### Return type
+
+**\Crossly\Buyer\Model\Creation\GetBuyerCreationResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `getBuyerCreator()`
 
 ```php
@@ -6705,6 +8324,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Common\GetBuyerCreatorResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerEvent()`
+
+```php
+getBuyerEvent($slug): \Crossly\Buyer\Model\Event\GetBuyerEventResponse
+```
+
+A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$slug = 'slug_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerEvent($slug);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Event\GetBuyerEventResponse**
 
 ### Authorization
 
@@ -6813,6 +8489,114 @@ This endpoint does not need any parameter.
 ### Return type
 
 **\Crossly\Buyer\Model\Gift\GetBuyerGiftFinderOptionResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerHome()`
+
+```php
+getBuyerHome(): \Crossly\Buyer\Model\Common\BuyerHomeResponse
+```
+
+Your home in Crossly World (made on first read).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBuyerHome();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerHome: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerHomeResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerHomePlaceable()`
+
+```php
+getBuyerHomePlaceable(): \Crossly\Buyer\Model\Home\GetBuyerHomePlaceableResponse
+```
+
+What you could place in your home: your items and delivered furniture.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBuyerHomePlaceable();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerHomePlaceable: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Home\GetBuyerHomePlaceableResponse**
 
 ### Authorization
 
@@ -7966,10 +9750,10 @@ Name | Type | Description  | Notes
 ## `getBuyerPassport()`
 
 ```php
-getBuyerPassport($code): \Crossly\Buyer\Model\Common\GetBuyerPassportResponse
+getBuyerPassport($code): \Crossly\Buyer\Model\Passport\GetBuyerPassportResponse
 ```
 
-What a product passport tag opens: the item, whether it was authenticated, how many owners on Crossly and since when — never who or for how much.
+What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid=, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
 
 ### Example
 
@@ -8006,7 +9790,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Buyer\Model\Common\GetBuyerPassportResponse**
+**\Crossly\Buyer\Model\Passport\GetBuyerPassportResponse**
 
 ### Authorization
 
@@ -8526,6 +10310,63 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `getBuyerRental()`
+
+```php
+getBuyerRental($id): \Crossly\Buyer\Model\Rental\GetBuyerRentalResponse
+```
+
+One of your rentals: timeline, payments, the return label, extension and buy-out terms.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerRental($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerRental: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Rental\GetBuyerRentalResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `getBuyerRentalEligibility()`
 
 ```php
@@ -8624,6 +10465,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Seller\GetBuyerSellerClubResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerSellerLoyalty()`
+
+```php
+getBuyerSellerLoyalty($seller_user_id): \Crossly\Buyer\Model\Seller\GetBuyerSellerLoyaltyResponse
+```
+
+A seller’s loyalty club with its typed perks per tier, its join mode (automatic, opt-in, invite-only) and your standing. null when they run none.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$seller_user_id = 'seller_user_id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerSellerLoyalty($seller_user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerSellerLoyalty: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **seller_user_id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Seller\GetBuyerSellerLoyaltyResponse**
 
 ### Authorization
 
@@ -8919,6 +10817,846 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `getBuyerVaultMarketOptionAnalytic()`
+
+```php
+getBuyerVaultMarketOptionAnalytic($underlying): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketOptionAnalyticResponse
+```
+
+Options analytics on an underlying: vol surface and smile, IV rank and percentile, open interest and volume by strike and expiry, put/call ratios, expected move and historical vol. Derived, display only. Read only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$underlying = 'underlying_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketOptionAnalytic($underlying);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketOptionAnalytic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketOptionAnalyticResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketOptionChain()`
+
+```php
+getBuyerVaultMarketOptionChain($underlying): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketOptionChainResponse
+```
+
+The option chain for an underlying (index slug or book key): expiries, and for one expiry each strike’s call and put with bid / ask, last, open interest, theoretical price, implied vol (display only) and Greeks. Prices are cents per contract.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$underlying = 'underlying_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketOptionChain($underlying);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketOptionChain: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketOptionChainResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketOptionIv()`
+
+```php
+getBuyerVaultMarketOptionIv($underlying): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketOptionIvResponse
+```
+
+The at-the-money implied vol on an underlying’s nearest expiry, for display: derived from the options book, quality C, never a mark.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$underlying = 'underlying_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketOptionIv($underlying);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketOptionIv: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **underlying** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketOptionIvResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketOptionPosition()`
+
+```php
+getBuyerVaultMarketOptionPosition(): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketOptionPositionResponse
+```
+
+Your fractional options positions with their marks, P&L and Greeks (open by default; `status` all for closed and settled too). Read only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketOptionPosition();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketOptionPosition: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketOptionPositionResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketOptionRisk()`
+
+```php
+getBuyerVaultMarketOptionRisk(): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketOptionRiskResponse
+```
+
+Your options portfolio Greeks, a scenario's P&L (`priceShift`, `volShift`, `daysForward`) and the beta-weighted delta against an index. Read only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketOptionRisk();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketOptionRisk: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketOptionRiskResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketPredictionBoard()`
+
+```php
+getBuyerVaultMarketPredictionBoard(): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketPredictionBoardResponse
+```
+
+The busiest open prediction markets and their odds (the Trading Floor board). Anonymous.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketPredictionBoard();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketPredictionBoard: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketPredictionBoardResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketPredictionEvent()`
+
+```php
+getBuyerVaultMarketPredictionEvent($id): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketPredictionEventResponse
+```
+
+One expiry’s markets with your holdings in each and their real worst and best case across them.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketPredictionEvent($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketPredictionEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketPredictionEventResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketPredictionLeaderboard()`
+
+```php
+getBuyerVaultMarketPredictionLeaderboard(): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketPredictionLeaderboardResponse
+```
+
+Opt-in forecaster leaderboards (`period` week | month | all; `metric` pnl | accuracy | brier; `venue` live | paper).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketPredictionLeaderboard();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketPredictionLeaderboard: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketPredictionLeaderboardResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketPredictionMarket()`
+
+```php
+getBuyerVaultMarketPredictionMarket($id): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketPredictionMarketResponse
+```
+
+One prediction market: terms, the Yes ladder (live and practice), recent trades, settlement history and the series rules with their hash.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketPredictionMarket($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketPredictionMarket: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketPredictionMarketResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketPredictionMarketHistory()`
+
+```php
+getBuyerVaultMarketPredictionMarketHistory($id): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketPredictionMarketHistoryResponse
+```
+
+A prediction market’s probability over time (display only, never a mark), candles on the Yes price, volume and open interest (`range` 1d, 1w, 1m, all; `venue` live or paper).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketPredictionMarketHistory($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketPredictionMarketHistory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketPredictionMarketHistoryResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketShare()`
+
+```php
+getBuyerVaultMarketShare(): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketShareResponse
+```
+
+Your Vault Shares: shares and percent of each item, cost, implied value at the last share price (display only, never a mark), subscriptions and payouts.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketShare();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketShare: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketShareResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketShareBasket()`
+
+```php
+getBuyerVaultMarketShareBasket($id): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketShareBasketResponse
+```
+
+One theme basket: its series, weights and prices, and your holdings against them.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketShareBasket($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketShareBasket: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketShareBasketResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketShareSery()`
+
+```php
+getBuyerVaultMarketShareSery($id): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketShareSeryResponse
+```
+
+One Vault Shares series: the offering, the share book, the latest fills, holders as percentages (nobody named) and buyouts.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketShareSery($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketShareSery: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketShareSeryResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketShareSeryHistory()`
+
+```php
+getBuyerVaultMarketShareSeryHistory($id): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketShareSeryHistoryResponse
+```
+
+A Vault Shares series’ full price history (candles), the offering price and the appraisal history. Display only, never a mark.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketShareSeryHistory($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketShareSeryHistory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketShareSeryHistoryResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerVaultMarketShareSeryPerk()`
+
+```php
+getBuyerVaultMarketShareSeryPerk($id): \Crossly\Buyer\Model\Vault\GetBuyerVaultMarketShareSeryPerkResponse
+```
+
+Your holder perks on a series: badge, visit links, viewing days and your bookings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerVaultMarketShareSeryPerk($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerVaultMarketShareSeryPerk: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketShareSeryPerkResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `getBuyerVaultMarketWorth()`
 
 ```php
@@ -8960,6 +11698,404 @@ This endpoint does not need any parameter.
 ### Return type
 
 **\Crossly\Buyer\Model\Vault\GetBuyerVaultMarketWorthResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerWholesaleCart()`
+
+```php
+getBuyerWholesaleCart(): \Crossly\Buyer\Model\Wholesale\GetBuyerWholesaleCartResponse
+```
+
+Your cart grouped per seller: trade terms, the order-minimum progress, every rule the cart breaks (the messages checkout would refuse with), PO reference, quote-locked lines, and the checkout methods, deposit and freight threshold for each group.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBuyerWholesaleCart();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerWholesaleCart: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\GetBuyerWholesaleCartResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerWholesaleCatalogApply()`
+
+```php
+getBuyerWholesaleCatalogApply($store_slug, $catalog_slug): \Crossly\Buyer\Model\Wholesale\GetBuyerWholesaleCatalogApplyResponse
+```
+
+The application form for a store's wholesale catalog: the seller's requirements (resale certificate and accepted states, tax id, their custom questions) and your business info pre-filled. applicable=false for a catalog you cannot apply to.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$store_slug = 'store_slug_example'; // string
+$catalog_slug = 'catalog_slug_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerWholesaleCatalogApply($store_slug, $catalog_slug);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerWholesaleCatalogApply: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **store_slug** | **string**|  |
+ **catalog_slug** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\GetBuyerWholesaleCatalogApplyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerWholesaleDrop()`
+
+```php
+getBuyerWholesaleDrop($id): \Crossly\Buyer\Model\Wholesale\GetBuyerWholesaleDropResponse
+```
+
+One trade drop open to you: its listings once live (add one to your cart to reserve or buy it), and your reservations in it. 404 for a drop not open to you.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerWholesaleDrop($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerWholesaleDrop: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\GetBuyerWholesaleDropResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerWholesaleInvoicePayQuote()`
+
+```php
+getBuyerWholesaleInvoicePayQuote($id): \Crossly\Buyer\Model\Wholesale\GetBuyerWholesaleInvoicePayQuoteResponse
+```
+
+What paying an on-account invoice costs now: balance due, the early-pay discount if still open, the minimum part payment and the methods (card, ach).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerWholesaleInvoicePayQuote($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerWholesaleInvoicePayQuote: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\GetBuyerWholesaleInvoicePayQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerWholesaleOrderSheet()`
+
+```php
+getBuyerWholesaleOrderSheet($id): \Crossly\Buyer\Model\Common\BuyerWholesaleOrderSheetResponse
+```
+
+One order sheet priced TODAY at its quantities, with stock, trade terms and flags (unavailable, out_of_stock, short_stock, price_hidden, needs_option).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerWholesaleOrderSheet($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerWholesaleOrderSheet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerWholesaleOrderSheetResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerWholesaleQuote()`
+
+```php
+getBuyerWholesaleQuote($id): \Crossly\Buyer\Model\Common\BuyerWholesaleQuoteResponse
+```
+
+One of your quotes with its items, the seller's prices and expiry.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerWholesaleQuote($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerWholesaleQuote: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerWholesaleQuoteResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getBuyerWholesaleReorder()`
+
+```php
+getBuyerWholesaleReorder($id): \Crossly\Buyer\Model\Wholesale\GetBuyerWholesaleReorderResponse
+```
+
+Buy again: a past wholesale order (purchase or order id) as order-sheet lines at the same quantities, priced today, out-of-stock flagged.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getBuyerWholesaleReorder($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->getBuyerWholesaleReorder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\GetBuyerWholesaleReorderResponse**
 
 ### Authorization
 
@@ -9702,6 +12838,60 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `listBuyerCompanyApprovals()`
+
+```php
+listBuyerCompanyApprovals(): \Crossly\Buyer\Model\Common\BuyerResponse3
+```
+
+Spend approval requests (owners and accounts payable see all; others their own). ?status=pending|approved|declined|used|expired.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerCompanyApprovals();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerCompanyApprovals: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `listBuyerConsolidations()`
 
 ```php
@@ -9800,6 +12990,117 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Wishlist\ListBuyerWishlistMembersResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerCreationReviewable()`
+
+```php
+listBuyerCreationReviewable($purchase_ref): \Crossly\Buyer\Model\Creation\ListBuyerCreationReviewableResponse
+```
+
+Creations you bought (decor, wearables, interactive objects, cards from packs) and your review of each.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$purchase_ref = 'purchase_ref_example'; // string | Only the creation this purchase bought.
+
+try {
+    $result = $apiInstance->listBuyerCreationReviewable($purchase_ref);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerCreationReviewable: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **purchase_ref** | **string**| Only the creation this purchase bought. | [optional]
+
+### Return type
+
+**\Crossly\Buyer\Model\Creation\ListBuyerCreationReviewableResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerEvents()`
+
+```php
+listBuyerEvents(): \Crossly\Buyer\Model\Event\ListBuyerEventsResponse
+```
+
+Upcoming and live seller events across Crossly, soonest first.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerEvents();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerEvents: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Event\ListBuyerEventsResponse**
 
 ### Authorization
 
@@ -10236,6 +13537,114 @@ This endpoint does not need any parameter.
 ### Return type
 
 **\Crossly\Buyer\Model\Gift\ListBuyerGiftSentResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerHomeBuilders()`
+
+```php
+listBuyerHomeBuilders(): \Crossly\Buyer\Model\Home\ListBuyerHomeBuildersResponse
+```
+
+Your co-builders: friends who may arrange your home with you.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerHomeBuilders();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerHomeBuilders: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Home\ListBuyerHomeBuildersResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerHomeBuilding()`
+
+```php
+listBuyerHomeBuilding(): \Crossly\Buyer\Model\Home\ListBuyerHomeBuildingResponse
+```
+
+The homes you co-build, to visit and arrange.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerHomeBuilding();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerHomeBuilding: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Home\ListBuyerHomeBuildingResponse**
 
 ### Authorization
 
@@ -10690,6 +14099,60 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `listBuyerLoyalty()`
+
+```php
+listBuyerLoyalty(): \Crossly\Buyer\Model\Common\ListBuyerLoyaltyResponse
+```
+
+Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerLoyalty();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerLoyalty: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\ListBuyerLoyaltyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `listBuyerMarketBids()`
 
 ```php
@@ -11122,6 +14585,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Common\BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerPaymentMethods()`
+
+```php
+listBuyerPaymentMethods(): \Crossly\Buyer\Model\Common\ListBuyerPaymentMethodsResponse
+```
+
+Your saved cards, the default first.
+
+Brand, last 4, expiry and whether it is your default. The `id` is what checkout and auction bids take as `paymentMethodId`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerPaymentMethods();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerPaymentMethods: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\ListBuyerPaymentMethodsResponse**
 
 ### Authorization
 
@@ -11624,6 +15143,63 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `listBuyerStoreListings()`
+
+```php
+listBuyerStoreListings($slug): \Crossly\Buyer\Model\Common\ListBuyerStoreListingsResponse
+```
+
+A store's live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$slug = 'slug_example'; // string
+
+try {
+    $result = $apiInstance->listBuyerStoreListings($slug);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerStoreListings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\ListBuyerStoreListingsResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `listBuyerSubscriptions()`
 
 ```php
@@ -12058,6 +15634,654 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `listBuyerVaultMarketOptionCombos()`
+
+```php
+listBuyerVaultMarketOptionCombos(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketOptionCombosResponse
+```
+
+Your options strategies (working by default) with their legs, net price per unit and fills. Read only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketOptionCombos();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketOptionCombos: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketOptionCombosResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketOptionNotices()`
+
+```php
+listBuyerVaultMarketOptionNotices(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketOptionNoticesResponse
+```
+
+Your options notices: expiry warnings, auto-closes, exercises, assignments, expiries worthless and rolls. Read only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketOptionNotices();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketOptionNotices: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketOptionNoticesResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketOptionSeries()`
+
+```php
+listBuyerVaultMarketOptionSeries(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketOptionSeriesResponse
+```
+
+Fractional options series on Crossly prices (indexes, and tier A item keys with 90 days of reliable marks): underlying, status and eligibility. Read only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketOptionSeries();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketOptionSeries: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketOptionSeriesResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketOptionStrategies()`
+
+```php
+listBuyerVaultMarketOptionStrategies(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketOptionStrategiesResponse
+```
+
+The options strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar) and what each does. Read only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketOptionStrategies();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketOptionStrategies: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketOptionStrategiesResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketPredictionComments()`
+
+```php
+listBuyerVaultMarketPredictionComments(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketPredictionCommentsResponse
+```
+
+A prediction market’s (or series’) discussion thread. Read only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketPredictionComments();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketPredictionComments: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketPredictionCommentsResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketPredictionMarkets()`
+
+```php
+listBuyerVaultMarketPredictionMarkets(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketPredictionMarketsResponse
+```
+
+\"Will it hit?\" prediction markets on Crossly prices (filter by book key, index slug, kind, status, expiry or text): strike, expiry, best Yes bid and ask, last price and the probability (the market's own price, display only).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketPredictionMarkets();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketPredictionMarkets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketPredictionMarketsResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketPredictionPositions()`
+
+```php
+listBuyerVaultMarketPredictionPositions(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketPredictionPositionsResponse
+```
+
+Your prediction positions (practice and live): side, contracts, cost, value at the last price, payout or refund once settled.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketPredictionPositions();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketPredictionPositions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketPredictionPositionsResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketShareAutoInvest()`
+
+```php
+listBuyerVaultMarketShareAutoInvest(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketShareAutoInvestResponse
+```
+
+Your recurring Vault Shares auto-invest plans.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketShareAutoInvest();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketShareAutoInvest: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketShareAutoInvestResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketShareBaskets()`
+
+```php
+listBuyerVaultMarketShareBaskets(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketShareBasketsResponse
+```
+
+Theme baskets: model portfolios of Vault Shares series you would own directly, never a fund.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketShareBaskets();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketShareBaskets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketShareBasketsResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketShareDrops()`
+
+```php
+listBuyerVaultMarketShareDrops(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketShareDropsResponse
+```
+
+Upcoming and open Vault Shares drops: phase, countdown, allocation (first come, pro-rata or lottery), your Crossly One early-access time (never a better price).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketShareDrops();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketShareDrops: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketShareDropsResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketShareGifts()`
+
+```php
+listBuyerVaultMarketShareGifts(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketShareGiftsResponse
+```
+
+Vault Shares gifts you sent or were offered.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketShareGifts();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketShareGifts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketShareGiftsResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerVaultMarketShareSeries()`
+
+```php
+listBuyerVaultMarketShareSeries(): \Crossly\Buyer\Model\Vault\ListBuyerVaultMarketShareSeriesResponse
+```
+
+Vault Shares series: open offerings first, then trading. Terms, progress, last share price and implied item value, and your holding.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerVaultMarketShareSeries();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerVaultMarketShareSeries: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Vault\ListBuyerVaultMarketShareSeriesResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `listBuyerVaultMarketWatchlist()`
 
 ```php
@@ -12153,6 +16377,492 @@ This endpoint does not need any parameter.
 ### Return type
 
 **\Crossly\Buyer\Model\Common\ListBuyerVideoRequestsResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerWalletPerks()`
+
+```php
+listBuyerWalletPerks(): \Crossly\Buyer\Model\Common\ListBuyerWalletPerksResponse
+```
+
+The perks your wallets unlock: each Collection holders deal (a shop’s percent off for holders of a collection) and creator shop perk on a collection a linked wallet or your Crossly wallet holds, best first. Checkout applies the best one; perks never stack with each other.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerWalletPerks();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerWalletPerks: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\ListBuyerWalletPerksResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerWholesaleDrops()`
+
+```php
+listBuyerWholesaleDrops(): \Crossly\Buyer\Model\Wholesale\ListBuyerWholesaleDropsResponse
+```
+
+Upcoming and live trade drops open to you: drops sellers release only to their approved trade buyers or to a catalog audience. kind prebook = reserve quantity now with a deposit (depositBps) at checkout; the balance is invoiced when the seller releases the stock.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerWholesaleDrops();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerWholesaleDrops: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\ListBuyerWholesaleDropsResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerWholesaleFreightRequests()`
+
+```php
+listBuyerWholesaleFreightRequests(): \Crossly\Buyer\Model\Common\BuyerResponse3
+```
+
+Your freight (LTL) quote requests to sellers, with the seller's figure in cents once quoted.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerWholesaleFreightRequests();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerWholesaleFreightRequests: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerWholesaleOrderSheets()`
+
+```php
+listBuyerWholesaleOrderSheets(): \Crossly\Buyer\Model\Common\BuyerResponse3
+```
+
+Your saved wholesale order sheets (one seller each), newest first.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerWholesaleOrderSheets();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerWholesaleOrderSheets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerWholesaleOrders()`
+
+```php
+listBuyerWholesaleOrders(): \Crossly\Buyer\Model\Common\BuyerResponse3
+```
+
+Your past wholesale orders (trade-priced or on account), newest first — the starting point for reorder.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerWholesaleOrders();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerWholesaleOrders: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerWholesalePrebooks()`
+
+```php
+listBuyerWholesalePrebooks(): \Crossly\Buyer\Model\Wholesale\ListBuyerWholesalePrebooksResponse
+```
+
+Your pre-books: the drop, item, quantity, deposit paid, balance, status (awaiting_release, invoiced, paid, cancelled, failed) and the balance invoice once the seller released the stock.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerWholesalePrebooks();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerWholesalePrebooks: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\ListBuyerWholesalePrebooksResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerWholesaleQuotes()`
+
+```php
+listBuyerWholesaleQuotes(): \Crossly\Buyer\Model\Common\BuyerResponse3
+```
+
+Your requests for a quote (RFQ) to wholesale sellers. ?status=open|all|requested|answered|accepted|declined|withdrawn|expired. An answered or accepted quote past expiresAt reads expired.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerWholesaleQuotes();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerWholesaleQuotes: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerWholesaleStatement()`
+
+```php
+listBuyerWholesaleStatement(): \Crossly\Buyer\Model\Common\BuyerResponse3
+```
+
+Your open trade balances per seller in aging buckets (current, 1-30, 31-60, 61-90, 90+ days past due), with the invoices behind them.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerWholesaleStatement();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerWholesaleStatement: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerResponse3**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listBuyerWholesaleSuppliers()`
+
+```php
+listBuyerWholesaleSuppliers(): \Crossly\Buyer\Model\Common\BuyerResponse3
+```
+
+The sellers you trade with: catalogs you can open, your terms (net days, credit limit, discount), customer groups, and what you owe each.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listBuyerWholesaleSuppliers();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->listBuyerWholesaleSuppliers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerResponse3**
 
 ### Authorization
 
@@ -12502,6 +17212,234 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `updateBuyerCompany()`
+
+```php
+updateBuyerCompany(): \Crossly\Buyer\Model\Common\BuyerCompanyResponse
+```
+
+Rename the company or change its tax id / website (owner).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->updateBuyerCompany();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->updateBuyerCompany: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateBuyerCompanyAddress()`
+
+```php
+updateBuyerCompanyAddress(): \Crossly\Buyer\Model\Common\BuyerCompanyResponse
+```
+
+Replace the shared address book (owner): addresses [{ id, label, name, line1, line2?, city, region, postalCode, country, phone?, isDefault? }], at most 20.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->updateBuyerCompanyAddress();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->updateBuyerCompanyAddress: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateBuyerCompanyMember()`
+
+```php
+updateBuyerCompanyMember($id): \Crossly\Buyer\Model\Common\BuyerCompanyResponse
+```
+
+Change a member's role or approval limit (owner). The last owner stays an owner.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->updateBuyerCompanyMember($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->updateBuyerCompanyMember: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerCompanyResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateBuyerCreationReview()`
+
+```php
+updateBuyerCreationReview($format, $id, $update_buyer_creation_review_request): \Crossly\Buyer\Model\Creation\UpdateBuyerCreationReviewResponse
+```
+
+Review a creation you bought (or change your review): 1-5 stars and an optional comment.
+
+Only a buyer of it may review it (a bought copy, or a pack that held the card). One review per creation; a second call replaces it. The comment is moderated.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$format = 'format_example'; // string | The creation format.
+$id = 'id_example'; // string | The creation id (a card is <setId>.<slug>).
+$update_buyer_creation_review_request = new \Crossly\Buyer\Model\Creation\UpdateBuyerCreationReviewRequest(); // \Crossly\Buyer\Model\Creation\UpdateBuyerCreationReviewRequest
+
+try {
+    $result = $apiInstance->updateBuyerCreationReview($format, $id, $update_buyer_creation_review_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->updateBuyerCreationReview: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| The creation format. |
+ **id** | **string**| The creation id (a card is &lt;setId&gt;.&lt;slug&gt;). |
+ **update_buyer_creation_review_request** | **\Crossly\Buyer\Model\Creation\UpdateBuyerCreationReviewRequest**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Creation\UpdateBuyerCreationReviewResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `updateBuyerFeedback()`
 
 ```php
@@ -12563,6 +17501,168 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `updateBuyerHome()`
+
+```php
+updateBuyerHome(): \Crossly\Buyer\Model\Common\BuyerHomeResponse
+```
+
+Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->updateBuyerHome();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->updateBuyerHome: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerHomeResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateBuyerHomeBuilder()`
+
+```php
+updateBuyerHomeBuilder(): \Crossly\Buyer\Model\Home\ListBuyerHomeBuildersResponse
+```
+
+Set your co-builders (friends only, at most 4).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->updateBuyerHomeBuilder();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->updateBuyerHomeBuilder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Home\ListBuyerHomeBuildersResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateBuyerHomeLayout()`
+
+```php
+updateBuyerHomeLayout(): \Crossly\Buyer\Model\Common\BuyerHomeResponse
+```
+
+Arrange your home: the whole layout, checked against what you own.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->updateBuyerHomeLayout();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->updateBuyerHomeLayout: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerHomeResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `updateBuyerHunt()`
 
 ```php
@@ -12607,6 +17707,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Common\BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateBuyerPaymentMethodDefault()`
+
+```php
+updateBuyerPaymentMethodDefault($id): \Crossly\Buyer\Model\Common\UpdateBuyerPaymentMethodDefaultResponse
+```
+
+Make one of your saved cards the default.
+
+The default is the card express checkout offers first. Only your own saved card: any other id is a 404.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->updateBuyerPaymentMethodDefault($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->updateBuyerPaymentMethodDefault: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\UpdateBuyerPaymentMethodDefaultResponse**
 
 ### Authorization
 
@@ -12837,6 +17996,117 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Buyer\Model\Common\BuyerResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateBuyerWholesaleCartPo()`
+
+```php
+updateBuyerWholesaleCartPo(): \Crossly\Buyer\Model\Wholesale\UpdateBuyerWholesaleCartPoResponse
+```
+
+Set the PO reference for one seller's group of your cart: { sellerUserId, poReference } (empty clears it).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->updateBuyerWholesaleCartPo();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->updateBuyerWholesaleCartPo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Buyer\Model\Wholesale\UpdateBuyerWholesaleCartPoResponse**
+
+### Authorization
+
+[BuyerOAuth](../../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateBuyerWholesaleOrderSheet()`
+
+```php
+updateBuyerWholesaleOrderSheet($id): \Crossly\Buyer\Model\Common\BuyerWholesaleOrderSheetResponse
+```
+
+Rename an order sheet, change its PO reference or note, or replace its lines.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BuyerOAuth
+$config = Crossly\Buyer\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Buyer\Api\BuyerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->updateBuyerWholesaleOrderSheet($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BuyerApi->updateBuyerWholesaleOrderSheet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Buyer\Model\Common\BuyerWholesaleOrderSheetResponse**
 
 ### Authorization
 

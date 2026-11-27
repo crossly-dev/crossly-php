@@ -62,10 +62,10 @@ class ListBuyerOffersItemItems implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'id' => 'string',
         'price_cents' => 'float',
-        'status' => 'string',
-        'title' => 'string',
         'slug' => 'string',
-        'thumbnail' => 'string'
+        'title' => 'string',
+        'thumbnail' => 'string',
+        'status' => 'string'
     ];
 
     /**
@@ -78,10 +78,10 @@ class ListBuyerOffersItemItems implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPIFormats = [
         'id' => null,
         'price_cents' => null,
-        'status' => null,
-        'title' => null,
         'slug' => null,
-        'thumbnail' => null
+        'title' => null,
+        'thumbnail' => null,
+        'status' => null
     ];
 
     /**
@@ -113,10 +113,10 @@ class ListBuyerOffersItemItems implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $attributeMap = [
         'id' => 'id',
         'price_cents' => 'priceCents',
-        'status' => 'status',
-        'title' => 'title',
         'slug' => 'slug',
-        'thumbnail' => 'thumbnail'
+        'title' => 'title',
+        'thumbnail' => 'thumbnail',
+        'status' => 'status'
     ];
 
     /**
@@ -127,10 +127,10 @@ class ListBuyerOffersItemItems implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $setters = [
         'id' => 'setId',
         'price_cents' => 'setPriceCents',
-        'status' => 'setStatus',
-        'title' => 'setTitle',
         'slug' => 'setSlug',
-        'thumbnail' => 'setThumbnail'
+        'title' => 'setTitle',
+        'thumbnail' => 'setThumbnail',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -141,10 +141,10 @@ class ListBuyerOffersItemItems implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $getters = [
         'id' => 'getId',
         'price_cents' => 'getPriceCents',
-        'status' => 'getStatus',
-        'title' => 'getTitle',
         'slug' => 'getSlug',
-        'thumbnail' => 'getThumbnail'
+        'title' => 'getTitle',
+        'thumbnail' => 'getThumbnail',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -206,10 +206,10 @@ class ListBuyerOffersItemItems implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['thumbnail'] = $data['thumbnail'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -291,25 +291,25 @@ class ListBuyerOffersItemItems implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets status
+     * Gets slug
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getSlug()
     {
-        return $this->container['status'];
+        return $this->container['slug'];
     }
 
     /**
-     * Sets status
+     * Sets slug
      *
-     * @param string|null $status status
+     * @param string|null $slug slug
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setSlug($slug)
     {
-        $this->container['status'] = $status;
+        $this->container['slug'] = $slug;
 
         return $this;
     }
@@ -339,30 +339,6 @@ class ListBuyerOffersItemItems implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets slug
-     *
-     * @return string|null
-     */
-    public function getSlug()
-    {
-        return $this->container['slug'];
-    }
-
-    /**
-     * Sets slug
-     *
-     * @param string|null $slug slug
-     *
-     * @return self
-     */
-    public function setSlug($slug)
-    {
-        $this->container['slug'] = $slug;
-
-        return $this;
-    }
-
-    /**
      * Gets thumbnail
      *
      * @return string|null
@@ -382,6 +358,30 @@ class ListBuyerOffersItemItems implements ModelInterface, ArrayAccess, \JsonSeri
     public function setThumbnail($thumbnail)
     {
         $this->container['thumbnail'] = $thumbnail;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

@@ -62,7 +62,7 @@ class ListWorldFriendsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'user_id' => 'string',
         'display_name' => 'string',
-        'room' => '\Crossly\Model\Common\NameSlug',
+        'room' => '\Crossly\Model\Common\NameSlug2',
         'home_slug' => 'string'
     ];
 
@@ -278,7 +278,7 @@ class ListWorldFriendsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets room
      *
-     * @return \Crossly\Model\Common\NameSlug|null
+     * @return \Crossly\Model\Common\NameSlug2|null
      */
     public function getRoom()
     {
@@ -288,7 +288,7 @@ class ListWorldFriendsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets room
      *
-     * @param \Crossly\Model\Common\NameSlug|null $room room
+     * @param \Crossly\Model\Common\NameSlug2|null $room room
      *
      * @return self
      */

@@ -63,8 +63,8 @@ class ListBuyerGiftFinderItem implements ModelInterface, ArrayAccess, \JsonSeria
         'slug' => 'string',
         'price_cents' => 'float',
         'title' => 'string',
-        'sale_price_cents' => 'float',
-        'thumbnail' => 'string'
+        'thumbnail' => 'string',
+        'sale_price_cents' => 'float'
     ];
 
     /**
@@ -78,8 +78,8 @@ class ListBuyerGiftFinderItem implements ModelInterface, ArrayAccess, \JsonSeria
         'slug' => null,
         'price_cents' => null,
         'title' => null,
-        'sale_price_cents' => null,
-        'thumbnail' => null
+        'thumbnail' => null,
+        'sale_price_cents' => null
     ];
 
     /**
@@ -112,8 +112,8 @@ class ListBuyerGiftFinderItem implements ModelInterface, ArrayAccess, \JsonSeria
         'slug' => 'slug',
         'price_cents' => 'priceCents',
         'title' => 'title',
-        'sale_price_cents' => 'salePriceCents',
-        'thumbnail' => 'thumbnail'
+        'thumbnail' => 'thumbnail',
+        'sale_price_cents' => 'salePriceCents'
     ];
 
     /**
@@ -125,8 +125,8 @@ class ListBuyerGiftFinderItem implements ModelInterface, ArrayAccess, \JsonSeria
         'slug' => 'setSlug',
         'price_cents' => 'setPriceCents',
         'title' => 'setTitle',
-        'sale_price_cents' => 'setSalePriceCents',
-        'thumbnail' => 'setThumbnail'
+        'thumbnail' => 'setThumbnail',
+        'sale_price_cents' => 'setSalePriceCents'
     ];
 
     /**
@@ -138,8 +138,8 @@ class ListBuyerGiftFinderItem implements ModelInterface, ArrayAccess, \JsonSeria
         'slug' => 'getSlug',
         'price_cents' => 'getPriceCents',
         'title' => 'getTitle',
-        'sale_price_cents' => 'getSalePriceCents',
-        'thumbnail' => 'getThumbnail'
+        'thumbnail' => 'getThumbnail',
+        'sale_price_cents' => 'getSalePriceCents'
     ];
 
     /**
@@ -202,8 +202,8 @@ class ListBuyerGiftFinderItem implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['slug'] = $data['slug'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
-        $this->container['sale_price_cents'] = $data['sale_price_cents'] ?? null;
         $this->container['thumbnail'] = $data['thumbnail'] ?? null;
+        $this->container['sale_price_cents'] = $data['sale_price_cents'] ?? null;
     }
 
     /**
@@ -309,30 +309,6 @@ class ListBuyerGiftFinderItem implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets sale_price_cents
-     *
-     * @return float|null
-     */
-    public function getSalePriceCents()
-    {
-        return $this->container['sale_price_cents'];
-    }
-
-    /**
-     * Sets sale_price_cents
-     *
-     * @param float|null $sale_price_cents sale_price_cents
-     *
-     * @return self
-     */
-    public function setSalePriceCents($sale_price_cents)
-    {
-        $this->container['sale_price_cents'] = $sale_price_cents;
-
-        return $this;
-    }
-
-    /**
      * Gets thumbnail
      *
      * @return string|null
@@ -352,6 +328,30 @@ class ListBuyerGiftFinderItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setThumbnail($thumbnail)
     {
         $this->container['thumbnail'] = $thumbnail;
+
+        return $this;
+    }
+
+    /**
+     * Gets sale_price_cents
+     *
+     * @return float|null
+     */
+    public function getSalePriceCents()
+    {
+        return $this->container['sale_price_cents'];
+    }
+
+    /**
+     * Sets sale_price_cents
+     *
+     * @param float|null $sale_price_cents sale_price_cents
+     *
+     * @return self
+     */
+    public function setSalePriceCents($sale_price_cents)
+    {
+        $this->container['sale_price_cents'] = $sale_price_cents;
 
         return $this;
     }

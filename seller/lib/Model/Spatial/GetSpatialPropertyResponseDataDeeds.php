@@ -61,6 +61,7 @@ class GetSpatialPropertyResponseDataDeeds implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'plot_id' => 'string',
         'address' => 'string',
         'label' => 'string',
         'price_cents' => 'float',
@@ -81,6 +82,7 @@ class GetSpatialPropertyResponseDataDeeds implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'plot_id' => null,
         'address' => null,
         'label' => null,
         'price_cents' => null,
@@ -120,6 +122,7 @@ class GetSpatialPropertyResponseDataDeeds implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'plot_id' => 'plotId',
         'address' => 'address',
         'label' => 'label',
         'price_cents' => 'priceCents',
@@ -138,6 +141,7 @@ class GetSpatialPropertyResponseDataDeeds implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
+        'plot_id' => 'setPlotId',
         'address' => 'setAddress',
         'label' => 'setLabel',
         'price_cents' => 'setPriceCents',
@@ -156,6 +160,7 @@ class GetSpatialPropertyResponseDataDeeds implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
+        'plot_id' => 'getPlotId',
         'address' => 'getAddress',
         'label' => 'getLabel',
         'price_cents' => 'getPriceCents',
@@ -209,9 +214,9 @@ class GetSpatialPropertyResponseDataDeeds implements ModelInterface, ArrayAccess
     }
 
     const STATUS_ACTIVE = 'active';
-    const STATUS_FORECLOSED = 'foreclosed';
     const STATUS_GRACE = 'grace';
     const STATUS_DELINQUENT = 'delinquent';
+    const STATUS_FORECLOSED = 'foreclosed';
 
     /**
      * Gets allowable values of the enum
@@ -222,9 +227,9 @@ class GetSpatialPropertyResponseDataDeeds implements ModelInterface, ArrayAccess
     {
         return [
             self::STATUS_ACTIVE,
-            self::STATUS_FORECLOSED,
             self::STATUS_GRACE,
             self::STATUS_DELINQUENT,
+            self::STATUS_FORECLOSED,
         ];
     }
 
@@ -244,6 +249,7 @@ class GetSpatialPropertyResponseDataDeeds implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['plot_id'] = $data['plot_id'] ?? null;
         $this->container['address'] = $data['address'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
@@ -266,6 +272,9 @@ class GetSpatialPropertyResponseDataDeeds implements ModelInterface, ArrayAccess
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['plot_id'] === null) {
+            $invalidProperties[] = "'plot_id' can't be null";
         }
         if ($this->container['address'] === null) {
             $invalidProperties[] = "'address' can't be null";
@@ -332,6 +341,30 @@ class GetSpatialPropertyResponseDataDeeds implements ModelInterface, ArrayAccess
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets plot_id
+     *
+     * @return string
+     */
+    public function getPlotId()
+    {
+        return $this->container['plot_id'];
+    }
+
+    /**
+     * Sets plot_id
+     *
+     * @param string $plot_id plot_id
+     *
+     * @return self
+     */
+    public function setPlotId($plot_id)
+    {
+        $this->container['plot_id'] = $plot_id;
 
         return $this;
     }

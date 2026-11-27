@@ -61,11 +61,11 @@ class ListBuyerPartiesItem implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'status' => 'string',
-        'ends_at' => 'string',
         'slug' => 'string',
+        'theme' => 'string',
         'starts_at' => 'string',
-        'theme' => 'string'
+        'ends_at' => 'string',
+        'status' => 'string'
     ];
 
     /**
@@ -77,11 +77,11 @@ class ListBuyerPartiesItem implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'status' => null,
-        'ends_at' => null,
         'slug' => null,
+        'theme' => null,
         'starts_at' => null,
-        'theme' => null
+        'ends_at' => null,
+        'status' => null
     ];
 
     /**
@@ -112,11 +112,11 @@ class ListBuyerPartiesItem implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'status' => 'status',
-        'ends_at' => 'endsAt',
         'slug' => 'slug',
+        'theme' => 'theme',
         'starts_at' => 'startsAt',
-        'theme' => 'theme'
+        'ends_at' => 'endsAt',
+        'status' => 'status'
     ];
 
     /**
@@ -126,11 +126,11 @@ class ListBuyerPartiesItem implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'id' => 'setId',
-        'status' => 'setStatus',
-        'ends_at' => 'setEndsAt',
         'slug' => 'setSlug',
+        'theme' => 'setTheme',
         'starts_at' => 'setStartsAt',
-        'theme' => 'setTheme'
+        'ends_at' => 'setEndsAt',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -140,11 +140,11 @@ class ListBuyerPartiesItem implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'id' => 'getId',
-        'status' => 'getStatus',
-        'ends_at' => 'getEndsAt',
         'slug' => 'getSlug',
+        'theme' => 'getTheme',
         'starts_at' => 'getStartsAt',
-        'theme' => 'getTheme'
+        'ends_at' => 'getEndsAt',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -205,11 +205,11 @@ class ListBuyerPartiesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['ends_at'] = $data['ends_at'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
-        $this->container['starts_at'] = $data['starts_at'] ?? null;
         $this->container['theme'] = $data['theme'] ?? null;
+        $this->container['starts_at'] = $data['starts_at'] ?? null;
+        $this->container['ends_at'] = $data['ends_at'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -224,20 +224,20 @@ class ListBuyerPartiesItem implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['ends_at'] === null) {
-            $invalidProperties[] = "'ends_at' can't be null";
-        }
         if ($this->container['slug'] === null) {
             $invalidProperties[] = "'slug' can't be null";
+        }
+        if ($this->container['theme'] === null) {
+            $invalidProperties[] = "'theme' can't be null";
         }
         if ($this->container['starts_at'] === null) {
             $invalidProperties[] = "'starts_at' can't be null";
         }
-        if ($this->container['theme'] === null) {
-            $invalidProperties[] = "'theme' can't be null";
+        if ($this->container['ends_at'] === null) {
+            $invalidProperties[] = "'ends_at' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         return $invalidProperties;
     }
@@ -279,54 +279,6 @@ class ListBuyerPartiesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets ends_at
-     *
-     * @return string
-     */
-    public function getEndsAt()
-    {
-        return $this->container['ends_at'];
-    }
-
-    /**
-     * Sets ends_at
-     *
-     * @param string $ends_at ends_at
-     *
-     * @return self
-     */
-    public function setEndsAt($ends_at)
-    {
-        $this->container['ends_at'] = $ends_at;
-
-        return $this;
-    }
-
-    /**
      * Gets slug
      *
      * @return string
@@ -346,6 +298,30 @@ class ListBuyerPartiesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setSlug($slug)
     {
         $this->container['slug'] = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets theme
+     *
+     * @return string
+     */
+    public function getTheme()
+    {
+        return $this->container['theme'];
+    }
+
+    /**
+     * Sets theme
+     *
+     * @param string $theme theme
+     *
+     * @return self
+     */
+    public function setTheme($theme)
+    {
+        $this->container['theme'] = $theme;
 
         return $this;
     }
@@ -375,25 +351,49 @@ class ListBuyerPartiesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets theme
+     * Gets ends_at
      *
      * @return string
      */
-    public function getTheme()
+    public function getEndsAt()
     {
-        return $this->container['theme'];
+        return $this->container['ends_at'];
     }
 
     /**
-     * Sets theme
+     * Sets ends_at
      *
-     * @param string $theme theme
+     * @param string $ends_at ends_at
      *
      * @return self
      */
-    public function setTheme($theme)
+    public function setEndsAt($ends_at)
     {
-        $this->container['theme'] = $theme;
+        $this->container['ends_at'] = $ends_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

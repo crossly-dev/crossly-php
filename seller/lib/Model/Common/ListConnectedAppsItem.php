@@ -69,7 +69,8 @@ class ListConnectedAppsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'app_description' => 'string',
         'homepage_url' => 'string',
         'developer_name' => 'string',
-        'developer_email' => 'string'
+        'developer_email' => 'string',
+        'rev_share_bps' => 'float'
     ];
 
     /**
@@ -89,7 +90,8 @@ class ListConnectedAppsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'app_description' => null,
         'homepage_url' => null,
         'developer_name' => null,
-        'developer_email' => null
+        'developer_email' => null,
+        'rev_share_bps' => null
     ];
 
     /**
@@ -128,7 +130,8 @@ class ListConnectedAppsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'app_description' => 'appDescription',
         'homepage_url' => 'homepageUrl',
         'developer_name' => 'developerName',
-        'developer_email' => 'developerEmail'
+        'developer_email' => 'developerEmail',
+        'rev_share_bps' => 'revShareBps'
     ];
 
     /**
@@ -146,7 +149,8 @@ class ListConnectedAppsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'app_description' => 'setAppDescription',
         'homepage_url' => 'setHomepageUrl',
         'developer_name' => 'setDeveloperName',
-        'developer_email' => 'setDeveloperEmail'
+        'developer_email' => 'setDeveloperEmail',
+        'rev_share_bps' => 'setRevShareBps'
     ];
 
     /**
@@ -164,7 +168,8 @@ class ListConnectedAppsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'app_description' => 'getAppDescription',
         'homepage_url' => 'getHomepageUrl',
         'developer_name' => 'getDeveloperName',
-        'developer_email' => 'getDeveloperEmail'
+        'developer_email' => 'getDeveloperEmail',
+        'rev_share_bps' => 'getRevShareBps'
     ];
 
     /**
@@ -234,6 +239,7 @@ class ListConnectedAppsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['homepage_url'] = $data['homepage_url'] ?? null;
         $this->container['developer_name'] = $data['developer_name'] ?? null;
         $this->container['developer_email'] = $data['developer_email'] ?? null;
+        $this->container['rev_share_bps'] = $data['rev_share_bps'] ?? null;
     }
 
     /**
@@ -514,6 +520,30 @@ class ListConnectedAppsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDeveloperEmail($developer_email)
     {
         $this->container['developer_email'] = $developer_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets rev_share_bps
+     *
+     * @return float|null
+     */
+    public function getRevShareBps()
+    {
+        return $this->container['rev_share_bps'];
+    }
+
+    /**
+     * Sets rev_share_bps
+     *
+     * @param float|null $rev_share_bps The share of take-home THIS install agreed to (frozen at consent), not the app's current terms. Null = free.
+     *
+     * @return self
+     */
+    public function setRevShareBps($rev_share_bps)
+    {
+        $this->container['rev_share_bps'] = $rev_share_bps;
 
         return $this;
     }

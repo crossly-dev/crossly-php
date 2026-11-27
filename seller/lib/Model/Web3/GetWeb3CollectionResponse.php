@@ -178,12 +178,12 @@ class GetWeb3CollectionResponse implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    const CHAIN_SOLANA = 'solana';
     const CHAIN_ETHEREUM = 'ethereum';
     const CHAIN_BASE = 'base';
     const CHAIN_POLYGON = 'polygon';
     const CHAIN_ARBITRUM = 'arbitrum';
     const CHAIN_OPTIMISM = 'optimism';
+    const CHAIN_SOLANA = 'solana';
 
     /**
      * Gets allowable values of the enum
@@ -193,12 +193,12 @@ class GetWeb3CollectionResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function getChainAllowableValues()
     {
         return [
-            self::CHAIN_SOLANA,
             self::CHAIN_ETHEREUM,
             self::CHAIN_BASE,
             self::CHAIN_POLYGON,
             self::CHAIN_ARBITRUM,
             self::CHAIN_OPTIMISM,
+            self::CHAIN_SOLANA,
         ];
     }
 

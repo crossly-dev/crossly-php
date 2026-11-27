@@ -263,12 +263,12 @@ class CreateVaultMarketPriceWidgetPreviewResponseView implements ModelInterface,
         return self::$openAPIModelName;
     }
 
-    const KIND_MARK = 'mark';
     const KIND_INDEX = 'index';
+    const KIND_MARK = 'mark';
     const QUALITY_NONE = 'none';
+    const QUALITY_C = 'C';
     const QUALITY_A = 'A';
     const QUALITY_B = 'B';
-    const QUALITY_C = 'C';
     const RANGE__1Y = '1y';
     const RANGE__1M = '1m';
     const RANGE__3M = '3m';
@@ -288,8 +288,8 @@ class CreateVaultMarketPriceWidgetPreviewResponseView implements ModelInterface,
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_MARK,
             self::KIND_INDEX,
+            self::KIND_MARK,
         ];
     }
 
@@ -302,9 +302,9 @@ class CreateVaultMarketPriceWidgetPreviewResponseView implements ModelInterface,
     {
         return [
             self::QUALITY_NONE,
+            self::QUALITY_C,
             self::QUALITY_A,
             self::QUALITY_B,
-            self::QUALITY_C,
         ];
     }
 

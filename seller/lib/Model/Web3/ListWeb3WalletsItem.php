@@ -66,6 +66,7 @@ class ListWeb3WalletsItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'label' => 'string',
         'verified_at' => '\DateTime',
         'last_synced_at' => '\DateTime',
+        'auto_import' => 'bool',
         'created_at' => '\DateTime'
     ];
 
@@ -83,6 +84,7 @@ class ListWeb3WalletsItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'label' => null,
         'verified_at' => 'date-time',
         'last_synced_at' => 'date-time',
+        'auto_import' => null,
         'created_at' => 'date-time'
     ];
 
@@ -119,6 +121,7 @@ class ListWeb3WalletsItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'label' => 'label',
         'verified_at' => 'verifiedAt',
         'last_synced_at' => 'lastSyncedAt',
+        'auto_import' => 'autoImport',
         'created_at' => 'createdAt'
     ];
 
@@ -134,6 +137,7 @@ class ListWeb3WalletsItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'label' => 'setLabel',
         'verified_at' => 'setVerifiedAt',
         'last_synced_at' => 'setLastSyncedAt',
+        'auto_import' => 'setAutoImport',
         'created_at' => 'setCreatedAt'
     ];
 
@@ -149,6 +153,7 @@ class ListWeb3WalletsItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'label' => 'getLabel',
         'verified_at' => 'getVerifiedAt',
         'last_synced_at' => 'getLastSyncedAt',
+        'auto_import' => 'getAutoImport',
         'created_at' => 'getCreatedAt'
     ];
 
@@ -193,8 +198,8 @@ class ListWeb3WalletsItem implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    const FAMILY_EVM = 'evm';
     const FAMILY_SOLANA = 'solana';
+    const FAMILY_EVM = 'evm';
 
     /**
      * Gets allowable values of the enum
@@ -204,8 +209,8 @@ class ListWeb3WalletsItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getFamilyAllowableValues()
     {
         return [
-            self::FAMILY_EVM,
             self::FAMILY_SOLANA,
+            self::FAMILY_EVM,
         ];
     }
 
@@ -230,6 +235,7 @@ class ListWeb3WalletsItem implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['label'] = $data['label'] ?? null;
         $this->container['verified_at'] = $data['verified_at'] ?? null;
         $this->container['last_synced_at'] = $data['last_synced_at'] ?? null;
+        $this->container['auto_import'] = $data['auto_import'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
     }
 
@@ -259,6 +265,9 @@ class ListWeb3WalletsItem implements ModelInterface, ArrayAccess, \JsonSerializa
 
         if ($this->container['address'] === null) {
             $invalidProperties[] = "'address' can't be null";
+        }
+        if ($this->container['auto_import'] === null) {
+            $invalidProperties[] = "'auto_import' can't be null";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
@@ -428,6 +437,30 @@ class ListWeb3WalletsItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setLastSyncedAt($last_synced_at)
     {
         $this->container['last_synced_at'] = $last_synced_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets auto_import
+     *
+     * @return bool
+     */
+    public function getAutoImport()
+    {
+        return $this->container['auto_import'];
+    }
+
+    /**
+     * Sets auto_import
+     *
+     * @param bool $auto_import A sync adds new NFTs to inventory (migration 0740); off, it only refreshes the ones already there.
+     *
+     * @return self
+     */
+    public function setAutoImport($auto_import)
+    {
+        $this->container['auto_import'] = $auto_import;
 
         return $this;
     }

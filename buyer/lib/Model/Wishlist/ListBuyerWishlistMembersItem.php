@@ -60,8 +60,8 @@ class ListBuyerWishlistMembersItem implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
         'user_id' => 'string',
+        'name' => 'string',
         'joined_at' => 'string'
     ];
 
@@ -73,8 +73,8 @@ class ListBuyerWishlistMembersItem implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
         'user_id' => null,
+        'name' => null,
         'joined_at' => null
     ];
 
@@ -105,8 +105,8 @@ class ListBuyerWishlistMembersItem implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
         'user_id' => 'userId',
+        'name' => 'name',
         'joined_at' => 'joinedAt'
     ];
 
@@ -116,8 +116,8 @@ class ListBuyerWishlistMembersItem implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
         'user_id' => 'setUserId',
+        'name' => 'setName',
         'joined_at' => 'setJoinedAt'
     ];
 
@@ -127,8 +127,8 @@ class ListBuyerWishlistMembersItem implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
         'user_id' => 'getUserId',
+        'name' => 'getName',
         'joined_at' => 'getJoinedAt'
     ];
 
@@ -189,8 +189,8 @@ class ListBuyerWishlistMembersItem implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['joined_at'] = $data['joined_at'] ?? null;
     }
 
@@ -203,11 +203,11 @@ class ListBuyerWishlistMembersItem implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['joined_at'] === null) {
             $invalidProperties[] = "'joined_at' can't be null";
@@ -226,30 +226,6 @@ class ListBuyerWishlistMembersItem implements ModelInterface, ArrayAccess, \Json
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
 
     /**
      * Gets user_id
@@ -271,6 +247,30 @@ class ListBuyerWishlistMembersItem implements ModelInterface, ArrayAccess, \Json
     public function setUserId($user_id)
     {
         $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

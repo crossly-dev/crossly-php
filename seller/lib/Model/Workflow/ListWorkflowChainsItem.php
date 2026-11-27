@@ -60,13 +60,15 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'steps' => '\Crossly\Model\Workflow\GetWorkflowChainResponseSteps[]',
         'id' => 'string',
-        'name' => 'string',
-        'created_at' => '\DateTime',
         'user_id' => 'string',
+        'name' => 'string',
+        'trigger_id' => 'string',
+        'trigger_config' => 'array<string,mixed>',
         'is_active' => 'bool',
-        'trigger_id' => 'string'
+        'created_at' => '\DateTime',
+        'workflow_id' => 'string',
+        'steps' => '\Crossly\Model\Workflow\GetWorkflowChainResponseSteps[]'
     ];
 
     /**
@@ -77,13 +79,15 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'steps' => null,
         'id' => null,
-        'name' => null,
-        'created_at' => 'date-time',
         'user_id' => null,
+        'name' => null,
+        'trigger_id' => null,
+        'trigger_config' => null,
         'is_active' => null,
-        'trigger_id' => null
+        'created_at' => 'date-time',
+        'workflow_id' => null,
+        'steps' => null
     ];
 
     /**
@@ -113,13 +117,15 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'steps' => 'steps',
         'id' => 'id',
-        'name' => 'name',
-        'created_at' => 'createdAt',
         'user_id' => 'userId',
+        'name' => 'name',
+        'trigger_id' => 'triggerId',
+        'trigger_config' => 'triggerConfig',
         'is_active' => 'isActive',
-        'trigger_id' => 'triggerId'
+        'created_at' => 'createdAt',
+        'workflow_id' => 'workflowId',
+        'steps' => 'steps'
     ];
 
     /**
@@ -128,13 +134,15 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'steps' => 'setSteps',
         'id' => 'setId',
-        'name' => 'setName',
-        'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
+        'name' => 'setName',
+        'trigger_id' => 'setTriggerId',
+        'trigger_config' => 'setTriggerConfig',
         'is_active' => 'setIsActive',
-        'trigger_id' => 'setTriggerId'
+        'created_at' => 'setCreatedAt',
+        'workflow_id' => 'setWorkflowId',
+        'steps' => 'setSteps'
     ];
 
     /**
@@ -143,13 +151,15 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'steps' => 'getSteps',
         'id' => 'getId',
-        'name' => 'getName',
-        'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
+        'name' => 'getName',
+        'trigger_id' => 'getTriggerId',
+        'trigger_config' => 'getTriggerConfig',
         'is_active' => 'getIsActive',
-        'trigger_id' => 'getTriggerId'
+        'created_at' => 'getCreatedAt',
+        'workflow_id' => 'getWorkflowId',
+        'steps' => 'getSteps'
     ];
 
     /**
@@ -209,13 +219,15 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['steps'] = $data['steps'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
-        $this->container['is_active'] = $data['is_active'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['trigger_id'] = $data['trigger_id'] ?? null;
+        $this->container['trigger_config'] = $data['trigger_config'] ?? null;
+        $this->container['is_active'] = $data['is_active'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['workflow_id'] = $data['workflow_id'] ?? null;
+        $this->container['steps'] = $data['steps'] ?? null;
     }
 
     /**
@@ -227,26 +239,32 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['steps'] === null) {
-            $invalidProperties[] = "'steps' can't be null";
-        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
         }
-        if ($this->container['is_active'] === null) {
-            $invalidProperties[] = "'is_active' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['trigger_id'] === null) {
             $invalidProperties[] = "'trigger_id' can't be null";
+        }
+        if ($this->container['trigger_config'] === null) {
+            $invalidProperties[] = "'trigger_config' can't be null";
+        }
+        if ($this->container['is_active'] === null) {
+            $invalidProperties[] = "'is_active' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['workflow_id'] === null) {
+            $invalidProperties[] = "'workflow_id' can't be null";
+        }
+        if ($this->container['steps'] === null) {
+            $invalidProperties[] = "'steps' can't be null";
         }
         return $invalidProperties;
     }
@@ -262,30 +280,6 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets steps
-     *
-     * @return \Crossly\Model\Workflow\GetWorkflowChainResponseSteps[]
-     */
-    public function getSteps()
-    {
-        return $this->container['steps'];
-    }
-
-    /**
-     * Sets steps
-     *
-     * @param \Crossly\Model\Workflow\GetWorkflowChainResponseSteps[] $steps steps
-     *
-     * @return self
-     */
-    public function setSteps($steps)
-    {
-        $this->container['steps'] = $steps;
-
-        return $this;
-    }
 
     /**
      * Gets id
@@ -307,54 +301,6 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -384,25 +330,25 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets is_active
+     * Gets name
      *
-     * @return bool
+     * @return string
      */
-    public function getIsActive()
+    public function getName()
     {
-        return $this->container['is_active'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets is_active
+     * Sets name
      *
-     * @param bool $is_active is_active
+     * @param string $name name
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setName($name)
     {
-        $this->container['is_active'] = $is_active;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -427,6 +373,126 @@ class ListWorkflowChainsItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTriggerId($trigger_id)
     {
         $this->container['trigger_id'] = $trigger_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets trigger_config
+     *
+     * @return array<string,mixed>
+     */
+    public function getTriggerConfig()
+    {
+        return $this->container['trigger_config'];
+    }
+
+    /**
+     * Sets trigger_config
+     *
+     * @param array<string,mixed> $trigger_config trigger_config
+     *
+     * @return self
+     */
+    public function setTriggerConfig($trigger_config)
+    {
+        $this->container['trigger_config'] = $trigger_config;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_active
+     *
+     * @return bool
+     */
+    public function getIsActive()
+    {
+        return $this->container['is_active'];
+    }
+
+    /**
+     * Sets is_active
+     *
+     * @param bool $is_active is_active
+     *
+     * @return self
+     */
+    public function setIsActive($is_active)
+    {
+        $this->container['is_active'] = $is_active;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets workflow_id
+     *
+     * @return string
+     */
+    public function getWorkflowId()
+    {
+        return $this->container['workflow_id'];
+    }
+
+    /**
+     * Sets workflow_id
+     *
+     * @param string $workflow_id workflow_id
+     *
+     * @return self
+     */
+    public function setWorkflowId($workflow_id)
+    {
+        $this->container['workflow_id'] = $workflow_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets steps
+     *
+     * @return \Crossly\Model\Workflow\GetWorkflowChainResponseSteps[]
+     */
+    public function getSteps()
+    {
+        return $this->container['steps'];
+    }
+
+    /**
+     * Sets steps
+     *
+     * @param \Crossly\Model\Workflow\GetWorkflowChainResponseSteps[] $steps steps
+     *
+     * @return self
+     */
+    public function setSteps($steps)
+    {
+        $this->container['steps'] = $steps;
 
         return $this;
     }

@@ -265,14 +265,14 @@ class ListVaultMarketAgentDraftsItem implements ModelInterface, ArrayAccess, \Js
 
     const SIDE_BUY = 'buy';
     const SIDE_SELL = 'sell';
+    const FUNDING_VAULT = 'vault';
     const FUNDING_CARD = 'card';
     const FUNDING_CUSTODIAN = 'custodian';
-    const FUNDING_VAULT = 'vault';
     const STATUS_CANCELLED = 'cancelled';
     const STATUS_EXPIRED = 'expired';
+    const STATUS_DRAFTED = 'drafted';
     const STATUS_REJECTED = 'rejected';
     const STATUS_PLACING = 'placing';
-    const STATUS_DRAFTED = 'drafted';
     const STATUS_PLACED = 'placed';
 
     /**
@@ -296,9 +296,9 @@ class ListVaultMarketAgentDraftsItem implements ModelInterface, ArrayAccess, \Js
     public function getFundingAllowableValues()
     {
         return [
+            self::FUNDING_VAULT,
             self::FUNDING_CARD,
             self::FUNDING_CUSTODIAN,
-            self::FUNDING_VAULT,
         ];
     }
 
@@ -312,9 +312,9 @@ class ListVaultMarketAgentDraftsItem implements ModelInterface, ArrayAccess, \Js
         return [
             self::STATUS_CANCELLED,
             self::STATUS_EXPIRED,
+            self::STATUS_DRAFTED,
             self::STATUS_REJECTED,
             self::STATUS_PLACING,
-            self::STATUS_DRAFTED,
             self::STATUS_PLACED,
         ];
     }

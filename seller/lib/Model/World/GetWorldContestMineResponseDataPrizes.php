@@ -65,11 +65,11 @@ class GetWorldContestMineResponseDataPrizes implements ModelInterface, ArrayAcce
         'created_at' => '\DateTime',
         'user_id' => 'string',
         'status' => 'string',
+        'amount' => 'float',
         'kind' => 'string',
         'note' => 'string',
         'place' => 'float',
-        'contest_id' => 'string',
-        'amount' => 'float'
+        'contest_id' => 'string'
     ];
 
     /**
@@ -85,11 +85,11 @@ class GetWorldContestMineResponseDataPrizes implements ModelInterface, ArrayAcce
         'created_at' => 'date-time',
         'user_id' => null,
         'status' => null,
+        'amount' => null,
         'kind' => null,
         'note' => null,
         'place' => null,
-        'contest_id' => null,
-        'amount' => null
+        'contest_id' => null
     ];
 
     /**
@@ -124,11 +124,11 @@ class GetWorldContestMineResponseDataPrizes implements ModelInterface, ArrayAcce
         'created_at' => 'createdAt',
         'user_id' => 'userId',
         'status' => 'status',
+        'amount' => 'amount',
         'kind' => 'kind',
         'note' => 'note',
         'place' => 'place',
-        'contest_id' => 'contestId',
-        'amount' => 'amount'
+        'contest_id' => 'contestId'
     ];
 
     /**
@@ -142,11 +142,11 @@ class GetWorldContestMineResponseDataPrizes implements ModelInterface, ArrayAcce
         'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
         'status' => 'setStatus',
+        'amount' => 'setAmount',
         'kind' => 'setKind',
         'note' => 'setNote',
         'place' => 'setPlace',
-        'contest_id' => 'setContestId',
-        'amount' => 'setAmount'
+        'contest_id' => 'setContestId'
     ];
 
     /**
@@ -160,11 +160,11 @@ class GetWorldContestMineResponseDataPrizes implements ModelInterface, ArrayAcce
         'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
         'status' => 'getStatus',
+        'amount' => 'getAmount',
         'kind' => 'getKind',
         'note' => 'getNote',
         'place' => 'getPlace',
-        'contest_id' => 'getContestId',
-        'amount' => 'getAmount'
+        'contest_id' => 'getContestId'
     ];
 
     /**
@@ -252,11 +252,11 @@ class GetWorldContestMineResponseDataPrizes implements ModelInterface, ArrayAcce
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
         $this->container['note'] = $data['note'] ?? null;
         $this->container['place'] = $data['place'] ?? null;
         $this->container['contest_id'] = $data['contest_id'] ?? null;
-        $this->container['amount'] = $data['amount'] ?? null;
     }
 
     /**
@@ -289,6 +289,9 @@ class GetWorldContestMineResponseDataPrizes implements ModelInterface, ArrayAcce
             );
         }
 
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
         if ($this->container['kind'] === null) {
             $invalidProperties[] = "'kind' can't be null";
         }
@@ -297,9 +300,6 @@ class GetWorldContestMineResponseDataPrizes implements ModelInterface, ArrayAcce
         }
         if ($this->container['contest_id'] === null) {
             $invalidProperties[] = "'contest_id' can't be null";
-        }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
         }
         return $invalidProperties;
     }
@@ -447,6 +447,30 @@ class GetWorldContestMineResponseDataPrizes implements ModelInterface, ArrayAcce
     }
 
     /**
+     * Gets amount
+     *
+     * @return float
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount
+     *
+     * @param float $amount amount
+     *
+     * @return self
+     */
+    public function setAmount($amount)
+    {
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
      * Gets kind
      *
      * @return string
@@ -538,30 +562,6 @@ class GetWorldContestMineResponseDataPrizes implements ModelInterface, ArrayAcce
     public function setContestId($contest_id)
     {
         $this->container['contest_id'] = $contest_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return float
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param float $amount amount
-     *
-     * @return self
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
 
         return $this;
     }

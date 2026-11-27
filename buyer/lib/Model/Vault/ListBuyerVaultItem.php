@@ -61,20 +61,20 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'condition' => 'string',
-        'grade_key' => 'string',
         'status' => 'string',
-        'received_at' => 'string',
+        'sku_id' => 'string',
+        'sku_name' => 'string',
         'image_url' => 'string',
         'variant_id' => 'string',
+        'variant_label' => 'string',
+        'condition' => 'string',
+        'grade_key' => 'string',
+        'location' => 'string',
         'last_sale_cents' => 'float',
-        'sku_id' => 'string',
+        'ask_price_cents' => 'float',
         'withdraw_speed' => 'string',
         'withdraw_tracking' => 'string',
-        'location' => 'string',
-        'sku_name' => 'string',
-        'variant_label' => 'string',
-        'ask_price_cents' => 'float',
+        'received_at' => 'string',
         'situation' => 'string',
         'early_withdraw_fee_cents' => 'float'
     ];
@@ -88,20 +88,20 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'condition' => null,
-        'grade_key' => null,
         'status' => null,
-        'received_at' => null,
+        'sku_id' => null,
+        'sku_name' => null,
         'image_url' => null,
         'variant_id' => null,
+        'variant_label' => null,
+        'condition' => null,
+        'grade_key' => null,
+        'location' => null,
         'last_sale_cents' => null,
-        'sku_id' => null,
+        'ask_price_cents' => null,
         'withdraw_speed' => null,
         'withdraw_tracking' => null,
-        'location' => null,
-        'sku_name' => null,
-        'variant_label' => null,
-        'ask_price_cents' => null,
+        'received_at' => null,
         'situation' => null,
         'early_withdraw_fee_cents' => null
     ];
@@ -134,20 +134,20 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'condition' => 'condition',
-        'grade_key' => 'gradeKey',
         'status' => 'status',
-        'received_at' => 'receivedAt',
+        'sku_id' => 'skuId',
+        'sku_name' => 'skuName',
         'image_url' => 'imageUrl',
         'variant_id' => 'variantId',
+        'variant_label' => 'variantLabel',
+        'condition' => 'condition',
+        'grade_key' => 'gradeKey',
+        'location' => 'location',
         'last_sale_cents' => 'lastSaleCents',
-        'sku_id' => 'skuId',
+        'ask_price_cents' => 'askPriceCents',
         'withdraw_speed' => 'withdrawSpeed',
         'withdraw_tracking' => 'withdrawTracking',
-        'location' => 'location',
-        'sku_name' => 'skuName',
-        'variant_label' => 'variantLabel',
-        'ask_price_cents' => 'askPriceCents',
+        'received_at' => 'receivedAt',
         'situation' => 'situation',
         'early_withdraw_fee_cents' => 'earlyWithdrawFeeCents'
     ];
@@ -159,20 +159,20 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'id' => 'setId',
-        'condition' => 'setCondition',
-        'grade_key' => 'setGradeKey',
         'status' => 'setStatus',
-        'received_at' => 'setReceivedAt',
+        'sku_id' => 'setSkuId',
+        'sku_name' => 'setSkuName',
         'image_url' => 'setImageUrl',
         'variant_id' => 'setVariantId',
+        'variant_label' => 'setVariantLabel',
+        'condition' => 'setCondition',
+        'grade_key' => 'setGradeKey',
+        'location' => 'setLocation',
         'last_sale_cents' => 'setLastSaleCents',
-        'sku_id' => 'setSkuId',
+        'ask_price_cents' => 'setAskPriceCents',
         'withdraw_speed' => 'setWithdrawSpeed',
         'withdraw_tracking' => 'setWithdrawTracking',
-        'location' => 'setLocation',
-        'sku_name' => 'setSkuName',
-        'variant_label' => 'setVariantLabel',
-        'ask_price_cents' => 'setAskPriceCents',
+        'received_at' => 'setReceivedAt',
         'situation' => 'setSituation',
         'early_withdraw_fee_cents' => 'setEarlyWithdrawFeeCents'
     ];
@@ -184,20 +184,20 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'id' => 'getId',
-        'condition' => 'getCondition',
-        'grade_key' => 'getGradeKey',
         'status' => 'getStatus',
-        'received_at' => 'getReceivedAt',
+        'sku_id' => 'getSkuId',
+        'sku_name' => 'getSkuName',
         'image_url' => 'getImageUrl',
         'variant_id' => 'getVariantId',
+        'variant_label' => 'getVariantLabel',
+        'condition' => 'getCondition',
+        'grade_key' => 'getGradeKey',
+        'location' => 'getLocation',
         'last_sale_cents' => 'getLastSaleCents',
-        'sku_id' => 'getSkuId',
+        'ask_price_cents' => 'getAskPriceCents',
         'withdraw_speed' => 'getWithdrawSpeed',
         'withdraw_tracking' => 'getWithdrawTracking',
-        'location' => 'getLocation',
-        'sku_name' => 'getSkuName',
-        'variant_label' => 'getVariantLabel',
-        'ask_price_cents' => 'getAskPriceCents',
+        'received_at' => 'getReceivedAt',
         'situation' => 'getSituation',
         'early_withdraw_fee_cents' => 'getEarlyWithdrawFeeCents'
     ];
@@ -260,20 +260,20 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['condition'] = $data['condition'] ?? null;
-        $this->container['grade_key'] = $data['grade_key'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['received_at'] = $data['received_at'] ?? null;
+        $this->container['sku_id'] = $data['sku_id'] ?? null;
+        $this->container['sku_name'] = $data['sku_name'] ?? null;
         $this->container['image_url'] = $data['image_url'] ?? null;
         $this->container['variant_id'] = $data['variant_id'] ?? null;
+        $this->container['variant_label'] = $data['variant_label'] ?? null;
+        $this->container['condition'] = $data['condition'] ?? null;
+        $this->container['grade_key'] = $data['grade_key'] ?? null;
+        $this->container['location'] = $data['location'] ?? null;
         $this->container['last_sale_cents'] = $data['last_sale_cents'] ?? null;
-        $this->container['sku_id'] = $data['sku_id'] ?? null;
+        $this->container['ask_price_cents'] = $data['ask_price_cents'] ?? null;
         $this->container['withdraw_speed'] = $data['withdraw_speed'] ?? null;
         $this->container['withdraw_tracking'] = $data['withdraw_tracking'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
-        $this->container['sku_name'] = $data['sku_name'] ?? null;
-        $this->container['variant_label'] = $data['variant_label'] ?? null;
-        $this->container['ask_price_cents'] = $data['ask_price_cents'] ?? null;
+        $this->container['received_at'] = $data['received_at'] ?? null;
         $this->container['situation'] = $data['situation'] ?? null;
         $this->container['early_withdraw_fee_cents'] = $data['early_withdraw_fee_cents'] ?? null;
     }
@@ -290,14 +290,14 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['condition'] === null) {
-            $invalidProperties[] = "'condition' can't be null";
-        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
         if ($this->container['sku_id'] === null) {
             $invalidProperties[] = "'sku_id' can't be null";
+        }
+        if ($this->container['condition'] === null) {
+            $invalidProperties[] = "'condition' can't be null";
         }
         return $invalidProperties;
     }
@@ -339,54 +339,6 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets condition
-     *
-     * @return string
-     */
-    public function getCondition()
-    {
-        return $this->container['condition'];
-    }
-
-    /**
-     * Sets condition
-     *
-     * @param string $condition condition
-     *
-     * @return self
-     */
-    public function setCondition($condition)
-    {
-        $this->container['condition'] = $condition;
-
-        return $this;
-    }
-
-    /**
-     * Gets grade_key
-     *
-     * @return string|null
-     */
-    public function getGradeKey()
-    {
-        return $this->container['grade_key'];
-    }
-
-    /**
-     * Sets grade_key
-     *
-     * @param string|null $grade_key grade_key
-     *
-     * @return self
-     */
-    public function setGradeKey($grade_key)
-    {
-        $this->container['grade_key'] = $grade_key;
-
-        return $this;
-    }
-
-    /**
      * Gets status
      *
      * @return string
@@ -411,25 +363,49 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets received_at
+     * Gets sku_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getReceivedAt()
+    public function getSkuId()
     {
-        return $this->container['received_at'];
+        return $this->container['sku_id'];
     }
 
     /**
-     * Sets received_at
+     * Sets sku_id
      *
-     * @param string|null $received_at received_at
+     * @param string $sku_id sku_id
      *
      * @return self
      */
-    public function setReceivedAt($received_at)
+    public function setSkuId($sku_id)
     {
-        $this->container['received_at'] = $received_at;
+        $this->container['sku_id'] = $sku_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_name
+     *
+     * @return string|null
+     */
+    public function getSkuName()
+    {
+        return $this->container['sku_name'];
+    }
+
+    /**
+     * Sets sku_name
+     *
+     * @param string|null $sku_name sku_name
+     *
+     * @return self
+     */
+    public function setSkuName($sku_name)
+    {
+        $this->container['sku_name'] = $sku_name;
 
         return $this;
     }
@@ -483,6 +459,102 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets variant_label
+     *
+     * @return string|null
+     */
+    public function getVariantLabel()
+    {
+        return $this->container['variant_label'];
+    }
+
+    /**
+     * Sets variant_label
+     *
+     * @param string|null $variant_label variant_label
+     *
+     * @return self
+     */
+    public function setVariantLabel($variant_label)
+    {
+        $this->container['variant_label'] = $variant_label;
+
+        return $this;
+    }
+
+    /**
+     * Gets condition
+     *
+     * @return string
+     */
+    public function getCondition()
+    {
+        return $this->container['condition'];
+    }
+
+    /**
+     * Sets condition
+     *
+     * @param string $condition condition
+     *
+     * @return self
+     */
+    public function setCondition($condition)
+    {
+        $this->container['condition'] = $condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets grade_key
+     *
+     * @return string|null
+     */
+    public function getGradeKey()
+    {
+        return $this->container['grade_key'];
+    }
+
+    /**
+     * Sets grade_key
+     *
+     * @param string|null $grade_key grade_key
+     *
+     * @return self
+     */
+    public function setGradeKey($grade_key)
+    {
+        $this->container['grade_key'] = $grade_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets location
+     *
+     * @return string|null
+     */
+    public function getLocation()
+    {
+        return $this->container['location'];
+    }
+
+    /**
+     * Sets location
+     *
+     * @param string|null $location location
+     *
+     * @return self
+     */
+    public function setLocation($location)
+    {
+        $this->container['location'] = $location;
+
+        return $this;
+    }
+
+    /**
      * Gets last_sale_cents
      *
      * @return float|null
@@ -507,25 +579,25 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets sku_id
+     * Gets ask_price_cents
      *
-     * @return string
+     * @return float|null
      */
-    public function getSkuId()
+    public function getAskPriceCents()
     {
-        return $this->container['sku_id'];
+        return $this->container['ask_price_cents'];
     }
 
     /**
-     * Sets sku_id
+     * Sets ask_price_cents
      *
-     * @param string $sku_id sku_id
+     * @param float|null $ask_price_cents ask_price_cents
      *
      * @return self
      */
-    public function setSkuId($sku_id)
+    public function setAskPriceCents($ask_price_cents)
     {
-        $this->container['sku_id'] = $sku_id;
+        $this->container['ask_price_cents'] = $ask_price_cents;
 
         return $this;
     }
@@ -579,97 +651,25 @@ class ListBuyerVaultItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets location
+     * Gets received_at
      *
      * @return string|null
      */
-    public function getLocation()
+    public function getReceivedAt()
     {
-        return $this->container['location'];
+        return $this->container['received_at'];
     }
 
     /**
-     * Sets location
+     * Sets received_at
      *
-     * @param string|null $location location
+     * @param string|null $received_at received_at
      *
      * @return self
      */
-    public function setLocation($location)
+    public function setReceivedAt($received_at)
     {
-        $this->container['location'] = $location;
-
-        return $this;
-    }
-
-    /**
-     * Gets sku_name
-     *
-     * @return string|null
-     */
-    public function getSkuName()
-    {
-        return $this->container['sku_name'];
-    }
-
-    /**
-     * Sets sku_name
-     *
-     * @param string|null $sku_name sku_name
-     *
-     * @return self
-     */
-    public function setSkuName($sku_name)
-    {
-        $this->container['sku_name'] = $sku_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets variant_label
-     *
-     * @return string|null
-     */
-    public function getVariantLabel()
-    {
-        return $this->container['variant_label'];
-    }
-
-    /**
-     * Sets variant_label
-     *
-     * @param string|null $variant_label variant_label
-     *
-     * @return self
-     */
-    public function setVariantLabel($variant_label)
-    {
-        $this->container['variant_label'] = $variant_label;
-
-        return $this;
-    }
-
-    /**
-     * Gets ask_price_cents
-     *
-     * @return float|null
-     */
-    public function getAskPriceCents()
-    {
-        return $this->container['ask_price_cents'];
-    }
-
-    /**
-     * Sets ask_price_cents
-     *
-     * @param float|null $ask_price_cents ask_price_cents
-     *
-     * @return self
-     */
-    public function setAskPriceCents($ask_price_cents)
-    {
-        $this->container['ask_price_cents'] = $ask_price_cents;
+        $this->container['received_at'] = $received_at;
 
         return $this;
     }

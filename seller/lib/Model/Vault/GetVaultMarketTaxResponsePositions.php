@@ -213,8 +213,8 @@ class GetVaultMarketTaxResponsePositions implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-    const TERM_LONG = 'long';
     const TERM_SHORT = 'short';
+    const TERM_LONG = 'long';
 
     /**
      * Gets allowable values of the enum
@@ -224,8 +224,8 @@ class GetVaultMarketTaxResponsePositions implements ModelInterface, ArrayAccess,
     public function getTermAllowableValues()
     {
         return [
-            self::TERM_LONG,
             self::TERM_SHORT,
+            self::TERM_LONG,
         ];
     }
 

@@ -65,10 +65,10 @@ class ListVaultMarketProEventsItem implements ModelInterface, ArrayAccess, \Json
         'quantity' => 'float',
         'order_id' => 'string',
         'kind' => 'string',
-        'seq' => 'float',
-        'detail' => 'array<string,mixed>',
         'price_cents' => 'float',
-        'trade_id' => 'string'
+        'trade_id' => 'string',
+        'detail' => 'array<string,mixed>',
+        'seq' => 'float'
     ];
 
     /**
@@ -84,10 +84,10 @@ class ListVaultMarketProEventsItem implements ModelInterface, ArrayAccess, \Json
         'quantity' => null,
         'order_id' => null,
         'kind' => null,
-        'seq' => null,
-        'detail' => null,
         'price_cents' => null,
-        'trade_id' => null
+        'trade_id' => null,
+        'detail' => null,
+        'seq' => null
     ];
 
     /**
@@ -122,10 +122,10 @@ class ListVaultMarketProEventsItem implements ModelInterface, ArrayAccess, \Json
         'quantity' => 'quantity',
         'order_id' => 'orderId',
         'kind' => 'kind',
-        'seq' => 'seq',
-        'detail' => 'detail',
         'price_cents' => 'priceCents',
-        'trade_id' => 'tradeId'
+        'trade_id' => 'tradeId',
+        'detail' => 'detail',
+        'seq' => 'seq'
     ];
 
     /**
@@ -139,10 +139,10 @@ class ListVaultMarketProEventsItem implements ModelInterface, ArrayAccess, \Json
         'quantity' => 'setQuantity',
         'order_id' => 'setOrderId',
         'kind' => 'setKind',
-        'seq' => 'setSeq',
-        'detail' => 'setDetail',
         'price_cents' => 'setPriceCents',
-        'trade_id' => 'setTradeId'
+        'trade_id' => 'setTradeId',
+        'detail' => 'setDetail',
+        'seq' => 'setSeq'
     ];
 
     /**
@@ -156,10 +156,10 @@ class ListVaultMarketProEventsItem implements ModelInterface, ArrayAccess, \Json
         'quantity' => 'getQuantity',
         'order_id' => 'getOrderId',
         'kind' => 'getKind',
-        'seq' => 'getSeq',
-        'detail' => 'getDetail',
         'price_cents' => 'getPriceCents',
-        'trade_id' => 'getTradeId'
+        'trade_id' => 'getTradeId',
+        'detail' => 'getDetail',
+        'seq' => 'getSeq'
     ];
 
     /**
@@ -224,10 +224,10 @@ class ListVaultMarketProEventsItem implements ModelInterface, ArrayAccess, \Json
         $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['order_id'] = $data['order_id'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
-        $this->container['seq'] = $data['seq'] ?? null;
-        $this->container['detail'] = $data['detail'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['trade_id'] = $data['trade_id'] ?? null;
+        $this->container['detail'] = $data['detail'] ?? null;
+        $this->container['seq'] = $data['seq'] ?? null;
     }
 
     /**
@@ -390,54 +390,6 @@ class ListVaultMarketProEventsItem implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets seq
-     *
-     * @return float
-     */
-    public function getSeq()
-    {
-        return $this->container['seq'];
-    }
-
-    /**
-     * Sets seq
-     *
-     * @param float $seq seq
-     *
-     * @return self
-     */
-    public function setSeq($seq)
-    {
-        $this->container['seq'] = $seq;
-
-        return $this;
-    }
-
-    /**
-     * Gets detail
-     *
-     * @return array<string,mixed>|null
-     */
-    public function getDetail()
-    {
-        return $this->container['detail'];
-    }
-
-    /**
-     * Sets detail
-     *
-     * @param array<string,mixed>|null $detail detail
-     *
-     * @return self
-     */
-    public function setDetail($detail)
-    {
-        $this->container['detail'] = $detail;
-
-        return $this;
-    }
-
-    /**
      * Gets price_cents
      *
      * @return float|null
@@ -481,6 +433,54 @@ class ListVaultMarketProEventsItem implements ModelInterface, ArrayAccess, \Json
     public function setTradeId($trade_id)
     {
         $this->container['trade_id'] = $trade_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets detail
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getDetail()
+    {
+        return $this->container['detail'];
+    }
+
+    /**
+     * Sets detail
+     *
+     * @param array<string,mixed>|null $detail detail
+     *
+     * @return self
+     */
+    public function setDetail($detail)
+    {
+        $this->container['detail'] = $detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets seq
+     *
+     * @return float
+     */
+    public function getSeq()
+    {
+        return $this->container['seq'];
+    }
+
+    /**
+     * Sets seq
+     *
+     * @param float $seq seq
+     *
+     * @return self
+     */
+    public function setSeq($seq)
+    {
+        $this->container['seq'] = $seq;
 
         return $this;
     }

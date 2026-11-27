@@ -60,8 +60,8 @@ class CreateBuyerOrderCancelResponseData implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'refunded' => 'bool',
-        'ok' => 'bool'
+        'ok' => 'bool',
+        'refunded' => 'bool'
     ];
 
     /**
@@ -72,8 +72,8 @@ class CreateBuyerOrderCancelResponseData implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'refunded' => null,
-        'ok' => null
+        'ok' => null,
+        'refunded' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CreateBuyerOrderCancelResponseData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'refunded' => 'refunded',
-        'ok' => 'ok'
+        'ok' => 'ok',
+        'refunded' => 'refunded'
     ];
 
     /**
@@ -113,8 +113,8 @@ class CreateBuyerOrderCancelResponseData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'refunded' => 'setRefunded',
-        'ok' => 'setOk'
+        'ok' => 'setOk',
+        'refunded' => 'setRefunded'
     ];
 
     /**
@@ -123,8 +123,8 @@ class CreateBuyerOrderCancelResponseData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'refunded' => 'getRefunded',
-        'ok' => 'getOk'
+        'ok' => 'getOk',
+        'refunded' => 'getRefunded'
     ];
 
     /**
@@ -184,8 +184,8 @@ class CreateBuyerOrderCancelResponseData implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['refunded'] = $data['refunded'] ?? null;
         $this->container['ok'] = $data['ok'] ?? null;
+        $this->container['refunded'] = $data['refunded'] ?? null;
     }
 
     /**
@@ -197,11 +197,11 @@ class CreateBuyerOrderCancelResponseData implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['refunded'] === null) {
-            $invalidProperties[] = "'refunded' can't be null";
-        }
         if ($this->container['ok'] === null) {
             $invalidProperties[] = "'ok' can't be null";
+        }
+        if ($this->container['refunded'] === null) {
+            $invalidProperties[] = "'refunded' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,30 +217,6 @@ class CreateBuyerOrderCancelResponseData implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets refunded
-     *
-     * @return bool
-     */
-    public function getRefunded()
-    {
-        return $this->container['refunded'];
-    }
-
-    /**
-     * Sets refunded
-     *
-     * @param bool $refunded false only for an order paid entirely with credit, which has no card charge to refund.
-     *
-     * @return self
-     */
-    public function setRefunded($refunded)
-    {
-        $this->container['refunded'] = $refunded;
-
-        return $this;
-    }
 
     /**
      * Gets ok
@@ -262,6 +238,30 @@ class CreateBuyerOrderCancelResponseData implements ModelInterface, ArrayAccess,
     public function setOk($ok)
     {
         $this->container['ok'] = $ok;
+
+        return $this;
+    }
+
+    /**
+     * Gets refunded
+     *
+     * @return bool
+     */
+    public function getRefunded()
+    {
+        return $this->container['refunded'];
+    }
+
+    /**
+     * Sets refunded
+     *
+     * @param bool $refunded false only for an order paid entirely with credit, which has no card charge to refund.
+     *
+     * @return self
+     */
+    public function setRefunded($refunded)
+    {
+        $this->container['refunded'] = $refunded;
 
         return $this;
     }

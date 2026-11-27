@@ -200,6 +200,9 @@ class CreateAutomationRuleRunNowResponse implements ModelInterface, ArrayAccess,
         if ($this->container['success'] === null) {
             $invalidProperties[] = "'success' can't be null";
         }
+        if ($this->container['job_id'] === null) {
+            $invalidProperties[] = "'job_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -242,7 +245,7 @@ class CreateAutomationRuleRunNowResponse implements ModelInterface, ArrayAccess,
     /**
      * Gets job_id
      *
-     * @return string|null
+     * @return string
      */
     public function getJobId()
     {
@@ -252,7 +255,7 @@ class CreateAutomationRuleRunNowResponse implements ModelInterface, ArrayAccess,
     /**
      * Sets job_id
      *
-     * @param string|null $job_id job_id
+     * @param string $job_id job_id
      *
      * @return self
      */

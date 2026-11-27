@@ -61,13 +61,13 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'name' => 'string',
-        'ends_at' => 'string',
         'code' => 'string',
+        'name' => 'string',
+        'is_host' => 'bool',
+        'ends_at' => 'string',
         'members' => '\Crossly\Buyer\Model\Together\GetBuyerTogetherResponseDataMembers[]',
         'items' => '\Crossly\Buyer\Model\Together\GetBuyerTogetherResponseDataItems[]',
-        'messages' => '\Crossly\Buyer\Model\Together\GetBuyerTogetherResponseDataMessages[]',
-        'is_host' => 'bool'
+        'messages' => '\Crossly\Buyer\Model\Together\GetBuyerTogetherResponseDataMessages[]'
     ];
 
     /**
@@ -79,13 +79,13 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'name' => null,
-        'ends_at' => null,
         'code' => null,
+        'name' => null,
+        'is_host' => null,
+        'ends_at' => null,
         'members' => null,
         'items' => null,
-        'messages' => null,
-        'is_host' => null
+        'messages' => null
     ];
 
     /**
@@ -116,13 +116,13 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'name' => 'name',
-        'ends_at' => 'endsAt',
         'code' => 'code',
+        'name' => 'name',
+        'is_host' => 'isHost',
+        'ends_at' => 'endsAt',
         'members' => 'members',
         'items' => 'items',
-        'messages' => 'messages',
-        'is_host' => 'isHost'
+        'messages' => 'messages'
     ];
 
     /**
@@ -132,13 +132,13 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'id' => 'setId',
-        'name' => 'setName',
-        'ends_at' => 'setEndsAt',
         'code' => 'setCode',
+        'name' => 'setName',
+        'is_host' => 'setIsHost',
+        'ends_at' => 'setEndsAt',
         'members' => 'setMembers',
         'items' => 'setItems',
-        'messages' => 'setMessages',
-        'is_host' => 'setIsHost'
+        'messages' => 'setMessages'
     ];
 
     /**
@@ -148,13 +148,13 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'id' => 'getId',
-        'name' => 'getName',
-        'ends_at' => 'getEndsAt',
         'code' => 'getCode',
+        'name' => 'getName',
+        'is_host' => 'getIsHost',
+        'ends_at' => 'getEndsAt',
         'members' => 'getMembers',
         'items' => 'getItems',
-        'messages' => 'getMessages',
-        'is_host' => 'getIsHost'
+        'messages' => 'getMessages'
     ];
 
     /**
@@ -215,13 +215,13 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['ends_at'] = $data['ends_at'] ?? null;
         $this->container['code'] = $data['code'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['is_host'] = $data['is_host'] ?? null;
+        $this->container['ends_at'] = $data['ends_at'] ?? null;
         $this->container['members'] = $data['members'] ?? null;
         $this->container['items'] = $data['items'] ?? null;
         $this->container['messages'] = $data['messages'] ?? null;
-        $this->container['is_host'] = $data['is_host'] ?? null;
     }
 
     /**
@@ -236,14 +236,17 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        if ($this->container['is_host'] === null) {
+            $invalidProperties[] = "'is_host' can't be null";
+        }
         if ($this->container['ends_at'] === null) {
             $invalidProperties[] = "'ends_at' can't be null";
-        }
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
         }
         if ($this->container['members'] === null) {
             $invalidProperties[] = "'members' can't be null";
@@ -253,9 +256,6 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
         }
         if ($this->container['messages'] === null) {
             $invalidProperties[] = "'messages' can't be null";
-        }
-        if ($this->container['is_host'] === null) {
-            $invalidProperties[] = "'is_host' can't be null";
         }
         return $invalidProperties;
     }
@@ -297,6 +297,30 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string $code code
+     *
+     * @return self
+     */
+    public function setCode($code)
+    {
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string
@@ -321,6 +345,30 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets is_host
+     *
+     * @return bool
+     */
+    public function getIsHost()
+    {
+        return $this->container['is_host'];
+    }
+
+    /**
+     * Sets is_host
+     *
+     * @param bool $is_host is_host
+     *
+     * @return self
+     */
+    public function setIsHost($is_host)
+    {
+        $this->container['is_host'] = $is_host;
+
+        return $this;
+    }
+
+    /**
      * Gets ends_at
      *
      * @return string
@@ -340,30 +388,6 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
     public function setEndsAt($ends_at)
     {
         $this->container['ends_at'] = $ends_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        $this->container['code'] = $code;
 
         return $this;
     }
@@ -436,30 +460,6 @@ class GetBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \Json
     public function setMessages($messages)
     {
         $this->container['messages'] = $messages;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_host
-     *
-     * @return bool
-     */
-    public function getIsHost()
-    {
-        return $this->container['is_host'];
-    }
-
-    /**
-     * Sets is_host
-     *
-     * @param bool $is_host is_host
-     *
-     * @return self
-     */
-    public function setIsHost($is_host)
-    {
-        $this->container['is_host'] = $is_host;
 
         return $this;
     }

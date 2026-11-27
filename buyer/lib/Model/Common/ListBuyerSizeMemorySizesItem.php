@@ -183,10 +183,10 @@ class ListBuyerSizeMemorySizesItem implements ModelInterface, ArrayAccess, \Json
     const DOMAIN_DRESSES = 'dresses';
     const DOMAIN_BOTTOMS = 'bottoms';
     const DOMAIN_TOPS = 'tops';
+    const DEPARTMENT_UNISEX = 'unisex';
     const DEPARTMENT_MEN = 'men';
     const DEPARTMENT_WOMEN = 'women';
     const DEPARTMENT_KIDS = 'kids';
-    const DEPARTMENT_UNISEX = 'unisex';
 
     /**
      * Gets allowable values of the enum
@@ -212,10 +212,10 @@ class ListBuyerSizeMemorySizesItem implements ModelInterface, ArrayAccess, \Json
     public function getDepartmentAllowableValues()
     {
         return [
+            self::DEPARTMENT_UNISEX,
             self::DEPARTMENT_MEN,
             self::DEPARTMENT_WOMEN,
             self::DEPARTMENT_KIDS,
-            self::DEPARTMENT_UNISEX,
         ];
     }
 

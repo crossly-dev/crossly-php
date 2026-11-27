@@ -228,11 +228,11 @@ class GetWorldSpaceResponseData implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    const VENUE_STAGE = 'stage';
     const VENUE_GALLERY = 'gallery';
     const VENUE_CARD_CLUB = 'card_club';
     const VENUE_SNEAKER_MEET = 'sneaker_meet';
     const VENUE_VINTAGE_MARKET = 'vintage_market';
-    const VENUE_STAGE = 'stage';
     const VENUE_CLUBHOUSE = 'clubhouse';
 
     /**
@@ -243,11 +243,11 @@ class GetWorldSpaceResponseData implements ModelInterface, ArrayAccess, \JsonSer
     public function getVenueAllowableValues()
     {
         return [
+            self::VENUE_STAGE,
             self::VENUE_GALLERY,
             self::VENUE_CARD_CLUB,
             self::VENUE_SNEAKER_MEET,
             self::VENUE_VINTAGE_MARKET,
-            self::VENUE_STAGE,
             self::VENUE_CLUBHOUSE,
         ];
     }

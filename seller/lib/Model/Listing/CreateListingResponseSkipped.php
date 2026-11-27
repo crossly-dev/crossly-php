@@ -61,7 +61,8 @@ class CreateListingResponseSkipped implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'platform' => 'string',
-        'reason' => 'string'
+        'reason' => 'string',
+        'code' => 'string'
     ];
 
     /**
@@ -73,7 +74,8 @@ class CreateListingResponseSkipped implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'platform' => null,
-        'reason' => null
+        'reason' => null,
+        'code' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class CreateListingResponseSkipped implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'platform' => 'platform',
-        'reason' => 'reason'
+        'reason' => 'reason',
+        'code' => 'code'
     ];
 
     /**
@@ -114,7 +117,8 @@ class CreateListingResponseSkipped implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'platform' => 'setPlatform',
-        'reason' => 'setReason'
+        'reason' => 'setReason',
+        'code' => 'setCode'
     ];
 
     /**
@@ -124,7 +128,8 @@ class CreateListingResponseSkipped implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'platform' => 'getPlatform',
-        'reason' => 'getReason'
+        'reason' => 'getReason',
+        'code' => 'getCode'
     ];
 
     /**
@@ -186,6 +191,7 @@ class CreateListingResponseSkipped implements ModelInterface, ArrayAccess, \Json
     {
         $this->container['platform'] = $data['platform'] ?? null;
         $this->container['reason'] = $data['reason'] ?? null;
+        $this->container['code'] = $data['code'] ?? null;
     }
 
     /**
@@ -262,6 +268,30 @@ class CreateListingResponseSkipped implements ModelInterface, ArrayAccess, \Json
     public function setReason($reason)
     {
         $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return string|null
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string|null $code code
+     *
+     * @return self
+     */
+    public function setCode($code)
+    {
+        $this->container['code'] = $code;
 
         return $this;
     }

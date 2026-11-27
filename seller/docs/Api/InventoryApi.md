@@ -10,7 +10,8 @@ Method | HTTP request | Description
 [**createInventoryBulkArchive()**](InventoryApi.md#createInventoryBulkArchive) | **POST** /v1/inventory/bulk-archive | Bulk archive inventory items (soft).
 [**createInventoryBulkDelete()**](InventoryApi.md#createInventoryBulkDelete) | **POST** /v1/inventory/bulk-delete | Bulk delete inventory items (delinks listings).
 [**createInventoryBulkLabel()**](InventoryApi.md#createInventoryBulkLabel) | **POST** /v1/inventory/bulk-labels | Bulk add/remove labels on inventory items.
-[**createInventoryBulkQuantity()**](InventoryApi.md#createInventoryBulkQuantity) | **POST** /v1/inventory/bulk-quantity | Set / add / subtract stock across many items, syncing live listings.
+[**createInventoryBulkQuantity()**](InventoryApi.md#createInventoryBulkQuantity) | **POST** /v1/inventory/bulk-quantity | Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
+[**createInventoryBulkRestore()**](InventoryApi.md#createInventoryBulkRestore) | **POST** /v1/inventory/bulk-restore | Restore archived inventory items (status returns to active, or sold_out when no stock).
 [**createInventoryCatalogMatchRefresh()**](InventoryApi.md#createInventoryCatalogMatchRefresh) | **POST** /v1/inventory/{id}/catalog-matches/refresh | Run catalog matching for one item now. An identifier (UPC, style code, catalogue number) that resolves to exactly one product links it; otherwise likely products are returned as suggestions to confirm.
 [**createInventoryCsvExport()**](InventoryApi.md#createInventoryCsvExport) | **POST** /v1/inventory/csv/export | Export inventory as CSV. Round-trips back through csv/import.
 [**createInventoryCsvImport()**](InventoryApi.md#createInventoryCsvImport) | **POST** /v1/inventory/csv/import | Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
@@ -34,18 +35,21 @@ Method | HTTP request | Description
 [**createSpatialStreetRequestFound()**](InventoryApi.md#createSpatialStreetRequestFound) | **POST** /v1/spatial/streets/requests/{id}/found | Found an approved street, in CBX.
 [**deleteInventory()**](InventoryApi.md#deleteInventory) | **DELETE** /v1/inventory/{id} | Soft-archive an inventory item.
 [**deleteSpatialStreetPlot()**](InventoryApi.md#deleteSpatialStreetPlot) | **DELETE** /v1/spatial/streets/{slug}/plot | Take your shop off a street.
+[**getAnalyticInventory()**](InventoryApi.md#getAnalyticInventory) | **GET** /v1/analytics/inventory | Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+[**getGameEventSummary()**](InventoryApi.md#getGameEventSummary) | **GET** /v1/games/events/{eventId}/summary | The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+[**getGameHuntBuild()**](InventoryApi.md#getGameHuntBuild) | **GET** /v1/games/hunts/{id}/build | One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
 [**getGameLeaderboard()**](InventoryApi.md#getGameLeaderboard) | **GET** /v1/games/leaderboards | Game leaderboards: for each of Price Guess (wins, then points), scavenger hunts (finished) and speed trades (won), the top ten this week (Monday 00:00 UTC on) under week and of all time under all -- rank, name, named, value and, for Price Guess, score. A name appears only for somebody who chose to be seen by name in Crossly World; everyone else is \&quot;A player\&quot; in their place.
 [**getHome()**](InventoryApi.md#getHome) | **GET** /v1/homes/{slug} | A home by its address, as you may see it: open homes to anybody, friends-only homes to mutual follows, locked homes to their owner. 404 when you may not enter.
 [**getHomeMine()**](InventoryApi.md#getHomeMine) | **GET** /v1/homes/mine | Your Crossly World home: its address, privacy (open / friends / locked), theme, the room, the layout (each piece with what it shows -- things you no longer own are left out at read time) and the guestbook. Made on first read.
 [**getInventory()**](InventoryApi.md#getInventory) | **GET** /v1/inventory/{id} | Get one inventory item with platform listings.
-[**getInventoryAging()**](InventoryApi.md#getInventoryAging) | **GET** /v1/inventory/aging | Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+[**getInventoryAging()**](InventoryApi.md#getInventoryAging) | **GET** /v1/inventory/aging | Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
 [**getInventoryCatalogMatch()**](InventoryApi.md#getInventoryCatalogMatch) | **GET** /v1/inventory/{id}/catalog-matches | One inventory item&#39;s catalog binding (if confirmed) and its pending match suggestions.
 [**getInventoryFacet()**](InventoryApi.md#getInventoryFacet) | **GET** /v1/inventory/facets | Distinct brands + categories across this user&#39;s inventory.
 [**getInventoryLabel()**](InventoryApi.md#getInventoryLabel) | **GET** /v1/inventory/labels | List every distinct label across this user&#39;s inventory.
 [**getInventoryLabelStat()**](InventoryApi.md#getInventoryLabelStat) | **GET** /v1/inventory/labels/stats | List distinct labels with usage counts + colors.
-[**getInventorySellThrough()**](InventoryApi.md#getInventorySellThrough) | **GET** /v1/inventory/sell-through | Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+[**getInventorySellThrough()**](InventoryApi.md#getInventorySellThrough) | **GET** /v1/inventory/sell-through | Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
 [**getInventorySkuExist()**](InventoryApi.md#getInventorySkuExist) | **GET** /v1/inventory/sku-exists | Check whether a SKU is already in use on this user&#39;s inventory.
-[**getInventoryValueHistory()**](InventoryApi.md#getInventoryValueHistory) | **GET** /v1/inventory/value-history | Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+[**getInventoryValueHistory()**](InventoryApi.md#getInventoryValueHistory) | **GET** /v1/inventory/value-history | Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
 [**getMainStage()**](InventoryApi.md#getMainStage) | **GET** /v1/main-stage | The Crossly World Main Stage right now: the live show (title, kind, host lineup), the stream on its big screen while a lineup host is on air, how many people are there (it holds 64 per copy and opens copies as it fills) and what is on next.
 [**getPetMine()**](InventoryApi.md#getPetMine) | **GET** /v1/pets/mine | Your Crossly World pets: every kind (cat, dog, slab bot) with whether you own it, when it was earned and the ways to earn it (a quest or a reputation level -- pets are never sold), plus the pet walking beside you and the one greeting visitors at your shop door.
 [**getReputation()**](InventoryApi.md#getReputation) | **GET** /v1/reputation/{profile} | Somebody&#39;s public reputation levels by their storefront handle: the level on each track and their nameplate badge. 404 for an unknown handle.
@@ -64,12 +68,14 @@ Method | HTTP request | Description
 [**getSpatialStreet()**](InventoryApi.md#getSpatialStreet) | **GET** /v1/spatial/streets/{slug} | A street: every plot and the shop open on each.
 [**getSpatialStreetFounding()**](InventoryApi.md#getSpatialStreetFounding) | **GET** /v1/spatial/streets/founding | What founding a street costs.
 [**getSpatialStreetPlotQuote()**](InventoryApi.md#getSpatialStreetPlotQuote) | **GET** /v1/spatial/streets/{slug}/plots/{number}/quote | What a plot costs.
+[**getWorldPulse()**](InventoryApi.md#getWorldPulse) | **GET** /v1/world/pulse | Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
 [**getWorldRoomFunnel()**](InventoryApi.md#getWorldRoomFunnel) | **GET** /v1/world/rooms/{sceneId}/funnel | Your room&#39;s funnel over the last &#x60;days&#x60; (1-35, default 30): visitors (people, once a day), looks, items opened, checkouts started from the room, paid sales and revenueCents. Sales count only lines the room itself put in a cart.
 [**getWorldShelf()**](InventoryApi.md#getWorldShelf) | **GET** /v1/world/shelf/{listingSlug} | Where a Crossly listing sits on a shelf in a public room right now (roomSlug, roomName, itemId), or data:null when it is in no room.
 [**getWorldSkusCheapest()**](InventoryApi.md#getWorldSkusCheapest) | **GET** /v1/world/skus/{skuId}/cheapest | The cheapest copy of a catalogue piece for sale on Crossly now, matched by the catalogue id (listingSlug, priceCents, and the room and item when it stands on a shelf), or data:null.
 [**listCatalogMatches()**](InventoryApi.md#listCatalogMatches) | **GET** /v1/catalog-matches | Pending catalog-match suggestions: inventory items that look like a catalog product, awaiting your confirm.
 [**listFestivals()**](InventoryApi.md#listFestivals) | **GET** /v1/festivals | Live and upcoming Crossly World festivals, soonest first: a weekend when every street wears one decor and the festival quest line (limited pins) counts. meta.live is the festival on now, if any.
 [**listGameBreakUpcoming()**](InventoryApi.md#listGameBreakUpcoming) | **GET** /v1/games/breaks/upcoming | Pack breaks staged on shop stages in Crossly World, live first then soonest: the break, its shop, start time, spots (taken or not, buyer masked), hits revealed so far, and buyUrl -- the break&#39;s page on crossly.net, the only place a spot is bought (null once every spot has sold).
+[**listGameHuntMine()**](InventoryApi.md#listGameHuntMine) | **GET** /v1/games/hunts/mine | Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
 [**listGameHunts()**](InventoryApi.md#listGameHunts) | **GET** /v1/games/hunts | Scavenger hunts running now in Crossly World shops and pop-up stalls, ending soonest first: title, shop (name and slug -- for a hunt at a stall, the street slug, with stall.bookingId set), how many tokens, what finishing unlocks (\&quot;10% off\&quot; -- never the code), when it ends and how many people have finished. Optional place filters to one shop or street slug.
 [**listGameResultMine()**](InventoryApi.md#listGameResultMine) | **GET** /v1/games/results/mine | Your market-game results, newest first: game (price_guess, price_guess_solo, hunt, speed_trade, break_host), the round/hunt/trade/break id, score, whether you won, Bucks prize in cents (0 while prizes are pins only) and detail. meta.unlocks lists the hunt coupons you earned (with their codes); meta.hits the break hits pulled for spots you bought, with the order each ships with.
 [**listHomeMineBuilders()**](InventoryApi.md#listHomeMineBuilders) | **GET** /v1/homes/mine/builders | Your co-builders: friends you let rearrange your home in the world (move, turn, take out your things, add free furniture; never your bought pieces). Each: userId, name, friends (false once the friendship ended: listed but powerless).
@@ -440,7 +446,9 @@ This endpoint does not need any parameter.
 createInventoryBulkQuantity(): \Crossly\Model\Inventory\CreateInventoryBulkQuantityResponse
 ```
 
-Set / add / subtract stock across many items, syncing live listings.
+Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
+
+Two bodies. {ids, mode: \"set\"|\"increase\"|\"decrease\", value, syncMarketplaces?} applies one value to every id. {mode: \"set\", items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped = ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
 
 ### Example
 
@@ -475,6 +483,60 @@ This endpoint does not need any parameter.
 ### Return type
 
 **\Crossly\Model\Inventory\CreateInventoryBulkQuantityResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createInventoryBulkRestore()`
+
+```php
+createInventoryBulkRestore(): \Crossly\Model\Inventory\CreateInventoryBulkRestoreResponse
+```
+
+Restore archived inventory items (status returns to active, or sold_out when no stock).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\InventoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createInventoryBulkRestore();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InventoryApi->createInventoryBulkRestore: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Model\Inventory\CreateInventoryBulkRestoreResponse**
 
 ### Authorization
 
@@ -656,7 +718,7 @@ This endpoint does not need any parameter.
 ## `createInventoryLabelRename()`
 
 ```php
-createInventoryLabelRename(): \Crossly\Model\Inventory\CreateInventoryLabelRenameResponse
+createInventoryLabelRename(): \Crossly\Model\Common\UpdatedResponse
 ```
 
 Rename a label across every inventory item.
@@ -693,7 +755,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**\Crossly\Model\Inventory\CreateInventoryLabelRenameResponse**
+**\Crossly\Model\Common\UpdatedResponse**
 
 ### Authorization
 
@@ -1056,7 +1118,7 @@ Name | Type | Description  | Notes
 ## `createSpatialPropertyLeaseAccept()`
 
 ```php
-createSpatialPropertyLeaseAccept($id): \Crossly\Model\Spatial\CreateSpatialPropertyLeaseAcceptResponse
+createSpatialPropertyLeaseAccept($id): \Crossly\Model\World\CreateWorldMarketPlotRentResponse
 ```
 
 Take a plot on lease.
@@ -1098,7 +1160,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Model\Spatial\CreateSpatialPropertyLeaseAcceptResponse**
+**\Crossly\Model\World\CreateWorldMarketPlotRentResponse**
 
 ### Authorization
 
@@ -1120,7 +1182,7 @@ createSpatialPropertyLeaseEnd($id): \Crossly\Model\Spatial\CreateSpatialProperty
 
 End a lease (owner or tenant).
 
-The tenant's shop gets a free Main Street address again.
+The tenant's showroom leaves the plot.
 
 ### Example
 
@@ -1817,6 +1879,199 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `getAnalyticInventory()`
+
+```php
+getAnalyticInventory($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $maturity): \Crossly\Model\Analytic\GetAnalyticInventoryResponse
+```
+
+Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\InventoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$range = 'range_example'; // string | Reporting window. Default 30d. custom needs from and to.
+$from = 'from_example'; // string | YYYY-MM-DD, inclusive, in tz. Only with range=custom.
+$to = 'to_example'; // string | YYYY-MM-DD, inclusive, in tz. Only with range=custom.
+$compare = 'compare_example'; // string | Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo).
+$cmp_from = 'cmp_from_example'; // string | YYYY-MM-DD. Only with compare=custom.
+$cmp_to = 'cmp_to_example'; // string | YYYY-MM-DD. Only with compare=custom.
+$labels = 'labels_example'; // string | Comma-separated inventory labels (any of them).
+$platforms = 'platforms_example'; // string | Comma-separated platform ids.
+$category = 'category_example'; // string | Canonical main-category key.
+$brand = 'brand_example'; // string | Brand name.
+$tz = 'tz_example'; // string | IANA time zone for day boundaries. Default UTC. An invalid name is a 400.
+$maturity = 56; // int | Days an item has to sell within to count as sold in the cohort. Default 30.
+
+try {
+    $result = $apiInstance->getAnalyticInventory($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $maturity);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InventoryApi->getAnalyticInventory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **range** | **string**| Reporting window. Default 30d. custom needs from and to. | [optional]
+ **from** | **string**| YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. | [optional]
+ **to** | **string**| YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. | [optional]
+ **compare** | **string**| Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). | [optional]
+ **cmp_from** | **string**| YYYY-MM-DD. Only with compare&#x3D;custom. | [optional]
+ **cmp_to** | **string**| YYYY-MM-DD. Only with compare&#x3D;custom. | [optional]
+ **labels** | **string**| Comma-separated inventory labels (any of them). | [optional]
+ **platforms** | **string**| Comma-separated platform ids. | [optional]
+ **category** | **string**| Canonical main-category key. | [optional]
+ **brand** | **string**| Brand name. | [optional]
+ **tz** | **string**| IANA time zone for day boundaries. Default UTC. An invalid name is a 400. | [optional]
+ **maturity** | **int**| Days an item has to sell within to count as sold in the cohort. Default 30. | [optional]
+
+### Return type
+
+**\Crossly\Model\Analytic\GetAnalyticInventoryResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getGameEventSummary()`
+
+```php
+getGameEventSummary($event_id): \Crossly\Model\Game\GetGameEventSummaryResponse
+```
+
+The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\InventoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$event_id = 'event_id_example'; // string
+
+try {
+    $result = $apiInstance->getGameEventSummary($event_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InventoryApi->getGameEventSummary: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **event_id** | **string**|  |
+
+### Return type
+
+**\Crossly\Model\Game\GetGameEventSummaryResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getGameHuntBuild()`
+
+```php
+getGameHuntBuild($id): \Crossly\Model\Game\GetGameHuntBuildResponse
+```
+
+One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\InventoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getGameHuntBuild($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InventoryApi->getGameHuntBuild: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+
+### Return type
+
+**\Crossly\Model\Game\GetGameHuntBuildResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `getGameLeaderboard()`
 
 ```php
@@ -2045,7 +2300,7 @@ Name | Type | Description  | Notes
 getInventoryAging(): \Crossly\Model\Inventory\GetInventoryAgingResponse
 ```
 
-Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
 
 ### Example
 
@@ -2318,7 +2573,7 @@ This endpoint does not need any parameter.
 getInventorySellThrough(): \Crossly\Model\Inventory\GetInventorySellThroughResponse
 ```
 
-Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
 
 ### Example
 
@@ -2429,7 +2684,7 @@ Name | Type | Description  | Notes
 getInventoryValueHistory(): \Crossly\Model\Inventory\GetInventoryValueHistoryResponse
 ```
 
-Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
 
 ### Example
 
@@ -3507,6 +3762,60 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `getWorldPulse()`
+
+```php
+getWorldPulse(): \Crossly\Model\World\GetWorldPulseResponse
+```
+
+Crossly World's pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world's shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain's mark.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\InventoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getWorldPulse();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InventoryApi->getWorldPulse: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Model\World\GetWorldPulseResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `getWorldRoomFunnel()`
 
 ```php
@@ -3847,6 +4156,60 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `listGameHuntMine()`
+
+```php
+listGameHuntMine(): \Crossly\Model\Game\ListGameHuntMineResponse
+```
+
+Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\InventoryApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listGameHuntMine();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InventoryApi->listGameHuntMine: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Model\Game\ListGameHuntMineResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `listGameHunts()`
 
 ```php
@@ -4069,7 +4432,7 @@ This endpoint does not need any parameter.
 ## `listInventory()`
 
 ```php
-listInventory($page, $limit, $search, $status, $kind, $platforms, $platform_mode): \Crossly\Model\Inventory\ListInventoryResponse
+listInventory($page, $limit, $search, $status, $kind, $platforms, $platform_mode, $sku, $updated_since): \Crossly\Model\Inventory\ListInventoryResponse
 ```
 
 List inventory items.
@@ -4098,9 +4461,11 @@ $status = 'status_example'; // string
 $kind = 'kind_example'; // string | Physical goods or Web3 assets (NFTs). Omit for both.
 $platforms = 'platforms_example'; // string | Comma-separated marketplaces, e.g. \"ebay,vinted\". Items live (an active listing) on any of them.
 $platform_mode = 'platform_mode_example'; // string | \"not_listed\" inverts `platforms`: items live on none of them. Default \"listed\".
+$sku = 'sku_example'; // string | Exact SKU match: look up the row a supplier product maps to.
+$updated_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw.
 
 try {
-    $result = $apiInstance->listInventory($page, $limit, $search, $status, $kind, $platforms, $platform_mode);
+    $result = $apiInstance->listInventory($page, $limit, $search, $status, $kind, $platforms, $platform_mode, $sku, $updated_since);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InventoryApi->listInventory: ', $e->getMessage(), PHP_EOL;
@@ -4118,6 +4483,8 @@ Name | Type | Description  | Notes
  **kind** | **string**| Physical goods or Web3 assets (NFTs). Omit for both. | [optional]
  **platforms** | **string**| Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. | [optional]
  **platform_mode** | **string**| \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. | [optional]
+ **sku** | **string**| Exact SKU match: look up the row a supplier product maps to. | [optional]
+ **updated_since** | **\DateTime**| Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. | [optional]
 
 ### Return type
 

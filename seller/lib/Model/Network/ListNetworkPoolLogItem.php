@@ -62,13 +62,13 @@ class ListNetworkPoolLogItem implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'id' => 'string',
         'platform' => 'string',
-        'rule_id' => 'string',
         'action_type' => 'string',
         'target_user_id' => 'string',
-        'performed_at' => '\DateTime',
+        'rule_id' => 'string',
         'engager_user_id' => 'string',
         'target_listing_id' => 'string',
-        'target_platform_listing_id' => 'string'
+        'target_platform_listing_id' => 'string',
+        'performed_at' => '\DateTime'
     ];
 
     /**
@@ -81,13 +81,13 @@ class ListNetworkPoolLogItem implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPIFormats = [
         'id' => null,
         'platform' => null,
-        'rule_id' => null,
         'action_type' => null,
         'target_user_id' => null,
-        'performed_at' => 'date-time',
+        'rule_id' => null,
         'engager_user_id' => null,
         'target_listing_id' => null,
-        'target_platform_listing_id' => null
+        'target_platform_listing_id' => null,
+        'performed_at' => 'date-time'
     ];
 
     /**
@@ -119,13 +119,13 @@ class ListNetworkPoolLogItem implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $attributeMap = [
         'id' => 'id',
         'platform' => 'platform',
-        'rule_id' => 'ruleId',
         'action_type' => 'actionType',
         'target_user_id' => 'targetUserId',
-        'performed_at' => 'performedAt',
+        'rule_id' => 'ruleId',
         'engager_user_id' => 'engagerUserId',
         'target_listing_id' => 'targetListingId',
-        'target_platform_listing_id' => 'targetPlatformListingId'
+        'target_platform_listing_id' => 'targetPlatformListingId',
+        'performed_at' => 'performedAt'
     ];
 
     /**
@@ -136,13 +136,13 @@ class ListNetworkPoolLogItem implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $setters = [
         'id' => 'setId',
         'platform' => 'setPlatform',
-        'rule_id' => 'setRuleId',
         'action_type' => 'setActionType',
         'target_user_id' => 'setTargetUserId',
-        'performed_at' => 'setPerformedAt',
+        'rule_id' => 'setRuleId',
         'engager_user_id' => 'setEngagerUserId',
         'target_listing_id' => 'setTargetListingId',
-        'target_platform_listing_id' => 'setTargetPlatformListingId'
+        'target_platform_listing_id' => 'setTargetPlatformListingId',
+        'performed_at' => 'setPerformedAt'
     ];
 
     /**
@@ -153,13 +153,13 @@ class ListNetworkPoolLogItem implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $getters = [
         'id' => 'getId',
         'platform' => 'getPlatform',
-        'rule_id' => 'getRuleId',
         'action_type' => 'getActionType',
         'target_user_id' => 'getTargetUserId',
-        'performed_at' => 'getPerformedAt',
+        'rule_id' => 'getRuleId',
         'engager_user_id' => 'getEngagerUserId',
         'target_listing_id' => 'getTargetListingId',
-        'target_platform_listing_id' => 'getTargetPlatformListingId'
+        'target_platform_listing_id' => 'getTargetPlatformListingId',
+        'performed_at' => 'getPerformedAt'
     ];
 
     /**
@@ -221,13 +221,13 @@ class ListNetworkPoolLogItem implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['platform'] = $data['platform'] ?? null;
-        $this->container['rule_id'] = $data['rule_id'] ?? null;
         $this->container['action_type'] = $data['action_type'] ?? null;
         $this->container['target_user_id'] = $data['target_user_id'] ?? null;
-        $this->container['performed_at'] = $data['performed_at'] ?? null;
+        $this->container['rule_id'] = $data['rule_id'] ?? null;
         $this->container['engager_user_id'] = $data['engager_user_id'] ?? null;
         $this->container['target_listing_id'] = $data['target_listing_id'] ?? null;
         $this->container['target_platform_listing_id'] = $data['target_platform_listing_id'] ?? null;
+        $this->container['performed_at'] = $data['performed_at'] ?? null;
     }
 
     /**
@@ -251,11 +251,11 @@ class ListNetworkPoolLogItem implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['target_user_id'] === null) {
             $invalidProperties[] = "'target_user_id' can't be null";
         }
-        if ($this->container['performed_at'] === null) {
-            $invalidProperties[] = "'performed_at' can't be null";
-        }
         if ($this->container['engager_user_id'] === null) {
             $invalidProperties[] = "'engager_user_id' can't be null";
+        }
+        if ($this->container['performed_at'] === null) {
+            $invalidProperties[] = "'performed_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -321,30 +321,6 @@ class ListNetworkPoolLogItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets rule_id
-     *
-     * @return string|null
-     */
-    public function getRuleId()
-    {
-        return $this->container['rule_id'];
-    }
-
-    /**
-     * Sets rule_id
-     *
-     * @param string|null $rule_id rule_id
-     *
-     * @return self
-     */
-    public function setRuleId($rule_id)
-    {
-        $this->container['rule_id'] = $rule_id;
-
-        return $this;
-    }
-
-    /**
      * Gets action_type
      *
      * @return string
@@ -393,25 +369,25 @@ class ListNetworkPoolLogItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets performed_at
+     * Gets rule_id
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getPerformedAt()
+    public function getRuleId()
     {
-        return $this->container['performed_at'];
+        return $this->container['rule_id'];
     }
 
     /**
-     * Sets performed_at
+     * Sets rule_id
      *
-     * @param \DateTime $performed_at performed_at
+     * @param string|null $rule_id rule_id
      *
      * @return self
      */
-    public function setPerformedAt($performed_at)
+    public function setRuleId($rule_id)
     {
-        $this->container['performed_at'] = $performed_at;
+        $this->container['rule_id'] = $rule_id;
 
         return $this;
     }
@@ -484,6 +460,30 @@ class ListNetworkPoolLogItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setTargetPlatformListingId($target_platform_listing_id)
     {
         $this->container['target_platform_listing_id'] = $target_platform_listing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets performed_at
+     *
+     * @return \DateTime
+     */
+    public function getPerformedAt()
+    {
+        return $this->container['performed_at'];
+    }
+
+    /**
+     * Sets performed_at
+     *
+     * @param \DateTime $performed_at performed_at
+     *
+     * @return self
+     */
+    public function setPerformedAt($performed_at)
+    {
+        $this->container['performed_at'] = $performed_at;
 
         return $this;
     }

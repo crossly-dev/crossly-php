@@ -61,6 +61,7 @@ class ListVaultMarketFollowCopyWatchAlertsItem implements ModelInterface, ArrayA
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'by' => '\Crossly\Model\Vault\ListVaultMarketFollowCopyWatchAlertsItemBy',
         'side' => 'string',
         'quantity' => 'float',
         'limit_cents' => 'float',
@@ -84,6 +85,7 @@ class ListVaultMarketFollowCopyWatchAlertsItem implements ModelInterface, ArrayA
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'by' => null,
         'side' => null,
         'quantity' => null,
         'limit_cents' => null,
@@ -126,6 +128,7 @@ class ListVaultMarketFollowCopyWatchAlertsItem implements ModelInterface, ArrayA
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'by' => 'by',
         'side' => 'side',
         'quantity' => 'quantity',
         'limit_cents' => 'limitCents',
@@ -147,6 +150,7 @@ class ListVaultMarketFollowCopyWatchAlertsItem implements ModelInterface, ArrayA
      */
     protected static $setters = [
         'id' => 'setId',
+        'by' => 'setBy',
         'side' => 'setSide',
         'quantity' => 'setQuantity',
         'limit_cents' => 'setLimitCents',
@@ -168,6 +172,7 @@ class ListVaultMarketFollowCopyWatchAlertsItem implements ModelInterface, ArrayA
      */
     protected static $getters = [
         'id' => 'getId',
+        'by' => 'getBy',
         'side' => 'getSide',
         'quantity' => 'getQuantity',
         'limit_cents' => 'getLimitCents',
@@ -255,6 +260,7 @@ class ListVaultMarketFollowCopyWatchAlertsItem implements ModelInterface, ArrayA
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['by'] = $data['by'] ?? null;
         $this->container['side'] = $data['side'] ?? null;
         $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['limit_cents'] = $data['limit_cents'] ?? null;
@@ -280,6 +286,9 @@ class ListVaultMarketFollowCopyWatchAlertsItem implements ModelInterface, ArrayA
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['by'] === null) {
+            $invalidProperties[] = "'by' can't be null";
         }
         if ($this->container['side'] === null) {
             $invalidProperties[] = "'side' can't be null";
@@ -349,6 +358,30 @@ class ListVaultMarketFollowCopyWatchAlertsItem implements ModelInterface, ArrayA
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets by
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketFollowCopyWatchAlertsItemBy
+     */
+    public function getBy()
+    {
+        return $this->container['by'];
+    }
+
+    /**
+     * Sets by
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketFollowCopyWatchAlertsItemBy $by by
+     *
+     * @return self
+     */
+    public function setBy($by)
+    {
+        $this->container['by'] = $by;
 
         return $this;
     }

@@ -60,9 +60,9 @@ class GetBuyerListingSubscribeOfferResponseData implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price_cents' => 'float',
         'discount_bps' => 'float',
         'intervals' => 'float[]',
+        'price_cents' => 'float',
         'subscribe_price_cents' => 'float'
     ];
 
@@ -74,9 +74,9 @@ class GetBuyerListingSubscribeOfferResponseData implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'price_cents' => null,
         'discount_bps' => null,
         'intervals' => null,
+        'price_cents' => null,
         'subscribe_price_cents' => null
     ];
 
@@ -107,9 +107,9 @@ class GetBuyerListingSubscribeOfferResponseData implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'price_cents' => 'priceCents',
         'discount_bps' => 'discountBps',
         'intervals' => 'intervals',
+        'price_cents' => 'priceCents',
         'subscribe_price_cents' => 'subscribePriceCents'
     ];
 
@@ -119,9 +119,9 @@ class GetBuyerListingSubscribeOfferResponseData implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'price_cents' => 'setPriceCents',
         'discount_bps' => 'setDiscountBps',
         'intervals' => 'setIntervals',
+        'price_cents' => 'setPriceCents',
         'subscribe_price_cents' => 'setSubscribePriceCents'
     ];
 
@@ -131,9 +131,9 @@ class GetBuyerListingSubscribeOfferResponseData implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'price_cents' => 'getPriceCents',
         'discount_bps' => 'getDiscountBps',
         'intervals' => 'getIntervals',
+        'price_cents' => 'getPriceCents',
         'subscribe_price_cents' => 'getSubscribePriceCents'
     ];
 
@@ -194,9 +194,9 @@ class GetBuyerListingSubscribeOfferResponseData implements ModelInterface, Array
      */
     public function __construct(array $data = null)
     {
-        $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['discount_bps'] = $data['discount_bps'] ?? null;
         $this->container['intervals'] = $data['intervals'] ?? null;
+        $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['subscribe_price_cents'] = $data['subscribe_price_cents'] ?? null;
     }
 
@@ -209,14 +209,14 @@ class GetBuyerListingSubscribeOfferResponseData implements ModelInterface, Array
     {
         $invalidProperties = [];
 
-        if ($this->container['price_cents'] === null) {
-            $invalidProperties[] = "'price_cents' can't be null";
-        }
         if ($this->container['discount_bps'] === null) {
             $invalidProperties[] = "'discount_bps' can't be null";
         }
         if ($this->container['intervals'] === null) {
             $invalidProperties[] = "'intervals' can't be null";
+        }
+        if ($this->container['price_cents'] === null) {
+            $invalidProperties[] = "'price_cents' can't be null";
         }
         if ($this->container['subscribe_price_cents'] === null) {
             $invalidProperties[] = "'subscribe_price_cents' can't be null";
@@ -235,30 +235,6 @@ class GetBuyerListingSubscribeOfferResponseData implements ModelInterface, Array
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets price_cents
-     *
-     * @return float
-     */
-    public function getPriceCents()
-    {
-        return $this->container['price_cents'];
-    }
-
-    /**
-     * Sets price_cents
-     *
-     * @param float $price_cents price_cents
-     *
-     * @return self
-     */
-    public function setPriceCents($price_cents)
-    {
-        $this->container['price_cents'] = $price_cents;
-
-        return $this;
-    }
 
     /**
      * Gets discount_bps
@@ -304,6 +280,30 @@ class GetBuyerListingSubscribeOfferResponseData implements ModelInterface, Array
     public function setIntervals($intervals)
     {
         $this->container['intervals'] = $intervals;
+
+        return $this;
+    }
+
+    /**
+     * Gets price_cents
+     *
+     * @return float
+     */
+    public function getPriceCents()
+    {
+        return $this->container['price_cents'];
+    }
+
+    /**
+     * Sets price_cents
+     *
+     * @param float $price_cents price_cents
+     *
+     * @return self
+     */
+    public function setPriceCents($price_cents)
+    {
+        $this->container['price_cents'] = $price_cents;
 
         return $this;
     }

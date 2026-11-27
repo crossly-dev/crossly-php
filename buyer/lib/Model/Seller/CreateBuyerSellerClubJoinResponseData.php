@@ -60,11 +60,11 @@ class CreateBuyerSellerClubJoinResponseData implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
+        'seller_user_id' => 'string',
         'name' => 'string',
         'description' => 'string',
-        'seller_user_id' => 'string',
-        'member' => '\Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataMember',
-        'tiers' => '\Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataTiers[]'
+        'tiers' => '\Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataTiers[]',
+        'member' => '\Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataMember'
     ];
 
     /**
@@ -75,11 +75,11 @@ class CreateBuyerSellerClubJoinResponseData implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'seller_user_id' => null,
         'name' => null,
         'description' => null,
-        'seller_user_id' => null,
-        'member' => null,
-        'tiers' => null
+        'tiers' => null,
+        'member' => null
     ];
 
     /**
@@ -109,11 +109,11 @@ class CreateBuyerSellerClubJoinResponseData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
+        'seller_user_id' => 'sellerUserId',
         'name' => 'name',
         'description' => 'description',
-        'seller_user_id' => 'sellerUserId',
-        'member' => 'member',
-        'tiers' => 'tiers'
+        'tiers' => 'tiers',
+        'member' => 'member'
     ];
 
     /**
@@ -122,11 +122,11 @@ class CreateBuyerSellerClubJoinResponseData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
+        'seller_user_id' => 'setSellerUserId',
         'name' => 'setName',
         'description' => 'setDescription',
-        'seller_user_id' => 'setSellerUserId',
-        'member' => 'setMember',
-        'tiers' => 'setTiers'
+        'tiers' => 'setTiers',
+        'member' => 'setMember'
     ];
 
     /**
@@ -135,11 +135,11 @@ class CreateBuyerSellerClubJoinResponseData implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
+        'seller_user_id' => 'getSellerUserId',
         'name' => 'getName',
         'description' => 'getDescription',
-        'seller_user_id' => 'getSellerUserId',
-        'member' => 'getMember',
-        'tiers' => 'getTiers'
+        'tiers' => 'getTiers',
+        'member' => 'getMember'
     ];
 
     /**
@@ -199,11 +199,11 @@ class CreateBuyerSellerClubJoinResponseData implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
+        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
-        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
-        $this->container['member'] = $data['member'] ?? null;
         $this->container['tiers'] = $data['tiers'] ?? null;
+        $this->container['member'] = $data['member'] ?? null;
     }
 
     /**
@@ -215,11 +215,11 @@ class CreateBuyerSellerClubJoinResponseData implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         if ($this->container['seller_user_id'] === null) {
             $invalidProperties[] = "'seller_user_id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['tiers'] === null) {
             $invalidProperties[] = "'tiers' can't be null";
@@ -238,6 +238,30 @@ class CreateBuyerSellerClubJoinResponseData implements ModelInterface, ArrayAcce
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets seller_user_id
+     *
+     * @return string
+     */
+    public function getSellerUserId()
+    {
+        return $this->container['seller_user_id'];
+    }
+
+    /**
+     * Sets seller_user_id
+     *
+     * @param string $seller_user_id seller_user_id
+     *
+     * @return self
+     */
+    public function setSellerUserId($seller_user_id)
+    {
+        $this->container['seller_user_id'] = $seller_user_id;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -288,25 +312,25 @@ class CreateBuyerSellerClubJoinResponseData implements ModelInterface, ArrayAcce
     }
 
     /**
-     * Gets seller_user_id
+     * Gets tiers
      *
-     * @return string
+     * @return \Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataTiers[]
      */
-    public function getSellerUserId()
+    public function getTiers()
     {
-        return $this->container['seller_user_id'];
+        return $this->container['tiers'];
     }
 
     /**
-     * Sets seller_user_id
+     * Sets tiers
      *
-     * @param string $seller_user_id seller_user_id
+     * @param \Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataTiers[] $tiers tiers
      *
      * @return self
      */
-    public function setSellerUserId($seller_user_id)
+    public function setTiers($tiers)
     {
-        $this->container['seller_user_id'] = $seller_user_id;
+        $this->container['tiers'] = $tiers;
 
         return $this;
     }
@@ -331,30 +355,6 @@ class CreateBuyerSellerClubJoinResponseData implements ModelInterface, ArrayAcce
     public function setMember($member)
     {
         $this->container['member'] = $member;
-
-        return $this;
-    }
-
-    /**
-     * Gets tiers
-     *
-     * @return \Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataTiers[]
-     */
-    public function getTiers()
-    {
-        return $this->container['tiers'];
-    }
-
-    /**
-     * Sets tiers
-     *
-     * @param \Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataTiers[] $tiers tiers
-     *
-     * @return self
-     */
-    public function setTiers($tiers)
-    {
-        $this->container['tiers'] = $tiers;
 
         return $this;
     }

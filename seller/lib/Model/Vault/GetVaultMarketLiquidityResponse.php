@@ -228,9 +228,9 @@ class GetVaultMarketLiquidityResponse implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
-    const BUCKET_HIGH = 'high';
     const BUCKET_MID = 'mid';
     const BUCKET_LOW = 'low';
+    const BUCKET_HIGH = 'high';
     const PEER_GROUP_CATEGORY = 'category';
     const PEER_GROUP_ALL = 'all';
 
@@ -242,9 +242,9 @@ class GetVaultMarketLiquidityResponse implements ModelInterface, ArrayAccess, \J
     public function getBucketAllowableValues()
     {
         return [
-            self::BUCKET_HIGH,
             self::BUCKET_MID,
             self::BUCKET_LOW,
+            self::BUCKET_HIGH,
         ];
     }
 

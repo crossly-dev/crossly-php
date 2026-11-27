@@ -61,9 +61,9 @@ class GetBuyerAuctionMeResponseData implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'bidding' => 'bool',
-        'won' => 'bool',
         'my_max_cents' => 'float',
         'leading' => 'bool',
+        'won' => 'bool',
         'needs_payment' => 'bool'
     ];
 
@@ -76,9 +76,9 @@ class GetBuyerAuctionMeResponseData implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPIFormats = [
         'bidding' => null,
-        'won' => null,
         'my_max_cents' => null,
         'leading' => null,
+        'won' => null,
         'needs_payment' => null
     ];
 
@@ -110,9 +110,9 @@ class GetBuyerAuctionMeResponseData implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $attributeMap = [
         'bidding' => 'bidding',
-        'won' => 'won',
         'my_max_cents' => 'myMaxCents',
         'leading' => 'leading',
+        'won' => 'won',
         'needs_payment' => 'needsPayment'
     ];
 
@@ -123,9 +123,9 @@ class GetBuyerAuctionMeResponseData implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $setters = [
         'bidding' => 'setBidding',
-        'won' => 'setWon',
         'my_max_cents' => 'setMyMaxCents',
         'leading' => 'setLeading',
+        'won' => 'setWon',
         'needs_payment' => 'setNeedsPayment'
     ];
 
@@ -136,9 +136,9 @@ class GetBuyerAuctionMeResponseData implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $getters = [
         'bidding' => 'getBidding',
-        'won' => 'getWon',
         'my_max_cents' => 'getMyMaxCents',
         'leading' => 'getLeading',
+        'won' => 'getWon',
         'needs_payment' => 'getNeedsPayment'
     ];
 
@@ -200,9 +200,9 @@ class GetBuyerAuctionMeResponseData implements ModelInterface, ArrayAccess, \Jso
     public function __construct(array $data = null)
     {
         $this->container['bidding'] = $data['bidding'] ?? null;
-        $this->container['won'] = $data['won'] ?? null;
         $this->container['my_max_cents'] = $data['my_max_cents'] ?? null;
         $this->container['leading'] = $data['leading'] ?? null;
+        $this->container['won'] = $data['won'] ?? null;
         $this->container['needs_payment'] = $data['needs_payment'] ?? null;
     }
 
@@ -258,30 +258,6 @@ class GetBuyerAuctionMeResponseData implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets won
-     *
-     * @return bool|null
-     */
-    public function getWon()
-    {
-        return $this->container['won'];
-    }
-
-    /**
-     * Sets won
-     *
-     * @param bool|null $won won
-     *
-     * @return self
-     */
-    public function setWon($won)
-    {
-        $this->container['won'] = $won;
-
-        return $this;
-    }
-
-    /**
      * Gets my_max_cents
      *
      * @return float|null
@@ -325,6 +301,30 @@ class GetBuyerAuctionMeResponseData implements ModelInterface, ArrayAccess, \Jso
     public function setLeading($leading)
     {
         $this->container['leading'] = $leading;
+
+        return $this;
+    }
+
+    /**
+     * Gets won
+     *
+     * @return bool|null
+     */
+    public function getWon()
+    {
+        return $this->container['won'];
+    }
+
+    /**
+     * Sets won
+     *
+     * @param bool|null $won won
+     *
+     * @return self
+     */
+    public function setWon($won)
+    {
+        $this->container['won'] = $won;
 
         return $this;
     }

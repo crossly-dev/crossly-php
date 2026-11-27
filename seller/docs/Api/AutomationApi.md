@@ -30,6 +30,8 @@ createAutomationRule(): \Crossly\Model\Automation\ListAutomationRulesItem
 
 Create an automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 ```php
@@ -83,6 +85,8 @@ createAutomationRuleImport($activate): \Crossly\Model\Automation\CreateAutomatio
 ```
 
 Import one or more rules from recipe JSON (single or bundle).
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 
@@ -141,6 +145,8 @@ createAutomationRuleRunNow($id): \Crossly\Model\Automation\CreateAutomationRuleR
 
 Fire an automation rule immediately.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 ```php
@@ -193,10 +199,12 @@ Name | Type | Description  | Notes
 ## `createAutomationRuleToggle()`
 
 ```php
-createAutomationRuleToggle($id): \Crossly\Model\Automation\UpdateAutomationRuleResponse
+createAutomationRuleToggle($id): \Crossly\Model\Automation\GetAutomationRuleResponse
 ```
 
 Flip an automation rule between active and inactive.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 
@@ -233,7 +241,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Model\Automation\UpdateAutomationRuleResponse**
+**\Crossly\Model\Automation\GetAutomationRuleResponse**
 
 ### Authorization
 
@@ -254,6 +262,8 @@ createAutomationRuleValidateRecipe(): \Crossly\Model\Automation\CreateAutomation
 ```
 
 Dry-run validate one or more recipes against the live catalog.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 
@@ -423,6 +433,8 @@ deleteAutomationRule($id): \Crossly\Model\Common\OkResponse
 
 Delete an automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 ```php
@@ -534,6 +546,8 @@ getAutomationRule($id): \Crossly\Model\Automation\GetAutomationRuleResponse
 
 Get a single automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 ```php
@@ -591,6 +605,8 @@ getAutomationRuleExport(): \Crossly\Model\Automation\GetAutomationRuleExportResp
 
 Export the user's full rule library as a portable recipe bundle.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 ```php
@@ -644,6 +660,8 @@ getAutomationRuleExportById($id): \Crossly\Model\Automation\GetAutomationRuleExp
 ```
 
 Export a single automation rule as a portable recipe.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 
@@ -702,6 +720,8 @@ listAutomationRules(): \Crossly\Model\Automation\ListAutomationRulesResponse
 
 List automation rules.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 ```php
@@ -755,6 +775,8 @@ listAutomationRuns($rule_id, $chain_id, $limit): \Crossly\Model\Automation\ListA
 ```
 
 Per-fire history for automation rules and workflow chain runs.
+
+Deprecated: use /v1/workflow-runs.
 
 ### Example
 
@@ -866,10 +888,12 @@ This endpoint does not need any parameter.
 ## `updateAutomationRule()`
 
 ```php
-updateAutomationRule($id): \Crossly\Model\Automation\UpdateAutomationRuleResponse
+updateAutomationRule($id): \Crossly\Model\Automation\GetAutomationRuleResponse
 ```
 
 Update an automation rule (full replace).
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 
@@ -906,7 +930,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Model\Automation\UpdateAutomationRuleResponse**
+**\Crossly\Model\Automation\GetAutomationRuleResponse**
 
 ### Authorization
 

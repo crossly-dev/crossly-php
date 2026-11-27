@@ -66,7 +66,7 @@ class GetVaultMarketWidgetMarkResponse implements ModelInterface, ArrayAccess, \
         'image_url' => 'string',
         'condition' => 'string',
         'grade_key' => 'string',
-        'mark' => '\Crossly\Model\Vault\ListVaultMarketFeedItemMark',
+        'mark' => '\Crossly\Model\Vault\ListVaultMarketOpeningItemMark',
         'trades30d' => 'float',
         'insufficient' => 'bool',
         'points' => '\Crossly\Model\Vault\GetVaultMarketWidgetMarkResponsePoints[]',
@@ -434,7 +434,7 @@ class GetVaultMarketWidgetMarkResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets mark
      *
-     * @return \Crossly\Model\Vault\ListVaultMarketFeedItemMark
+     * @return \Crossly\Model\Vault\ListVaultMarketOpeningItemMark
      */
     public function getMark()
     {
@@ -444,7 +444,7 @@ class GetVaultMarketWidgetMarkResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets mark
      *
-     * @param \Crossly\Model\Vault\ListVaultMarketFeedItemMark $mark mark
+     * @param \Crossly\Model\Vault\ListVaultMarketOpeningItemMark $mark mark
      *
      * @return self
      */

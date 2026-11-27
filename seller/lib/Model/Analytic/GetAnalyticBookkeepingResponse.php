@@ -63,7 +63,9 @@ class GetAnalyticBookkeepingResponse implements ModelInterface, ArrayAccess, \Js
         'year' => 'float',
         'monthly_pl' => '\Crossly\Model\Analytic\GetAnalyticBookkeepingResponseMonthlyPL[]',
         'annual_totals' => '\Crossly\Model\Analytic\GetAnalyticBookkeepingResponseAnnualTotals',
-        'platform_breakdown' => '\Crossly\Model\Analytic\GetAnalyticBookkeepingResponsePlatformBreakdown[]'
+        'platform_breakdown' => '\Crossly\Model\Analytic\GetAnalyticBookkeepingResponsePlatformBreakdown[]',
+        'pending_details_count' => 'float',
+        'tz' => 'string'
     ];
 
     /**
@@ -77,7 +79,9 @@ class GetAnalyticBookkeepingResponse implements ModelInterface, ArrayAccess, \Js
         'year' => null,
         'monthly_pl' => null,
         'annual_totals' => null,
-        'platform_breakdown' => null
+        'platform_breakdown' => null,
+        'pending_details_count' => null,
+        'tz' => null
     ];
 
     /**
@@ -110,7 +114,9 @@ class GetAnalyticBookkeepingResponse implements ModelInterface, ArrayAccess, \Js
         'year' => 'year',
         'monthly_pl' => 'monthlyPL',
         'annual_totals' => 'annualTotals',
-        'platform_breakdown' => 'platformBreakdown'
+        'platform_breakdown' => 'platformBreakdown',
+        'pending_details_count' => 'pendingDetailsCount',
+        'tz' => 'tz'
     ];
 
     /**
@@ -122,7 +128,9 @@ class GetAnalyticBookkeepingResponse implements ModelInterface, ArrayAccess, \Js
         'year' => 'setYear',
         'monthly_pl' => 'setMonthlyPl',
         'annual_totals' => 'setAnnualTotals',
-        'platform_breakdown' => 'setPlatformBreakdown'
+        'platform_breakdown' => 'setPlatformBreakdown',
+        'pending_details_count' => 'setPendingDetailsCount',
+        'tz' => 'setTz'
     ];
 
     /**
@@ -134,7 +142,9 @@ class GetAnalyticBookkeepingResponse implements ModelInterface, ArrayAccess, \Js
         'year' => 'getYear',
         'monthly_pl' => 'getMonthlyPl',
         'annual_totals' => 'getAnnualTotals',
-        'platform_breakdown' => 'getPlatformBreakdown'
+        'platform_breakdown' => 'getPlatformBreakdown',
+        'pending_details_count' => 'getPendingDetailsCount',
+        'tz' => 'getTz'
     ];
 
     /**
@@ -198,6 +208,8 @@ class GetAnalyticBookkeepingResponse implements ModelInterface, ArrayAccess, \Js
         $this->container['monthly_pl'] = $data['monthly_pl'] ?? null;
         $this->container['annual_totals'] = $data['annual_totals'] ?? null;
         $this->container['platform_breakdown'] = $data['platform_breakdown'] ?? null;
+        $this->container['pending_details_count'] = $data['pending_details_count'] ?? null;
+        $this->container['tz'] = $data['tz'] ?? null;
     }
 
     /**
@@ -220,6 +232,12 @@ class GetAnalyticBookkeepingResponse implements ModelInterface, ArrayAccess, \Js
         }
         if ($this->container['platform_breakdown'] === null) {
             $invalidProperties[] = "'platform_breakdown' can't be null";
+        }
+        if ($this->container['pending_details_count'] === null) {
+            $invalidProperties[] = "'pending_details_count' can't be null";
+        }
+        if ($this->container['tz'] === null) {
+            $invalidProperties[] = "'tz' can't be null";
         }
         return $invalidProperties;
     }
@@ -328,6 +346,54 @@ class GetAnalyticBookkeepingResponse implements ModelInterface, ArrayAccess, \Js
     public function setPlatformBreakdown($platform_breakdown)
     {
         $this->container['platform_breakdown'] = $platform_breakdown;
+
+        return $this;
+    }
+
+    /**
+     * Gets pending_details_count
+     *
+     * @return float
+     */
+    public function getPendingDetailsCount()
+    {
+        return $this->container['pending_details_count'];
+    }
+
+    /**
+     * Sets pending_details_count
+     *
+     * @param float $pending_details_count Sales of the year whose price and buyer are not known yet: in no line above. \"N sales pending details\".
+     *
+     * @return self
+     */
+    public function setPendingDetailsCount($pending_details_count)
+    {
+        $this->container['pending_details_count'] = $pending_details_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets tz
+     *
+     * @return string
+     */
+    public function getTz()
+    {
+        return $this->container['tz'];
+    }
+
+    /**
+     * Sets tz
+     *
+     * @param string $tz The books timezone the year was cut in.
+     *
+     * @return self
+     */
+    public function setTz($tz)
+    {
+        $this->container['tz'] = $tz;
 
         return $this;
     }

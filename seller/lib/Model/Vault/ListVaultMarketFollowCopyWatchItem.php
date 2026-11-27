@@ -60,6 +60,7 @@ class ListVaultMarketFollowCopyWatchItem implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
+        'person' => '\Crossly\Model\Vault\ListVaultMarketFollowCopyWatchItemPerson',
         'since' => 'string',
         'active' => 'bool'
     ];
@@ -72,6 +73,7 @@ class ListVaultMarketFollowCopyWatchItem implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'person' => null,
         'since' => null,
         'active' => null
     ];
@@ -103,6 +105,7 @@ class ListVaultMarketFollowCopyWatchItem implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
+        'person' => 'person',
         'since' => 'since',
         'active' => 'active'
     ];
@@ -113,6 +116,7 @@ class ListVaultMarketFollowCopyWatchItem implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
+        'person' => 'setPerson',
         'since' => 'setSince',
         'active' => 'setActive'
     ];
@@ -123,6 +127,7 @@ class ListVaultMarketFollowCopyWatchItem implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
+        'person' => 'getPerson',
         'since' => 'getSince',
         'active' => 'getActive'
     ];
@@ -184,6 +189,7 @@ class ListVaultMarketFollowCopyWatchItem implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
+        $this->container['person'] = $data['person'] ?? null;
         $this->container['since'] = $data['since'] ?? null;
         $this->container['active'] = $data['active'] ?? null;
     }
@@ -197,6 +203,9 @@ class ListVaultMarketFollowCopyWatchItem implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['person'] === null) {
+            $invalidProperties[] = "'person' can't be null";
+        }
         if ($this->container['since'] === null) {
             $invalidProperties[] = "'since' can't be null";
         }
@@ -217,6 +226,30 @@ class ListVaultMarketFollowCopyWatchItem implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets person
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketFollowCopyWatchItemPerson
+     */
+    public function getPerson()
+    {
+        return $this->container['person'];
+    }
+
+    /**
+     * Sets person
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketFollowCopyWatchItemPerson $person person
+     *
+     * @return self
+     */
+    public function setPerson($person)
+    {
+        $this->container['person'] = $person;
+
+        return $this;
+    }
 
     /**
      * Gets since

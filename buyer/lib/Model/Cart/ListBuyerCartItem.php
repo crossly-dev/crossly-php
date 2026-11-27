@@ -65,6 +65,7 @@ class ListBuyerCartItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'platform_listing_id' => 'string',
         'quantity' => 'float',
         'unit_price_cents' => 'float',
+        'listing_variant_id' => 'string',
         'slug' => 'string',
         'title' => 'string',
         'listing_status' => 'string'
@@ -83,6 +84,7 @@ class ListBuyerCartItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'platform_listing_id' => null,
         'quantity' => null,
         'unit_price_cents' => null,
+        'listing_variant_id' => null,
         'slug' => null,
         'title' => null,
         'listing_status' => null
@@ -120,6 +122,7 @@ class ListBuyerCartItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'platform_listing_id' => 'platformListingId',
         'quantity' => 'quantity',
         'unit_price_cents' => 'unitPriceCents',
+        'listing_variant_id' => 'listingVariantId',
         'slug' => 'slug',
         'title' => 'title',
         'listing_status' => 'listingStatus'
@@ -136,6 +139,7 @@ class ListBuyerCartItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'platform_listing_id' => 'setPlatformListingId',
         'quantity' => 'setQuantity',
         'unit_price_cents' => 'setUnitPriceCents',
+        'listing_variant_id' => 'setListingVariantId',
         'slug' => 'setSlug',
         'title' => 'setTitle',
         'listing_status' => 'setListingStatus'
@@ -152,6 +156,7 @@ class ListBuyerCartItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'platform_listing_id' => 'getPlatformListingId',
         'quantity' => 'getQuantity',
         'unit_price_cents' => 'getUnitPriceCents',
+        'listing_variant_id' => 'getListingVariantId',
         'slug' => 'getSlug',
         'title' => 'getTitle',
         'listing_status' => 'getListingStatus'
@@ -219,6 +224,7 @@ class ListBuyerCartItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
         $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['unit_price_cents'] = $data['unit_price_cents'] ?? null;
+        $this->container['listing_variant_id'] = $data['listing_variant_id'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['listing_status'] = $data['listing_status'] ?? null;
@@ -379,6 +385,30 @@ class ListBuyerCartItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setUnitPriceCents($unit_price_cents)
     {
         $this->container['unit_price_cents'] = $unit_price_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets listing_variant_id
+     *
+     * @return string|null
+     */
+    public function getListingVariantId()
+    {
+        return $this->container['listing_variant_id'];
+    }
+
+    /**
+     * Sets listing_variant_id
+     *
+     * @param string|null $listing_variant_id listing_variant_id
+     *
+     * @return self
+     */
+    public function setListingVariantId($listing_variant_id)
+    {
+        $this->container['listing_variant_id'] = $listing_variant_id;
 
         return $this;
     }

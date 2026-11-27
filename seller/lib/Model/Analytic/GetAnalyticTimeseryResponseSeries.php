@@ -62,7 +62,9 @@ class GetAnalyticTimeseryResponseSeries implements ModelInterface, ArrayAccess, 
     protected static $openAPITypes = [
         'day' => 'string',
         'sales' => 'float',
-        'revenue' => 'float'
+        'revenue' => 'float',
+        'net_sales_cents' => 'float',
+        'net_profit_cents' => 'float'
     ];
 
     /**
@@ -75,7 +77,9 @@ class GetAnalyticTimeseryResponseSeries implements ModelInterface, ArrayAccess, 
     protected static $openAPIFormats = [
         'day' => null,
         'sales' => null,
-        'revenue' => null
+        'revenue' => null,
+        'net_sales_cents' => null,
+        'net_profit_cents' => null
     ];
 
     /**
@@ -107,7 +111,9 @@ class GetAnalyticTimeseryResponseSeries implements ModelInterface, ArrayAccess, 
     protected static $attributeMap = [
         'day' => 'day',
         'sales' => 'sales',
-        'revenue' => 'revenue'
+        'revenue' => 'revenue',
+        'net_sales_cents' => 'netSalesCents',
+        'net_profit_cents' => 'netProfitCents'
     ];
 
     /**
@@ -118,7 +124,9 @@ class GetAnalyticTimeseryResponseSeries implements ModelInterface, ArrayAccess, 
     protected static $setters = [
         'day' => 'setDay',
         'sales' => 'setSales',
-        'revenue' => 'setRevenue'
+        'revenue' => 'setRevenue',
+        'net_sales_cents' => 'setNetSalesCents',
+        'net_profit_cents' => 'setNetProfitCents'
     ];
 
     /**
@@ -129,7 +137,9 @@ class GetAnalyticTimeseryResponseSeries implements ModelInterface, ArrayAccess, 
     protected static $getters = [
         'day' => 'getDay',
         'sales' => 'getSales',
-        'revenue' => 'getRevenue'
+        'revenue' => 'getRevenue',
+        'net_sales_cents' => 'getNetSalesCents',
+        'net_profit_cents' => 'getNetProfitCents'
     ];
 
     /**
@@ -192,6 +202,8 @@ class GetAnalyticTimeseryResponseSeries implements ModelInterface, ArrayAccess, 
         $this->container['day'] = $data['day'] ?? null;
         $this->container['sales'] = $data['sales'] ?? null;
         $this->container['revenue'] = $data['revenue'] ?? null;
+        $this->container['net_sales_cents'] = $data['net_sales_cents'] ?? null;
+        $this->container['net_profit_cents'] = $data['net_profit_cents'] ?? null;
     }
 
     /**
@@ -211,6 +223,12 @@ class GetAnalyticTimeseryResponseSeries implements ModelInterface, ArrayAccess, 
         }
         if ($this->container['revenue'] === null) {
             $invalidProperties[] = "'revenue' can't be null";
+        }
+        if ($this->container['net_sales_cents'] === null) {
+            $invalidProperties[] = "'net_sales_cents' can't be null";
+        }
+        if ($this->container['net_profit_cents'] === null) {
+            $invalidProperties[] = "'net_profit_cents' can't be null";
         }
         return $invalidProperties;
     }
@@ -295,6 +313,54 @@ class GetAnalyticTimeseryResponseSeries implements ModelInterface, ArrayAccess, 
     public function setRevenue($revenue)
     {
         $this->container['revenue'] = $revenue;
+
+        return $this;
+    }
+
+    /**
+     * Gets net_sales_cents
+     *
+     * @return float
+     */
+    public function getNetSalesCents()
+    {
+        return $this->container['net_sales_cents'];
+    }
+
+    /**
+     * Sets net_sales_cents
+     *
+     * @param float $net_sales_cents net_sales_cents
+     *
+     * @return self
+     */
+    public function setNetSalesCents($net_sales_cents)
+    {
+        $this->container['net_sales_cents'] = $net_sales_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets net_profit_cents
+     *
+     * @return float
+     */
+    public function getNetProfitCents()
+    {
+        return $this->container['net_profit_cents'];
+    }
+
+    /**
+     * Sets net_profit_cents
+     *
+     * @param float $net_profit_cents net_profit_cents
+     *
+     * @return self
+     */
+    public function setNetProfitCents($net_profit_cents)
+    {
+        $this->container['net_profit_cents'] = $net_profit_cents;
 
         return $this;
     }

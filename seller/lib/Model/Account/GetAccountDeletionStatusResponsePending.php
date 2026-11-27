@@ -62,7 +62,11 @@ class GetAccountDeletionStatusResponsePending implements ModelInterface, ArrayAc
     protected static $openAPITypes = [
         'id' => 'string',
         'requested_at' => '\DateTime',
-        'scheduled_for' => '\DateTime'
+        'scheduled_for' => '\DateTime',
+        'paused_at' => '\DateTime',
+        'pause_reason' => 'string',
+        'listing_count' => 'float',
+        'inventory_count' => 'float'
     ];
 
     /**
@@ -75,7 +79,11 @@ class GetAccountDeletionStatusResponsePending implements ModelInterface, ArrayAc
     protected static $openAPIFormats = [
         'id' => null,
         'requested_at' => 'date-time',
-        'scheduled_for' => 'date-time'
+        'scheduled_for' => 'date-time',
+        'paused_at' => 'date-time',
+        'pause_reason' => null,
+        'listing_count' => null,
+        'inventory_count' => null
     ];
 
     /**
@@ -107,7 +115,11 @@ class GetAccountDeletionStatusResponsePending implements ModelInterface, ArrayAc
     protected static $attributeMap = [
         'id' => 'id',
         'requested_at' => 'requestedAt',
-        'scheduled_for' => 'scheduledFor'
+        'scheduled_for' => 'scheduledFor',
+        'paused_at' => 'pausedAt',
+        'pause_reason' => 'pauseReason',
+        'listing_count' => 'listingCount',
+        'inventory_count' => 'inventoryCount'
     ];
 
     /**
@@ -118,7 +130,11 @@ class GetAccountDeletionStatusResponsePending implements ModelInterface, ArrayAc
     protected static $setters = [
         'id' => 'setId',
         'requested_at' => 'setRequestedAt',
-        'scheduled_for' => 'setScheduledFor'
+        'scheduled_for' => 'setScheduledFor',
+        'paused_at' => 'setPausedAt',
+        'pause_reason' => 'setPauseReason',
+        'listing_count' => 'setListingCount',
+        'inventory_count' => 'setInventoryCount'
     ];
 
     /**
@@ -129,7 +145,11 @@ class GetAccountDeletionStatusResponsePending implements ModelInterface, ArrayAc
     protected static $getters = [
         'id' => 'getId',
         'requested_at' => 'getRequestedAt',
-        'scheduled_for' => 'getScheduledFor'
+        'scheduled_for' => 'getScheduledFor',
+        'paused_at' => 'getPausedAt',
+        'pause_reason' => 'getPauseReason',
+        'listing_count' => 'getListingCount',
+        'inventory_count' => 'getInventoryCount'
     ];
 
     /**
@@ -192,6 +212,10 @@ class GetAccountDeletionStatusResponsePending implements ModelInterface, ArrayAc
         $this->container['id'] = $data['id'] ?? null;
         $this->container['requested_at'] = $data['requested_at'] ?? null;
         $this->container['scheduled_for'] = $data['scheduled_for'] ?? null;
+        $this->container['paused_at'] = $data['paused_at'] ?? null;
+        $this->container['pause_reason'] = $data['pause_reason'] ?? null;
+        $this->container['listing_count'] = $data['listing_count'] ?? null;
+        $this->container['inventory_count'] = $data['inventory_count'] ?? null;
     }
 
     /**
@@ -211,6 +235,12 @@ class GetAccountDeletionStatusResponsePending implements ModelInterface, ArrayAc
         }
         if ($this->container['scheduled_for'] === null) {
             $invalidProperties[] = "'scheduled_for' can't be null";
+        }
+        if ($this->container['listing_count'] === null) {
+            $invalidProperties[] = "'listing_count' can't be null";
+        }
+        if ($this->container['inventory_count'] === null) {
+            $invalidProperties[] = "'inventory_count' can't be null";
         }
         return $invalidProperties;
     }
@@ -295,6 +325,102 @@ class GetAccountDeletionStatusResponsePending implements ModelInterface, ArrayAc
     public function setScheduledFor($scheduled_for)
     {
         $this->container['scheduled_for'] = $scheduled_for;
+
+        return $this;
+    }
+
+    /**
+     * Gets paused_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPausedAt()
+    {
+        return $this->container['paused_at'];
+    }
+
+    /**
+     * Sets paused_at
+     *
+     * @param \DateTime|null $paused_at Set when the account was found in use: it waits for a re-confirmation.
+     *
+     * @return self
+     */
+    public function setPausedAt($paused_at)
+    {
+        $this->container['paused_at'] = $paused_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets pause_reason
+     *
+     * @return string|null
+     */
+    public function getPauseReason()
+    {
+        return $this->container['pause_reason'];
+    }
+
+    /**
+     * Sets pause_reason
+     *
+     * @param string|null $pause_reason pause_reason
+     *
+     * @return self
+     */
+    public function setPauseReason($pause_reason)
+    {
+        $this->container['pause_reason'] = $pause_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets listing_count
+     *
+     * @return float
+     */
+    public function getListingCount()
+    {
+        return $this->container['listing_count'];
+    }
+
+    /**
+     * Sets listing_count
+     *
+     * @param float $listing_count What the cascade will take.
+     *
+     * @return self
+     */
+    public function setListingCount($listing_count)
+    {
+        $this->container['listing_count'] = $listing_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets inventory_count
+     *
+     * @return float
+     */
+    public function getInventoryCount()
+    {
+        return $this->container['inventory_count'];
+    }
+
+    /**
+     * Sets inventory_count
+     *
+     * @param float $inventory_count inventory_count
+     *
+     * @return self
+     */
+    public function setInventoryCount($inventory_count)
+    {
+        $this->container['inventory_count'] = $inventory_count;
 
         return $this;
     }

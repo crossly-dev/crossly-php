@@ -65,6 +65,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL implements ModelInterface, ArrayAc
         'cogs' => 'float',
         'platform_fees' => 'float',
         'shipping_costs' => 'float',
+        'other_expenses' => 'float',
         'net_profit' => 'float'
     ];
 
@@ -81,6 +82,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL implements ModelInterface, ArrayAc
         'cogs' => null,
         'platform_fees' => null,
         'shipping_costs' => null,
+        'other_expenses' => null,
         'net_profit' => null
     ];
 
@@ -116,6 +118,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL implements ModelInterface, ArrayAc
         'cogs' => 'cogs',
         'platform_fees' => 'platformFees',
         'shipping_costs' => 'shippingCosts',
+        'other_expenses' => 'otherExpenses',
         'net_profit' => 'netProfit'
     ];
 
@@ -130,6 +133,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL implements ModelInterface, ArrayAc
         'cogs' => 'setCogs',
         'platform_fees' => 'setPlatformFees',
         'shipping_costs' => 'setShippingCosts',
+        'other_expenses' => 'setOtherExpenses',
         'net_profit' => 'setNetProfit'
     ];
 
@@ -144,6 +148,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL implements ModelInterface, ArrayAc
         'cogs' => 'getCogs',
         'platform_fees' => 'getPlatformFees',
         'shipping_costs' => 'getShippingCosts',
+        'other_expenses' => 'getOtherExpenses',
         'net_profit' => 'getNetProfit'
     ];
 
@@ -209,6 +214,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL implements ModelInterface, ArrayAc
         $this->container['cogs'] = $data['cogs'] ?? null;
         $this->container['platform_fees'] = $data['platform_fees'] ?? null;
         $this->container['shipping_costs'] = $data['shipping_costs'] ?? null;
+        $this->container['other_expenses'] = $data['other_expenses'] ?? null;
         $this->container['net_profit'] = $data['net_profit'] ?? null;
     }
 
@@ -235,6 +241,9 @@ class GetAnalyticBookkeepingResponseMonthlyPL implements ModelInterface, ArrayAc
         }
         if ($this->container['shipping_costs'] === null) {
             $invalidProperties[] = "'shipping_costs' can't be null";
+        }
+        if ($this->container['other_expenses'] === null) {
+            $invalidProperties[] = "'other_expenses' can't be null";
         }
         if ($this->container['net_profit'] === null) {
             $invalidProperties[] = "'net_profit' can't be null";
@@ -370,6 +379,30 @@ class GetAnalyticBookkeepingResponseMonthlyPL implements ModelInterface, ArrayAc
     public function setShippingCosts($shipping_costs)
     {
         $this->container['shipping_costs'] = $shipping_costs;
+
+        return $this;
+    }
+
+    /**
+     * Gets other_expenses
+     *
+     * @return float
+     */
+    public function getOtherExpenses()
+    {
+        return $this->container['other_expenses'];
+    }
+
+    /**
+     * Sets other_expenses
+     *
+     * @param float $other_expenses Mileage and manual expenses.
+     *
+     * @return self
+     */
+    public function setOtherExpenses($other_expenses)
+    {
+        $this->container['other_expenses'] = $other_expenses;
 
         return $this;
     }

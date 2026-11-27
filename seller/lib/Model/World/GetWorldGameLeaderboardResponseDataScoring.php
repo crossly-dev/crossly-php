@@ -174,8 +174,8 @@ class GetWorldGameLeaderboardResponseDataScoring implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    const KIND_WINS = 'wins';
     const KIND_POINTS = 'points';
+    const KIND_WINS = 'wins';
     const KIND_TIME = 'time';
     const ORDER_ASC = 'asc';
     const ORDER_DESC = 'desc';
@@ -188,8 +188,8 @@ class GetWorldGameLeaderboardResponseDataScoring implements ModelInterface, Arra
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_WINS,
             self::KIND_POINTS,
+            self::KIND_WINS,
             self::KIND_TIME,
         ];
     }

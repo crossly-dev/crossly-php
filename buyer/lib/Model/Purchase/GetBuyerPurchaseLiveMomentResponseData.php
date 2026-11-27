@@ -60,13 +60,13 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'title' => 'string',
-        'sold_at' => 'string',
-        'seller_user_id' => 'string',
-        'replay_url' => 'string',
         'stream_id' => 'string',
-        'offset_seconds' => 'float'
+        'title' => 'string',
+        'seller_user_id' => 'string',
+        'status' => 'string',
+        'replay_url' => 'string',
+        'offset_seconds' => 'float',
+        'sold_at' => 'string'
     ];
 
     /**
@@ -77,13 +77,13 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'title' => null,
-        'sold_at' => null,
-        'seller_user_id' => null,
-        'replay_url' => null,
         'stream_id' => null,
-        'offset_seconds' => null
+        'title' => null,
+        'seller_user_id' => null,
+        'status' => null,
+        'replay_url' => null,
+        'offset_seconds' => null,
+        'sold_at' => null
     ];
 
     /**
@@ -113,13 +113,13 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'title' => 'title',
-        'sold_at' => 'soldAt',
-        'seller_user_id' => 'sellerUserId',
-        'replay_url' => 'replayUrl',
         'stream_id' => 'streamId',
-        'offset_seconds' => 'offsetSeconds'
+        'title' => 'title',
+        'seller_user_id' => 'sellerUserId',
+        'status' => 'status',
+        'replay_url' => 'replayUrl',
+        'offset_seconds' => 'offsetSeconds',
+        'sold_at' => 'soldAt'
     ];
 
     /**
@@ -128,13 +128,13 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'title' => 'setTitle',
-        'sold_at' => 'setSoldAt',
-        'seller_user_id' => 'setSellerUserId',
-        'replay_url' => 'setReplayUrl',
         'stream_id' => 'setStreamId',
-        'offset_seconds' => 'setOffsetSeconds'
+        'title' => 'setTitle',
+        'seller_user_id' => 'setSellerUserId',
+        'status' => 'setStatus',
+        'replay_url' => 'setReplayUrl',
+        'offset_seconds' => 'setOffsetSeconds',
+        'sold_at' => 'setSoldAt'
     ];
 
     /**
@@ -143,13 +143,13 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'title' => 'getTitle',
-        'sold_at' => 'getSoldAt',
-        'seller_user_id' => 'getSellerUserId',
-        'replay_url' => 'getReplayUrl',
         'stream_id' => 'getStreamId',
-        'offset_seconds' => 'getOffsetSeconds'
+        'title' => 'getTitle',
+        'seller_user_id' => 'getSellerUserId',
+        'status' => 'getStatus',
+        'replay_url' => 'getReplayUrl',
+        'offset_seconds' => 'getOffsetSeconds',
+        'sold_at' => 'getSoldAt'
     ];
 
     /**
@@ -209,13 +209,13 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['sold_at'] = $data['sold_at'] ?? null;
-        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
-        $this->container['replay_url'] = $data['replay_url'] ?? null;
         $this->container['stream_id'] = $data['stream_id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['replay_url'] = $data['replay_url'] ?? null;
         $this->container['offset_seconds'] = $data['offset_seconds'] ?? null;
+        $this->container['sold_at'] = $data['sold_at'] ?? null;
     }
 
     /**
@@ -227,23 +227,23 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['stream_id'] === null) {
+            $invalidProperties[] = "'stream_id' can't be null";
         }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
         }
-        if ($this->container['sold_at'] === null) {
-            $invalidProperties[] = "'sold_at' can't be null";
-        }
         if ($this->container['seller_user_id'] === null) {
             $invalidProperties[] = "'seller_user_id' can't be null";
         }
-        if ($this->container['stream_id'] === null) {
-            $invalidProperties[] = "'stream_id' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         if ($this->container['offset_seconds'] === null) {
             $invalidProperties[] = "'offset_seconds' can't be null";
+        }
+        if ($this->container['sold_at'] === null) {
+            $invalidProperties[] = "'sold_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -261,25 +261,25 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets status
+     * Gets stream_id
      *
      * @return string
      */
-    public function getStatus()
+    public function getStreamId()
     {
-        return $this->container['status'];
+        return $this->container['stream_id'];
     }
 
     /**
-     * Sets status
+     * Sets stream_id
      *
-     * @param string $status status
+     * @param string $stream_id stream_id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setStreamId($stream_id)
     {
-        $this->container['status'] = $status;
+        $this->container['stream_id'] = $stream_id;
 
         return $this;
     }
@@ -309,30 +309,6 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
     }
 
     /**
-     * Gets sold_at
-     *
-     * @return string
-     */
-    public function getSoldAt()
-    {
-        return $this->container['sold_at'];
-    }
-
-    /**
-     * Sets sold_at
-     *
-     * @param string $sold_at sold_at
-     *
-     * @return self
-     */
-    public function setSoldAt($sold_at)
-    {
-        $this->container['sold_at'] = $sold_at;
-
-        return $this;
-    }
-
-    /**
      * Gets seller_user_id
      *
      * @return string
@@ -352,6 +328,30 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
     public function setSellerUserId($seller_user_id)
     {
         $this->container['seller_user_id'] = $seller_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
@@ -381,30 +381,6 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
     }
 
     /**
-     * Gets stream_id
-     *
-     * @return string
-     */
-    public function getStreamId()
-    {
-        return $this->container['stream_id'];
-    }
-
-    /**
-     * Sets stream_id
-     *
-     * @param string $stream_id stream_id
-     *
-     * @return self
-     */
-    public function setStreamId($stream_id)
-    {
-        $this->container['stream_id'] = $stream_id;
-
-        return $this;
-    }
-
-    /**
      * Gets offset_seconds
      *
      * @return float
@@ -424,6 +400,30 @@ class GetBuyerPurchaseLiveMomentResponseData implements ModelInterface, ArrayAcc
     public function setOffsetSeconds($offset_seconds)
     {
         $this->container['offset_seconds'] = $offset_seconds;
+
+        return $this;
+    }
+
+    /**
+     * Gets sold_at
+     *
+     * @return string
+     */
+    public function getSoldAt()
+    {
+        return $this->container['sold_at'];
+    }
+
+    /**
+     * Sets sold_at
+     *
+     * @param string $sold_at sold_at
+     *
+     * @return self
+     */
+    public function setSoldAt($sold_at)
+    {
+        $this->container['sold_at'] = $sold_at;
 
         return $this;
     }

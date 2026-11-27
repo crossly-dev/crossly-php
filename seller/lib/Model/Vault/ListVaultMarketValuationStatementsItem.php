@@ -208,8 +208,8 @@ class ListVaultMarketValuationStatementsItem implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
-    const PURPOSE_INSURANCE = 'insurance';
     const PURPOSE_APPRAISAL = 'appraisal';
+    const PURPOSE_INSURANCE = 'insurance';
 
     /**
      * Gets allowable values of the enum
@@ -219,8 +219,8 @@ class ListVaultMarketValuationStatementsItem implements ModelInterface, ArrayAcc
     public function getPurposeAllowableValues()
     {
         return [
-            self::PURPOSE_INSURANCE,
             self::PURPOSE_APPRAISAL,
+            self::PURPOSE_INSURANCE,
         ];
     }
 

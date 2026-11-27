@@ -174,10 +174,10 @@ class CreateBuyerLockonConfirmResponseHudAction implements ModelInterface, Array
     }
 
     const KIND_NONE = 'none';
-    const KIND_CONFIRM = 'confirm';
     const KIND_SAVE = 'save';
     const KIND_BUY_CROSSLY = 'buy_crossly';
     const KIND_BUY_OFFSITE = 'buy_offsite';
+    const KIND_CONFIRM = 'confirm';
 
     /**
      * Gets allowable values of the enum
@@ -188,10 +188,10 @@ class CreateBuyerLockonConfirmResponseHudAction implements ModelInterface, Array
     {
         return [
             self::KIND_NONE,
-            self::KIND_CONFIRM,
             self::KIND_SAVE,
             self::KIND_BUY_CROSSLY,
             self::KIND_BUY_OFFSITE,
+            self::KIND_CONFIRM,
         ];
     }
 

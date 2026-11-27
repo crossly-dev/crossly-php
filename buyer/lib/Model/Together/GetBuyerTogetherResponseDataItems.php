@@ -61,11 +61,11 @@ class GetBuyerTogetherResponseDataItems implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'available' => 'bool',
-        'title' => 'string',
         'slug' => 'string',
+        'title' => 'string',
         'price_cents' => 'float',
         'image' => 'string',
+        'available' => 'bool',
         'added_by' => 'string',
         'up' => 'float',
         'down' => 'float',
@@ -81,11 +81,11 @@ class GetBuyerTogetherResponseDataItems implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'available' => null,
-        'title' => null,
         'slug' => null,
+        'title' => null,
         'price_cents' => null,
         'image' => null,
+        'available' => null,
         'added_by' => null,
         'up' => null,
         'down' => null,
@@ -120,11 +120,11 @@ class GetBuyerTogetherResponseDataItems implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'available' => 'available',
-        'title' => 'title',
         'slug' => 'slug',
+        'title' => 'title',
         'price_cents' => 'priceCents',
         'image' => 'image',
+        'available' => 'available',
         'added_by' => 'addedBy',
         'up' => 'up',
         'down' => 'down',
@@ -138,11 +138,11 @@ class GetBuyerTogetherResponseDataItems implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'id' => 'setId',
-        'available' => 'setAvailable',
-        'title' => 'setTitle',
         'slug' => 'setSlug',
+        'title' => 'setTitle',
         'price_cents' => 'setPriceCents',
         'image' => 'setImage',
+        'available' => 'setAvailable',
         'added_by' => 'setAddedBy',
         'up' => 'setUp',
         'down' => 'setDown',
@@ -156,11 +156,11 @@ class GetBuyerTogetherResponseDataItems implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'id' => 'getId',
-        'available' => 'getAvailable',
-        'title' => 'getTitle',
         'slug' => 'getSlug',
+        'title' => 'getTitle',
         'price_cents' => 'getPriceCents',
         'image' => 'getImage',
+        'available' => 'getAvailable',
         'added_by' => 'getAddedBy',
         'up' => 'getUp',
         'down' => 'getDown',
@@ -225,11 +225,11 @@ class GetBuyerTogetherResponseDataItems implements ModelInterface, ArrayAccess, 
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['available'] = $data['available'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['image'] = $data['image'] ?? null;
+        $this->container['available'] = $data['available'] ?? null;
         $this->container['added_by'] = $data['added_by'] ?? null;
         $this->container['up'] = $data['up'] ?? null;
         $this->container['down'] = $data['down'] ?? null;
@@ -248,14 +248,14 @@ class GetBuyerTogetherResponseDataItems implements ModelInterface, ArrayAccess, 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['available'] === null) {
-            $invalidProperties[] = "'available' can't be null";
-        }
         if ($this->container['slug'] === null) {
             $invalidProperties[] = "'slug' can't be null";
         }
         if ($this->container['price_cents'] === null) {
             $invalidProperties[] = "'price_cents' can't be null";
+        }
+        if ($this->container['available'] === null) {
+            $invalidProperties[] = "'available' can't be null";
         }
         if ($this->container['added_by'] === null) {
             $invalidProperties[] = "'added_by' can't be null";
@@ -309,25 +309,25 @@ class GetBuyerTogetherResponseDataItems implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets available
+     * Gets slug
      *
-     * @return bool
+     * @return string
      */
-    public function getAvailable()
+    public function getSlug()
     {
-        return $this->container['available'];
+        return $this->container['slug'];
     }
 
     /**
-     * Sets available
+     * Sets slug
      *
-     * @param bool $available available
+     * @param string $slug slug
      *
      * @return self
      */
-    public function setAvailable($available)
+    public function setSlug($slug)
     {
-        $this->container['available'] = $available;
+        $this->container['slug'] = $slug;
 
         return $this;
     }
@@ -352,30 +352,6 @@ class GetBuyerTogetherResponseDataItems implements ModelInterface, ArrayAccess, 
     public function setTitle($title)
     {
         $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->container['slug'];
-    }
-
-    /**
-     * Sets slug
-     *
-     * @param string $slug slug
-     *
-     * @return self
-     */
-    public function setSlug($slug)
-    {
-        $this->container['slug'] = $slug;
 
         return $this;
     }
@@ -424,6 +400,30 @@ class GetBuyerTogetherResponseDataItems implements ModelInterface, ArrayAccess, 
     public function setImage($image)
     {
         $this->container['image'] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Gets available
+     *
+     * @return bool
+     */
+    public function getAvailable()
+    {
+        return $this->container['available'];
+    }
+
+    /**
+     * Sets available
+     *
+     * @param bool $available available
+     *
+     * @return self
+     */
+    public function setAvailable($available)
+    {
+        $this->container['available'] = $available;
 
         return $this;
     }

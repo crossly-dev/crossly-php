@@ -213,8 +213,8 @@ class GetVaultMarketAdvanceQuoteResponseUnit implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
-    const TIER_STANDARD = 'standard';
     const TIER_CLOSED = 'closed';
+    const TIER_STANDARD = 'standard';
     const TIER_DEEP = 'deep';
     const TIER_THIN = 'thin';
 
@@ -226,8 +226,8 @@ class GetVaultMarketAdvanceQuoteResponseUnit implements ModelInterface, ArrayAcc
     public function getTierAllowableValues()
     {
         return [
-            self::TIER_STANDARD,
             self::TIER_CLOSED,
+            self::TIER_STANDARD,
             self::TIER_DEEP,
             self::TIER_THIN,
         ];

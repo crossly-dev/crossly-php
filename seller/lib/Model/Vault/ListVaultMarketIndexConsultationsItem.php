@@ -220,8 +220,8 @@ class ListVaultMarketIndexConsultationsItem implements ModelInterface, ArrayAcce
 
     const STATUS_OPEN = 'open';
     const STATUS_CLOSED = 'closed';
-    const STATUS_ADOPTED = 'adopted';
     const STATUS_WITHDRAWN = 'withdrawn';
+    const STATUS_ADOPTED = 'adopted';
 
     /**
      * Gets allowable values of the enum
@@ -233,8 +233,8 @@ class ListVaultMarketIndexConsultationsItem implements ModelInterface, ArrayAcce
         return [
             self::STATUS_OPEN,
             self::STATUS_CLOSED,
-            self::STATUS_ADOPTED,
             self::STATUS_WITHDRAWN,
+            self::STATUS_ADOPTED,
         ];
     }
 

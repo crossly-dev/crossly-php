@@ -183,18 +183,18 @@ class ListVaultMarketShareCardsItemChange implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const SINCE_FILL = 'fill';
     const SINCE_ENTRY = 'entry';
     const SINCE_COST = 'cost';
+    const SINCE_FILL = 'fill';
     const SINCE_INCEPTION = 'inception';
     const STATE_LIVE = 'live';
     const STATE_OPEN = 'open';
     const STATE_CLOSED = 'closed';
-    const STATE_HELD = 'held';
     const STATE_SOLD = 'sold';
+    const STATE_HELD = 'held';
     const STATE_GONE = 'gone';
-    const SIDE_LONG = 'long';
     const SIDE_SHORT = 'short';
+    const SIDE_LONG = 'long';
     const SIDE_OWN = 'own';
 
     /**
@@ -205,9 +205,9 @@ class ListVaultMarketShareCardsItemChange implements ModelInterface, ArrayAccess
     public function getSinceAllowableValues()
     {
         return [
-            self::SINCE_FILL,
             self::SINCE_ENTRY,
             self::SINCE_COST,
+            self::SINCE_FILL,
             self::SINCE_INCEPTION,
         ];
     }
@@ -223,8 +223,8 @@ class ListVaultMarketShareCardsItemChange implements ModelInterface, ArrayAccess
             self::STATE_LIVE,
             self::STATE_OPEN,
             self::STATE_CLOSED,
-            self::STATE_HELD,
             self::STATE_SOLD,
+            self::STATE_HELD,
             self::STATE_GONE,
         ];
     }
@@ -237,8 +237,8 @@ class ListVaultMarketShareCardsItemChange implements ModelInterface, ArrayAccess
     public function getSideAllowableValues()
     {
         return [
-            self::SIDE_LONG,
             self::SIDE_SHORT,
+            self::SIDE_LONG,
             self::SIDE_OWN,
         ];
     }

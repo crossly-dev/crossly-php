@@ -203,10 +203,10 @@ class ListWorldSpaceWhatsOnItem implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    const PLACE_STAGE = 'stage';
     const PLACE_STREET = 'street';
     const PLACE_FESTIVAL = 'festival';
     const PLACE_SPACE = 'space';
-    const PLACE_STAGE = 'stage';
 
     /**
      * Gets allowable values of the enum
@@ -216,10 +216,10 @@ class ListWorldSpaceWhatsOnItem implements ModelInterface, ArrayAccess, \JsonSer
     public function getPlaceAllowableValues()
     {
         return [
+            self::PLACE_STAGE,
             self::PLACE_STREET,
             self::PLACE_FESTIVAL,
             self::PLACE_SPACE,
-            self::PLACE_STAGE,
         ];
     }
 

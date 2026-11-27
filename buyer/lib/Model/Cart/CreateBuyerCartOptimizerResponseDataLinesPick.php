@@ -60,9 +60,9 @@ class CreateBuyerCartOptimizerResponseDataLinesPick implements ModelInterface, A
       * @var string[]
       */
     protected static $openAPITypes = [
+        'slug' => 'string',
         'title' => 'string',
         'seller_user_id' => 'string',
-        'slug' => 'string',
         'seller_name' => 'string',
         'unit_cents' => 'float',
         'ship_cents' => 'float'
@@ -76,9 +76,9 @@ class CreateBuyerCartOptimizerResponseDataLinesPick implements ModelInterface, A
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'slug' => null,
         'title' => null,
         'seller_user_id' => null,
-        'slug' => null,
         'seller_name' => null,
         'unit_cents' => null,
         'ship_cents' => null
@@ -111,9 +111,9 @@ class CreateBuyerCartOptimizerResponseDataLinesPick implements ModelInterface, A
      * @var string[]
      */
     protected static $attributeMap = [
+        'slug' => 'slug',
         'title' => 'title',
         'seller_user_id' => 'sellerUserId',
-        'slug' => 'slug',
         'seller_name' => 'sellerName',
         'unit_cents' => 'unitCents',
         'ship_cents' => 'shipCents'
@@ -125,9 +125,9 @@ class CreateBuyerCartOptimizerResponseDataLinesPick implements ModelInterface, A
      * @var string[]
      */
     protected static $setters = [
+        'slug' => 'setSlug',
         'title' => 'setTitle',
         'seller_user_id' => 'setSellerUserId',
-        'slug' => 'setSlug',
         'seller_name' => 'setSellerName',
         'unit_cents' => 'setUnitCents',
         'ship_cents' => 'setShipCents'
@@ -139,9 +139,9 @@ class CreateBuyerCartOptimizerResponseDataLinesPick implements ModelInterface, A
      * @var string[]
      */
     protected static $getters = [
+        'slug' => 'getSlug',
         'title' => 'getTitle',
         'seller_user_id' => 'getSellerUserId',
-        'slug' => 'getSlug',
         'seller_name' => 'getSellerName',
         'unit_cents' => 'getUnitCents',
         'ship_cents' => 'getShipCents'
@@ -204,9 +204,9 @@ class CreateBuyerCartOptimizerResponseDataLinesPick implements ModelInterface, A
      */
     public function __construct(array $data = null)
     {
+        $this->container['slug'] = $data['slug'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
-        $this->container['slug'] = $data['slug'] ?? null;
         $this->container['seller_name'] = $data['seller_name'] ?? null;
         $this->container['unit_cents'] = $data['unit_cents'] ?? null;
         $this->container['ship_cents'] = $data['ship_cents'] ?? null;
@@ -221,14 +221,14 @@ class CreateBuyerCartOptimizerResponseDataLinesPick implements ModelInterface, A
     {
         $invalidProperties = [];
 
+        if ($this->container['slug'] === null) {
+            $invalidProperties[] = "'slug' can't be null";
+        }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
         }
         if ($this->container['seller_user_id'] === null) {
             $invalidProperties[] = "'seller_user_id' can't be null";
-        }
-        if ($this->container['slug'] === null) {
-            $invalidProperties[] = "'slug' can't be null";
         }
         if ($this->container['unit_cents'] === null) {
             $invalidProperties[] = "'unit_cents' can't be null";
@@ -250,6 +250,30 @@ class CreateBuyerCartOptimizerResponseDataLinesPick implements ModelInterface, A
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->container['slug'];
+    }
+
+    /**
+     * Sets slug
+     *
+     * @param string $slug slug
+     *
+     * @return self
+     */
+    public function setSlug($slug)
+    {
+        $this->container['slug'] = $slug;
+
+        return $this;
+    }
 
     /**
      * Gets title
@@ -295,30 +319,6 @@ class CreateBuyerCartOptimizerResponseDataLinesPick implements ModelInterface, A
     public function setSellerUserId($seller_user_id)
     {
         $this->container['seller_user_id'] = $seller_user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->container['slug'];
-    }
-
-    /**
-     * Sets slug
-     *
-     * @param string $slug slug
-     *
-     * @return self
-     */
-    public function setSlug($slug)
-    {
-        $this->container['slug'] = $slug;
 
         return $this;
     }

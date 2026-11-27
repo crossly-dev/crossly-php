@@ -63,8 +63,8 @@ class UpdateBuyerWishlistResponseData implements ModelInterface, ArrayAccess, \J
         'share_url' => 'string',
         'id' => 'string',
         'name' => 'string',
-        'created_at' => 'string',
         'is_public' => 'bool',
+        'created_at' => 'string',
         'share_token' => 'string'
     ];
 
@@ -79,8 +79,8 @@ class UpdateBuyerWishlistResponseData implements ModelInterface, ArrayAccess, \J
         'share_url' => null,
         'id' => null,
         'name' => null,
-        'created_at' => null,
         'is_public' => null,
+        'created_at' => null,
         'share_token' => null
     ];
 
@@ -114,8 +114,8 @@ class UpdateBuyerWishlistResponseData implements ModelInterface, ArrayAccess, \J
         'share_url' => 'shareUrl',
         'id' => 'id',
         'name' => 'name',
-        'created_at' => 'createdAt',
         'is_public' => 'isPublic',
+        'created_at' => 'createdAt',
         'share_token' => 'shareToken'
     ];
 
@@ -128,8 +128,8 @@ class UpdateBuyerWishlistResponseData implements ModelInterface, ArrayAccess, \J
         'share_url' => 'setShareUrl',
         'id' => 'setId',
         'name' => 'setName',
-        'created_at' => 'setCreatedAt',
         'is_public' => 'setIsPublic',
+        'created_at' => 'setCreatedAt',
         'share_token' => 'setShareToken'
     ];
 
@@ -142,8 +142,8 @@ class UpdateBuyerWishlistResponseData implements ModelInterface, ArrayAccess, \J
         'share_url' => 'getShareUrl',
         'id' => 'getId',
         'name' => 'getName',
-        'created_at' => 'getCreatedAt',
         'is_public' => 'getIsPublic',
+        'created_at' => 'getCreatedAt',
         'share_token' => 'getShareToken'
     ];
 
@@ -207,8 +207,8 @@ class UpdateBuyerWishlistResponseData implements ModelInterface, ArrayAccess, \J
         $this->container['share_url'] = $data['share_url'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['is_public'] = $data['is_public'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['share_token'] = $data['share_token'] ?? null;
     }
 
@@ -227,11 +227,11 @@ class UpdateBuyerWishlistResponseData implements ModelInterface, ArrayAccess, \J
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['is_public'] === null) {
             $invalidProperties[] = "'is_public' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -321,30 +321,6 @@ class UpdateBuyerWishlistResponseData implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets created_at
-     *
-     * @return string
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param string $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
      * Gets is_public
      *
      * @return bool
@@ -364,6 +340,30 @@ class UpdateBuyerWishlistResponseData implements ModelInterface, ArrayAccess, \J
     public function setIsPublic($is_public)
     {
         $this->container['is_public'] = $is_public;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

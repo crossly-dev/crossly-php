@@ -67,6 +67,8 @@ class GetStallQuoteResponseQuote implements ModelInterface, ArrayAccess, \JsonSe
         'units' => '\Crossly\Model\Stall\GetStallQuoteResponseQuoteUnits[]',
         'quote' => '\Crossly\Model\Stall\CreateStallBookResponseBookingQuote',
         'rails' => '\Crossly\Model\Stall\GetStallQuoteResponseQuoteRailsItem[]',
+        'booth_kind' => 'string',
+        'capacity' => 'float',
         'bookable' => 'bool',
         'unbookable_reason' => 'string'
     ];
@@ -86,6 +88,8 @@ class GetStallQuoteResponseQuote implements ModelInterface, ArrayAccess, \JsonSe
         'units' => null,
         'quote' => null,
         'rails' => null,
+        'booth_kind' => null,
+        'capacity' => null,
         'bookable' => null,
         'unbookable_reason' => null
     ];
@@ -124,6 +128,8 @@ class GetStallQuoteResponseQuote implements ModelInterface, ArrayAccess, \JsonSe
         'units' => 'units',
         'quote' => 'quote',
         'rails' => 'rails',
+        'booth_kind' => 'boothKind',
+        'capacity' => 'capacity',
         'bookable' => 'bookable',
         'unbookable_reason' => 'unbookableReason'
     ];
@@ -141,6 +147,8 @@ class GetStallQuoteResponseQuote implements ModelInterface, ArrayAccess, \JsonSe
         'units' => 'setUnits',
         'quote' => 'setQuote',
         'rails' => 'setRails',
+        'booth_kind' => 'setBoothKind',
+        'capacity' => 'setCapacity',
         'bookable' => 'setBookable',
         'unbookable_reason' => 'setUnbookableReason'
     ];
@@ -158,6 +166,8 @@ class GetStallQuoteResponseQuote implements ModelInterface, ArrayAccess, \JsonSe
         'units' => 'getUnits',
         'quote' => 'getQuote',
         'rails' => 'getRails',
+        'booth_kind' => 'getBoothKind',
+        'capacity' => 'getCapacity',
         'bookable' => 'getBookable',
         'unbookable_reason' => 'getUnbookableReason'
     ];
@@ -203,6 +213,23 @@ class GetStallQuoteResponseQuote implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
+    const BOOTH_KIND_BOOTH = 'booth';
+    const BOOTH_KIND_CART = 'cart';
+    const BOOTH_KIND_PAVILION = 'pavilion';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBoothKindAllowableValues()
+    {
+        return [
+            self::BOOTH_KIND_BOOTH,
+            self::BOOTH_KIND_CART,
+            self::BOOTH_KIND_PAVILION,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -226,6 +253,8 @@ class GetStallQuoteResponseQuote implements ModelInterface, ArrayAccess, \JsonSe
         $this->container['units'] = $data['units'] ?? null;
         $this->container['quote'] = $data['quote'] ?? null;
         $this->container['rails'] = $data['rails'] ?? null;
+        $this->container['booth_kind'] = $data['booth_kind'] ?? null;
+        $this->container['capacity'] = $data['capacity'] ?? null;
         $this->container['bookable'] = $data['bookable'] ?? null;
         $this->container['unbookable_reason'] = $data['unbookable_reason'] ?? null;
     }
@@ -259,6 +288,21 @@ class GetStallQuoteResponseQuote implements ModelInterface, ArrayAccess, \JsonSe
         }
         if ($this->container['rails'] === null) {
             $invalidProperties[] = "'rails' can't be null";
+        }
+        if ($this->container['booth_kind'] === null) {
+            $invalidProperties[] = "'booth_kind' can't be null";
+        }
+        $allowedValues = $this->getBoothKindAllowableValues();
+        if (!is_null($this->container['booth_kind']) && !in_array($this->container['booth_kind'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'booth_kind', must be one of '%s'",
+                $this->container['booth_kind'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['capacity'] === null) {
+            $invalidProperties[] = "'capacity' can't be null";
         }
         if ($this->container['bookable'] === null) {
             $invalidProperties[] = "'bookable' can't be null";
@@ -442,6 +486,64 @@ class GetStallQuoteResponseQuote implements ModelInterface, ArrayAccess, \JsonSe
     public function setRails($rails)
     {
         $this->container['rails'] = $rails;
+
+        return $this;
+    }
+
+    /**
+     * Gets booth_kind
+     *
+     * @return string
+     */
+    public function getBoothKind()
+    {
+        return $this->container['booth_kind'];
+    }
+
+    /**
+     * Sets booth_kind
+     *
+     * @param string $booth_kind booth_kind
+     *
+     * @return self
+     */
+    public function setBoothKind($booth_kind)
+    {
+        $allowedValues = $this->getBoothKindAllowableValues();
+        if (!in_array($booth_kind, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'booth_kind', must be one of '%s'",
+                    $booth_kind,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['booth_kind'] = $booth_kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets capacity
+     *
+     * @return float
+     */
+    public function getCapacity()
+    {
+        return $this->container['capacity'];
+    }
+
+    /**
+     * Sets capacity
+     *
+     * @param float $capacity capacity
+     *
+     * @return self
+     */
+    public function setCapacity($capacity)
+    {
+        $this->container['capacity'] = $capacity;
 
         return $this;
     }

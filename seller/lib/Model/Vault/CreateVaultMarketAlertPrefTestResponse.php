@@ -173,10 +173,12 @@ class CreateVaultMarketAlertPrefTestResponse implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
-    const KIND_PRICE = 'price';
-    const KIND_AUCTION = 'auction';
-    const KIND_FILL = 'fill';
     const KIND_ACCOUNT = 'account';
+    const KIND_PRICE = 'price';
+    const KIND_FILL = 'fill';
+    const KIND_AUCTION = 'auction';
+    const KIND_PREDICTION = 'prediction';
+    const KIND_OPTION_EXPIRY = 'option_expiry';
     const KIND_MARGIN_CALL = 'margin_call';
     const KIND_ADL = 'adl';
     const KIND_P2P_LOAN = 'p2p_loan';
@@ -184,6 +186,10 @@ class CreateVaultMarketAlertPrefTestResponse implements ModelInterface, ArrayAcc
     const KIND_RECEIPT_TOKEN = 'receipt_token';
     const KIND_SET_GOAL = 'set_goal';
     const KIND_FOLLOW = 'follow';
+    const KIND_SHARE_OFFERING = 'share_offering';
+    const KIND_SHARE_VOTE = 'share_vote';
+    const KIND_OPTION_SETTLEMENT = 'option_settlement';
+    const KIND_PREDICTION_ODDS = 'prediction_odds';
 
     /**
      * Gets allowable values of the enum
@@ -193,10 +199,12 @@ class CreateVaultMarketAlertPrefTestResponse implements ModelInterface, ArrayAcc
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_PRICE,
-            self::KIND_AUCTION,
-            self::KIND_FILL,
             self::KIND_ACCOUNT,
+            self::KIND_PRICE,
+            self::KIND_FILL,
+            self::KIND_AUCTION,
+            self::KIND_PREDICTION,
+            self::KIND_OPTION_EXPIRY,
             self::KIND_MARGIN_CALL,
             self::KIND_ADL,
             self::KIND_P2P_LOAN,
@@ -204,6 +212,10 @@ class CreateVaultMarketAlertPrefTestResponse implements ModelInterface, ArrayAcc
             self::KIND_RECEIPT_TOKEN,
             self::KIND_SET_GOAL,
             self::KIND_FOLLOW,
+            self::KIND_SHARE_OFFERING,
+            self::KIND_SHARE_VOTE,
+            self::KIND_OPTION_SETTLEMENT,
+            self::KIND_PREDICTION_ODDS,
         ];
     }
 

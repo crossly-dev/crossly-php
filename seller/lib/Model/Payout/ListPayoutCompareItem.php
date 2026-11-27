@@ -205,8 +205,8 @@ class ListPayoutCompareItem implements ModelInterface, ArrayAccess, \JsonSeriali
 
     const FEE_SOURCE_EXACT = 'exact';
     const FEE_SOURCE_ESTIMATED = 'estimated';
-    const SHIPPING_SOURCE_NONE = 'none';
     const SHIPPING_SOURCE_UNKNOWN = 'unknown';
+    const SHIPPING_SOURCE_NONE = 'none';
     const SHIPPING_SOURCE_QUOTED = 'quoted';
     const SHIPPING_SOURCE_PLATFORM_LABEL = 'platform_label';
     const SHIPPING_SOURCE_BUYER_PAID = 'buyer_paid';
@@ -232,8 +232,8 @@ class ListPayoutCompareItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function getShippingSourceAllowableValues()
     {
         return [
-            self::SHIPPING_SOURCE_NONE,
             self::SHIPPING_SOURCE_UNKNOWN,
+            self::SHIPPING_SOURCE_NONE,
             self::SHIPPING_SOURCE_QUOTED,
             self::SHIPPING_SOURCE_PLATFORM_LABEL,
             self::SHIPPING_SOURCE_BUYER_PAID,

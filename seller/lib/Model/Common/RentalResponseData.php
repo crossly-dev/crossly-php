@@ -63,26 +63,34 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'string',
         'created_at' => '\DateTime',
         'status' => 'string',
-        'cancelled_at' => '\DateTime',
+        'days' => 'float',
         'platform_listing_id' => 'string',
+        'storefront_id' => 'string',
         'shipped_at' => '\DateTime',
-        'seller_user_id' => 'string',
+        'delivered_at' => '\DateTime',
+        'cancelled_at' => '\DateTime',
+        'order_id' => 'string',
+        'inspected_at' => '\DateTime',
         'stripe_payment_intent_id' => 'string',
+        'seller_user_id' => 'string',
+        'payout_account_id' => 'string',
         'crossly_fee_cents' => 'float',
         'shipping_cents' => 'float',
         'return_label_url' => 'string',
         'closed_at' => '\DateTime',
-        'outbound_label_url' => 'string',
+        'approved_at' => '\DateTime',
+        'terms' => 'array<string,mixed>',
         'deposit_cents' => 'float',
+        'outbound_label_url' => 'string',
         'claimed_at' => '\DateTime',
+        'fulfilment' => 'string',
         'ship_to' => 'array<string,mixed>',
-        'outbound_tracking' => 'string',
         'renter_user_id' => 'string',
         'start_date' => 'string',
         'end_date' => 'string',
-        'days' => 'float',
         'rent_cents' => 'float',
         'ship_from' => 'array<string,mixed>',
+        'outbound_tracking' => 'string',
         'return_tracking' => 'string',
         'returned_at' => '\DateTime',
         'claim_cents' => 'float',
@@ -92,7 +100,22 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'deposit_refunded_cents' => 'float',
         'approval_due_at' => '\DateTime',
         'condition_photos_out' => 'string[]',
-        'condition_photos_in' => 'string[]'
+        'condition_photos_in' => 'string[]',
+        'unit_index' => 'float',
+        'charges' => 'array<string,mixed>',
+        'damage_waiver' => 'bool',
+        'cleaning_fee_cents' => 'float',
+        'damage_waiver_cents' => 'float',
+        'late_fee_cents' => 'float',
+        'rent_refunded_cents' => 'float',
+        'payout_timing' => 'string',
+        'payout_released_at' => '\DateTime',
+        'return_shipped_at' => '\DateTime',
+        'condition_photos_return' => 'string[]',
+        'inspection' => '\Crossly\Model\Common\RentalResponseDataInspection[]',
+        'bought_out_at' => '\DateTime',
+        'buyout_cents' => 'float',
+        'not_returned_at' => '\DateTime'
     ];
 
     /**
@@ -106,26 +129,34 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => null,
         'created_at' => 'date-time',
         'status' => null,
-        'cancelled_at' => 'date-time',
+        'days' => null,
         'platform_listing_id' => null,
+        'storefront_id' => null,
         'shipped_at' => 'date-time',
-        'seller_user_id' => null,
+        'delivered_at' => 'date-time',
+        'cancelled_at' => 'date-time',
+        'order_id' => null,
+        'inspected_at' => 'date-time',
         'stripe_payment_intent_id' => null,
+        'seller_user_id' => null,
+        'payout_account_id' => null,
         'crossly_fee_cents' => null,
         'shipping_cents' => null,
         'return_label_url' => null,
         'closed_at' => 'date-time',
-        'outbound_label_url' => null,
+        'approved_at' => 'date-time',
+        'terms' => null,
         'deposit_cents' => null,
+        'outbound_label_url' => null,
         'claimed_at' => 'date-time',
+        'fulfilment' => null,
         'ship_to' => null,
-        'outbound_tracking' => null,
         'renter_user_id' => null,
         'start_date' => null,
         'end_date' => null,
-        'days' => null,
         'rent_cents' => null,
         'ship_from' => null,
+        'outbound_tracking' => null,
         'return_tracking' => null,
         'returned_at' => 'date-time',
         'claim_cents' => null,
@@ -135,7 +166,22 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'deposit_refunded_cents' => null,
         'approval_due_at' => 'date-time',
         'condition_photos_out' => null,
-        'condition_photos_in' => null
+        'condition_photos_in' => null,
+        'unit_index' => null,
+        'charges' => null,
+        'damage_waiver' => null,
+        'cleaning_fee_cents' => null,
+        'damage_waiver_cents' => null,
+        'late_fee_cents' => null,
+        'rent_refunded_cents' => null,
+        'payout_timing' => null,
+        'payout_released_at' => 'date-time',
+        'return_shipped_at' => 'date-time',
+        'condition_photos_return' => null,
+        'inspection' => null,
+        'bought_out_at' => 'date-time',
+        'buyout_cents' => null,
+        'not_returned_at' => 'date-time'
     ];
 
     /**
@@ -168,26 +214,34 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'id',
         'created_at' => 'createdAt',
         'status' => 'status',
-        'cancelled_at' => 'cancelledAt',
+        'days' => 'days',
         'platform_listing_id' => 'platformListingId',
+        'storefront_id' => 'storefrontId',
         'shipped_at' => 'shippedAt',
-        'seller_user_id' => 'sellerUserId',
+        'delivered_at' => 'deliveredAt',
+        'cancelled_at' => 'cancelledAt',
+        'order_id' => 'orderId',
+        'inspected_at' => 'inspectedAt',
         'stripe_payment_intent_id' => 'stripePaymentIntentId',
+        'seller_user_id' => 'sellerUserId',
+        'payout_account_id' => 'payoutAccountId',
         'crossly_fee_cents' => 'crosslyFeeCents',
         'shipping_cents' => 'shippingCents',
         'return_label_url' => 'returnLabelUrl',
         'closed_at' => 'closedAt',
-        'outbound_label_url' => 'outboundLabelUrl',
+        'approved_at' => 'approvedAt',
+        'terms' => 'terms',
         'deposit_cents' => 'depositCents',
+        'outbound_label_url' => 'outboundLabelUrl',
         'claimed_at' => 'claimedAt',
+        'fulfilment' => 'fulfilment',
         'ship_to' => 'shipTo',
-        'outbound_tracking' => 'outboundTracking',
         'renter_user_id' => 'renterUserId',
         'start_date' => 'startDate',
         'end_date' => 'endDate',
-        'days' => 'days',
         'rent_cents' => 'rentCents',
         'ship_from' => 'shipFrom',
+        'outbound_tracking' => 'outboundTracking',
         'return_tracking' => 'returnTracking',
         'returned_at' => 'returnedAt',
         'claim_cents' => 'claimCents',
@@ -197,7 +251,22 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'deposit_refunded_cents' => 'depositRefundedCents',
         'approval_due_at' => 'approvalDueAt',
         'condition_photos_out' => 'conditionPhotosOut',
-        'condition_photos_in' => 'conditionPhotosIn'
+        'condition_photos_in' => 'conditionPhotosIn',
+        'unit_index' => 'unitIndex',
+        'charges' => 'charges',
+        'damage_waiver' => 'damageWaiver',
+        'cleaning_fee_cents' => 'cleaningFeeCents',
+        'damage_waiver_cents' => 'damageWaiverCents',
+        'late_fee_cents' => 'lateFeeCents',
+        'rent_refunded_cents' => 'rentRefundedCents',
+        'payout_timing' => 'payoutTiming',
+        'payout_released_at' => 'payoutReleasedAt',
+        'return_shipped_at' => 'returnShippedAt',
+        'condition_photos_return' => 'conditionPhotosReturn',
+        'inspection' => 'inspection',
+        'bought_out_at' => 'boughtOutAt',
+        'buyout_cents' => 'buyoutCents',
+        'not_returned_at' => 'notReturnedAt'
     ];
 
     /**
@@ -209,26 +278,34 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'status' => 'setStatus',
-        'cancelled_at' => 'setCancelledAt',
+        'days' => 'setDays',
         'platform_listing_id' => 'setPlatformListingId',
+        'storefront_id' => 'setStorefrontId',
         'shipped_at' => 'setShippedAt',
-        'seller_user_id' => 'setSellerUserId',
+        'delivered_at' => 'setDeliveredAt',
+        'cancelled_at' => 'setCancelledAt',
+        'order_id' => 'setOrderId',
+        'inspected_at' => 'setInspectedAt',
         'stripe_payment_intent_id' => 'setStripePaymentIntentId',
+        'seller_user_id' => 'setSellerUserId',
+        'payout_account_id' => 'setPayoutAccountId',
         'crossly_fee_cents' => 'setCrosslyFeeCents',
         'shipping_cents' => 'setShippingCents',
         'return_label_url' => 'setReturnLabelUrl',
         'closed_at' => 'setClosedAt',
-        'outbound_label_url' => 'setOutboundLabelUrl',
+        'approved_at' => 'setApprovedAt',
+        'terms' => 'setTerms',
         'deposit_cents' => 'setDepositCents',
+        'outbound_label_url' => 'setOutboundLabelUrl',
         'claimed_at' => 'setClaimedAt',
+        'fulfilment' => 'setFulfilment',
         'ship_to' => 'setShipTo',
-        'outbound_tracking' => 'setOutboundTracking',
         'renter_user_id' => 'setRenterUserId',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
-        'days' => 'setDays',
         'rent_cents' => 'setRentCents',
         'ship_from' => 'setShipFrom',
+        'outbound_tracking' => 'setOutboundTracking',
         'return_tracking' => 'setReturnTracking',
         'returned_at' => 'setReturnedAt',
         'claim_cents' => 'setClaimCents',
@@ -238,7 +315,22 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'deposit_refunded_cents' => 'setDepositRefundedCents',
         'approval_due_at' => 'setApprovalDueAt',
         'condition_photos_out' => 'setConditionPhotosOut',
-        'condition_photos_in' => 'setConditionPhotosIn'
+        'condition_photos_in' => 'setConditionPhotosIn',
+        'unit_index' => 'setUnitIndex',
+        'charges' => 'setCharges',
+        'damage_waiver' => 'setDamageWaiver',
+        'cleaning_fee_cents' => 'setCleaningFeeCents',
+        'damage_waiver_cents' => 'setDamageWaiverCents',
+        'late_fee_cents' => 'setLateFeeCents',
+        'rent_refunded_cents' => 'setRentRefundedCents',
+        'payout_timing' => 'setPayoutTiming',
+        'payout_released_at' => 'setPayoutReleasedAt',
+        'return_shipped_at' => 'setReturnShippedAt',
+        'condition_photos_return' => 'setConditionPhotosReturn',
+        'inspection' => 'setInspection',
+        'bought_out_at' => 'setBoughtOutAt',
+        'buyout_cents' => 'setBuyoutCents',
+        'not_returned_at' => 'setNotReturnedAt'
     ];
 
     /**
@@ -250,26 +342,34 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'status' => 'getStatus',
-        'cancelled_at' => 'getCancelledAt',
+        'days' => 'getDays',
         'platform_listing_id' => 'getPlatformListingId',
+        'storefront_id' => 'getStorefrontId',
         'shipped_at' => 'getShippedAt',
-        'seller_user_id' => 'getSellerUserId',
+        'delivered_at' => 'getDeliveredAt',
+        'cancelled_at' => 'getCancelledAt',
+        'order_id' => 'getOrderId',
+        'inspected_at' => 'getInspectedAt',
         'stripe_payment_intent_id' => 'getStripePaymentIntentId',
+        'seller_user_id' => 'getSellerUserId',
+        'payout_account_id' => 'getPayoutAccountId',
         'crossly_fee_cents' => 'getCrosslyFeeCents',
         'shipping_cents' => 'getShippingCents',
         'return_label_url' => 'getReturnLabelUrl',
         'closed_at' => 'getClosedAt',
-        'outbound_label_url' => 'getOutboundLabelUrl',
+        'approved_at' => 'getApprovedAt',
+        'terms' => 'getTerms',
         'deposit_cents' => 'getDepositCents',
+        'outbound_label_url' => 'getOutboundLabelUrl',
         'claimed_at' => 'getClaimedAt',
+        'fulfilment' => 'getFulfilment',
         'ship_to' => 'getShipTo',
-        'outbound_tracking' => 'getOutboundTracking',
         'renter_user_id' => 'getRenterUserId',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
-        'days' => 'getDays',
         'rent_cents' => 'getRentCents',
         'ship_from' => 'getShipFrom',
+        'outbound_tracking' => 'getOutboundTracking',
         'return_tracking' => 'getReturnTracking',
         'returned_at' => 'getReturnedAt',
         'claim_cents' => 'getClaimCents',
@@ -279,7 +379,22 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'deposit_refunded_cents' => 'getDepositRefundedCents',
         'approval_due_at' => 'getApprovalDueAt',
         'condition_photos_out' => 'getConditionPhotosOut',
-        'condition_photos_in' => 'getConditionPhotosIn'
+        'condition_photos_in' => 'getConditionPhotosIn',
+        'unit_index' => 'getUnitIndex',
+        'charges' => 'getCharges',
+        'damage_waiver' => 'getDamageWaiver',
+        'cleaning_fee_cents' => 'getCleaningFeeCents',
+        'damage_waiver_cents' => 'getDamageWaiverCents',
+        'late_fee_cents' => 'getLateFeeCents',
+        'rent_refunded_cents' => 'getRentRefundedCents',
+        'payout_timing' => 'getPayoutTiming',
+        'payout_released_at' => 'getPayoutReleasedAt',
+        'return_shipped_at' => 'getReturnShippedAt',
+        'condition_photos_return' => 'getConditionPhotosReturn',
+        'inspection' => 'getInspection',
+        'bought_out_at' => 'getBoughtOutAt',
+        'buyout_cents' => 'getBuyoutCents',
+        'not_returned_at' => 'getNotReturnedAt'
     ];
 
     /**
@@ -342,26 +457,34 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['cancelled_at'] = $data['cancelled_at'] ?? null;
+        $this->container['days'] = $data['days'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
         $this->container['shipped_at'] = $data['shipped_at'] ?? null;
-        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
+        $this->container['delivered_at'] = $data['delivered_at'] ?? null;
+        $this->container['cancelled_at'] = $data['cancelled_at'] ?? null;
+        $this->container['order_id'] = $data['order_id'] ?? null;
+        $this->container['inspected_at'] = $data['inspected_at'] ?? null;
         $this->container['stripe_payment_intent_id'] = $data['stripe_payment_intent_id'] ?? null;
+        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
+        $this->container['payout_account_id'] = $data['payout_account_id'] ?? null;
         $this->container['crossly_fee_cents'] = $data['crossly_fee_cents'] ?? null;
         $this->container['shipping_cents'] = $data['shipping_cents'] ?? null;
         $this->container['return_label_url'] = $data['return_label_url'] ?? null;
         $this->container['closed_at'] = $data['closed_at'] ?? null;
-        $this->container['outbound_label_url'] = $data['outbound_label_url'] ?? null;
+        $this->container['approved_at'] = $data['approved_at'] ?? null;
+        $this->container['terms'] = $data['terms'] ?? null;
         $this->container['deposit_cents'] = $data['deposit_cents'] ?? null;
+        $this->container['outbound_label_url'] = $data['outbound_label_url'] ?? null;
         $this->container['claimed_at'] = $data['claimed_at'] ?? null;
+        $this->container['fulfilment'] = $data['fulfilment'] ?? null;
         $this->container['ship_to'] = $data['ship_to'] ?? null;
-        $this->container['outbound_tracking'] = $data['outbound_tracking'] ?? null;
         $this->container['renter_user_id'] = $data['renter_user_id'] ?? null;
         $this->container['start_date'] = $data['start_date'] ?? null;
         $this->container['end_date'] = $data['end_date'] ?? null;
-        $this->container['days'] = $data['days'] ?? null;
         $this->container['rent_cents'] = $data['rent_cents'] ?? null;
         $this->container['ship_from'] = $data['ship_from'] ?? null;
+        $this->container['outbound_tracking'] = $data['outbound_tracking'] ?? null;
         $this->container['return_tracking'] = $data['return_tracking'] ?? null;
         $this->container['returned_at'] = $data['returned_at'] ?? null;
         $this->container['claim_cents'] = $data['claim_cents'] ?? null;
@@ -372,6 +495,21 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['approval_due_at'] = $data['approval_due_at'] ?? null;
         $this->container['condition_photos_out'] = $data['condition_photos_out'] ?? null;
         $this->container['condition_photos_in'] = $data['condition_photos_in'] ?? null;
+        $this->container['unit_index'] = $data['unit_index'] ?? null;
+        $this->container['charges'] = $data['charges'] ?? null;
+        $this->container['damage_waiver'] = $data['damage_waiver'] ?? null;
+        $this->container['cleaning_fee_cents'] = $data['cleaning_fee_cents'] ?? null;
+        $this->container['damage_waiver_cents'] = $data['damage_waiver_cents'] ?? null;
+        $this->container['late_fee_cents'] = $data['late_fee_cents'] ?? null;
+        $this->container['rent_refunded_cents'] = $data['rent_refunded_cents'] ?? null;
+        $this->container['payout_timing'] = $data['payout_timing'] ?? null;
+        $this->container['payout_released_at'] = $data['payout_released_at'] ?? null;
+        $this->container['return_shipped_at'] = $data['return_shipped_at'] ?? null;
+        $this->container['condition_photos_return'] = $data['condition_photos_return'] ?? null;
+        $this->container['inspection'] = $data['inspection'] ?? null;
+        $this->container['bought_out_at'] = $data['bought_out_at'] ?? null;
+        $this->container['buyout_cents'] = $data['buyout_cents'] ?? null;
+        $this->container['not_returned_at'] = $data['not_returned_at'] ?? null;
     }
 
     /**
@@ -392,6 +530,9 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
+        if ($this->container['days'] === null) {
+            $invalidProperties[] = "'days' can't be null";
+        }
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
         }
@@ -404,8 +545,14 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['shipping_cents'] === null) {
             $invalidProperties[] = "'shipping_cents' can't be null";
         }
+        if ($this->container['terms'] === null) {
+            $invalidProperties[] = "'terms' can't be null";
+        }
         if ($this->container['deposit_cents'] === null) {
             $invalidProperties[] = "'deposit_cents' can't be null";
+        }
+        if ($this->container['fulfilment'] === null) {
+            $invalidProperties[] = "'fulfilment' can't be null";
         }
         if ($this->container['ship_to'] === null) {
             $invalidProperties[] = "'ship_to' can't be null";
@@ -418,9 +565,6 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         }
         if ($this->container['end_date'] === null) {
             $invalidProperties[] = "'end_date' can't be null";
-        }
-        if ($this->container['days'] === null) {
-            $invalidProperties[] = "'days' can't be null";
         }
         if ($this->container['rent_cents'] === null) {
             $invalidProperties[] = "'rent_cents' can't be null";
@@ -442,6 +586,36 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         }
         if ($this->container['condition_photos_in'] === null) {
             $invalidProperties[] = "'condition_photos_in' can't be null";
+        }
+        if ($this->container['unit_index'] === null) {
+            $invalidProperties[] = "'unit_index' can't be null";
+        }
+        if ($this->container['charges'] === null) {
+            $invalidProperties[] = "'charges' can't be null";
+        }
+        if ($this->container['damage_waiver'] === null) {
+            $invalidProperties[] = "'damage_waiver' can't be null";
+        }
+        if ($this->container['cleaning_fee_cents'] === null) {
+            $invalidProperties[] = "'cleaning_fee_cents' can't be null";
+        }
+        if ($this->container['damage_waiver_cents'] === null) {
+            $invalidProperties[] = "'damage_waiver_cents' can't be null";
+        }
+        if ($this->container['late_fee_cents'] === null) {
+            $invalidProperties[] = "'late_fee_cents' can't be null";
+        }
+        if ($this->container['rent_refunded_cents'] === null) {
+            $invalidProperties[] = "'rent_refunded_cents' can't be null";
+        }
+        if ($this->container['payout_timing'] === null) {
+            $invalidProperties[] = "'payout_timing' can't be null";
+        }
+        if ($this->container['condition_photos_return'] === null) {
+            $invalidProperties[] = "'condition_photos_return' can't be null";
+        }
+        if ($this->container['inspection'] === null) {
+            $invalidProperties[] = "'inspection' can't be null";
         }
         return $invalidProperties;
     }
@@ -531,25 +705,25 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets cancelled_at
+     * Gets days
      *
-     * @return \DateTime|null
+     * @return float
      */
-    public function getCancelledAt()
+    public function getDays()
     {
-        return $this->container['cancelled_at'];
+        return $this->container['days'];
     }
 
     /**
-     * Sets cancelled_at
+     * Sets days
      *
-     * @param \DateTime|null $cancelled_at cancelled_at
+     * @param float $days days
      *
      * @return self
      */
-    public function setCancelledAt($cancelled_at)
+    public function setDays($days)
     {
-        $this->container['cancelled_at'] = $cancelled_at;
+        $this->container['days'] = $days;
 
         return $this;
     }
@@ -579,6 +753,30 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id storefront_id
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
+
+        return $this;
+    }
+
+    /**
      * Gets shipped_at
      *
      * @return \DateTime|null
@@ -598,6 +796,126 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setShippedAt($shipped_at)
     {
         $this->container['shipped_at'] = $shipped_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivered_at
+     *
+     * @return \DateTime|null
+     */
+    public function getDeliveredAt()
+    {
+        return $this->container['delivered_at'];
+    }
+
+    /**
+     * Sets delivered_at
+     *
+     * @param \DateTime|null $delivered_at delivered_at
+     *
+     * @return self
+     */
+    public function setDeliveredAt($delivered_at)
+    {
+        $this->container['delivered_at'] = $delivered_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancelled_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCancelledAt()
+    {
+        return $this->container['cancelled_at'];
+    }
+
+    /**
+     * Sets cancelled_at
+     *
+     * @param \DateTime|null $cancelled_at cancelled_at
+     *
+     * @return self
+     */
+    public function setCancelledAt($cancelled_at)
+    {
+        $this->container['cancelled_at'] = $cancelled_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_id
+     *
+     * @return string|null
+     */
+    public function getOrderId()
+    {
+        return $this->container['order_id'];
+    }
+
+    /**
+     * Sets order_id
+     *
+     * @param string|null $order_id order_id
+     *
+     * @return self
+     */
+    public function setOrderId($order_id)
+    {
+        $this->container['order_id'] = $order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets inspected_at
+     *
+     * @return \DateTime|null
+     */
+    public function getInspectedAt()
+    {
+        return $this->container['inspected_at'];
+    }
+
+    /**
+     * Sets inspected_at
+     *
+     * @param \DateTime|null $inspected_at inspected_at
+     *
+     * @return self
+     */
+    public function setInspectedAt($inspected_at)
+    {
+        $this->container['inspected_at'] = $inspected_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets stripe_payment_intent_id
+     *
+     * @return string|null
+     */
+    public function getStripePaymentIntentId()
+    {
+        return $this->container['stripe_payment_intent_id'];
+    }
+
+    /**
+     * Sets stripe_payment_intent_id
+     *
+     * @param string|null $stripe_payment_intent_id stripe_payment_intent_id
+     *
+     * @return self
+     */
+    public function setStripePaymentIntentId($stripe_payment_intent_id)
+    {
+        $this->container['stripe_payment_intent_id'] = $stripe_payment_intent_id;
 
         return $this;
     }
@@ -627,25 +945,25 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets stripe_payment_intent_id
+     * Gets payout_account_id
      *
      * @return string|null
      */
-    public function getStripePaymentIntentId()
+    public function getPayoutAccountId()
     {
-        return $this->container['stripe_payment_intent_id'];
+        return $this->container['payout_account_id'];
     }
 
     /**
-     * Sets stripe_payment_intent_id
+     * Sets payout_account_id
      *
-     * @param string|null $stripe_payment_intent_id stripe_payment_intent_id
+     * @param string|null $payout_account_id payout_account_id
      *
      * @return self
      */
-    public function setStripePaymentIntentId($stripe_payment_intent_id)
+    public function setPayoutAccountId($payout_account_id)
     {
-        $this->container['stripe_payment_intent_id'] = $stripe_payment_intent_id;
+        $this->container['payout_account_id'] = $payout_account_id;
 
         return $this;
     }
@@ -747,25 +1065,49 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets outbound_label_url
+     * Gets approved_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getOutboundLabelUrl()
+    public function getApprovedAt()
     {
-        return $this->container['outbound_label_url'];
+        return $this->container['approved_at'];
     }
 
     /**
-     * Sets outbound_label_url
+     * Sets approved_at
      *
-     * @param string|null $outbound_label_url outbound_label_url
+     * @param \DateTime|null $approved_at approved_at
      *
      * @return self
      */
-    public function setOutboundLabelUrl($outbound_label_url)
+    public function setApprovedAt($approved_at)
     {
-        $this->container['outbound_label_url'] = $outbound_label_url;
+        $this->container['approved_at'] = $approved_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets terms
+     *
+     * @return array<string,mixed>
+     */
+    public function getTerms()
+    {
+        return $this->container['terms'];
+    }
+
+    /**
+     * Sets terms
+     *
+     * @param array<string,mixed> $terms terms
+     *
+     * @return self
+     */
+    public function setTerms($terms)
+    {
+        $this->container['terms'] = $terms;
 
         return $this;
     }
@@ -795,6 +1137,30 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets outbound_label_url
+     *
+     * @return string|null
+     */
+    public function getOutboundLabelUrl()
+    {
+        return $this->container['outbound_label_url'];
+    }
+
+    /**
+     * Sets outbound_label_url
+     *
+     * @param string|null $outbound_label_url outbound_label_url
+     *
+     * @return self
+     */
+    public function setOutboundLabelUrl($outbound_label_url)
+    {
+        $this->container['outbound_label_url'] = $outbound_label_url;
+
+        return $this;
+    }
+
+    /**
      * Gets claimed_at
      *
      * @return \DateTime|null
@@ -819,6 +1185,30 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets fulfilment
+     *
+     * @return string
+     */
+    public function getFulfilment()
+    {
+        return $this->container['fulfilment'];
+    }
+
+    /**
+     * Sets fulfilment
+     *
+     * @param string $fulfilment fulfilment
+     *
+     * @return self
+     */
+    public function setFulfilment($fulfilment)
+    {
+        $this->container['fulfilment'] = $fulfilment;
+
+        return $this;
+    }
+
+    /**
      * Gets ship_to
      *
      * @return array<string,mixed>
@@ -838,30 +1228,6 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setShipTo($ship_to)
     {
         $this->container['ship_to'] = $ship_to;
-
-        return $this;
-    }
-
-    /**
-     * Gets outbound_tracking
-     *
-     * @return string|null
-     */
-    public function getOutboundTracking()
-    {
-        return $this->container['outbound_tracking'];
-    }
-
-    /**
-     * Sets outbound_tracking
-     *
-     * @param string|null $outbound_tracking outbound_tracking
-     *
-     * @return self
-     */
-    public function setOutboundTracking($outbound_tracking)
-    {
-        $this->container['outbound_tracking'] = $outbound_tracking;
 
         return $this;
     }
@@ -939,30 +1305,6 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets days
-     *
-     * @return float
-     */
-    public function getDays()
-    {
-        return $this->container['days'];
-    }
-
-    /**
-     * Sets days
-     *
-     * @param float $days days
-     *
-     * @return self
-     */
-    public function setDays($days)
-    {
-        $this->container['days'] = $days;
-
-        return $this;
-    }
-
-    /**
      * Gets rent_cents
      *
      * @return float
@@ -1006,6 +1348,30 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setShipFrom($ship_from)
     {
         $this->container['ship_from'] = $ship_from;
+
+        return $this;
+    }
+
+    /**
+     * Gets outbound_tracking
+     *
+     * @return string|null
+     */
+    public function getOutboundTracking()
+    {
+        return $this->container['outbound_tracking'];
+    }
+
+    /**
+     * Sets outbound_tracking
+     *
+     * @param string|null $outbound_tracking outbound_tracking
+     *
+     * @return self
+     */
+    public function setOutboundTracking($outbound_tracking)
+    {
+        $this->container['outbound_tracking'] = $outbound_tracking;
 
         return $this;
     }
@@ -1246,6 +1612,366 @@ class RentalResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setConditionPhotosIn($condition_photos_in)
     {
         $this->container['condition_photos_in'] = $condition_photos_in;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit_index
+     *
+     * @return float
+     */
+    public function getUnitIndex()
+    {
+        return $this->container['unit_index'];
+    }
+
+    /**
+     * Sets unit_index
+     *
+     * @param float $unit_index unit_index
+     *
+     * @return self
+     */
+    public function setUnitIndex($unit_index)
+    {
+        $this->container['unit_index'] = $unit_index;
+
+        return $this;
+    }
+
+    /**
+     * Gets charges
+     *
+     * @return array<string,mixed>
+     */
+    public function getCharges()
+    {
+        return $this->container['charges'];
+    }
+
+    /**
+     * Sets charges
+     *
+     * @param array<string,mixed> $charges charges
+     *
+     * @return self
+     */
+    public function setCharges($charges)
+    {
+        $this->container['charges'] = $charges;
+
+        return $this;
+    }
+
+    /**
+     * Gets damage_waiver
+     *
+     * @return bool
+     */
+    public function getDamageWaiver()
+    {
+        return $this->container['damage_waiver'];
+    }
+
+    /**
+     * Sets damage_waiver
+     *
+     * @param bool $damage_waiver damage_waiver
+     *
+     * @return self
+     */
+    public function setDamageWaiver($damage_waiver)
+    {
+        $this->container['damage_waiver'] = $damage_waiver;
+
+        return $this;
+    }
+
+    /**
+     * Gets cleaning_fee_cents
+     *
+     * @return float
+     */
+    public function getCleaningFeeCents()
+    {
+        return $this->container['cleaning_fee_cents'];
+    }
+
+    /**
+     * Sets cleaning_fee_cents
+     *
+     * @param float $cleaning_fee_cents cleaning_fee_cents
+     *
+     * @return self
+     */
+    public function setCleaningFeeCents($cleaning_fee_cents)
+    {
+        $this->container['cleaning_fee_cents'] = $cleaning_fee_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets damage_waiver_cents
+     *
+     * @return float
+     */
+    public function getDamageWaiverCents()
+    {
+        return $this->container['damage_waiver_cents'];
+    }
+
+    /**
+     * Sets damage_waiver_cents
+     *
+     * @param float $damage_waiver_cents damage_waiver_cents
+     *
+     * @return self
+     */
+    public function setDamageWaiverCents($damage_waiver_cents)
+    {
+        $this->container['damage_waiver_cents'] = $damage_waiver_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets late_fee_cents
+     *
+     * @return float
+     */
+    public function getLateFeeCents()
+    {
+        return $this->container['late_fee_cents'];
+    }
+
+    /**
+     * Sets late_fee_cents
+     *
+     * @param float $late_fee_cents late_fee_cents
+     *
+     * @return self
+     */
+    public function setLateFeeCents($late_fee_cents)
+    {
+        $this->container['late_fee_cents'] = $late_fee_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets rent_refunded_cents
+     *
+     * @return float
+     */
+    public function getRentRefundedCents()
+    {
+        return $this->container['rent_refunded_cents'];
+    }
+
+    /**
+     * Sets rent_refunded_cents
+     *
+     * @param float $rent_refunded_cents rent_refunded_cents
+     *
+     * @return self
+     */
+    public function setRentRefundedCents($rent_refunded_cents)
+    {
+        $this->container['rent_refunded_cents'] = $rent_refunded_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets payout_timing
+     *
+     * @return string
+     */
+    public function getPayoutTiming()
+    {
+        return $this->container['payout_timing'];
+    }
+
+    /**
+     * Sets payout_timing
+     *
+     * @param string $payout_timing payout_timing
+     *
+     * @return self
+     */
+    public function setPayoutTiming($payout_timing)
+    {
+        $this->container['payout_timing'] = $payout_timing;
+
+        return $this;
+    }
+
+    /**
+     * Gets payout_released_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPayoutReleasedAt()
+    {
+        return $this->container['payout_released_at'];
+    }
+
+    /**
+     * Sets payout_released_at
+     *
+     * @param \DateTime|null $payout_released_at payout_released_at
+     *
+     * @return self
+     */
+    public function setPayoutReleasedAt($payout_released_at)
+    {
+        $this->container['payout_released_at'] = $payout_released_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets return_shipped_at
+     *
+     * @return \DateTime|null
+     */
+    public function getReturnShippedAt()
+    {
+        return $this->container['return_shipped_at'];
+    }
+
+    /**
+     * Sets return_shipped_at
+     *
+     * @param \DateTime|null $return_shipped_at return_shipped_at
+     *
+     * @return self
+     */
+    public function setReturnShippedAt($return_shipped_at)
+    {
+        $this->container['return_shipped_at'] = $return_shipped_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets condition_photos_return
+     *
+     * @return string[]
+     */
+    public function getConditionPhotosReturn()
+    {
+        return $this->container['condition_photos_return'];
+    }
+
+    /**
+     * Sets condition_photos_return
+     *
+     * @param string[] $condition_photos_return condition_photos_return
+     *
+     * @return self
+     */
+    public function setConditionPhotosReturn($condition_photos_return)
+    {
+        $this->container['condition_photos_return'] = $condition_photos_return;
+
+        return $this;
+    }
+
+    /**
+     * Gets inspection
+     *
+     * @return \Crossly\Model\Common\RentalResponseDataInspection[]
+     */
+    public function getInspection()
+    {
+        return $this->container['inspection'];
+    }
+
+    /**
+     * Sets inspection
+     *
+     * @param \Crossly\Model\Common\RentalResponseDataInspection[] $inspection inspection
+     *
+     * @return self
+     */
+    public function setInspection($inspection)
+    {
+        $this->container['inspection'] = $inspection;
+
+        return $this;
+    }
+
+    /**
+     * Gets bought_out_at
+     *
+     * @return \DateTime|null
+     */
+    public function getBoughtOutAt()
+    {
+        return $this->container['bought_out_at'];
+    }
+
+    /**
+     * Sets bought_out_at
+     *
+     * @param \DateTime|null $bought_out_at bought_out_at
+     *
+     * @return self
+     */
+    public function setBoughtOutAt($bought_out_at)
+    {
+        $this->container['bought_out_at'] = $bought_out_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyout_cents
+     *
+     * @return float|null
+     */
+    public function getBuyoutCents()
+    {
+        return $this->container['buyout_cents'];
+    }
+
+    /**
+     * Sets buyout_cents
+     *
+     * @param float|null $buyout_cents buyout_cents
+     *
+     * @return self
+     */
+    public function setBuyoutCents($buyout_cents)
+    {
+        $this->container['buyout_cents'] = $buyout_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets not_returned_at
+     *
+     * @return \DateTime|null
+     */
+    public function getNotReturnedAt()
+    {
+        return $this->container['not_returned_at'];
+    }
+
+    /**
+     * Sets not_returned_at
+     *
+     * @param \DateTime|null $not_returned_at not_returned_at
+     *
+     * @return self
+     */
+    public function setNotReturnedAt($not_returned_at)
+    {
+        $this->container['not_returned_at'] = $not_returned_at;
 
         return $this;
     }

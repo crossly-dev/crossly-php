@@ -61,9 +61,9 @@ class GetAutomationRuleExportByIdResponseMetadata implements ModelInterface, Arr
       * @var string[]
       */
     protected static $openAPITypes = [
-        'tags' => 'string[]',
+        'author' => 'string',
         'source_url' => 'string',
-        'author' => 'string'
+        'tags' => 'string[]'
     ];
 
     /**
@@ -74,9 +74,9 @@ class GetAutomationRuleExportByIdResponseMetadata implements ModelInterface, Arr
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'tags' => null,
+        'author' => null,
         'source_url' => null,
-        'author' => null
+        'tags' => null
     ];
 
     /**
@@ -106,9 +106,9 @@ class GetAutomationRuleExportByIdResponseMetadata implements ModelInterface, Arr
      * @var string[]
      */
     protected static $attributeMap = [
-        'tags' => 'tags',
+        'author' => 'author',
         'source_url' => 'sourceUrl',
-        'author' => 'author'
+        'tags' => 'tags'
     ];
 
     /**
@@ -117,9 +117,9 @@ class GetAutomationRuleExportByIdResponseMetadata implements ModelInterface, Arr
      * @var string[]
      */
     protected static $setters = [
-        'tags' => 'setTags',
+        'author' => 'setAuthor',
         'source_url' => 'setSourceUrl',
-        'author' => 'setAuthor'
+        'tags' => 'setTags'
     ];
 
     /**
@@ -128,9 +128,9 @@ class GetAutomationRuleExportByIdResponseMetadata implements ModelInterface, Arr
      * @var string[]
      */
     protected static $getters = [
-        'tags' => 'getTags',
+        'author' => 'getAuthor',
         'source_url' => 'getSourceUrl',
-        'author' => 'getAuthor'
+        'tags' => 'getTags'
     ];
 
     /**
@@ -190,9 +190,9 @@ class GetAutomationRuleExportByIdResponseMetadata implements ModelInterface, Arr
      */
     public function __construct(array $data = null)
     {
-        $this->container['tags'] = $data['tags'] ?? null;
-        $this->container['source_url'] = $data['source_url'] ?? null;
         $this->container['author'] = $data['author'] ?? null;
+        $this->container['source_url'] = $data['source_url'] ?? null;
+        $this->container['tags'] = $data['tags'] ?? null;
     }
 
     /**
@@ -220,25 +220,25 @@ class GetAutomationRuleExportByIdResponseMetadata implements ModelInterface, Arr
 
 
     /**
-     * Gets tags
+     * Gets author
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getTags()
+    public function getAuthor()
     {
-        return $this->container['tags'];
+        return $this->container['author'];
     }
 
     /**
-     * Sets tags
+     * Sets author
      *
-     * @param string[]|null $tags tags
+     * @param string|null $author author
      *
      * @return self
      */
-    public function setTags($tags)
+    public function setAuthor($author)
     {
-        $this->container['tags'] = $tags;
+        $this->container['author'] = $author;
 
         return $this;
     }
@@ -268,25 +268,25 @@ class GetAutomationRuleExportByIdResponseMetadata implements ModelInterface, Arr
     }
 
     /**
-     * Gets author
+     * Gets tags
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getAuthor()
+    public function getTags()
     {
-        return $this->container['author'];
+        return $this->container['tags'];
     }
 
     /**
-     * Sets author
+     * Sets tags
      *
-     * @param string|null $author author
+     * @param string[]|null $tags tags
      *
      * @return self
      */
-    public function setAuthor($author)
+    public function setTags($tags)
     {
-        $this->container['author'] = $author;
+        $this->container['tags'] = $tags;
 
         return $this;
     }

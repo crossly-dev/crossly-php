@@ -60,11 +60,11 @@ class GetBuyerListingImpactResponseData implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'source' => 'string',
-        'label' => 'string',
         'key' => 'string',
+        'label' => 'string',
         'co2_kg' => 'float',
-        'water_l' => 'float'
+        'water_l' => 'float',
+        'source' => 'string'
     ];
 
     /**
@@ -75,11 +75,11 @@ class GetBuyerListingImpactResponseData implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'source' => null,
-        'label' => null,
         'key' => null,
+        'label' => null,
         'co2_kg' => null,
-        'water_l' => null
+        'water_l' => null,
+        'source' => null
     ];
 
     /**
@@ -109,11 +109,11 @@ class GetBuyerListingImpactResponseData implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'source' => 'source',
-        'label' => 'label',
         'key' => 'key',
+        'label' => 'label',
         'co2_kg' => 'co2Kg',
-        'water_l' => 'waterL'
+        'water_l' => 'waterL',
+        'source' => 'source'
     ];
 
     /**
@@ -122,11 +122,11 @@ class GetBuyerListingImpactResponseData implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'source' => 'setSource',
-        'label' => 'setLabel',
         'key' => 'setKey',
+        'label' => 'setLabel',
         'co2_kg' => 'setCo2Kg',
-        'water_l' => 'setWaterL'
+        'water_l' => 'setWaterL',
+        'source' => 'setSource'
     ];
 
     /**
@@ -135,11 +135,11 @@ class GetBuyerListingImpactResponseData implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'source' => 'getSource',
-        'label' => 'getLabel',
         'key' => 'getKey',
+        'label' => 'getLabel',
         'co2_kg' => 'getCo2Kg',
-        'water_l' => 'getWaterL'
+        'water_l' => 'getWaterL',
+        'source' => 'getSource'
     ];
 
     /**
@@ -199,11 +199,11 @@ class GetBuyerListingImpactResponseData implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['source'] = $data['source'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['key'] = $data['key'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
         $this->container['co2_kg'] = $data['co2_kg'] ?? null;
         $this->container['water_l'] = $data['water_l'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
     }
 
     /**
@@ -215,14 +215,14 @@ class GetBuyerListingImpactResponseData implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['source'] === null) {
-            $invalidProperties[] = "'source' can't be null";
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
         }
         if ($this->container['label'] === null) {
             $invalidProperties[] = "'label' can't be null";
         }
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
+        if ($this->container['source'] === null) {
+            $invalidProperties[] = "'source' can't be null";
         }
         return $invalidProperties;
     }
@@ -240,25 +240,25 @@ class GetBuyerListingImpactResponseData implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets source
+     * Gets key
      *
      * @return string
      */
-    public function getSource()
+    public function getKey()
     {
-        return $this->container['source'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets source
+     * Sets key
      *
-     * @param string $source source
+     * @param string $key key
      *
      * @return self
      */
-    public function setSource($source)
+    public function setKey($key)
     {
-        $this->container['source'] = $source;
+        $this->container['key'] = $key;
 
         return $this;
     }
@@ -283,30 +283,6 @@ class GetBuyerListingImpactResponseData implements ModelInterface, ArrayAccess, 
     public function setLabel($label)
     {
         $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets key
-     *
-     * @return string
-     */
-    public function getKey()
-    {
-        return $this->container['key'];
-    }
-
-    /**
-     * Sets key
-     *
-     * @param string $key key
-     *
-     * @return self
-     */
-    public function setKey($key)
-    {
-        $this->container['key'] = $key;
 
         return $this;
     }
@@ -355,6 +331,30 @@ class GetBuyerListingImpactResponseData implements ModelInterface, ArrayAccess, 
     public function setWaterL($water_l)
     {
         $this->container['water_l'] = $water_l;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string $source source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        $this->container['source'] = $source;
 
         return $this;
     }

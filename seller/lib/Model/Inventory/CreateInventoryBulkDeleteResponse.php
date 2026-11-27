@@ -60,9 +60,12 @@ class CreateInventoryBulkDeleteResponse implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
         'deleted' => 'float',
-        'bulk_job_id' => 'string'
+        'deleted_ids' => 'string[]',
+        'refused' => '\Crossly\Model\Inventory\CreateInventoryBulkDeleteResponseRefused[]',
+        'relayed' => 'float',
+        'bulk_job_id' => 'string',
+        'success' => 'bool'
     ];
 
     /**
@@ -73,9 +76,12 @@ class CreateInventoryBulkDeleteResponse implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
         'deleted' => null,
-        'bulk_job_id' => null
+        'deleted_ids' => null,
+        'refused' => null,
+        'relayed' => null,
+        'bulk_job_id' => null,
+        'success' => null
     ];
 
     /**
@@ -105,9 +111,12 @@ class CreateInventoryBulkDeleteResponse implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
         'deleted' => 'deleted',
-        'bulk_job_id' => 'bulkJobId'
+        'deleted_ids' => 'deletedIds',
+        'refused' => 'refused',
+        'relayed' => 'relayed',
+        'bulk_job_id' => 'bulkJobId',
+        'success' => 'success'
     ];
 
     /**
@@ -116,9 +125,12 @@ class CreateInventoryBulkDeleteResponse implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
         'deleted' => 'setDeleted',
-        'bulk_job_id' => 'setBulkJobId'
+        'deleted_ids' => 'setDeletedIds',
+        'refused' => 'setRefused',
+        'relayed' => 'setRelayed',
+        'bulk_job_id' => 'setBulkJobId',
+        'success' => 'setSuccess'
     ];
 
     /**
@@ -127,9 +139,12 @@ class CreateInventoryBulkDeleteResponse implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
         'deleted' => 'getDeleted',
-        'bulk_job_id' => 'getBulkJobId'
+        'deleted_ids' => 'getDeletedIds',
+        'refused' => 'getRefused',
+        'relayed' => 'getRelayed',
+        'bulk_job_id' => 'getBulkJobId',
+        'success' => 'getSuccess'
     ];
 
     /**
@@ -189,9 +204,12 @@ class CreateInventoryBulkDeleteResponse implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['success'] = $data['success'] ?? null;
         $this->container['deleted'] = $data['deleted'] ?? null;
+        $this->container['deleted_ids'] = $data['deleted_ids'] ?? null;
+        $this->container['refused'] = $data['refused'] ?? null;
+        $this->container['relayed'] = $data['relayed'] ?? null;
         $this->container['bulk_job_id'] = $data['bulk_job_id'] ?? null;
+        $this->container['success'] = $data['success'] ?? null;
     }
 
     /**
@@ -203,14 +221,23 @@ class CreateInventoryBulkDeleteResponse implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['success'] === null) {
-            $invalidProperties[] = "'success' can't be null";
-        }
         if ($this->container['deleted'] === null) {
             $invalidProperties[] = "'deleted' can't be null";
         }
+        if ($this->container['deleted_ids'] === null) {
+            $invalidProperties[] = "'deleted_ids' can't be null";
+        }
+        if ($this->container['refused'] === null) {
+            $invalidProperties[] = "'refused' can't be null";
+        }
+        if ($this->container['relayed'] === null) {
+            $invalidProperties[] = "'relayed' can't be null";
+        }
         if ($this->container['bulk_job_id'] === null) {
             $invalidProperties[] = "'bulk_job_id' can't be null";
+        }
+        if ($this->container['success'] === null) {
+            $invalidProperties[] = "'success' can't be null";
         }
         return $invalidProperties;
     }
@@ -226,30 +253,6 @@ class CreateInventoryBulkDeleteResponse implements ModelInterface, ArrayAccess, 
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets success
-     *
-     * @return bool
-     */
-    public function getSuccess()
-    {
-        return $this->container['success'];
-    }
-
-    /**
-     * Sets success
-     *
-     * @param bool $success success
-     *
-     * @return self
-     */
-    public function setSuccess($success)
-    {
-        $this->container['success'] = $success;
-
-        return $this;
-    }
 
     /**
      * Gets deleted
@@ -276,6 +279,78 @@ class CreateInventoryBulkDeleteResponse implements ModelInterface, ArrayAccess, 
     }
 
     /**
+     * Gets deleted_ids
+     *
+     * @return string[]
+     */
+    public function getDeletedIds()
+    {
+        return $this->container['deleted_ids'];
+    }
+
+    /**
+     * Sets deleted_ids
+     *
+     * @param string[] $deleted_ids deleted_ids
+     *
+     * @return self
+     */
+    public function setDeletedIds($deleted_ids)
+    {
+        $this->container['deleted_ids'] = $deleted_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets refused
+     *
+     * @return \Crossly\Model\Inventory\CreateInventoryBulkDeleteResponseRefused[]
+     */
+    public function getRefused()
+    {
+        return $this->container['refused'];
+    }
+
+    /**
+     * Sets refused
+     *
+     * @param \Crossly\Model\Inventory\CreateInventoryBulkDeleteResponseRefused[] $refused Items NOT deleted: a live listing Crossly may not end (action authority).
+     *
+     * @return self
+     */
+    public function setRefused($refused)
+    {
+        $this->container['refused'] = $refused;
+
+        return $this;
+    }
+
+    /**
+     * Gets relayed
+     *
+     * @return float
+     */
+    public function getRelayed()
+    {
+        return $this->container['relayed'];
+    }
+
+    /**
+     * Sets relayed
+     *
+     * @param float $relayed Live rows handed to their managing app as delist commands.
+     *
+     * @return self
+     */
+    public function setRelayed($relayed)
+    {
+        $this->container['relayed'] = $relayed;
+
+        return $this;
+    }
+
+    /**
      * Gets bulk_job_id
      *
      * @return string
@@ -295,6 +370,30 @@ class CreateInventoryBulkDeleteResponse implements ModelInterface, ArrayAccess, 
     public function setBulkJobId($bulk_job_id)
     {
         $this->container['bulk_job_id'] = $bulk_job_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets success
+     *
+     * @return bool
+     */
+    public function getSuccess()
+    {
+        return $this->container['success'];
+    }
+
+    /**
+     * Sets success
+     *
+     * @param bool $success success
+     *
+     * @return self
+     */
+    public function setSuccess($success)
+    {
+        $this->container['success'] = $success;
 
         return $this;
     }

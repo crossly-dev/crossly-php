@@ -63,7 +63,7 @@ class ListJobShiftsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'id' => 'string',
         'role' => 'string',
         'title' => 'string',
-        'place' => '\Crossly\Model\Common\SlugName',
+        'place' => '\Crossly\Model\Common\NameSlug',
         'starts_at' => 'string',
         'ends_at' => 'string',
         'pay_cents' => 'float',
@@ -235,10 +235,10 @@ class ListJobShiftsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
 
     const ROLE_SHOP_STAFF = 'shop_staff';
     const ROLE_HUB_HELPER = 'hub_helper';
-    const RAIL_BUCKS = 'bucks';
     const RAIL_CBX = 'cbx';
-    const STATUS_OPEN = 'open';
+    const RAIL_BUCKS = 'bucks';
     const STATUS_CANCELLED = 'cancelled';
+    const STATUS_OPEN = 'open';
     const STATUS_PAID = 'paid';
     const STATUS_CLAIMED = 'claimed';
     const STATUS_WORKED = 'worked';
@@ -265,8 +265,8 @@ class ListJobShiftsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function getRailAllowableValues()
     {
         return [
-            self::RAIL_BUCKS,
             self::RAIL_CBX,
+            self::RAIL_BUCKS,
         ];
     }
 
@@ -278,8 +278,8 @@ class ListJobShiftsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_OPEN,
             self::STATUS_CANCELLED,
+            self::STATUS_OPEN,
             self::STATUS_PAID,
             self::STATUS_CLAIMED,
             self::STATUS_WORKED,
@@ -497,7 +497,7 @@ class ListJobShiftsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets place
      *
-     * @return \Crossly\Model\Common\SlugName
+     * @return \Crossly\Model\Common\NameSlug
      */
     public function getPlace()
     {
@@ -507,7 +507,7 @@ class ListJobShiftsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets place
      *
-     * @param \Crossly\Model\Common\SlugName $place place
+     * @param \Crossly\Model\Common\NameSlug $place place
      *
      * @return self
      */

@@ -60,8 +60,8 @@ class GetBuyerCheckoutUsdcResponseData implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'reason' => 'string',
         'available' => 'bool',
+        'reason' => 'string',
         'max_cents' => 'float',
         'networks' => 'string[]'
     ];
@@ -74,8 +74,8 @@ class GetBuyerCheckoutUsdcResponseData implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'reason' => null,
         'available' => null,
+        'reason' => null,
         'max_cents' => null,
         'networks' => null
     ];
@@ -107,8 +107,8 @@ class GetBuyerCheckoutUsdcResponseData implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'reason' => 'reason',
         'available' => 'available',
+        'reason' => 'reason',
         'max_cents' => 'maxCents',
         'networks' => 'networks'
     ];
@@ -119,8 +119,8 @@ class GetBuyerCheckoutUsdcResponseData implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'reason' => 'setReason',
         'available' => 'setAvailable',
+        'reason' => 'setReason',
         'max_cents' => 'setMaxCents',
         'networks' => 'setNetworks'
     ];
@@ -131,8 +131,8 @@ class GetBuyerCheckoutUsdcResponseData implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'reason' => 'getReason',
         'available' => 'getAvailable',
+        'reason' => 'getReason',
         'max_cents' => 'getMaxCents',
         'networks' => 'getNetworks'
     ];
@@ -194,8 +194,8 @@ class GetBuyerCheckoutUsdcResponseData implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['reason'] = $data['reason'] ?? null;
         $this->container['available'] = $data['available'] ?? null;
+        $this->container['reason'] = $data['reason'] ?? null;
         $this->container['max_cents'] = $data['max_cents'] ?? null;
         $this->container['networks'] = $data['networks'] ?? null;
     }
@@ -234,30 +234,6 @@ class GetBuyerCheckoutUsdcResponseData implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets reason
-     *
-     * @return string|null
-     */
-    public function getReason()
-    {
-        return $this->container['reason'];
-    }
-
-    /**
-     * Sets reason
-     *
-     * @param string|null $reason reason
-     *
-     * @return self
-     */
-    public function setReason($reason)
-    {
-        $this->container['reason'] = $reason;
-
-        return $this;
-    }
-
-    /**
      * Gets available
      *
      * @return bool
@@ -277,6 +253,30 @@ class GetBuyerCheckoutUsdcResponseData implements ModelInterface, ArrayAccess, \
     public function setAvailable($available)
     {
         $this->container['available'] = $available;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason
+     *
+     * @return string|null
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /**
+     * Sets reason
+     *
+     * @param string|null $reason reason
+     *
+     * @return self
+     */
+    public function setReason($reason)
+    {
+        $this->container['reason'] = $reason;
 
         return $this;
     }

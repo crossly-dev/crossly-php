@@ -62,7 +62,7 @@ class GetTaxonomyRequiredFieldResponse implements ModelInterface, ArrayAccess, \
     protected static $openAPITypes = [
         'platform' => 'string',
         'required_fields' => '\Crossly\Model\Taxonomy\GetTaxonomyRequiredFieldResponseRequiredFields[]',
-        'inline_aspects' => '\Crossly\Model\Taxonomy\GetTaxonomyCategoryAspectResponseAspects[]'
+        'inline_aspects' => '\Crossly\Model\Taxonomy\GetTaxonomyRequiredFieldResponseInlineAspects[]'
     ];
 
     /**
@@ -332,7 +332,7 @@ class GetTaxonomyRequiredFieldResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets inline_aspects
      *
-     * @return \Crossly\Model\Taxonomy\GetTaxonomyCategoryAspectResponseAspects[]
+     * @return \Crossly\Model\Taxonomy\GetTaxonomyRequiredFieldResponseInlineAspects[]
      */
     public function getInlineAspects()
     {
@@ -342,7 +342,7 @@ class GetTaxonomyRequiredFieldResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets inline_aspects
      *
-     * @param \Crossly\Model\Taxonomy\GetTaxonomyCategoryAspectResponseAspects[] $inline_aspects inline_aspects
+     * @param \Crossly\Model\Taxonomy\GetTaxonomyRequiredFieldResponseInlineAspects[] $inline_aspects inline_aspects
      *
      * @return self
      */

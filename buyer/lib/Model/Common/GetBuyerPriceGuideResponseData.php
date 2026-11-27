@@ -60,10 +60,10 @@ class GetBuyerPriceGuideResponseData implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
+        'count' => 'float',
         'median_cents' => 'float',
         'p25_cents' => 'float',
         'p75_cents' => 'float',
-        'count' => 'float',
         'by_month' => 'array<string,mixed>[]',
         'recent' => 'array<string,mixed>[]'
     ];
@@ -76,10 +76,10 @@ class GetBuyerPriceGuideResponseData implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'count' => null,
         'median_cents' => null,
         'p25_cents' => null,
         'p75_cents' => null,
-        'count' => null,
         'by_month' => null,
         'recent' => null
     ];
@@ -111,10 +111,10 @@ class GetBuyerPriceGuideResponseData implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
+        'count' => 'count',
         'median_cents' => 'medianCents',
         'p25_cents' => 'p25Cents',
         'p75_cents' => 'p75Cents',
-        'count' => 'count',
         'by_month' => 'byMonth',
         'recent' => 'recent'
     ];
@@ -125,10 +125,10 @@ class GetBuyerPriceGuideResponseData implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
+        'count' => 'setCount',
         'median_cents' => 'setMedianCents',
         'p25_cents' => 'setP25Cents',
         'p75_cents' => 'setP75Cents',
-        'count' => 'setCount',
         'by_month' => 'setByMonth',
         'recent' => 'setRecent'
     ];
@@ -139,10 +139,10 @@ class GetBuyerPriceGuideResponseData implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
+        'count' => 'getCount',
         'median_cents' => 'getMedianCents',
         'p25_cents' => 'getP25Cents',
         'p75_cents' => 'getP75Cents',
-        'count' => 'getCount',
         'by_month' => 'getByMonth',
         'recent' => 'getRecent'
     ];
@@ -204,10 +204,10 @@ class GetBuyerPriceGuideResponseData implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
+        $this->container['count'] = $data['count'] ?? null;
         $this->container['median_cents'] = $data['median_cents'] ?? null;
         $this->container['p25_cents'] = $data['p25_cents'] ?? null;
         $this->container['p75_cents'] = $data['p75_cents'] ?? null;
-        $this->container['count'] = $data['count'] ?? null;
         $this->container['by_month'] = $data['by_month'] ?? null;
         $this->container['recent'] = $data['recent'] ?? null;
     }
@@ -244,6 +244,30 @@ class GetBuyerPriceGuideResponseData implements ModelInterface, ArrayAccess, \Js
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets count
+     *
+     * @return float
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param float $count count
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        $this->container['count'] = $count;
+
+        return $this;
+    }
 
     /**
      * Gets median_cents
@@ -313,30 +337,6 @@ class GetBuyerPriceGuideResponseData implements ModelInterface, ArrayAccess, \Js
     public function setP75Cents($p75_cents)
     {
         $this->container['p75_cents'] = $p75_cents;
-
-        return $this;
-    }
-
-    /**
-     * Gets count
-     *
-     * @return float
-     */
-    public function getCount()
-    {
-        return $this->container['count'];
-    }
-
-    /**
-     * Sets count
-     *
-     * @param float $count count
-     *
-     * @return self
-     */
-    public function setCount($count)
-    {
-        $this->container['count'] = $count;
 
         return $this;
     }

@@ -79,7 +79,8 @@ class GetVaultMarketValuationStatementResponse implements ModelInterface, ArrayA
         'methodology' => 'string[]',
         'notes' => 'string[]',
         'verify_url' => 'string',
-        'venue' => 'string'
+        'venue' => 'string',
+        'shares' => '\Crossly\Model\Vault\CreateVaultMarketValuationStatementResponseShares'
     ];
 
     /**
@@ -109,7 +110,8 @@ class GetVaultMarketValuationStatementResponse implements ModelInterface, ArrayA
         'methodology' => null,
         'notes' => null,
         'verify_url' => null,
-        'venue' => null
+        'venue' => null,
+        'shares' => null
     ];
 
     /**
@@ -158,7 +160,8 @@ class GetVaultMarketValuationStatementResponse implements ModelInterface, ArrayA
         'methodology' => 'methodology',
         'notes' => 'notes',
         'verify_url' => 'verifyUrl',
-        'venue' => 'venue'
+        'venue' => 'venue',
+        'shares' => 'shares'
     ];
 
     /**
@@ -186,7 +189,8 @@ class GetVaultMarketValuationStatementResponse implements ModelInterface, ArrayA
         'methodology' => 'setMethodology',
         'notes' => 'setNotes',
         'verify_url' => 'setVerifyUrl',
-        'venue' => 'setVenue'
+        'venue' => 'setVenue',
+        'shares' => 'setShares'
     ];
 
     /**
@@ -214,7 +218,8 @@ class GetVaultMarketValuationStatementResponse implements ModelInterface, ArrayA
         'methodology' => 'getMethodology',
         'notes' => 'getNotes',
         'verify_url' => 'getVerifyUrl',
-        'venue' => 'getVenue'
+        'venue' => 'getVenue',
+        'shares' => 'getShares'
     ];
 
     /**
@@ -258,8 +263,8 @@ class GetVaultMarketValuationStatementResponse implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-    const PURPOSE_INSURANCE = 'insurance';
     const PURPOSE_APPRAISAL = 'appraisal';
+    const PURPOSE_INSURANCE = 'insurance';
 
     /**
      * Gets allowable values of the enum
@@ -269,8 +274,8 @@ class GetVaultMarketValuationStatementResponse implements ModelInterface, ArrayA
     public function getPurposeAllowableValues()
     {
         return [
-            self::PURPOSE_INSURANCE,
             self::PURPOSE_APPRAISAL,
+            self::PURPOSE_INSURANCE,
         ];
     }
 
@@ -309,6 +314,7 @@ class GetVaultMarketValuationStatementResponse implements ModelInterface, ArrayA
         $this->container['notes'] = $data['notes'] ?? null;
         $this->container['verify_url'] = $data['verify_url'] ?? null;
         $this->container['venue'] = $data['venue'] ?? null;
+        $this->container['shares'] = $data['shares'] ?? null;
     }
 
     /**
@@ -878,6 +884,30 @@ class GetVaultMarketValuationStatementResponse implements ModelInterface, ArrayA
     public function setVenue($venue)
     {
         $this->container['venue'] = $venue;
+
+        return $this;
+    }
+
+    /**
+     * Gets shares
+     *
+     * @return \Crossly\Model\Vault\CreateVaultMarketValuationStatementResponseShares|null
+     */
+    public function getShares()
+    {
+        return $this->container['shares'];
+    }
+
+    /**
+     * Sets shares
+     *
+     * @param \Crossly\Model\Vault\CreateVaultMarketValuationStatementResponseShares|null $shares shares
+     *
+     * @return self
+     */
+    public function setShares($shares)
+    {
+        $this->container['shares'] = $shares;
 
         return $this;
     }

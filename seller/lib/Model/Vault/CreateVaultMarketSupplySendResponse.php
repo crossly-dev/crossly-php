@@ -60,10 +60,12 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'created' => '\Crossly\Model\Vault\CreateVaultMarketSupplySendResponseCreated[]',
-        'skipped' => '\Crossly\Model\Vault\CreateVaultMarketSupplySendResponseSkipped[]',
-        'label' => '\Crossly\Model\Vault\CreateVaultMarketPartnerBatchResponseLabel',
-        'label_error' => 'string'
+        'batch_id' => 'mixed',
+        'created' => 'mixed',
+        'skipped' => '\Crossly\Model\Common\InventoryItemIdReason[]',
+        'label' => 'mixed',
+        'label_error' => 'mixed',
+        'storefront_id' => 'string'
     ];
 
     /**
@@ -74,10 +76,12 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'batch_id' => null,
         'created' => null,
         'skipped' => null,
         'label' => null,
-        'label_error' => null
+        'label_error' => null,
+        'storefront_id' => null
     ];
 
     /**
@@ -107,10 +111,12 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'batch_id' => 'batchId',
         'created' => 'created',
         'skipped' => 'skipped',
         'label' => 'label',
-        'label_error' => 'labelError'
+        'label_error' => 'labelError',
+        'storefront_id' => 'storefrontId'
     ];
 
     /**
@@ -119,10 +125,12 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'batch_id' => 'setBatchId',
         'created' => 'setCreated',
         'skipped' => 'setSkipped',
         'label' => 'setLabel',
-        'label_error' => 'setLabelError'
+        'label_error' => 'setLabelError',
+        'storefront_id' => 'setStorefrontId'
     ];
 
     /**
@@ -131,10 +139,12 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'batch_id' => 'getBatchId',
         'created' => 'getCreated',
         'skipped' => 'getSkipped',
         'label' => 'getLabel',
-        'label_error' => 'getLabelError'
+        'label_error' => 'getLabelError',
+        'storefront_id' => 'getStorefrontId'
     ];
 
     /**
@@ -194,10 +204,12 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['batch_id'] = $data['batch_id'] ?? null;
         $this->container['created'] = $data['created'] ?? null;
         $this->container['skipped'] = $data['skipped'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['label_error'] = $data['label_error'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
     }
 
     /**
@@ -231,9 +243,33 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets batch_id
+     *
+     * @return mixed|null
+     */
+    public function getBatchId()
+    {
+        return $this->container['batch_id'];
+    }
+
+    /**
+     * Sets batch_id
+     *
+     * @param mixed|null $batch_id batch_id
+     *
+     * @return self
+     */
+    public function setBatchId($batch_id)
+    {
+        $this->container['batch_id'] = $batch_id;
+
+        return $this;
+    }
+
+    /**
      * Gets created
      *
-     * @return \Crossly\Model\Vault\CreateVaultMarketSupplySendResponseCreated[]
+     * @return mixed
      */
     public function getCreated()
     {
@@ -243,7 +279,7 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
     /**
      * Sets created
      *
-     * @param \Crossly\Model\Vault\CreateVaultMarketSupplySendResponseCreated[] $created created
+     * @param mixed $created created
      *
      * @return self
      */
@@ -257,7 +293,7 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
     /**
      * Gets skipped
      *
-     * @return \Crossly\Model\Vault\CreateVaultMarketSupplySendResponseSkipped[]
+     * @return \Crossly\Model\Common\InventoryItemIdReason[]
      */
     public function getSkipped()
     {
@@ -267,7 +303,7 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
     /**
      * Sets skipped
      *
-     * @param \Crossly\Model\Vault\CreateVaultMarketSupplySendResponseSkipped[] $skipped skipped
+     * @param \Crossly\Model\Common\InventoryItemIdReason[] $skipped skipped
      *
      * @return self
      */
@@ -281,7 +317,7 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
     /**
      * Gets label
      *
-     * @return \Crossly\Model\Vault\CreateVaultMarketPartnerBatchResponseLabel|null
+     * @return mixed|null
      */
     public function getLabel()
     {
@@ -291,7 +327,7 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
     /**
      * Sets label
      *
-     * @param \Crossly\Model\Vault\CreateVaultMarketPartnerBatchResponseLabel|null $label label
+     * @param mixed|null $label label
      *
      * @return self
      */
@@ -305,7 +341,7 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
     /**
      * Gets label_error
      *
-     * @return string|null
+     * @return mixed|null
      */
     public function getLabelError()
     {
@@ -315,13 +351,37 @@ class CreateVaultMarketSupplySendResponse implements ModelInterface, ArrayAccess
     /**
      * Sets label_error
      *
-     * @param string|null $label_error label_error
+     * @param mixed|null $label_error label_error
      *
      * @return self
      */
     public function setLabelError($label_error)
     {
         $this->container['label_error'] = $label_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id storefront_id
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
 
         return $this;
     }

@@ -61,6 +61,7 @@ class GetCbxSubjectBalanceBySubjectIdResponseData implements ModelInterface, Arr
       */
     protected static $openAPITypes = [
         'granted_base_units' => 'string',
+        'funding_restricted_base_units' => 'string',
         'earned_base_units' => 'string',
         'staked_base_units' => 'string',
         'earned_available_base_units' => 'string',
@@ -77,6 +78,7 @@ class GetCbxSubjectBalanceBySubjectIdResponseData implements ModelInterface, Arr
       */
     protected static $openAPIFormats = [
         'granted_base_units' => null,
+        'funding_restricted_base_units' => null,
         'earned_base_units' => null,
         'staked_base_units' => null,
         'earned_available_base_units' => null,
@@ -112,6 +114,7 @@ class GetCbxSubjectBalanceBySubjectIdResponseData implements ModelInterface, Arr
      */
     protected static $attributeMap = [
         'granted_base_units' => 'grantedBaseUnits',
+        'funding_restricted_base_units' => 'fundingRestrictedBaseUnits',
         'earned_base_units' => 'earnedBaseUnits',
         'staked_base_units' => 'stakedBaseUnits',
         'earned_available_base_units' => 'earnedAvailableBaseUnits',
@@ -126,6 +129,7 @@ class GetCbxSubjectBalanceBySubjectIdResponseData implements ModelInterface, Arr
      */
     protected static $setters = [
         'granted_base_units' => 'setGrantedBaseUnits',
+        'funding_restricted_base_units' => 'setFundingRestrictedBaseUnits',
         'earned_base_units' => 'setEarnedBaseUnits',
         'staked_base_units' => 'setStakedBaseUnits',
         'earned_available_base_units' => 'setEarnedAvailableBaseUnits',
@@ -140,6 +144,7 @@ class GetCbxSubjectBalanceBySubjectIdResponseData implements ModelInterface, Arr
      */
     protected static $getters = [
         'granted_base_units' => 'getGrantedBaseUnits',
+        'funding_restricted_base_units' => 'getFundingRestrictedBaseUnits',
         'earned_base_units' => 'getEarnedBaseUnits',
         'staked_base_units' => 'getStakedBaseUnits',
         'earned_available_base_units' => 'getEarnedAvailableBaseUnits',
@@ -205,6 +210,7 @@ class GetCbxSubjectBalanceBySubjectIdResponseData implements ModelInterface, Arr
     public function __construct(array $data = null)
     {
         $this->container['granted_base_units'] = $data['granted_base_units'] ?? null;
+        $this->container['funding_restricted_base_units'] = $data['funding_restricted_base_units'] ?? null;
         $this->container['earned_base_units'] = $data['earned_base_units'] ?? null;
         $this->container['staked_base_units'] = $data['staked_base_units'] ?? null;
         $this->container['earned_available_base_units'] = $data['earned_available_base_units'] ?? null;
@@ -223,6 +229,9 @@ class GetCbxSubjectBalanceBySubjectIdResponseData implements ModelInterface, Arr
 
         if ($this->container['granted_base_units'] === null) {
             $invalidProperties[] = "'granted_base_units' can't be null";
+        }
+        if ($this->container['funding_restricted_base_units'] === null) {
+            $invalidProperties[] = "'funding_restricted_base_units' can't be null";
         }
         if ($this->container['earned_base_units'] === null) {
             $invalidProperties[] = "'earned_base_units' can't be null";
@@ -274,6 +283,30 @@ class GetCbxSubjectBalanceBySubjectIdResponseData implements ModelInterface, Arr
     public function setGrantedBaseUnits($granted_base_units)
     {
         $this->container['granted_base_units'] = $granted_base_units;
+
+        return $this;
+    }
+
+    /**
+     * Gets funding_restricted_base_units
+     *
+     * @return string
+     */
+    public function getFundingRestrictedBaseUnits()
+    {
+        return $this->container['funding_restricted_base_units'];
+    }
+
+    /**
+     * Sets funding_restricted_base_units
+     *
+     * @param string $funding_restricted_base_units funding_restricted_base_units
+     *
+     * @return self
+     */
+    public function setFundingRestrictedBaseUnits($funding_restricted_base_units)
+    {
+        $this->container['funding_restricted_base_units'] = $funding_restricted_base_units;
 
         return $this;
     }

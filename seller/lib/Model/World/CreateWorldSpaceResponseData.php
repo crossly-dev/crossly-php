@@ -66,13 +66,13 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
         'updated_at' => '\DateTime',
         'status' => 'string',
         'slug' => 'string',
+        'venue' => 'string',
         'host_user_id' => 'string',
+        'about' => 'string',
         'gate_chain' => 'string',
         'gate_contract' => 'string',
         'gate_name' => 'string',
-        'venue' => 'string',
-        'membership' => 'string',
-        'about' => 'string'
+        'membership' => 'string'
     ];
 
     /**
@@ -89,13 +89,13 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
         'updated_at' => 'date-time',
         'status' => null,
         'slug' => null,
+        'venue' => null,
         'host_user_id' => null,
+        'about' => null,
         'gate_chain' => null,
         'gate_contract' => null,
         'gate_name' => null,
-        'venue' => null,
-        'membership' => null,
-        'about' => null
+        'membership' => null
     ];
 
     /**
@@ -131,13 +131,13 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
         'updated_at' => 'updatedAt',
         'status' => 'status',
         'slug' => 'slug',
+        'venue' => 'venue',
         'host_user_id' => 'hostUserId',
+        'about' => 'about',
         'gate_chain' => 'gateChain',
         'gate_contract' => 'gateContract',
         'gate_name' => 'gateName',
-        'venue' => 'venue',
-        'membership' => 'membership',
-        'about' => 'about'
+        'membership' => 'membership'
     ];
 
     /**
@@ -152,13 +152,13 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
         'updated_at' => 'setUpdatedAt',
         'status' => 'setStatus',
         'slug' => 'setSlug',
+        'venue' => 'setVenue',
         'host_user_id' => 'setHostUserId',
+        'about' => 'setAbout',
         'gate_chain' => 'setGateChain',
         'gate_contract' => 'setGateContract',
         'gate_name' => 'setGateName',
-        'venue' => 'setVenue',
-        'membership' => 'setMembership',
-        'about' => 'setAbout'
+        'membership' => 'setMembership'
     ];
 
     /**
@@ -173,13 +173,13 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
         'updated_at' => 'getUpdatedAt',
         'status' => 'getStatus',
         'slug' => 'getSlug',
+        'venue' => 'getVenue',
         'host_user_id' => 'getHostUserId',
+        'about' => 'getAbout',
         'gate_chain' => 'getGateChain',
         'gate_contract' => 'getGateContract',
         'gate_name' => 'getGateName',
-        'venue' => 'getVenue',
-        'membership' => 'getMembership',
-        'about' => 'getAbout'
+        'membership' => 'getMembership'
     ];
 
     /**
@@ -245,13 +245,13 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
+        $this->container['venue'] = $data['venue'] ?? null;
         $this->container['host_user_id'] = $data['host_user_id'] ?? null;
+        $this->container['about'] = $data['about'] ?? null;
         $this->container['gate_chain'] = $data['gate_chain'] ?? null;
         $this->container['gate_contract'] = $data['gate_contract'] ?? null;
         $this->container['gate_name'] = $data['gate_name'] ?? null;
-        $this->container['venue'] = $data['venue'] ?? null;
         $this->container['membership'] = $data['membership'] ?? null;
-        $this->container['about'] = $data['about'] ?? null;
     }
 
     /**
@@ -281,11 +281,11 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
         if ($this->container['slug'] === null) {
             $invalidProperties[] = "'slug' can't be null";
         }
-        if ($this->container['host_user_id'] === null) {
-            $invalidProperties[] = "'host_user_id' can't be null";
-        }
         if ($this->container['venue'] === null) {
             $invalidProperties[] = "'venue' can't be null";
+        }
+        if ($this->container['host_user_id'] === null) {
+            $invalidProperties[] = "'host_user_id' can't be null";
         }
         if ($this->container['membership'] === null) {
             $invalidProperties[] = "'membership' can't be null";
@@ -450,6 +450,30 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets venue
+     *
+     * @return string
+     */
+    public function getVenue()
+    {
+        return $this->container['venue'];
+    }
+
+    /**
+     * Sets venue
+     *
+     * @param string $venue venue
+     *
+     * @return self
+     */
+    public function setVenue($venue)
+    {
+        $this->container['venue'] = $venue;
+
+        return $this;
+    }
+
+    /**
      * Gets host_user_id
      *
      * @return string
@@ -469,6 +493,30 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
     public function setHostUserId($host_user_id)
     {
         $this->container['host_user_id'] = $host_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets about
+     *
+     * @return string|null
+     */
+    public function getAbout()
+    {
+        return $this->container['about'];
+    }
+
+    /**
+     * Sets about
+     *
+     * @param string|null $about about
+     *
+     * @return self
+     */
+    public function setAbout($about)
+    {
+        $this->container['about'] = $about;
 
         return $this;
     }
@@ -546,30 +594,6 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets venue
-     *
-     * @return string
-     */
-    public function getVenue()
-    {
-        return $this->container['venue'];
-    }
-
-    /**
-     * Sets venue
-     *
-     * @param string $venue venue
-     *
-     * @return self
-     */
-    public function setVenue($venue)
-    {
-        $this->container['venue'] = $venue;
-
-        return $this;
-    }
-
-    /**
      * Gets membership
      *
      * @return string
@@ -589,30 +613,6 @@ class CreateWorldSpaceResponseData implements ModelInterface, ArrayAccess, \Json
     public function setMembership($membership)
     {
         $this->container['membership'] = $membership;
-
-        return $this;
-    }
-
-    /**
-     * Gets about
-     *
-     * @return string|null
-     */
-    public function getAbout()
-    {
-        return $this->container['about'];
-    }
-
-    /**
-     * Sets about
-     *
-     * @param string|null $about about
-     *
-     * @return self
-     */
-    public function setAbout($about)
-    {
-        $this->container['about'] = $about;
 
         return $this;
     }

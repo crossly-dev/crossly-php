@@ -62,8 +62,8 @@ class CreateBuyerAuctionPayResponseData implements ModelInterface, ArrayAccess, 
     protected static $openAPITypes = [
         'paid' => 'bool',
         'client_secret' => 'string',
-        'amount_cents' => 'float',
-        'payment_intent_id' => 'string'
+        'payment_intent_id' => 'string',
+        'amount_cents' => 'float'
     ];
 
     /**
@@ -76,8 +76,8 @@ class CreateBuyerAuctionPayResponseData implements ModelInterface, ArrayAccess, 
     protected static $openAPIFormats = [
         'paid' => null,
         'client_secret' => null,
-        'amount_cents' => null,
-        'payment_intent_id' => null
+        'payment_intent_id' => null,
+        'amount_cents' => null
     ];
 
     /**
@@ -109,8 +109,8 @@ class CreateBuyerAuctionPayResponseData implements ModelInterface, ArrayAccess, 
     protected static $attributeMap = [
         'paid' => 'paid',
         'client_secret' => 'clientSecret',
-        'amount_cents' => 'amountCents',
-        'payment_intent_id' => 'paymentIntentId'
+        'payment_intent_id' => 'paymentIntentId',
+        'amount_cents' => 'amountCents'
     ];
 
     /**
@@ -121,8 +121,8 @@ class CreateBuyerAuctionPayResponseData implements ModelInterface, ArrayAccess, 
     protected static $setters = [
         'paid' => 'setPaid',
         'client_secret' => 'setClientSecret',
-        'amount_cents' => 'setAmountCents',
-        'payment_intent_id' => 'setPaymentIntentId'
+        'payment_intent_id' => 'setPaymentIntentId',
+        'amount_cents' => 'setAmountCents'
     ];
 
     /**
@@ -133,8 +133,8 @@ class CreateBuyerAuctionPayResponseData implements ModelInterface, ArrayAccess, 
     protected static $getters = [
         'paid' => 'getPaid',
         'client_secret' => 'getClientSecret',
-        'amount_cents' => 'getAmountCents',
-        'payment_intent_id' => 'getPaymentIntentId'
+        'payment_intent_id' => 'getPaymentIntentId',
+        'amount_cents' => 'getAmountCents'
     ];
 
     /**
@@ -196,8 +196,8 @@ class CreateBuyerAuctionPayResponseData implements ModelInterface, ArrayAccess, 
     {
         $this->container['paid'] = $data['paid'] ?? null;
         $this->container['client_secret'] = $data['client_secret'] ?? null;
-        $this->container['amount_cents'] = $data['amount_cents'] ?? null;
         $this->container['payment_intent_id'] = $data['payment_intent_id'] ?? null;
+        $this->container['amount_cents'] = $data['amount_cents'] ?? null;
     }
 
     /**
@@ -276,30 +276,6 @@ class CreateBuyerAuctionPayResponseData implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets amount_cents
-     *
-     * @return float|null
-     */
-    public function getAmountCents()
-    {
-        return $this->container['amount_cents'];
-    }
-
-    /**
-     * Sets amount_cents
-     *
-     * @param float|null $amount_cents amount_cents
-     *
-     * @return self
-     */
-    public function setAmountCents($amount_cents)
-    {
-        $this->container['amount_cents'] = $amount_cents;
-
-        return $this;
-    }
-
-    /**
      * Gets payment_intent_id
      *
      * @return string|null
@@ -319,6 +295,30 @@ class CreateBuyerAuctionPayResponseData implements ModelInterface, ArrayAccess, 
     public function setPaymentIntentId($payment_intent_id)
     {
         $this->container['payment_intent_id'] = $payment_intent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_cents
+     *
+     * @return float|null
+     */
+    public function getAmountCents()
+    {
+        return $this->container['amount_cents'];
+    }
+
+    /**
+     * Sets amount_cents
+     *
+     * @param float|null $amount_cents amount_cents
+     *
+     * @return self
+     */
+    public function setAmountCents($amount_cents)
+    {
+        $this->container['amount_cents'] = $amount_cents;
 
         return $this;
     }

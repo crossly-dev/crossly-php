@@ -189,8 +189,8 @@ class GetVaultMarketMarketModelResponseLuld implements ModelInterface, ArrayAcce
     }
 
     const PHASE_LIMIT = 'limit';
-    const PHASE_NORMAL = 'normal';
     const PHASE_PAUSED = 'paused';
+    const PHASE_NORMAL = 'normal';
 
     /**
      * Gets allowable values of the enum
@@ -201,8 +201,8 @@ class GetVaultMarketMarketModelResponseLuld implements ModelInterface, ArrayAcce
     {
         return [
             self::PHASE_LIMIT,
-            self::PHASE_NORMAL,
             self::PHASE_PAUSED,
+            self::PHASE_NORMAL,
         ];
     }
 

@@ -60,8 +60,8 @@ class GetBuyerCollectionSetResponseDataLeaderboard implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
         'rank' => 'float',
+        'name' => 'string',
         'owned' => 'float'
     ];
 
@@ -73,8 +73,8 @@ class GetBuyerCollectionSetResponseDataLeaderboard implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
         'rank' => null,
+        'name' => null,
         'owned' => null
     ];
 
@@ -105,8 +105,8 @@ class GetBuyerCollectionSetResponseDataLeaderboard implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
         'rank' => 'rank',
+        'name' => 'name',
         'owned' => 'owned'
     ];
 
@@ -116,8 +116,8 @@ class GetBuyerCollectionSetResponseDataLeaderboard implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
         'rank' => 'setRank',
+        'name' => 'setName',
         'owned' => 'setOwned'
     ];
 
@@ -127,8 +127,8 @@ class GetBuyerCollectionSetResponseDataLeaderboard implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
         'rank' => 'getRank',
+        'name' => 'getName',
         'owned' => 'getOwned'
     ];
 
@@ -189,8 +189,8 @@ class GetBuyerCollectionSetResponseDataLeaderboard implements ModelInterface, Ar
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
         $this->container['rank'] = $data['rank'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['owned'] = $data['owned'] ?? null;
     }
 
@@ -203,11 +203,11 @@ class GetBuyerCollectionSetResponseDataLeaderboard implements ModelInterface, Ar
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         if ($this->container['rank'] === null) {
             $invalidProperties[] = "'rank' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['owned'] === null) {
             $invalidProperties[] = "'owned' can't be null";
@@ -226,30 +226,6 @@ class GetBuyerCollectionSetResponseDataLeaderboard implements ModelInterface, Ar
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
 
     /**
      * Gets rank
@@ -271,6 +247,30 @@ class GetBuyerCollectionSetResponseDataLeaderboard implements ModelInterface, Ar
     public function setRank($rank)
     {
         $this->container['rank'] = $rank;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

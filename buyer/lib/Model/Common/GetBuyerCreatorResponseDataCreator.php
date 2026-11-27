@@ -60,11 +60,11 @@ class GetBuyerCreatorResponseDataCreator implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
+        'handle' => 'string',
         'display_name' => 'string',
-        'avatar_url' => 'string',
         'bio' => 'string',
-        'code' => 'string',
-        'handle' => 'string'
+        'avatar_url' => 'string',
+        'code' => 'string'
     ];
 
     /**
@@ -75,11 +75,11 @@ class GetBuyerCreatorResponseDataCreator implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'handle' => null,
         'display_name' => null,
-        'avatar_url' => null,
         'bio' => null,
-        'code' => null,
-        'handle' => null
+        'avatar_url' => null,
+        'code' => null
     ];
 
     /**
@@ -109,11 +109,11 @@ class GetBuyerCreatorResponseDataCreator implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
+        'handle' => 'handle',
         'display_name' => 'displayName',
-        'avatar_url' => 'avatarUrl',
         'bio' => 'bio',
-        'code' => 'code',
-        'handle' => 'handle'
+        'avatar_url' => 'avatarUrl',
+        'code' => 'code'
     ];
 
     /**
@@ -122,11 +122,11 @@ class GetBuyerCreatorResponseDataCreator implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
+        'handle' => 'setHandle',
         'display_name' => 'setDisplayName',
-        'avatar_url' => 'setAvatarUrl',
         'bio' => 'setBio',
-        'code' => 'setCode',
-        'handle' => 'setHandle'
+        'avatar_url' => 'setAvatarUrl',
+        'code' => 'setCode'
     ];
 
     /**
@@ -135,11 +135,11 @@ class GetBuyerCreatorResponseDataCreator implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
+        'handle' => 'getHandle',
         'display_name' => 'getDisplayName',
-        'avatar_url' => 'getAvatarUrl',
         'bio' => 'getBio',
-        'code' => 'getCode',
-        'handle' => 'getHandle'
+        'avatar_url' => 'getAvatarUrl',
+        'code' => 'getCode'
     ];
 
     /**
@@ -199,11 +199,11 @@ class GetBuyerCreatorResponseDataCreator implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['display_name'] = $data['display_name'] ?? null;
-        $this->container['avatar_url'] = $data['avatar_url'] ?? null;
-        $this->container['bio'] = $data['bio'] ?? null;
-        $this->container['code'] = $data['code'] ?? null;
         $this->container['handle'] = $data['handle'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['bio'] = $data['bio'] ?? null;
+        $this->container['avatar_url'] = $data['avatar_url'] ?? null;
+        $this->container['code'] = $data['code'] ?? null;
     }
 
     /**
@@ -234,6 +234,30 @@ class GetBuyerCreatorResponseDataCreator implements ModelInterface, ArrayAccess,
 
 
     /**
+     * Gets handle
+     *
+     * @return string
+     */
+    public function getHandle()
+    {
+        return $this->container['handle'];
+    }
+
+    /**
+     * Sets handle
+     *
+     * @param string $handle handle
+     *
+     * @return self
+     */
+    public function setHandle($handle)
+    {
+        $this->container['handle'] = $handle;
+
+        return $this;
+    }
+
+    /**
      * Gets display_name
      *
      * @return string|null
@@ -253,30 +277,6 @@ class GetBuyerCreatorResponseDataCreator implements ModelInterface, ArrayAccess,
     public function setDisplayName($display_name)
     {
         $this->container['display_name'] = $display_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets avatar_url
-     *
-     * @return string|null
-     */
-    public function getAvatarUrl()
-    {
-        return $this->container['avatar_url'];
-    }
-
-    /**
-     * Sets avatar_url
-     *
-     * @param string|null $avatar_url avatar_url
-     *
-     * @return self
-     */
-    public function setAvatarUrl($avatar_url)
-    {
-        $this->container['avatar_url'] = $avatar_url;
 
         return $this;
     }
@@ -306,6 +306,30 @@ class GetBuyerCreatorResponseDataCreator implements ModelInterface, ArrayAccess,
     }
 
     /**
+     * Gets avatar_url
+     *
+     * @return string|null
+     */
+    public function getAvatarUrl()
+    {
+        return $this->container['avatar_url'];
+    }
+
+    /**
+     * Sets avatar_url
+     *
+     * @param string|null $avatar_url avatar_url
+     *
+     * @return self
+     */
+    public function setAvatarUrl($avatar_url)
+    {
+        $this->container['avatar_url'] = $avatar_url;
+
+        return $this;
+    }
+
+    /**
      * Gets code
      *
      * @return string|null
@@ -325,30 +349,6 @@ class GetBuyerCreatorResponseDataCreator implements ModelInterface, ArrayAccess,
     public function setCode($code)
     {
         $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets handle
-     *
-     * @return string
-     */
-    public function getHandle()
-    {
-        return $this->container['handle'];
-    }
-
-    /**
-     * Sets handle
-     *
-     * @param string $handle handle
-     *
-     * @return self
-     */
-    public function setHandle($handle)
-    {
-        $this->container['handle'] = $handle;
 
         return $this;
     }

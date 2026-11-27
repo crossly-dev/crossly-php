@@ -209,9 +209,9 @@ class ListVaultMarketSetGoalBasketsItemLegs implements ModelInterface, ArrayAcce
     }
 
     const STATUS_PENDING = 'pending';
-    const STATUS_FILLED = 'filled';
     const STATUS_CANCELLED = 'cancelled';
     const STATUS_REJECTED = 'rejected';
+    const STATUS_FILLED = 'filled';
     const STATUS_WORKING = 'working';
 
     /**
@@ -223,9 +223,9 @@ class ListVaultMarketSetGoalBasketsItemLegs implements ModelInterface, ArrayAcce
     {
         return [
             self::STATUS_PENDING,
-            self::STATUS_FILLED,
             self::STATUS_CANCELLED,
             self::STATUS_REJECTED,
+            self::STATUS_FILLED,
             self::STATUS_WORKING,
         ];
     }

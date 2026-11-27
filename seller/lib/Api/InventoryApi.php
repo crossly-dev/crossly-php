@@ -2412,7 +2412,7 @@ class InventoryApi
     /**
      * Operation createInventoryBulkQuantity
      *
-     * Set / add / subtract stock across many items, syncing live listings.
+     * Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -2428,7 +2428,7 @@ class InventoryApi
     /**
      * Operation createInventoryBulkQuantityWithHttpInfo
      *
-     * Set / add / subtract stock across many items, syncing live listings.
+     * Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -2640,7 +2640,7 @@ class InventoryApi
     /**
      * Operation createInventoryBulkQuantityAsync
      *
-     * Set / add / subtract stock across many items, syncing live listings.
+     * Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
      *
      *
      * @throws \InvalidArgumentException
@@ -2659,7 +2659,7 @@ class InventoryApi
     /**
      * Operation createInventoryBulkQuantityAsyncWithHttpInfo
      *
-     * Set / add / subtract stock across many items, syncing live listings.
+     * Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
      *
      *
      * @throws \InvalidArgumentException
@@ -2714,6 +2714,382 @@ class InventoryApi
     {
 
         $resourcePath = '/v1/inventory/bulk-quantity';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createInventoryBulkRestore
+     *
+     * Restore archived inventory items (status returns to active, or sold_out when no stock).
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Inventory\CreateInventoryBulkRestoreResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function createInventoryBulkRestore()
+    {
+        list($response) = $this->createInventoryBulkRestoreWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation createInventoryBulkRestoreWithHttpInfo
+     *
+     * Restore archived inventory items (status returns to active, or sold_out when no stock).
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Inventory\CreateInventoryBulkRestoreResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createInventoryBulkRestoreWithHttpInfo()
+    {
+        $request = $this->createInventoryBulkRestoreRequest();
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Inventory\CreateInventoryBulkRestoreResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Inventory\CreateInventoryBulkRestoreResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Inventory\CreateInventoryBulkRestoreResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Inventory\CreateInventoryBulkRestoreResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createInventoryBulkRestoreAsync
+     *
+     * Restore archived inventory items (status returns to active, or sold_out when no stock).
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createInventoryBulkRestoreAsync()
+    {
+        return $this->createInventoryBulkRestoreAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createInventoryBulkRestoreAsyncWithHttpInfo
+     *
+     * Restore archived inventory items (status returns to active, or sold_out when no stock).
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createInventoryBulkRestoreAsyncWithHttpInfo()
+    {
+        $returnType = '\Crossly\Model\Inventory\CreateInventoryBulkRestoreResponse';
+        $request = $this->createInventoryBulkRestoreRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createInventoryBulkRestore'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createInventoryBulkRestoreRequest()
+    {
+
+        $resourcePath = '/v1/inventory/bulk-restore';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3940,7 +4316,7 @@ class InventoryApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Crossly\Model\Inventory\CreateInventoryLabelRenameResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @return \Crossly\Model\Common\UpdatedResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
     public function createInventoryLabelRename()
     {
@@ -3956,7 +4332,7 @@ class InventoryApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Crossly\Model\Inventory\CreateInventoryLabelRenameResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Crossly\Model\Common\UpdatedResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createInventoryLabelRenameWithHttpInfo()
     {
@@ -3999,14 +4375,14 @@ class InventoryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Crossly\Model\Inventory\CreateInventoryLabelRenameResponse' === '\SplFileObject') {
+                    if ('\Crossly\Model\Common\UpdatedResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Crossly\Model\Inventory\CreateInventoryLabelRenameResponse', []),
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\UpdatedResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4084,7 +4460,7 @@ class InventoryApi
                     ];
             }
 
-            $returnType = '\Crossly\Model\Inventory\CreateInventoryLabelRenameResponse';
+            $returnType = '\Crossly\Model\Common\UpdatedResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4102,7 +4478,7 @@ class InventoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Crossly\Model\Inventory\CreateInventoryLabelRenameResponse',
+                        '\Crossly\Model\Common\UpdatedResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4190,7 +4566,7 @@ class InventoryApi
      */
     public function createInventoryLabelRenameAsyncWithHttpInfo()
     {
-        $returnType = '\Crossly\Model\Inventory\CreateInventoryLabelRenameResponse';
+        $returnType = '\Crossly\Model\Common\UpdatedResponse';
         $request = $this->createInventoryLabelRenameRequest();
 
         return $this->client
@@ -6649,7 +7025,7 @@ class InventoryApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Crossly\Model\Spatial\CreateSpatialPropertyLeaseAcceptResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @return \Crossly\Model\World\CreateWorldMarketPlotRentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
     public function createSpatialPropertyLeaseAccept($id)
     {
@@ -6666,7 +7042,7 @@ class InventoryApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Crossly\Model\Spatial\CreateSpatialPropertyLeaseAcceptResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Crossly\Model\World\CreateWorldMarketPlotRentResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createSpatialPropertyLeaseAcceptWithHttpInfo($id)
     {
@@ -6709,14 +7085,14 @@ class InventoryApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Crossly\Model\Spatial\CreateSpatialPropertyLeaseAcceptResponse' === '\SplFileObject') {
+                    if ('\Crossly\Model\World\CreateWorldMarketPlotRentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Crossly\Model\Spatial\CreateSpatialPropertyLeaseAcceptResponse', []),
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\World\CreateWorldMarketPlotRentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6794,7 +7170,7 @@ class InventoryApi
                     ];
             }
 
-            $returnType = '\Crossly\Model\Spatial\CreateSpatialPropertyLeaseAcceptResponse';
+            $returnType = '\Crossly\Model\World\CreateWorldMarketPlotRentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6812,7 +7188,7 @@ class InventoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Crossly\Model\Spatial\CreateSpatialPropertyLeaseAcceptResponse',
+                        '\Crossly\Model\World\CreateWorldMarketPlotRentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6902,7 +7278,7 @@ class InventoryApi
      */
     public function createSpatialPropertyLeaseAcceptAsyncWithHttpInfo($id)
     {
-        $returnType = '\Crossly\Model\Spatial\CreateSpatialPropertyLeaseAcceptResponse';
+        $returnType = '\Crossly\Model\World\CreateWorldMarketPlotRentResponse';
         $request = $this->createSpatialPropertyLeaseAcceptRequest($id);
 
         return $this->client
@@ -11790,6 +12166,1364 @@ class InventoryApi
     }
 
     /**
+     * Operation getAnalyticInventory
+     *
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  int $maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Analytic\GetAnalyticInventoryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAnalyticInventory($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $maturity = null)
+    {
+        list($response) = $this->getAnalyticInventoryWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $maturity);
+        return $response;
+    }
+
+    /**
+     * Operation getAnalyticInventoryWithHttpInfo
+     *
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  int $maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Analytic\GetAnalyticInventoryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAnalyticInventoryWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $maturity = null)
+    {
+        $request = $this->getAnalyticInventoryRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $maturity);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Analytic\GetAnalyticInventoryResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Analytic\GetAnalyticInventoryResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Analytic\GetAnalyticInventoryResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Analytic\GetAnalyticInventoryResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAnalyticInventoryAsync
+     *
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  int $maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticInventoryAsync($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $maturity = null)
+    {
+        return $this->getAnalyticInventoryAsyncWithHttpInfo($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $maturity)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAnalyticInventoryAsyncWithHttpInfo
+     *
+     * Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  int $maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAnalyticInventoryAsyncWithHttpInfo($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $maturity = null)
+    {
+        $returnType = '\Crossly\Model\Analytic\GetAnalyticInventoryResponse';
+        $request = $this->getAnalyticInventoryRequest($range, $from, $to, $compare, $cmp_from, $cmp_to, $labels, $platforms, $category, $brand, $tz, $maturity);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAnalyticInventory'
+     *
+     * @param  string $range Reporting window. Default 30d. custom needs from and to. (optional)
+     * @param  string $from YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $to YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)
+     * @param  string $compare Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+     * @param  string $cmp_from YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $cmp_to YYYY-MM-DD. Only with compare&#x3D;custom. (optional)
+     * @param  string $labels Comma-separated inventory labels (any of them). (optional)
+     * @param  string $platforms Comma-separated platform ids. (optional)
+     * @param  string $category Canonical main-category key. (optional)
+     * @param  string $brand Brand name. (optional)
+     * @param  string $tz IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+     * @param  int $maturity Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAnalyticInventoryRequest($range = null, $from = null, $to = null, $compare = null, $cmp_from = null, $cmp_to = null, $labels = null, $platforms = null, $category = null, $brand = null, $tz = null, $maturity = null)
+    {
+
+        $resourcePath = '/v1/analytics/inventory';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($range !== null) {
+            if('form' === 'form' && is_array($range)) {
+                foreach($range as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['range'] = $range;
+            }
+        }
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
+        }
+        // query params
+        if ($compare !== null) {
+            if('form' === 'form' && is_array($compare)) {
+                foreach($compare as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['compare'] = $compare;
+            }
+        }
+        // query params
+        if ($cmp_from !== null) {
+            if('form' === 'form' && is_array($cmp_from)) {
+                foreach($cmp_from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpFrom'] = $cmp_from;
+            }
+        }
+        // query params
+        if ($cmp_to !== null) {
+            if('form' === 'form' && is_array($cmp_to)) {
+                foreach($cmp_to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cmpTo'] = $cmp_to;
+            }
+        }
+        // query params
+        if ($labels !== null) {
+            if('form' === 'form' && is_array($labels)) {
+                foreach($labels as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['labels'] = $labels;
+            }
+        }
+        // query params
+        if ($platforms !== null) {
+            if('form' === 'form' && is_array($platforms)) {
+                foreach($platforms as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['platforms'] = $platforms;
+            }
+        }
+        // query params
+        if ($category !== null) {
+            if('form' === 'form' && is_array($category)) {
+                foreach($category as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['category'] = $category;
+            }
+        }
+        // query params
+        if ($brand !== null) {
+            if('form' === 'form' && is_array($brand)) {
+                foreach($brand as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['brand'] = $brand;
+            }
+        }
+        // query params
+        if ($tz !== null) {
+            if('form' === 'form' && is_array($tz)) {
+                foreach($tz as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['tz'] = $tz;
+            }
+        }
+        // query params
+        if ($maturity !== null) {
+            if('form' === 'form' && is_array($maturity)) {
+                foreach($maturity as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['maturity'] = $maturity;
+            }
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getGameEventSummary
+     *
+     * The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+     *
+     * @param  string $event_id event_id (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Game\GetGameEventSummaryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getGameEventSummary($event_id)
+    {
+        list($response) = $this->getGameEventSummaryWithHttpInfo($event_id);
+        return $response;
+    }
+
+    /**
+     * Operation getGameEventSummaryWithHttpInfo
+     *
+     * The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+     *
+     * @param  string $event_id (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Game\GetGameEventSummaryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getGameEventSummaryWithHttpInfo($event_id)
+    {
+        $request = $this->getGameEventSummaryRequest($event_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Game\GetGameEventSummaryResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Game\GetGameEventSummaryResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Game\GetGameEventSummaryResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Game\GetGameEventSummaryResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getGameEventSummaryAsync
+     *
+     * The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+     *
+     * @param  string $event_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGameEventSummaryAsync($event_id)
+    {
+        return $this->getGameEventSummaryAsyncWithHttpInfo($event_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getGameEventSummaryAsyncWithHttpInfo
+     *
+     * The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+     *
+     * @param  string $event_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGameEventSummaryAsyncWithHttpInfo($event_id)
+    {
+        $returnType = '\Crossly\Model\Game\GetGameEventSummaryResponse';
+        $request = $this->getGameEventSummaryRequest($event_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getGameEventSummary'
+     *
+     * @param  string $event_id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getGameEventSummaryRequest($event_id)
+    {
+        // verify the required parameter 'event_id' is set
+        if ($event_id === null || (is_array($event_id) && count($event_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $event_id when calling getGameEventSummary'
+            );
+        }
+
+        $resourcePath = '/v1/games/events/{eventId}/summary';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($event_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'eventId' . '}',
+                ObjectSerializer::toPathValue($event_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getGameHuntBuild
+     *
+     * One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+     *
+     * @param  string $id id (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Game\GetGameHuntBuildResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getGameHuntBuild($id)
+    {
+        list($response) = $this->getGameHuntBuildWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation getGameHuntBuildWithHttpInfo
+     *
+     * One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+     *
+     * @param  string $id (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Game\GetGameHuntBuildResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getGameHuntBuildWithHttpInfo($id)
+    {
+        $request = $this->getGameHuntBuildRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Game\GetGameHuntBuildResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Game\GetGameHuntBuildResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Game\GetGameHuntBuildResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Game\GetGameHuntBuildResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getGameHuntBuildAsync
+     *
+     * One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+     *
+     * @param  string $id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGameHuntBuildAsync($id)
+    {
+        return $this->getGameHuntBuildAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getGameHuntBuildAsyncWithHttpInfo
+     *
+     * One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+     *
+     * @param  string $id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGameHuntBuildAsyncWithHttpInfo($id)
+    {
+        $returnType = '\Crossly\Model\Game\GetGameHuntBuildResponse';
+        $request = $this->getGameHuntBuildRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getGameHuntBuild'
+     *
+     * @param  string $id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getGameHuntBuildRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getGameHuntBuild'
+            );
+        }
+
+        $resourcePath = '/v1/games/hunts/{id}/build';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getGameLeaderboard
      *
      * Game leaderboards: for each of Price Guess (wins, then points), scavenger hunts (finished) and speed trades (won), the top ten this week (Monday 00:00 UTC on) under week and of all time under all -- rank, name, named, value and, for Price Guess, score. A name appears only for somebody who chose to be seen by name in Crossly World; everyone else is \&quot;A player\&quot; in their place.
@@ -13334,7 +15068,7 @@ class InventoryApi
     /**
      * Operation getInventoryAging
      *
-     * Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+     * Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -13350,7 +15084,7 @@ class InventoryApi
     /**
      * Operation getInventoryAgingWithHttpInfo
      *
-     * Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+     * Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -13562,7 +15296,7 @@ class InventoryApi
     /**
      * Operation getInventoryAgingAsync
      *
-     * Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+     * Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
      *
      *
      * @throws \InvalidArgumentException
@@ -13581,7 +15315,7 @@ class InventoryApi
     /**
      * Operation getInventoryAgingAsyncWithHttpInfo
      *
-     * Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+     * Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
      *
      *
      * @throws \InvalidArgumentException
@@ -15233,7 +16967,7 @@ class InventoryApi
     /**
      * Operation getInventorySellThrough
      *
-     * Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+     * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -15249,7 +16983,7 @@ class InventoryApi
     /**
      * Operation getInventorySellThroughWithHttpInfo
      *
-     * Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+     * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -15461,7 +17195,7 @@ class InventoryApi
     /**
      * Operation getInventorySellThroughAsync
      *
-     * Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+     * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
      *
      *
      * @throws \InvalidArgumentException
@@ -15480,7 +17214,7 @@ class InventoryApi
     /**
      * Operation getInventorySellThroughAsyncWithHttpInfo
      *
-     * Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+     * Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
      *
      *
      * @throws \InvalidArgumentException
@@ -16007,7 +17741,7 @@ class InventoryApi
     /**
      * Operation getInventoryValueHistory
      *
-     * Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+     * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -16023,7 +17757,7 @@ class InventoryApi
     /**
      * Operation getInventoryValueHistoryWithHttpInfo
      *
-     * Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+     * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -16235,7 +17969,7 @@ class InventoryApi
     /**
      * Operation getInventoryValueHistoryAsync
      *
-     * Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+     * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
      *
      *
      * @throws \InvalidArgumentException
@@ -16254,7 +17988,7 @@ class InventoryApi
     /**
      * Operation getInventoryValueHistoryAsyncWithHttpInfo
      *
-     * Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+     * Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
      *
      *
      * @throws \InvalidArgumentException
@@ -23401,6 +25135,382 @@ class InventoryApi
     }
 
     /**
+     * Operation getWorldPulse
+     *
+     * Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\World\GetWorldPulseResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getWorldPulse()
+    {
+        list($response) = $this->getWorldPulseWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation getWorldPulseWithHttpInfo
+     *
+     * Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\World\GetWorldPulseResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWorldPulseWithHttpInfo()
+    {
+        $request = $this->getWorldPulseRequest();
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\World\GetWorldPulseResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\World\GetWorldPulseResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\World\GetWorldPulseResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\World\GetWorldPulseResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWorldPulseAsync
+     *
+     * Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWorldPulseAsync()
+    {
+        return $this->getWorldPulseAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWorldPulseAsyncWithHttpInfo
+     *
+     * Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWorldPulseAsyncWithHttpInfo()
+    {
+        $returnType = '\Crossly\Model\World\GetWorldPulseResponse';
+        $request = $this->getWorldPulseRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWorldPulse'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWorldPulseRequest()
+    {
+
+        $resourcePath = '/v1/world/pulse';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getWorldRoomFunnel
      *
      * Your room&#39;s funnel over the last &#x60;days&#x60; (1-35, default 30): visitors (people, once a day), looks, items opened, checkouts started from the room, paid sales and revenueCents. Sales count only lines the room itself put in a cart.
@@ -25776,6 +27886,382 @@ class InventoryApi
     }
 
     /**
+     * Operation listGameHuntMine
+     *
+     * Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Game\ListGameHuntMineResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function listGameHuntMine()
+    {
+        list($response) = $this->listGameHuntMineWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation listGameHuntMineWithHttpInfo
+     *
+     * Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Game\ListGameHuntMineResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listGameHuntMineWithHttpInfo()
+    {
+        $request = $this->listGameHuntMineRequest();
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Game\ListGameHuntMineResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Game\ListGameHuntMineResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Game\ListGameHuntMineResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Game\ListGameHuntMineResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listGameHuntMineAsync
+     *
+     * Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listGameHuntMineAsync()
+    {
+        return $this->listGameHuntMineAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listGameHuntMineAsyncWithHttpInfo
+     *
+     * Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listGameHuntMineAsyncWithHttpInfo()
+    {
+        $returnType = '\Crossly\Model\Game\ListGameHuntMineResponse';
+        $request = $this->listGameHuntMineRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listGameHuntMine'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listGameHuntMineRequest()
+    {
+
+        $resourcePath = '/v1/games/hunts/mine';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listGameHunts
      *
      * Scavenger hunts running now in Crossly World shops and pop-up stalls, ending soonest first: title, shop (name and slug -- for a hunt at a stall, the street slug, with stall.bookingId set), how many tokens, what finishing unlocks (\&quot;10% off\&quot; -- never the code), when it ends and how many people have finished. Optional place filters to one shop or street slug.
@@ -27307,14 +29793,16 @@ class InventoryApi
      * @param  string $kind Physical goods or Web3 assets (NFTs). Omit for both. (optional)
      * @param  string $platforms Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)
      * @param  string $platform_mode \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)
+     * @param  string $sku Exact SKU match: look up the row a supplier product maps to. (optional)
+     * @param  \DateTime $updated_since Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Inventory\ListInventoryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
-    public function listInventory($page = 1, $limit = 25, $search = null, $status = null, $kind = null, $platforms = null, $platform_mode = null)
+    public function listInventory($page = 1, $limit = 25, $search = null, $status = null, $kind = null, $platforms = null, $platform_mode = null, $sku = null, $updated_since = null)
     {
-        list($response) = $this->listInventoryWithHttpInfo($page, $limit, $search, $status, $kind, $platforms, $platform_mode);
+        list($response) = $this->listInventoryWithHttpInfo($page, $limit, $search, $status, $kind, $platforms, $platform_mode, $sku, $updated_since);
         return $response;
     }
 
@@ -27330,14 +29818,16 @@ class InventoryApi
      * @param  string $kind Physical goods or Web3 assets (NFTs). Omit for both. (optional)
      * @param  string $platforms Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)
      * @param  string $platform_mode \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)
+     * @param  string $sku Exact SKU match: look up the row a supplier product maps to. (optional)
+     * @param  \DateTime $updated_since Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Inventory\ListInventoryResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listInventoryWithHttpInfo($page = 1, $limit = 25, $search = null, $status = null, $kind = null, $platforms = null, $platform_mode = null)
+    public function listInventoryWithHttpInfo($page = 1, $limit = 25, $search = null, $status = null, $kind = null, $platforms = null, $platform_mode = null, $sku = null, $updated_since = null)
     {
-        $request = $this->listInventoryRequest($page, $limit, $search, $status, $kind, $platforms, $platform_mode);
+        $request = $this->listInventoryRequest($page, $limit, $search, $status, $kind, $platforms, $platform_mode, $sku, $updated_since);
 
         try {
             $options = $this->createHttpClientOption();
@@ -27549,13 +30039,15 @@ class InventoryApi
      * @param  string $kind Physical goods or Web3 assets (NFTs). Omit for both. (optional)
      * @param  string $platforms Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)
      * @param  string $platform_mode \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)
+     * @param  string $sku Exact SKU match: look up the row a supplier product maps to. (optional)
+     * @param  \DateTime $updated_since Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listInventoryAsync($page = 1, $limit = 25, $search = null, $status = null, $kind = null, $platforms = null, $platform_mode = null)
+    public function listInventoryAsync($page = 1, $limit = 25, $search = null, $status = null, $kind = null, $platforms = null, $platform_mode = null, $sku = null, $updated_since = null)
     {
-        return $this->listInventoryAsyncWithHttpInfo($page, $limit, $search, $status, $kind, $platforms, $platform_mode)
+        return $this->listInventoryAsyncWithHttpInfo($page, $limit, $search, $status, $kind, $platforms, $platform_mode, $sku, $updated_since)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -27575,14 +30067,16 @@ class InventoryApi
      * @param  string $kind Physical goods or Web3 assets (NFTs). Omit for both. (optional)
      * @param  string $platforms Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)
      * @param  string $platform_mode \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)
+     * @param  string $sku Exact SKU match: look up the row a supplier product maps to. (optional)
+     * @param  \DateTime $updated_since Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listInventoryAsyncWithHttpInfo($page = 1, $limit = 25, $search = null, $status = null, $kind = null, $platforms = null, $platform_mode = null)
+    public function listInventoryAsyncWithHttpInfo($page = 1, $limit = 25, $search = null, $status = null, $kind = null, $platforms = null, $platform_mode = null, $sku = null, $updated_since = null)
     {
         $returnType = '\Crossly\Model\Inventory\ListInventoryResponse';
-        $request = $this->listInventoryRequest($page, $limit, $search, $status, $kind, $platforms, $platform_mode);
+        $request = $this->listInventoryRequest($page, $limit, $search, $status, $kind, $platforms, $platform_mode, $sku, $updated_since);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -27627,11 +30121,13 @@ class InventoryApi
      * @param  string $kind Physical goods or Web3 assets (NFTs). Omit for both. (optional)
      * @param  string $platforms Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)
      * @param  string $platform_mode \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)
+     * @param  string $sku Exact SKU match: look up the row a supplier product maps to. (optional)
+     * @param  \DateTime $updated_since Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listInventoryRequest($page = 1, $limit = 25, $search = null, $status = null, $kind = null, $platforms = null, $platform_mode = null)
+    public function listInventoryRequest($page = 1, $limit = 25, $search = null, $status = null, $kind = null, $platforms = null, $platform_mode = null, $sku = null, $updated_since = null)
     {
         if ($page !== null && $page < 1) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling InventoryApi.listInventory, must be bigger than or equal to 1.');
@@ -27642,6 +30138,10 @@ class InventoryApi
         }
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling InventoryApi.listInventory, must be bigger than or equal to 1.');
+        }
+
+        if ($sku !== null && strlen($sku) > 200) {
+            throw new \InvalidArgumentException('invalid length for "$sku" when calling InventoryApi.listInventory, must be smaller than or equal to 200.');
         }
 
 
@@ -27727,6 +30227,28 @@ class InventoryApi
             }
             else {
                 $queryParams['platformMode'] = $platform_mode;
+            }
+        }
+        // query params
+        if ($sku !== null) {
+            if('form' === 'form' && is_array($sku)) {
+                foreach($sku as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sku'] = $sku;
+            }
+        }
+        // query params
+        if ($updated_since !== null) {
+            if('form' === 'form' && is_array($updated_since)) {
+                foreach($updated_since as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['updatedSince'] = $updated_since;
             }
         }
 

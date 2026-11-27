@@ -188,10 +188,10 @@ class ListWorldProvenanceItem implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    const KIND_AUCTION = 'auction';
     const KIND_WINDOW = 'window';
-    const KIND_AGENT = 'agent';
+    const KIND_AUCTION = 'auction';
     const KIND_ROOM = 'room';
+    const KIND_AGENT = 'agent';
     const KIND_STALL = 'stall';
     const KIND_WORN = 'worn';
     const KIND_DROP = 'drop';
@@ -205,10 +205,10 @@ class ListWorldProvenanceItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_AUCTION,
             self::KIND_WINDOW,
-            self::KIND_AGENT,
+            self::KIND_AUCTION,
             self::KIND_ROOM,
+            self::KIND_AGENT,
             self::KIND_STALL,
             self::KIND_WORN,
             self::KIND_DROP,

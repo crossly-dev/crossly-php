@@ -190,10 +190,10 @@ class GetVaultMarketFeeQuoteResponseMaker implements ModelInterface, ArrayAccess
 
     const ROLE_MAKER = 'maker';
     const ROLE_TAKER = 'taker';
+    const PROGRAM_RETAIL = 'retail';
     const PROGRAM_VOLUME = 'volume';
     const PROGRAM_LP = 'lp';
     const PROGRAM_DMM = 'dmm';
-    const PROGRAM_RETAIL = 'retail';
 
     /**
      * Gets allowable values of the enum
@@ -216,10 +216,10 @@ class GetVaultMarketFeeQuoteResponseMaker implements ModelInterface, ArrayAccess
     public function getProgramAllowableValues()
     {
         return [
+            self::PROGRAM_RETAIL,
             self::PROGRAM_VOLUME,
             self::PROGRAM_LP,
             self::PROGRAM_DMM,
-            self::PROGRAM_RETAIL,
         ];
     }
 

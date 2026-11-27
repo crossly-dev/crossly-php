@@ -67,7 +67,9 @@ class GetCustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'orders' => '\Crossly\Model\Customer\GetCustomerResponseOrders[]',
         'contact' => '\Crossly\Model\Customer\GetCustomerResponseContact',
         'profiles' => '\Crossly\Model\Customer\GetCustomerResponseProfiles[]',
-        'stats' => '\Crossly\Model\Customer\GetCustomerResponseStats'
+        'stats' => '\Crossly\Model\Customer\GetCustomerResponseStats',
+        'notes' => 'string',
+        'notes_updated_at' => 'string'
     ];
 
     /**
@@ -85,7 +87,9 @@ class GetCustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'orders' => null,
         'contact' => null,
         'profiles' => null,
-        'stats' => null
+        'stats' => null,
+        'notes' => null,
+        'notes_updated_at' => null
     ];
 
     /**
@@ -122,7 +126,9 @@ class GetCustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'orders' => 'orders',
         'contact' => 'contact',
         'profiles' => 'profiles',
-        'stats' => 'stats'
+        'stats' => 'stats',
+        'notes' => 'notes',
+        'notes_updated_at' => 'notesUpdatedAt'
     ];
 
     /**
@@ -138,7 +144,9 @@ class GetCustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'orders' => 'setOrders',
         'contact' => 'setContact',
         'profiles' => 'setProfiles',
-        'stats' => 'setStats'
+        'stats' => 'setStats',
+        'notes' => 'setNotes',
+        'notes_updated_at' => 'setNotesUpdatedAt'
     ];
 
     /**
@@ -154,7 +162,9 @@ class GetCustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'orders' => 'getOrders',
         'contact' => 'getContact',
         'profiles' => 'getProfiles',
-        'stats' => 'getStats'
+        'stats' => 'getStats',
+        'notes' => 'getNotes',
+        'notes_updated_at' => 'getNotesUpdatedAt'
     ];
 
     /**
@@ -222,6 +232,8 @@ class GetCustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['contact'] = $data['contact'] ?? null;
         $this->container['profiles'] = $data['profiles'] ?? null;
         $this->container['stats'] = $data['stats'] ?? null;
+        $this->container['notes'] = $data['notes'] ?? null;
+        $this->container['notes_updated_at'] = $data['notes_updated_at'] ?? null;
     }
 
     /**
@@ -256,6 +268,9 @@ class GetCustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         }
         if ($this->container['stats'] === null) {
             $invalidProperties[] = "'stats' can't be null";
+        }
+        if ($this->container['notes'] === null) {
+            $invalidProperties[] = "'notes' can't be null";
         }
         return $invalidProperties;
     }
@@ -460,6 +475,54 @@ class GetCustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setStats($stats)
     {
         $this->container['stats'] = $stats;
+
+        return $this;
+    }
+
+    /**
+     * Gets notes
+     *
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param string $notes notes
+     *
+     * @return self
+     */
+    public function setNotes($notes)
+    {
+        $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets notes_updated_at
+     *
+     * @return string|null
+     */
+    public function getNotesUpdatedAt()
+    {
+        return $this->container['notes_updated_at'];
+    }
+
+    /**
+     * Sets notes_updated_at
+     *
+     * @param string|null $notes_updated_at notes_updated_at
+     *
+     * @return self
+     */
+    public function setNotesUpdatedAt($notes_updated_at)
+    {
+        $this->container['notes_updated_at'] = $notes_updated_at;
 
         return $this;
     }

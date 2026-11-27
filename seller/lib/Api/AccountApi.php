@@ -123,7 +123,7 @@ class AccountApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Crossly\Model\Drop\DeleteDropResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @return \Crossly\Model\Account\CreateAccountCancelDeletionResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
     public function createAccountCancelDeletion()
     {
@@ -139,7 +139,7 @@ class AccountApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Crossly\Model\Drop\DeleteDropResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Crossly\Model\Account\CreateAccountCancelDeletionResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAccountCancelDeletionWithHttpInfo()
     {
@@ -182,14 +182,14 @@ class AccountApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Crossly\Model\Drop\DeleteDropResponse' === '\SplFileObject') {
+                    if ('\Crossly\Model\Account\CreateAccountCancelDeletionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Crossly\Model\Drop\DeleteDropResponse', []),
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Account\CreateAccountCancelDeletionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -267,7 +267,7 @@ class AccountApi
                     ];
             }
 
-            $returnType = '\Crossly\Model\Drop\DeleteDropResponse';
+            $returnType = '\Crossly\Model\Account\CreateAccountCancelDeletionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -285,7 +285,7 @@ class AccountApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Crossly\Model\Drop\DeleteDropResponse',
+                        '\Crossly\Model\Account\CreateAccountCancelDeletionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -373,7 +373,7 @@ class AccountApi
      */
     public function createAccountCancelDeletionAsyncWithHttpInfo()
     {
-        $returnType = '\Crossly\Model\Drop\DeleteDropResponse';
+        $returnType = '\Crossly\Model\Account\CreateAccountCancelDeletionResponse';
         $request = $this->createAccountCancelDeletionRequest();
 
         return $this->client
@@ -443,6 +443,399 @@ class AccountApi
 
         // for model (json/xml)
         if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createAccountIdentityVerificationStart
+     *
+     * Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+     *
+     * @param  \Crossly\Model\Account\CreateAccountIdentityVerificationStartRequest $create_account_identity_verification_start_request create_account_identity_verification_start_request (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\World\CreateWorldMatureVerifyResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function createAccountIdentityVerificationStart($create_account_identity_verification_start_request)
+    {
+        list($response) = $this->createAccountIdentityVerificationStartWithHttpInfo($create_account_identity_verification_start_request);
+        return $response;
+    }
+
+    /**
+     * Operation createAccountIdentityVerificationStartWithHttpInfo
+     *
+     * Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+     *
+     * @param  \Crossly\Model\Account\CreateAccountIdentityVerificationStartRequest $create_account_identity_verification_start_request (required)
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\World\CreateWorldMatureVerifyResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAccountIdentityVerificationStartWithHttpInfo($create_account_identity_verification_start_request)
+    {
+        $request = $this->createAccountIdentityVerificationStartRequest($create_account_identity_verification_start_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\World\CreateWorldMatureVerifyResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\World\CreateWorldMatureVerifyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\World\CreateWorldMatureVerifyResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\World\CreateWorldMatureVerifyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAccountIdentityVerificationStartAsync
+     *
+     * Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+     *
+     * @param  \Crossly\Model\Account\CreateAccountIdentityVerificationStartRequest $create_account_identity_verification_start_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAccountIdentityVerificationStartAsync($create_account_identity_verification_start_request)
+    {
+        return $this->createAccountIdentityVerificationStartAsyncWithHttpInfo($create_account_identity_verification_start_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAccountIdentityVerificationStartAsyncWithHttpInfo
+     *
+     * Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+     *
+     * @param  \Crossly\Model\Account\CreateAccountIdentityVerificationStartRequest $create_account_identity_verification_start_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAccountIdentityVerificationStartAsyncWithHttpInfo($create_account_identity_verification_start_request)
+    {
+        $returnType = '\Crossly\Model\World\CreateWorldMatureVerifyResponse';
+        $request = $this->createAccountIdentityVerificationStartRequest($create_account_identity_verification_start_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAccountIdentityVerificationStart'
+     *
+     * @param  \Crossly\Model\Account\CreateAccountIdentityVerificationStartRequest $create_account_identity_verification_start_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createAccountIdentityVerificationStartRequest($create_account_identity_verification_start_request)
+    {
+        // verify the required parameter 'create_account_identity_verification_start_request' is set
+        if ($create_account_identity_verification_start_request === null || (is_array($create_account_identity_verification_start_request) && count($create_account_identity_verification_start_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_account_identity_verification_start_request when calling createAccountIdentityVerificationStart'
+            );
+        }
+
+        $resourcePath = '/v1/account/identity-verification/start';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($create_account_identity_verification_start_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_account_identity_verification_start_request));
+            } else {
+                $httpBody = $create_account_identity_verification_start_request;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -868,9 +1261,385 @@ class AccountApi
     }
 
     /**
+     * Operation createAccountReconfirmDeletion
+     *
+     * Confirm again a deletion paused because the account was in use.
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Account\CreateAccountReconfirmDeletionResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function createAccountReconfirmDeletion()
+    {
+        list($response) = $this->createAccountReconfirmDeletionWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation createAccountReconfirmDeletionWithHttpInfo
+     *
+     * Confirm again a deletion paused because the account was in use.
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Account\CreateAccountReconfirmDeletionResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAccountReconfirmDeletionWithHttpInfo()
+    {
+        $request = $this->createAccountReconfirmDeletionRequest();
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Account\CreateAccountReconfirmDeletionResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Account\CreateAccountReconfirmDeletionResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Account\CreateAccountReconfirmDeletionResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Account\CreateAccountReconfirmDeletionResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAccountReconfirmDeletionAsync
+     *
+     * Confirm again a deletion paused because the account was in use.
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAccountReconfirmDeletionAsync()
+    {
+        return $this->createAccountReconfirmDeletionAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAccountReconfirmDeletionAsyncWithHttpInfo
+     *
+     * Confirm again a deletion paused because the account was in use.
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAccountReconfirmDeletionAsyncWithHttpInfo()
+    {
+        $returnType = '\Crossly\Model\Account\CreateAccountReconfirmDeletionResponse';
+        $request = $this->createAccountReconfirmDeletionRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAccountReconfirmDeletion'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createAccountReconfirmDeletionRequest()
+    {
+
+        $resourcePath = '/v1/account/reconfirm-deletion';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createAccountRequestDeletion
      *
-     * Schedule account deletion after a grace period.
+     * Schedule account deletion after a grace period. Requires confirmEmail.
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -886,7 +1655,7 @@ class AccountApi
     /**
      * Operation createAccountRequestDeletionWithHttpInfo
      *
-     * Schedule account deletion after a grace period.
+     * Schedule account deletion after a grace period. Requires confirmEmail.
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -1098,7 +1867,7 @@ class AccountApi
     /**
      * Operation createAccountRequestDeletionAsync
      *
-     * Schedule account deletion after a grace period.
+     * Schedule account deletion after a grace period. Requires confirmEmail.
      *
      *
      * @throws \InvalidArgumentException
@@ -1117,7 +1886,7 @@ class AccountApi
     /**
      * Operation createAccountRequestDeletionAsyncWithHttpInfo
      *
-     * Schedule account deletion after a grace period.
+     * Schedule account deletion after a grace period. Requires confirmEmail.
      *
      *
      * @throws \InvalidArgumentException
@@ -1933,6 +2702,13 @@ class AccountApi
                 'Missing the required parameter $session_id when calling deleteAuthSessionBySessionId'
             );
         }
+        if (strlen($session_id) > 64) {
+            throw new \InvalidArgumentException('invalid length for "$session_id" when calling AccountApi.deleteAuthSessionBySessionId, must be smaller than or equal to 64.');
+        }
+        if (strlen($session_id) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$session_id" when calling AccountApi.deleteAuthSessionBySessionId, must be bigger than or equal to 1.');
+        }
+
 
         $resourcePath = '/v1/auth/sessions/{sessionId}';
         $formParams = [];
@@ -2410,6 +3186,382 @@ class AccountApi
     }
 
     /**
+     * Operation getAccountClosureChecklist
+     *
+     * What closing the account will and will not do, before you request it.
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Account\GetAccountClosureChecklistResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAccountClosureChecklist()
+    {
+        list($response) = $this->getAccountClosureChecklistWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation getAccountClosureChecklistWithHttpInfo
+     *
+     * What closing the account will and will not do, before you request it.
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Account\GetAccountClosureChecklistResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAccountClosureChecklistWithHttpInfo()
+    {
+        $request = $this->getAccountClosureChecklistRequest();
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Account\GetAccountClosureChecklistResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Account\GetAccountClosureChecklistResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Account\GetAccountClosureChecklistResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Account\GetAccountClosureChecklistResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAccountClosureChecklistAsync
+     *
+     * What closing the account will and will not do, before you request it.
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAccountClosureChecklistAsync()
+    {
+        return $this->getAccountClosureChecklistAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAccountClosureChecklistAsyncWithHttpInfo
+     *
+     * What closing the account will and will not do, before you request it.
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAccountClosureChecklistAsyncWithHttpInfo()
+    {
+        $returnType = '\Crossly\Model\Account\GetAccountClosureChecklistResponse';
+        $request = $this->getAccountClosureChecklistRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAccountClosureChecklist'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAccountClosureChecklistRequest()
+    {
+
+        $resourcePath = '/v1/account/closure-checklist';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getAccountDeletionStatus
      *
      * Get the currently-pending deletion request, if any.
@@ -2714,6 +3866,382 @@ class AccountApi
     {
 
         $resourcePath = '/v1/account/deletion-status';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAccountIdentityVerification
+     *
+     * Your identity verification: one status for the whole account, read by every feature that needs ID.
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Crossly\Model\Account\GetAccountIdentityVerificationResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     */
+    public function getAccountIdentityVerification()
+    {
+        list($response) = $this->getAccountIdentityVerificationWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation getAccountIdentityVerificationWithHttpInfo
+     *
+     * Your identity verification: one status for the whole account, read by every feature that needs ID.
+     *
+     *
+     * @throws \Crossly\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Crossly\Model\Account\GetAccountIdentityVerificationResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAccountIdentityVerificationWithHttpInfo()
+    {
+        $request = $this->getAccountIdentityVerificationRequest();
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Crossly\Model\Account\GetAccountIdentityVerificationResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Account\GetAccountIdentityVerificationResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Crossly\Model\Common\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Crossly\Model\Account\GetAccountIdentityVerificationResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Account\GetAccountIdentityVerificationResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Crossly\Model\Common\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAccountIdentityVerificationAsync
+     *
+     * Your identity verification: one status for the whole account, read by every feature that needs ID.
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAccountIdentityVerificationAsync()
+    {
+        return $this->getAccountIdentityVerificationAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAccountIdentityVerificationAsyncWithHttpInfo
+     *
+     * Your identity verification: one status for the whole account, read by every feature that needs ID.
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAccountIdentityVerificationAsyncWithHttpInfo()
+    {
+        $returnType = '\Crossly\Model\Account\GetAccountIdentityVerificationResponse';
+        $request = $this->getAccountIdentityVerificationRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAccountIdentityVerification'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAccountIdentityVerificationRequest()
+    {
+
+        $resourcePath = '/v1/account/identity-verification';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -173,9 +173,9 @@ class CreateInboxReplyResponse implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
-    const DELIVERY_STATUS_FAILED = 'failed';
-    const DELIVERY_STATUS_SENT = 'sent';
     const DELIVERY_STATUS_SENDING = 'sending';
+    const DELIVERY_STATUS_SENT = 'sent';
+    const DELIVERY_STATUS_FAILED = 'failed';
 
     /**
      * Gets allowable values of the enum
@@ -185,9 +185,9 @@ class CreateInboxReplyResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function getDeliveryStatusAllowableValues()
     {
         return [
-            self::DELIVERY_STATUS_FAILED,
-            self::DELIVERY_STATUS_SENT,
             self::DELIVERY_STATUS_SENDING,
+            self::DELIVERY_STATUS_SENT,
+            self::DELIVERY_STATUS_FAILED,
         ];
     }
 

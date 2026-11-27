@@ -179,8 +179,8 @@ class GetOrderEvidenceResponseDataGrade implements ModelInterface, ArrayAccess, 
     }
 
     const GRADE_NONE = 'none';
-    const GRADE_STRONG = 'strong';
     const GRADE_BASIC = 'basic';
+    const GRADE_STRONG = 'strong';
     const GRADE_CONCLUSIVE = 'conclusive';
 
     /**
@@ -192,8 +192,8 @@ class GetOrderEvidenceResponseDataGrade implements ModelInterface, ArrayAccess, 
     {
         return [
             self::GRADE_NONE,
-            self::GRADE_STRONG,
             self::GRADE_BASIC,
+            self::GRADE_STRONG,
             self::GRADE_CONCLUSIVE,
         ];
     }

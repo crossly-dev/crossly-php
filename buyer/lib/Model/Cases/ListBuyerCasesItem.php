@@ -61,25 +61,25 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
-        'updated_at' => 'string',
+        'purchase_id' => 'string',
         'reason' => 'string',
         'state' => 'string',
+        'created_at' => 'string',
+        'updated_at' => 'string',
         'kind' => 'string',
-        'purchase_id' => 'string',
         'closed' => 'bool',
         'your_turn' => 'bool',
-        'resolved_at' => 'string',
-        'buyer_paid_cents' => 'float',
         'awaiting_party' => 'string',
         'escalate_after' => 'string',
         'offered_refund_cents' => 'float',
         'resolved_refund_cents' => 'float',
+        'resolved_at' => 'string',
         'return_label_url' => 'string',
         'return_tracking_code' => 'string',
         'return_tracking_carrier' => 'string',
         'return_tracking_status' => 'string',
         'return_delivered_at' => 'string',
+        'buyer_paid_cents' => 'float',
         'item_title' => 'string',
         'item_thumbnail' => 'string',
         'seller_name' => 'string'
@@ -94,25 +94,25 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null,
+        'purchase_id' => null,
         'reason' => null,
         'state' => null,
+        'created_at' => null,
+        'updated_at' => null,
         'kind' => null,
-        'purchase_id' => null,
         'closed' => null,
         'your_turn' => null,
-        'resolved_at' => null,
-        'buyer_paid_cents' => null,
         'awaiting_party' => null,
         'escalate_after' => null,
         'offered_refund_cents' => null,
         'resolved_refund_cents' => null,
+        'resolved_at' => null,
         'return_label_url' => null,
         'return_tracking_code' => null,
         'return_tracking_carrier' => null,
         'return_tracking_status' => null,
         'return_delivered_at' => null,
+        'buyer_paid_cents' => null,
         'item_title' => null,
         'item_thumbnail' => null,
         'seller_name' => null
@@ -146,25 +146,25 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
+        'purchase_id' => 'purchaseId',
         'reason' => 'reason',
         'state' => 'state',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt',
         'kind' => 'kind',
-        'purchase_id' => 'purchaseId',
         'closed' => 'closed',
         'your_turn' => 'yourTurn',
-        'resolved_at' => 'resolvedAt',
-        'buyer_paid_cents' => 'buyerPaidCents',
         'awaiting_party' => 'awaitingParty',
         'escalate_after' => 'escalateAfter',
         'offered_refund_cents' => 'offeredRefundCents',
         'resolved_refund_cents' => 'resolvedRefundCents',
+        'resolved_at' => 'resolvedAt',
         'return_label_url' => 'returnLabelUrl',
         'return_tracking_code' => 'returnTrackingCode',
         'return_tracking_carrier' => 'returnTrackingCarrier',
         'return_tracking_status' => 'returnTrackingStatus',
         'return_delivered_at' => 'returnDeliveredAt',
+        'buyer_paid_cents' => 'buyerPaidCents',
         'item_title' => 'itemTitle',
         'item_thumbnail' => 'itemThumbnail',
         'seller_name' => 'sellerName'
@@ -177,25 +177,25 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
+        'purchase_id' => 'setPurchaseId',
         'reason' => 'setReason',
         'state' => 'setState',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt',
         'kind' => 'setKind',
-        'purchase_id' => 'setPurchaseId',
         'closed' => 'setClosed',
         'your_turn' => 'setYourTurn',
-        'resolved_at' => 'setResolvedAt',
-        'buyer_paid_cents' => 'setBuyerPaidCents',
         'awaiting_party' => 'setAwaitingParty',
         'escalate_after' => 'setEscalateAfter',
         'offered_refund_cents' => 'setOfferedRefundCents',
         'resolved_refund_cents' => 'setResolvedRefundCents',
+        'resolved_at' => 'setResolvedAt',
         'return_label_url' => 'setReturnLabelUrl',
         'return_tracking_code' => 'setReturnTrackingCode',
         'return_tracking_carrier' => 'setReturnTrackingCarrier',
         'return_tracking_status' => 'setReturnTrackingStatus',
         'return_delivered_at' => 'setReturnDeliveredAt',
+        'buyer_paid_cents' => 'setBuyerPaidCents',
         'item_title' => 'setItemTitle',
         'item_thumbnail' => 'setItemThumbnail',
         'seller_name' => 'setSellerName'
@@ -208,25 +208,25 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
+        'purchase_id' => 'getPurchaseId',
         'reason' => 'getReason',
         'state' => 'getState',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt',
         'kind' => 'getKind',
-        'purchase_id' => 'getPurchaseId',
         'closed' => 'getClosed',
         'your_turn' => 'getYourTurn',
-        'resolved_at' => 'getResolvedAt',
-        'buyer_paid_cents' => 'getBuyerPaidCents',
         'awaiting_party' => 'getAwaitingParty',
         'escalate_after' => 'getEscalateAfter',
         'offered_refund_cents' => 'getOfferedRefundCents',
         'resolved_refund_cents' => 'getResolvedRefundCents',
+        'resolved_at' => 'getResolvedAt',
         'return_label_url' => 'getReturnLabelUrl',
         'return_tracking_code' => 'getReturnTrackingCode',
         'return_tracking_carrier' => 'getReturnTrackingCarrier',
         'return_tracking_status' => 'getReturnTrackingStatus',
         'return_delivered_at' => 'getReturnDeliveredAt',
+        'buyer_paid_cents' => 'getBuyerPaidCents',
         'item_title' => 'getItemTitle',
         'item_thumbnail' => 'getItemThumbnail',
         'seller_name' => 'getSellerName'
@@ -290,25 +290,25 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['purchase_id'] = $data['purchase_id'] ?? null;
         $this->container['reason'] = $data['reason'] ?? null;
         $this->container['state'] = $data['state'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
-        $this->container['purchase_id'] = $data['purchase_id'] ?? null;
         $this->container['closed'] = $data['closed'] ?? null;
         $this->container['your_turn'] = $data['your_turn'] ?? null;
-        $this->container['resolved_at'] = $data['resolved_at'] ?? null;
-        $this->container['buyer_paid_cents'] = $data['buyer_paid_cents'] ?? null;
         $this->container['awaiting_party'] = $data['awaiting_party'] ?? null;
         $this->container['escalate_after'] = $data['escalate_after'] ?? null;
         $this->container['offered_refund_cents'] = $data['offered_refund_cents'] ?? null;
         $this->container['resolved_refund_cents'] = $data['resolved_refund_cents'] ?? null;
+        $this->container['resolved_at'] = $data['resolved_at'] ?? null;
         $this->container['return_label_url'] = $data['return_label_url'] ?? null;
         $this->container['return_tracking_code'] = $data['return_tracking_code'] ?? null;
         $this->container['return_tracking_carrier'] = $data['return_tracking_carrier'] ?? null;
         $this->container['return_tracking_status'] = $data['return_tracking_status'] ?? null;
         $this->container['return_delivered_at'] = $data['return_delivered_at'] ?? null;
+        $this->container['buyer_paid_cents'] = $data['buyer_paid_cents'] ?? null;
         $this->container['item_title'] = $data['item_title'] ?? null;
         $this->container['item_thumbnail'] = $data['item_thumbnail'] ?? null;
         $this->container['seller_name'] = $data['seller_name'] ?? null;
@@ -326,11 +326,8 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
         }
         if ($this->container['reason'] === null) {
             $invalidProperties[] = "'reason' can't be null";
@@ -338,11 +335,14 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['state'] === null) {
             $invalidProperties[] = "'state' can't be null";
         }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
         if ($this->container['kind'] === null) {
             $invalidProperties[] = "'kind' can't be null";
-        }
-        if ($this->container['purchase_id'] === null) {
-            $invalidProperties[] = "'purchase_id' can't be null";
         }
         if ($this->container['closed'] === null) {
             $invalidProperties[] = "'closed' can't be null";
@@ -390,49 +390,25 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets created_at
+     * Gets purchase_id
      *
      * @return string
      */
-    public function getCreatedAt()
+    public function getPurchaseId()
     {
-        return $this->container['created_at'];
+        return $this->container['purchase_id'];
     }
 
     /**
-     * Sets created_at
+     * Sets purchase_id
      *
-     * @param string $created_at created_at
+     * @param string $purchase_id purchase_id
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setPurchaseId($purchase_id)
     {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return string
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param string $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['purchase_id'] = $purchase_id;
 
         return $this;
     }
@@ -486,6 +462,54 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return string
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param string $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
      * Gets kind
      *
      * @return string
@@ -505,30 +529,6 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setKind($kind)
     {
         $this->container['kind'] = $kind;
-
-        return $this;
-    }
-
-    /**
-     * Gets purchase_id
-     *
-     * @return string
-     */
-    public function getPurchaseId()
-    {
-        return $this->container['purchase_id'];
-    }
-
-    /**
-     * Sets purchase_id
-     *
-     * @param string $purchase_id purchase_id
-     *
-     * @return self
-     */
-    public function setPurchaseId($purchase_id)
-    {
-        $this->container['purchase_id'] = $purchase_id;
 
         return $this;
     }
@@ -577,54 +577,6 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setYourTurn($your_turn)
     {
         $this->container['your_turn'] = $your_turn;
-
-        return $this;
-    }
-
-    /**
-     * Gets resolved_at
-     *
-     * @return string|null
-     */
-    public function getResolvedAt()
-    {
-        return $this->container['resolved_at'];
-    }
-
-    /**
-     * Sets resolved_at
-     *
-     * @param string|null $resolved_at resolved_at
-     *
-     * @return self
-     */
-    public function setResolvedAt($resolved_at)
-    {
-        $this->container['resolved_at'] = $resolved_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets buyer_paid_cents
-     *
-     * @return float|null
-     */
-    public function getBuyerPaidCents()
-    {
-        return $this->container['buyer_paid_cents'];
-    }
-
-    /**
-     * Sets buyer_paid_cents
-     *
-     * @param float|null $buyer_paid_cents What you paid for the order, in cents.
-     *
-     * @return self
-     */
-    public function setBuyerPaidCents($buyer_paid_cents)
-    {
-        $this->container['buyer_paid_cents'] = $buyer_paid_cents;
 
         return $this;
     }
@@ -721,6 +673,30 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setResolvedRefundCents($resolved_refund_cents)
     {
         $this->container['resolved_refund_cents'] = $resolved_refund_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets resolved_at
+     *
+     * @return string|null
+     */
+    public function getResolvedAt()
+    {
+        return $this->container['resolved_at'];
+    }
+
+    /**
+     * Sets resolved_at
+     *
+     * @param string|null $resolved_at resolved_at
+     *
+     * @return self
+     */
+    public function setResolvedAt($resolved_at)
+    {
+        $this->container['resolved_at'] = $resolved_at;
 
         return $this;
     }
@@ -841,6 +817,30 @@ class ListBuyerCasesItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setReturnDeliveredAt($return_delivered_at)
     {
         $this->container['return_delivered_at'] = $return_delivered_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer_paid_cents
+     *
+     * @return float|null
+     */
+    public function getBuyerPaidCents()
+    {
+        return $this->container['buyer_paid_cents'];
+    }
+
+    /**
+     * Sets buyer_paid_cents
+     *
+     * @param float|null $buyer_paid_cents What you paid for the order, in cents.
+     *
+     * @return self
+     */
+    public function setBuyerPaidCents($buyer_paid_cents)
+    {
+        $this->container['buyer_paid_cents'] = $buyer_paid_cents;
 
         return $this;
     }

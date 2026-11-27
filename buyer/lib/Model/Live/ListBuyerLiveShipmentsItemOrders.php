@@ -61,8 +61,8 @@ class ListBuyerLiveShipmentsItemOrders implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'order_id' => 'string',
-        'title' => 'string',
         'purchase_id' => 'string',
+        'title' => 'string',
         'shipping_cents' => 'float',
         'order_status' => 'string'
     ];
@@ -76,8 +76,8 @@ class ListBuyerLiveShipmentsItemOrders implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'order_id' => null,
-        'title' => null,
         'purchase_id' => null,
+        'title' => null,
         'shipping_cents' => null,
         'order_status' => null
     ];
@@ -110,8 +110,8 @@ class ListBuyerLiveShipmentsItemOrders implements ModelInterface, ArrayAccess, \
      */
     protected static $attributeMap = [
         'order_id' => 'orderId',
-        'title' => 'title',
         'purchase_id' => 'purchaseId',
+        'title' => 'title',
         'shipping_cents' => 'shippingCents',
         'order_status' => 'orderStatus'
     ];
@@ -123,8 +123,8 @@ class ListBuyerLiveShipmentsItemOrders implements ModelInterface, ArrayAccess, \
      */
     protected static $setters = [
         'order_id' => 'setOrderId',
-        'title' => 'setTitle',
         'purchase_id' => 'setPurchaseId',
+        'title' => 'setTitle',
         'shipping_cents' => 'setShippingCents',
         'order_status' => 'setOrderStatus'
     ];
@@ -136,8 +136,8 @@ class ListBuyerLiveShipmentsItemOrders implements ModelInterface, ArrayAccess, \
      */
     protected static $getters = [
         'order_id' => 'getOrderId',
-        'title' => 'getTitle',
         'purchase_id' => 'getPurchaseId',
+        'title' => 'getTitle',
         'shipping_cents' => 'getShippingCents',
         'order_status' => 'getOrderStatus'
     ];
@@ -200,8 +200,8 @@ class ListBuyerLiveShipmentsItemOrders implements ModelInterface, ArrayAccess, \
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = $data['order_id'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['purchase_id'] = $data['purchase_id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['shipping_cents'] = $data['shipping_cents'] ?? null;
         $this->container['order_status'] = $data['order_status'] ?? null;
     }
@@ -264,30 +264,6 @@ class ListBuyerLiveShipmentsItemOrders implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
      * Gets purchase_id
      *
      * @return string
@@ -307,6 +283,30 @@ class ListBuyerLiveShipmentsItemOrders implements ModelInterface, ArrayAccess, \
     public function setPurchaseId($purchase_id)
     {
         $this->container['purchase_id'] = $purchase_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
 
         return $this;
     }

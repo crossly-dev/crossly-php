@@ -60,8 +60,8 @@ class ListBuyerAuctionBidsItem implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount_cents' => 'float',
         'bidder' => 'string',
+        'amount_cents' => 'float',
         'placed_at' => 'string'
     ];
 
@@ -73,8 +73,8 @@ class ListBuyerAuctionBidsItem implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount_cents' => null,
         'bidder' => null,
+        'amount_cents' => null,
         'placed_at' => null
     ];
 
@@ -105,8 +105,8 @@ class ListBuyerAuctionBidsItem implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount_cents' => 'amountCents',
         'bidder' => 'bidder',
+        'amount_cents' => 'amountCents',
         'placed_at' => 'placedAt'
     ];
 
@@ -116,8 +116,8 @@ class ListBuyerAuctionBidsItem implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'amount_cents' => 'setAmountCents',
         'bidder' => 'setBidder',
+        'amount_cents' => 'setAmountCents',
         'placed_at' => 'setPlacedAt'
     ];
 
@@ -127,8 +127,8 @@ class ListBuyerAuctionBidsItem implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'amount_cents' => 'getAmountCents',
         'bidder' => 'getBidder',
+        'amount_cents' => 'getAmountCents',
         'placed_at' => 'getPlacedAt'
     ];
 
@@ -189,8 +189,8 @@ class ListBuyerAuctionBidsItem implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount_cents'] = $data['amount_cents'] ?? null;
         $this->container['bidder'] = $data['bidder'] ?? null;
+        $this->container['amount_cents'] = $data['amount_cents'] ?? null;
         $this->container['placed_at'] = $data['placed_at'] ?? null;
     }
 
@@ -203,11 +203,11 @@ class ListBuyerAuctionBidsItem implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['amount_cents'] === null) {
-            $invalidProperties[] = "'amount_cents' can't be null";
-        }
         if ($this->container['bidder'] === null) {
             $invalidProperties[] = "'bidder' can't be null";
+        }
+        if ($this->container['amount_cents'] === null) {
+            $invalidProperties[] = "'amount_cents' can't be null";
         }
         return $invalidProperties;
     }
@@ -223,30 +223,6 @@ class ListBuyerAuctionBidsItem implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets amount_cents
-     *
-     * @return float
-     */
-    public function getAmountCents()
-    {
-        return $this->container['amount_cents'];
-    }
-
-    /**
-     * Sets amount_cents
-     *
-     * @param float $amount_cents amount_cents
-     *
-     * @return self
-     */
-    public function setAmountCents($amount_cents)
-    {
-        $this->container['amount_cents'] = $amount_cents;
-
-        return $this;
-    }
 
     /**
      * Gets bidder
@@ -268,6 +244,30 @@ class ListBuyerAuctionBidsItem implements ModelInterface, ArrayAccess, \JsonSeri
     public function setBidder($bidder)
     {
         $this->container['bidder'] = $bidder;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_cents
+     *
+     * @return float
+     */
+    public function getAmountCents()
+    {
+        return $this->container['amount_cents'];
+    }
+
+    /**
+     * Sets amount_cents
+     *
+     * @param float $amount_cents amount_cents
+     *
+     * @return self
+     */
+    public function setAmountCents($amount_cents)
+    {
+        $this->container['amount_cents'] = $amount_cents;
 
         return $this;
     }

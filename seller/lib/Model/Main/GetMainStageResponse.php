@@ -66,7 +66,8 @@ class GetMainStageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'here' => 'float',
         'live' => '\Crossly\Model\Main\GetMainStageResponseLive',
         'upcoming' => '\Crossly\Model\Main\GetMainStageResponseUpcoming[]',
-        'stream' => '\Crossly\Model\Main\GetMainStageResponseStream'
+        'stream' => '\Crossly\Model\Main\GetMainStageResponseStream',
+        'house' => '\Crossly\Model\Main\GetMainStageResponseHouse'
     ];
 
     /**
@@ -83,7 +84,8 @@ class GetMainStageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'here' => null,
         'live' => null,
         'upcoming' => null,
-        'stream' => null
+        'stream' => null,
+        'house' => null
     ];
 
     /**
@@ -119,7 +121,8 @@ class GetMainStageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'here' => 'here',
         'live' => 'live',
         'upcoming' => 'upcoming',
-        'stream' => 'stream'
+        'stream' => 'stream',
+        'house' => 'house'
     ];
 
     /**
@@ -134,7 +137,8 @@ class GetMainStageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'here' => 'setHere',
         'live' => 'setLive',
         'upcoming' => 'setUpcoming',
-        'stream' => 'setStream'
+        'stream' => 'setStream',
+        'house' => 'setHouse'
     ];
 
     /**
@@ -149,7 +153,8 @@ class GetMainStageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'here' => 'getHere',
         'live' => 'getLive',
         'upcoming' => 'getUpcoming',
-        'stream' => 'getStream'
+        'stream' => 'getStream',
+        'house' => 'getHouse'
     ];
 
     /**
@@ -216,6 +221,7 @@ class GetMainStageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['live'] = $data['live'] ?? null;
         $this->container['upcoming'] = $data['upcoming'] ?? null;
         $this->container['stream'] = $data['stream'] ?? null;
+        $this->container['house'] = $data['house'] ?? null;
     }
 
     /**
@@ -241,6 +247,9 @@ class GetMainStageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         }
         if ($this->container['upcoming'] === null) {
             $invalidProperties[] = "'upcoming' can't be null";
+        }
+        if ($this->container['house'] === null) {
+            $invalidProperties[] = "'house' can't be null";
         }
         return $invalidProperties;
     }
@@ -421,6 +430,30 @@ class GetMainStageResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setStream($stream)
     {
         $this->container['stream'] = $stream;
+
+        return $this;
+    }
+
+    /**
+     * Gets house
+     *
+     * @return \Crossly\Model\Main\GetMainStageResponseHouse
+     */
+    public function getHouse()
+    {
+        return $this->container['house'];
+    }
+
+    /**
+     * Sets house
+     *
+     * @param \Crossly\Model\Main\GetMainStageResponseHouse $house house
+     *
+     * @return self
+     */
+    public function setHouse($house)
+    {
+        $this->container['house'] = $house;
 
         return $this;
     }

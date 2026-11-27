@@ -71,7 +71,11 @@ class ListWorldConventionsItem implements ModelInterface, ArrayAccess, \JsonSeri
         'revenue_share_bps' => 'float',
         'table_count' => 'float',
         'exhibitor_count' => 'float',
-        'public_slug' => 'string'
+        'public_slug' => 'string',
+        'tiered' => 'bool',
+        'doors_open_at' => '\DateTime',
+        'your_doors_open_at' => 'string',
+        'doors_open' => 'bool'
     ];
 
     /**
@@ -93,7 +97,11 @@ class ListWorldConventionsItem implements ModelInterface, ArrayAccess, \JsonSeri
         'revenue_share_bps' => null,
         'table_count' => null,
         'exhibitor_count' => null,
-        'public_slug' => null
+        'public_slug' => null,
+        'tiered' => null,
+        'doors_open_at' => 'date-time',
+        'your_doors_open_at' => null,
+        'doors_open' => null
     ];
 
     /**
@@ -134,7 +142,11 @@ class ListWorldConventionsItem implements ModelInterface, ArrayAccess, \JsonSeri
         'revenue_share_bps' => 'revenueShareBps',
         'table_count' => 'tableCount',
         'exhibitor_count' => 'exhibitorCount',
-        'public_slug' => 'publicSlug'
+        'public_slug' => 'publicSlug',
+        'tiered' => 'tiered',
+        'doors_open_at' => 'doorsOpenAt',
+        'your_doors_open_at' => 'yourDoorsOpenAt',
+        'doors_open' => 'doorsOpen'
     ];
 
     /**
@@ -154,7 +166,11 @@ class ListWorldConventionsItem implements ModelInterface, ArrayAccess, \JsonSeri
         'revenue_share_bps' => 'setRevenueShareBps',
         'table_count' => 'setTableCount',
         'exhibitor_count' => 'setExhibitorCount',
-        'public_slug' => 'setPublicSlug'
+        'public_slug' => 'setPublicSlug',
+        'tiered' => 'setTiered',
+        'doors_open_at' => 'setDoorsOpenAt',
+        'your_doors_open_at' => 'setYourDoorsOpenAt',
+        'doors_open' => 'setDoorsOpen'
     ];
 
     /**
@@ -174,7 +190,11 @@ class ListWorldConventionsItem implements ModelInterface, ArrayAccess, \JsonSeri
         'revenue_share_bps' => 'getRevenueShareBps',
         'table_count' => 'getTableCount',
         'exhibitor_count' => 'getExhibitorCount',
-        'public_slug' => 'getPublicSlug'
+        'public_slug' => 'getPublicSlug',
+        'tiered' => 'getTiered',
+        'doors_open_at' => 'getDoorsOpenAt',
+        'your_doors_open_at' => 'getYourDoorsOpenAt',
+        'doors_open' => 'getDoorsOpen'
     ];
 
     /**
@@ -246,6 +266,10 @@ class ListWorldConventionsItem implements ModelInterface, ArrayAccess, \JsonSeri
         $this->container['table_count'] = $data['table_count'] ?? null;
         $this->container['exhibitor_count'] = $data['exhibitor_count'] ?? null;
         $this->container['public_slug'] = $data['public_slug'] ?? null;
+        $this->container['tiered'] = $data['tiered'] ?? null;
+        $this->container['doors_open_at'] = $data['doors_open_at'] ?? null;
+        $this->container['your_doors_open_at'] = $data['your_doors_open_at'] ?? null;
+        $this->container['doors_open'] = $data['doors_open'] ?? null;
     }
 
     /**
@@ -280,6 +304,12 @@ class ListWorldConventionsItem implements ModelInterface, ArrayAccess, \JsonSeri
         }
         if ($this->container['exhibitor_count'] === null) {
             $invalidProperties[] = "'exhibitor_count' can't be null";
+        }
+        if ($this->container['tiered'] === null) {
+            $invalidProperties[] = "'tiered' can't be null";
+        }
+        if ($this->container['doors_open_at'] === null) {
+            $invalidProperties[] = "'doors_open_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -580,6 +610,102 @@ class ListWorldConventionsItem implements ModelInterface, ArrayAccess, \JsonSeri
     public function setPublicSlug($public_slug)
     {
         $this->container['public_slug'] = $public_slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets tiered
+     *
+     * @return bool
+     */
+    public function getTiered()
+    {
+        return $this->container['tiered'];
+    }
+
+    /**
+     * Sets tiered
+     *
+     * @param bool $tiered A full-page convention (a rented hall, booth tiers; spec WD4): sellers book a tier on its booth page.
+     *
+     * @return self
+     */
+    public function setTiered($tiered)
+    {
+        $this->container['tiered'] = $tiered;
+
+        return $this;
+    }
+
+    /**
+     * Gets doors_open_at
+     *
+     * @return \DateTime
+     */
+    public function getDoorsOpenAt()
+    {
+        return $this->container['doors_open_at'];
+    }
+
+    /**
+     * Sets doors_open_at
+     *
+     * @param \DateTime $doors_open_at When the doors open for visitors: the start (or when the host takes it live, if sooner).
+     *
+     * @return self
+     */
+    public function setDoorsOpenAt($doors_open_at)
+    {
+        $this->container['doors_open_at'] = $doors_open_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets your_doors_open_at
+     *
+     * @return string|null
+     */
+    public function getYourDoorsOpenAt()
+    {
+        return $this->container['your_doors_open_at'];
+    }
+
+    /**
+     * Sets your_doors_open_at
+     *
+     * @param string|null $your_doors_open_at For a signed-in viewer (doors.ts): when THEIR doors open (earlier with live_early_entry), and whether they are.
+     *
+     * @return self
+     */
+    public function setYourDoorsOpenAt($your_doors_open_at)
+    {
+        $this->container['your_doors_open_at'] = $your_doors_open_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets doors_open
+     *
+     * @return bool|null
+     */
+    public function getDoorsOpen()
+    {
+        return $this->container['doors_open'];
+    }
+
+    /**
+     * Sets doors_open
+     *
+     * @param bool|null $doors_open doors_open
+     *
+     * @return self
+     */
+    public function setDoorsOpen($doors_open)
+    {
+        $this->container['doors_open'] = $doors_open;
 
         return $this;
     }

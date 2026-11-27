@@ -183,8 +183,8 @@ class CreateBuyerGiftCardRedeemResponseData implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
-    const RAIL_BUCKS = 'bucks';
     const RAIL_CBX = 'cbx';
+    const RAIL_BUCKS = 'bucks';
 
     /**
      * Gets allowable values of the enum
@@ -194,8 +194,8 @@ class CreateBuyerGiftCardRedeemResponseData implements ModelInterface, ArrayAcce
     public function getRailAllowableValues()
     {
         return [
-            self::RAIL_BUCKS,
             self::RAIL_CBX,
+            self::RAIL_BUCKS,
         ];
     }
 

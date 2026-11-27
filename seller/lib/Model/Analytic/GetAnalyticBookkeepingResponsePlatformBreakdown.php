@@ -64,7 +64,9 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown implements ModelInterface,
         'revenue' => 'float',
         'count' => 'float',
         'platform_fees' => 'float',
-        'net_profit' => 'float'
+        'net_profit' => 'float',
+        'refunds' => 'float',
+        'tax_collected' => 'float'
     ];
 
     /**
@@ -79,7 +81,9 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown implements ModelInterface,
         'revenue' => null,
         'count' => null,
         'platform_fees' => null,
-        'net_profit' => null
+        'net_profit' => null,
+        'refunds' => null,
+        'tax_collected' => null
     ];
 
     /**
@@ -113,7 +117,9 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown implements ModelInterface,
         'revenue' => 'revenue',
         'count' => 'count',
         'platform_fees' => 'platformFees',
-        'net_profit' => 'netProfit'
+        'net_profit' => 'netProfit',
+        'refunds' => 'refunds',
+        'tax_collected' => 'taxCollected'
     ];
 
     /**
@@ -126,7 +132,9 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown implements ModelInterface,
         'revenue' => 'setRevenue',
         'count' => 'setCount',
         'platform_fees' => 'setPlatformFees',
-        'net_profit' => 'setNetProfit'
+        'net_profit' => 'setNetProfit',
+        'refunds' => 'setRefunds',
+        'tax_collected' => 'setTaxCollected'
     ];
 
     /**
@@ -139,7 +147,9 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown implements ModelInterface,
         'revenue' => 'getRevenue',
         'count' => 'getCount',
         'platform_fees' => 'getPlatformFees',
-        'net_profit' => 'getNetProfit'
+        'net_profit' => 'getNetProfit',
+        'refunds' => 'getRefunds',
+        'tax_collected' => 'getTaxCollected'
     ];
 
     /**
@@ -204,6 +214,8 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown implements ModelInterface,
         $this->container['count'] = $data['count'] ?? null;
         $this->container['platform_fees'] = $data['platform_fees'] ?? null;
         $this->container['net_profit'] = $data['net_profit'] ?? null;
+        $this->container['refunds'] = $data['refunds'] ?? null;
+        $this->container['tax_collected'] = $data['tax_collected'] ?? null;
     }
 
     /**
@@ -229,6 +241,12 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown implements ModelInterface,
         }
         if ($this->container['net_profit'] === null) {
             $invalidProperties[] = "'net_profit' can't be null";
+        }
+        if ($this->container['refunds'] === null) {
+            $invalidProperties[] = "'refunds' can't be null";
+        }
+        if ($this->container['tax_collected'] === null) {
+            $invalidProperties[] = "'tax_collected' can't be null";
         }
         return $invalidProperties;
     }
@@ -361,6 +379,54 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown implements ModelInterface,
     public function setNetProfit($net_profit)
     {
         $this->container['net_profit'] = $net_profit;
+
+        return $this;
+    }
+
+    /**
+     * Gets refunds
+     *
+     * @return float
+     */
+    public function getRefunds()
+    {
+        return $this->container['refunds'];
+    }
+
+    /**
+     * Sets refunds
+     *
+     * @param float $refunds refunds
+     *
+     * @return self
+     */
+    public function setRefunds($refunds)
+    {
+        $this->container['refunds'] = $refunds;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_collected
+     *
+     * @return float
+     */
+    public function getTaxCollected()
+    {
+        return $this->container['tax_collected'];
+    }
+
+    /**
+     * Sets tax_collected
+     *
+     * @param float $tax_collected tax_collected
+     *
+     * @return self
+     */
+    public function setTaxCollected($tax_collected)
+    {
+        $this->container['tax_collected'] = $tax_collected;
 
         return $this;
     }

@@ -60,7 +60,9 @@ class GetWorldWalletResponseData implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'bucks_cents' => 'float'
+        'bucks_cents' => 'float',
+        'cbx' => '\Crossly\Model\World\GetWorldWalletResponseDataCbx',
+        'cosm' => '\Crossly\Model\World\GetWorldWalletResponseDataCosm'
     ];
 
     /**
@@ -71,7 +73,9 @@ class GetWorldWalletResponseData implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'bucks_cents' => null
+        'bucks_cents' => null,
+        'cbx' => null,
+        'cosm' => null
     ];
 
     /**
@@ -101,7 +105,9 @@ class GetWorldWalletResponseData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'bucks_cents' => 'bucksCents'
+        'bucks_cents' => 'bucksCents',
+        'cbx' => 'cbx',
+        'cosm' => 'cosm'
     ];
 
     /**
@@ -110,7 +116,9 @@ class GetWorldWalletResponseData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'bucks_cents' => 'setBucksCents'
+        'bucks_cents' => 'setBucksCents',
+        'cbx' => 'setCbx',
+        'cosm' => 'setCosm'
     ];
 
     /**
@@ -119,7 +127,9 @@ class GetWorldWalletResponseData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'bucks_cents' => 'getBucksCents'
+        'bucks_cents' => 'getBucksCents',
+        'cbx' => 'getCbx',
+        'cosm' => 'getCosm'
     ];
 
     /**
@@ -180,6 +190,8 @@ class GetWorldWalletResponseData implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->container['bucks_cents'] = $data['bucks_cents'] ?? null;
+        $this->container['cbx'] = $data['cbx'] ?? null;
+        $this->container['cosm'] = $data['cosm'] ?? null;
     }
 
     /**
@@ -193,6 +205,12 @@ class GetWorldWalletResponseData implements ModelInterface, ArrayAccess, \JsonSe
 
         if ($this->container['bucks_cents'] === null) {
             $invalidProperties[] = "'bucks_cents' can't be null";
+        }
+        if ($this->container['cbx'] === null) {
+            $invalidProperties[] = "'cbx' can't be null";
+        }
+        if ($this->container['cosm'] === null) {
+            $invalidProperties[] = "'cosm' can't be null";
         }
         return $invalidProperties;
     }
@@ -229,6 +247,54 @@ class GetWorldWalletResponseData implements ModelInterface, ArrayAccess, \JsonSe
     public function setBucksCents($bucks_cents)
     {
         $this->container['bucks_cents'] = $bucks_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets cbx
+     *
+     * @return \Crossly\Model\World\GetWorldWalletResponseDataCbx
+     */
+    public function getCbx()
+    {
+        return $this->container['cbx'];
+    }
+
+    /**
+     * Sets cbx
+     *
+     * @param \Crossly\Model\World\GetWorldWalletResponseDataCbx $cbx cbx
+     *
+     * @return self
+     */
+    public function setCbx($cbx)
+    {
+        $this->container['cbx'] = $cbx;
+
+        return $this;
+    }
+
+    /**
+     * Gets cosm
+     *
+     * @return \Crossly\Model\World\GetWorldWalletResponseDataCosm
+     */
+    public function getCosm()
+    {
+        return $this->container['cosm'];
+    }
+
+    /**
+     * Sets cosm
+     *
+     * @param \Crossly\Model\World\GetWorldWalletResponseDataCosm $cosm cosm
+     *
+     * @return self
+     */
+    public function setCosm($cosm)
+    {
+        $this->container['cosm'] = $cosm;
 
         return $this;
     }

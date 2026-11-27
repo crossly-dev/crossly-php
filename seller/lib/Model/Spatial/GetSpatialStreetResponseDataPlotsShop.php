@@ -256,8 +256,8 @@ class GetSpatialStreetResponseDataPlotsShop implements ModelInterface, ArrayAcce
 
     const SHOPFRONT_FULL = 'full';
     const SHOPFRONT_NONE = 'none';
-    const SHOPFRONT_AWNING = 'awning';
     const SHOPFRONT_FASCIA = 'fascia';
+    const SHOPFRONT_AWNING = 'awning';
     const SHOPFRONT_NEON_FASCIA = 'neon_fascia';
     const SHOPFRONT_GILDED_FASCIA = 'gilded_fascia';
     const SHOPFRONT_SCALLOPED_AWNING = 'scalloped_awning';
@@ -297,8 +297,8 @@ class GetSpatialStreetResponseDataPlotsShop implements ModelInterface, ArrayAcce
         return [
             self::SHOPFRONT_FULL,
             self::SHOPFRONT_NONE,
-            self::SHOPFRONT_AWNING,
             self::SHOPFRONT_FASCIA,
+            self::SHOPFRONT_AWNING,
             self::SHOPFRONT_NEON_FASCIA,
             self::SHOPFRONT_GILDED_FASCIA,
             self::SHOPFRONT_SCALLOPED_AWNING,
@@ -1001,7 +1001,7 @@ class GetSpatialStreetResponseDataPlotsShop implements ModelInterface, ArrayAcce
     /**
      * Sets closed
      *
-     * @param bool $closed The shop is shut — the seller is on vacation.  Sourced from `seller_profiles.vacation_mode`, which is the flag whose own schema comment says the storefront shows a banner and checkout blocks new orders. NOT `users.vacation_mode`, which pauses automation and share schedulers and has nothing to do with whether somebody is selling.  A closed room is still WALKABLE on purpose. Vacation pauses selling, it does not hide a collection, and a door that refuses to open is a worse answer than one that opens onto a shop with the shutter down — you can still look, you just cannot buy.
+     * @param bool $closed The shop is shut — the seller is on vacation.  Sourced from `users.vacation_mode` / `vacation_ends_at` — Settings › Vacation mode, the same flag checkout blocks new orders on (services/vacation/seller-vacation.ts, settings IA audit B3). The old `seller_profiles.vacation_mode` copy had no writer any client used.  A closed room is still WALKABLE on purpose. Vacation pauses selling, it does not hide a collection, and a door that refuses to open is a worse answer than one that opens onto a shop with the shutter down — you can still look, you just cannot buy.
      *
      * @return self
      */

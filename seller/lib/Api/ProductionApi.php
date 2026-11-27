@@ -7098,7 +7098,7 @@ class ProductionApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Crossly\Model\Common\GetShopListingProvenanceResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @return \Crossly\Model\Shop\GetShopListingProvenanceResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
     public function getShopListingProvenance($slug)
     {
@@ -7115,7 +7115,7 @@ class ProductionApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Crossly\Model\Common\GetShopListingProvenanceResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Crossly\Model\Shop\GetShopListingProvenanceResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getShopListingProvenanceWithHttpInfo($slug)
     {
@@ -7158,14 +7158,14 @@ class ProductionApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Crossly\Model\Common\GetShopListingProvenanceResponse' === '\SplFileObject') {
+                    if ('\Crossly\Model\Shop\GetShopListingProvenanceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Crossly\Model\Common\GetShopListingProvenanceResponse', []),
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Shop\GetShopListingProvenanceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7243,7 +7243,7 @@ class ProductionApi
                     ];
             }
 
-            $returnType = '\Crossly\Model\Common\GetShopListingProvenanceResponse';
+            $returnType = '\Crossly\Model\Shop\GetShopListingProvenanceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7261,7 +7261,7 @@ class ProductionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Crossly\Model\Common\GetShopListingProvenanceResponse',
+                        '\Crossly\Model\Shop\GetShopListingProvenanceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7351,7 +7351,7 @@ class ProductionApi
      */
     public function getShopListingProvenanceAsyncWithHttpInfo($slug)
     {
-        $returnType = '\Crossly\Model\Common\GetShopListingProvenanceResponse';
+        $returnType = '\Crossly\Model\Shop\GetShopListingProvenanceResponse';
         $request = $this->getShopListingProvenanceRequest($slug);
 
         return $this->client

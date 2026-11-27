@@ -228,7 +228,7 @@ class CreateOrderWhatnotPackageQuoteResponse implements ModelInterface, ArrayAcc
     /**
      * Sets cost_cents
      *
-     * @param float $cost_cents cost_cents
+     * @param float $cost_cents Cents the platform charges for the change; 0 = free.
      *
      * @return self
      */
@@ -252,7 +252,7 @@ class CreateOrderWhatnotPackageQuoteResponse implements ModelInterface, ArrayAcc
     /**
      * Sets error
      *
-     * @param string|null $error error
+     * @param string|null $error The platform's refusal of this package, when it gives one.
      *
      * @return self
      */

@@ -60,11 +60,11 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'physical_count' => '\Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount',
-        'insurance_certificate' => '\Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount',
-        'soc1_type2' => '\Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount',
-        'soc2' => '\Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount',
-        'other' => '\Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount'
+        'other' => '\Crossly\Model\Vault\GetVaultAttestationResponseLatestOther',
+        'physical_count' => '\Crossly\Model\Vault\GetVaultAttestationResponseLatestOther',
+        'insurance_certificate' => '\Crossly\Model\Vault\GetVaultAttestationResponseLatestOther',
+        'soc1_type2' => '\Crossly\Model\Vault\GetVaultAttestationResponseLatestOther',
+        'soc2' => '\Crossly\Model\Vault\GetVaultAttestationResponseLatestOther'
     ];
 
     /**
@@ -75,11 +75,11 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'other' => null,
         'physical_count' => null,
         'insurance_certificate' => null,
         'soc1_type2' => null,
-        'soc2' => null,
-        'other' => null
+        'soc2' => null
     ];
 
     /**
@@ -109,11 +109,11 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
+        'other' => 'other',
         'physical_count' => 'physical_count',
         'insurance_certificate' => 'insurance_certificate',
         'soc1_type2' => 'soc1_type2',
-        'soc2' => 'soc2',
-        'other' => 'other'
+        'soc2' => 'soc2'
     ];
 
     /**
@@ -122,11 +122,11 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
+        'other' => 'setOther',
         'physical_count' => 'setPhysicalCount',
         'insurance_certificate' => 'setInsuranceCertificate',
         'soc1_type2' => 'setSoc1Type2',
-        'soc2' => 'setSoc2',
-        'other' => 'setOther'
+        'soc2' => 'setSoc2'
     ];
 
     /**
@@ -135,11 +135,11 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
+        'other' => 'getOther',
         'physical_count' => 'getPhysicalCount',
         'insurance_certificate' => 'getInsuranceCertificate',
         'soc1_type2' => 'getSoc1Type2',
-        'soc2' => 'getSoc2',
-        'other' => 'getOther'
+        'soc2' => 'getSoc2'
     ];
 
     /**
@@ -199,11 +199,11 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
+        $this->container['other'] = $data['other'] ?? null;
         $this->container['physical_count'] = $data['physical_count'] ?? null;
         $this->container['insurance_certificate'] = $data['insurance_certificate'] ?? null;
         $this->container['soc1_type2'] = $data['soc1_type2'] ?? null;
         $this->container['soc2'] = $data['soc2'] ?? null;
-        $this->container['other'] = $data['other'] ?? null;
     }
 
     /**
@@ -231,9 +231,33 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
 
 
     /**
+     * Gets other
+     *
+     * @return \Crossly\Model\Vault\GetVaultAttestationResponseLatestOther|null
+     */
+    public function getOther()
+    {
+        return $this->container['other'];
+    }
+
+    /**
+     * Sets other
+     *
+     * @param \Crossly\Model\Vault\GetVaultAttestationResponseLatestOther|null $other other
+     *
+     * @return self
+     */
+    public function setOther($other)
+    {
+        $this->container['other'] = $other;
+
+        return $this;
+    }
+
+    /**
      * Gets physical_count
      *
-     * @return \Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount|null
+     * @return \Crossly\Model\Vault\GetVaultAttestationResponseLatestOther|null
      */
     public function getPhysicalCount()
     {
@@ -243,7 +267,7 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
     /**
      * Sets physical_count
      *
-     * @param \Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount|null $physical_count physical_count
+     * @param \Crossly\Model\Vault\GetVaultAttestationResponseLatestOther|null $physical_count physical_count
      *
      * @return self
      */
@@ -257,7 +281,7 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
     /**
      * Gets insurance_certificate
      *
-     * @return \Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount|null
+     * @return \Crossly\Model\Vault\GetVaultAttestationResponseLatestOther|null
      */
     public function getInsuranceCertificate()
     {
@@ -267,7 +291,7 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
     /**
      * Sets insurance_certificate
      *
-     * @param \Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount|null $insurance_certificate insurance_certificate
+     * @param \Crossly\Model\Vault\GetVaultAttestationResponseLatestOther|null $insurance_certificate insurance_certificate
      *
      * @return self
      */
@@ -281,7 +305,7 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
     /**
      * Gets soc1_type2
      *
-     * @return \Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount|null
+     * @return \Crossly\Model\Vault\GetVaultAttestationResponseLatestOther|null
      */
     public function getSoc1Type2()
     {
@@ -291,7 +315,7 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
     /**
      * Sets soc1_type2
      *
-     * @param \Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount|null $soc1_type2 soc1_type2
+     * @param \Crossly\Model\Vault\GetVaultAttestationResponseLatestOther|null $soc1_type2 soc1_type2
      *
      * @return self
      */
@@ -305,7 +329,7 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
     /**
      * Gets soc2
      *
-     * @return \Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount|null
+     * @return \Crossly\Model\Vault\GetVaultAttestationResponseLatestOther|null
      */
     public function getSoc2()
     {
@@ -315,37 +339,13 @@ class GetVaultAttestationResponseLatest implements ModelInterface, ArrayAccess, 
     /**
      * Sets soc2
      *
-     * @param \Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount|null $soc2 soc2
+     * @param \Crossly\Model\Vault\GetVaultAttestationResponseLatestOther|null $soc2 soc2
      *
      * @return self
      */
     public function setSoc2($soc2)
     {
         $this->container['soc2'] = $soc2;
-
-        return $this;
-    }
-
-    /**
-     * Gets other
-     *
-     * @return \Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount|null
-     */
-    public function getOther()
-    {
-        return $this->container['other'];
-    }
-
-    /**
-     * Sets other
-     *
-     * @param \Crossly\Model\Vault\GetVaultAttestationResponseLatestPhysicalCount|null $other other
-     *
-     * @return self
-     */
-    public function setOther($other)
-    {
-        $this->container['other'] = $other;
 
         return $this;
     }

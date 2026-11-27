@@ -60,8 +60,8 @@ class GetBuyerCollectionSetResponseDataGroup implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'brand' => 'string',
         'category' => 'string',
+        'brand' => 'string',
         'model' => 'string',
         'brand_slug' => 'string',
         'model_slug' => 'string',
@@ -77,8 +77,8 @@ class GetBuyerCollectionSetResponseDataGroup implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'brand' => null,
         'category' => null,
+        'brand' => null,
         'model' => null,
         'brand_slug' => null,
         'model_slug' => null,
@@ -113,8 +113,8 @@ class GetBuyerCollectionSetResponseDataGroup implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'brand' => 'brand',
         'category' => 'category',
+        'brand' => 'brand',
         'model' => 'model',
         'brand_slug' => 'brandSlug',
         'model_slug' => 'modelSlug',
@@ -128,8 +128,8 @@ class GetBuyerCollectionSetResponseDataGroup implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'brand' => 'setBrand',
         'category' => 'setCategory',
+        'brand' => 'setBrand',
         'model' => 'setModel',
         'brand_slug' => 'setBrandSlug',
         'model_slug' => 'setModelSlug',
@@ -143,8 +143,8 @@ class GetBuyerCollectionSetResponseDataGroup implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'brand' => 'getBrand',
         'category' => 'getCategory',
+        'brand' => 'getBrand',
         'model' => 'getModel',
         'brand_slug' => 'getBrandSlug',
         'model_slug' => 'getModelSlug',
@@ -209,8 +209,8 @@ class GetBuyerCollectionSetResponseDataGroup implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->container['brand'] = $data['brand'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
+        $this->container['brand'] = $data['brand'] ?? null;
         $this->container['model'] = $data['model'] ?? null;
         $this->container['brand_slug'] = $data['brand_slug'] ?? null;
         $this->container['model_slug'] = $data['model_slug'] ?? null;
@@ -227,11 +227,11 @@ class GetBuyerCollectionSetResponseDataGroup implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['brand'] === null) {
-            $invalidProperties[] = "'brand' can't be null";
-        }
         if ($this->container['category'] === null) {
             $invalidProperties[] = "'category' can't be null";
+        }
+        if ($this->container['brand'] === null) {
+            $invalidProperties[] = "'brand' can't be null";
         }
         if ($this->container['model'] === null) {
             $invalidProperties[] = "'model' can't be null";
@@ -264,30 +264,6 @@ class GetBuyerCollectionSetResponseDataGroup implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets brand
-     *
-     * @return string
-     */
-    public function getBrand()
-    {
-        return $this->container['brand'];
-    }
-
-    /**
-     * Sets brand
-     *
-     * @param string $brand brand
-     *
-     * @return self
-     */
-    public function setBrand($brand)
-    {
-        $this->container['brand'] = $brand;
-
-        return $this;
-    }
-
-    /**
      * Gets category
      *
      * @return string
@@ -307,6 +283,30 @@ class GetBuyerCollectionSetResponseDataGroup implements ModelInterface, ArrayAcc
     public function setCategory($category)
     {
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand
+     *
+     * @return string
+     */
+    public function getBrand()
+    {
+        return $this->container['brand'];
+    }
+
+    /**
+     * Sets brand
+     *
+     * @param string $brand brand
+     *
+     * @return self
+     */
+    public function setBrand($brand)
+    {
+        $this->container['brand'] = $brand;
 
         return $this;
     }

@@ -60,13 +60,13 @@ class GetBuyerCollectionOfferResponseData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pending' => '\Crossly\Buyer\Model\Collection\GetBuyerCollectionOfferResponseDataPending',
+        'portfolio_id' => 'string',
         'title' => 'string',
         'last_sale_cents' => 'float',
+        'top_bid_cents' => 'float',
         'sku_id' => 'string',
-        'portfolio_id' => 'string',
         'offer' => '\Crossly\Buyer\Model\Collection\GetBuyerCollectionOfferResponseDataOffer',
-        'top_bid_cents' => 'float'
+        'pending' => '\Crossly\Buyer\Model\Collection\GetBuyerCollectionOfferResponseDataPending'
     ];
 
     /**
@@ -77,13 +77,13 @@ class GetBuyerCollectionOfferResponseData implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'pending' => null,
+        'portfolio_id' => null,
         'title' => null,
         'last_sale_cents' => null,
+        'top_bid_cents' => null,
         'sku_id' => null,
-        'portfolio_id' => null,
         'offer' => null,
-        'top_bid_cents' => null
+        'pending' => null
     ];
 
     /**
@@ -113,13 +113,13 @@ class GetBuyerCollectionOfferResponseData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'pending' => 'pending',
+        'portfolio_id' => 'portfolioId',
         'title' => 'title',
         'last_sale_cents' => 'lastSaleCents',
+        'top_bid_cents' => 'topBidCents',
         'sku_id' => 'skuId',
-        'portfolio_id' => 'portfolioId',
         'offer' => 'offer',
-        'top_bid_cents' => 'topBidCents'
+        'pending' => 'pending'
     ];
 
     /**
@@ -128,13 +128,13 @@ class GetBuyerCollectionOfferResponseData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'pending' => 'setPending',
+        'portfolio_id' => 'setPortfolioId',
         'title' => 'setTitle',
         'last_sale_cents' => 'setLastSaleCents',
+        'top_bid_cents' => 'setTopBidCents',
         'sku_id' => 'setSkuId',
-        'portfolio_id' => 'setPortfolioId',
         'offer' => 'setOffer',
-        'top_bid_cents' => 'setTopBidCents'
+        'pending' => 'setPending'
     ];
 
     /**
@@ -143,13 +143,13 @@ class GetBuyerCollectionOfferResponseData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'pending' => 'getPending',
+        'portfolio_id' => 'getPortfolioId',
         'title' => 'getTitle',
         'last_sale_cents' => 'getLastSaleCents',
+        'top_bid_cents' => 'getTopBidCents',
         'sku_id' => 'getSkuId',
-        'portfolio_id' => 'getPortfolioId',
         'offer' => 'getOffer',
-        'top_bid_cents' => 'getTopBidCents'
+        'pending' => 'getPending'
     ];
 
     /**
@@ -209,13 +209,13 @@ class GetBuyerCollectionOfferResponseData implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['pending'] = $data['pending'] ?? null;
+        $this->container['portfolio_id'] = $data['portfolio_id'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['last_sale_cents'] = $data['last_sale_cents'] ?? null;
-        $this->container['sku_id'] = $data['sku_id'] ?? null;
-        $this->container['portfolio_id'] = $data['portfolio_id'] ?? null;
-        $this->container['offer'] = $data['offer'] ?? null;
         $this->container['top_bid_cents'] = $data['top_bid_cents'] ?? null;
+        $this->container['sku_id'] = $data['sku_id'] ?? null;
+        $this->container['offer'] = $data['offer'] ?? null;
+        $this->container['pending'] = $data['pending'] ?? null;
     }
 
     /**
@@ -246,25 +246,25 @@ class GetBuyerCollectionOfferResponseData implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets pending
+     * Gets portfolio_id
      *
-     * @return \Crossly\Buyer\Model\Collection\GetBuyerCollectionOfferResponseDataPending|null
+     * @return string
      */
-    public function getPending()
+    public function getPortfolioId()
     {
-        return $this->container['pending'];
+        return $this->container['portfolio_id'];
     }
 
     /**
-     * Sets pending
+     * Sets portfolio_id
      *
-     * @param \Crossly\Buyer\Model\Collection\GetBuyerCollectionOfferResponseDataPending|null $pending pending
+     * @param string $portfolio_id portfolio_id
      *
      * @return self
      */
-    public function setPending($pending)
+    public function setPortfolioId($portfolio_id)
     {
-        $this->container['pending'] = $pending;
+        $this->container['portfolio_id'] = $portfolio_id;
 
         return $this;
     }
@@ -318,6 +318,30 @@ class GetBuyerCollectionOfferResponseData implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets top_bid_cents
+     *
+     * @return float|null
+     */
+    public function getTopBidCents()
+    {
+        return $this->container['top_bid_cents'];
+    }
+
+    /**
+     * Sets top_bid_cents
+     *
+     * @param float|null $top_bid_cents top_bid_cents
+     *
+     * @return self
+     */
+    public function setTopBidCents($top_bid_cents)
+    {
+        $this->container['top_bid_cents'] = $top_bid_cents;
+
+        return $this;
+    }
+
+    /**
      * Gets sku_id
      *
      * @return string|null
@@ -337,30 +361,6 @@ class GetBuyerCollectionOfferResponseData implements ModelInterface, ArrayAccess
     public function setSkuId($sku_id)
     {
         $this->container['sku_id'] = $sku_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets portfolio_id
-     *
-     * @return string
-     */
-    public function getPortfolioId()
-    {
-        return $this->container['portfolio_id'];
-    }
-
-    /**
-     * Sets portfolio_id
-     *
-     * @param string $portfolio_id portfolio_id
-     *
-     * @return self
-     */
-    public function setPortfolioId($portfolio_id)
-    {
-        $this->container['portfolio_id'] = $portfolio_id;
 
         return $this;
     }
@@ -390,25 +390,25 @@ class GetBuyerCollectionOfferResponseData implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets top_bid_cents
+     * Gets pending
      *
-     * @return float|null
+     * @return \Crossly\Buyer\Model\Collection\GetBuyerCollectionOfferResponseDataPending|null
      */
-    public function getTopBidCents()
+    public function getPending()
     {
-        return $this->container['top_bid_cents'];
+        return $this->container['pending'];
     }
 
     /**
-     * Sets top_bid_cents
+     * Sets pending
      *
-     * @param float|null $top_bid_cents top_bid_cents
+     * @param \Crossly\Buyer\Model\Collection\GetBuyerCollectionOfferResponseDataPending|null $pending pending
      *
      * @return self
      */
-    public function setTopBidCents($top_bid_cents)
+    public function setPending($pending)
     {
-        $this->container['top_bid_cents'] = $top_bid_cents;
+        $this->container['pending'] = $pending;
 
         return $this;
     }

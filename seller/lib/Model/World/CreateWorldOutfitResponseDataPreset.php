@@ -62,7 +62,7 @@ class CreateWorldOutfitResponseDataPreset implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'appearance' => '\Crossly\Model\World\ListWorldOutfitsItemAppearance',
+        'appearance' => '\Crossly\Model\World\CreateWorldOutfitResponseDataPresetAppearance',
         'items' => 'array<string,mixed>[]',
         'created_at' => 'string',
         'updated_at' => 'string'
@@ -305,7 +305,7 @@ class CreateWorldOutfitResponseDataPreset implements ModelInterface, ArrayAccess
     /**
      * Gets appearance
      *
-     * @return \Crossly\Model\World\ListWorldOutfitsItemAppearance
+     * @return \Crossly\Model\World\CreateWorldOutfitResponseDataPresetAppearance
      */
     public function getAppearance()
     {
@@ -315,7 +315,7 @@ class CreateWorldOutfitResponseDataPreset implements ModelInterface, ArrayAccess
     /**
      * Sets appearance
      *
-     * @param \Crossly\Model\World\ListWorldOutfitsItemAppearance $appearance appearance
+     * @param \Crossly\Model\World\CreateWorldOutfitResponseDataPresetAppearance $appearance appearance
      *
      * @return self
      */

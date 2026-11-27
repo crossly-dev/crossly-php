@@ -62,11 +62,12 @@ class ListVaultMarketFeedItem implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'id' => 'string',
         'at' => 'string',
+        'by' => '\Crossly\Model\Vault\ListVaultMarketFeedItemBy',
         'book_key' => 'string',
         'name' => 'string',
         'label' => 'string',
         'image_url' => 'string',
-        'mark' => '\Crossly\Model\Vault\ListVaultMarketFeedItemMark',
+        'mark' => '\Crossly\Model\Vault\ListVaultMarketOpeningItemMark',
         'buy_href' => 'string'
     ];
 
@@ -80,6 +81,7 @@ class ListVaultMarketFeedItem implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPIFormats = [
         'id' => null,
         'at' => null,
+        'by' => null,
         'book_key' => null,
         'name' => null,
         'label' => null,
@@ -117,6 +119,7 @@ class ListVaultMarketFeedItem implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'id' => 'id',
         'at' => 'at',
+        'by' => 'by',
         'book_key' => 'bookKey',
         'name' => 'name',
         'label' => 'label',
@@ -133,6 +136,7 @@ class ListVaultMarketFeedItem implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'id' => 'setId',
         'at' => 'setAt',
+        'by' => 'setBy',
         'book_key' => 'setBookKey',
         'name' => 'setName',
         'label' => 'setLabel',
@@ -149,6 +153,7 @@ class ListVaultMarketFeedItem implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'id' => 'getId',
         'at' => 'getAt',
+        'by' => 'getBy',
         'book_key' => 'getBookKey',
         'name' => 'getName',
         'label' => 'getLabel',
@@ -216,6 +221,7 @@ class ListVaultMarketFeedItem implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['at'] = $data['at'] ?? null;
+        $this->container['by'] = $data['by'] ?? null;
         $this->container['book_key'] = $data['book_key'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
@@ -238,6 +244,9 @@ class ListVaultMarketFeedItem implements ModelInterface, ArrayAccess, \JsonSeria
         }
         if ($this->container['at'] === null) {
             $invalidProperties[] = "'at' can't be null";
+        }
+        if ($this->container['by'] === null) {
+            $invalidProperties[] = "'by' can't be null";
         }
         if ($this->container['book_key'] === null) {
             $invalidProperties[] = "'book_key' can't be null";
@@ -307,6 +316,30 @@ class ListVaultMarketFeedItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setAt($at)
     {
         $this->container['at'] = $at;
+
+        return $this;
+    }
+
+    /**
+     * Gets by
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketFeedItemBy
+     */
+    public function getBy()
+    {
+        return $this->container['by'];
+    }
+
+    /**
+     * Sets by
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketFeedItemBy $by by
+     *
+     * @return self
+     */
+    public function setBy($by)
+    {
+        $this->container['by'] = $by;
 
         return $this;
     }
@@ -410,7 +443,7 @@ class ListVaultMarketFeedItem implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets mark
      *
-     * @return \Crossly\Model\Vault\ListVaultMarketFeedItemMark
+     * @return \Crossly\Model\Vault\ListVaultMarketOpeningItemMark
      */
     public function getMark()
     {
@@ -420,7 +453,7 @@ class ListVaultMarketFeedItem implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets mark
      *
-     * @param \Crossly\Model\Vault\ListVaultMarketFeedItemMark $mark mark
+     * @param \Crossly\Model\Vault\ListVaultMarketOpeningItemMark $mark mark
      *
      * @return self
      */

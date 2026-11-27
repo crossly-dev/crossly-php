@@ -168,13 +168,13 @@ class GetHomeResponseLayoutRef implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
-    const KIND_TOKEN = 'token';
-    const KIND_PORTAL = 'portal';
-    const KIND_PORTFOLIO = 'portfolio';
     const KIND_INVENTORY = 'inventory';
+    const KIND_VAULT = 'vault';
+    const KIND_PORTAL = 'portal';
+    const KIND_TOKEN = 'token';
     const KIND_PURCHASE = 'purchase';
     const KIND_NFT = 'nft';
-    const KIND_VAULT = 'vault';
+    const KIND_PORTFOLIO = 'portfolio';
 
     /**
      * Gets allowable values of the enum
@@ -184,13 +184,13 @@ class GetHomeResponseLayoutRef implements ModelInterface, ArrayAccess, \JsonSeri
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_TOKEN,
-            self::KIND_PORTAL,
-            self::KIND_PORTFOLIO,
             self::KIND_INVENTORY,
+            self::KIND_VAULT,
+            self::KIND_PORTAL,
+            self::KIND_TOKEN,
             self::KIND_PURCHASE,
             self::KIND_NFT,
-            self::KIND_VAULT,
+            self::KIND_PORTFOLIO,
         ];
     }
 

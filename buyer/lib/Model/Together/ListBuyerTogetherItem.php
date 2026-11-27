@@ -60,9 +60,9 @@ class ListBuyerTogetherItem implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
+        'code' => 'string',
         'name' => 'string',
-        'ends_at' => 'string',
-        'code' => 'string'
+        'ends_at' => 'string'
     ];
 
     /**
@@ -73,9 +73,9 @@ class ListBuyerTogetherItem implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'code' => null,
         'name' => null,
-        'ends_at' => null,
-        'code' => null
+        'ends_at' => null
     ];
 
     /**
@@ -105,9 +105,9 @@ class ListBuyerTogetherItem implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'code' => 'code',
         'name' => 'name',
-        'ends_at' => 'endsAt',
-        'code' => 'code'
+        'ends_at' => 'endsAt'
     ];
 
     /**
@@ -116,9 +116,9 @@ class ListBuyerTogetherItem implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'code' => 'setCode',
         'name' => 'setName',
-        'ends_at' => 'setEndsAt',
-        'code' => 'setCode'
+        'ends_at' => 'setEndsAt'
     ];
 
     /**
@@ -127,9 +127,9 @@ class ListBuyerTogetherItem implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'code' => 'getCode',
         'name' => 'getName',
-        'ends_at' => 'getEndsAt',
-        'code' => 'getCode'
+        'ends_at' => 'getEndsAt'
     ];
 
     /**
@@ -189,9 +189,9 @@ class ListBuyerTogetherItem implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
+        $this->container['code'] = $data['code'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['ends_at'] = $data['ends_at'] ?? null;
-        $this->container['code'] = $data['code'] ?? null;
     }
 
     /**
@@ -203,14 +203,14 @@ class ListBuyerTogetherItem implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['ends_at'] === null) {
             $invalidProperties[] = "'ends_at' can't be null";
-        }
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
         }
         return $invalidProperties;
     }
@@ -226,6 +226,30 @@ class ListBuyerTogetherItem implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string $code code
+     *
+     * @return self
+     */
+    public function setCode($code)
+    {
+        $this->container['code'] = $code;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -271,30 +295,6 @@ class ListBuyerTogetherItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setEndsAt($ends_at)
     {
         $this->container['ends_at'] = $ends_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        $this->container['code'] = $code;
 
         return $this;
     }

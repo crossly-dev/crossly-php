@@ -66,7 +66,7 @@ class GetVaultMarketCorrelationResponse implements ModelInterface, ArrayAccess, 
         'min_pair_weeks' => 'float',
         'insufficient' => 'bool',
         'reason' => 'string',
-        'indexes' => '\Crossly\Model\Common\SlugName[]',
+        'indexes' => '\Crossly\Model\Common\NameSlug[]',
         'rho' => 'float[][]',
         'n' => 'float[][]',
         'as_of' => 'string'
@@ -434,7 +434,7 @@ class GetVaultMarketCorrelationResponse implements ModelInterface, ArrayAccess, 
     /**
      * Gets indexes
      *
-     * @return \Crossly\Model\Common\SlugName[]
+     * @return \Crossly\Model\Common\NameSlug[]
      */
     public function getIndexes()
     {
@@ -444,7 +444,7 @@ class GetVaultMarketCorrelationResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets indexes
      *
-     * @param \Crossly\Model\Common\SlugName[] $indexes indexes
+     * @param \Crossly\Model\Common\NameSlug[] $indexes indexes
      *
      * @return self
      */

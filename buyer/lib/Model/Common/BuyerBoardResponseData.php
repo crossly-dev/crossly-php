@@ -61,15 +61,15 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'updated_at' => 'string',
-        'is_public' => 'bool',
-        'description' => 'string',
         'title' => 'string',
-        'items' => '\Crossly\Buyer\Model\Common\BuyerBoardResponseDataItems[]',
+        'description' => 'string',
+        'is_public' => 'bool',
         'share_token' => 'string',
         'cover_url' => 'string',
+        'owner_name' => 'string',
         'mine' => 'bool',
-        'owner_name' => 'string'
+        'items' => '\Crossly\Buyer\Model\Common\BuyerBoardResponseDataItems[]',
+        'updated_at' => 'string'
     ];
 
     /**
@@ -81,15 +81,15 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'updated_at' => null,
-        'is_public' => null,
-        'description' => null,
         'title' => null,
-        'items' => null,
+        'description' => null,
+        'is_public' => null,
         'share_token' => null,
         'cover_url' => null,
+        'owner_name' => null,
         'mine' => null,
-        'owner_name' => null
+        'items' => null,
+        'updated_at' => null
     ];
 
     /**
@@ -120,15 +120,15 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'updated_at' => 'updatedAt',
-        'is_public' => 'isPublic',
-        'description' => 'description',
         'title' => 'title',
-        'items' => 'items',
+        'description' => 'description',
+        'is_public' => 'isPublic',
         'share_token' => 'shareToken',
         'cover_url' => 'coverUrl',
+        'owner_name' => 'ownerName',
         'mine' => 'mine',
-        'owner_name' => 'ownerName'
+        'items' => 'items',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -138,15 +138,15 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'id' => 'setId',
-        'updated_at' => 'setUpdatedAt',
-        'is_public' => 'setIsPublic',
-        'description' => 'setDescription',
         'title' => 'setTitle',
-        'items' => 'setItems',
+        'description' => 'setDescription',
+        'is_public' => 'setIsPublic',
         'share_token' => 'setShareToken',
         'cover_url' => 'setCoverUrl',
+        'owner_name' => 'setOwnerName',
         'mine' => 'setMine',
-        'owner_name' => 'setOwnerName'
+        'items' => 'setItems',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -156,15 +156,15 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'id' => 'getId',
-        'updated_at' => 'getUpdatedAt',
-        'is_public' => 'getIsPublic',
-        'description' => 'getDescription',
         'title' => 'getTitle',
-        'items' => 'getItems',
+        'description' => 'getDescription',
+        'is_public' => 'getIsPublic',
         'share_token' => 'getShareToken',
         'cover_url' => 'getCoverUrl',
+        'owner_name' => 'getOwnerName',
         'mine' => 'getMine',
-        'owner_name' => 'getOwnerName'
+        'items' => 'getItems',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -225,15 +225,15 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['is_public'] = $data['is_public'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['is_public'] = $data['is_public'] ?? null;
         $this->container['share_token'] = $data['share_token'] ?? null;
         $this->container['cover_url'] = $data['cover_url'] ?? null;
-        $this->container['mine'] = $data['mine'] ?? null;
         $this->container['owner_name'] = $data['owner_name'] ?? null;
+        $this->container['mine'] = $data['mine'] ?? null;
+        $this->container['items'] = $data['items'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -248,23 +248,23 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
         if ($this->container['is_public'] === null) {
             $invalidProperties[] = "'is_public' can't be null";
         }
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['items'] === null) {
-            $invalidProperties[] = "'items' can't be null";
+        if ($this->container['owner_name'] === null) {
+            $invalidProperties[] = "'owner_name' can't be null";
         }
         if ($this->container['mine'] === null) {
             $invalidProperties[] = "'mine' can't be null";
         }
-        if ($this->container['owner_name'] === null) {
-            $invalidProperties[] = "'owner_name' can't be null";
+        if ($this->container['items'] === null) {
+            $invalidProperties[] = "'items' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -306,49 +306,25 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets updated_at
+     * Gets title
      *
      * @return string
      */
-    public function getUpdatedAt()
+    public function getTitle()
     {
-        return $this->container['updated_at'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets updated_at
+     * Sets title
      *
-     * @param string $updated_at updated_at
+     * @param string $title title
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setTitle($title)
     {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_public
-     *
-     * @return bool
-     */
-    public function getIsPublic()
-    {
-        return $this->container['is_public'];
-    }
-
-    /**
-     * Sets is_public
-     *
-     * @param bool $is_public is_public
-     *
-     * @return self
-     */
-    public function setIsPublic($is_public)
-    {
-        $this->container['is_public'] = $is_public;
+        $this->container['title'] = $title;
 
         return $this;
     }
@@ -378,49 +354,25 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets title
+     * Gets is_public
      *
-     * @return string
+     * @return bool
      */
-    public function getTitle()
+    public function getIsPublic()
     {
-        return $this->container['title'];
+        return $this->container['is_public'];
     }
 
     /**
-     * Sets title
+     * Sets is_public
      *
-     * @param string $title title
+     * @param bool $is_public is_public
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setIsPublic($is_public)
     {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets items
-     *
-     * @return \Crossly\Buyer\Model\Common\BuyerBoardResponseDataItems[]
-     */
-    public function getItems()
-    {
-        return $this->container['items'];
-    }
-
-    /**
-     * Sets items
-     *
-     * @param \Crossly\Buyer\Model\Common\BuyerBoardResponseDataItems[] $items items
-     *
-     * @return self
-     */
-    public function setItems($items)
-    {
-        $this->container['items'] = $items;
+        $this->container['is_public'] = $is_public;
 
         return $this;
     }
@@ -474,6 +426,30 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets owner_name
+     *
+     * @return string
+     */
+    public function getOwnerName()
+    {
+        return $this->container['owner_name'];
+    }
+
+    /**
+     * Sets owner_name
+     *
+     * @param string $owner_name owner_name
+     *
+     * @return self
+     */
+    public function setOwnerName($owner_name)
+    {
+        $this->container['owner_name'] = $owner_name;
+
+        return $this;
+    }
+
+    /**
      * Gets mine
      *
      * @return bool
@@ -498,25 +474,49 @@ class BuyerBoardResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets owner_name
+     * Gets items
      *
-     * @return string
+     * @return \Crossly\Buyer\Model\Common\BuyerBoardResponseDataItems[]
      */
-    public function getOwnerName()
+    public function getItems()
     {
-        return $this->container['owner_name'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets owner_name
+     * Sets items
      *
-     * @param string $owner_name owner_name
+     * @param \Crossly\Buyer\Model\Common\BuyerBoardResponseDataItems[] $items items
      *
      * @return self
      */
-    public function setOwnerName($owner_name)
+    public function setItems($items)
     {
-        $this->container['owner_name'] = $owner_name;
+        $this->container['items'] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return string
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param string $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

@@ -221,8 +221,8 @@ class GetVaultMarketDcmContractResponseContract implements ModelInterface, Array
     const KIND_OPTION = 'option';
     const KIND_PERP = 'perp';
     const KIND_FUTURE = 'future';
-    const OPTION_TYPE_CALL = 'call';
     const OPTION_TYPE_PUT = 'put';
+    const OPTION_TYPE_CALL = 'call';
 
     /**
      * Gets allowable values of the enum
@@ -246,8 +246,8 @@ class GetVaultMarketDcmContractResponseContract implements ModelInterface, Array
     public function getOptionTypeAllowableValues()
     {
         return [
-            self::OPTION_TYPE_CALL,
             self::OPTION_TYPE_PUT,
+            self::OPTION_TYPE_CALL,
         ];
     }
 

@@ -60,14 +60,24 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
       * @var string[]
       */
     protected static $openAPITypes = [
+        'fulfilment' => 'string',
+        'shipping_cents' => 'float',
+        'total_cents' => 'float',
+        'needs_approval' => 'bool',
+        'cancellation' => '\Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalQuoteResponseDataCancellation',
+        'buyout' => '\Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalQuoteResponseDataBuyout',
+        'problem' => 'string',
         'start_date' => 'string',
         'end_date' => 'string',
         'days' => 'float',
-        'problem' => 'string',
+        'unit' => 'float',
+        'lines' => '\Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalQuoteResponseDataLines[]',
         'rent_cents' => 'float',
+        'cleaning_fee_cents' => 'float',
+        'damage_waiver_cents' => 'float',
         'deposit_cents' => 'float',
-        'shipping_cents' => 'float',
-        'total_cents' => 'float'
+        'deposit_note' => 'string',
+        'chargeable_cents' => 'float'
     ];
 
     /**
@@ -78,14 +88,24 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'fulfilment' => null,
+        'shipping_cents' => null,
+        'total_cents' => null,
+        'needs_approval' => null,
+        'cancellation' => null,
+        'buyout' => null,
+        'problem' => null,
         'start_date' => null,
         'end_date' => null,
         'days' => null,
-        'problem' => null,
+        'unit' => null,
+        'lines' => null,
         'rent_cents' => null,
+        'cleaning_fee_cents' => null,
+        'damage_waiver_cents' => null,
         'deposit_cents' => null,
-        'shipping_cents' => null,
-        'total_cents' => null
+        'deposit_note' => null,
+        'chargeable_cents' => null
     ];
 
     /**
@@ -115,14 +135,24 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
      * @var string[]
      */
     protected static $attributeMap = [
+        'fulfilment' => 'fulfilment',
+        'shipping_cents' => 'shippingCents',
+        'total_cents' => 'totalCents',
+        'needs_approval' => 'needsApproval',
+        'cancellation' => 'cancellation',
+        'buyout' => 'buyout',
+        'problem' => 'problem',
         'start_date' => 'startDate',
         'end_date' => 'endDate',
         'days' => 'days',
-        'problem' => 'problem',
+        'unit' => 'unit',
+        'lines' => 'lines',
         'rent_cents' => 'rentCents',
+        'cleaning_fee_cents' => 'cleaningFeeCents',
+        'damage_waiver_cents' => 'damageWaiverCents',
         'deposit_cents' => 'depositCents',
-        'shipping_cents' => 'shippingCents',
-        'total_cents' => 'totalCents'
+        'deposit_note' => 'depositNote',
+        'chargeable_cents' => 'chargeableCents'
     ];
 
     /**
@@ -131,14 +161,24 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
      * @var string[]
      */
     protected static $setters = [
+        'fulfilment' => 'setFulfilment',
+        'shipping_cents' => 'setShippingCents',
+        'total_cents' => 'setTotalCents',
+        'needs_approval' => 'setNeedsApproval',
+        'cancellation' => 'setCancellation',
+        'buyout' => 'setBuyout',
+        'problem' => 'setProblem',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
         'days' => 'setDays',
-        'problem' => 'setProblem',
+        'unit' => 'setUnit',
+        'lines' => 'setLines',
         'rent_cents' => 'setRentCents',
+        'cleaning_fee_cents' => 'setCleaningFeeCents',
+        'damage_waiver_cents' => 'setDamageWaiverCents',
         'deposit_cents' => 'setDepositCents',
-        'shipping_cents' => 'setShippingCents',
-        'total_cents' => 'setTotalCents'
+        'deposit_note' => 'setDepositNote',
+        'chargeable_cents' => 'setChargeableCents'
     ];
 
     /**
@@ -147,14 +187,24 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
      * @var string[]
      */
     protected static $getters = [
+        'fulfilment' => 'getFulfilment',
+        'shipping_cents' => 'getShippingCents',
+        'total_cents' => 'getTotalCents',
+        'needs_approval' => 'getNeedsApproval',
+        'cancellation' => 'getCancellation',
+        'buyout' => 'getBuyout',
+        'problem' => 'getProblem',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
         'days' => 'getDays',
-        'problem' => 'getProblem',
+        'unit' => 'getUnit',
+        'lines' => 'getLines',
         'rent_cents' => 'getRentCents',
+        'cleaning_fee_cents' => 'getCleaningFeeCents',
+        'damage_waiver_cents' => 'getDamageWaiverCents',
         'deposit_cents' => 'getDepositCents',
-        'shipping_cents' => 'getShippingCents',
-        'total_cents' => 'getTotalCents'
+        'deposit_note' => 'getDepositNote',
+        'chargeable_cents' => 'getChargeableCents'
     ];
 
     /**
@@ -198,6 +248,21 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
         return self::$openAPIModelName;
     }
 
+    const FULFILMENT_SHIP = 'ship';
+    const FULFILMENT_PICKUP = 'pickup';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFulfilmentAllowableValues()
+    {
+        return [
+            self::FULFILMENT_SHIP,
+            self::FULFILMENT_PICKUP,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -214,14 +279,24 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
      */
     public function __construct(array $data = null)
     {
+        $this->container['fulfilment'] = $data['fulfilment'] ?? null;
+        $this->container['shipping_cents'] = $data['shipping_cents'] ?? null;
+        $this->container['total_cents'] = $data['total_cents'] ?? null;
+        $this->container['needs_approval'] = $data['needs_approval'] ?? null;
+        $this->container['cancellation'] = $data['cancellation'] ?? null;
+        $this->container['buyout'] = $data['buyout'] ?? null;
+        $this->container['problem'] = $data['problem'] ?? null;
         $this->container['start_date'] = $data['start_date'] ?? null;
         $this->container['end_date'] = $data['end_date'] ?? null;
         $this->container['days'] = $data['days'] ?? null;
-        $this->container['problem'] = $data['problem'] ?? null;
+        $this->container['unit'] = $data['unit'] ?? null;
+        $this->container['lines'] = $data['lines'] ?? null;
         $this->container['rent_cents'] = $data['rent_cents'] ?? null;
+        $this->container['cleaning_fee_cents'] = $data['cleaning_fee_cents'] ?? null;
+        $this->container['damage_waiver_cents'] = $data['damage_waiver_cents'] ?? null;
         $this->container['deposit_cents'] = $data['deposit_cents'] ?? null;
-        $this->container['shipping_cents'] = $data['shipping_cents'] ?? null;
-        $this->container['total_cents'] = $data['total_cents'] ?? null;
+        $this->container['deposit_note'] = $data['deposit_note'] ?? null;
+        $this->container['chargeable_cents'] = $data['chargeable_cents'] ?? null;
     }
 
     /**
@@ -233,6 +308,27 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
     {
         $invalidProperties = [];
 
+        if ($this->container['fulfilment'] === null) {
+            $invalidProperties[] = "'fulfilment' can't be null";
+        }
+        $allowedValues = $this->getFulfilmentAllowableValues();
+        if (!is_null($this->container['fulfilment']) && !in_array($this->container['fulfilment'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'fulfilment', must be one of '%s'",
+                $this->container['fulfilment'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['needs_approval'] === null) {
+            $invalidProperties[] = "'needs_approval' can't be null";
+        }
+        if ($this->container['cancellation'] === null) {
+            $invalidProperties[] = "'cancellation' can't be null";
+        }
+        if ($this->container['buyout'] === null) {
+            $invalidProperties[] = "'buyout' can't be null";
+        }
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
         }
@@ -242,11 +338,23 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
         if ($this->container['days'] === null) {
             $invalidProperties[] = "'days' can't be null";
         }
+        if ($this->container['lines'] === null) {
+            $invalidProperties[] = "'lines' can't be null";
+        }
         if ($this->container['rent_cents'] === null) {
             $invalidProperties[] = "'rent_cents' can't be null";
         }
+        if ($this->container['cleaning_fee_cents'] === null) {
+            $invalidProperties[] = "'cleaning_fee_cents' can't be null";
+        }
+        if ($this->container['damage_waiver_cents'] === null) {
+            $invalidProperties[] = "'damage_waiver_cents' can't be null";
+        }
         if ($this->container['deposit_cents'] === null) {
             $invalidProperties[] = "'deposit_cents' can't be null";
+        }
+        if ($this->container['chargeable_cents'] === null) {
+            $invalidProperties[] = "'chargeable_cents' can't be null";
         }
         return $invalidProperties;
     }
@@ -262,6 +370,184 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets fulfilment
+     *
+     * @return string
+     */
+    public function getFulfilment()
+    {
+        return $this->container['fulfilment'];
+    }
+
+    /**
+     * Sets fulfilment
+     *
+     * @param string $fulfilment fulfilment
+     *
+     * @return self
+     */
+    public function setFulfilment($fulfilment)
+    {
+        $allowedValues = $this->getFulfilmentAllowableValues();
+        if (!in_array($fulfilment, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'fulfilment', must be one of '%s'",
+                    $fulfilment,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['fulfilment'] = $fulfilment;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipping_cents
+     *
+     * @return float|null
+     */
+    public function getShippingCents()
+    {
+        return $this->container['shipping_cents'];
+    }
+
+    /**
+     * Sets shipping_cents
+     *
+     * @param float|null $shipping_cents shipping_cents
+     *
+     * @return self
+     */
+    public function setShippingCents($shipping_cents)
+    {
+        $this->container['shipping_cents'] = $shipping_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_cents
+     *
+     * @return float|null
+     */
+    public function getTotalCents()
+    {
+        return $this->container['total_cents'];
+    }
+
+    /**
+     * Sets total_cents
+     *
+     * @param float|null $total_cents total_cents
+     *
+     * @return self
+     */
+    public function setTotalCents($total_cents)
+    {
+        $this->container['total_cents'] = $total_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets needs_approval
+     *
+     * @return bool
+     */
+    public function getNeedsApproval()
+    {
+        return $this->container['needs_approval'];
+    }
+
+    /**
+     * Sets needs_approval
+     *
+     * @param bool $needs_approval needs_approval
+     *
+     * @return self
+     */
+    public function setNeedsApproval($needs_approval)
+    {
+        $this->container['needs_approval'] = $needs_approval;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancellation
+     *
+     * @return \Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalQuoteResponseDataCancellation
+     */
+    public function getCancellation()
+    {
+        return $this->container['cancellation'];
+    }
+
+    /**
+     * Sets cancellation
+     *
+     * @param \Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalQuoteResponseDataCancellation $cancellation cancellation
+     *
+     * @return self
+     */
+    public function setCancellation($cancellation)
+    {
+        $this->container['cancellation'] = $cancellation;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyout
+     *
+     * @return \Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalQuoteResponseDataBuyout
+     */
+    public function getBuyout()
+    {
+        return $this->container['buyout'];
+    }
+
+    /**
+     * Sets buyout
+     *
+     * @param \Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalQuoteResponseDataBuyout $buyout buyout
+     *
+     * @return self
+     */
+    public function setBuyout($buyout)
+    {
+        $this->container['buyout'] = $buyout;
+
+        return $this;
+    }
+
+    /**
+     * Gets problem
+     *
+     * @return string|null
+     */
+    public function getProblem()
+    {
+        return $this->container['problem'];
+    }
+
+    /**
+     * Sets problem
+     *
+     * @param string|null $problem problem
+     *
+     * @return self
+     */
+    public function setProblem($problem)
+    {
+        $this->container['problem'] = $problem;
+
+        return $this;
+    }
 
     /**
      * Gets start_date
@@ -336,25 +622,49 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
     }
 
     /**
-     * Gets problem
+     * Gets unit
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getProblem()
+    public function getUnit()
     {
-        return $this->container['problem'];
+        return $this->container['unit'];
     }
 
     /**
-     * Sets problem
+     * Sets unit
      *
-     * @param string|null $problem problem
+     * @param float|null $unit The unit the booking would hold (null when none is free).
      *
      * @return self
      */
-    public function setProblem($problem)
+    public function setUnit($unit)
     {
-        $this->container['problem'] = $problem;
+        $this->container['unit'] = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets lines
+     *
+     * @return \Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalQuoteResponseDataLines[]
+     */
+    public function getLines()
+    {
+        return $this->container['lines'];
+    }
+
+    /**
+     * Sets lines
+     *
+     * @param \Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalQuoteResponseDataLines[] $lines lines
+     *
+     * @return self
+     */
+    public function setLines($lines)
+    {
+        $this->container['lines'] = $lines;
 
         return $this;
     }
@@ -372,13 +682,61 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
     /**
      * Sets rent_cents
      *
-     * @param float $rent_cents rent_cents
+     * @param float $rent_cents Rent after discounts.
      *
      * @return self
      */
     public function setRentCents($rent_cents)
     {
         $this->container['rent_cents'] = $rent_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets cleaning_fee_cents
+     *
+     * @return float
+     */
+    public function getCleaningFeeCents()
+    {
+        return $this->container['cleaning_fee_cents'];
+    }
+
+    /**
+     * Sets cleaning_fee_cents
+     *
+     * @param float $cleaning_fee_cents cleaning_fee_cents
+     *
+     * @return self
+     */
+    public function setCleaningFeeCents($cleaning_fee_cents)
+    {
+        $this->container['cleaning_fee_cents'] = $cleaning_fee_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets damage_waiver_cents
+     *
+     * @return float
+     */
+    public function getDamageWaiverCents()
+    {
+        return $this->container['damage_waiver_cents'];
+    }
+
+    /**
+     * Sets damage_waiver_cents
+     *
+     * @param float $damage_waiver_cents damage_waiver_cents
+     *
+     * @return self
+     */
+    public function setDamageWaiverCents($damage_waiver_cents)
+    {
+        $this->container['damage_waiver_cents'] = $damage_waiver_cents;
 
         return $this;
     }
@@ -408,49 +766,49 @@ class CreateBuyerCatalogListingRentalQuoteResponseData implements ModelInterface
     }
 
     /**
-     * Gets shipping_cents
+     * Gets deposit_note
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getShippingCents()
+    public function getDepositNote()
     {
-        return $this->container['shipping_cents'];
+        return $this->container['deposit_note'];
     }
 
     /**
-     * Sets shipping_cents
+     * Sets deposit_note
      *
-     * @param float|null $shipping_cents shipping_cents
+     * @param string|null $deposit_note Why the deposit is 0 or lowered, when it is.
      *
      * @return self
      */
-    public function setShippingCents($shipping_cents)
+    public function setDepositNote($deposit_note)
     {
-        $this->container['shipping_cents'] = $shipping_cents;
+        $this->container['deposit_note'] = $deposit_note;
 
         return $this;
     }
 
     /**
-     * Gets total_cents
+     * Gets chargeable_cents
      *
-     * @return float|null
+     * @return float
      */
-    public function getTotalCents()
+    public function getChargeableCents()
     {
-        return $this->container['total_cents'];
+        return $this->container['chargeable_cents'];
     }
 
     /**
-     * Sets total_cents
+     * Sets chargeable_cents
      *
-     * @param float|null $total_cents total_cents
+     * @param float $chargeable_cents Everything but shipping and the deposit: what the seller's fee is taken on.
      *
      * @return self
      */
-    public function setTotalCents($total_cents)
+    public function setChargeableCents($chargeable_cents)
     {
-        $this->container['total_cents'] = $total_cents;
+        $this->container['chargeable_cents'] = $chargeable_cents;
 
         return $this;
     }

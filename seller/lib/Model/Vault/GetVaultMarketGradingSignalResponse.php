@@ -63,12 +63,13 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
         'book_key' => 'string',
         'raw_mark_cents' => 'float',
         'raw_mark_quality' => 'string',
-        'graded' => '\Crossly\Model\Vault\GetVaultMarketKeyStatResponse[]',
+        'graded' => '\Crossly\Model\Vault\GetVaultMarketGradingSignalResponseGraded[]',
         'graders' => '\Crossly\Model\Vault\GetVaultMarketGradingSignalResponseGraders[]',
         'worth_it' => 'bool',
         'raw_tier' => 'string',
         'my_units' => 'string[]',
-        'my_raw_units' => 'float'
+        'my_raw_units' => 'float',
+        'cta' => '\Crossly\Model\Vault\GetVaultMarketGradingSignalResponseCta'
     ];
 
     /**
@@ -87,7 +88,8 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
         'worth_it' => null,
         'raw_tier' => null,
         'my_units' => null,
-        'my_raw_units' => null
+        'my_raw_units' => null,
+        'cta' => null
     ];
 
     /**
@@ -125,7 +127,8 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
         'worth_it' => 'worthIt',
         'raw_tier' => 'rawTier',
         'my_units' => 'myUnits',
-        'my_raw_units' => 'myRawUnits'
+        'my_raw_units' => 'myRawUnits',
+        'cta' => 'cta'
     ];
 
     /**
@@ -142,7 +145,8 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
         'worth_it' => 'setWorthIt',
         'raw_tier' => 'setRawTier',
         'my_units' => 'setMyUnits',
-        'my_raw_units' => 'setMyRawUnits'
+        'my_raw_units' => 'setMyRawUnits',
+        'cta' => 'setCta'
     ];
 
     /**
@@ -159,7 +163,8 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
         'worth_it' => 'getWorthIt',
         'raw_tier' => 'getRawTier',
         'my_units' => 'getMyUnits',
-        'my_raw_units' => 'getMyRawUnits'
+        'my_raw_units' => 'getMyRawUnits',
+        'cta' => 'getCta'
     ];
 
     /**
@@ -204,11 +209,11 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
     }
 
     const RAW_MARK_QUALITY_NONE = 'none';
+    const RAW_MARK_QUALITY_C = 'C';
     const RAW_MARK_QUALITY_A = 'A';
     const RAW_MARK_QUALITY_B = 'B';
-    const RAW_MARK_QUALITY_C = 'C';
-    const RAW_TIER_STANDARD = 'standard';
     const RAW_TIER_CLOSED = 'closed';
+    const RAW_TIER_STANDARD = 'standard';
     const RAW_TIER_DEEP = 'deep';
     const RAW_TIER_THIN = 'thin';
 
@@ -221,9 +226,9 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
     {
         return [
             self::RAW_MARK_QUALITY_NONE,
+            self::RAW_MARK_QUALITY_C,
             self::RAW_MARK_QUALITY_A,
             self::RAW_MARK_QUALITY_B,
-            self::RAW_MARK_QUALITY_C,
         ];
     }
 
@@ -235,8 +240,8 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
     public function getRawTierAllowableValues()
     {
         return [
-            self::RAW_TIER_STANDARD,
             self::RAW_TIER_CLOSED,
+            self::RAW_TIER_STANDARD,
             self::RAW_TIER_DEEP,
             self::RAW_TIER_THIN,
         ];
@@ -266,6 +271,7 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
         $this->container['raw_tier'] = $data['raw_tier'] ?? null;
         $this->container['my_units'] = $data['my_units'] ?? null;
         $this->container['my_raw_units'] = $data['my_raw_units'] ?? null;
+        $this->container['cta'] = $data['cta'] ?? null;
     }
 
     /**
@@ -419,7 +425,7 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
     /**
      * Gets graded
      *
-     * @return \Crossly\Model\Vault\GetVaultMarketKeyStatResponse[]
+     * @return \Crossly\Model\Vault\GetVaultMarketGradingSignalResponseGraded[]
      */
     public function getGraded()
     {
@@ -429,7 +435,7 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
     /**
      * Sets graded
      *
-     * @param \Crossly\Model\Vault\GetVaultMarketKeyStatResponse[] $graded graded
+     * @param \Crossly\Model\Vault\GetVaultMarketGradingSignalResponseGraded[] $graded graded
      *
      * @return self
      */
@@ -566,6 +572,30 @@ class GetVaultMarketGradingSignalResponse implements ModelInterface, ArrayAccess
     public function setMyRawUnits($my_raw_units)
     {
         $this->container['my_raw_units'] = $my_raw_units;
+
+        return $this;
+    }
+
+    /**
+     * Gets cta
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketGradingSignalResponseCta|null
+     */
+    public function getCta()
+    {
+        return $this->container['cta'];
+    }
+
+    /**
+     * Sets cta
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketGradingSignalResponseCta|null $cta cta
+     *
+     * @return self
+     */
+    public function setCta($cta)
+    {
+        $this->container['cta'] = $cta;
 
         return $this;
     }

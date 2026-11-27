@@ -65,6 +65,10 @@ class CreateVariationGroupPublishResponseDataOutcomes implements ModelInterface,
         'ok' => 'bool',
         'listing_id' => 'string',
         'job_ids' => 'string[]',
+        'members' => 'array<string,mixed>[]',
+        'failed' => 'array<string,mixed>[]',
+        'after_recorded' => 'array<string,mixed>',
+        'own_option_rows' => 'bool',
         'warnings' => 'string[]',
         'error' => 'string'
     ];
@@ -82,6 +86,10 @@ class CreateVariationGroupPublishResponseDataOutcomes implements ModelInterface,
         'ok' => null,
         'listing_id' => null,
         'job_ids' => null,
+        'members' => null,
+        'failed' => null,
+        'after_recorded' => null,
+        'own_option_rows' => null,
         'warnings' => null,
         'error' => null
     ];
@@ -118,6 +126,10 @@ class CreateVariationGroupPublishResponseDataOutcomes implements ModelInterface,
         'ok' => 'ok',
         'listing_id' => 'listingId',
         'job_ids' => 'jobIds',
+        'members' => 'members',
+        'failed' => 'failed',
+        'after_recorded' => 'afterRecorded',
+        'own_option_rows' => 'ownOptionRows',
         'warnings' => 'warnings',
         'error' => 'error'
     ];
@@ -133,6 +145,10 @@ class CreateVariationGroupPublishResponseDataOutcomes implements ModelInterface,
         'ok' => 'setOk',
         'listing_id' => 'setListingId',
         'job_ids' => 'setJobIds',
+        'members' => 'setMembers',
+        'failed' => 'setFailed',
+        'after_recorded' => 'setAfterRecorded',
+        'own_option_rows' => 'setOwnOptionRows',
         'warnings' => 'setWarnings',
         'error' => 'setError'
     ];
@@ -148,6 +164,10 @@ class CreateVariationGroupPublishResponseDataOutcomes implements ModelInterface,
         'ok' => 'getOk',
         'listing_id' => 'getListingId',
         'job_ids' => 'getJobIds',
+        'members' => 'getMembers',
+        'failed' => 'getFailed',
+        'after_recorded' => 'getAfterRecorded',
+        'own_option_rows' => 'getOwnOptionRows',
         'warnings' => 'getWarnings',
         'error' => 'getError'
     ];
@@ -193,8 +213,8 @@ class CreateVariationGroupPublishResponseDataOutcomes implements ModelInterface,
         return self::$openAPIModelName;
     }
 
-    const MODE_GROUPED = 'grouped';
     const MODE_SEPARATE = 'separate';
+    const MODE_GROUPED = 'grouped';
 
     /**
      * Gets allowable values of the enum
@@ -204,8 +224,8 @@ class CreateVariationGroupPublishResponseDataOutcomes implements ModelInterface,
     public function getModeAllowableValues()
     {
         return [
-            self::MODE_GROUPED,
             self::MODE_SEPARATE,
+            self::MODE_GROUPED,
         ];
     }
 
@@ -229,6 +249,10 @@ class CreateVariationGroupPublishResponseDataOutcomes implements ModelInterface,
         $this->container['ok'] = $data['ok'] ?? null;
         $this->container['listing_id'] = $data['listing_id'] ?? null;
         $this->container['job_ids'] = $data['job_ids'] ?? null;
+        $this->container['members'] = $data['members'] ?? null;
+        $this->container['failed'] = $data['failed'] ?? null;
+        $this->container['after_recorded'] = $data['after_recorded'] ?? null;
+        $this->container['own_option_rows'] = $data['own_option_rows'] ?? null;
         $this->container['warnings'] = $data['warnings'] ?? null;
         $this->container['error'] = $data['error'] ?? null;
     }
@@ -404,6 +428,102 @@ class CreateVariationGroupPublishResponseDataOutcomes implements ModelInterface,
     public function setJobIds($job_ids)
     {
         $this->container['job_ids'] = $job_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets members
+     *
+     * @return array<string,mixed>[]|null
+     */
+    public function getMembers()
+    {
+        return $this->container['members'];
+    }
+
+    /**
+     * Sets members
+     *
+     * @param array<string,mixed>[]|null $members Grouped: every option that went live, with its own id on the platform. publishGroupToPlatform records one platform_listings row per entry (variation-publish-members.ts), so a sale or delist acts on that option.
+     *
+     * @return self
+     */
+    public function setMembers($members)
+    {
+        $this->container['members'] = $members;
+
+        return $this;
+    }
+
+    /**
+     * Gets failed
+     *
+     * @return array<string,mixed>[]|null
+     */
+    public function getFailed()
+    {
+        return $this->container['failed'];
+    }
+
+    /**
+     * Sets failed
+     *
+     * @param array<string,mixed>[]|null $failed Grouped: options that did not go live. Reported in `warnings`; the live ones are still recorded.
+     *
+     * @return self
+     */
+    public function setFailed($failed)
+    {
+        $this->container['failed'] = $failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets after_recorded
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getAfterRecorded()
+    {
+        return $this->container['after_recorded'];
+    }
+
+    /**
+     * Sets after_recorded
+     *
+     * @param array<string,mixed>|null $after_recorded Grouped: work that needs the option rows to exist (a POS stock base, markPosPushed), run right after they are recorded. Returns warnings for the seller; must not throw for one option.
+     *
+     * @return self
+     */
+    public function setAfterRecorded($after_recorded)
+    {
+        $this->container['after_recorded'] = $after_recorded;
+
+        return $this;
+    }
+
+    /**
+     * Gets own_option_rows
+     *
+     * @return bool|null
+     */
+    public function getOwnOptionRows()
+    {
+        return $this->container['own_option_rows'];
+    }
+
+    /**
+     * Sets own_option_rows
+     *
+     * @param bool|null $own_option_rows The publisher tracks its options itself, not as platform_listings rows (Crossly: crossly_listing_variants with the member listing id, variation-publish-crossly.ts), so no `members` is not a gap.
+     *
+     * @return self
+     */
+    public function setOwnOptionRows($own_option_rows)
+    {
+        $this->container['own_option_rows'] = $own_option_rows;
 
         return $this;
     }

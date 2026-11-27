@@ -1034,7 +1034,7 @@ This endpoint does not need any parameter.
 ## `getShopListingProvenance()`
 
 ```php
-getShopListingProvenance($slug): \Crossly\Model\Common\GetShopListingProvenanceResponse
+getShopListingProvenance($slug): \Crossly\Model\Shop\GetShopListingProvenanceResponse
 ```
 
 Crossly provenance behind a shop listing: owners on Crossly and since when (never who or for how much). Null when not bought here.
@@ -1074,7 +1074,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Model\Common\GetShopListingProvenanceResponse**
+**\Crossly\Model\Shop\GetShopListingProvenanceResponse**
 
 ### Authorization
 

@@ -61,6 +61,7 @@ class ListBuyerOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'order_number' => 'string',
         'status' => 'string',
         'buyer_paid_cents' => 'float',
         'created_at' => '\DateTime'
@@ -75,6 +76,7 @@ class ListBuyerOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'order_number' => null,
         'status' => null,
         'buyer_paid_cents' => null,
         'created_at' => 'date-time'
@@ -108,6 +110,7 @@ class ListBuyerOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'order_number' => 'orderNumber',
         'status' => 'status',
         'buyer_paid_cents' => 'buyerPaidCents',
         'created_at' => 'createdAt'
@@ -120,6 +123,7 @@ class ListBuyerOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'id' => 'setId',
+        'order_number' => 'setOrderNumber',
         'status' => 'setStatus',
         'buyer_paid_cents' => 'setBuyerPaidCents',
         'created_at' => 'setCreatedAt'
@@ -132,6 +136,7 @@ class ListBuyerOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'id' => 'getId',
+        'order_number' => 'getOrderNumber',
         'status' => 'getStatus',
         'buyer_paid_cents' => 'getBuyerPaidCents',
         'created_at' => 'getCreatedAt'
@@ -195,6 +200,7 @@ class ListBuyerOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['order_number'] = $data['order_number'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['buyer_paid_cents'] = $data['buyer_paid_cents'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -256,6 +262,30 @@ class ListBuyerOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_number
+     *
+     * @return string|null
+     */
+    public function getOrderNumber()
+    {
+        return $this->container['order_number'];
+    }
+
+    /**
+     * Sets order_number
+     *
+     * @param string|null $order_number order_number
+     *
+     * @return self
+     */
+    public function setOrderNumber($order_number)
+    {
+        $this->container['order_number'] = $order_number;
 
         return $this;
     }

@@ -61,6 +61,7 @@ class GetVaultMarketPortfolioResponse implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'holdings' => '\Crossly\Model\Vault\GetVaultMarketPortfolioResponseHoldings[]',
+        'shares' => '\Crossly\Model\Vault\GetVaultMarketPortfolioResponseShares',
         'on_loan' => '\Crossly\Model\Vault\GetVaultMarketPortfolioResponseOnLoan[]',
         'totals' => '\Crossly\Model\Vault\GetVaultMarketPortfolioResponseTotals'
     ];
@@ -74,6 +75,7 @@ class GetVaultMarketPortfolioResponse implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPIFormats = [
         'holdings' => null,
+        'shares' => null,
         'on_loan' => null,
         'totals' => null
     ];
@@ -106,6 +108,7 @@ class GetVaultMarketPortfolioResponse implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         'holdings' => 'holdings',
+        'shares' => 'shares',
         'on_loan' => 'onLoan',
         'totals' => 'totals'
     ];
@@ -117,6 +120,7 @@ class GetVaultMarketPortfolioResponse implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         'holdings' => 'setHoldings',
+        'shares' => 'setShares',
         'on_loan' => 'setOnLoan',
         'totals' => 'setTotals'
     ];
@@ -128,6 +132,7 @@ class GetVaultMarketPortfolioResponse implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         'holdings' => 'getHoldings',
+        'shares' => 'getShares',
         'on_loan' => 'getOnLoan',
         'totals' => 'getTotals'
     ];
@@ -190,6 +195,7 @@ class GetVaultMarketPortfolioResponse implements ModelInterface, ArrayAccess, \J
     public function __construct(array $data = null)
     {
         $this->container['holdings'] = $data['holdings'] ?? null;
+        $this->container['shares'] = $data['shares'] ?? null;
         $this->container['on_loan'] = $data['on_loan'] ?? null;
         $this->container['totals'] = $data['totals'] ?? null;
     }
@@ -205,6 +211,9 @@ class GetVaultMarketPortfolioResponse implements ModelInterface, ArrayAccess, \J
 
         if ($this->container['holdings'] === null) {
             $invalidProperties[] = "'holdings' can't be null";
+        }
+        if ($this->container['shares'] === null) {
+            $invalidProperties[] = "'shares' can't be null";
         }
         if ($this->container['on_loan'] === null) {
             $invalidProperties[] = "'on_loan' can't be null";
@@ -247,6 +256,30 @@ class GetVaultMarketPortfolioResponse implements ModelInterface, ArrayAccess, \J
     public function setHoldings($holdings)
     {
         $this->container['holdings'] = $holdings;
+
+        return $this;
+    }
+
+    /**
+     * Gets shares
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketPortfolioResponseShares
+     */
+    public function getShares()
+    {
+        return $this->container['shares'];
+    }
+
+    /**
+     * Sets shares
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketPortfolioResponseShares $shares shares
+     *
+     * @return self
+     */
+    public function setShares($shares)
+    {
+        $this->container['shares'] = $shares;
 
         return $this;
     }

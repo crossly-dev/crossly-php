@@ -9,10 +9,12 @@ Method | HTTP request | Description
 [**getDepartment()**](ReferenceApi.md#getDepartment) | **GET** /v1/departments | Search the eBay-sourced \&quot;Department\&quot; item-specific values.
 [**getGender()**](ReferenceApi.md#getGender) | **GET** /v1/genders | Search the eBay-sourced \&quot;Gender\&quot; item-specific values.
 [**getPattern()**](ReferenceApi.md#getPattern) | **GET** /v1/patterns | Search the eBay-sourced \&quot;Pattern\&quot; item-specific values.
+[**getReferencePostal()**](ReferenceApi.md#getReferencePostal) | **GET** /v1/reference/postal/{country}/{code} | Look up a postal code: canonical shape, state and US metro areas.
 [**getSizeSystem()**](ReferenceApi.md#getSizeSystem) | **GET** /v1/size-systems | Search the Poshmark + Vestiaire size-system union (US/UK/EU/AU/FR/KR).
 [**getStyle()**](ReferenceApi.md#getStyle) | **GET** /v1/styles | Search the eBay-sourced \&quot;Style\&quot; item-specific values.
 [**getType()**](ReferenceApi.md#getType) | **GET** /v1/types | Search the eBay-sourced \&quot;Type\&quot; item-specific values.
 [**listReferenceCountries()**](ReferenceApi.md#listReferenceCountries) | **GET** /v1/reference/countries | Every country with its delivery-address rules.
+[**listReferenceMetros()**](ReferenceApi.md#listReferenceMetros) | **GET** /v1/reference/metros | Search US metro areas (CSA / CBSA) for location rules.
 
 
 ## `getBrand()`
@@ -72,7 +74,7 @@ This endpoint does not need any parameter.
 ## `getCategory()`
 
 ```php
-getCategory(): \Crossly\Model\Common\GetCategoryResponse
+getCategory(): \Crossly\Model\Category\GetCategoryResponse
 ```
 
 List Crossly's canonical category tree.
@@ -109,7 +111,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**\Crossly\Model\Common\GetCategoryResponse**
+**\Crossly\Model\Category\GetCategoryResponse**
 
 ### Authorization
 
@@ -272,6 +274,67 @@ This endpoint does not need any parameter.
 ### Return type
 
 **\Crossly\Model\Common\GetPatternResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getReferencePostal()`
+
+```php
+getReferencePostal($country, $code): \Crossly\Model\Common\GetReferencePostalResponse
+```
+
+Look up a postal code: canonical shape, state and US metro areas.
+
+Every country gets its canonical shape and `valid`. A US ZIP (territories normalize to country US with `territory`) also gets state, county FIPS and CBSA/CSA. `metroStatus` is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\ReferenceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$country = 'country_example'; // string
+$code = 'code_example'; // string
+
+try {
+    $result = $apiInstance->getReferencePostal($country, $code);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReferenceApi->getReferencePostal: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **country** | **string**|  |
+ **code** | **string**|  |
+
+### Return type
+
+**\Crossly\Model\Common\GetReferencePostalResponse**
 
 ### Authorization
 
@@ -490,6 +553,67 @@ This endpoint does not need any parameter.
 ### Return type
 
 **\Crossly\Model\Common\ListReferenceCountriesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `listReferenceMetros()`
+
+```php
+listReferenceMetros($q, $limit): \Crossly\Model\Common\ListReferenceMetrosResponse
+```
+
+Search US metro areas (CSA / CBSA) for location rules.
+
+Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. `q` needs 2+ characters. `meta.datasetAvailable` is false when the census dataset is not loaded, in which case no metro rule can match.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\ReferenceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$q = 'q_example'; // string
+$limit = 20; // int
+
+try {
+    $result = $apiInstance->listReferenceMetros($q, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReferenceApi->listReferenceMetros: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  |
+ **limit** | **int**|  | [optional] [default to 20]
+
+### Return type
+
+**\Crossly\Model\Common\ListReferenceMetrosResponse**
 
 ### Authorization
 

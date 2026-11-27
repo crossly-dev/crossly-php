@@ -64,7 +64,8 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
         'page' => 'int',
         'limit' => 'int',
         'total' => 'int',
-        'total_pages' => 'int'
+        'total_pages' => 'int',
+        'pages' => 'int'
     ];
 
     /**
@@ -78,7 +79,8 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
         'page' => null,
         'limit' => null,
         'total' => null,
-        'total_pages' => null
+        'total_pages' => null,
+        'pages' => null
     ];
 
     /**
@@ -111,7 +113,8 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
         'page' => 'page',
         'limit' => 'limit',
         'total' => 'total',
-        'total_pages' => 'totalPages'
+        'total_pages' => 'totalPages',
+        'pages' => 'pages'
     ];
 
     /**
@@ -123,7 +126,8 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
         'page' => 'setPage',
         'limit' => 'setLimit',
         'total' => 'setTotal',
-        'total_pages' => 'setTotalPages'
+        'total_pages' => 'setTotalPages',
+        'pages' => 'setPages'
     ];
 
     /**
@@ -135,7 +139,8 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
         'page' => 'getPage',
         'limit' => 'getLimit',
         'total' => 'getTotal',
-        'total_pages' => 'getTotalPages'
+        'total_pages' => 'getTotalPages',
+        'pages' => 'getPages'
     ];
 
     /**
@@ -199,6 +204,7 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['limit'] = $data['limit'] ?? null;
         $this->container['total'] = $data['total'] ?? null;
         $this->container['total_pages'] = $data['total_pages'] ?? null;
+        $this->container['pages'] = $data['pages'] ?? null;
     }
 
     /**
@@ -341,6 +347,32 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalPages($total_pages)
     {
         $this->container['total_pages'] = $total_pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets pages
+     *
+     * @return int|null
+     * @deprecated
+     */
+    public function getPages()
+    {
+        return $this->container['pages'];
+    }
+
+    /**
+     * Sets pages
+     *
+     * @param int|null $pages Deprecated alias of `totalPages`, sent only by GET /v1/inventory (its original name). Read `totalPages`.
+     *
+     * @return self
+     * @deprecated
+     */
+    public function setPages($pages)
+    {
+        $this->container['pages'] = $pages;
 
         return $this;
     }

@@ -78,6 +78,8 @@ class ListDaoProposalsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'tallied_at' => 'string',
         'vetoed_reason' => 'string',
         'charity_goal_id' => 'string',
+        'proposal_kind' => 'string',
+        'params' => 'array<string,mixed>',
         'created_at' => 'string'
     ];
 
@@ -107,6 +109,8 @@ class ListDaoProposalsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'tallied_at' => null,
         'vetoed_reason' => null,
         'charity_goal_id' => null,
+        'proposal_kind' => null,
+        'params' => null,
         'created_at' => null
     ];
 
@@ -155,6 +159,8 @@ class ListDaoProposalsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'tallied_at' => 'talliedAt',
         'vetoed_reason' => 'vetoedReason',
         'charity_goal_id' => 'charityGoalId',
+        'proposal_kind' => 'proposalKind',
+        'params' => 'params',
         'created_at' => 'createdAt'
     ];
 
@@ -182,6 +188,8 @@ class ListDaoProposalsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'tallied_at' => 'setTalliedAt',
         'vetoed_reason' => 'setVetoedReason',
         'charity_goal_id' => 'setCharityGoalId',
+        'proposal_kind' => 'setProposalKind',
+        'params' => 'setParams',
         'created_at' => 'setCreatedAt'
     ];
 
@@ -209,6 +217,8 @@ class ListDaoProposalsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'tallied_at' => 'getTalliedAt',
         'vetoed_reason' => 'getVetoedReason',
         'charity_goal_id' => 'getCharityGoalId',
+        'proposal_kind' => 'getProposalKind',
+        'params' => 'getParams',
         'created_at' => 'getCreatedAt'
     ];
 
@@ -287,6 +297,8 @@ class ListDaoProposalsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['tallied_at'] = $data['tallied_at'] ?? null;
         $this->container['vetoed_reason'] = $data['vetoed_reason'] ?? null;
         $this->container['charity_goal_id'] = $data['charity_goal_id'] ?? null;
+        $this->container['proposal_kind'] = $data['proposal_kind'] ?? null;
+        $this->container['params'] = $data['params'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
     }
 
@@ -331,6 +343,9 @@ class ListDaoProposalsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         }
         if ($this->container['pass_threshold_bps'] === null) {
             $invalidProperties[] = "'pass_threshold_bps' can't be null";
+        }
+        if ($this->container['proposal_kind'] === null) {
+            $invalidProperties[] = "'proposal_kind' can't be null";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
@@ -778,6 +793,54 @@ class ListDaoProposalsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCharityGoalId($charity_goal_id)
     {
         $this->container['charity_goal_id'] = $charity_goal_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets proposal_kind
+     *
+     * @return string
+     */
+    public function getProposalKind()
+    {
+        return $this->container['proposal_kind'];
+    }
+
+    /**
+     * Sets proposal_kind
+     *
+     * @param string $proposal_kind proposal_kind
+     *
+     * @return self
+     */
+    public function setProposalKind($proposal_kind)
+    {
+        $this->container['proposal_kind'] = $proposal_kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets params
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getParams()
+    {
+        return $this->container['params'];
+    }
+
+    /**
+     * Sets params
+     *
+     * @param array<string,mixed>|null $params params
+     *
+     * @return self
+     */
+    public function setParams($params)
+    {
+        $this->container['params'] = $params;
 
         return $this;
     }

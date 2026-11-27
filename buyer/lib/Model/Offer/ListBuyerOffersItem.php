@@ -61,24 +61,24 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
-        'status' => 'string',
-        'expires_at' => 'string',
-        'is_bundle' => 'bool',
         'platform_listing_id' => 'string',
         'seller_user_id' => 'string',
         'amount_cents' => 'float',
-        'expired' => 'bool',
+        'status' => 'string',
+        'expires_at' => 'string',
+        'created_at' => 'string',
         'items' => '\Crossly\Buyer\Model\Offer\ListBuyerOffersItemItems[]',
-        'awaiting_buyer' => 'bool',
+        'is_bundle' => 'bool',
         'redeemable' => 'bool',
-        'decided_at' => 'string',
+        'expired' => 'bool',
+        'awaiting_buyer' => 'bool',
+        'platform_listing_ids' => 'string[]',
+        'listed_total_cents' => 'float',
         'message' => 'string',
         'parent_offer_id' => 'string',
-        'platform_listing_ids' => 'string[]',
-        'consumed_at' => 'string',
-        'listed_total_cents' => 'float',
-        'origin' => 'string'
+        'origin' => 'string',
+        'decided_at' => 'string',
+        'consumed_at' => 'string'
     ];
 
     /**
@@ -90,24 +90,24 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
-        'status' => null,
-        'expires_at' => null,
-        'is_bundle' => null,
         'platform_listing_id' => null,
         'seller_user_id' => null,
         'amount_cents' => null,
-        'expired' => null,
+        'status' => null,
+        'expires_at' => null,
+        'created_at' => null,
         'items' => null,
-        'awaiting_buyer' => null,
+        'is_bundle' => null,
         'redeemable' => null,
-        'decided_at' => null,
+        'expired' => null,
+        'awaiting_buyer' => null,
+        'platform_listing_ids' => null,
+        'listed_total_cents' => null,
         'message' => null,
         'parent_offer_id' => null,
-        'platform_listing_ids' => null,
-        'consumed_at' => null,
-        'listed_total_cents' => null,
-        'origin' => null
+        'origin' => null,
+        'decided_at' => null,
+        'consumed_at' => null
     ];
 
     /**
@@ -138,24 +138,24 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'status' => 'status',
-        'expires_at' => 'expiresAt',
-        'is_bundle' => 'isBundle',
         'platform_listing_id' => 'platformListingId',
         'seller_user_id' => 'sellerUserId',
         'amount_cents' => 'amountCents',
-        'expired' => 'expired',
+        'status' => 'status',
+        'expires_at' => 'expiresAt',
+        'created_at' => 'createdAt',
         'items' => 'items',
-        'awaiting_buyer' => 'awaitingBuyer',
+        'is_bundle' => 'isBundle',
         'redeemable' => 'redeemable',
-        'decided_at' => 'decidedAt',
+        'expired' => 'expired',
+        'awaiting_buyer' => 'awaitingBuyer',
+        'platform_listing_ids' => 'platformListingIds',
+        'listed_total_cents' => 'listedTotalCents',
         'message' => 'message',
         'parent_offer_id' => 'parentOfferId',
-        'platform_listing_ids' => 'platformListingIds',
-        'consumed_at' => 'consumedAt',
-        'listed_total_cents' => 'listedTotalCents',
-        'origin' => 'origin'
+        'origin' => 'origin',
+        'decided_at' => 'decidedAt',
+        'consumed_at' => 'consumedAt'
     ];
 
     /**
@@ -165,24 +165,24 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'status' => 'setStatus',
-        'expires_at' => 'setExpiresAt',
-        'is_bundle' => 'setIsBundle',
         'platform_listing_id' => 'setPlatformListingId',
         'seller_user_id' => 'setSellerUserId',
         'amount_cents' => 'setAmountCents',
-        'expired' => 'setExpired',
+        'status' => 'setStatus',
+        'expires_at' => 'setExpiresAt',
+        'created_at' => 'setCreatedAt',
         'items' => 'setItems',
-        'awaiting_buyer' => 'setAwaitingBuyer',
+        'is_bundle' => 'setIsBundle',
         'redeemable' => 'setRedeemable',
-        'decided_at' => 'setDecidedAt',
+        'expired' => 'setExpired',
+        'awaiting_buyer' => 'setAwaitingBuyer',
+        'platform_listing_ids' => 'setPlatformListingIds',
+        'listed_total_cents' => 'setListedTotalCents',
         'message' => 'setMessage',
         'parent_offer_id' => 'setParentOfferId',
-        'platform_listing_ids' => 'setPlatformListingIds',
-        'consumed_at' => 'setConsumedAt',
-        'listed_total_cents' => 'setListedTotalCents',
-        'origin' => 'setOrigin'
+        'origin' => 'setOrigin',
+        'decided_at' => 'setDecidedAt',
+        'consumed_at' => 'setConsumedAt'
     ];
 
     /**
@@ -192,24 +192,24 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'status' => 'getStatus',
-        'expires_at' => 'getExpiresAt',
-        'is_bundle' => 'getIsBundle',
         'platform_listing_id' => 'getPlatformListingId',
         'seller_user_id' => 'getSellerUserId',
         'amount_cents' => 'getAmountCents',
-        'expired' => 'getExpired',
+        'status' => 'getStatus',
+        'expires_at' => 'getExpiresAt',
+        'created_at' => 'getCreatedAt',
         'items' => 'getItems',
-        'awaiting_buyer' => 'getAwaitingBuyer',
+        'is_bundle' => 'getIsBundle',
         'redeemable' => 'getRedeemable',
-        'decided_at' => 'getDecidedAt',
+        'expired' => 'getExpired',
+        'awaiting_buyer' => 'getAwaitingBuyer',
+        'platform_listing_ids' => 'getPlatformListingIds',
+        'listed_total_cents' => 'getListedTotalCents',
         'message' => 'getMessage',
         'parent_offer_id' => 'getParentOfferId',
-        'platform_listing_ids' => 'getPlatformListingIds',
-        'consumed_at' => 'getConsumedAt',
-        'listed_total_cents' => 'getListedTotalCents',
-        'origin' => 'getOrigin'
+        'origin' => 'getOrigin',
+        'decided_at' => 'getDecidedAt',
+        'consumed_at' => 'getConsumedAt'
     ];
 
     /**
@@ -270,24 +270,24 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['expires_at'] = $data['expires_at'] ?? null;
-        $this->container['is_bundle'] = $data['is_bundle'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
         $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['amount_cents'] = $data['amount_cents'] ?? null;
-        $this->container['expired'] = $data['expired'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['expires_at'] = $data['expires_at'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['items'] = $data['items'] ?? null;
-        $this->container['awaiting_buyer'] = $data['awaiting_buyer'] ?? null;
+        $this->container['is_bundle'] = $data['is_bundle'] ?? null;
         $this->container['redeemable'] = $data['redeemable'] ?? null;
-        $this->container['decided_at'] = $data['decided_at'] ?? null;
+        $this->container['expired'] = $data['expired'] ?? null;
+        $this->container['awaiting_buyer'] = $data['awaiting_buyer'] ?? null;
+        $this->container['platform_listing_ids'] = $data['platform_listing_ids'] ?? null;
+        $this->container['listed_total_cents'] = $data['listed_total_cents'] ?? null;
         $this->container['message'] = $data['message'] ?? null;
         $this->container['parent_offer_id'] = $data['parent_offer_id'] ?? null;
-        $this->container['platform_listing_ids'] = $data['platform_listing_ids'] ?? null;
-        $this->container['consumed_at'] = $data['consumed_at'] ?? null;
-        $this->container['listed_total_cents'] = $data['listed_total_cents'] ?? null;
         $this->container['origin'] = $data['origin'] ?? null;
+        $this->container['decided_at'] = $data['decided_at'] ?? null;
+        $this->container['consumed_at'] = $data['consumed_at'] ?? null;
     }
 
     /**
@@ -302,18 +302,6 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['expires_at'] === null) {
-            $invalidProperties[] = "'expires_at' can't be null";
-        }
-        if ($this->container['is_bundle'] === null) {
-            $invalidProperties[] = "'is_bundle' can't be null";
-        }
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
         }
@@ -323,17 +311,29 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['amount_cents'] === null) {
             $invalidProperties[] = "'amount_cents' can't be null";
         }
-        if ($this->container['expired'] === null) {
-            $invalidProperties[] = "'expired' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['expires_at'] === null) {
+            $invalidProperties[] = "'expires_at' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['items'] === null) {
             $invalidProperties[] = "'items' can't be null";
         }
-        if ($this->container['awaiting_buyer'] === null) {
-            $invalidProperties[] = "'awaiting_buyer' can't be null";
+        if ($this->container['is_bundle'] === null) {
+            $invalidProperties[] = "'is_bundle' can't be null";
         }
         if ($this->container['redeemable'] === null) {
             $invalidProperties[] = "'redeemable' can't be null";
+        }
+        if ($this->container['expired'] === null) {
+            $invalidProperties[] = "'expired' can't be null";
+        }
+        if ($this->container['awaiting_buyer'] === null) {
+            $invalidProperties[] = "'awaiting_buyer' can't be null";
         }
         return $invalidProperties;
     }
@@ -370,102 +370,6 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return string
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param string $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at
-     *
-     * @return string
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param string $expires_at expires_at
-     *
-     * @return self
-     */
-    public function setExpiresAt($expires_at)
-    {
-        $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_bundle
-     *
-     * @return bool
-     */
-    public function getIsBundle()
-    {
-        return $this->container['is_bundle'];
-    }
-
-    /**
-     * Sets is_bundle
-     *
-     * @param bool $is_bundle is_bundle
-     *
-     * @return self
-     */
-    public function setIsBundle($is_bundle)
-    {
-        $this->container['is_bundle'] = $is_bundle;
 
         return $this;
     }
@@ -543,25 +447,73 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets expired
+     * Gets status
      *
-     * @return bool
+     * @return string
      */
-    public function getExpired()
+    public function getStatus()
     {
-        return $this->container['expired'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets expired
+     * Sets status
      *
-     * @param bool $expired expired
+     * @param string $status status
      *
      * @return self
      */
-    public function setExpired($expired)
+    public function setStatus($status)
     {
-        $this->container['expired'] = $expired;
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_at
+     *
+     * @return string
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param string $expires_at expires_at
+     *
+     * @return self
+     */
+    public function setExpiresAt($expires_at)
+    {
+        $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -591,25 +543,25 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets awaiting_buyer
+     * Gets is_bundle
      *
      * @return bool
      */
-    public function getAwaitingBuyer()
+    public function getIsBundle()
     {
-        return $this->container['awaiting_buyer'];
+        return $this->container['is_bundle'];
     }
 
     /**
-     * Sets awaiting_buyer
+     * Sets is_bundle
      *
-     * @param bool $awaiting_buyer A seller counter waiting on YOU: accept, decline or counter back.
+     * @param bool $is_bundle is_bundle
      *
      * @return self
      */
-    public function setAwaitingBuyer($awaiting_buyer)
+    public function setIsBundle($is_bundle)
     {
-        $this->container['awaiting_buyer'] = $awaiting_buyer;
+        $this->container['is_bundle'] = $is_bundle;
 
         return $this;
     }
@@ -639,25 +591,97 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets decided_at
+     * Gets expired
      *
-     * @return string|null
+     * @return bool
      */
-    public function getDecidedAt()
+    public function getExpired()
     {
-        return $this->container['decided_at'];
+        return $this->container['expired'];
     }
 
     /**
-     * Sets decided_at
+     * Sets expired
      *
-     * @param string|null $decided_at decided_at
+     * @param bool $expired expired
      *
      * @return self
      */
-    public function setDecidedAt($decided_at)
+    public function setExpired($expired)
     {
-        $this->container['decided_at'] = $decided_at;
+        $this->container['expired'] = $expired;
+
+        return $this;
+    }
+
+    /**
+     * Gets awaiting_buyer
+     *
+     * @return bool
+     */
+    public function getAwaitingBuyer()
+    {
+        return $this->container['awaiting_buyer'];
+    }
+
+    /**
+     * Sets awaiting_buyer
+     *
+     * @param bool $awaiting_buyer A seller counter waiting on YOU: accept, decline or counter back.
+     *
+     * @return self
+     */
+    public function setAwaitingBuyer($awaiting_buyer)
+    {
+        $this->container['awaiting_buyer'] = $awaiting_buyer;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_listing_ids
+     *
+     * @return string[]|null
+     */
+    public function getPlatformListingIds()
+    {
+        return $this->container['platform_listing_ids'];
+    }
+
+    /**
+     * Sets platform_listing_ids
+     *
+     * @param string[]|null $platform_listing_ids platform_listing_ids
+     *
+     * @return self
+     */
+    public function setPlatformListingIds($platform_listing_ids)
+    {
+        $this->container['platform_listing_ids'] = $platform_listing_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets listed_total_cents
+     *
+     * @return float|null
+     */
+    public function getListedTotalCents()
+    {
+        return $this->container['listed_total_cents'];
+    }
+
+    /**
+     * Sets listed_total_cents
+     *
+     * @param float|null $listed_total_cents Asking-price total when the offer was made, in cents.
+     *
+     * @return self
+     */
+    public function setListedTotalCents($listed_total_cents)
+    {
+        $this->container['listed_total_cents'] = $listed_total_cents;
 
         return $this;
     }
@@ -711,25 +735,49 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets platform_listing_ids
+     * Gets origin
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getPlatformListingIds()
+    public function getOrigin()
     {
-        return $this->container['platform_listing_ids'];
+        return $this->container['origin'];
     }
 
     /**
-     * Sets platform_listing_ids
+     * Sets origin
      *
-     * @param string[]|null $platform_listing_ids platform_listing_ids
+     * @param string|null $origin null = you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.
      *
      * @return self
      */
-    public function setPlatformListingIds($platform_listing_ids)
+    public function setOrigin($origin)
     {
-        $this->container['platform_listing_ids'] = $platform_listing_ids;
+        $this->container['origin'] = $origin;
+
+        return $this;
+    }
+
+    /**
+     * Gets decided_at
+     *
+     * @return string|null
+     */
+    public function getDecidedAt()
+    {
+        return $this->container['decided_at'];
+    }
+
+    /**
+     * Sets decided_at
+     *
+     * @param string|null $decided_at decided_at
+     *
+     * @return self
+     */
+    public function setDecidedAt($decided_at)
+    {
+        $this->container['decided_at'] = $decided_at;
 
         return $this;
     }
@@ -754,54 +802,6 @@ class ListBuyerOffersItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setConsumedAt($consumed_at)
     {
         $this->container['consumed_at'] = $consumed_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets listed_total_cents
-     *
-     * @return float|null
-     */
-    public function getListedTotalCents()
-    {
-        return $this->container['listed_total_cents'];
-    }
-
-    /**
-     * Sets listed_total_cents
-     *
-     * @param float|null $listed_total_cents Asking-price total when the offer was made, in cents.
-     *
-     * @return self
-     */
-    public function setListedTotalCents($listed_total_cents)
-    {
-        $this->container['listed_total_cents'] = $listed_total_cents;
-
-        return $this;
-    }
-
-    /**
-     * Gets origin
-     *
-     * @return string|null
-     */
-    public function getOrigin()
-    {
-        return $this->container['origin'];
-    }
-
-    /**
-     * Sets origin
-     *
-     * @param string|null $origin null = you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.
-     *
-     * @return self
-     */
-    public function setOrigin($origin)
-    {
-        $this->container['origin'] = $origin;
 
         return $this;
     }

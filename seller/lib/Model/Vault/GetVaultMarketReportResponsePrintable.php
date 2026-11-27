@@ -60,10 +60,10 @@ class GetVaultMarketReportResponsePrintable implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'notes' => 'string[]',
         'title' => 'string',
         'meta' => 'string[]',
         'sections' => '\Crossly\Model\Vault\GetVaultMarketOrderHandlingResponseSections[]',
+        'notes' => 'string[]',
         'paper' => 'string',
         'table' => '\Crossly\Model\Vault\GetVaultMarketReportResponsePrintableTable',
         'qr' => '\Crossly\Model\Vault\GetVaultMarketReportResponsePrintableQr'
@@ -77,10 +77,10 @@ class GetVaultMarketReportResponsePrintable implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'notes' => null,
         'title' => null,
         'meta' => null,
         'sections' => null,
+        'notes' => null,
         'paper' => null,
         'table' => null,
         'qr' => null
@@ -113,10 +113,10 @@ class GetVaultMarketReportResponsePrintable implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'notes' => 'notes',
         'title' => 'title',
         'meta' => 'meta',
         'sections' => 'sections',
+        'notes' => 'notes',
         'paper' => 'paper',
         'table' => 'table',
         'qr' => 'qr'
@@ -128,10 +128,10 @@ class GetVaultMarketReportResponsePrintable implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'notes' => 'setNotes',
         'title' => 'setTitle',
         'meta' => 'setMeta',
         'sections' => 'setSections',
+        'notes' => 'setNotes',
         'paper' => 'setPaper',
         'table' => 'setTable',
         'qr' => 'setQr'
@@ -143,10 +143,10 @@ class GetVaultMarketReportResponsePrintable implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'notes' => 'getNotes',
         'title' => 'getTitle',
         'meta' => 'getMeta',
         'sections' => 'getSections',
+        'notes' => 'getNotes',
         'paper' => 'getPaper',
         'table' => 'getTable',
         'qr' => 'getQr'
@@ -224,10 +224,10 @@ class GetVaultMarketReportResponsePrintable implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
-        $this->container['notes'] = $data['notes'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['meta'] = $data['meta'] ?? null;
         $this->container['sections'] = $data['sections'] ?? null;
+        $this->container['notes'] = $data['notes'] ?? null;
         $this->container['paper'] = $data['paper'] ?? null;
         $this->container['table'] = $data['table'] ?? null;
         $this->container['qr'] = $data['qr'] ?? null;
@@ -242,9 +242,6 @@ class GetVaultMarketReportResponsePrintable implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        if ($this->container['notes'] === null) {
-            $invalidProperties[] = "'notes' can't be null";
-        }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
         }
@@ -253,6 +250,9 @@ class GetVaultMarketReportResponsePrintable implements ModelInterface, ArrayAcce
         }
         if ($this->container['sections'] === null) {
             $invalidProperties[] = "'sections' can't be null";
+        }
+        if ($this->container['notes'] === null) {
+            $invalidProperties[] = "'notes' can't be null";
         }
         if ($this->container['paper'] === null) {
             $invalidProperties[] = "'paper' can't be null";
@@ -280,30 +280,6 @@ class GetVaultMarketReportResponsePrintable implements ModelInterface, ArrayAcce
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets notes
-     *
-     * @return string[]
-     */
-    public function getNotes()
-    {
-        return $this->container['notes'];
-    }
-
-    /**
-     * Sets notes
-     *
-     * @param string[] $notes Closing paragraphs, small and grey.
-     *
-     * @return self
-     */
-    public function setNotes($notes)
-    {
-        $this->container['notes'] = $notes;
-
-        return $this;
-    }
 
     /**
      * Gets title
@@ -373,6 +349,30 @@ class GetVaultMarketReportResponsePrintable implements ModelInterface, ArrayAcce
     public function setSections($sections)
     {
         $this->container['sections'] = $sections;
+
+        return $this;
+    }
+
+    /**
+     * Gets notes
+     *
+     * @return string[]
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param string[] $notes Closing paragraphs, small and grey.
+     *
+     * @return self
+     */
+    public function setNotes($notes)
+    {
+        $this->container['notes'] = $notes;
 
         return $this;
     }

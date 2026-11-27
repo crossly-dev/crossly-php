@@ -61,11 +61,12 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'platform' => 'string',
-        'sales' => 'string',
-        'gross_cents' => 'string',
+        'sales' => 'float',
+        'gross_cents' => 'float',
         'avg_days_to_sale' => 'float',
         'avg_sale_cents' => 'float',
-        'net_cents' => 'string'
+        'net_cents' => 'float',
+        'net_profit_cents' => 'float'
     ];
 
     /**
@@ -81,7 +82,8 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
         'gross_cents' => null,
         'avg_days_to_sale' => null,
         'avg_sale_cents' => null,
-        'net_cents' => null
+        'net_cents' => null,
+        'net_profit_cents' => null
     ];
 
     /**
@@ -116,7 +118,8 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
         'gross_cents' => 'gross_cents',
         'avg_days_to_sale' => 'avg_days_to_sale',
         'avg_sale_cents' => 'avg_sale_cents',
-        'net_cents' => 'net_cents'
+        'net_cents' => 'net_cents',
+        'net_profit_cents' => 'net_profit_cents'
     ];
 
     /**
@@ -130,7 +133,8 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
         'gross_cents' => 'setGrossCents',
         'avg_days_to_sale' => 'setAvgDaysToSale',
         'avg_sale_cents' => 'setAvgSaleCents',
-        'net_cents' => 'setNetCents'
+        'net_cents' => 'setNetCents',
+        'net_profit_cents' => 'setNetProfitCents'
     ];
 
     /**
@@ -144,7 +148,8 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
         'gross_cents' => 'getGrossCents',
         'avg_days_to_sale' => 'getAvgDaysToSale',
         'avg_sale_cents' => 'getAvgSaleCents',
-        'net_cents' => 'getNetCents'
+        'net_cents' => 'getNetCents',
+        'net_profit_cents' => 'getNetProfitCents'
     ];
 
     /**
@@ -210,6 +215,7 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['avg_days_to_sale'] = $data['avg_days_to_sale'] ?? null;
         $this->container['avg_sale_cents'] = $data['avg_sale_cents'] ?? null;
         $this->container['net_cents'] = $data['net_cents'] ?? null;
+        $this->container['net_profit_cents'] = $data['net_profit_cents'] ?? null;
     }
 
     /**
@@ -229,12 +235,6 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
         }
         if ($this->container['gross_cents'] === null) {
             $invalidProperties[] = "'gross_cents' can't be null";
-        }
-        if ($this->container['avg_days_to_sale'] === null) {
-            $invalidProperties[] = "'avg_days_to_sale' can't be null";
-        }
-        if ($this->container['avg_sale_cents'] === null) {
-            $invalidProperties[] = "'avg_sale_cents' can't be null";
         }
         if ($this->container['net_cents'] === null) {
             $invalidProperties[] = "'net_cents' can't be null";
@@ -281,7 +281,7 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets sales
      *
-     * @return string
+     * @return float
      */
     public function getSales()
     {
@@ -291,7 +291,7 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets sales
      *
-     * @param string $sales sales
+     * @param float $sales sales
      *
      * @return self
      */
@@ -305,7 +305,7 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets gross_cents
      *
-     * @return string
+     * @return float
      */
     public function getGrossCents()
     {
@@ -315,7 +315,7 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets gross_cents
      *
-     * @param string $gross_cents gross_cents
+     * @param float $gross_cents gross_cents
      *
      * @return self
      */
@@ -329,7 +329,7 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets avg_days_to_sale
      *
-     * @return float
+     * @return float|null
      */
     public function getAvgDaysToSale()
     {
@@ -339,7 +339,7 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets avg_days_to_sale
      *
-     * @param float $avg_days_to_sale avg_days_to_sale
+     * @param float|null $avg_days_to_sale avg_days_to_sale
      *
      * @return self
      */
@@ -353,7 +353,7 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets avg_sale_cents
      *
-     * @return float
+     * @return float|null
      */
     public function getAvgSaleCents()
     {
@@ -363,7 +363,7 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets avg_sale_cents
      *
-     * @param float $avg_sale_cents avg_sale_cents
+     * @param float|null $avg_sale_cents avg_sale_cents
      *
      * @return self
      */
@@ -377,7 +377,7 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets net_cents
      *
-     * @return string
+     * @return float
      */
     public function getNetCents()
     {
@@ -387,13 +387,37 @@ class ListInsightByPlatformItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets net_cents
      *
-     * @param string $net_cents net_cents
+     * @param float $net_cents net_cents
      *
      * @return self
      */
     public function setNetCents($net_cents)
     {
         $this->container['net_cents'] = $net_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets net_profit_cents
+     *
+     * @return float|null
+     */
+    public function getNetProfitCents()
+    {
+        return $this->container['net_profit_cents'];
+    }
+
+    /**
+     * Sets net_profit_cents
+     *
+     * @param float|null $net_profit_cents net_profit_cents
+     *
+     * @return self
+     */
+    public function setNetProfitCents($net_profit_cents)
+    {
+        $this->container['net_profit_cents'] = $net_profit_cents;
 
         return $this;
     }

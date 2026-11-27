@@ -189,9 +189,9 @@ class CreateBuyerAgentSessionResponseBriefPending implements ModelInterface, Arr
         return self::$openAPIModelName;
     }
 
-    const KIND_DISPUTE = 'dispute';
-    const KIND_CANCEL = 'cancel';
     const KIND__RETURN = 'return';
+    const KIND_CANCEL = 'cancel';
+    const KIND_DISPUTE = 'dispute';
 
     /**
      * Gets allowable values of the enum
@@ -201,9 +201,9 @@ class CreateBuyerAgentSessionResponseBriefPending implements ModelInterface, Arr
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_DISPUTE,
-            self::KIND_CANCEL,
             self::KIND__RETURN,
+            self::KIND_CANCEL,
+            self::KIND_DISPUTE,
         ];
     }
 

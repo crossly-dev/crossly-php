@@ -60,8 +60,8 @@ class CreateBuyerBreakSpotHoldResponseData implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'slug' => 'string',
-        'held_until' => 'string'
+        'held_until' => 'string',
+        'slug' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class CreateBuyerBreakSpotHoldResponseData implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'slug' => null,
-        'held_until' => null
+        'held_until' => null,
+        'slug' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CreateBuyerBreakSpotHoldResponseData implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'slug' => 'slug',
-        'held_until' => 'heldUntil'
+        'held_until' => 'heldUntil',
+        'slug' => 'slug'
     ];
 
     /**
@@ -113,8 +113,8 @@ class CreateBuyerBreakSpotHoldResponseData implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'slug' => 'setSlug',
-        'held_until' => 'setHeldUntil'
+        'held_until' => 'setHeldUntil',
+        'slug' => 'setSlug'
     ];
 
     /**
@@ -123,8 +123,8 @@ class CreateBuyerBreakSpotHoldResponseData implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'slug' => 'getSlug',
-        'held_until' => 'getHeldUntil'
+        'held_until' => 'getHeldUntil',
+        'slug' => 'getSlug'
     ];
 
     /**
@@ -184,8 +184,8 @@ class CreateBuyerBreakSpotHoldResponseData implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->container['slug'] = $data['slug'] ?? null;
         $this->container['held_until'] = $data['held_until'] ?? null;
+        $this->container['slug'] = $data['slug'] ?? null;
     }
 
     /**
@@ -216,30 +216,6 @@ class CreateBuyerBreakSpotHoldResponseData implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets slug
-     *
-     * @return string|null
-     */
-    public function getSlug()
-    {
-        return $this->container['slug'];
-    }
-
-    /**
-     * Sets slug
-     *
-     * @param string|null $slug slug
-     *
-     * @return self
-     */
-    public function setSlug($slug)
-    {
-        $this->container['slug'] = $slug;
-
-        return $this;
-    }
-
-    /**
      * Gets held_until
      *
      * @return string
@@ -259,6 +235,30 @@ class CreateBuyerBreakSpotHoldResponseData implements ModelInterface, ArrayAcces
     public function setHeldUntil($held_until)
     {
         $this->container['held_until'] = $held_until;
+
+        return $this;
+    }
+
+    /**
+     * Gets slug
+     *
+     * @return string|null
+     */
+    public function getSlug()
+    {
+        return $this->container['slug'];
+    }
+
+    /**
+     * Sets slug
+     *
+     * @param string|null $slug slug
+     *
+     * @return self
+     */
+    public function setSlug($slug)
+    {
+        $this->container['slug'] = $slug;
 
         return $this;
     }

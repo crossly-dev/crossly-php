@@ -63,7 +63,10 @@ class CreateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'listing' => '\Crossly\Model\Common\IdResponse',
         'jobs' => '\Crossly\Model\Listing\CreateListingResponseJobs[]',
         'skipped' => '\Crossly\Model\Listing\CreateListingResponseSkipped[]',
-        'bulk_job_id' => 'string'
+        'bulk_job_id' => 'string',
+        'client_reference_id' => 'string',
+        'existing' => 'bool',
+        'warnings' => '\Crossly\Model\Listing\CreateListingResponseWarnings[]'
     ];
 
     /**
@@ -77,7 +80,10 @@ class CreateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'listing' => null,
         'jobs' => null,
         'skipped' => null,
-        'bulk_job_id' => null
+        'bulk_job_id' => null,
+        'client_reference_id' => null,
+        'existing' => null,
+        'warnings' => null
     ];
 
     /**
@@ -110,7 +116,10 @@ class CreateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'listing' => 'listing',
         'jobs' => 'jobs',
         'skipped' => 'skipped',
-        'bulk_job_id' => 'bulkJobId'
+        'bulk_job_id' => 'bulkJobId',
+        'client_reference_id' => 'clientReferenceId',
+        'existing' => 'existing',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -122,7 +131,10 @@ class CreateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'listing' => 'setListing',
         'jobs' => 'setJobs',
         'skipped' => 'setSkipped',
-        'bulk_job_id' => 'setBulkJobId'
+        'bulk_job_id' => 'setBulkJobId',
+        'client_reference_id' => 'setClientReferenceId',
+        'existing' => 'setExisting',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -134,7 +146,10 @@ class CreateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'listing' => 'getListing',
         'jobs' => 'getJobs',
         'skipped' => 'getSkipped',
-        'bulk_job_id' => 'getBulkJobId'
+        'bulk_job_id' => 'getBulkJobId',
+        'client_reference_id' => 'getClientReferenceId',
+        'existing' => 'getExisting',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -198,6 +213,9 @@ class CreateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['jobs'] = $data['jobs'] ?? null;
         $this->container['skipped'] = $data['skipped'] ?? null;
         $this->container['bulk_job_id'] = $data['bulk_job_id'] ?? null;
+        $this->container['client_reference_id'] = $data['client_reference_id'] ?? null;
+        $this->container['existing'] = $data['existing'] ?? null;
+        $this->container['warnings'] = $data['warnings'] ?? null;
     }
 
     /**
@@ -270,7 +288,7 @@ class CreateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets jobs
      *
-     * @param \Crossly\Model\Listing\CreateListingResponseJobs[] $jobs jobs
+     * @param \Crossly\Model\Listing\CreateListingResponseJobs[] $jobs One dispatched crosspost job per accepted platform.
      *
      * @return self
      */
@@ -294,7 +312,7 @@ class CreateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets skipped
      *
-     * @param \Crossly\Model\Listing\CreateListingResponseSkipped[] $skipped skipped
+     * @param \Crossly\Model\Listing\CreateListingResponseSkipped[] $skipped Platforms not dispatched, and why (category gate, dropship_not_allowed_on_platform, a dispatch refusal such as validation_error \"Add a weight before listing\", ...). The listing itself was created.
      *
      * @return self
      */
@@ -325,6 +343,78 @@ class CreateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setBulkJobId($bulk_job_id)
     {
         $this->container['bulk_job_id'] = $bulk_job_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_reference_id
+     *
+     * @return string|null
+     */
+    public function getClientReferenceId()
+    {
+        return $this->container['client_reference_id'];
+    }
+
+    /**
+     * Sets client_reference_id
+     *
+     * @param string|null $client_reference_id client_reference_id
+     *
+     * @return self
+     */
+    public function setClientReferenceId($client_reference_id)
+    {
+        $this->container['client_reference_id'] = $client_reference_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets existing
+     *
+     * @return bool|null
+     */
+    public function getExisting()
+    {
+        return $this->container['existing'];
+    }
+
+    /**
+     * Sets existing
+     *
+     * @param bool|null $existing existing
+     *
+     * @return self
+     */
+    public function setExisting($existing)
+    {
+        $this->container['existing'] = $existing;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \Crossly\Model\Listing\CreateListingResponseWarnings[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \Crossly\Model\Listing\CreateListingResponseWarnings[]|null $warnings Soft item-specifics problems (strictItemSpecifics off) and eBay fields accepted but mapped or ignored.
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

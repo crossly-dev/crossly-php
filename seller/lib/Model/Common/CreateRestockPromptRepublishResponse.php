@@ -227,9 +227,6 @@ class CreateRestockPromptRepublishResponse implements ModelInterface, ArrayAcces
         if ($this->container['job_ids'] === null) {
             $invalidProperties[] = "'job_ids' can't be null";
         }
-        if ($this->container['bulk_job_id'] === null) {
-            $invalidProperties[] = "'bulk_job_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -344,7 +341,7 @@ class CreateRestockPromptRepublishResponse implements ModelInterface, ArrayAcces
     /**
      * Gets bulk_job_id
      *
-     * @return string
+     * @return string|null
      */
     public function getBulkJobId()
     {
@@ -354,7 +351,7 @@ class CreateRestockPromptRepublishResponse implements ModelInterface, ArrayAcces
     /**
      * Sets bulk_job_id
      *
-     * @param string $bulk_job_id bulk_job_id
+     * @param string|null $bulk_job_id bulk_job_id
      *
      * @return self
      */

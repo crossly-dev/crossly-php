@@ -60,8 +60,8 @@ class GetBuyerBreakResponseDataSeller implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'display_name' => 'string',
-        'username' => 'string'
+        'username' => 'string',
+        'display_name' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class GetBuyerBreakResponseDataSeller implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'display_name' => null,
-        'username' => null
+        'username' => null,
+        'display_name' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class GetBuyerBreakResponseDataSeller implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'display_name' => 'displayName',
-        'username' => 'username'
+        'username' => 'username',
+        'display_name' => 'displayName'
     ];
 
     /**
@@ -113,8 +113,8 @@ class GetBuyerBreakResponseDataSeller implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'display_name' => 'setDisplayName',
-        'username' => 'setUsername'
+        'username' => 'setUsername',
+        'display_name' => 'setDisplayName'
     ];
 
     /**
@@ -123,8 +123,8 @@ class GetBuyerBreakResponseDataSeller implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'display_name' => 'getDisplayName',
-        'username' => 'getUsername'
+        'username' => 'getUsername',
+        'display_name' => 'getDisplayName'
     ];
 
     /**
@@ -184,8 +184,8 @@ class GetBuyerBreakResponseDataSeller implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['display_name'] = $data['display_name'] ?? null;
         $this->container['username'] = $data['username'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
     }
 
     /**
@@ -213,30 +213,6 @@ class GetBuyerBreakResponseDataSeller implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets display_name
-     *
-     * @return string|null
-     */
-    public function getDisplayName()
-    {
-        return $this->container['display_name'];
-    }
-
-    /**
-     * Sets display_name
-     *
-     * @param string|null $display_name display_name
-     *
-     * @return self
-     */
-    public function setDisplayName($display_name)
-    {
-        $this->container['display_name'] = $display_name;
-
-        return $this;
-    }
-
-    /**
      * Gets username
      *
      * @return string|null
@@ -256,6 +232,30 @@ class GetBuyerBreakResponseDataSeller implements ModelInterface, ArrayAccess, \J
     public function setUsername($username)
     {
         $this->container['username'] = $username;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_name
+     *
+     * @return string|null
+     */
+    public function getDisplayName()
+    {
+        return $this->container['display_name'];
+    }
+
+    /**
+     * Sets display_name
+     *
+     * @param string|null $display_name display_name
+     *
+     * @return self
+     */
+    public function setDisplayName($display_name)
+    {
+        $this->container['display_name'] = $display_name;
 
         return $this;
     }

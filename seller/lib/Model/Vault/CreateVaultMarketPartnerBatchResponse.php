@@ -63,7 +63,7 @@ class CreateVaultMarketPartnerBatchResponse implements ModelInterface, ArrayAcce
         'batch_id' => 'string',
         'partner_code' => 'string',
         'created' => '\Crossly\Model\Vault\CreateVaultMarketPartnerBatchResponseCreated[]',
-        'label' => '\Crossly\Model\Vault\CreateVaultMarketPartnerBatchResponseLabel',
+        'label' => '\Crossly\Model\Common\LabelUrlTrackingCode',
         'label_error' => 'string'
     ];
 
@@ -314,7 +314,7 @@ class CreateVaultMarketPartnerBatchResponse implements ModelInterface, ArrayAcce
     /**
      * Gets label
      *
-     * @return \Crossly\Model\Vault\CreateVaultMarketPartnerBatchResponseLabel|null
+     * @return \Crossly\Model\Common\LabelUrlTrackingCode|null
      */
     public function getLabel()
     {
@@ -324,7 +324,7 @@ class CreateVaultMarketPartnerBatchResponse implements ModelInterface, ArrayAcce
     /**
      * Sets label
      *
-     * @param \Crossly\Model\Vault\CreateVaultMarketPartnerBatchResponseLabel|null $label label
+     * @param \Crossly\Model\Common\LabelUrlTrackingCode|null $label label
      *
      * @return self
      */

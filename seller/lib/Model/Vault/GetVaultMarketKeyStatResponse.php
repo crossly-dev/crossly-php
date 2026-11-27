@@ -60,7 +60,8 @@ class GetVaultMarketKeyStatResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'book_key' => 'string'
+        'book_key' => 'string',
+        'gem_rate' => '\Crossly\Model\Vault\GetVaultMarketKeyStatResponseGemRate'
     ];
 
     /**
@@ -71,7 +72,8 @@ class GetVaultMarketKeyStatResponse implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'book_key' => null
+        'book_key' => null,
+        'gem_rate' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class GetVaultMarketKeyStatResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'book_key' => 'bookKey'
+        'book_key' => 'bookKey',
+        'gem_rate' => 'gemRate'
     ];
 
     /**
@@ -110,7 +113,8 @@ class GetVaultMarketKeyStatResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'book_key' => 'setBookKey'
+        'book_key' => 'setBookKey',
+        'gem_rate' => 'setGemRate'
     ];
 
     /**
@@ -119,7 +123,8 @@ class GetVaultMarketKeyStatResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'book_key' => 'getBookKey'
+        'book_key' => 'getBookKey',
+        'gem_rate' => 'getGemRate'
     ];
 
     /**
@@ -180,6 +185,7 @@ class GetVaultMarketKeyStatResponse implements ModelInterface, ArrayAccess, \Jso
     public function __construct(array $data = null)
     {
         $this->container['book_key'] = $data['book_key'] ?? null;
+        $this->container['gem_rate'] = $data['gem_rate'] ?? null;
     }
 
     /**
@@ -193,6 +199,9 @@ class GetVaultMarketKeyStatResponse implements ModelInterface, ArrayAccess, \Jso
 
         if ($this->container['book_key'] === null) {
             $invalidProperties[] = "'book_key' can't be null";
+        }
+        if ($this->container['gem_rate'] === null) {
+            $invalidProperties[] = "'gem_rate' can't be null";
         }
         return $invalidProperties;
     }
@@ -229,6 +238,30 @@ class GetVaultMarketKeyStatResponse implements ModelInterface, ArrayAccess, \Jso
     public function setBookKey($book_key)
     {
         $this->container['book_key'] = $book_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets gem_rate
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketKeyStatResponseGemRate
+     */
+    public function getGemRate()
+    {
+        return $this->container['gem_rate'];
+    }
+
+    /**
+     * Sets gem_rate
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketKeyStatResponseGemRate $gem_rate gem_rate
+     *
+     * @return self
+     */
+    public function setGemRate($gem_rate)
+    {
+        $this->container['gem_rate'] = $gem_rate;
 
         return $this;
     }

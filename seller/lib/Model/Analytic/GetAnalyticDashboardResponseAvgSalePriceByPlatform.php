@@ -62,7 +62,7 @@ class GetAnalyticDashboardResponseAvgSalePriceByPlatform implements ModelInterfa
     protected static $openAPITypes = [
         'platform' => 'string',
         'avg_price' => 'float',
-        'count' => 'string'
+        'count' => 'float'
     ];
 
     /**
@@ -278,7 +278,7 @@ class GetAnalyticDashboardResponseAvgSalePriceByPlatform implements ModelInterfa
     /**
      * Gets count
      *
-     * @return string
+     * @return float
      */
     public function getCount()
     {
@@ -288,7 +288,7 @@ class GetAnalyticDashboardResponseAvgSalePriceByPlatform implements ModelInterfa
     /**
      * Sets count
      *
-     * @param string $count count
+     * @param float $count count
      *
      * @return self
      */

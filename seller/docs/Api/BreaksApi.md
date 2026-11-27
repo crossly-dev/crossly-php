@@ -70,7 +70,7 @@ This endpoint does not need any parameter.
 ## `createBreakCancel()`
 
 ```php
-createBreakCancel($id): \Crossly\Model\Breaks\CreateBreakCancelResponse
+createBreakCancel($id): \Crossly\Model\Group\UpdateGroupBuyResponse
 ```
 
 Cancel a break before any spot is paid for; after that, refund those orders instead (409).
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Model\Breaks\CreateBreakCancelResponse**
+**\Crossly\Model\Group\UpdateGroupBuyResponse**
 
 ### Authorization
 
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 ## `createBreakOpened()`
 
 ```php
-createBreakOpened($id): \Crossly\Model\Breaks\CreateBreakCancelResponse
+createBreakOpened($id): \Crossly\Model\Group\UpdateGroupBuyResponse
 ```
 
 Mark the product opened on stream.
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Model\Breaks\CreateBreakCancelResponse**
+**\Crossly\Model\Group\UpdateGroupBuyResponse**
 
 ### Authorization
 
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 ## `createBreakSpotHit()`
 
 ```php
-createBreakSpotHit($id, $spot_id): \Crossly\Model\Breaks\CreateBreakCancelResponse
+createBreakSpotHit($id, $spot_id): \Crossly\Model\Group\UpdateGroupBuyResponse
 ```
 
 Record what a spot pulled.
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Model\Breaks\CreateBreakCancelResponse**
+**\Crossly\Model\Group\UpdateGroupBuyResponse**
 
 ### Authorization
 

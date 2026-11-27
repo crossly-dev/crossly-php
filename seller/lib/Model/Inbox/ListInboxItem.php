@@ -60,26 +60,32 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'can_send_offer' => 'bool',
         'id' => 'string',
         'created_at' => '\DateTime',
         'user_id' => 'string',
-        'status' => 'string',
         'platform' => 'string',
-        'listing_id' => 'string',
         'account_slot' => 'float',
+        'status' => 'string',
+        'source' => 'string',
+        'labels' => 'string[]',
         'inventory_item_id' => 'string',
+        'listing_id' => 'string',
         'platform_listing_id' => 'string',
         'buyer_username' => 'string',
-        'subject' => 'string',
         'platform_conversation_id' => 'string',
         'buyer_platform_id' => 'string',
+        'buyer_avatar_url' => 'string',
+        'subject' => 'string',
         'is_read' => 'bool',
         'is_hidden' => 'bool',
         'has_offer' => 'bool',
         'offer_amount' => 'string',
         'offer_status' => 'string',
         'platform_conversation_url' => 'string',
-        'last_message_at' => '\DateTime'
+        'last_message_at' => '\DateTime',
+        'superseded_at' => '\DateTime',
+        'is_starred' => 'bool'
     ];
 
     /**
@@ -90,26 +96,32 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'can_send_offer' => null,
         'id' => null,
         'created_at' => 'date-time',
         'user_id' => null,
-        'status' => null,
         'platform' => null,
-        'listing_id' => null,
         'account_slot' => null,
+        'status' => null,
+        'source' => null,
+        'labels' => null,
         'inventory_item_id' => null,
+        'listing_id' => null,
         'platform_listing_id' => null,
         'buyer_username' => null,
-        'subject' => null,
         'platform_conversation_id' => null,
         'buyer_platform_id' => null,
+        'buyer_avatar_url' => null,
+        'subject' => null,
         'is_read' => null,
         'is_hidden' => null,
         'has_offer' => null,
         'offer_amount' => null,
         'offer_status' => null,
         'platform_conversation_url' => null,
-        'last_message_at' => 'date-time'
+        'last_message_at' => 'date-time',
+        'superseded_at' => 'date-time',
+        'is_starred' => null
     ];
 
     /**
@@ -139,26 +151,32 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'can_send_offer' => 'canSendOffer',
         'id' => 'id',
         'created_at' => 'createdAt',
         'user_id' => 'userId',
-        'status' => 'status',
         'platform' => 'platform',
-        'listing_id' => 'listingId',
         'account_slot' => 'accountSlot',
+        'status' => 'status',
+        'source' => 'source',
+        'labels' => 'labels',
         'inventory_item_id' => 'inventoryItemId',
+        'listing_id' => 'listingId',
         'platform_listing_id' => 'platformListingId',
         'buyer_username' => 'buyerUsername',
-        'subject' => 'subject',
         'platform_conversation_id' => 'platformConversationId',
         'buyer_platform_id' => 'buyerPlatformId',
+        'buyer_avatar_url' => 'buyerAvatarUrl',
+        'subject' => 'subject',
         'is_read' => 'isRead',
         'is_hidden' => 'isHidden',
         'has_offer' => 'hasOffer',
         'offer_amount' => 'offerAmount',
         'offer_status' => 'offerStatus',
         'platform_conversation_url' => 'platformConversationUrl',
-        'last_message_at' => 'lastMessageAt'
+        'last_message_at' => 'lastMessageAt',
+        'superseded_at' => 'supersededAt',
+        'is_starred' => 'isStarred'
     ];
 
     /**
@@ -167,26 +185,32 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'can_send_offer' => 'setCanSendOffer',
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
-        'status' => 'setStatus',
         'platform' => 'setPlatform',
-        'listing_id' => 'setListingId',
         'account_slot' => 'setAccountSlot',
+        'status' => 'setStatus',
+        'source' => 'setSource',
+        'labels' => 'setLabels',
         'inventory_item_id' => 'setInventoryItemId',
+        'listing_id' => 'setListingId',
         'platform_listing_id' => 'setPlatformListingId',
         'buyer_username' => 'setBuyerUsername',
-        'subject' => 'setSubject',
         'platform_conversation_id' => 'setPlatformConversationId',
         'buyer_platform_id' => 'setBuyerPlatformId',
+        'buyer_avatar_url' => 'setBuyerAvatarUrl',
+        'subject' => 'setSubject',
         'is_read' => 'setIsRead',
         'is_hidden' => 'setIsHidden',
         'has_offer' => 'setHasOffer',
         'offer_amount' => 'setOfferAmount',
         'offer_status' => 'setOfferStatus',
         'platform_conversation_url' => 'setPlatformConversationUrl',
-        'last_message_at' => 'setLastMessageAt'
+        'last_message_at' => 'setLastMessageAt',
+        'superseded_at' => 'setSupersededAt',
+        'is_starred' => 'setIsStarred'
     ];
 
     /**
@@ -195,26 +219,32 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'can_send_offer' => 'getCanSendOffer',
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
-        'status' => 'getStatus',
         'platform' => 'getPlatform',
-        'listing_id' => 'getListingId',
         'account_slot' => 'getAccountSlot',
+        'status' => 'getStatus',
+        'source' => 'getSource',
+        'labels' => 'getLabels',
         'inventory_item_id' => 'getInventoryItemId',
+        'listing_id' => 'getListingId',
         'platform_listing_id' => 'getPlatformListingId',
         'buyer_username' => 'getBuyerUsername',
-        'subject' => 'getSubject',
         'platform_conversation_id' => 'getPlatformConversationId',
         'buyer_platform_id' => 'getBuyerPlatformId',
+        'buyer_avatar_url' => 'getBuyerAvatarUrl',
+        'subject' => 'getSubject',
         'is_read' => 'getIsRead',
         'is_hidden' => 'getIsHidden',
         'has_offer' => 'getHasOffer',
         'offer_amount' => 'getOfferAmount',
         'offer_status' => 'getOfferStatus',
         'platform_conversation_url' => 'getPlatformConversationUrl',
-        'last_message_at' => 'getLastMessageAt'
+        'last_message_at' => 'getLastMessageAt',
+        'superseded_at' => 'getSupersededAt',
+        'is_starred' => 'getIsStarred'
     ];
 
     /**
@@ -274,19 +304,23 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['can_send_offer'] = $data['can_send_offer'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['platform'] = $data['platform'] ?? null;
-        $this->container['listing_id'] = $data['listing_id'] ?? null;
         $this->container['account_slot'] = $data['account_slot'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
+        $this->container['labels'] = $data['labels'] ?? null;
         $this->container['inventory_item_id'] = $data['inventory_item_id'] ?? null;
+        $this->container['listing_id'] = $data['listing_id'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
         $this->container['buyer_username'] = $data['buyer_username'] ?? null;
-        $this->container['subject'] = $data['subject'] ?? null;
         $this->container['platform_conversation_id'] = $data['platform_conversation_id'] ?? null;
         $this->container['buyer_platform_id'] = $data['buyer_platform_id'] ?? null;
+        $this->container['buyer_avatar_url'] = $data['buyer_avatar_url'] ?? null;
+        $this->container['subject'] = $data['subject'] ?? null;
         $this->container['is_read'] = $data['is_read'] ?? null;
         $this->container['is_hidden'] = $data['is_hidden'] ?? null;
         $this->container['has_offer'] = $data['has_offer'] ?? null;
@@ -294,6 +328,8 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['offer_status'] = $data['offer_status'] ?? null;
         $this->container['platform_conversation_url'] = $data['platform_conversation_url'] ?? null;
         $this->container['last_message_at'] = $data['last_message_at'] ?? null;
+        $this->container['superseded_at'] = $data['superseded_at'] ?? null;
+        $this->container['is_starred'] = $data['is_starred'] ?? null;
     }
 
     /**
@@ -305,6 +341,9 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['can_send_offer'] === null) {
+            $invalidProperties[] = "'can_send_offer' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -314,14 +353,17 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         if ($this->container['platform'] === null) {
             $invalidProperties[] = "'platform' can't be null";
         }
         if ($this->container['account_slot'] === null) {
             $invalidProperties[] = "'account_slot' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['labels'] === null) {
+            $invalidProperties[] = "'labels' can't be null";
         }
         if ($this->container['platform_conversation_id'] === null) {
             $invalidProperties[] = "'platform_conversation_id' can't be null";
@@ -334,6 +376,9 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['has_offer'] === null) {
             $invalidProperties[] = "'has_offer' can't be null";
+        }
+        if ($this->container['is_starred'] === null) {
+            $invalidProperties[] = "'is_starred' can't be null";
         }
         return $invalidProperties;
     }
@@ -349,6 +394,30 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets can_send_offer
+     *
+     * @return bool
+     */
+    public function getCanSendOffer()
+    {
+        return $this->container['can_send_offer'];
+    }
+
+    /**
+     * Sets can_send_offer
+     *
+     * @param bool $can_send_offer can_send_offer
+     *
+     * @return self
+     */
+    public function setCanSendOffer($can_send_offer)
+    {
+        $this->container['can_send_offer'] = $can_send_offer;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -423,30 +492,6 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
      * Gets platform
      *
      * @return string
@@ -466,30 +511,6 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlatform($platform)
     {
         $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets listing_id
-     *
-     * @return string|null
-     */
-    public function getListingId()
-    {
-        return $this->container['listing_id'];
-    }
-
-    /**
-     * Sets listing_id
-     *
-     * @param string|null $listing_id listing_id
-     *
-     * @return self
-     */
-    public function setListingId($listing_id)
-    {
-        $this->container['listing_id'] = $listing_id;
 
         return $this;
     }
@@ -519,6 +540,78 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets labels
+     *
+     * @return string[]
+     */
+    public function getLabels()
+    {
+        return $this->container['labels'];
+    }
+
+    /**
+     * Sets labels
+     *
+     * @param string[] $labels labels
+     *
+     * @return self
+     */
+    public function setLabels($labels)
+    {
+        $this->container['labels'] = $labels;
+
+        return $this;
+    }
+
+    /**
      * Gets inventory_item_id
      *
      * @return string|null
@@ -538,6 +631,30 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setInventoryItemId($inventory_item_id)
     {
         $this->container['inventory_item_id'] = $inventory_item_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets listing_id
+     *
+     * @return string|null
+     */
+    public function getListingId()
+    {
+        return $this->container['listing_id'];
+    }
+
+    /**
+     * Sets listing_id
+     *
+     * @param string|null $listing_id listing_id
+     *
+     * @return self
+     */
+    public function setListingId($listing_id)
+    {
+        $this->container['listing_id'] = $listing_id;
 
         return $this;
     }
@@ -591,30 +708,6 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets subject
-     *
-     * @return string|null
-     */
-    public function getSubject()
-    {
-        return $this->container['subject'];
-    }
-
-    /**
-     * Sets subject
-     *
-     * @param string|null $subject subject
-     *
-     * @return self
-     */
-    public function setSubject($subject)
-    {
-        $this->container['subject'] = $subject;
-
-        return $this;
-    }
-
-    /**
      * Gets platform_conversation_id
      *
      * @return string
@@ -658,6 +751,54 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBuyerPlatformId($buyer_platform_id)
     {
         $this->container['buyer_platform_id'] = $buyer_platform_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer_avatar_url
+     *
+     * @return string|null
+     */
+    public function getBuyerAvatarUrl()
+    {
+        return $this->container['buyer_avatar_url'];
+    }
+
+    /**
+     * Sets buyer_avatar_url
+     *
+     * @param string|null $buyer_avatar_url buyer_avatar_url
+     *
+     * @return self
+     */
+    public function setBuyerAvatarUrl($buyer_avatar_url)
+    {
+        $this->container['buyer_avatar_url'] = $buyer_avatar_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets subject
+     *
+     * @return string|null
+     */
+    public function getSubject()
+    {
+        return $this->container['subject'];
+    }
+
+    /**
+     * Sets subject
+     *
+     * @param string|null $subject subject
+     *
+     * @return self
+     */
+    public function setSubject($subject)
+    {
+        $this->container['subject'] = $subject;
 
         return $this;
     }
@@ -826,6 +967,54 @@ class ListInboxItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLastMessageAt($last_message_at)
     {
         $this->container['last_message_at'] = $last_message_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets superseded_at
+     *
+     * @return \DateTime|null
+     */
+    public function getSupersededAt()
+    {
+        return $this->container['superseded_at'];
+    }
+
+    /**
+     * Sets superseded_at
+     *
+     * @param \DateTime|null $superseded_at superseded_at
+     *
+     * @return self
+     */
+    public function setSupersededAt($superseded_at)
+    {
+        $this->container['superseded_at'] = $superseded_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_starred
+     *
+     * @return bool
+     */
+    public function getIsStarred()
+    {
+        return $this->container['is_starred'];
+    }
+
+    /**
+     * Sets is_starred
+     *
+     * @param bool $is_starred is_starred
+     *
+     * @return self
+     */
+    public function setIsStarred($is_starred)
+    {
+        $this->container['is_starred'] = $is_starred;
 
         return $this;
     }

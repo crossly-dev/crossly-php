@@ -194,8 +194,8 @@ class CreateCbxRedemptionQuoteResponseData implements ModelInterface, ArrayAcces
     }
 
     const SERVICE_KIND_GRADING = 'grading';
-    const SERVICE_KIND_AUTHENTICATION = 'authentication';
     const SERVICE_KIND_SUBSCRIPTION = 'subscription';
+    const SERVICE_KIND_AUTHENTICATION = 'authentication';
 
     /**
      * Gets allowable values of the enum
@@ -206,8 +206,8 @@ class CreateCbxRedemptionQuoteResponseData implements ModelInterface, ArrayAcces
     {
         return [
             self::SERVICE_KIND_GRADING,
-            self::SERVICE_KIND_AUTHENTICATION,
             self::SERVICE_KIND_SUBSCRIPTION,
+            self::SERVICE_KIND_AUTHENTICATION,
         ];
     }
 

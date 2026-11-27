@@ -213,10 +213,10 @@ class GetVaultMarketCreatorRoomResponseRoom implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
-    const STATUS_APPLIED = 'applied';
-    const STATUS_VERIFIED = 'verified';
-    const STATUS_REJECTED = 'rejected';
     const STATUS_PAUSED = 'paused';
+    const STATUS_VERIFIED = 'verified';
+    const STATUS_APPLIED = 'applied';
+    const STATUS_REJECTED = 'rejected';
 
     /**
      * Gets allowable values of the enum
@@ -226,10 +226,10 @@ class GetVaultMarketCreatorRoomResponseRoom implements ModelInterface, ArrayAcce
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_APPLIED,
-            self::STATUS_VERIFIED,
-            self::STATUS_REJECTED,
             self::STATUS_PAUSED,
+            self::STATUS_VERIFIED,
+            self::STATUS_APPLIED,
+            self::STATUS_REJECTED,
         ];
     }
 

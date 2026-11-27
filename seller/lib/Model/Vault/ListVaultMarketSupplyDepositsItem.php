@@ -61,6 +61,7 @@ class ListVaultMarketSupplyDepositsItem implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'storefront_id' => 'string',
         'vault_item_id' => 'string',
         'inventory_item_id' => 'string',
         'batch_id' => 'string',
@@ -92,6 +93,7 @@ class ListVaultMarketSupplyDepositsItem implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'storefront_id' => null,
         'vault_item_id' => null,
         'inventory_item_id' => null,
         'batch_id' => null,
@@ -142,6 +144,7 @@ class ListVaultMarketSupplyDepositsItem implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'storefront_id' => 'storefrontId',
         'vault_item_id' => 'vaultItemId',
         'inventory_item_id' => 'inventoryItemId',
         'batch_id' => 'batchId',
@@ -171,6 +174,7 @@ class ListVaultMarketSupplyDepositsItem implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'id' => 'setId',
+        'storefront_id' => 'setStorefrontId',
         'vault_item_id' => 'setVaultItemId',
         'inventory_item_id' => 'setInventoryItemId',
         'batch_id' => 'setBatchId',
@@ -200,6 +204,7 @@ class ListVaultMarketSupplyDepositsItem implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'id' => 'getId',
+        'storefront_id' => 'getStorefrontId',
         'vault_item_id' => 'getVaultItemId',
         'inventory_item_id' => 'getInventoryItemId',
         'batch_id' => 'getBatchId',
@@ -264,12 +269,12 @@ class ListVaultMarketSupplyDepositsItem implements ModelInterface, ArrayAccess, 
     }
 
     const STATUS_STORED = 'stored';
-    const STATUS_LISTED = 'listed';
-    const STATUS_INBOUND = 'inbound';
     const STATUS_CANCELLED = 'cancelled';
+    const STATUS_LISTED = 'listed';
+    const STATUS_SHIPPED = 'shipped';
+    const STATUS_INBOUND = 'inbound';
     const STATUS_SOLD_ON_BOOK = 'sold_on_book';
     const STATUS_CHANNEL_SOLD = 'channel_sold';
-    const STATUS_SHIPPED = 'shipped';
 
     /**
      * Gets allowable values of the enum
@@ -280,12 +285,12 @@ class ListVaultMarketSupplyDepositsItem implements ModelInterface, ArrayAccess, 
     {
         return [
             self::STATUS_STORED,
-            self::STATUS_LISTED,
-            self::STATUS_INBOUND,
             self::STATUS_CANCELLED,
+            self::STATUS_LISTED,
+            self::STATUS_SHIPPED,
+            self::STATUS_INBOUND,
             self::STATUS_SOLD_ON_BOOK,
             self::STATUS_CHANNEL_SOLD,
-            self::STATUS_SHIPPED,
         ];
     }
 
@@ -305,6 +310,7 @@ class ListVaultMarketSupplyDepositsItem implements ModelInterface, ArrayAccess, 
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
         $this->container['vault_item_id'] = $data['vault_item_id'] ?? null;
         $this->container['inventory_item_id'] = $data['inventory_item_id'] ?? null;
         $this->container['batch_id'] = $data['batch_id'] ?? null;
@@ -404,6 +410,30 @@ class ListVaultMarketSupplyDepositsItem implements ModelInterface, ArrayAccess, 
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id storefront_id
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
 
         return $this;
     }

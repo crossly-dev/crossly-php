@@ -198,8 +198,8 @@ class CreateBuyerLockonConfirmResponseHud implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const TONE_NONE = 'none';
     const TONE_INFO = 'info';
+    const TONE_NONE = 'none';
     const TONE_WIN = 'win';
 
     /**
@@ -210,8 +210,8 @@ class CreateBuyerLockonConfirmResponseHud implements ModelInterface, ArrayAccess
     public function getToneAllowableValues()
     {
         return [
-            self::TONE_NONE,
             self::TONE_INFO,
+            self::TONE_NONE,
             self::TONE_WIN,
         ];
     }

@@ -168,20 +168,20 @@ class ColourPattern implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    const COLOUR_YELLOW = 'yellow';
+    const COLOUR_BLUE = 'blue';
+    const COLOUR_GREEN = 'green';
+    const COLOUR_PINK = 'pink';
+    const COLOUR_PURPLE = 'purple';
+    const COLOUR_CHARCOAL = 'charcoal';
     const COLOUR_RED = 'red';
     const COLOUR_ORANGE = 'orange';
-    const COLOUR_YELLOW = 'yellow';
-    const COLOUR_GREEN = 'green';
     const COLOUR_TEAL = 'teal';
-    const COLOUR_BLUE = 'blue';
-    const COLOUR_PURPLE = 'purple';
-    const COLOUR_PINK = 'pink';
     const COLOUR_CREAM = 'cream';
-    const COLOUR_CHARCOAL = 'charcoal';
-    const PATTERN_SOLID = 'solid';
-    const PATTERN_STRIPE = 'stripe';
-    const PATTERN_SCALLOP = 'scallop';
     const PATTERN_CHECK = 'check';
+    const PATTERN_STRIPE = 'stripe';
+    const PATTERN_SOLID = 'solid';
+    const PATTERN_SCALLOP = 'scallop';
 
     /**
      * Gets allowable values of the enum
@@ -191,16 +191,16 @@ class ColourPattern implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getColourAllowableValues()
     {
         return [
+            self::COLOUR_YELLOW,
+            self::COLOUR_BLUE,
+            self::COLOUR_GREEN,
+            self::COLOUR_PINK,
+            self::COLOUR_PURPLE,
+            self::COLOUR_CHARCOAL,
             self::COLOUR_RED,
             self::COLOUR_ORANGE,
-            self::COLOUR_YELLOW,
-            self::COLOUR_GREEN,
             self::COLOUR_TEAL,
-            self::COLOUR_BLUE,
-            self::COLOUR_PURPLE,
-            self::COLOUR_PINK,
             self::COLOUR_CREAM,
-            self::COLOUR_CHARCOAL,
         ];
     }
 
@@ -212,10 +212,10 @@ class ColourPattern implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getPatternAllowableValues()
     {
         return [
-            self::PATTERN_SOLID,
-            self::PATTERN_STRIPE,
-            self::PATTERN_SCALLOP,
             self::PATTERN_CHECK,
+            self::PATTERN_STRIPE,
+            self::PATTERN_SOLID,
+            self::PATTERN_SCALLOP,
         ];
     }
 

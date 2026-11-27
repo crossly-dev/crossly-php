@@ -68,7 +68,8 @@ class ListWorldOutfitsItemAppearance implements ModelInterface, ArrayAccess, \Js
         'build' => 'string',
         'brows' => 'string',
         'mouth' => 'string',
-        'shape' => 'string'
+        'shape' => 'string',
+        'outfit' => '\Crossly\Model\World\ListWorldOutfitsItemAppearanceOutfit'
     ];
 
     /**
@@ -86,7 +87,8 @@ class ListWorldOutfitsItemAppearance implements ModelInterface, ArrayAccess, \Js
         'build' => null,
         'brows' => null,
         'mouth' => null,
-        'shape' => null
+        'shape' => null,
+        'outfit' => null
     ];
 
     /**
@@ -123,7 +125,8 @@ class ListWorldOutfitsItemAppearance implements ModelInterface, ArrayAccess, \Js
         'build' => 'build',
         'brows' => 'brows',
         'mouth' => 'mouth',
-        'shape' => 'shape'
+        'shape' => 'shape',
+        'outfit' => 'outfit'
     ];
 
     /**
@@ -139,7 +142,8 @@ class ListWorldOutfitsItemAppearance implements ModelInterface, ArrayAccess, \Js
         'build' => 'setBuild',
         'brows' => 'setBrows',
         'mouth' => 'setMouth',
-        'shape' => 'setShape'
+        'shape' => 'setShape',
+        'outfit' => 'setOutfit'
     ];
 
     /**
@@ -155,7 +159,8 @@ class ListWorldOutfitsItemAppearance implements ModelInterface, ArrayAccess, \Js
         'build' => 'getBuild',
         'brows' => 'getBrows',
         'mouth' => 'getMouth',
-        'shape' => 'getShape'
+        'shape' => 'getShape',
+        'outfit' => 'getOutfit'
     ];
 
     /**
@@ -223,6 +228,7 @@ class ListWorldOutfitsItemAppearance implements ModelInterface, ArrayAccess, \Js
         $this->container['brows'] = $data['brows'] ?? null;
         $this->container['mouth'] = $data['mouth'] ?? null;
         $this->container['shape'] = $data['shape'] ?? null;
+        $this->container['outfit'] = $data['outfit'] ?? null;
     }
 
     /**
@@ -452,6 +458,30 @@ class ListWorldOutfitsItemAppearance implements ModelInterface, ArrayAccess, \Js
     public function setShape($shape)
     {
         $this->container['shape'] = $shape;
+
+        return $this;
+    }
+
+    /**
+     * Gets outfit
+     *
+     * @return \Crossly\Model\World\ListWorldOutfitsItemAppearanceOutfit|null
+     */
+    public function getOutfit()
+    {
+        return $this->container['outfit'];
+    }
+
+    /**
+     * Sets outfit
+     *
+     * @param \Crossly\Model\World\ListWorldOutfitsItemAppearanceOutfit|null $outfit outfit
+     *
+     * @return self
+     */
+    public function setOutfit($outfit)
+    {
+        $this->container['outfit'] = $outfit;
 
         return $this;
     }

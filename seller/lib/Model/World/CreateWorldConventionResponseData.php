@@ -63,17 +63,28 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
         'id' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
+        'description' => 'string',
         'status' => 'string',
         'title' => 'string',
+        'storefront_id' => 'string',
         'ends_at' => '\DateTime',
-        'category_slug' => 'string',
-        'host_user_id' => 'string',
         'starts_at' => '\DateTime',
+        'timezone' => 'string',
+        'category_slug' => 'string',
+        'theme' => 'string',
+        'seller_event_id' => 'string',
         'scene_id' => 'string',
+        'host_user_id' => 'string',
         'entry_model' => 'string',
         'entry_fee_cents' => 'float',
         'revenue_share_bps' => 'float',
-        'table_count' => 'float'
+        'table_count' => 'float',
+        'venue_booking_id' => 'string',
+        'opens_hour' => 'float',
+        'closes_hour' => 'float',
+        'floor_plan_version' => 'float',
+        'booking_mode' => 'string',
+        'walk_ins' => 'float'
     ];
 
     /**
@@ -87,17 +98,28 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
         'id' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
+        'description' => null,
         'status' => null,
         'title' => null,
+        'storefront_id' => null,
         'ends_at' => 'date-time',
-        'category_slug' => null,
-        'host_user_id' => null,
         'starts_at' => 'date-time',
+        'timezone' => null,
+        'category_slug' => null,
+        'theme' => null,
+        'seller_event_id' => null,
         'scene_id' => null,
+        'host_user_id' => null,
         'entry_model' => null,
         'entry_fee_cents' => null,
         'revenue_share_bps' => null,
-        'table_count' => null
+        'table_count' => null,
+        'venue_booking_id' => null,
+        'opens_hour' => null,
+        'closes_hour' => null,
+        'floor_plan_version' => null,
+        'booking_mode' => null,
+        'walk_ins' => null
     ];
 
     /**
@@ -130,17 +152,28 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
         'id' => 'id',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
+        'description' => 'description',
         'status' => 'status',
         'title' => 'title',
+        'storefront_id' => 'storefrontId',
         'ends_at' => 'endsAt',
-        'category_slug' => 'categorySlug',
-        'host_user_id' => 'hostUserId',
         'starts_at' => 'startsAt',
+        'timezone' => 'timezone',
+        'category_slug' => 'categorySlug',
+        'theme' => 'theme',
+        'seller_event_id' => 'sellerEventId',
         'scene_id' => 'sceneId',
+        'host_user_id' => 'hostUserId',
         'entry_model' => 'entryModel',
         'entry_fee_cents' => 'entryFeeCents',
         'revenue_share_bps' => 'revenueShareBps',
-        'table_count' => 'tableCount'
+        'table_count' => 'tableCount',
+        'venue_booking_id' => 'venueBookingId',
+        'opens_hour' => 'opensHour',
+        'closes_hour' => 'closesHour',
+        'floor_plan_version' => 'floorPlanVersion',
+        'booking_mode' => 'bookingMode',
+        'walk_ins' => 'walkIns'
     ];
 
     /**
@@ -152,17 +185,28 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
+        'description' => 'setDescription',
         'status' => 'setStatus',
         'title' => 'setTitle',
+        'storefront_id' => 'setStorefrontId',
         'ends_at' => 'setEndsAt',
-        'category_slug' => 'setCategorySlug',
-        'host_user_id' => 'setHostUserId',
         'starts_at' => 'setStartsAt',
+        'timezone' => 'setTimezone',
+        'category_slug' => 'setCategorySlug',
+        'theme' => 'setTheme',
+        'seller_event_id' => 'setSellerEventId',
         'scene_id' => 'setSceneId',
+        'host_user_id' => 'setHostUserId',
         'entry_model' => 'setEntryModel',
         'entry_fee_cents' => 'setEntryFeeCents',
         'revenue_share_bps' => 'setRevenueShareBps',
-        'table_count' => 'setTableCount'
+        'table_count' => 'setTableCount',
+        'venue_booking_id' => 'setVenueBookingId',
+        'opens_hour' => 'setOpensHour',
+        'closes_hour' => 'setClosesHour',
+        'floor_plan_version' => 'setFloorPlanVersion',
+        'booking_mode' => 'setBookingMode',
+        'walk_ins' => 'setWalkIns'
     ];
 
     /**
@@ -174,17 +218,28 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
+        'description' => 'getDescription',
         'status' => 'getStatus',
         'title' => 'getTitle',
+        'storefront_id' => 'getStorefrontId',
         'ends_at' => 'getEndsAt',
-        'category_slug' => 'getCategorySlug',
-        'host_user_id' => 'getHostUserId',
         'starts_at' => 'getStartsAt',
+        'timezone' => 'getTimezone',
+        'category_slug' => 'getCategorySlug',
+        'theme' => 'getTheme',
+        'seller_event_id' => 'getSellerEventId',
         'scene_id' => 'getSceneId',
+        'host_user_id' => 'getHostUserId',
         'entry_model' => 'getEntryModel',
         'entry_fee_cents' => 'getEntryFeeCents',
         'revenue_share_bps' => 'getRevenueShareBps',
-        'table_count' => 'getTableCount'
+        'table_count' => 'getTableCount',
+        'venue_booking_id' => 'getVenueBookingId',
+        'opens_hour' => 'getOpensHour',
+        'closes_hour' => 'getClosesHour',
+        'floor_plan_version' => 'getFloorPlanVersion',
+        'booking_mode' => 'getBookingMode',
+        'walk_ins' => 'getWalkIns'
     ];
 
     /**
@@ -228,14 +283,14 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    const STATUS_LIVE = 'live';
     const STATUS_DRAFT = 'draft';
-    const STATUS_OPEN = 'open';
+    const STATUS_LIVE = 'live';
     const STATUS_CANCELLED = 'cancelled';
+    const STATUS_OPEN = 'open';
     const STATUS_ENDED = 'ended';
     const ENTRY_MODEL_FREE = 'free';
-    const ENTRY_MODEL_INVITE = 'invite';
     const ENTRY_MODEL_FEE = 'fee';
+    const ENTRY_MODEL_INVITE = 'invite';
     const ENTRY_MODEL_REVENUE_SHARE = 'revenue_share';
 
     /**
@@ -246,10 +301,10 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_LIVE,
             self::STATUS_DRAFT,
-            self::STATUS_OPEN,
+            self::STATUS_LIVE,
             self::STATUS_CANCELLED,
+            self::STATUS_OPEN,
             self::STATUS_ENDED,
         ];
     }
@@ -263,8 +318,8 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
     {
         return [
             self::ENTRY_MODEL_FREE,
-            self::ENTRY_MODEL_INVITE,
             self::ENTRY_MODEL_FEE,
+            self::ENTRY_MODEL_INVITE,
             self::ENTRY_MODEL_REVENUE_SHARE,
         ];
     }
@@ -287,17 +342,28 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
         $this->container['ends_at'] = $data['ends_at'] ?? null;
-        $this->container['category_slug'] = $data['category_slug'] ?? null;
-        $this->container['host_user_id'] = $data['host_user_id'] ?? null;
         $this->container['starts_at'] = $data['starts_at'] ?? null;
+        $this->container['timezone'] = $data['timezone'] ?? null;
+        $this->container['category_slug'] = $data['category_slug'] ?? null;
+        $this->container['theme'] = $data['theme'] ?? null;
+        $this->container['seller_event_id'] = $data['seller_event_id'] ?? null;
         $this->container['scene_id'] = $data['scene_id'] ?? null;
+        $this->container['host_user_id'] = $data['host_user_id'] ?? null;
         $this->container['entry_model'] = $data['entry_model'] ?? null;
         $this->container['entry_fee_cents'] = $data['entry_fee_cents'] ?? null;
         $this->container['revenue_share_bps'] = $data['revenue_share_bps'] ?? null;
         $this->container['table_count'] = $data['table_count'] ?? null;
+        $this->container['venue_booking_id'] = $data['venue_booking_id'] ?? null;
+        $this->container['opens_hour'] = $data['opens_hour'] ?? null;
+        $this->container['closes_hour'] = $data['closes_hour'] ?? null;
+        $this->container['floor_plan_version'] = $data['floor_plan_version'] ?? null;
+        $this->container['booking_mode'] = $data['booking_mode'] ?? null;
+        $this->container['walk_ins'] = $data['walk_ins'] ?? null;
     }
 
     /**
@@ -336,14 +402,20 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
         if ($this->container['ends_at'] === null) {
             $invalidProperties[] = "'ends_at' can't be null";
         }
-        if ($this->container['host_user_id'] === null) {
-            $invalidProperties[] = "'host_user_id' can't be null";
-        }
         if ($this->container['starts_at'] === null) {
             $invalidProperties[] = "'starts_at' can't be null";
         }
+        if ($this->container['timezone'] === null) {
+            $invalidProperties[] = "'timezone' can't be null";
+        }
+        if ($this->container['theme'] === null) {
+            $invalidProperties[] = "'theme' can't be null";
+        }
         if ($this->container['scene_id'] === null) {
             $invalidProperties[] = "'scene_id' can't be null";
+        }
+        if ($this->container['host_user_id'] === null) {
+            $invalidProperties[] = "'host_user_id' can't be null";
         }
         if ($this->container['entry_model'] === null) {
             $invalidProperties[] = "'entry_model' can't be null";
@@ -359,6 +431,21 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
 
         if ($this->container['table_count'] === null) {
             $invalidProperties[] = "'table_count' can't be null";
+        }
+        if ($this->container['opens_hour'] === null) {
+            $invalidProperties[] = "'opens_hour' can't be null";
+        }
+        if ($this->container['closes_hour'] === null) {
+            $invalidProperties[] = "'closes_hour' can't be null";
+        }
+        if ($this->container['floor_plan_version'] === null) {
+            $invalidProperties[] = "'floor_plan_version' can't be null";
+        }
+        if ($this->container['booking_mode'] === null) {
+            $invalidProperties[] = "'booking_mode' can't be null";
+        }
+        if ($this->container['walk_ins'] === null) {
+            $invalidProperties[] = "'walk_ins' can't be null";
         }
         return $invalidProperties;
     }
@@ -448,6 +535,30 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
     }
 
     /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
      * Gets status
      *
      * @return string
@@ -506,6 +617,30 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
     }
 
     /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id storefront_id
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
+
+        return $this;
+    }
+
+    /**
      * Gets ends_at
      *
      * @return \DateTime
@@ -525,54 +660,6 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
     public function setEndsAt($ends_at)
     {
         $this->container['ends_at'] = $ends_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets category_slug
-     *
-     * @return string|null
-     */
-    public function getCategorySlug()
-    {
-        return $this->container['category_slug'];
-    }
-
-    /**
-     * Sets category_slug
-     *
-     * @param string|null $category_slug category_slug
-     *
-     * @return self
-     */
-    public function setCategorySlug($category_slug)
-    {
-        $this->container['category_slug'] = $category_slug;
-
-        return $this;
-    }
-
-    /**
-     * Gets host_user_id
-     *
-     * @return string
-     */
-    public function getHostUserId()
-    {
-        return $this->container['host_user_id'];
-    }
-
-    /**
-     * Sets host_user_id
-     *
-     * @param string $host_user_id host_user_id
-     *
-     * @return self
-     */
-    public function setHostUserId($host_user_id)
-    {
-        $this->container['host_user_id'] = $host_user_id;
 
         return $this;
     }
@@ -602,6 +689,102 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
     }
 
     /**
+     * Gets timezone
+     *
+     * @return string
+     */
+    public function getTimezone()
+    {
+        return $this->container['timezone'];
+    }
+
+    /**
+     * Sets timezone
+     *
+     * @param string $timezone timezone
+     *
+     * @return self
+     */
+    public function setTimezone($timezone)
+    {
+        $this->container['timezone'] = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets category_slug
+     *
+     * @return string|null
+     */
+    public function getCategorySlug()
+    {
+        return $this->container['category_slug'];
+    }
+
+    /**
+     * Sets category_slug
+     *
+     * @param string|null $category_slug category_slug
+     *
+     * @return self
+     */
+    public function setCategorySlug($category_slug)
+    {
+        $this->container['category_slug'] = $category_slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets theme
+     *
+     * @return string
+     */
+    public function getTheme()
+    {
+        return $this->container['theme'];
+    }
+
+    /**
+     * Sets theme
+     *
+     * @param string $theme theme
+     *
+     * @return self
+     */
+    public function setTheme($theme)
+    {
+        $this->container['theme'] = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_event_id
+     *
+     * @return string|null
+     */
+    public function getSellerEventId()
+    {
+        return $this->container['seller_event_id'];
+    }
+
+    /**
+     * Sets seller_event_id
+     *
+     * @param string|null $seller_event_id seller_event_id
+     *
+     * @return self
+     */
+    public function setSellerEventId($seller_event_id)
+    {
+        $this->container['seller_event_id'] = $seller_event_id;
+
+        return $this;
+    }
+
+    /**
      * Gets scene_id
      *
      * @return string
@@ -621,6 +804,30 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
     public function setSceneId($scene_id)
     {
         $this->container['scene_id'] = $scene_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets host_user_id
+     *
+     * @return string
+     */
+    public function getHostUserId()
+    {
+        return $this->container['host_user_id'];
+    }
+
+    /**
+     * Sets host_user_id
+     *
+     * @param string $host_user_id host_user_id
+     *
+     * @return self
+     */
+    public function setHostUserId($host_user_id)
+    {
+        $this->container['host_user_id'] = $host_user_id;
 
         return $this;
     }
@@ -727,6 +934,150 @@ class CreateWorldConventionResponseData implements ModelInterface, ArrayAccess, 
     public function setTableCount($table_count)
     {
         $this->container['table_count'] = $table_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets venue_booking_id
+     *
+     * @return string|null
+     */
+    public function getVenueBookingId()
+    {
+        return $this->container['venue_booking_id'];
+    }
+
+    /**
+     * Sets venue_booking_id
+     *
+     * @param string|null $venue_booking_id venue_booking_id
+     *
+     * @return self
+     */
+    public function setVenueBookingId($venue_booking_id)
+    {
+        $this->container['venue_booking_id'] = $venue_booking_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets opens_hour
+     *
+     * @return float
+     */
+    public function getOpensHour()
+    {
+        return $this->container['opens_hour'];
+    }
+
+    /**
+     * Sets opens_hour
+     *
+     * @param float $opens_hour opens_hour
+     *
+     * @return self
+     */
+    public function setOpensHour($opens_hour)
+    {
+        $this->container['opens_hour'] = $opens_hour;
+
+        return $this;
+    }
+
+    /**
+     * Gets closes_hour
+     *
+     * @return float
+     */
+    public function getClosesHour()
+    {
+        return $this->container['closes_hour'];
+    }
+
+    /**
+     * Sets closes_hour
+     *
+     * @param float $closes_hour closes_hour
+     *
+     * @return self
+     */
+    public function setClosesHour($closes_hour)
+    {
+        $this->container['closes_hour'] = $closes_hour;
+
+        return $this;
+    }
+
+    /**
+     * Gets floor_plan_version
+     *
+     * @return float
+     */
+    public function getFloorPlanVersion()
+    {
+        return $this->container['floor_plan_version'];
+    }
+
+    /**
+     * Sets floor_plan_version
+     *
+     * @param float $floor_plan_version floor_plan_version
+     *
+     * @return self
+     */
+    public function setFloorPlanVersion($floor_plan_version)
+    {
+        $this->container['floor_plan_version'] = $floor_plan_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets booking_mode
+     *
+     * @return string
+     */
+    public function getBookingMode()
+    {
+        return $this->container['booking_mode'];
+    }
+
+    /**
+     * Sets booking_mode
+     *
+     * @param string $booking_mode booking_mode
+     *
+     * @return self
+     */
+    public function setBookingMode($booking_mode)
+    {
+        $this->container['booking_mode'] = $booking_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets walk_ins
+     *
+     * @return float
+     */
+    public function getWalkIns()
+    {
+        return $this->container['walk_ins'];
+    }
+
+    /**
+     * Sets walk_ins
+     *
+     * @param float $walk_ins walk_ins
+     *
+     * @return self
+     */
+    public function setWalkIns($walk_ins)
+    {
+        $this->container['walk_ins'] = $walk_ins;
 
         return $this;
     }

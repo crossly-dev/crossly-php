@@ -69,7 +69,10 @@ class GetInventoryValueHistoryResponseDataPoints implements ModelInterface, Arra
         'cost_cents' => 'float',
         'retail_cents' => 'float',
         'market_cents' => 'float',
-        'stuck_cost_cents' => 'float'
+        'stuck_cost_cents' => 'float',
+        'over90_cost_cents' => 'float',
+        'cost_known_items' => 'float',
+        'reconstructed' => 'bool'
     ];
 
     /**
@@ -89,7 +92,10 @@ class GetInventoryValueHistoryResponseDataPoints implements ModelInterface, Arra
         'cost_cents' => null,
         'retail_cents' => null,
         'market_cents' => null,
-        'stuck_cost_cents' => null
+        'stuck_cost_cents' => null,
+        'over90_cost_cents' => null,
+        'cost_known_items' => null,
+        'reconstructed' => null
     ];
 
     /**
@@ -128,7 +134,10 @@ class GetInventoryValueHistoryResponseDataPoints implements ModelInterface, Arra
         'cost_cents' => 'costCents',
         'retail_cents' => 'retailCents',
         'market_cents' => 'marketCents',
-        'stuck_cost_cents' => 'stuckCostCents'
+        'stuck_cost_cents' => 'stuckCostCents',
+        'over90_cost_cents' => 'over90CostCents',
+        'cost_known_items' => 'costKnownItems',
+        'reconstructed' => 'reconstructed'
     ];
 
     /**
@@ -146,7 +155,10 @@ class GetInventoryValueHistoryResponseDataPoints implements ModelInterface, Arra
         'cost_cents' => 'setCostCents',
         'retail_cents' => 'setRetailCents',
         'market_cents' => 'setMarketCents',
-        'stuck_cost_cents' => 'setStuckCostCents'
+        'stuck_cost_cents' => 'setStuckCostCents',
+        'over90_cost_cents' => 'setOver90CostCents',
+        'cost_known_items' => 'setCostKnownItems',
+        'reconstructed' => 'setReconstructed'
     ];
 
     /**
@@ -164,7 +176,10 @@ class GetInventoryValueHistoryResponseDataPoints implements ModelInterface, Arra
         'cost_cents' => 'getCostCents',
         'retail_cents' => 'getRetailCents',
         'market_cents' => 'getMarketCents',
-        'stuck_cost_cents' => 'getStuckCostCents'
+        'stuck_cost_cents' => 'getStuckCostCents',
+        'over90_cost_cents' => 'getOver90CostCents',
+        'cost_known_items' => 'getCostKnownItems',
+        'reconstructed' => 'getReconstructed'
     ];
 
     /**
@@ -234,6 +249,9 @@ class GetInventoryValueHistoryResponseDataPoints implements ModelInterface, Arra
         $this->container['retail_cents'] = $data['retail_cents'] ?? null;
         $this->container['market_cents'] = $data['market_cents'] ?? null;
         $this->container['stuck_cost_cents'] = $data['stuck_cost_cents'] ?? null;
+        $this->container['over90_cost_cents'] = $data['over90_cost_cents'] ?? null;
+        $this->container['cost_known_items'] = $data['cost_known_items'] ?? null;
+        $this->container['reconstructed'] = $data['reconstructed'] ?? null;
     }
 
     /**
@@ -271,6 +289,9 @@ class GetInventoryValueHistoryResponseDataPoints implements ModelInterface, Arra
         }
         if ($this->container['stuck_cost_cents'] === null) {
             $invalidProperties[] = "'stuck_cost_cents' can't be null";
+        }
+        if ($this->container['reconstructed'] === null) {
+            $invalidProperties[] = "'reconstructed' can't be null";
         }
         return $invalidProperties;
     }
@@ -523,6 +544,78 @@ class GetInventoryValueHistoryResponseDataPoints implements ModelInterface, Arra
     public function setStuckCostCents($stuck_cost_cents)
     {
         $this->container['stuck_cost_cents'] = $stuck_cost_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets over90_cost_cents
+     *
+     * @return float|null
+     */
+    public function getOver90CostCents()
+    {
+        return $this->container['over90_cost_cents'];
+    }
+
+    /**
+     * Sets over90_cost_cents
+     *
+     * @param float|null $over90_cost_cents over90_cost_cents
+     *
+     * @return self
+     */
+    public function setOver90CostCents($over90_cost_cents)
+    {
+        $this->container['over90_cost_cents'] = $over90_cost_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_known_items
+     *
+     * @return float|null
+     */
+    public function getCostKnownItems()
+    {
+        return $this->container['cost_known_items'];
+    }
+
+    /**
+     * Sets cost_known_items
+     *
+     * @param float|null $cost_known_items cost_known_items
+     *
+     * @return self
+     */
+    public function setCostKnownItems($cost_known_items)
+    {
+        $this->container['cost_known_items'] = $cost_known_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets reconstructed
+     *
+     * @return bool
+     */
+    public function getReconstructed()
+    {
+        return $this->container['reconstructed'];
+    }
+
+    /**
+     * Sets reconstructed
+     *
+     * @param bool $reconstructed reconstructed
+     *
+     * @return self
+     */
+    public function setReconstructed($reconstructed)
+    {
+        $this->container['reconstructed'] = $reconstructed;
 
         return $this;
     }

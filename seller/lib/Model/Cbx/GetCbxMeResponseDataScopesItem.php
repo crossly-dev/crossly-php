@@ -44,11 +44,11 @@ class GetCbxMeResponseDataScopesItem
     /**
      * Possible values of this enum
      */
+    const READ = 'read';
+
     const SPEND = 'spend';
 
     const CAMPAIGN = 'campaign';
-
-    const READ = 'read';
 
     const ACCRUE = 'accrue';
 
@@ -61,9 +61,9 @@ class GetCbxMeResponseDataScopesItem
     public static function getAllowableEnumValues()
     {
         return [
+            self::READ,
             self::SPEND,
             self::CAMPAIGN,
-            self::READ,
             self::ACCRUE,
             self::TREASURY
         ];

@@ -60,9 +60,9 @@ class GetVaultMarketMmResponseRulesSpreadCapBps implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
+        'c' => 'float',
         'a' => 'float',
         'b' => 'float',
-        'c' => 'float',
         'd' => 'float'
     ];
 
@@ -74,9 +74,9 @@ class GetVaultMarketMmResponseRulesSpreadCapBps implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'c' => null,
         'a' => null,
         'b' => null,
-        'c' => null,
         'd' => null
     ];
 
@@ -107,9 +107,9 @@ class GetVaultMarketMmResponseRulesSpreadCapBps implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
+        'c' => 'C',
         'a' => 'A',
         'b' => 'B',
-        'c' => 'C',
         'd' => 'D'
     ];
 
@@ -119,9 +119,9 @@ class GetVaultMarketMmResponseRulesSpreadCapBps implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
+        'c' => 'setC',
         'a' => 'setA',
         'b' => 'setB',
-        'c' => 'setC',
         'd' => 'setD'
     ];
 
@@ -131,9 +131,9 @@ class GetVaultMarketMmResponseRulesSpreadCapBps implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
+        'c' => 'getC',
         'a' => 'getA',
         'b' => 'getB',
-        'c' => 'getC',
         'd' => 'getD'
     ];
 
@@ -194,9 +194,9 @@ class GetVaultMarketMmResponseRulesSpreadCapBps implements ModelInterface, Array
      */
     public function __construct(array $data = null)
     {
+        $this->container['c'] = $data['c'] ?? null;
         $this->container['a'] = $data['a'] ?? null;
         $this->container['b'] = $data['b'] ?? null;
-        $this->container['c'] = $data['c'] ?? null;
         $this->container['d'] = $data['d'] ?? null;
     }
 
@@ -209,14 +209,14 @@ class GetVaultMarketMmResponseRulesSpreadCapBps implements ModelInterface, Array
     {
         $invalidProperties = [];
 
+        if ($this->container['c'] === null) {
+            $invalidProperties[] = "'c' can't be null";
+        }
         if ($this->container['a'] === null) {
             $invalidProperties[] = "'a' can't be null";
         }
         if ($this->container['b'] === null) {
             $invalidProperties[] = "'b' can't be null";
-        }
-        if ($this->container['c'] === null) {
-            $invalidProperties[] = "'c' can't be null";
         }
         if ($this->container['d'] === null) {
             $invalidProperties[] = "'d' can't be null";
@@ -235,6 +235,30 @@ class GetVaultMarketMmResponseRulesSpreadCapBps implements ModelInterface, Array
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets c
+     *
+     * @return float
+     */
+    public function getC()
+    {
+        return $this->container['c'];
+    }
+
+    /**
+     * Sets c
+     *
+     * @param float $c c
+     *
+     * @return self
+     */
+    public function setC($c)
+    {
+        $this->container['c'] = $c;
+
+        return $this;
+    }
 
     /**
      * Gets a
@@ -280,30 +304,6 @@ class GetVaultMarketMmResponseRulesSpreadCapBps implements ModelInterface, Array
     public function setB($b)
     {
         $this->container['b'] = $b;
-
-        return $this;
-    }
-
-    /**
-     * Gets c
-     *
-     * @return float
-     */
-    public function getC()
-    {
-        return $this->container['c'];
-    }
-
-    /**
-     * Sets c
-     *
-     * @param float $c c
-     *
-     * @return self
-     */
-    public function setC($c)
-    {
-        $this->container['c'] = $c;
 
         return $this;
     }

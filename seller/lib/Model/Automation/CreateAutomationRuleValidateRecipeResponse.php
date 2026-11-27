@@ -61,8 +61,8 @@ class CreateAutomationRuleValidateRecipeResponse implements ModelInterface, Arra
       */
     protected static $openAPITypes = [
         'valid' => 'bool',
-        'error' => 'string',
-        'details' => '\Crossly\Model\Automation\CreateAutomationRuleValidateRecipeResponseDetails'
+        'count' => 'float',
+        'results' => '\Crossly\Model\Automation\CreateAutomationRuleValidateRecipeResponseResults[]'
     ];
 
     /**
@@ -74,8 +74,8 @@ class CreateAutomationRuleValidateRecipeResponse implements ModelInterface, Arra
       */
     protected static $openAPIFormats = [
         'valid' => null,
-        'error' => null,
-        'details' => null
+        'count' => null,
+        'results' => null
     ];
 
     /**
@@ -106,8 +106,8 @@ class CreateAutomationRuleValidateRecipeResponse implements ModelInterface, Arra
      */
     protected static $attributeMap = [
         'valid' => 'valid',
-        'error' => 'error',
-        'details' => 'details'
+        'count' => 'count',
+        'results' => 'results'
     ];
 
     /**
@@ -117,8 +117,8 @@ class CreateAutomationRuleValidateRecipeResponse implements ModelInterface, Arra
      */
     protected static $setters = [
         'valid' => 'setValid',
-        'error' => 'setError',
-        'details' => 'setDetails'
+        'count' => 'setCount',
+        'results' => 'setResults'
     ];
 
     /**
@@ -128,8 +128,8 @@ class CreateAutomationRuleValidateRecipeResponse implements ModelInterface, Arra
      */
     protected static $getters = [
         'valid' => 'getValid',
-        'error' => 'getError',
-        'details' => 'getDetails'
+        'count' => 'getCount',
+        'results' => 'getResults'
     ];
 
     /**
@@ -190,8 +190,8 @@ class CreateAutomationRuleValidateRecipeResponse implements ModelInterface, Arra
     public function __construct(array $data = null)
     {
         $this->container['valid'] = $data['valid'] ?? null;
-        $this->container['error'] = $data['error'] ?? null;
-        $this->container['details'] = $data['details'] ?? null;
+        $this->container['count'] = $data['count'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -206,11 +206,11 @@ class CreateAutomationRuleValidateRecipeResponse implements ModelInterface, Arra
         if ($this->container['valid'] === null) {
             $invalidProperties[] = "'valid' can't be null";
         }
-        if ($this->container['error'] === null) {
-            $invalidProperties[] = "'error' can't be null";
+        if ($this->container['count'] === null) {
+            $invalidProperties[] = "'count' can't be null";
         }
-        if ($this->container['details'] === null) {
-            $invalidProperties[] = "'details' can't be null";
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
         }
         return $invalidProperties;
     }
@@ -252,49 +252,49 @@ class CreateAutomationRuleValidateRecipeResponse implements ModelInterface, Arra
     }
 
     /**
-     * Gets error
+     * Gets count
      *
-     * @return string
+     * @return float
      */
-    public function getError()
+    public function getCount()
     {
-        return $this->container['error'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets error
+     * Sets count
      *
-     * @param string $error error
+     * @param float $count count
      *
      * @return self
      */
-    public function setError($error)
+    public function setCount($count)
     {
-        $this->container['error'] = $error;
+        $this->container['count'] = $count;
 
         return $this;
     }
 
     /**
-     * Gets details
+     * Gets results
      *
-     * @return \Crossly\Model\Automation\CreateAutomationRuleValidateRecipeResponseDetails
+     * @return \Crossly\Model\Automation\CreateAutomationRuleValidateRecipeResponseResults[]
      */
-    public function getDetails()
+    public function getResults()
     {
-        return $this->container['details'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets details
+     * Sets results
      *
-     * @param \Crossly\Model\Automation\CreateAutomationRuleValidateRecipeResponseDetails $details details
+     * @param \Crossly\Model\Automation\CreateAutomationRuleValidateRecipeResponseResults[] $results results
      *
      * @return self
      */
-    public function setDetails($details)
+    public function setResults($results)
     {
-        $this->container['details'] = $details;
+        $this->container['results'] = $results;
 
         return $this;
     }

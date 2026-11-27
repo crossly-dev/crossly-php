@@ -60,8 +60,8 @@ class GetBuyerGiftFinderOptionResponseDataBudgets implements ModelInterface, Arr
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
-        'key' => 'string'
+        'key' => 'string',
+        'label' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class GetBuyerGiftFinderOptionResponseDataBudgets implements ModelInterface, Arr
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
-        'key' => null
+        'key' => null,
+        'label' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class GetBuyerGiftFinderOptionResponseDataBudgets implements ModelInterface, Arr
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
-        'key' => 'key'
+        'key' => 'key',
+        'label' => 'label'
     ];
 
     /**
@@ -113,8 +113,8 @@ class GetBuyerGiftFinderOptionResponseDataBudgets implements ModelInterface, Arr
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
-        'key' => 'setKey'
+        'key' => 'setKey',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -123,8 +123,8 @@ class GetBuyerGiftFinderOptionResponseDataBudgets implements ModelInterface, Arr
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
-        'key' => 'getKey'
+        'key' => 'getKey',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -184,8 +184,8 @@ class GetBuyerGiftFinderOptionResponseDataBudgets implements ModelInterface, Arr
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['key'] = $data['key'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
     }
 
     /**
@@ -197,11 +197,11 @@ class GetBuyerGiftFinderOptionResponseDataBudgets implements ModelInterface, Arr
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
         if ($this->container['key'] === null) {
             $invalidProperties[] = "'key' can't be null";
+        }
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,30 +217,6 @@ class GetBuyerGiftFinderOptionResponseDataBudgets implements ModelInterface, Arr
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label label
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
 
     /**
      * Gets key
@@ -262,6 +238,30 @@ class GetBuyerGiftFinderOptionResponseDataBudgets implements ModelInterface, Arr
     public function setKey($key)
     {
         $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }

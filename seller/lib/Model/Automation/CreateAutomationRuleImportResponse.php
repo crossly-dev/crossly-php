@@ -60,7 +60,7 @@ class CreateAutomationRuleImportResponse implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'created' => '\Crossly\Model\Automation\CreateAutomationRuleImportResponseCreated[]',
+        'created' => '\Crossly\Model\Common\IdName[]',
         'errors' => '\Crossly\Model\Automation\CreateAutomationRuleImportResponseErrors[]'
     ];
 
@@ -221,7 +221,7 @@ class CreateAutomationRuleImportResponse implements ModelInterface, ArrayAccess,
     /**
      * Gets created
      *
-     * @return \Crossly\Model\Automation\CreateAutomationRuleImportResponseCreated[]
+     * @return \Crossly\Model\Common\IdName[]
      */
     public function getCreated()
     {
@@ -231,7 +231,7 @@ class CreateAutomationRuleImportResponse implements ModelInterface, ArrayAccess,
     /**
      * Sets created
      *
-     * @param \Crossly\Model\Automation\CreateAutomationRuleImportResponseCreated[] $created created
+     * @param \Crossly\Model\Common\IdName[] $created created
      *
      * @return self
      */

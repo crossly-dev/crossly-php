@@ -61,7 +61,7 @@ class ListDropMineItemSeller implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'shop' => '\Crossly\Model\Common\NameSlug'
+        'shop' => '\Crossly\Model\Common\NameSlug2'
     ];
 
     /**
@@ -242,7 +242,7 @@ class ListDropMineItemSeller implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets shop
      *
-     * @return \Crossly\Model\Common\NameSlug|null
+     * @return \Crossly\Model\Common\NameSlug2|null
      */
     public function getShop()
     {
@@ -252,7 +252,7 @@ class ListDropMineItemSeller implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets shop
      *
-     * @param \Crossly\Model\Common\NameSlug|null $shop shop
+     * @param \Crossly\Model\Common\NameSlug2|null $shop shop
      *
      * @return self
      */

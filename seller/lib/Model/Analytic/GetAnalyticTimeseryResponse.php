@@ -61,6 +61,7 @@ class GetAnalyticTimeseryResponse implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'days' => 'float',
+        'granularity' => 'string',
         'series' => '\Crossly\Model\Analytic\GetAnalyticTimeseryResponseSeries[]'
     ];
 
@@ -73,6 +74,7 @@ class GetAnalyticTimeseryResponse implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPIFormats = [
         'days' => null,
+        'granularity' => null,
         'series' => null
     ];
 
@@ -104,6 +106,7 @@ class GetAnalyticTimeseryResponse implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'days' => 'days',
+        'granularity' => 'granularity',
         'series' => 'series'
     ];
 
@@ -114,6 +117,7 @@ class GetAnalyticTimeseryResponse implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'days' => 'setDays',
+        'granularity' => 'setGranularity',
         'series' => 'setSeries'
     ];
 
@@ -124,6 +128,7 @@ class GetAnalyticTimeseryResponse implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'days' => 'getDays',
+        'granularity' => 'getGranularity',
         'series' => 'getSeries'
     ];
 
@@ -168,6 +173,23 @@ class GetAnalyticTimeseryResponse implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    const GRANULARITY_DAY = 'day';
+    const GRANULARITY_WEEK = 'week';
+    const GRANULARITY_MONTH = 'month';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getGranularityAllowableValues()
+    {
+        return [
+            self::GRANULARITY_DAY,
+            self::GRANULARITY_WEEK,
+            self::GRANULARITY_MONTH,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -185,6 +207,7 @@ class GetAnalyticTimeseryResponse implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(array $data = null)
     {
         $this->container['days'] = $data['days'] ?? null;
+        $this->container['granularity'] = $data['granularity'] ?? null;
         $this->container['series'] = $data['series'] ?? null;
     }
 
@@ -200,6 +223,18 @@ class GetAnalyticTimeseryResponse implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['days'] === null) {
             $invalidProperties[] = "'days' can't be null";
         }
+        if ($this->container['granularity'] === null) {
+            $invalidProperties[] = "'granularity' can't be null";
+        }
+        $allowedValues = $this->getGranularityAllowableValues();
+        if (!is_null($this->container['granularity']) && !in_array($this->container['granularity'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'granularity', must be one of '%s'",
+                $this->container['granularity'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['series'] === null) {
             $invalidProperties[] = "'series' can't be null";
         }
@@ -238,6 +273,40 @@ class GetAnalyticTimeseryResponse implements ModelInterface, ArrayAccess, \JsonS
     public function setDays($days)
     {
         $this->container['days'] = $days;
+
+        return $this;
+    }
+
+    /**
+     * Gets granularity
+     *
+     * @return string
+     */
+    public function getGranularity()
+    {
+        return $this->container['granularity'];
+    }
+
+    /**
+     * Sets granularity
+     *
+     * @param string $granularity granularity
+     *
+     * @return self
+     */
+    public function setGranularity($granularity)
+    {
+        $allowedValues = $this->getGranularityAllowableValues();
+        if (!in_array($granularity, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'granularity', must be one of '%s'",
+                    $granularity,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['granularity'] = $granularity;
 
         return $this;
     }

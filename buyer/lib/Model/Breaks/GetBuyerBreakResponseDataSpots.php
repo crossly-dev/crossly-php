@@ -61,15 +61,15 @@ class GetBuyerBreakResponseDataSpots implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'label' => 'string',
         'position' => 'float',
-        'held_until' => 'string',
-        'hits' => 'string',
-        'buyer' => 'string',
+        'label' => 'string',
         'taken' => 'bool',
         'mine' => 'bool',
         'held_by_me' => 'bool',
-        'held_by_other' => 'bool'
+        'held_by_other' => 'bool',
+        'held_until' => 'string',
+        'buyer' => 'string',
+        'hits' => 'string'
     ];
 
     /**
@@ -81,15 +81,15 @@ class GetBuyerBreakResponseDataSpots implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'label' => null,
         'position' => null,
-        'held_until' => null,
-        'hits' => null,
-        'buyer' => null,
+        'label' => null,
         'taken' => null,
         'mine' => null,
         'held_by_me' => null,
-        'held_by_other' => null
+        'held_by_other' => null,
+        'held_until' => null,
+        'buyer' => null,
+        'hits' => null
     ];
 
     /**
@@ -120,15 +120,15 @@ class GetBuyerBreakResponseDataSpots implements ModelInterface, ArrayAccess, \Js
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'label' => 'label',
         'position' => 'position',
-        'held_until' => 'heldUntil',
-        'hits' => 'hits',
-        'buyer' => 'buyer',
+        'label' => 'label',
         'taken' => 'taken',
         'mine' => 'mine',
         'held_by_me' => 'heldByMe',
-        'held_by_other' => 'heldByOther'
+        'held_by_other' => 'heldByOther',
+        'held_until' => 'heldUntil',
+        'buyer' => 'buyer',
+        'hits' => 'hits'
     ];
 
     /**
@@ -138,15 +138,15 @@ class GetBuyerBreakResponseDataSpots implements ModelInterface, ArrayAccess, \Js
      */
     protected static $setters = [
         'id' => 'setId',
-        'label' => 'setLabel',
         'position' => 'setPosition',
-        'held_until' => 'setHeldUntil',
-        'hits' => 'setHits',
-        'buyer' => 'setBuyer',
+        'label' => 'setLabel',
         'taken' => 'setTaken',
         'mine' => 'setMine',
         'held_by_me' => 'setHeldByMe',
-        'held_by_other' => 'setHeldByOther'
+        'held_by_other' => 'setHeldByOther',
+        'held_until' => 'setHeldUntil',
+        'buyer' => 'setBuyer',
+        'hits' => 'setHits'
     ];
 
     /**
@@ -156,15 +156,15 @@ class GetBuyerBreakResponseDataSpots implements ModelInterface, ArrayAccess, \Js
      */
     protected static $getters = [
         'id' => 'getId',
-        'label' => 'getLabel',
         'position' => 'getPosition',
-        'held_until' => 'getHeldUntil',
-        'hits' => 'getHits',
-        'buyer' => 'getBuyer',
+        'label' => 'getLabel',
         'taken' => 'getTaken',
         'mine' => 'getMine',
         'held_by_me' => 'getHeldByMe',
-        'held_by_other' => 'getHeldByOther'
+        'held_by_other' => 'getHeldByOther',
+        'held_until' => 'getHeldUntil',
+        'buyer' => 'getBuyer',
+        'hits' => 'getHits'
     ];
 
     /**
@@ -225,15 +225,15 @@ class GetBuyerBreakResponseDataSpots implements ModelInterface, ArrayAccess, \Js
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['position'] = $data['position'] ?? null;
-        $this->container['held_until'] = $data['held_until'] ?? null;
-        $this->container['hits'] = $data['hits'] ?? null;
-        $this->container['buyer'] = $data['buyer'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
         $this->container['taken'] = $data['taken'] ?? null;
         $this->container['mine'] = $data['mine'] ?? null;
         $this->container['held_by_me'] = $data['held_by_me'] ?? null;
         $this->container['held_by_other'] = $data['held_by_other'] ?? null;
+        $this->container['held_until'] = $data['held_until'] ?? null;
+        $this->container['buyer'] = $data['buyer'] ?? null;
+        $this->container['hits'] = $data['hits'] ?? null;
     }
 
     /**
@@ -248,11 +248,11 @@ class GetBuyerBreakResponseDataSpots implements ModelInterface, ArrayAccess, \Js
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
         if ($this->container['position'] === null) {
             $invalidProperties[] = "'position' can't be null";
+        }
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
         if ($this->container['taken'] === null) {
             $invalidProperties[] = "'taken' can't be null";
@@ -306,30 +306,6 @@ class GetBuyerBreakResponseDataSpots implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label label
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
      * Gets position
      *
      * @return float
@@ -354,73 +330,25 @@ class GetBuyerBreakResponseDataSpots implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets held_until
+     * Gets label
      *
-     * @return string|null
+     * @return string
      */
-    public function getHeldUntil()
+    public function getLabel()
     {
-        return $this->container['held_until'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets held_until
+     * Sets label
      *
-     * @param string|null $held_until held_until
+     * @param string $label label
      *
      * @return self
      */
-    public function setHeldUntil($held_until)
+    public function setLabel($label)
     {
-        $this->container['held_until'] = $held_until;
-
-        return $this;
-    }
-
-    /**
-     * Gets hits
-     *
-     * @return string|null
-     */
-    public function getHits()
-    {
-        return $this->container['hits'];
-    }
-
-    /**
-     * Sets hits
-     *
-     * @param string|null $hits hits
-     *
-     * @return self
-     */
-    public function setHits($hits)
-    {
-        $this->container['hits'] = $hits;
-
-        return $this;
-    }
-
-    /**
-     * Gets buyer
-     *
-     * @return string|null
-     */
-    public function getBuyer()
-    {
-        return $this->container['buyer'];
-    }
-
-    /**
-     * Sets buyer
-     *
-     * @param string|null $buyer buyer
-     *
-     * @return self
-     */
-    public function setBuyer($buyer)
-    {
-        $this->container['buyer'] = $buyer;
+        $this->container['label'] = $label;
 
         return $this;
     }
@@ -517,6 +445,78 @@ class GetBuyerBreakResponseDataSpots implements ModelInterface, ArrayAccess, \Js
     public function setHeldByOther($held_by_other)
     {
         $this->container['held_by_other'] = $held_by_other;
+
+        return $this;
+    }
+
+    /**
+     * Gets held_until
+     *
+     * @return string|null
+     */
+    public function getHeldUntil()
+    {
+        return $this->container['held_until'];
+    }
+
+    /**
+     * Sets held_until
+     *
+     * @param string|null $held_until held_until
+     *
+     * @return self
+     */
+    public function setHeldUntil($held_until)
+    {
+        $this->container['held_until'] = $held_until;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer
+     *
+     * @return string|null
+     */
+    public function getBuyer()
+    {
+        return $this->container['buyer'];
+    }
+
+    /**
+     * Sets buyer
+     *
+     * @param string|null $buyer buyer
+     *
+     * @return self
+     */
+    public function setBuyer($buyer)
+    {
+        $this->container['buyer'] = $buyer;
+
+        return $this;
+    }
+
+    /**
+     * Gets hits
+     *
+     * @return string|null
+     */
+    public function getHits()
+    {
+        return $this->container['hits'];
+    }
+
+    /**
+     * Sets hits
+     *
+     * @param string|null $hits hits
+     *
+     * @return self
+     */
+    public function setHits($hits)
+    {
+        $this->container['hits'] = $hits;
 
         return $this;
     }

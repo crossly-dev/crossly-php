@@ -188,8 +188,8 @@ class GetVaultMarketDcmOptionsInputResponseListed implements ModelInterface, Arr
         return self::$openAPIModelName;
     }
 
-    const OPTION_TYPE_CALL = 'call';
     const OPTION_TYPE_PUT = 'put';
+    const OPTION_TYPE_CALL = 'call';
 
     /**
      * Gets allowable values of the enum
@@ -199,8 +199,8 @@ class GetVaultMarketDcmOptionsInputResponseListed implements ModelInterface, Arr
     public function getOptionTypeAllowableValues()
     {
         return [
-            self::OPTION_TYPE_CALL,
             self::OPTION_TYPE_PUT,
+            self::OPTION_TYPE_CALL,
         ];
     }
 

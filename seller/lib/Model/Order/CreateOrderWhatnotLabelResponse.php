@@ -60,8 +60,19 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'shipment' => '\Crossly\Model\Order\CreateOrderWhatnotLabelResponseShipment',
-        'recorded' => 'bool'
+        'shipment' => '\Crossly\Model\Order\GetOrderWhatnotShipmentResponseShipment',
+        'recorded' => 'bool',
+        'ok' => 'bool',
+        'download_url' => 'string',
+        'email_only' => 'bool',
+        'label_url' => 'string',
+        'tracking_number' => 'string',
+        'carrier' => 'string',
+        'service' => 'string',
+        'document_kind' => 'string',
+        'web_url' => 'string',
+        'pending' => 'bool',
+        'message' => 'string'
     ];
 
     /**
@@ -73,7 +84,18 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPIFormats = [
         'shipment' => null,
-        'recorded' => null
+        'recorded' => null,
+        'ok' => null,
+        'download_url' => null,
+        'email_only' => null,
+        'label_url' => null,
+        'tracking_number' => null,
+        'carrier' => null,
+        'service' => null,
+        'document_kind' => null,
+        'web_url' => null,
+        'pending' => null,
+        'message' => null
     ];
 
     /**
@@ -104,7 +126,18 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         'shipment' => 'shipment',
-        'recorded' => 'recorded'
+        'recorded' => 'recorded',
+        'ok' => 'ok',
+        'download_url' => 'downloadUrl',
+        'email_only' => 'emailOnly',
+        'label_url' => 'labelUrl',
+        'tracking_number' => 'trackingNumber',
+        'carrier' => 'carrier',
+        'service' => 'service',
+        'document_kind' => 'documentKind',
+        'web_url' => 'webUrl',
+        'pending' => 'pending',
+        'message' => 'message'
     ];
 
     /**
@@ -114,7 +147,18 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         'shipment' => 'setShipment',
-        'recorded' => 'setRecorded'
+        'recorded' => 'setRecorded',
+        'ok' => 'setOk',
+        'download_url' => 'setDownloadUrl',
+        'email_only' => 'setEmailOnly',
+        'label_url' => 'setLabelUrl',
+        'tracking_number' => 'setTrackingNumber',
+        'carrier' => 'setCarrier',
+        'service' => 'setService',
+        'document_kind' => 'setDocumentKind',
+        'web_url' => 'setWebUrl',
+        'pending' => 'setPending',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -124,7 +168,18 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         'shipment' => 'getShipment',
-        'recorded' => 'getRecorded'
+        'recorded' => 'getRecorded',
+        'ok' => 'getOk',
+        'download_url' => 'getDownloadUrl',
+        'email_only' => 'getEmailOnly',
+        'label_url' => 'getLabelUrl',
+        'tracking_number' => 'getTrackingNumber',
+        'carrier' => 'getCarrier',
+        'service' => 'getService',
+        'document_kind' => 'getDocumentKind',
+        'web_url' => 'getWebUrl',
+        'pending' => 'getPending',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -186,6 +241,17 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
     {
         $this->container['shipment'] = $data['shipment'] ?? null;
         $this->container['recorded'] = $data['recorded'] ?? null;
+        $this->container['ok'] = $data['ok'] ?? null;
+        $this->container['download_url'] = $data['download_url'] ?? null;
+        $this->container['email_only'] = $data['email_only'] ?? null;
+        $this->container['label_url'] = $data['label_url'] ?? null;
+        $this->container['tracking_number'] = $data['tracking_number'] ?? null;
+        $this->container['carrier'] = $data['carrier'] ?? null;
+        $this->container['service'] = $data['service'] ?? null;
+        $this->container['document_kind'] = $data['document_kind'] ?? null;
+        $this->container['web_url'] = $data['web_url'] ?? null;
+        $this->container['pending'] = $data['pending'] ?? null;
+        $this->container['message'] = $data['message'] ?? null;
     }
 
     /**
@@ -197,12 +263,6 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['shipment'] === null) {
-            $invalidProperties[] = "'shipment' can't be null";
-        }
-        if ($this->container['recorded'] === null) {
-            $invalidProperties[] = "'recorded' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -221,7 +281,7 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets shipment
      *
-     * @return \Crossly\Model\Order\CreateOrderWhatnotLabelResponseShipment
+     * @return \Crossly\Model\Order\GetOrderWhatnotShipmentResponseShipment|null
      */
     public function getShipment()
     {
@@ -231,7 +291,7 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets shipment
      *
-     * @param \Crossly\Model\Order\CreateOrderWhatnotLabelResponseShipment $shipment shipment
+     * @param \Crossly\Model\Order\GetOrderWhatnotShipmentResponseShipment|null $shipment shipment
      *
      * @return self
      */
@@ -245,7 +305,7 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets recorded
      *
-     * @return bool
+     * @return bool|null
      */
     public function getRecorded()
     {
@@ -255,13 +315,277 @@ class CreateOrderWhatnotLabelResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets recorded
      *
-     * @param bool $recorded recorded
+     * @param bool|null $recorded recorded
      *
      * @return self
      */
     public function setRecorded($recorded)
     {
         $this->container['recorded'] = $recorded;
+
+        return $this;
+    }
+
+    /**
+     * Gets ok
+     *
+     * @return bool|null
+     */
+    public function getOk()
+    {
+        return $this->container['ok'];
+    }
+
+    /**
+     * Sets ok
+     *
+     * @param bool|null $ok ok
+     *
+     * @return self
+     */
+    public function setOk($ok)
+    {
+        $this->container['ok'] = $ok;
+
+        return $this;
+    }
+
+    /**
+     * Gets download_url
+     *
+     * @return string|null
+     */
+    public function getDownloadUrl()
+    {
+        return $this->container['download_url'];
+    }
+
+    /**
+     * Sets download_url
+     *
+     * @param string|null $download_url Absent for an additional label, which Poshmark delivers only by email.
+     *
+     * @return self
+     */
+    public function setDownloadUrl($download_url)
+    {
+        $this->container['download_url'] = $download_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_only
+     *
+     * @return bool|null
+     */
+    public function getEmailOnly()
+    {
+        return $this->container['email_only'];
+    }
+
+    /**
+     * Sets email_only
+     *
+     * @param bool|null $email_only True when the label exists only in the seller's inbox.
+     *
+     * @return self
+     */
+    public function setEmailOnly($email_only)
+    {
+        $this->container['email_only'] = $email_only;
+
+        return $this;
+    }
+
+    /**
+     * Gets label_url
+     *
+     * @return string|null
+     */
+    public function getLabelUrl()
+    {
+        return $this->container['label_url'];
+    }
+
+    /**
+     * Sets label_url
+     *
+     * @param string|null $label_url label_url
+     *
+     * @return self
+     */
+    public function setLabelUrl($label_url)
+    {
+        $this->container['label_url'] = $label_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_number
+     *
+     * @return string|null
+     */
+    public function getTrackingNumber()
+    {
+        return $this->container['tracking_number'];
+    }
+
+    /**
+     * Sets tracking_number
+     *
+     * @param string|null $tracking_number tracking_number
+     *
+     * @return self
+     */
+    public function setTrackingNumber($tracking_number)
+    {
+        $this->container['tracking_number'] = $tracking_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets carrier
+     *
+     * @return string|null
+     */
+    public function getCarrier()
+    {
+        return $this->container['carrier'];
+    }
+
+    /**
+     * Sets carrier
+     *
+     * @param string|null $carrier carrier
+     *
+     * @return self
+     */
+    public function setCarrier($carrier)
+    {
+        $this->container['carrier'] = $carrier;
+
+        return $this;
+    }
+
+    /**
+     * Gets service
+     *
+     * @return string|null
+     */
+    public function getService()
+    {
+        return $this->container['service'];
+    }
+
+    /**
+     * Sets service
+     *
+     * @param string|null $service service
+     *
+     * @return self
+     */
+    public function setService($service)
+    {
+        $this->container['service'] = $service;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_kind
+     *
+     * @return string|null
+     */
+    public function getDocumentKind()
+    {
+        return $this->container['document_kind'];
+    }
+
+    /**
+     * Sets document_kind
+     *
+     * @param string|null $document_kind document_kind
+     *
+     * @return self
+     */
+    public function setDocumentKind($document_kind)
+    {
+        $this->container['document_kind'] = $document_kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets web_url
+     *
+     * @return string|null
+     */
+    public function getWebUrl()
+    {
+        return $this->container['web_url'];
+    }
+
+    /**
+     * Sets web_url
+     *
+     * @param string|null $web_url web_url
+     *
+     * @return self
+     */
+    public function setWebUrl($web_url)
+    {
+        $this->container['web_url'] = $web_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets pending
+     *
+     * @return bool|null
+     */
+    public function getPending()
+    {
+        return $this->container['pending'];
+    }
+
+    /**
+     * Sets pending
+     *
+     * @param bool|null $pending pending
+     *
+     * @return self
+     */
+    public function setPending($pending)
+    {
+        $this->container['pending'] = $pending;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message message
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
 
         return $this;
     }

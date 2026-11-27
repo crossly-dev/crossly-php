@@ -63,9 +63,16 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
         'bucket' => 'string',
         'item_count' => 'float',
         'unit_count' => 'float',
-        'cost_cents' => 'float',
         'retail_cents' => 'float',
-        'recommendation' => 'string'
+        'recommendation' => 'string',
+        'key' => 'string',
+        'items' => 'float',
+        'units' => 'float',
+        'cost_cents' => 'float',
+        'cost_known_items' => 'float',
+        'cost_unknown_items' => 'float',
+        'listed_value_cents' => 'float',
+        'market_value_cents' => 'float'
     ];
 
     /**
@@ -79,9 +86,16 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
         'bucket' => null,
         'item_count' => null,
         'unit_count' => null,
-        'cost_cents' => null,
         'retail_cents' => null,
-        'recommendation' => null
+        'recommendation' => null,
+        'key' => null,
+        'items' => null,
+        'units' => null,
+        'cost_cents' => null,
+        'cost_known_items' => null,
+        'cost_unknown_items' => null,
+        'listed_value_cents' => null,
+        'market_value_cents' => null
     ];
 
     /**
@@ -114,9 +128,16 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
         'bucket' => 'bucket',
         'item_count' => 'itemCount',
         'unit_count' => 'unitCount',
-        'cost_cents' => 'costCents',
         'retail_cents' => 'retailCents',
-        'recommendation' => 'recommendation'
+        'recommendation' => 'recommendation',
+        'key' => 'key',
+        'items' => 'items',
+        'units' => 'units',
+        'cost_cents' => 'costCents',
+        'cost_known_items' => 'costKnownItems',
+        'cost_unknown_items' => 'costUnknownItems',
+        'listed_value_cents' => 'listedValueCents',
+        'market_value_cents' => 'marketValueCents'
     ];
 
     /**
@@ -128,9 +149,16 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
         'bucket' => 'setBucket',
         'item_count' => 'setItemCount',
         'unit_count' => 'setUnitCount',
-        'cost_cents' => 'setCostCents',
         'retail_cents' => 'setRetailCents',
-        'recommendation' => 'setRecommendation'
+        'recommendation' => 'setRecommendation',
+        'key' => 'setKey',
+        'items' => 'setItems',
+        'units' => 'setUnits',
+        'cost_cents' => 'setCostCents',
+        'cost_known_items' => 'setCostKnownItems',
+        'cost_unknown_items' => 'setCostUnknownItems',
+        'listed_value_cents' => 'setListedValueCents',
+        'market_value_cents' => 'setMarketValueCents'
     ];
 
     /**
@@ -142,9 +170,16 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
         'bucket' => 'getBucket',
         'item_count' => 'getItemCount',
         'unit_count' => 'getUnitCount',
-        'cost_cents' => 'getCostCents',
         'retail_cents' => 'getRetailCents',
-        'recommendation' => 'getRecommendation'
+        'recommendation' => 'getRecommendation',
+        'key' => 'getKey',
+        'items' => 'getItems',
+        'units' => 'getUnits',
+        'cost_cents' => 'getCostCents',
+        'cost_known_items' => 'getCostKnownItems',
+        'cost_unknown_items' => 'getCostUnknownItems',
+        'listed_value_cents' => 'getListedValueCents',
+        'market_value_cents' => 'getMarketValueCents'
     ];
 
     /**
@@ -188,11 +223,16 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
+    const BUCKET_UNLISTED = 'unlisted';
+    const BUCKET__90 = '90+';
     const BUCKET__0_7 = '0-7';
     const BUCKET__7_30 = '7-30';
     const BUCKET__30_90 = '30-90';
-    const BUCKET__90 = '90+';
-    const BUCKET_UNLISTED = 'unlisted';
+    const KEY_UNLISTED = 'unlisted';
+    const KEY_LT7 = 'lt7';
+    const KEY_D7_30 = 'd7_30';
+    const KEY_D30_90 = 'd30_90';
+    const KEY_GT90 = 'gt90';
 
     /**
      * Gets allowable values of the enum
@@ -202,11 +242,27 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
     public function getBucketAllowableValues()
     {
         return [
+            self::BUCKET_UNLISTED,
+            self::BUCKET__90,
             self::BUCKET__0_7,
             self::BUCKET__7_30,
             self::BUCKET__30_90,
-            self::BUCKET__90,
-            self::BUCKET_UNLISTED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getKeyAllowableValues()
+    {
+        return [
+            self::KEY_UNLISTED,
+            self::KEY_LT7,
+            self::KEY_D7_30,
+            self::KEY_D30_90,
+            self::KEY_GT90,
         ];
     }
 
@@ -228,9 +284,16 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
         $this->container['bucket'] = $data['bucket'] ?? null;
         $this->container['item_count'] = $data['item_count'] ?? null;
         $this->container['unit_count'] = $data['unit_count'] ?? null;
-        $this->container['cost_cents'] = $data['cost_cents'] ?? null;
         $this->container['retail_cents'] = $data['retail_cents'] ?? null;
         $this->container['recommendation'] = $data['recommendation'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['items'] = $data['items'] ?? null;
+        $this->container['units'] = $data['units'] ?? null;
+        $this->container['cost_cents'] = $data['cost_cents'] ?? null;
+        $this->container['cost_known_items'] = $data['cost_known_items'] ?? null;
+        $this->container['cost_unknown_items'] = $data['cost_unknown_items'] ?? null;
+        $this->container['listed_value_cents'] = $data['listed_value_cents'] ?? null;
+        $this->container['market_value_cents'] = $data['market_value_cents'] ?? null;
     }
 
     /**
@@ -260,14 +323,41 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
         if ($this->container['unit_count'] === null) {
             $invalidProperties[] = "'unit_count' can't be null";
         }
-        if ($this->container['cost_cents'] === null) {
-            $invalidProperties[] = "'cost_cents' can't be null";
-        }
         if ($this->container['retail_cents'] === null) {
             $invalidProperties[] = "'retail_cents' can't be null";
         }
         if ($this->container['recommendation'] === null) {
             $invalidProperties[] = "'recommendation' can't be null";
+        }
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
+        }
+        $allowedValues = $this->getKeyAllowableValues();
+        if (!is_null($this->container['key']) && !in_array($this->container['key'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'key', must be one of '%s'",
+                $this->container['key'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['items'] === null) {
+            $invalidProperties[] = "'items' can't be null";
+        }
+        if ($this->container['units'] === null) {
+            $invalidProperties[] = "'units' can't be null";
+        }
+        if ($this->container['cost_cents'] === null) {
+            $invalidProperties[] = "'cost_cents' can't be null";
+        }
+        if ($this->container['cost_known_items'] === null) {
+            $invalidProperties[] = "'cost_known_items' can't be null";
+        }
+        if ($this->container['cost_unknown_items'] === null) {
+            $invalidProperties[] = "'cost_unknown_items' can't be null";
+        }
+        if ($this->container['listed_value_cents'] === null) {
+            $invalidProperties[] = "'listed_value_cents' can't be null";
         }
         return $invalidProperties;
     }
@@ -367,30 +457,6 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets cost_cents
-     *
-     * @return float
-     */
-    public function getCostCents()
-    {
-        return $this->container['cost_cents'];
-    }
-
-    /**
-     * Sets cost_cents
-     *
-     * @param float $cost_cents What the seller PAID for the stock in this bucket — the number that makes 90+ feel urgent. Retail value flatters it; cost is the money actually stuck on the shelf.
-     *
-     * @return self
-     */
-    public function setCostCents($cost_cents)
-    {
-        $this->container['cost_cents'] = $cost_cents;
-
-        return $this;
-    }
-
-    /**
      * Gets retail_cents
      *
      * @return float
@@ -403,7 +469,7 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
     /**
      * Sets retail_cents
      *
-     * @param float $retail_cents What it would bring in at current prices, for the opportunity figure.
+     * @param float $retail_cents Old name for listedValueCents.
      *
      * @return self
      */
@@ -427,13 +493,215 @@ class GetInventoryAgingResponseDataBuckets implements ModelInterface, ArrayAcces
     /**
      * Sets recommendation
      *
-     * @param string $recommendation One line the seller can act on.
+     * @param string $recommendation recommendation
      *
      * @return self
      */
     public function setRecommendation($recommendation)
     {
         $this->container['recommendation'] = $recommendation;
+
+        return $this;
+    }
+
+    /**
+     * Gets key
+     *
+     * @return string
+     */
+    public function getKey()
+    {
+        return $this->container['key'];
+    }
+
+    /**
+     * Sets key
+     *
+     * @param string $key key
+     *
+     * @return self
+     */
+    public function setKey($key)
+    {
+        $allowedValues = $this->getKeyAllowableValues();
+        if (!in_array($key, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'key', must be one of '%s'",
+                    $key,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets items
+     *
+     * @return float
+     */
+    public function getItems()
+    {
+        return $this->container['items'];
+    }
+
+    /**
+     * Sets items
+     *
+     * @param float $items items
+     *
+     * @return self
+     */
+    public function setItems($items)
+    {
+        $this->container['items'] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Gets units
+     *
+     * @return float
+     */
+    public function getUnits()
+    {
+        return $this->container['units'];
+    }
+
+    /**
+     * Sets units
+     *
+     * @param float $units units
+     *
+     * @return self
+     */
+    public function setUnits($units)
+    {
+        $this->container['units'] = $units;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_cents
+     *
+     * @return float
+     */
+    public function getCostCents()
+    {
+        return $this->container['cost_cents'];
+    }
+
+    /**
+     * Sets cost_cents
+     *
+     * @param float $cost_cents Σ unit cost × units over the items whose cost is known.
+     *
+     * @return self
+     */
+    public function setCostCents($cost_cents)
+    {
+        $this->container['cost_cents'] = $cost_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_known_items
+     *
+     * @return float
+     */
+    public function getCostKnownItems()
+    {
+        return $this->container['cost_known_items'];
+    }
+
+    /**
+     * Sets cost_known_items
+     *
+     * @param float $cost_known_items cost_known_items
+     *
+     * @return self
+     */
+    public function setCostKnownItems($cost_known_items)
+    {
+        $this->container['cost_known_items'] = $cost_known_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_unknown_items
+     *
+     * @return float
+     */
+    public function getCostUnknownItems()
+    {
+        return $this->container['cost_unknown_items'];
+    }
+
+    /**
+     * Sets cost_unknown_items
+     *
+     * @param float $cost_unknown_items cost_unknown_items
+     *
+     * @return self
+     */
+    public function setCostUnknownItems($cost_unknown_items)
+    {
+        $this->container['cost_unknown_items'] = $cost_unknown_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets listed_value_cents
+     *
+     * @return float
+     */
+    public function getListedValueCents()
+    {
+        return $this->container['listed_value_cents'];
+    }
+
+    /**
+     * Sets listed_value_cents
+     *
+     * @param float $listed_value_cents Σ ask × units; items with no ask add nothing.
+     *
+     * @return self
+     */
+    public function setListedValueCents($listed_value_cents)
+    {
+        $this->container['listed_value_cents'] = $listed_value_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets market_value_cents
+     *
+     * @return float|null
+     */
+    public function getMarketValueCents()
+    {
+        return $this->container['market_value_cents'];
+    }
+
+    /**
+     * Sets market_value_cents
+     *
+     * @param float|null $market_value_cents Σ market × units over the marked items; null when none in the bucket are marked.
+     *
+     * @return self
+     */
+    public function setMarketValueCents($market_value_cents)
+    {
+        $this->container['market_value_cents'] = $market_value_cents;
 
         return $this;
     }

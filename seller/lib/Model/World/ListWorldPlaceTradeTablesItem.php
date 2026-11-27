@@ -60,7 +60,7 @@ class ListWorldPlaceTradeTablesItem implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'visitor' => '\Crossly\Model\World\ListWorldPlaceTradeTablesItemVisitor',
+        'visitor' => '\Crossly\Model\World\GetWorldExperiencePlaceCollabOpResponseDataFramesBy',
         'totals' => '\Crossly\Model\World\ListWorldPlaceTradeTablesItemTotals',
         'you' => 'string',
         'line' => '\Crossly\Model\World\ListWorldPlaceTradeTablesItemLine',
@@ -231,8 +231,8 @@ class ListWorldPlaceTradeTablesItem implements ModelInterface, ArrayAccess, \Jso
     const YOU_SELLER = 'seller';
     const YOU_VISITOR = 'visitor';
     const STATUS_OPEN = 'open';
-    const STATUS_DONE = 'done';
     const STATUS_CLOSED = 'closed';
+    const STATUS_DONE = 'done';
 
     /**
      * Gets allowable values of the enum
@@ -256,8 +256,8 @@ class ListWorldPlaceTradeTablesItem implements ModelInterface, ArrayAccess, \Jso
     {
         return [
             self::STATUS_OPEN,
-            self::STATUS_DONE,
             self::STATUS_CLOSED,
+            self::STATUS_DONE,
         ];
     }
 
@@ -370,7 +370,7 @@ class ListWorldPlaceTradeTablesItem implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets visitor
      *
-     * @return \Crossly\Model\World\ListWorldPlaceTradeTablesItemVisitor|null
+     * @return \Crossly\Model\World\GetWorldExperiencePlaceCollabOpResponseDataFramesBy|null
      */
     public function getVisitor()
     {
@@ -380,7 +380,7 @@ class ListWorldPlaceTradeTablesItem implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets visitor
      *
-     * @param \Crossly\Model\World\ListWorldPlaceTradeTablesItemVisitor|null $visitor visitor
+     * @param \Crossly\Model\World\GetWorldExperiencePlaceCollabOpResponseDataFramesBy|null $visitor visitor
      *
      * @return self
      */

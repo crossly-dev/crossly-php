@@ -198,15 +198,15 @@ class GetVaultMarketPositionResponseSplits implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
-    const REASON_AUCTION = 'auction';
     const REASON_CLOSE = 'close';
+    const REASON_AUCTION = 'auction';
     const REASON_RECALL = 'recall';
     const STATUS_SPLIT = 'split';
     const STATUS_PENDING = 'pending';
     const STATUS_REFUSED = 'refused';
     const STATUS_MERGED = 'merged';
-    const ACTION_AUCTION = 'auction';
     const ACTION_CLOSE = 'close';
+    const ACTION_AUCTION = 'auction';
 
     /**
      * Gets allowable values of the enum
@@ -216,8 +216,8 @@ class GetVaultMarketPositionResponseSplits implements ModelInterface, ArrayAcces
     public function getReasonAllowableValues()
     {
         return [
-            self::REASON_AUCTION,
             self::REASON_CLOSE,
+            self::REASON_AUCTION,
             self::REASON_RECALL,
         ];
     }
@@ -245,8 +245,8 @@ class GetVaultMarketPositionResponseSplits implements ModelInterface, ArrayAcces
     public function getActionAllowableValues()
     {
         return [
-            self::ACTION_AUCTION,
             self::ACTION_CLOSE,
+            self::ACTION_AUCTION,
         ];
     }
 

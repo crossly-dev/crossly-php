@@ -193,13 +193,13 @@ class CreateCbxDisbursementRuleCheckResponseData implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    const OUTCOME_FIRED = 'fired';
     const OUTCOME_COVERAGE = 'coverage';
-    const OUTCOME_NO_PRICE = 'no_price';
-    const OUTCOME_BELOW_THRESHOLD = 'below_threshold';
     const OUTCOME_CADENCE = 'cadence';
-    const OUTCOME_NO_RECIPIENTS = 'no_recipients';
+    const OUTCOME_NO_PRICE = 'no_price';
     const OUTCOME_INACTIVE = 'inactive';
+    const OUTCOME_FIRED = 'fired';
+    const OUTCOME_BELOW_THRESHOLD = 'below_threshold';
+    const OUTCOME_NO_RECIPIENTS = 'no_recipients';
 
     /**
      * Gets allowable values of the enum
@@ -209,13 +209,13 @@ class CreateCbxDisbursementRuleCheckResponseData implements ModelInterface, Arra
     public function getOutcomeAllowableValues()
     {
         return [
-            self::OUTCOME_FIRED,
             self::OUTCOME_COVERAGE,
-            self::OUTCOME_NO_PRICE,
-            self::OUTCOME_BELOW_THRESHOLD,
             self::OUTCOME_CADENCE,
-            self::OUTCOME_NO_RECIPIENTS,
+            self::OUTCOME_NO_PRICE,
             self::OUTCOME_INACTIVE,
+            self::OUTCOME_FIRED,
+            self::OUTCOME_BELOW_THRESHOLD,
+            self::OUTCOME_NO_RECIPIENTS,
         ];
     }
 

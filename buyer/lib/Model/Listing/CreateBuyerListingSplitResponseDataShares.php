@@ -61,8 +61,8 @@ class CreateBuyerListingSplitResponseDataShares implements ModelInterface, Array
       */
     protected static $openAPITypes = [
         'token' => 'string',
-        'position' => 'float',
-        'share_cents' => 'float'
+        'share_cents' => 'float',
+        'position' => 'float'
     ];
 
     /**
@@ -74,8 +74,8 @@ class CreateBuyerListingSplitResponseDataShares implements ModelInterface, Array
       */
     protected static $openAPIFormats = [
         'token' => null,
-        'position' => null,
-        'share_cents' => null
+        'share_cents' => null,
+        'position' => null
     ];
 
     /**
@@ -106,8 +106,8 @@ class CreateBuyerListingSplitResponseDataShares implements ModelInterface, Array
      */
     protected static $attributeMap = [
         'token' => 'token',
-        'position' => 'position',
-        'share_cents' => 'shareCents'
+        'share_cents' => 'shareCents',
+        'position' => 'position'
     ];
 
     /**
@@ -117,8 +117,8 @@ class CreateBuyerListingSplitResponseDataShares implements ModelInterface, Array
      */
     protected static $setters = [
         'token' => 'setToken',
-        'position' => 'setPosition',
-        'share_cents' => 'setShareCents'
+        'share_cents' => 'setShareCents',
+        'position' => 'setPosition'
     ];
 
     /**
@@ -128,8 +128,8 @@ class CreateBuyerListingSplitResponseDataShares implements ModelInterface, Array
      */
     protected static $getters = [
         'token' => 'getToken',
-        'position' => 'getPosition',
-        'share_cents' => 'getShareCents'
+        'share_cents' => 'getShareCents',
+        'position' => 'getPosition'
     ];
 
     /**
@@ -190,8 +190,8 @@ class CreateBuyerListingSplitResponseDataShares implements ModelInterface, Array
     public function __construct(array $data = null)
     {
         $this->container['token'] = $data['token'] ?? null;
-        $this->container['position'] = $data['position'] ?? null;
         $this->container['share_cents'] = $data['share_cents'] ?? null;
+        $this->container['position'] = $data['position'] ?? null;
     }
 
     /**
@@ -206,11 +206,11 @@ class CreateBuyerListingSplitResponseDataShares implements ModelInterface, Array
         if ($this->container['token'] === null) {
             $invalidProperties[] = "'token' can't be null";
         }
-        if ($this->container['position'] === null) {
-            $invalidProperties[] = "'position' can't be null";
-        }
         if ($this->container['share_cents'] === null) {
             $invalidProperties[] = "'share_cents' can't be null";
+        }
+        if ($this->container['position'] === null) {
+            $invalidProperties[] = "'position' can't be null";
         }
         return $invalidProperties;
     }
@@ -252,30 +252,6 @@ class CreateBuyerListingSplitResponseDataShares implements ModelInterface, Array
     }
 
     /**
-     * Gets position
-     *
-     * @return float
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param float $position position
-     *
-     * @return self
-     */
-    public function setPosition($position)
-    {
-        $this->container['position'] = $position;
-
-        return $this;
-    }
-
-    /**
      * Gets share_cents
      *
      * @return float
@@ -295,6 +271,30 @@ class CreateBuyerListingSplitResponseDataShares implements ModelInterface, Array
     public function setShareCents($share_cents)
     {
         $this->container['share_cents'] = $share_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets position
+     *
+     * @return float
+     */
+    public function getPosition()
+    {
+        return $this->container['position'];
+    }
+
+    /**
+     * Sets position
+     *
+     * @param float $position position
+     *
+     * @return self
+     */
+    public function setPosition($position)
+    {
+        $this->container['position'] = $position;
 
         return $this;
     }

@@ -61,7 +61,7 @@ class GetAnalyticDashboardResponseSalesByPlatform implements ModelInterface, Arr
       */
     protected static $openAPITypes = [
         'platform' => 'string',
-        'count' => 'string',
+        'count' => 'float',
         'revenue' => 'float'
     ];
 
@@ -254,7 +254,7 @@ class GetAnalyticDashboardResponseSalesByPlatform implements ModelInterface, Arr
     /**
      * Gets count
      *
-     * @return string
+     * @return float
      */
     public function getCount()
     {
@@ -264,7 +264,7 @@ class GetAnalyticDashboardResponseSalesByPlatform implements ModelInterface, Arr
     /**
      * Sets count
      *
-     * @param string $count count
+     * @param float $count count
      *
      * @return self
      */

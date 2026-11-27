@@ -76,6 +76,7 @@ class GetVaultMarketStatementByMonthResponse implements ModelInterface, ArrayAcc
         'pledges' => 'array<string,mixed>[]',
         'activity' => '\Crossly\Model\Vault\ListVaultMarketConfirmationsItem[]',
         'fees' => '\Crossly\Model\Vault\GetVaultMarketStatementByMonthResponseOneOf1Fees',
+        'cash' => 'mixed',
         'notes' => 'string[]'
     ];
 
@@ -103,6 +104,7 @@ class GetVaultMarketStatementByMonthResponse implements ModelInterface, ArrayAcc
         'pledges' => null,
         'activity' => null,
         'fees' => null,
+        'cash' => null,
         'notes' => null
     ];
 
@@ -149,6 +151,7 @@ class GetVaultMarketStatementByMonthResponse implements ModelInterface, ArrayAcc
         'pledges' => 'pledges',
         'activity' => 'activity',
         'fees' => 'fees',
+        'cash' => 'cash',
         'notes' => 'notes'
     ];
 
@@ -174,6 +177,7 @@ class GetVaultMarketStatementByMonthResponse implements ModelInterface, ArrayAcc
         'pledges' => 'setPledges',
         'activity' => 'setActivity',
         'fees' => 'setFees',
+        'cash' => 'setCash',
         'notes' => 'setNotes'
     ];
 
@@ -199,6 +203,7 @@ class GetVaultMarketStatementByMonthResponse implements ModelInterface, ArrayAcc
         'pledges' => 'getPledges',
         'activity' => 'getActivity',
         'fees' => 'getFees',
+        'cash' => 'getCash',
         'notes' => 'getNotes'
     ];
 
@@ -275,6 +280,7 @@ class GetVaultMarketStatementByMonthResponse implements ModelInterface, ArrayAcc
         $this->container['pledges'] = $data['pledges'] ?? null;
         $this->container['activity'] = $data['activity'] ?? null;
         $this->container['fees'] = $data['fees'] ?? null;
+        $this->container['cash'] = $data['cash'] ?? null;
         $this->container['notes'] = $data['notes'] ?? null;
     }
 
@@ -691,6 +697,30 @@ class GetVaultMarketStatementByMonthResponse implements ModelInterface, ArrayAcc
     public function setFees($fees)
     {
         $this->container['fees'] = $fees;
+
+        return $this;
+    }
+
+    /**
+     * Gets cash
+     *
+     * @return mixed|null
+     */
+    public function getCash()
+    {
+        return $this->container['cash'];
+    }
+
+    /**
+     * Sets cash
+     *
+     * @param mixed|null $cash cash
+     *
+     * @return self
+     */
+    public function setCash($cash)
+    {
+        $this->container['cash'] = $cash;
 
         return $this;
     }

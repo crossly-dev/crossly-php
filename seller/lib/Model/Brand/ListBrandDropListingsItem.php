@@ -65,7 +65,9 @@ class ListBrandDropListingsItem implements ModelInterface, ArrayAccess, \JsonSer
         'title' => 'string',
         'image_url' => 'string',
         'price_cents' => 'float',
-        'status' => 'string'
+        'status' => 'string',
+        'slug' => 'string',
+        'quantity' => 'float'
     ];
 
     /**
@@ -81,7 +83,9 @@ class ListBrandDropListingsItem implements ModelInterface, ArrayAccess, \JsonSer
         'title' => null,
         'image_url' => null,
         'price_cents' => null,
-        'status' => null
+        'status' => null,
+        'slug' => null,
+        'quantity' => null
     ];
 
     /**
@@ -116,7 +120,9 @@ class ListBrandDropListingsItem implements ModelInterface, ArrayAccess, \JsonSer
         'title' => 'title',
         'image_url' => 'imageUrl',
         'price_cents' => 'priceCents',
-        'status' => 'status'
+        'status' => 'status',
+        'slug' => 'slug',
+        'quantity' => 'quantity'
     ];
 
     /**
@@ -130,7 +136,9 @@ class ListBrandDropListingsItem implements ModelInterface, ArrayAccess, \JsonSer
         'title' => 'setTitle',
         'image_url' => 'setImageUrl',
         'price_cents' => 'setPriceCents',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'slug' => 'setSlug',
+        'quantity' => 'setQuantity'
     ];
 
     /**
@@ -144,7 +152,9 @@ class ListBrandDropListingsItem implements ModelInterface, ArrayAccess, \JsonSer
         'title' => 'getTitle',
         'image_url' => 'getImageUrl',
         'price_cents' => 'getPriceCents',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'slug' => 'getSlug',
+        'quantity' => 'getQuantity'
     ];
 
     /**
@@ -210,6 +220,8 @@ class ListBrandDropListingsItem implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['image_url'] = $data['image_url'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['slug'] = $data['slug'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
     }
 
     /**
@@ -385,6 +397,54 @@ class ListBrandDropListingsItem implements ModelInterface, ArrayAccess, \JsonSer
     public function setStatus($status)
     {
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets slug
+     *
+     * @return string|null
+     */
+    public function getSlug()
+    {
+        return $this->container['slug'];
+    }
+
+    /**
+     * Sets slug
+     *
+     * @param string|null $slug The Crossly listing's slug (platform_listings.platform_listing_id): what the cart adds by.
+     *
+     * @return self
+     */
+    public function setSlug($slug)
+    {
+        $this->container['slug'] = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return float|null
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param float|null $quantity Units the listing offers (null = untracked): a pre-book's reservable quantity.
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }

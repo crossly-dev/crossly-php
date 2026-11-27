@@ -60,6 +60,9 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
       * @var string[]
       */
     protected static $openAPITypes = [
+        'requires_action' => 'bool',
+        'payment_id' => 'string',
+        'client_secret' => 'string',
         'paid_through' => 'string',
         'status' => 'string',
         'paid_cents' => 'float'
@@ -73,6 +76,9 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'requires_action' => null,
+        'payment_id' => null,
+        'client_secret' => null,
         'paid_through' => null,
         'status' => null,
         'paid_cents' => null
@@ -105,6 +111,9 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
      * @var string[]
      */
     protected static $attributeMap = [
+        'requires_action' => 'requiresAction',
+        'payment_id' => 'paymentId',
+        'client_secret' => 'clientSecret',
         'paid_through' => 'paidThrough',
         'status' => 'status',
         'paid_cents' => 'paidCents'
@@ -116,6 +125,9 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
      * @var string[]
      */
     protected static $setters = [
+        'requires_action' => 'setRequiresAction',
+        'payment_id' => 'setPaymentId',
+        'client_secret' => 'setClientSecret',
         'paid_through' => 'setPaidThrough',
         'status' => 'setStatus',
         'paid_cents' => 'setPaidCents'
@@ -127,6 +139,9 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
      * @var string[]
      */
     protected static $getters = [
+        'requires_action' => 'getRequiresAction',
+        'payment_id' => 'getPaymentId',
+        'client_secret' => 'getClientSecret',
         'paid_through' => 'getPaidThrough',
         'status' => 'getStatus',
         'paid_cents' => 'getPaidCents'
@@ -174,9 +189,9 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
     }
 
     const STATUS_ACTIVE = 'active';
-    const STATUS_FORECLOSED = 'foreclosed';
     const STATUS_GRACE = 'grace';
     const STATUS_DELINQUENT = 'delinquent';
+    const STATUS_FORECLOSED = 'foreclosed';
 
     /**
      * Gets allowable values of the enum
@@ -187,9 +202,9 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
     {
         return [
             self::STATUS_ACTIVE,
-            self::STATUS_FORECLOSED,
             self::STATUS_GRACE,
             self::STATUS_DELINQUENT,
+            self::STATUS_FORECLOSED,
         ];
     }
 
@@ -208,6 +223,9 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
      */
     public function __construct(array $data = null)
     {
+        $this->container['requires_action'] = $data['requires_action'] ?? null;
+        $this->container['payment_id'] = $data['payment_id'] ?? null;
+        $this->container['client_secret'] = $data['client_secret'] ?? null;
         $this->container['paid_through'] = $data['paid_through'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['paid_cents'] = $data['paid_cents'] ?? null;
@@ -222,12 +240,6 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
     {
         $invalidProperties = [];
 
-        if ($this->container['paid_through'] === null) {
-            $invalidProperties[] = "'paid_through' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -237,9 +249,6 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
             );
         }
 
-        if ($this->container['paid_cents'] === null) {
-            $invalidProperties[] = "'paid_cents' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -256,9 +265,81 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
 
 
     /**
+     * Gets requires_action
+     *
+     * @return bool|null
+     */
+    public function getRequiresAction()
+    {
+        return $this->container['requires_action'];
+    }
+
+    /**
+     * Sets requires_action
+     *
+     * @param bool|null $requires_action requires_action
+     *
+     * @return self
+     */
+    public function setRequiresAction($requires_action)
+    {
+        $this->container['requires_action'] = $requires_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_id
+     *
+     * @return string|null
+     */
+    public function getPaymentId()
+    {
+        return $this->container['payment_id'];
+    }
+
+    /**
+     * Sets payment_id
+     *
+     * @param string|null $payment_id payment_id
+     *
+     * @return self
+     */
+    public function setPaymentId($payment_id)
+    {
+        $this->container['payment_id'] = $payment_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_secret
+     *
+     * @return string|null
+     */
+    public function getClientSecret()
+    {
+        return $this->container['client_secret'];
+    }
+
+    /**
+     * Sets client_secret
+     *
+     * @param string|null $client_secret client_secret
+     *
+     * @return self
+     */
+    public function setClientSecret($client_secret)
+    {
+        $this->container['client_secret'] = $client_secret;
+
+        return $this;
+    }
+
+    /**
      * Gets paid_through
      *
-     * @return string
+     * @return string|null
      */
     public function getPaidThrough()
     {
@@ -268,7 +349,7 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
     /**
      * Sets paid_through
      *
-     * @param string $paid_through paid_through
+     * @param string|null $paid_through paid_through
      *
      * @return self
      */
@@ -282,7 +363,7 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
     /**
      * Gets status
      *
-     * @return string
+     * @return string|null
      */
     public function getStatus()
     {
@@ -292,14 +373,14 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
     /**
      * Sets status
      *
-     * @param string $status status
+     * @param string|null $status status
      *
      * @return self
      */
     public function setStatus($status)
     {
         $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'status', must be one of '%s'",
@@ -316,7 +397,7 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
     /**
      * Gets paid_cents
      *
-     * @return float
+     * @return float|null
      */
     public function getPaidCents()
     {
@@ -326,7 +407,7 @@ class CreateSpatialPropertyDeedMaintenanceResponseData implements ModelInterface
     /**
      * Sets paid_cents
      *
-     * @param float $paid_cents paid_cents
+     * @param float|null $paid_cents paid_cents
      *
      * @return self
      */

@@ -66,7 +66,10 @@ class GetBuyerCatalogListingShippingResponseServices implements ModelInterface, 
         'scope' => 'string',
         'cost_type' => 'string',
         'min_days' => 'float',
-        'max_days' => 'float'
+        'max_days' => 'float',
+        'carrier' => 'string',
+        'carrier_service' => 'string',
+        'handling_fee_cents' => 'float'
     ];
 
     /**
@@ -83,7 +86,10 @@ class GetBuyerCatalogListingShippingResponseServices implements ModelInterface, 
         'scope' => null,
         'cost_type' => null,
         'min_days' => null,
-        'max_days' => null
+        'max_days' => null,
+        'carrier' => null,
+        'carrier_service' => null,
+        'handling_fee_cents' => null
     ];
 
     /**
@@ -119,7 +125,10 @@ class GetBuyerCatalogListingShippingResponseServices implements ModelInterface, 
         'scope' => 'scope',
         'cost_type' => 'costType',
         'min_days' => 'minDays',
-        'max_days' => 'maxDays'
+        'max_days' => 'maxDays',
+        'carrier' => 'carrier',
+        'carrier_service' => 'carrierService',
+        'handling_fee_cents' => 'handlingFeeCents'
     ];
 
     /**
@@ -134,7 +143,10 @@ class GetBuyerCatalogListingShippingResponseServices implements ModelInterface, 
         'scope' => 'setScope',
         'cost_type' => 'setCostType',
         'min_days' => 'setMinDays',
-        'max_days' => 'setMaxDays'
+        'max_days' => 'setMaxDays',
+        'carrier' => 'setCarrier',
+        'carrier_service' => 'setCarrierService',
+        'handling_fee_cents' => 'setHandlingFeeCents'
     ];
 
     /**
@@ -149,7 +161,10 @@ class GetBuyerCatalogListingShippingResponseServices implements ModelInterface, 
         'scope' => 'getScope',
         'cost_type' => 'getCostType',
         'min_days' => 'getMinDays',
-        'max_days' => 'getMaxDays'
+        'max_days' => 'getMaxDays',
+        'carrier' => 'getCarrier',
+        'carrier_service' => 'getCarrierService',
+        'handling_fee_cents' => 'getHandlingFeeCents'
     ];
 
     /**
@@ -216,6 +231,9 @@ class GetBuyerCatalogListingShippingResponseServices implements ModelInterface, 
         $this->container['cost_type'] = $data['cost_type'] ?? null;
         $this->container['min_days'] = $data['min_days'] ?? null;
         $this->container['max_days'] = $data['max_days'] ?? null;
+        $this->container['carrier'] = $data['carrier'] ?? null;
+        $this->container['carrier_service'] = $data['carrier_service'] ?? null;
+        $this->container['handling_fee_cents'] = $data['handling_fee_cents'] ?? null;
     }
 
     /**
@@ -421,6 +439,78 @@ class GetBuyerCatalogListingShippingResponseServices implements ModelInterface, 
     public function setMaxDays($max_days)
     {
         $this->container['max_days'] = $max_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets carrier
+     *
+     * @return string|null
+     */
+    public function getCarrier()
+    {
+        return $this->container['carrier'];
+    }
+
+    /**
+     * Sets carrier
+     *
+     * @param string|null $carrier Buyer pays: calculated: the carrier and service token the label is bought with, and the handling fee inside `cents`.
+     *
+     * @return self
+     */
+    public function setCarrier($carrier)
+    {
+        $this->container['carrier'] = $carrier;
+
+        return $this;
+    }
+
+    /**
+     * Gets carrier_service
+     *
+     * @return string|null
+     */
+    public function getCarrierService()
+    {
+        return $this->container['carrier_service'];
+    }
+
+    /**
+     * Sets carrier_service
+     *
+     * @param string|null $carrier_service carrier_service
+     *
+     * @return self
+     */
+    public function setCarrierService($carrier_service)
+    {
+        $this->container['carrier_service'] = $carrier_service;
+
+        return $this;
+    }
+
+    /**
+     * Gets handling_fee_cents
+     *
+     * @return float|null
+     */
+    public function getHandlingFeeCents()
+    {
+        return $this->container['handling_fee_cents'];
+    }
+
+    /**
+     * Sets handling_fee_cents
+     *
+     * @param float|null $handling_fee_cents handling_fee_cents
+     *
+     * @return self
+     */
+    public function setHandlingFeeCents($handling_fee_cents)
+    {
+        $this->container['handling_fee_cents'] = $handling_fee_cents;
 
         return $this;
     }

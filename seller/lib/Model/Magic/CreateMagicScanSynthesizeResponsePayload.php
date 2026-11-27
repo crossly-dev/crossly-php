@@ -64,7 +64,7 @@ class CreateMagicScanSynthesizeResponsePayload implements ModelInterface, ArrayA
         'description' => 'string',
         'brand' => 'string',
         'condition' => 'string',
-        'grading' => '\Crossly\Model\Grading\ListGradingSubmissionsItemGrading',
+        'grading' => '\Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading',
         'color' => 'string',
         'material' => 'string',
         'size' => 'string',
@@ -359,15 +359,15 @@ class CreateMagicScanSynthesizeResponsePayload implements ModelInterface, ArrayA
     }
 
     const CONDITION__NEW = 'new';
-    const CONDITION_FAIR = 'fair';
     const CONDITION_GOOD = 'good';
+    const CONDITION_FAIR = 'fair';
     const CONDITION_LIKE_NEW = 'like_new';
     const CONDITION_POOR = 'poor';
     const CONDITION_REFURBISHED = 'refurbished';
     const SHIPPING_PAID_BY_SELLER = 'seller';
     const SHIPPING_PAID_BY_BUYER = 'buyer';
-    const RETURNS_ACCEPTED_YES = 'yes';
     const RETURNS_ACCEPTED_NO = 'no';
+    const RETURNS_ACCEPTED_YES = 'yes';
 
     /**
      * Gets allowable values of the enum
@@ -378,8 +378,8 @@ class CreateMagicScanSynthesizeResponsePayload implements ModelInterface, ArrayA
     {
         return [
             self::CONDITION__NEW,
-            self::CONDITION_FAIR,
             self::CONDITION_GOOD,
+            self::CONDITION_FAIR,
             self::CONDITION_LIKE_NEW,
             self::CONDITION_POOR,
             self::CONDITION_REFURBISHED,
@@ -407,8 +407,8 @@ class CreateMagicScanSynthesizeResponsePayload implements ModelInterface, ArrayA
     public function getReturnsAcceptedAllowableValues()
     {
         return [
-            self::RETURNS_ACCEPTED_YES,
             self::RETURNS_ACCEPTED_NO,
+            self::RETURNS_ACCEPTED_YES,
         ];
     }
 
@@ -641,7 +641,7 @@ class CreateMagicScanSynthesizeResponsePayload implements ModelInterface, ArrayA
     /**
      * Gets grading
      *
-     * @return \Crossly\Model\Grading\ListGradingSubmissionsItemGrading|null
+     * @return \Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading|null
      */
     public function getGrading()
     {
@@ -651,7 +651,7 @@ class CreateMagicScanSynthesizeResponsePayload implements ModelInterface, ArrayA
     /**
      * Sets grading
      *
-     * @param \Crossly\Model\Grading\ListGradingSubmissionsItemGrading|null $grading grading
+     * @param \Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading|null $grading grading
      *
      * @return self
      */

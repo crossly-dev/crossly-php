@@ -61,7 +61,7 @@ class CreateWorldGamePackageCheckResponseData implements ModelInterface, ArrayAc
       */
     protected static $openAPITypes = [
         'ok' => 'bool',
-        'issues' => '\Crossly\Model\World\CreateWorldGamePackageCheckResponseDataIssues[]',
+        'issues' => '\Crossly\Model\Common\PathMessage[]',
         'fits' => '\Crossly\Model\World\CreateWorldGamePackageCheckResponseDataFits',
         'total_bytes' => 'float',
         'manifest' => '\Crossly\Model\World\CreateWorldGamePackageCheckResponseDataManifest'
@@ -269,7 +269,7 @@ class CreateWorldGamePackageCheckResponseData implements ModelInterface, ArrayAc
     /**
      * Gets issues
      *
-     * @return \Crossly\Model\World\CreateWorldGamePackageCheckResponseDataIssues[]
+     * @return \Crossly\Model\Common\PathMessage[]
      */
     public function getIssues()
     {
@@ -279,7 +279,7 @@ class CreateWorldGamePackageCheckResponseData implements ModelInterface, ArrayAc
     /**
      * Sets issues
      *
-     * @param \Crossly\Model\World\CreateWorldGamePackageCheckResponseDataIssues[] $issues issues
+     * @param \Crossly\Model\Common\PathMessage[] $issues issues
      *
      * @return self
      */

@@ -5,12 +5,16 @@ All URIs are relative to https://crossly.net/api.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createAccountCancelDeletion()**](AccountApi.md#createAccountCancelDeletion) | **POST** /v1/account/cancel-deletion | Cancel a pending account deletion.
+[**createAccountIdentityVerificationStart()**](AccountApi.md#createAccountIdentityVerificationStart) | **POST** /v1/account/identity-verification/start | Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
 [**createAccountLogoutAll()**](AccountApi.md#createAccountLogoutAll) | **POST** /v1/account/logout-all | Revoke every browser auth session for this user.
-[**createAccountRequestDeletion()**](AccountApi.md#createAccountRequestDeletion) | **POST** /v1/account/request-deletion | Schedule account deletion after a grace period.
+[**createAccountReconfirmDeletion()**](AccountApi.md#createAccountReconfirmDeletion) | **POST** /v1/account/reconfirm-deletion | Confirm again a deletion paused because the account was in use.
+[**createAccountRequestDeletion()**](AccountApi.md#createAccountRequestDeletion) | **POST** /v1/account/request-deletion | Schedule account deletion after a grace period. Requires confirmEmail.
 [**deleteAuthSession()**](AccountApi.md#deleteAuthSession) | **DELETE** /v1/auth/sessions | Revoke all active browser sessions.
 [**deleteAuthSessionBySessionId()**](AccountApi.md#deleteAuthSessionBySessionId) | **DELETE** /v1/auth/sessions/{sessionId} | Revoke a single browser session by id.
 [**deleteConnectedApp()**](AccountApi.md#deleteConnectedApp) | **DELETE** /v1/connected-apps/{grantId} | Disconnect a third-party app. Its tokens stop working immediately.
+[**getAccountClosureChecklist()**](AccountApi.md#getAccountClosureChecklist) | **GET** /v1/account/closure-checklist | What closing the account will and will not do, before you request it.
 [**getAccountDeletionStatus()**](AccountApi.md#getAccountDeletionStatus) | **GET** /v1/account/deletion-status | Get the currently-pending deletion request, if any.
+[**getAccountIdentityVerification()**](AccountApi.md#getAccountIdentityVerification) | **GET** /v1/account/identity-verification | Your identity verification: one status for the whole account, read by every feature that needs ID.
 [**getMe()**](AccountApi.md#getMe) | **GET** /v1/me | Identity check — authenticated user + PAT scopes + account state.
 [**getMembership()**](AccountApi.md#getMembership) | **GET** /v1/membership | The caller&#39;s Crossly One membership status and benefits.
 [**listAuthSessions()**](AccountApi.md#listAuthSessions) | **GET** /v1/auth/sessions | List active browser auth sessions.
@@ -20,7 +24,7 @@ Method | HTTP request | Description
 ## `createAccountCancelDeletion()`
 
 ```php
-createAccountCancelDeletion(): \Crossly\Model\Drop\DeleteDropResponse
+createAccountCancelDeletion(): \Crossly\Model\Account\CreateAccountCancelDeletionResponse
 ```
 
 Cancel a pending account deletion.
@@ -57,7 +61,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**\Crossly\Model\Drop\DeleteDropResponse**
+**\Crossly\Model\Account\CreateAccountCancelDeletionResponse**
 
 ### Authorization
 
@@ -66,6 +70,65 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createAccountIdentityVerificationStart()`
+
+```php
+createAccountIdentityVerificationStart($create_account_identity_verification_start_request): \Crossly\Model\World\CreateWorldMatureVerifyResponse
+```
+
+Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.
+
+alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_account_identity_verification_start_request = new \Crossly\Model\Account\CreateAccountIdentityVerificationStartRequest(); // \Crossly\Model\Account\CreateAccountIdentityVerificationStartRequest
+
+try {
+    $result = $apiInstance->createAccountIdentityVerificationStart($create_account_identity_verification_start_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->createAccountIdentityVerificationStart: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_account_identity_verification_start_request** | **\Crossly\Model\Account\CreateAccountIdentityVerificationStartRequest**|  |
+
+### Return type
+
+**\Crossly\Model\World\CreateWorldMatureVerifyResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -125,13 +188,67 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `createAccountReconfirmDeletion()`
+
+```php
+createAccountReconfirmDeletion(): \Crossly\Model\Account\CreateAccountReconfirmDeletionResponse
+```
+
+Confirm again a deletion paused because the account was in use.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createAccountReconfirmDeletion();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->createAccountReconfirmDeletion: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Model\Account\CreateAccountReconfirmDeletionResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `createAccountRequestDeletion()`
 
 ```php
 createAccountRequestDeletion(): \Crossly\Model\Account\CreateAccountRequestDeletionResponse
 ```
 
-Schedule account deletion after a grace period.
+Schedule account deletion after a grace period. Requires confirmEmail.
 
 ### Example
 
@@ -347,6 +464,60 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `getAccountClosureChecklist()`
+
+```php
+getAccountClosureChecklist(): \Crossly\Model\Account\GetAccountClosureChecklistResponse
+```
+
+What closing the account will and will not do, before you request it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getAccountClosureChecklist();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->getAccountClosureChecklist: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Model\Account\GetAccountClosureChecklistResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `getAccountDeletionStatus()`
 
 ```php
@@ -388,6 +559,62 @@ This endpoint does not need any parameter.
 ### Return type
 
 **\Crossly\Model\Account\GetAccountDeletionStatusResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `getAccountIdentityVerification()`
+
+```php
+getAccountIdentityVerification(): \Crossly\Model\Account\GetAccountIdentityVerificationResponse
+```
+
+Your identity verification: one status for the whole account, read by every feature that needs ID.
+
+status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getAccountIdentityVerification();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->getAccountIdentityVerification: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Model\Account\GetAccountIdentityVerificationResponse**
 
 ### Authorization
 

@@ -60,9 +60,9 @@ class GetBuyerMarketPurchaseOptionResponseData implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
+        'vault_stock' => 'bool',
         'fast_ship_cents' => 'float',
-        'grading_runs' => '\Crossly\Buyer\Model\Common\GetBuyerMarketPurchaseOptionResponseDataGradingRuns[]',
-        'vault_stock' => 'bool'
+        'grading_runs' => '\Crossly\Buyer\Model\Common\GetBuyerMarketPurchaseOptionResponseDataGradingRuns[]'
     ];
 
     /**
@@ -73,9 +73,9 @@ class GetBuyerMarketPurchaseOptionResponseData implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'vault_stock' => null,
         'fast_ship_cents' => null,
-        'grading_runs' => null,
-        'vault_stock' => null
+        'grading_runs' => null
     ];
 
     /**
@@ -105,9 +105,9 @@ class GetBuyerMarketPurchaseOptionResponseData implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
+        'vault_stock' => 'vaultStock',
         'fast_ship_cents' => 'fastShipCents',
-        'grading_runs' => 'gradingRuns',
-        'vault_stock' => 'vaultStock'
+        'grading_runs' => 'gradingRuns'
     ];
 
     /**
@@ -116,9 +116,9 @@ class GetBuyerMarketPurchaseOptionResponseData implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
+        'vault_stock' => 'setVaultStock',
         'fast_ship_cents' => 'setFastShipCents',
-        'grading_runs' => 'setGradingRuns',
-        'vault_stock' => 'setVaultStock'
+        'grading_runs' => 'setGradingRuns'
     ];
 
     /**
@@ -127,9 +127,9 @@ class GetBuyerMarketPurchaseOptionResponseData implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
+        'vault_stock' => 'getVaultStock',
         'fast_ship_cents' => 'getFastShipCents',
-        'grading_runs' => 'getGradingRuns',
-        'vault_stock' => 'getVaultStock'
+        'grading_runs' => 'getGradingRuns'
     ];
 
     /**
@@ -189,9 +189,9 @@ class GetBuyerMarketPurchaseOptionResponseData implements ModelInterface, ArrayA
      */
     public function __construct(array $data = null)
     {
+        $this->container['vault_stock'] = $data['vault_stock'] ?? null;
         $this->container['fast_ship_cents'] = $data['fast_ship_cents'] ?? null;
         $this->container['grading_runs'] = $data['grading_runs'] ?? null;
-        $this->container['vault_stock'] = $data['vault_stock'] ?? null;
     }
 
     /**
@@ -203,14 +203,14 @@ class GetBuyerMarketPurchaseOptionResponseData implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
+        if ($this->container['vault_stock'] === null) {
+            $invalidProperties[] = "'vault_stock' can't be null";
+        }
         if ($this->container['fast_ship_cents'] === null) {
             $invalidProperties[] = "'fast_ship_cents' can't be null";
         }
         if ($this->container['grading_runs'] === null) {
             $invalidProperties[] = "'grading_runs' can't be null";
-        }
-        if ($this->container['vault_stock'] === null) {
-            $invalidProperties[] = "'vault_stock' can't be null";
         }
         return $invalidProperties;
     }
@@ -226,6 +226,30 @@ class GetBuyerMarketPurchaseOptionResponseData implements ModelInterface, ArrayA
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets vault_stock
+     *
+     * @return bool
+     */
+    public function getVaultStock()
+    {
+        return $this->container['vault_stock'];
+    }
+
+    /**
+     * Sets vault_stock
+     *
+     * @param bool $vault_stock vault_stock
+     *
+     * @return self
+     */
+    public function setVaultStock($vault_stock)
+    {
+        $this->container['vault_stock'] = $vault_stock;
+
+        return $this;
+    }
 
     /**
      * Gets fast_ship_cents
@@ -271,30 +295,6 @@ class GetBuyerMarketPurchaseOptionResponseData implements ModelInterface, ArrayA
     public function setGradingRuns($grading_runs)
     {
         $this->container['grading_runs'] = $grading_runs;
-
-        return $this;
-    }
-
-    /**
-     * Gets vault_stock
-     *
-     * @return bool
-     */
-    public function getVaultStock()
-    {
-        return $this->container['vault_stock'];
-    }
-
-    /**
-     * Sets vault_stock
-     *
-     * @param bool $vault_stock vault_stock
-     *
-     * @return self
-     */
-    public function setVaultStock($vault_stock)
-    {
-        $this->container['vault_stock'] = $vault_stock;
 
         return $this;
     }

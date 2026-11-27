@@ -60,13 +60,13 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'available' => 'bool',
-        'title' => 'string',
         'platform_listing_id' => 'string',
         'position' => 'float',
         'slug' => 'string',
+        'title' => 'string',
         'price_cents' => 'float',
         'image_url' => 'string',
+        'available' => 'bool',
         'pinned' => 'bool'
     ];
 
@@ -78,13 +78,13 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'available' => null,
-        'title' => null,
         'platform_listing_id' => null,
         'position' => null,
         'slug' => null,
+        'title' => null,
         'price_cents' => null,
         'image_url' => null,
+        'available' => null,
         'pinned' => null
     ];
 
@@ -115,13 +115,13 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'available' => 'available',
-        'title' => 'title',
         'platform_listing_id' => 'platformListingId',
         'position' => 'position',
         'slug' => 'slug',
+        'title' => 'title',
         'price_cents' => 'priceCents',
         'image_url' => 'imageUrl',
+        'available' => 'available',
         'pinned' => 'pinned'
     ];
 
@@ -131,13 +131,13 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'available' => 'setAvailable',
-        'title' => 'setTitle',
         'platform_listing_id' => 'setPlatformListingId',
         'position' => 'setPosition',
         'slug' => 'setSlug',
+        'title' => 'setTitle',
         'price_cents' => 'setPriceCents',
         'image_url' => 'setImageUrl',
+        'available' => 'setAvailable',
         'pinned' => 'setPinned'
     ];
 
@@ -147,13 +147,13 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'available' => 'getAvailable',
-        'title' => 'getTitle',
         'platform_listing_id' => 'getPlatformListingId',
         'position' => 'getPosition',
         'slug' => 'getSlug',
+        'title' => 'getTitle',
         'price_cents' => 'getPriceCents',
         'image_url' => 'getImageUrl',
+        'available' => 'getAvailable',
         'pinned' => 'getPinned'
     ];
 
@@ -214,13 +214,13 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['available'] = $data['available'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
         $this->container['position'] = $data['position'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['image_url'] = $data['image_url'] ?? null;
+        $this->container['available'] = $data['available'] ?? null;
         $this->container['pinned'] = $data['pinned'] ?? null;
     }
 
@@ -233,9 +233,6 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['available'] === null) {
-            $invalidProperties[] = "'available' can't be null";
-        }
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
         }
@@ -244,6 +241,9 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
         }
         if ($this->container['price_cents'] === null) {
             $invalidProperties[] = "'price_cents' can't be null";
+        }
+        if ($this->container['available'] === null) {
+            $invalidProperties[] = "'available' can't be null";
         }
         if ($this->container['pinned'] === null) {
             $invalidProperties[] = "'pinned' can't be null";
@@ -262,54 +262,6 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets available
-     *
-     * @return bool
-     */
-    public function getAvailable()
-    {
-        return $this->container['available'];
-    }
-
-    /**
-     * Sets available
-     *
-     * @param bool $available available
-     *
-     * @return self
-     */
-    public function setAvailable($available)
-    {
-        $this->container['available'] = $available;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
 
     /**
      * Gets platform_listing_id
@@ -384,6 +336,30 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
      * Gets price_cents
      *
      * @return float
@@ -427,6 +403,30 @@ class UpdateLiveStreamLineupItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setImageUrl($image_url)
     {
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets available
+     *
+     * @return bool
+     */
+    public function getAvailable()
+    {
+        return $this->container['available'];
+    }
+
+    /**
+     * Sets available
+     *
+     * @param bool $available available
+     *
+     * @return self
+     */
+    public function setAvailable($available)
+    {
+        $this->container['available'] = $available;
 
         return $this;
     }

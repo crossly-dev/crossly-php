@@ -73,7 +73,7 @@ class ListVaultMarketOpeningItem implements ModelInterface, ArrayAccess, \JsonSe
         'units_on_shelf' => 'float',
         'dealers_quoting' => 'float',
         'waitlist' => 'float',
-        'mark' => '\Crossly\Model\Vault\ListVaultMarketFeedItemMark',
+        'mark' => '\Crossly\Model\Vault\ListVaultMarketOpeningItemMark',
         'market_href' => 'string',
         'me' => '\Crossly\Model\Vault\ListVaultMarketOpeningItemMe',
         'early_access' => '\Crossly\Model\Vault\ListVaultMarketOpeningItemEarlyAccess'
@@ -687,7 +687,7 @@ class ListVaultMarketOpeningItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets mark
      *
-     * @return \Crossly\Model\Vault\ListVaultMarketFeedItemMark
+     * @return \Crossly\Model\Vault\ListVaultMarketOpeningItemMark
      */
     public function getMark()
     {
@@ -697,7 +697,7 @@ class ListVaultMarketOpeningItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets mark
      *
-     * @param \Crossly\Model\Vault\ListVaultMarketFeedItemMark $mark mark
+     * @param \Crossly\Model\Vault\ListVaultMarketOpeningItemMark $mark mark
      *
      * @return self
      */

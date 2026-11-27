@@ -1,4 +1,5 @@
 {
+    "version": "0.2.0",
     "description": "The seller-facing Crossly API — listings, crossposting, orders, analytics. Authenticate with a Personal Access Token (`Authorization: Bearer crossly_pat_…`) or a seller OAuth token (`crossly_oat_…`), scoped `<domain>:<read|write>`. Buyer endpoints are a SEPARATE API with a separate principal — see the Crossly Buyer API.",
     "keywords": [
         "openapitools",

@@ -73,7 +73,9 @@ class CreateBuyerAgentSessionTurnResponseOptions implements ModelInterface, Arra
         'seller_display_name' => 'string',
         'facts' => 'string[]',
         'reason' => 'string',
-        'price_check' => '\Crossly\Buyer\Model\Agent\CreateBuyerAgentSessionActResponseQuotePriceCheck'
+        'price_check' => '\Crossly\Buyer\Model\Agent\CreateBuyerAgentSessionActResponseQuotePriceCheck',
+        'model' => 'string',
+        'shop_slug' => 'string'
     ];
 
     /**
@@ -97,7 +99,9 @@ class CreateBuyerAgentSessionTurnResponseOptions implements ModelInterface, Arra
         'seller_display_name' => null,
         'facts' => null,
         'reason' => null,
-        'price_check' => null
+        'price_check' => null,
+        'model' => null,
+        'shop_slug' => null
     ];
 
     /**
@@ -140,7 +144,9 @@ class CreateBuyerAgentSessionTurnResponseOptions implements ModelInterface, Arra
         'seller_display_name' => 'sellerDisplayName',
         'facts' => 'facts',
         'reason' => 'reason',
-        'price_check' => 'priceCheck'
+        'price_check' => 'priceCheck',
+        'model' => 'model',
+        'shop_slug' => 'shopSlug'
     ];
 
     /**
@@ -162,7 +168,9 @@ class CreateBuyerAgentSessionTurnResponseOptions implements ModelInterface, Arra
         'seller_display_name' => 'setSellerDisplayName',
         'facts' => 'setFacts',
         'reason' => 'setReason',
-        'price_check' => 'setPriceCheck'
+        'price_check' => 'setPriceCheck',
+        'model' => 'setModel',
+        'shop_slug' => 'setShopSlug'
     ];
 
     /**
@@ -184,7 +192,9 @@ class CreateBuyerAgentSessionTurnResponseOptions implements ModelInterface, Arra
         'seller_display_name' => 'getSellerDisplayName',
         'facts' => 'getFacts',
         'reason' => 'getReason',
-        'price_check' => 'getPriceCheck'
+        'price_check' => 'getPriceCheck',
+        'model' => 'getModel',
+        'shop_slug' => 'getShopSlug'
     ];
 
     /**
@@ -258,6 +268,8 @@ class CreateBuyerAgentSessionTurnResponseOptions implements ModelInterface, Arra
         $this->container['facts'] = $data['facts'] ?? null;
         $this->container['reason'] = $data['reason'] ?? null;
         $this->container['price_check'] = $data['price_check'] ?? null;
+        $this->container['model'] = $data['model'] ?? null;
+        $this->container['shop_slug'] = $data['shop_slug'] ?? null;
     }
 
     /**
@@ -634,6 +646,54 @@ class CreateBuyerAgentSessionTurnResponseOptions implements ModelInterface, Arra
     public function setPriceCheck($price_check)
     {
         $this->container['price_check'] = $price_check;
+
+        return $this;
+    }
+
+    /**
+     * Gets model
+     *
+     * @return string|null
+     */
+    public function getModel()
+    {
+        return $this->container['model'];
+    }
+
+    /**
+     * Sets model
+     *
+     * @param string|null $model The world object it stands as, and the seller's public shop room (world-picks.ts).
+     *
+     * @return self
+     */
+    public function setModel($model)
+    {
+        $this->container['model'] = $model;
+
+        return $this;
+    }
+
+    /**
+     * Gets shop_slug
+     *
+     * @return string|null
+     */
+    public function getShopSlug()
+    {
+        return $this->container['shop_slug'];
+    }
+
+    /**
+     * Sets shop_slug
+     *
+     * @param string|null $shop_slug shop_slug
+     *
+     * @return self
+     */
+    public function setShopSlug($shop_slug)
+    {
+        $this->container['shop_slug'] = $shop_slug;
 
         return $this;
     }

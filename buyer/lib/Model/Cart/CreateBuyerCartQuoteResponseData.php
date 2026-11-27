@@ -60,12 +60,12 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'currency' => 'string',
         'kind' => 'string',
-        'tax_cents' => 'float',
-        'shipping_cents' => 'float',
-        'total_cents' => 'float',
         'items_total_cents' => 'float',
+        'shipping_cents' => 'float',
+        'tax_cents' => 'float',
+        'total_cents' => 'float',
+        'currency' => 'string',
         'pickup_cart_item_ids' => 'string[]',
         'tax_complete' => 'bool',
         'duties_cents' => 'float',
@@ -84,12 +84,12 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'currency' => null,
         'kind' => null,
-        'tax_cents' => null,
-        'shipping_cents' => null,
-        'total_cents' => null,
         'items_total_cents' => null,
+        'shipping_cents' => null,
+        'tax_cents' => null,
+        'total_cents' => null,
+        'currency' => null,
         'pickup_cart_item_ids' => null,
         'tax_complete' => null,
         'duties_cents' => null,
@@ -127,12 +127,12 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'currency' => 'currency',
         'kind' => 'kind',
-        'tax_cents' => 'taxCents',
-        'shipping_cents' => 'shippingCents',
-        'total_cents' => 'totalCents',
         'items_total_cents' => 'itemsTotalCents',
+        'shipping_cents' => 'shippingCents',
+        'tax_cents' => 'taxCents',
+        'total_cents' => 'totalCents',
+        'currency' => 'currency',
         'pickup_cart_item_ids' => 'pickupCartItemIds',
         'tax_complete' => 'taxComplete',
         'duties_cents' => 'dutiesCents',
@@ -149,12 +149,12 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'currency' => 'setCurrency',
         'kind' => 'setKind',
-        'tax_cents' => 'setTaxCents',
-        'shipping_cents' => 'setShippingCents',
-        'total_cents' => 'setTotalCents',
         'items_total_cents' => 'setItemsTotalCents',
+        'shipping_cents' => 'setShippingCents',
+        'tax_cents' => 'setTaxCents',
+        'total_cents' => 'setTotalCents',
+        'currency' => 'setCurrency',
         'pickup_cart_item_ids' => 'setPickupCartItemIds',
         'tax_complete' => 'setTaxComplete',
         'duties_cents' => 'setDutiesCents',
@@ -171,12 +171,12 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'currency' => 'getCurrency',
         'kind' => 'getKind',
-        'tax_cents' => 'getTaxCents',
-        'shipping_cents' => 'getShippingCents',
-        'total_cents' => 'getTotalCents',
         'items_total_cents' => 'getItemsTotalCents',
+        'shipping_cents' => 'getShippingCents',
+        'tax_cents' => 'getTaxCents',
+        'total_cents' => 'getTotalCents',
+        'currency' => 'getCurrency',
         'pickup_cart_item_ids' => 'getPickupCartItemIds',
         'tax_complete' => 'getTaxComplete',
         'duties_cents' => 'getDutiesCents',
@@ -261,12 +261,12 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['currency'] = $data['currency'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
-        $this->container['tax_cents'] = $data['tax_cents'] ?? null;
-        $this->container['shipping_cents'] = $data['shipping_cents'] ?? null;
-        $this->container['total_cents'] = $data['total_cents'] ?? null;
         $this->container['items_total_cents'] = $data['items_total_cents'] ?? null;
+        $this->container['shipping_cents'] = $data['shipping_cents'] ?? null;
+        $this->container['tax_cents'] = $data['tax_cents'] ?? null;
+        $this->container['total_cents'] = $data['total_cents'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
         $this->container['pickup_cart_item_ids'] = $data['pickup_cart_item_ids'] ?? null;
         $this->container['tax_complete'] = $data['tax_complete'] ?? null;
         $this->container['duties_cents'] = $data['duties_cents'] ?? null;
@@ -286,23 +286,23 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
         if ($this->container['kind'] === null) {
             $invalidProperties[] = "'kind' can't be null";
         }
-        if ($this->container['tax_cents'] === null) {
-            $invalidProperties[] = "'tax_cents' can't be null";
+        if ($this->container['items_total_cents'] === null) {
+            $invalidProperties[] = "'items_total_cents' can't be null";
         }
         if ($this->container['shipping_cents'] === null) {
             $invalidProperties[] = "'shipping_cents' can't be null";
         }
+        if ($this->container['tax_cents'] === null) {
+            $invalidProperties[] = "'tax_cents' can't be null";
+        }
         if ($this->container['total_cents'] === null) {
             $invalidProperties[] = "'total_cents' can't be null";
         }
-        if ($this->container['items_total_cents'] === null) {
-            $invalidProperties[] = "'items_total_cents' can't be null";
+        if ($this->container['currency'] === null) {
+            $invalidProperties[] = "'currency' can't be null";
         }
         if ($this->container['pickup_cart_item_ids'] === null) {
             $invalidProperties[] = "'pickup_cart_item_ids' can't be null";
@@ -335,30 +335,6 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets currency
-     *
-     * @return string
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string $currency currency
-     *
-     * @return self
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
      * Gets kind
      *
      * @return string
@@ -383,25 +359,25 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets tax_cents
+     * Gets items_total_cents
      *
      * @return float
      */
-    public function getTaxCents()
+    public function getItemsTotalCents()
     {
-        return $this->container['tax_cents'];
+        return $this->container['items_total_cents'];
     }
 
     /**
-     * Sets tax_cents
+     * Sets items_total_cents
      *
-     * @param float $tax_cents tax_cents
+     * @param float $items_total_cents items_total_cents
      *
      * @return self
      */
-    public function setTaxCents($tax_cents)
+    public function setItemsTotalCents($items_total_cents)
     {
-        $this->container['tax_cents'] = $tax_cents;
+        $this->container['items_total_cents'] = $items_total_cents;
 
         return $this;
     }
@@ -431,6 +407,30 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
+     * Gets tax_cents
+     *
+     * @return float
+     */
+    public function getTaxCents()
+    {
+        return $this->container['tax_cents'];
+    }
+
+    /**
+     * Sets tax_cents
+     *
+     * @param float $tax_cents tax_cents
+     *
+     * @return self
+     */
+    public function setTaxCents($tax_cents)
+    {
+        $this->container['tax_cents'] = $tax_cents;
+
+        return $this;
+    }
+
+    /**
      * Gets total_cents
      *
      * @return float
@@ -455,25 +455,25 @@ class CreateBuyerCartQuoteResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets items_total_cents
+     * Gets currency
      *
-     * @return float
+     * @return string
      */
-    public function getItemsTotalCents()
+    public function getCurrency()
     {
-        return $this->container['items_total_cents'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets items_total_cents
+     * Sets currency
      *
-     * @param float $items_total_cents items_total_cents
+     * @param string $currency currency
      *
      * @return self
      */
-    public function setItemsTotalCents($items_total_cents)
+    public function setCurrency($currency)
     {
-        $this->container['items_total_cents'] = $items_total_cents;
+        $this->container['currency'] = $currency;
 
         return $this;
     }

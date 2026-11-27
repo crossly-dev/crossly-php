@@ -44,6 +44,8 @@ class GetVaultAttestationResponseKindsItem
     /**
      * Possible values of this enum
      */
+    const OTHER = 'other';
+
     const PHYSICAL_COUNT = 'physical_count';
 
     const INSURANCE_CERTIFICATE = 'insurance_certificate';
@@ -52,8 +54,6 @@ class GetVaultAttestationResponseKindsItem
 
     const SOC2 = 'soc2';
 
-    const OTHER = 'other';
-
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -61,11 +61,11 @@ class GetVaultAttestationResponseKindsItem
     public static function getAllowableEnumValues()
     {
         return [
+            self::OTHER,
             self::PHYSICAL_COUNT,
             self::INSURANCE_CERTIFICATE,
             self::SOC1_TYPE2,
-            self::SOC2,
-            self::OTHER
+            self::SOC2
         ];
     }
 }

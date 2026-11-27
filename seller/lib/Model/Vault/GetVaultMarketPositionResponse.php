@@ -61,7 +61,7 @@ class GetVaultMarketPositionResponse implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPITypes = [
         'loans' => '\Crossly\Model\Vault\GetVaultMarketPositionResponseLoans[]',
-        'auctions' => 'mixed[]',
+        'auctions' => '\Crossly\Model\Vault\GetVaultMarketPositionResponseAuctionsItem[]',
         'instructions' => '\Crossly\Model\Vault\GetVaultMarketPositionResponseInstructions[]',
         'legs' => '\Crossly\Model\Vault\GetVaultMarketPositionResponseLegs[]',
         'splits' => '\Crossly\Model\Vault\GetVaultMarketPositionResponseSplits[]',
@@ -353,8 +353,8 @@ class GetVaultMarketPositionResponse implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    const KIND_LONG = 'long';
     const KIND_SHORT = 'short';
+    const KIND_LONG = 'long';
 
     /**
      * Gets allowable values of the enum
@@ -364,8 +364,8 @@ class GetVaultMarketPositionResponse implements ModelInterface, ArrayAccess, \Js
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_LONG,
             self::KIND_SHORT,
+            self::KIND_LONG,
         ];
     }
 
@@ -566,7 +566,7 @@ class GetVaultMarketPositionResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets auctions
      *
-     * @return mixed[]
+     * @return \Crossly\Model\Vault\GetVaultMarketPositionResponseAuctionsItem[]
      */
     public function getAuctions()
     {
@@ -576,7 +576,7 @@ class GetVaultMarketPositionResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets auctions
      *
-     * @param mixed[] $auctions auctions
+     * @param \Crossly\Model\Vault\GetVaultMarketPositionResponseAuctionsItem[] $auctions auctions
      *
      * @return self
      */

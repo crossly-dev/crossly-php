@@ -65,15 +65,15 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'user_id' => 'string',
         'status' => 'string',
         'carrier' => 'string',
-        'order_ids' => 'string[]',
-        'shippo_pickup_id' => 'string',
         'confirmation' => 'string',
-        'pickup_date' => 'string',
+        'order_ids' => 'string[]',
         'min_time' => 'string',
         'max_time' => 'string',
+        'instructions' => 'string',
+        'shippo_pickup_id' => 'string',
+        'pickup_date' => 'string',
         'confirmed_start' => '\DateTime',
-        'confirmed_end' => '\DateTime',
-        'instructions' => 'string'
+        'confirmed_end' => '\DateTime'
     ];
 
     /**
@@ -89,15 +89,15 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'user_id' => null,
         'status' => null,
         'carrier' => null,
-        'order_ids' => null,
-        'shippo_pickup_id' => null,
         'confirmation' => null,
-        'pickup_date' => null,
+        'order_ids' => null,
         'min_time' => null,
         'max_time' => null,
+        'instructions' => null,
+        'shippo_pickup_id' => null,
+        'pickup_date' => null,
         'confirmed_start' => 'date-time',
-        'confirmed_end' => 'date-time',
-        'instructions' => null
+        'confirmed_end' => 'date-time'
     ];
 
     /**
@@ -132,15 +132,15 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'user_id' => 'userId',
         'status' => 'status',
         'carrier' => 'carrier',
-        'order_ids' => 'orderIds',
-        'shippo_pickup_id' => 'shippoPickupId',
         'confirmation' => 'confirmation',
-        'pickup_date' => 'pickupDate',
+        'order_ids' => 'orderIds',
         'min_time' => 'minTime',
         'max_time' => 'maxTime',
+        'instructions' => 'instructions',
+        'shippo_pickup_id' => 'shippoPickupId',
+        'pickup_date' => 'pickupDate',
         'confirmed_start' => 'confirmedStart',
-        'confirmed_end' => 'confirmedEnd',
-        'instructions' => 'instructions'
+        'confirmed_end' => 'confirmedEnd'
     ];
 
     /**
@@ -154,15 +154,15 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'user_id' => 'setUserId',
         'status' => 'setStatus',
         'carrier' => 'setCarrier',
-        'order_ids' => 'setOrderIds',
-        'shippo_pickup_id' => 'setShippoPickupId',
         'confirmation' => 'setConfirmation',
-        'pickup_date' => 'setPickupDate',
+        'order_ids' => 'setOrderIds',
         'min_time' => 'setMinTime',
         'max_time' => 'setMaxTime',
+        'instructions' => 'setInstructions',
+        'shippo_pickup_id' => 'setShippoPickupId',
+        'pickup_date' => 'setPickupDate',
         'confirmed_start' => 'setConfirmedStart',
-        'confirmed_end' => 'setConfirmedEnd',
-        'instructions' => 'setInstructions'
+        'confirmed_end' => 'setConfirmedEnd'
     ];
 
     /**
@@ -176,15 +176,15 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'user_id' => 'getUserId',
         'status' => 'getStatus',
         'carrier' => 'getCarrier',
-        'order_ids' => 'getOrderIds',
-        'shippo_pickup_id' => 'getShippoPickupId',
         'confirmation' => 'getConfirmation',
-        'pickup_date' => 'getPickupDate',
+        'order_ids' => 'getOrderIds',
         'min_time' => 'getMinTime',
         'max_time' => 'getMaxTime',
+        'instructions' => 'getInstructions',
+        'shippo_pickup_id' => 'getShippoPickupId',
+        'pickup_date' => 'getPickupDate',
         'confirmed_start' => 'getConfirmedStart',
-        'confirmed_end' => 'getConfirmedEnd',
-        'instructions' => 'getInstructions'
+        'confirmed_end' => 'getConfirmedEnd'
     ];
 
     /**
@@ -249,15 +249,15 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['carrier'] = $data['carrier'] ?? null;
-        $this->container['order_ids'] = $data['order_ids'] ?? null;
-        $this->container['shippo_pickup_id'] = $data['shippo_pickup_id'] ?? null;
         $this->container['confirmation'] = $data['confirmation'] ?? null;
-        $this->container['pickup_date'] = $data['pickup_date'] ?? null;
+        $this->container['order_ids'] = $data['order_ids'] ?? null;
         $this->container['min_time'] = $data['min_time'] ?? null;
         $this->container['max_time'] = $data['max_time'] ?? null;
+        $this->container['instructions'] = $data['instructions'] ?? null;
+        $this->container['shippo_pickup_id'] = $data['shippo_pickup_id'] ?? null;
+        $this->container['pickup_date'] = $data['pickup_date'] ?? null;
         $this->container['confirmed_start'] = $data['confirmed_start'] ?? null;
         $this->container['confirmed_end'] = $data['confirmed_end'] ?? null;
-        $this->container['instructions'] = $data['instructions'] ?? null;
     }
 
     /**
@@ -287,17 +287,17 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['order_ids'] === null) {
             $invalidProperties[] = "'order_ids' can't be null";
         }
-        if ($this->container['shippo_pickup_id'] === null) {
-            $invalidProperties[] = "'shippo_pickup_id' can't be null";
-        }
-        if ($this->container['pickup_date'] === null) {
-            $invalidProperties[] = "'pickup_date' can't be null";
-        }
         if ($this->container['min_time'] === null) {
             $invalidProperties[] = "'min_time' can't be null";
         }
         if ($this->container['max_time'] === null) {
             $invalidProperties[] = "'max_time' can't be null";
+        }
+        if ($this->container['shippo_pickup_id'] === null) {
+            $invalidProperties[] = "'shippo_pickup_id' can't be null";
+        }
+        if ($this->container['pickup_date'] === null) {
+            $invalidProperties[] = "'pickup_date' can't be null";
         }
         return $invalidProperties;
     }
@@ -435,54 +435,6 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets order_ids
-     *
-     * @return string[]
-     */
-    public function getOrderIds()
-    {
-        return $this->container['order_ids'];
-    }
-
-    /**
-     * Sets order_ids
-     *
-     * @param string[] $order_ids order_ids
-     *
-     * @return self
-     */
-    public function setOrderIds($order_ids)
-    {
-        $this->container['order_ids'] = $order_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets shippo_pickup_id
-     *
-     * @return string
-     */
-    public function getShippoPickupId()
-    {
-        return $this->container['shippo_pickup_id'];
-    }
-
-    /**
-     * Sets shippo_pickup_id
-     *
-     * @param string $shippo_pickup_id shippo_pickup_id
-     *
-     * @return self
-     */
-    public function setShippoPickupId($shippo_pickup_id)
-    {
-        $this->container['shippo_pickup_id'] = $shippo_pickup_id;
-
-        return $this;
-    }
-
-    /**
      * Gets confirmation
      *
      * @return string|null
@@ -507,25 +459,25 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets pickup_date
+     * Gets order_ids
      *
-     * @return string
+     * @return string[]
      */
-    public function getPickupDate()
+    public function getOrderIds()
     {
-        return $this->container['pickup_date'];
+        return $this->container['order_ids'];
     }
 
     /**
-     * Sets pickup_date
+     * Sets order_ids
      *
-     * @param string $pickup_date pickup_date
+     * @param string[] $order_ids order_ids
      *
      * @return self
      */
-    public function setPickupDate($pickup_date)
+    public function setOrderIds($order_ids)
     {
-        $this->container['pickup_date'] = $pickup_date;
+        $this->container['order_ids'] = $order_ids;
 
         return $this;
     }
@@ -579,6 +531,78 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets instructions
+     *
+     * @return string|null
+     */
+    public function getInstructions()
+    {
+        return $this->container['instructions'];
+    }
+
+    /**
+     * Sets instructions
+     *
+     * @param string|null $instructions instructions
+     *
+     * @return self
+     */
+    public function setInstructions($instructions)
+    {
+        $this->container['instructions'] = $instructions;
+
+        return $this;
+    }
+
+    /**
+     * Gets shippo_pickup_id
+     *
+     * @return string
+     */
+    public function getShippoPickupId()
+    {
+        return $this->container['shippo_pickup_id'];
+    }
+
+    /**
+     * Sets shippo_pickup_id
+     *
+     * @param string $shippo_pickup_id shippo_pickup_id
+     *
+     * @return self
+     */
+    public function setShippoPickupId($shippo_pickup_id)
+    {
+        $this->container['shippo_pickup_id'] = $shippo_pickup_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets pickup_date
+     *
+     * @return string
+     */
+    public function getPickupDate()
+    {
+        return $this->container['pickup_date'];
+    }
+
+    /**
+     * Sets pickup_date
+     *
+     * @param string $pickup_date pickup_date
+     *
+     * @return self
+     */
+    public function setPickupDate($pickup_date)
+    {
+        $this->container['pickup_date'] = $pickup_date;
+
+        return $this;
+    }
+
+    /**
      * Gets confirmed_start
      *
      * @return \DateTime|null
@@ -622,30 +646,6 @@ class ListOrderPickupsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setConfirmedEnd($confirmed_end)
     {
         $this->container['confirmed_end'] = $confirmed_end;
-
-        return $this;
-    }
-
-    /**
-     * Gets instructions
-     *
-     * @return string|null
-     */
-    public function getInstructions()
-    {
-        return $this->container['instructions'];
-    }
-
-    /**
-     * Sets instructions
-     *
-     * @param string|null $instructions instructions
-     *
-     * @return self
-     */
-    public function setInstructions($instructions)
-    {
-        $this->container['instructions'] = $instructions;
 
         return $this;
     }

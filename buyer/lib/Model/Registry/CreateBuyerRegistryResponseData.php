@@ -63,11 +63,11 @@ class CreateBuyerRegistryResponseData implements ModelInterface, ArrayAccess, \J
         'id' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'token' => 'string',
+        'owner_user_id' => 'string',
         'kind' => 'string',
         'message' => 'string',
-        'owner_user_id' => 'string',
         'wishlist_id' => 'string',
+        'token' => 'string',
         'event_date' => 'string',
         'ship_address_id' => 'string'
     ];
@@ -83,11 +83,11 @@ class CreateBuyerRegistryResponseData implements ModelInterface, ArrayAccess, \J
         'id' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'token' => null,
+        'owner_user_id' => null,
         'kind' => null,
         'message' => null,
-        'owner_user_id' => null,
         'wishlist_id' => null,
+        'token' => null,
         'event_date' => null,
         'ship_address_id' => null
     ];
@@ -122,11 +122,11 @@ class CreateBuyerRegistryResponseData implements ModelInterface, ArrayAccess, \J
         'id' => 'id',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
-        'token' => 'token',
+        'owner_user_id' => 'ownerUserId',
         'kind' => 'kind',
         'message' => 'message',
-        'owner_user_id' => 'ownerUserId',
         'wishlist_id' => 'wishlistId',
+        'token' => 'token',
         'event_date' => 'eventDate',
         'ship_address_id' => 'shipAddressId'
     ];
@@ -140,11 +140,11 @@ class CreateBuyerRegistryResponseData implements ModelInterface, ArrayAccess, \J
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'token' => 'setToken',
+        'owner_user_id' => 'setOwnerUserId',
         'kind' => 'setKind',
         'message' => 'setMessage',
-        'owner_user_id' => 'setOwnerUserId',
         'wishlist_id' => 'setWishlistId',
+        'token' => 'setToken',
         'event_date' => 'setEventDate',
         'ship_address_id' => 'setShipAddressId'
     ];
@@ -158,11 +158,11 @@ class CreateBuyerRegistryResponseData implements ModelInterface, ArrayAccess, \J
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'token' => 'getToken',
+        'owner_user_id' => 'getOwnerUserId',
         'kind' => 'getKind',
         'message' => 'getMessage',
-        'owner_user_id' => 'getOwnerUserId',
         'wishlist_id' => 'getWishlistId',
+        'token' => 'getToken',
         'event_date' => 'getEventDate',
         'ship_address_id' => 'getShipAddressId'
     ];
@@ -227,11 +227,11 @@ class CreateBuyerRegistryResponseData implements ModelInterface, ArrayAccess, \J
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['token'] = $data['token'] ?? null;
+        $this->container['owner_user_id'] = $data['owner_user_id'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
         $this->container['message'] = $data['message'] ?? null;
-        $this->container['owner_user_id'] = $data['owner_user_id'] ?? null;
         $this->container['wishlist_id'] = $data['wishlist_id'] ?? null;
+        $this->container['token'] = $data['token'] ?? null;
         $this->container['event_date'] = $data['event_date'] ?? null;
         $this->container['ship_address_id'] = $data['ship_address_id'] ?? null;
     }
@@ -254,17 +254,17 @@ class CreateBuyerRegistryResponseData implements ModelInterface, ArrayAccess, \J
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
-        if ($this->container['token'] === null) {
-            $invalidProperties[] = "'token' can't be null";
+        if ($this->container['owner_user_id'] === null) {
+            $invalidProperties[] = "'owner_user_id' can't be null";
         }
         if ($this->container['kind'] === null) {
             $invalidProperties[] = "'kind' can't be null";
         }
-        if ($this->container['owner_user_id'] === null) {
-            $invalidProperties[] = "'owner_user_id' can't be null";
-        }
         if ($this->container['wishlist_id'] === null) {
             $invalidProperties[] = "'wishlist_id' can't be null";
+        }
+        if ($this->container['token'] === null) {
+            $invalidProperties[] = "'token' can't be null";
         }
         return $invalidProperties;
     }
@@ -354,25 +354,25 @@ class CreateBuyerRegistryResponseData implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets token
+     * Gets owner_user_id
      *
      * @return string
      */
-    public function getToken()
+    public function getOwnerUserId()
     {
-        return $this->container['token'];
+        return $this->container['owner_user_id'];
     }
 
     /**
-     * Sets token
+     * Sets owner_user_id
      *
-     * @param string $token token
+     * @param string $owner_user_id owner_user_id
      *
      * @return self
      */
-    public function setToken($token)
+    public function setOwnerUserId($owner_user_id)
     {
-        $this->container['token'] = $token;
+        $this->container['owner_user_id'] = $owner_user_id;
 
         return $this;
     }
@@ -426,30 +426,6 @@ class CreateBuyerRegistryResponseData implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets owner_user_id
-     *
-     * @return string
-     */
-    public function getOwnerUserId()
-    {
-        return $this->container['owner_user_id'];
-    }
-
-    /**
-     * Sets owner_user_id
-     *
-     * @param string $owner_user_id owner_user_id
-     *
-     * @return self
-     */
-    public function setOwnerUserId($owner_user_id)
-    {
-        $this->container['owner_user_id'] = $owner_user_id;
-
-        return $this;
-    }
-
-    /**
      * Gets wishlist_id
      *
      * @return string
@@ -469,6 +445,30 @@ class CreateBuyerRegistryResponseData implements ModelInterface, ArrayAccess, \J
     public function setWishlistId($wishlist_id)
     {
         $this->container['wishlist_id'] = $wishlist_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->container['token'];
+    }
+
+    /**
+     * Sets token
+     *
+     * @param string $token token
+     *
+     * @return self
+     */
+    public function setToken($token)
+    {
+        $this->container['token'] = $token;
 
         return $this;
     }

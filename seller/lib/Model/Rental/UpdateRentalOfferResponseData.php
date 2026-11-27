@@ -63,16 +63,21 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
         'active' => 'bool',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
+        'quantity' => 'float',
         'platform_listing_id' => 'string',
+        'storefront_id' => 'string',
+        'options' => 'array<string,mixed>',
         'seller_user_id' => 'string',
         'deposit_cents' => 'float',
-        'daily_cents' => 'float',
-        'weekly_cents' => 'float',
         'min_days' => 'float',
         'max_days' => 'float',
+        'daily_cents' => 'float',
+        'weekly_cents' => 'float',
         'buffer_days' => 'float',
         'rent_only' => 'bool',
-        'require_approval' => 'bool'
+        'require_approval' => 'bool',
+        'blackout_ranges' => '\Crossly\Model\Common\StartEnd[]',
+        'return_policy' => 'string'
     ];
 
     /**
@@ -86,16 +91,21 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
         'active' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
+        'quantity' => null,
         'platform_listing_id' => null,
+        'storefront_id' => null,
+        'options' => null,
         'seller_user_id' => null,
         'deposit_cents' => null,
-        'daily_cents' => null,
-        'weekly_cents' => null,
         'min_days' => null,
         'max_days' => null,
+        'daily_cents' => null,
+        'weekly_cents' => null,
         'buffer_days' => null,
         'rent_only' => null,
-        'require_approval' => null
+        'require_approval' => null,
+        'blackout_ranges' => null,
+        'return_policy' => null
     ];
 
     /**
@@ -128,16 +138,21 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
         'active' => 'active',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
+        'quantity' => 'quantity',
         'platform_listing_id' => 'platformListingId',
+        'storefront_id' => 'storefrontId',
+        'options' => 'options',
         'seller_user_id' => 'sellerUserId',
         'deposit_cents' => 'depositCents',
-        'daily_cents' => 'dailyCents',
-        'weekly_cents' => 'weeklyCents',
         'min_days' => 'minDays',
         'max_days' => 'maxDays',
+        'daily_cents' => 'dailyCents',
+        'weekly_cents' => 'weeklyCents',
         'buffer_days' => 'bufferDays',
         'rent_only' => 'rentOnly',
-        'require_approval' => 'requireApproval'
+        'require_approval' => 'requireApproval',
+        'blackout_ranges' => 'blackoutRanges',
+        'return_policy' => 'returnPolicy'
     ];
 
     /**
@@ -149,16 +164,21 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
         'active' => 'setActive',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
+        'quantity' => 'setQuantity',
         'platform_listing_id' => 'setPlatformListingId',
+        'storefront_id' => 'setStorefrontId',
+        'options' => 'setOptions',
         'seller_user_id' => 'setSellerUserId',
         'deposit_cents' => 'setDepositCents',
-        'daily_cents' => 'setDailyCents',
-        'weekly_cents' => 'setWeeklyCents',
         'min_days' => 'setMinDays',
         'max_days' => 'setMaxDays',
+        'daily_cents' => 'setDailyCents',
+        'weekly_cents' => 'setWeeklyCents',
         'buffer_days' => 'setBufferDays',
         'rent_only' => 'setRentOnly',
-        'require_approval' => 'setRequireApproval'
+        'require_approval' => 'setRequireApproval',
+        'blackout_ranges' => 'setBlackoutRanges',
+        'return_policy' => 'setReturnPolicy'
     ];
 
     /**
@@ -170,16 +190,21 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
         'active' => 'getActive',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
+        'quantity' => 'getQuantity',
         'platform_listing_id' => 'getPlatformListingId',
+        'storefront_id' => 'getStorefrontId',
+        'options' => 'getOptions',
         'seller_user_id' => 'getSellerUserId',
         'deposit_cents' => 'getDepositCents',
-        'daily_cents' => 'getDailyCents',
-        'weekly_cents' => 'getWeeklyCents',
         'min_days' => 'getMinDays',
         'max_days' => 'getMaxDays',
+        'daily_cents' => 'getDailyCents',
+        'weekly_cents' => 'getWeeklyCents',
         'buffer_days' => 'getBufferDays',
         'rent_only' => 'getRentOnly',
-        'require_approval' => 'getRequireApproval'
+        'require_approval' => 'getRequireApproval',
+        'blackout_ranges' => 'getBlackoutRanges',
+        'return_policy' => 'getReturnPolicy'
     ];
 
     /**
@@ -242,16 +267,21 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
         $this->container['active'] = $data['active'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
         $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['deposit_cents'] = $data['deposit_cents'] ?? null;
-        $this->container['daily_cents'] = $data['daily_cents'] ?? null;
-        $this->container['weekly_cents'] = $data['weekly_cents'] ?? null;
         $this->container['min_days'] = $data['min_days'] ?? null;
         $this->container['max_days'] = $data['max_days'] ?? null;
+        $this->container['daily_cents'] = $data['daily_cents'] ?? null;
+        $this->container['weekly_cents'] = $data['weekly_cents'] ?? null;
         $this->container['buffer_days'] = $data['buffer_days'] ?? null;
         $this->container['rent_only'] = $data['rent_only'] ?? null;
         $this->container['require_approval'] = $data['require_approval'] ?? null;
+        $this->container['blackout_ranges'] = $data['blackout_ranges'] ?? null;
+        $this->container['return_policy'] = $data['return_policy'] ?? null;
     }
 
     /**
@@ -272,8 +302,14 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
+        }
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
+        }
+        if ($this->container['options'] === null) {
+            $invalidProperties[] = "'options' can't be null";
         }
         if ($this->container['seller_user_id'] === null) {
             $invalidProperties[] = "'seller_user_id' can't be null";
@@ -281,14 +317,14 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['deposit_cents'] === null) {
             $invalidProperties[] = "'deposit_cents' can't be null";
         }
-        if ($this->container['daily_cents'] === null) {
-            $invalidProperties[] = "'daily_cents' can't be null";
-        }
         if ($this->container['min_days'] === null) {
             $invalidProperties[] = "'min_days' can't be null";
         }
         if ($this->container['max_days'] === null) {
             $invalidProperties[] = "'max_days' can't be null";
+        }
+        if ($this->container['daily_cents'] === null) {
+            $invalidProperties[] = "'daily_cents' can't be null";
         }
         if ($this->container['buffer_days'] === null) {
             $invalidProperties[] = "'buffer_days' can't be null";
@@ -298,6 +334,9 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
         }
         if ($this->container['require_approval'] === null) {
             $invalidProperties[] = "'require_approval' can't be null";
+        }
+        if ($this->container['blackout_ranges'] === null) {
+            $invalidProperties[] = "'blackout_ranges' can't be null";
         }
         return $invalidProperties;
     }
@@ -387,6 +426,30 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
+     * Gets quantity
+     *
+     * @return float
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param float $quantity quantity
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /**
      * Gets platform_listing_id
      *
      * @return string
@@ -406,6 +469,54 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
     public function setPlatformListingId($platform_listing_id)
     {
         $this->container['platform_listing_id'] = $platform_listing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id storefront_id
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return array<string,mixed>
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param array<string,mixed> $options options
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
 
         return $this;
     }
@@ -459,54 +570,6 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets daily_cents
-     *
-     * @return float
-     */
-    public function getDailyCents()
-    {
-        return $this->container['daily_cents'];
-    }
-
-    /**
-     * Sets daily_cents
-     *
-     * @param float $daily_cents daily_cents
-     *
-     * @return self
-     */
-    public function setDailyCents($daily_cents)
-    {
-        $this->container['daily_cents'] = $daily_cents;
-
-        return $this;
-    }
-
-    /**
-     * Gets weekly_cents
-     *
-     * @return float|null
-     */
-    public function getWeeklyCents()
-    {
-        return $this->container['weekly_cents'];
-    }
-
-    /**
-     * Sets weekly_cents
-     *
-     * @param float|null $weekly_cents weekly_cents
-     *
-     * @return self
-     */
-    public function setWeeklyCents($weekly_cents)
-    {
-        $this->container['weekly_cents'] = $weekly_cents;
-
-        return $this;
-    }
-
-    /**
      * Gets min_days
      *
      * @return float
@@ -550,6 +613,54 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
     public function setMaxDays($max_days)
     {
         $this->container['max_days'] = $max_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets daily_cents
+     *
+     * @return float
+     */
+    public function getDailyCents()
+    {
+        return $this->container['daily_cents'];
+    }
+
+    /**
+     * Sets daily_cents
+     *
+     * @param float $daily_cents daily_cents
+     *
+     * @return self
+     */
+    public function setDailyCents($daily_cents)
+    {
+        $this->container['daily_cents'] = $daily_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets weekly_cents
+     *
+     * @return float|null
+     */
+    public function getWeeklyCents()
+    {
+        return $this->container['weekly_cents'];
+    }
+
+    /**
+     * Sets weekly_cents
+     *
+     * @param float|null $weekly_cents weekly_cents
+     *
+     * @return self
+     */
+    public function setWeeklyCents($weekly_cents)
+    {
+        $this->container['weekly_cents'] = $weekly_cents;
 
         return $this;
     }
@@ -622,6 +733,54 @@ class UpdateRentalOfferResponseData implements ModelInterface, ArrayAccess, \Jso
     public function setRequireApproval($require_approval)
     {
         $this->container['require_approval'] = $require_approval;
+
+        return $this;
+    }
+
+    /**
+     * Gets blackout_ranges
+     *
+     * @return \Crossly\Model\Common\StartEnd[]
+     */
+    public function getBlackoutRanges()
+    {
+        return $this->container['blackout_ranges'];
+    }
+
+    /**
+     * Sets blackout_ranges
+     *
+     * @param \Crossly\Model\Common\StartEnd[] $blackout_ranges blackout_ranges
+     *
+     * @return self
+     */
+    public function setBlackoutRanges($blackout_ranges)
+    {
+        $this->container['blackout_ranges'] = $blackout_ranges;
+
+        return $this;
+    }
+
+    /**
+     * Gets return_policy
+     *
+     * @return string|null
+     */
+    public function getReturnPolicy()
+    {
+        return $this->container['return_policy'];
+    }
+
+    /**
+     * Sets return_policy
+     *
+     * @param string|null $return_policy return_policy
+     *
+     * @return self
+     */
+    public function setReturnPolicy($return_policy)
+    {
+        $this->container['return_policy'] = $return_policy;
 
         return $this;
     }

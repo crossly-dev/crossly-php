@@ -60,8 +60,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch implements ModelInterfac
       * @var string[]
       */
     protected static $openAPITypes = [
+        'list_price_cents' => 'float',
         'platform' => 'string',
-        'list_price_cents' => 'float'
+        'platform_name' => 'string'
     ];
 
     /**
@@ -72,8 +73,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch implements ModelInterfac
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'list_price_cents' => null,
         'platform' => null,
-        'list_price_cents' => null
+        'platform_name' => null
     ];
 
     /**
@@ -103,8 +105,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch implements ModelInterfac
      * @var string[]
      */
     protected static $attributeMap = [
+        'list_price_cents' => 'listPriceCents',
         'platform' => 'platform',
-        'list_price_cents' => 'listPriceCents'
+        'platform_name' => 'platformName'
     ];
 
     /**
@@ -113,8 +116,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch implements ModelInterfac
      * @var string[]
      */
     protected static $setters = [
+        'list_price_cents' => 'setListPriceCents',
         'platform' => 'setPlatform',
-        'list_price_cents' => 'setListPriceCents'
+        'platform_name' => 'setPlatformName'
     ];
 
     /**
@@ -123,8 +127,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch implements ModelInterfac
      * @var string[]
      */
     protected static $getters = [
+        'list_price_cents' => 'getListPriceCents',
         'platform' => 'getPlatform',
-        'list_price_cents' => 'getListPriceCents'
+        'platform_name' => 'getPlatformName'
     ];
 
     /**
@@ -184,8 +189,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch implements ModelInterfac
      */
     public function __construct(array $data = null)
     {
-        $this->container['platform'] = $data['platform'] ?? null;
         $this->container['list_price_cents'] = $data['list_price_cents'] ?? null;
+        $this->container['platform'] = $data['platform'] ?? null;
+        $this->container['platform_name'] = $data['platform_name'] ?? null;
     }
 
     /**
@@ -197,11 +203,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch implements ModelInterfac
     {
         $invalidProperties = [];
 
-        if ($this->container['platform'] === null) {
-            $invalidProperties[] = "'platform' can't be null";
-        }
         if ($this->container['list_price_cents'] === null) {
             $invalidProperties[] = "'list_price_cents' can't be null";
+        }
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,6 +223,30 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch implements ModelInterfac
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets list_price_cents
+     *
+     * @return float
+     */
+    public function getListPriceCents()
+    {
+        return $this->container['list_price_cents'];
+    }
+
+    /**
+     * Sets list_price_cents
+     *
+     * @param float $list_price_cents list_price_cents
+     *
+     * @return self
+     */
+    public function setListPriceCents($list_price_cents)
+    {
+        $this->container['list_price_cents'] = $list_price_cents;
+
+        return $this;
+    }
 
     /**
      * Gets platform
@@ -243,25 +273,25 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch implements ModelInterfac
     }
 
     /**
-     * Gets list_price_cents
+     * Gets platform_name
      *
-     * @return float
+     * @return string|null
      */
-    public function getListPriceCents()
+    public function getPlatformName()
     {
-        return $this->container['list_price_cents'];
+        return $this->container['platform_name'];
     }
 
     /**
-     * Sets list_price_cents
+     * Sets platform_name
      *
-     * @param float $list_price_cents list_price_cents
+     * @param string|null $platform_name platform_name
      *
      * @return self
      */
-    public function setListPriceCents($list_price_cents)
+    public function setPlatformName($platform_name)
     {
-        $this->container['list_price_cents'] = $list_price_cents;
+        $this->container['platform_name'] = $platform_name;
 
         return $this;
     }

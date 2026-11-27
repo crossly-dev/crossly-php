@@ -60,7 +60,7 @@ class PassportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Crossly\Model\Common\ListPassportsItem'
+        'data' => '\Crossly\Model\Common\PassportResponseData'
     ];
 
     /**
@@ -212,7 +212,7 @@ class PassportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return \Crossly\Model\Common\ListPassportsItem
+     * @return \Crossly\Model\Common\PassportResponseData
      */
     public function getData()
     {
@@ -222,7 +222,7 @@ class PassportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \Crossly\Model\Common\ListPassportsItem $data data
+     * @param \Crossly\Model\Common\PassportResponseData $data data
      *
      * @return self
      */

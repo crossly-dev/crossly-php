@@ -233,21 +233,21 @@ class GetConnectionHealthResponseAccounts implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const STATE_STALE = 'stale';
     const STATE_UNKNOWN = 'unknown';
-    const STATE_HEALTHY = 'healthy';
     const STATE_UNMONITORED = 'unmonitored';
     const STATE_DISCONNECTED = 'disconnected';
+    const STATE_HEALTHY = 'healthy';
+    const STATE_STALE = 'stale';
     const STATE_PARTIAL_BLANK = 'partial_blank';
     const STATE_BLANK_CREDENTIAL = 'blank_credential';
     const STATE_SIGNED_OUT = 'signed_out';
     const STATE_ANCHOR_DRIFT = 'anchor_drift';
     const STATE_NO_COOKIES = 'no_cookies';
-    const SEVERITY_ERROR = 'error';
-    const SEVERITY_UNKNOWN = 'unknown';
-    const SEVERITY_OK = 'ok';
-    const SEVERITY_WARN = 'warn';
     const SEVERITY_INFO = 'info';
+    const SEVERITY_UNKNOWN = 'unknown';
+    const SEVERITY_ERROR = 'error';
+    const SEVERITY_WARN = 'warn';
+    const SEVERITY_OK = 'ok';
     const AUDIENCE_SELLER = 'seller';
     const AUDIENCE_CROSSLY = 'crossly';
     const AUDIENCE_NOBODY = 'nobody';
@@ -260,11 +260,11 @@ class GetConnectionHealthResponseAccounts implements ModelInterface, ArrayAccess
     public function getStateAllowableValues()
     {
         return [
-            self::STATE_STALE,
             self::STATE_UNKNOWN,
-            self::STATE_HEALTHY,
             self::STATE_UNMONITORED,
             self::STATE_DISCONNECTED,
+            self::STATE_HEALTHY,
+            self::STATE_STALE,
             self::STATE_PARTIAL_BLANK,
             self::STATE_BLANK_CREDENTIAL,
             self::STATE_SIGNED_OUT,
@@ -281,11 +281,11 @@ class GetConnectionHealthResponseAccounts implements ModelInterface, ArrayAccess
     public function getSeverityAllowableValues()
     {
         return [
-            self::SEVERITY_ERROR,
-            self::SEVERITY_UNKNOWN,
-            self::SEVERITY_OK,
-            self::SEVERITY_WARN,
             self::SEVERITY_INFO,
+            self::SEVERITY_UNKNOWN,
+            self::SEVERITY_ERROR,
+            self::SEVERITY_WARN,
+            self::SEVERITY_OK,
         ];
     }
 

@@ -203,8 +203,8 @@ class ListMainStageEventsItem implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    const KIND_CREATOR_MEETUP = 'creator_meetup';
     const KIND_BRAND_LAUNCH = 'brand_launch';
+    const KIND_CREATOR_MEETUP = 'creator_meetup';
     const KIND_FESTIVAL = 'festival';
     const KIND_TALK = 'talk';
     const KIND_LIVE_SALE = 'live_sale';
@@ -217,8 +217,8 @@ class ListMainStageEventsItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_CREATOR_MEETUP,
             self::KIND_BRAND_LAUNCH,
+            self::KIND_CREATOR_MEETUP,
             self::KIND_FESTIVAL,
             self::KIND_TALK,
             self::KIND_LIVE_SALE,

@@ -168,8 +168,8 @@ class CreateMagicScanResponsePhotoIdentifierIdentifier implements ModelInterface
         return self::$openAPIModelName;
     }
 
-    const MODEL_NAMESPACE_STYLE_CODE = 'style_code';
     const MODEL_NAMESPACE_GTIN = 'gtin';
+    const MODEL_NAMESPACE_STYLE_CODE = 'style_code';
     const MODEL_NAMESPACE_LEGO_SET = 'lego_set';
     const MODEL_NAMESPACE_TCGPLAYER = 'tcgplayer';
     const MODEL_NAMESPACE_DISCOGS = 'discogs';
@@ -183,8 +183,8 @@ class CreateMagicScanResponsePhotoIdentifierIdentifier implements ModelInterface
     public function getNamespaceAllowableValues()
     {
         return [
-            self::MODEL_NAMESPACE_STYLE_CODE,
             self::MODEL_NAMESPACE_GTIN,
+            self::MODEL_NAMESPACE_STYLE_CODE,
             self::MODEL_NAMESPACE_LEGO_SET,
             self::MODEL_NAMESPACE_TCGPLAYER,
             self::MODEL_NAMESPACE_DISCOGS,

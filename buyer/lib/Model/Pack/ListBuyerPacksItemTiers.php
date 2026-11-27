@@ -62,10 +62,10 @@ class ListBuyerPacksItemTiers implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'available' => 'float',
-        'min_value_cents' => 'float',
         'weight' => 'float',
         'odds_pct' => 'float',
+        'available' => 'float',
+        'min_value_cents' => 'float',
         'max_value_cents' => 'float',
         'avg_value_cents' => 'float'
     ];
@@ -80,10 +80,10 @@ class ListBuyerPacksItemTiers implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
-        'available' => null,
-        'min_value_cents' => null,
         'weight' => null,
         'odds_pct' => null,
+        'available' => null,
+        'min_value_cents' => null,
         'max_value_cents' => null,
         'avg_value_cents' => null
     ];
@@ -117,10 +117,10 @@ class ListBuyerPacksItemTiers implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'available' => 'available',
-        'min_value_cents' => 'minValueCents',
         'weight' => 'weight',
         'odds_pct' => 'oddsPct',
+        'available' => 'available',
+        'min_value_cents' => 'minValueCents',
         'max_value_cents' => 'maxValueCents',
         'avg_value_cents' => 'avgValueCents'
     ];
@@ -133,10 +133,10 @@ class ListBuyerPacksItemTiers implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'available' => 'setAvailable',
-        'min_value_cents' => 'setMinValueCents',
         'weight' => 'setWeight',
         'odds_pct' => 'setOddsPct',
+        'available' => 'setAvailable',
+        'min_value_cents' => 'setMinValueCents',
         'max_value_cents' => 'setMaxValueCents',
         'avg_value_cents' => 'setAvgValueCents'
     ];
@@ -149,10 +149,10 @@ class ListBuyerPacksItemTiers implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'available' => 'getAvailable',
-        'min_value_cents' => 'getMinValueCents',
         'weight' => 'getWeight',
         'odds_pct' => 'getOddsPct',
+        'available' => 'getAvailable',
+        'min_value_cents' => 'getMinValueCents',
         'max_value_cents' => 'getMaxValueCents',
         'avg_value_cents' => 'getAvgValueCents'
     ];
@@ -216,10 +216,10 @@ class ListBuyerPacksItemTiers implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['available'] = $data['available'] ?? null;
-        $this->container['min_value_cents'] = $data['min_value_cents'] ?? null;
         $this->container['weight'] = $data['weight'] ?? null;
         $this->container['odds_pct'] = $data['odds_pct'] ?? null;
+        $this->container['available'] = $data['available'] ?? null;
+        $this->container['min_value_cents'] = $data['min_value_cents'] ?? null;
         $this->container['max_value_cents'] = $data['max_value_cents'] ?? null;
         $this->container['avg_value_cents'] = $data['avg_value_cents'] ?? null;
     }
@@ -239,14 +239,14 @@ class ListBuyerPacksItemTiers implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['available'] === null) {
-            $invalidProperties[] = "'available' can't be null";
-        }
         if ($this->container['weight'] === null) {
             $invalidProperties[] = "'weight' can't be null";
         }
         if ($this->container['odds_pct'] === null) {
             $invalidProperties[] = "'odds_pct' can't be null";
+        }
+        if ($this->container['available'] === null) {
+            $invalidProperties[] = "'available' can't be null";
         }
         if ($this->container['avg_value_cents'] === null) {
             $invalidProperties[] = "'avg_value_cents' can't be null";
@@ -315,54 +315,6 @@ class ListBuyerPacksItemTiers implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets available
-     *
-     * @return float
-     */
-    public function getAvailable()
-    {
-        return $this->container['available'];
-    }
-
-    /**
-     * Sets available
-     *
-     * @param float $available available
-     *
-     * @return self
-     */
-    public function setAvailable($available)
-    {
-        $this->container['available'] = $available;
-
-        return $this;
-    }
-
-    /**
-     * Gets min_value_cents
-     *
-     * @return float|null
-     */
-    public function getMinValueCents()
-    {
-        return $this->container['min_value_cents'];
-    }
-
-    /**
-     * Sets min_value_cents
-     *
-     * @param float|null $min_value_cents min_value_cents
-     *
-     * @return self
-     */
-    public function setMinValueCents($min_value_cents)
-    {
-        $this->container['min_value_cents'] = $min_value_cents;
-
-        return $this;
-    }
-
-    /**
      * Gets weight
      *
      * @return float
@@ -406,6 +358,54 @@ class ListBuyerPacksItemTiers implements ModelInterface, ArrayAccess, \JsonSeria
     public function setOddsPct($odds_pct)
     {
         $this->container['odds_pct'] = $odds_pct;
+
+        return $this;
+    }
+
+    /**
+     * Gets available
+     *
+     * @return float
+     */
+    public function getAvailable()
+    {
+        return $this->container['available'];
+    }
+
+    /**
+     * Sets available
+     *
+     * @param float $available available
+     *
+     * @return self
+     */
+    public function setAvailable($available)
+    {
+        $this->container['available'] = $available;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_value_cents
+     *
+     * @return float|null
+     */
+    public function getMinValueCents()
+    {
+        return $this->container['min_value_cents'];
+    }
+
+    /**
+     * Sets min_value_cents
+     *
+     * @param float|null $min_value_cents min_value_cents
+     *
+     * @return self
+     */
+    public function setMinValueCents($min_value_cents)
+    {
+        $this->container['min_value_cents'] = $min_value_cents;
 
         return $this;
     }

@@ -62,7 +62,7 @@ class GetVaultMarketReportResponse implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'quarter' => 'string',
         'label' => 'string',
-        'range' => '\Crossly\Model\Inventory\GetInventorySellThroughResponseDataWindow',
+        'range' => '\Crossly\Model\Common\StartEnd',
         'in_progress' => 'bool',
         'generated_at' => 'string',
         'totals' => '\Crossly\Model\Vault\GetVaultMarketReportResponseTotals',
@@ -377,7 +377,7 @@ class GetVaultMarketReportResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets range
      *
-     * @return \Crossly\Model\Inventory\GetInventorySellThroughResponseDataWindow
+     * @return \Crossly\Model\Common\StartEnd
      */
     public function getRange()
     {
@@ -387,7 +387,7 @@ class GetVaultMarketReportResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets range
      *
-     * @param \Crossly\Model\Inventory\GetInventorySellThroughResponseDataWindow $range range
+     * @param \Crossly\Model\Common\StartEnd $range range
      *
      * @return self
      */

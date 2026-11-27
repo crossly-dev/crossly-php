@@ -203,9 +203,10 @@ class GetSpatialEmployeeConfigResponseDataConfig implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    const BRAIN_KIND_IDLE = 'idle';
     const BRAIN_KIND_RULES = 'rules';
+    const BRAIN_KIND_IDLE = 'idle';
     const BRAIN_KIND_AGENT = 'agent';
+    const BRAIN_KIND_BYOK = 'byok';
 
     /**
      * Gets allowable values of the enum
@@ -215,9 +216,10 @@ class GetSpatialEmployeeConfigResponseDataConfig implements ModelInterface, Arra
     public function getBrainKindAllowableValues()
     {
         return [
-            self::BRAIN_KIND_IDLE,
             self::BRAIN_KIND_RULES,
+            self::BRAIN_KIND_IDLE,
             self::BRAIN_KIND_AGENT,
+            self::BRAIN_KIND_BYOK,
         ];
     }
 

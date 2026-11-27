@@ -188,10 +188,10 @@ class GetOrderEvidenceResponseDataArrival implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const STATE_AWAITING = 'awaiting';
-    const STATE_SUBMITTED = 'submitted';
     const STATE_DECLINED = 'declined';
+    const STATE_SUBMITTED = 'submitted';
     const STATE_NOT_REQUESTED = 'not_requested';
+    const STATE_AWAITING = 'awaiting';
     const STATE_WINDOW_CLOSED = 'window_closed';
 
     /**
@@ -202,10 +202,10 @@ class GetOrderEvidenceResponseDataArrival implements ModelInterface, ArrayAccess
     public function getStateAllowableValues()
     {
         return [
-            self::STATE_AWAITING,
-            self::STATE_SUBMITTED,
             self::STATE_DECLINED,
+            self::STATE_SUBMITTED,
             self::STATE_NOT_REQUESTED,
+            self::STATE_AWAITING,
             self::STATE_WINDOW_CLOSED,
         ];
     }

@@ -60,27 +60,37 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'user_id' => 'string',
+        'app_share' => '\Crossly\Model\Order\GetOrderResponseAppShare',
+        'trade' => '\Crossly\Model\Order\GetOrderResponseTrade',
+        'sale_price' => 'float',
+        'platform_fee' => 'float',
+        'tax_collected' => 'float',
+        'shipping_charged' => 'float',
+        'fee_source' => 'string',
+        'details_pending' => 'bool',
+        'sku' => 'string',
         'quantity' => 'float',
-        'notes' => 'string',
-        'status' => 'string',
-        'platform' => 'string',
-        'cancelled_at' => '\DateTime',
-        'listing_id' => 'string',
+        'line_items' => '\Crossly\Model\Order\GetOrderResponseLineItems[]',
+        'id' => 'string',
+        'user_id' => 'string',
         'inventory_item_id' => 'string',
+        'listing_id' => 'string',
         'platform_listing_id' => 'string',
-        'handling_time_days' => 'float',
+        'platform' => 'string',
         'platform_order_id' => 'string',
+        'reported_by_app_id' => 'string',
+        'storefront_id' => 'string',
         'buyer_username' => 'string',
         'pickup_point' => 'array<string,mixed>',
         'consolidation_id' => 'string',
         'duties_cents' => 'float',
         'duties_refunded_at' => '\DateTime',
+        'status' => 'string',
         'sales_channel' => 'string',
         'channel_location_id' => 'string',
+        'channel' => 'string',
+        'invoice_id' => 'string',
+        'buyer_company_id' => 'string',
         'package_preset_id' => 'string',
         'carrier' => 'string',
         'service' => 'string',
@@ -95,7 +105,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'delivered_at' => '\DateTime',
         'carrier_status' => 'string',
         'carrier_status_detail' => 'string',
-        'tracking_history' => '\Crossly\Model\Order\ListOrdersItemTrackingHistory[]',
+        'tracking_history' => '\Crossly\Model\Order\GetOrderResponseTrackingHistory[]',
         'delivery_location' => 'string',
         'delivery_signature' => 'string',
         'tracking_submitted_at' => '\DateTime',
@@ -104,6 +114,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'cost_of_goods' => 'string',
         'requested_carrier' => 'string',
         'requested_service' => 'string',
+        'handling_time_days' => 'float',
         'ship_by_at' => '\DateTime',
         'ship_by_alerted_at' => '\DateTime',
         'oversold_by' => 'float',
@@ -117,15 +128,22 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_reason' => 'string',
         'refund_platform_id' => 'string',
         'refunded_at' => '\DateTime',
+        'cancelled_at' => '\DateTime',
         'cancellation_reason' => 'string',
+        'notes' => 'string',
         'arrival_condition_requested_at' => '\DateTime',
         'arrival_condition_submitted_at' => '\DateTime',
         'arrival_condition_declined_at' => '\DateTime',
         'delivery_photo_url' => 'string',
+        'delivery_photo_source' => 'string',
         'purchase_order_ref' => 'string',
         'arrival_condition_photos' => 'string[]',
         'buyer_email' => 'string',
         'fulfillment_method' => 'string',
+        'source' => 'string',
+        'platform_confirmed_at' => '\DateTime',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime',
         'deleted_at' => '\DateTime'
     ];
 
@@ -137,27 +155,37 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'user_id' => null,
+        'app_share' => null,
+        'trade' => null,
+        'sale_price' => null,
+        'platform_fee' => null,
+        'tax_collected' => null,
+        'shipping_charged' => null,
+        'fee_source' => null,
+        'details_pending' => null,
+        'sku' => null,
         'quantity' => null,
-        'notes' => null,
-        'status' => null,
-        'platform' => null,
-        'cancelled_at' => 'date-time',
-        'listing_id' => null,
+        'line_items' => null,
+        'id' => null,
+        'user_id' => null,
         'inventory_item_id' => null,
+        'listing_id' => null,
         'platform_listing_id' => null,
-        'handling_time_days' => null,
+        'platform' => null,
         'platform_order_id' => null,
+        'reported_by_app_id' => null,
+        'storefront_id' => null,
         'buyer_username' => null,
         'pickup_point' => null,
         'consolidation_id' => null,
         'duties_cents' => null,
         'duties_refunded_at' => 'date-time',
+        'status' => null,
         'sales_channel' => null,
         'channel_location_id' => null,
+        'channel' => null,
+        'invoice_id' => null,
+        'buyer_company_id' => null,
         'package_preset_id' => null,
         'carrier' => null,
         'service' => null,
@@ -181,6 +209,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'cost_of_goods' => null,
         'requested_carrier' => null,
         'requested_service' => null,
+        'handling_time_days' => null,
         'ship_by_at' => 'date-time',
         'ship_by_alerted_at' => 'date-time',
         'oversold_by' => null,
@@ -194,15 +223,22 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_reason' => null,
         'refund_platform_id' => null,
         'refunded_at' => 'date-time',
+        'cancelled_at' => 'date-time',
         'cancellation_reason' => null,
+        'notes' => null,
         'arrival_condition_requested_at' => 'date-time',
         'arrival_condition_submitted_at' => 'date-time',
         'arrival_condition_declined_at' => 'date-time',
         'delivery_photo_url' => null,
+        'delivery_photo_source' => null,
         'purchase_order_ref' => null,
         'arrival_condition_photos' => null,
         'buyer_email' => null,
         'fulfillment_method' => null,
+        'source' => null,
+        'platform_confirmed_at' => 'date-time',
+        'created_at' => 'date-time',
+        'updated_at' => 'date-time',
         'deleted_at' => 'date-time'
     ];
 
@@ -233,27 +269,37 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'user_id' => 'userId',
+        'app_share' => 'appShare',
+        'trade' => 'trade',
+        'sale_price' => 'salePrice',
+        'platform_fee' => 'platformFee',
+        'tax_collected' => 'taxCollected',
+        'shipping_charged' => 'shippingCharged',
+        'fee_source' => 'feeSource',
+        'details_pending' => 'detailsPending',
+        'sku' => 'sku',
         'quantity' => 'quantity',
-        'notes' => 'notes',
-        'status' => 'status',
-        'platform' => 'platform',
-        'cancelled_at' => 'cancelledAt',
-        'listing_id' => 'listingId',
+        'line_items' => 'lineItems',
+        'id' => 'id',
+        'user_id' => 'userId',
         'inventory_item_id' => 'inventoryItemId',
+        'listing_id' => 'listingId',
         'platform_listing_id' => 'platformListingId',
-        'handling_time_days' => 'handlingTimeDays',
+        'platform' => 'platform',
         'platform_order_id' => 'platformOrderId',
+        'reported_by_app_id' => 'reportedByAppId',
+        'storefront_id' => 'storefrontId',
         'buyer_username' => 'buyerUsername',
         'pickup_point' => 'pickupPoint',
         'consolidation_id' => 'consolidationId',
         'duties_cents' => 'dutiesCents',
         'duties_refunded_at' => 'dutiesRefundedAt',
+        'status' => 'status',
         'sales_channel' => 'salesChannel',
         'channel_location_id' => 'channelLocationId',
+        'channel' => 'channel',
+        'invoice_id' => 'invoiceId',
+        'buyer_company_id' => 'buyerCompanyId',
         'package_preset_id' => 'packagePresetId',
         'carrier' => 'carrier',
         'service' => 'service',
@@ -277,6 +323,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'cost_of_goods' => 'costOfGoods',
         'requested_carrier' => 'requestedCarrier',
         'requested_service' => 'requestedService',
+        'handling_time_days' => 'handlingTimeDays',
         'ship_by_at' => 'shipByAt',
         'ship_by_alerted_at' => 'shipByAlertedAt',
         'oversold_by' => 'oversoldBy',
@@ -290,15 +337,22 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_reason' => 'refundReason',
         'refund_platform_id' => 'refundPlatformId',
         'refunded_at' => 'refundedAt',
+        'cancelled_at' => 'cancelledAt',
         'cancellation_reason' => 'cancellationReason',
+        'notes' => 'notes',
         'arrival_condition_requested_at' => 'arrivalConditionRequestedAt',
         'arrival_condition_submitted_at' => 'arrivalConditionSubmittedAt',
         'arrival_condition_declined_at' => 'arrivalConditionDeclinedAt',
         'delivery_photo_url' => 'deliveryPhotoUrl',
+        'delivery_photo_source' => 'deliveryPhotoSource',
         'purchase_order_ref' => 'purchaseOrderRef',
         'arrival_condition_photos' => 'arrivalConditionPhotos',
         'buyer_email' => 'buyerEmail',
         'fulfillment_method' => 'fulfillmentMethod',
+        'source' => 'source',
+        'platform_confirmed_at' => 'platformConfirmedAt',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt',
         'deleted_at' => 'deletedAt'
     ];
 
@@ -308,27 +362,37 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'user_id' => 'setUserId',
+        'app_share' => 'setAppShare',
+        'trade' => 'setTrade',
+        'sale_price' => 'setSalePrice',
+        'platform_fee' => 'setPlatformFee',
+        'tax_collected' => 'setTaxCollected',
+        'shipping_charged' => 'setShippingCharged',
+        'fee_source' => 'setFeeSource',
+        'details_pending' => 'setDetailsPending',
+        'sku' => 'setSku',
         'quantity' => 'setQuantity',
-        'notes' => 'setNotes',
-        'status' => 'setStatus',
-        'platform' => 'setPlatform',
-        'cancelled_at' => 'setCancelledAt',
-        'listing_id' => 'setListingId',
+        'line_items' => 'setLineItems',
+        'id' => 'setId',
+        'user_id' => 'setUserId',
         'inventory_item_id' => 'setInventoryItemId',
+        'listing_id' => 'setListingId',
         'platform_listing_id' => 'setPlatformListingId',
-        'handling_time_days' => 'setHandlingTimeDays',
+        'platform' => 'setPlatform',
         'platform_order_id' => 'setPlatformOrderId',
+        'reported_by_app_id' => 'setReportedByAppId',
+        'storefront_id' => 'setStorefrontId',
         'buyer_username' => 'setBuyerUsername',
         'pickup_point' => 'setPickupPoint',
         'consolidation_id' => 'setConsolidationId',
         'duties_cents' => 'setDutiesCents',
         'duties_refunded_at' => 'setDutiesRefundedAt',
+        'status' => 'setStatus',
         'sales_channel' => 'setSalesChannel',
         'channel_location_id' => 'setChannelLocationId',
+        'channel' => 'setChannel',
+        'invoice_id' => 'setInvoiceId',
+        'buyer_company_id' => 'setBuyerCompanyId',
         'package_preset_id' => 'setPackagePresetId',
         'carrier' => 'setCarrier',
         'service' => 'setService',
@@ -352,6 +416,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'cost_of_goods' => 'setCostOfGoods',
         'requested_carrier' => 'setRequestedCarrier',
         'requested_service' => 'setRequestedService',
+        'handling_time_days' => 'setHandlingTimeDays',
         'ship_by_at' => 'setShipByAt',
         'ship_by_alerted_at' => 'setShipByAlertedAt',
         'oversold_by' => 'setOversoldBy',
@@ -365,15 +430,22 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_reason' => 'setRefundReason',
         'refund_platform_id' => 'setRefundPlatformId',
         'refunded_at' => 'setRefundedAt',
+        'cancelled_at' => 'setCancelledAt',
         'cancellation_reason' => 'setCancellationReason',
+        'notes' => 'setNotes',
         'arrival_condition_requested_at' => 'setArrivalConditionRequestedAt',
         'arrival_condition_submitted_at' => 'setArrivalConditionSubmittedAt',
         'arrival_condition_declined_at' => 'setArrivalConditionDeclinedAt',
         'delivery_photo_url' => 'setDeliveryPhotoUrl',
+        'delivery_photo_source' => 'setDeliveryPhotoSource',
         'purchase_order_ref' => 'setPurchaseOrderRef',
         'arrival_condition_photos' => 'setArrivalConditionPhotos',
         'buyer_email' => 'setBuyerEmail',
         'fulfillment_method' => 'setFulfillmentMethod',
+        'source' => 'setSource',
+        'platform_confirmed_at' => 'setPlatformConfirmedAt',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt',
         'deleted_at' => 'setDeletedAt'
     ];
 
@@ -383,27 +455,37 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'user_id' => 'getUserId',
+        'app_share' => 'getAppShare',
+        'trade' => 'getTrade',
+        'sale_price' => 'getSalePrice',
+        'platform_fee' => 'getPlatformFee',
+        'tax_collected' => 'getTaxCollected',
+        'shipping_charged' => 'getShippingCharged',
+        'fee_source' => 'getFeeSource',
+        'details_pending' => 'getDetailsPending',
+        'sku' => 'getSku',
         'quantity' => 'getQuantity',
-        'notes' => 'getNotes',
-        'status' => 'getStatus',
-        'platform' => 'getPlatform',
-        'cancelled_at' => 'getCancelledAt',
-        'listing_id' => 'getListingId',
+        'line_items' => 'getLineItems',
+        'id' => 'getId',
+        'user_id' => 'getUserId',
         'inventory_item_id' => 'getInventoryItemId',
+        'listing_id' => 'getListingId',
         'platform_listing_id' => 'getPlatformListingId',
-        'handling_time_days' => 'getHandlingTimeDays',
+        'platform' => 'getPlatform',
         'platform_order_id' => 'getPlatformOrderId',
+        'reported_by_app_id' => 'getReportedByAppId',
+        'storefront_id' => 'getStorefrontId',
         'buyer_username' => 'getBuyerUsername',
         'pickup_point' => 'getPickupPoint',
         'consolidation_id' => 'getConsolidationId',
         'duties_cents' => 'getDutiesCents',
         'duties_refunded_at' => 'getDutiesRefundedAt',
+        'status' => 'getStatus',
         'sales_channel' => 'getSalesChannel',
         'channel_location_id' => 'getChannelLocationId',
+        'channel' => 'getChannel',
+        'invoice_id' => 'getInvoiceId',
+        'buyer_company_id' => 'getBuyerCompanyId',
         'package_preset_id' => 'getPackagePresetId',
         'carrier' => 'getCarrier',
         'service' => 'getService',
@@ -427,6 +509,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'cost_of_goods' => 'getCostOfGoods',
         'requested_carrier' => 'getRequestedCarrier',
         'requested_service' => 'getRequestedService',
+        'handling_time_days' => 'getHandlingTimeDays',
         'ship_by_at' => 'getShipByAt',
         'ship_by_alerted_at' => 'getShipByAlertedAt',
         'oversold_by' => 'getOversoldBy',
@@ -440,15 +523,22 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_reason' => 'getRefundReason',
         'refund_platform_id' => 'getRefundPlatformId',
         'refunded_at' => 'getRefundedAt',
+        'cancelled_at' => 'getCancelledAt',
         'cancellation_reason' => 'getCancellationReason',
+        'notes' => 'getNotes',
         'arrival_condition_requested_at' => 'getArrivalConditionRequestedAt',
         'arrival_condition_submitted_at' => 'getArrivalConditionSubmittedAt',
         'arrival_condition_declined_at' => 'getArrivalConditionDeclinedAt',
         'delivery_photo_url' => 'getDeliveryPhotoUrl',
+        'delivery_photo_source' => 'getDeliveryPhotoSource',
         'purchase_order_ref' => 'getPurchaseOrderRef',
         'arrival_condition_photos' => 'getArrivalConditionPhotos',
         'buyer_email' => 'getBuyerEmail',
         'fulfillment_method' => 'getFulfillmentMethod',
+        'source' => 'getSource',
+        'platform_confirmed_at' => 'getPlatformConfirmedAt',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt',
         'deleted_at' => 'getDeletedAt'
     ];
 
@@ -509,27 +599,37 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['app_share'] = $data['app_share'] ?? null;
+        $this->container['trade'] = $data['trade'] ?? null;
+        $this->container['sale_price'] = $data['sale_price'] ?? null;
+        $this->container['platform_fee'] = $data['platform_fee'] ?? null;
+        $this->container['tax_collected'] = $data['tax_collected'] ?? null;
+        $this->container['shipping_charged'] = $data['shipping_charged'] ?? null;
+        $this->container['fee_source'] = $data['fee_source'] ?? null;
+        $this->container['details_pending'] = $data['details_pending'] ?? null;
+        $this->container['sku'] = $data['sku'] ?? null;
         $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['notes'] = $data['notes'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['platform'] = $data['platform'] ?? null;
-        $this->container['cancelled_at'] = $data['cancelled_at'] ?? null;
-        $this->container['listing_id'] = $data['listing_id'] ?? null;
+        $this->container['line_items'] = $data['line_items'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['inventory_item_id'] = $data['inventory_item_id'] ?? null;
+        $this->container['listing_id'] = $data['listing_id'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
-        $this->container['handling_time_days'] = $data['handling_time_days'] ?? null;
+        $this->container['platform'] = $data['platform'] ?? null;
         $this->container['platform_order_id'] = $data['platform_order_id'] ?? null;
+        $this->container['reported_by_app_id'] = $data['reported_by_app_id'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
         $this->container['buyer_username'] = $data['buyer_username'] ?? null;
         $this->container['pickup_point'] = $data['pickup_point'] ?? null;
         $this->container['consolidation_id'] = $data['consolidation_id'] ?? null;
         $this->container['duties_cents'] = $data['duties_cents'] ?? null;
         $this->container['duties_refunded_at'] = $data['duties_refunded_at'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['sales_channel'] = $data['sales_channel'] ?? null;
         $this->container['channel_location_id'] = $data['channel_location_id'] ?? null;
+        $this->container['channel'] = $data['channel'] ?? null;
+        $this->container['invoice_id'] = $data['invoice_id'] ?? null;
+        $this->container['buyer_company_id'] = $data['buyer_company_id'] ?? null;
         $this->container['package_preset_id'] = $data['package_preset_id'] ?? null;
         $this->container['carrier'] = $data['carrier'] ?? null;
         $this->container['service'] = $data['service'] ?? null;
@@ -553,6 +653,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['cost_of_goods'] = $data['cost_of_goods'] ?? null;
         $this->container['requested_carrier'] = $data['requested_carrier'] ?? null;
         $this->container['requested_service'] = $data['requested_service'] ?? null;
+        $this->container['handling_time_days'] = $data['handling_time_days'] ?? null;
         $this->container['ship_by_at'] = $data['ship_by_at'] ?? null;
         $this->container['ship_by_alerted_at'] = $data['ship_by_alerted_at'] ?? null;
         $this->container['oversold_by'] = $data['oversold_by'] ?? null;
@@ -566,15 +667,22 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['refund_reason'] = $data['refund_reason'] ?? null;
         $this->container['refund_platform_id'] = $data['refund_platform_id'] ?? null;
         $this->container['refunded_at'] = $data['refunded_at'] ?? null;
+        $this->container['cancelled_at'] = $data['cancelled_at'] ?? null;
         $this->container['cancellation_reason'] = $data['cancellation_reason'] ?? null;
+        $this->container['notes'] = $data['notes'] ?? null;
         $this->container['arrival_condition_requested_at'] = $data['arrival_condition_requested_at'] ?? null;
         $this->container['arrival_condition_submitted_at'] = $data['arrival_condition_submitted_at'] ?? null;
         $this->container['arrival_condition_declined_at'] = $data['arrival_condition_declined_at'] ?? null;
         $this->container['delivery_photo_url'] = $data['delivery_photo_url'] ?? null;
+        $this->container['delivery_photo_source'] = $data['delivery_photo_source'] ?? null;
         $this->container['purchase_order_ref'] = $data['purchase_order_ref'] ?? null;
         $this->container['arrival_condition_photos'] = $data['arrival_condition_photos'] ?? null;
         $this->container['buyer_email'] = $data['buyer_email'] ?? null;
         $this->container['fulfillment_method'] = $data['fulfillment_method'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
+        $this->container['platform_confirmed_at'] = $data['platform_confirmed_at'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
     }
 
@@ -587,23 +695,17 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
+        if ($this->container['details_pending'] === null) {
+            $invalidProperties[] = "'details_pending' can't be null";
         }
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
         }
         if ($this->container['platform'] === null) {
             $invalidProperties[] = "'platform' can't be null";
@@ -611,8 +713,14 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['duties_cents'] === null) {
             $invalidProperties[] = "'duties_cents' can't be null";
         }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
         if ($this->container['sales_channel'] === null) {
             $invalidProperties[] = "'sales_channel' can't be null";
+        }
+        if ($this->container['channel'] === null) {
+            $invalidProperties[] = "'channel' can't be null";
         }
         if ($this->container['oversold_by'] === null) {
             $invalidProperties[] = "'oversold_by' can't be null";
@@ -625,6 +733,12 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['fulfillment_method'] === null) {
             $invalidProperties[] = "'fulfillment_method' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -640,6 +754,270 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets app_share
+     *
+     * @return \Crossly\Model\Order\GetOrderResponseAppShare|null
+     */
+    public function getAppShare()
+    {
+        return $this->container['app_share'];
+    }
+
+    /**
+     * Sets app_share
+     *
+     * @param \Crossly\Model\Order\GetOrderResponseAppShare|null $app_share app_share
+     *
+     * @return self
+     */
+    public function setAppShare($app_share)
+    {
+        $this->container['app_share'] = $app_share;
+
+        return $this;
+    }
+
+    /**
+     * Gets trade
+     *
+     * @return \Crossly\Model\Order\GetOrderResponseTrade|null
+     */
+    public function getTrade()
+    {
+        return $this->container['trade'];
+    }
+
+    /**
+     * Sets trade
+     *
+     * @param \Crossly\Model\Order\GetOrderResponseTrade|null $trade trade
+     *
+     * @return self
+     */
+    public function setTrade($trade)
+    {
+        $this->container['trade'] = $trade;
+
+        return $this;
+    }
+
+    /**
+     * Gets sale_price
+     *
+     * @return float|null
+     */
+    public function getSalePrice()
+    {
+        return $this->container['sale_price'];
+    }
+
+    /**
+     * Sets sale_price
+     *
+     * @param float|null $sale_price DOLLARS (numbers, as order.created sends them). null = not known (no sale row, or details pending).
+     *
+     * @return self
+     */
+    public function setSalePrice($sale_price)
+    {
+        $this->container['sale_price'] = $sale_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_fee
+     *
+     * @return float|null
+     */
+    public function getPlatformFee()
+    {
+        return $this->container['platform_fee'];
+    }
+
+    /**
+     * Sets platform_fee
+     *
+     * @param float|null $platform_fee platform_fee
+     *
+     * @return self
+     */
+    public function setPlatformFee($platform_fee)
+    {
+        $this->container['platform_fee'] = $platform_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_collected
+     *
+     * @return float|null
+     */
+    public function getTaxCollected()
+    {
+        return $this->container['tax_collected'];
+    }
+
+    /**
+     * Sets tax_collected
+     *
+     * @param float|null $tax_collected tax_collected
+     *
+     * @return self
+     */
+    public function setTaxCollected($tax_collected)
+    {
+        $this->container['tax_collected'] = $tax_collected;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipping_charged
+     *
+     * @return float|null
+     */
+    public function getShippingCharged()
+    {
+        return $this->container['shipping_charged'];
+    }
+
+    /**
+     * Sets shipping_charged
+     *
+     * @param float|null $shipping_charged shipping_charged
+     *
+     * @return self
+     */
+    public function setShippingCharged($shipping_charged)
+    {
+        $this->container['shipping_charged'] = $shipping_charged;
+
+        return $this;
+    }
+
+    /**
+     * Gets fee_source
+     *
+     * @return string|null
+     */
+    public function getFeeSource()
+    {
+        return $this->container['fee_source'];
+    }
+
+    /**
+     * Sets fee_source
+     *
+     * @param string|null $fee_source 'exact' (the marketplace's charged fee) | 'estimated'.
+     *
+     * @return self
+     */
+    public function setFeeSource($fee_source)
+    {
+        $this->container['fee_source'] = $fee_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets details_pending
+     *
+     * @return bool
+     */
+    public function getDetailsPending()
+    {
+        return $this->container['details_pending'];
+    }
+
+    /**
+     * Sets details_pending
+     *
+     * @param bool $details_pending details_pending
+     *
+     * @return self
+     */
+    public function setDetailsPending($details_pending)
+    {
+        $this->container['details_pending'] = $details_pending;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku
+     *
+     * @return string|null
+     */
+    public function getSku()
+    {
+        return $this->container['sku'];
+    }
+
+    /**
+     * Sets sku
+     *
+     * @param string|null $sku The listing's SKU (order.created `sku`).
+     *
+     * @return self
+     */
+    public function setSku($sku)
+    {
+        $this->container['sku'] = $sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return float
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param float $quantity Units purchased in this order (default 1). Drives how many units the Available→Reserved→Sold state machine moves. See migration 0139. Units on the order (order.created `quantity`).
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Gets line_items
+     *
+     * @return \Crossly\Model\Order\GetOrderResponseLineItems[]|null
+     */
+    public function getLineItems()
+    {
+        return $this->container['line_items'];
+    }
+
+    /**
+     * Sets line_items
+     *
+     * @param \Crossly\Model\Order\GetOrderResponseLineItems[]|null $line_items line_items
+     *
+     * @return self
+     */
+    public function setLineItems($line_items)
+    {
+        $this->container['line_items'] = $line_items;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -661,54 +1039,6 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
@@ -738,121 +1068,25 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets quantity
-     *
-     * @return float
-     */
-    public function getQuantity()
-    {
-        return $this->container['quantity'];
-    }
-
-    /**
-     * Sets quantity
-     *
-     * @param float $quantity quantity
-     *
-     * @return self
-     */
-    public function setQuantity($quantity)
-    {
-        $this->container['quantity'] = $quantity;
-
-        return $this;
-    }
-
-    /**
-     * Gets notes
+     * Gets inventory_item_id
      *
      * @return string|null
      */
-    public function getNotes()
+    public function getInventoryItemId()
     {
-        return $this->container['notes'];
+        return $this->container['inventory_item_id'];
     }
 
     /**
-     * Sets notes
+     * Sets inventory_item_id
      *
-     * @param string|null $notes notes
+     * @param string|null $inventory_item_id inventory_item_id
      *
      * @return self
      */
-    public function setNotes($notes)
+    public function setInventoryItemId($inventory_item_id)
     {
-        $this->container['notes'] = $notes;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform
-     *
-     * @return string
-     */
-    public function getPlatform()
-    {
-        return $this->container['platform'];
-    }
-
-    /**
-     * Sets platform
-     *
-     * @param string $platform platform
-     *
-     * @return self
-     */
-    public function setPlatform($platform)
-    {
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets cancelled_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCancelledAt()
-    {
-        return $this->container['cancelled_at'];
-    }
-
-    /**
-     * Sets cancelled_at
-     *
-     * @param \DateTime|null $cancelled_at cancelled_at
-     *
-     * @return self
-     */
-    public function setCancelledAt($cancelled_at)
-    {
-        $this->container['cancelled_at'] = $cancelled_at;
+        $this->container['inventory_item_id'] = $inventory_item_id;
 
         return $this;
     }
@@ -882,30 +1116,6 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets inventory_item_id
-     *
-     * @return string|null
-     */
-    public function getInventoryItemId()
-    {
-        return $this->container['inventory_item_id'];
-    }
-
-    /**
-     * Sets inventory_item_id
-     *
-     * @param string|null $inventory_item_id inventory_item_id
-     *
-     * @return self
-     */
-    public function setInventoryItemId($inventory_item_id)
-    {
-        $this->container['inventory_item_id'] = $inventory_item_id;
-
-        return $this;
-    }
-
-    /**
      * Gets platform_listing_id
      *
      * @return string|null
@@ -930,25 +1140,25 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets handling_time_days
+     * Gets platform
      *
-     * @return float|null
+     * @return string
      */
-    public function getHandlingTimeDays()
+    public function getPlatform()
     {
-        return $this->container['handling_time_days'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets handling_time_days
+     * Sets platform
      *
-     * @param float|null $handling_time_days handling_time_days
+     * @param string $platform platform
      *
      * @return self
      */
-    public function setHandlingTimeDays($handling_time_days)
+    public function setPlatform($platform)
     {
-        $this->container['handling_time_days'] = $handling_time_days;
+        $this->container['platform'] = $platform;
 
         return $this;
     }
@@ -973,6 +1183,54 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlatformOrderId($platform_order_id)
     {
         $this->container['platform_order_id'] = $platform_order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets reported_by_app_id
+     *
+     * @return string|null
+     */
+    public function getReportedByAppId()
+    {
+        return $this->container['reported_by_app_id'];
+    }
+
+    /**
+     * Sets reported_by_app_id
+     *
+     * @param string|null $reported_by_app_id 1066 (order relay): the developer app that reported this order through an inbound item.sold (FK oauth_apps.id ON DELETE SET NULL in SQL). Null for every order Crossly detected itself. Read by action authority.
+     *
+     * @return self
+     */
+    public function setReportedByAppId($reported_by_app_id)
+    {
+        $this->container['reported_by_app_id'] = $reported_by_app_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id Crossly orders only: the seller's storefront this sale came from. Null for every non-crossly platform. See db/schema/storefronts.ts.
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
 
         return $this;
     }
@@ -1014,7 +1272,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets pickup_point
      *
-     * @param array<string,mixed>|null $pickup_point pickup_point
+     * @param array<string,mixed>|null $pickup_point C8 (0448): the carrier location the parcel is held at — services/pickup-points.ts.
      *
      * @return self
      */
@@ -1038,7 +1296,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets consolidation_id
      *
-     * @param string|null $consolidation_id consolidation_id
+     * @param string|null $consolidation_id D4 (0448): set when this seller ships to the consolidation hub, not the buyer — services/hub/.
      *
      * @return self
      */
@@ -1062,7 +1320,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets duties_cents
      *
-     * @param float $duties_cents duties_cents
+     * @param float $duties_cents X4 (0479): import duties + taxes + fees the buyer paid at checkout for this parcel (services/landed-cost/); the label ships DDP.
      *
      * @return self
      */
@@ -1086,13 +1344,37 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets duties_refunded_at
      *
-     * @param \DateTime|null $duties_refunded_at duties_refunded_at
+     * @param \DateTime|null $duties_refunded_at X4: refunded because the order never shipped.
      *
      * @return self
      */
     public function setDutiesRefundedAt($duties_refunded_at)
     {
         $this->container['duties_refunded_at'] = $duties_refunded_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
@@ -1110,7 +1392,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sales_channel
      *
-     * @param string $sales_channel sales_channel
+     * @param string $sales_channel Where the sale happened, as distinct from which platform it was on.  Shopify POS orders arrive through the same Orders API as web orders, so before this they were detected as ordinary online sales and landed in `needs_fulfillment` — queued for a shipment that will never happen, because the customer already walked out with the item.  'online' for everything else, which is what every pre-existing row is.
      *
      * @return self
      */
@@ -1134,13 +1416,85 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets channel_location_id
      *
-     * @param string|null $channel_location_id channel_location_id
+     * @param string|null $channel_location_id POS location that rang it up. Null for online sales.
      *
      * @return self
      */
     public function setChannelLocationId($channel_location_id)
     {
         $this->container['channel_location_id'] = $channel_location_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets channel
+     *
+     * @return string
+     */
+    public function getChannel()
+    {
+        return $this->container['channel'];
+    }
+
+    /**
+     * Sets channel
+     *
+     * @param string $channel 1121 — which BUSINESS channel sold it: retail | wholesale | auction | live | world | pos (@crosslister/shared/wholesale ORDER_CHANNELS). Orthogonal to `salesChannel` (online vs in person): a wholesale order is usually online. Written at sale record time (sale/detect/order-write.ts).
+     *
+     * @return self
+     */
+    public function setChannel($channel)
+    {
+        $this->container['channel'] = $channel;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoice_id
+     *
+     * @return string|null
+     */
+    public function getInvoiceId()
+    {
+        return $this->container['invoice_id'];
+    }
+
+    /**
+     * Sets invoice_id
+     *
+     * @param string|null $invoice_id 1121 — the on-account invoice this order was placed on (crossly_invoices.id).
+     *
+     * @return self
+     */
+    public function setInvoiceId($invoice_id)
+    {
+        $this->container['invoice_id'] = $invoice_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer_company_id
+     *
+     * @return string|null
+     */
+    public function getBuyerCompanyId()
+    {
+        return $this->container['buyer_company_id'];
+    }
+
+    /**
+     * Sets buyer_company_id
+     *
+     * @param string|null $buyer_company_id 1121 — the buyer company (W7 crossly_buyer_companies; no FK until that table exists).
+     *
+     * @return self
+     */
+    public function setBuyerCompanyId($buyer_company_id)
+    {
+        $this->container['buyer_company_id'] = $buyer_company_id;
 
         return $this;
     }
@@ -1484,7 +1838,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tracking_history
      *
-     * @return \Crossly\Model\Order\ListOrdersItemTrackingHistory[]|null
+     * @return \Crossly\Model\Order\GetOrderResponseTrackingHistory[]|null
      */
     public function getTrackingHistory()
     {
@@ -1494,7 +1848,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tracking_history
      *
-     * @param \Crossly\Model\Order\ListOrdersItemTrackingHistory[]|null $tracking_history tracking_history
+     * @param \Crossly\Model\Order\GetOrderResponseTrackingHistory[]|null $tracking_history Every carrier scan, newest first (migration 0243).  The two columns above are the CURRENT state, overwritten on each refresh. For a dispute that proves nothing: \"delivered\" with no date, no location and no chain of scans is a claim, not evidence. Shippo returns the full history on every track call; it used to be discarded.
      *
      * @return self
      */
@@ -1518,7 +1872,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delivery_location
      *
-     * @param string|null $delivery_location delivery_location
+     * @param string|null $delivery_location Where the carrier says it was left, when they say.
      *
      * @return self
      */
@@ -1542,7 +1896,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delivery_signature
      *
-     * @param string|null $delivery_signature delivery_signature
+     * @param string|null $delivery_signature Signature name, where the service captured one. Most residential deliveries have none — absence is not evidence of non-delivery.
      *
      * @return self
      */
@@ -1698,6 +2052,30 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets handling_time_days
+     *
+     * @return float|null
+     */
+    public function getHandlingTimeDays()
+    {
+        return $this->container['handling_time_days'];
+    }
+
+    /**
+     * Sets handling_time_days
+     *
+     * @param float|null $handling_time_days handling_time_days
+     *
+     * @return self
+     */
+    public function setHandlingTimeDays($handling_time_days)
+    {
+        $this->container['handling_time_days'] = $handling_time_days;
+
+        return $this;
+    }
+
+    /**
      * Gets ship_by_at
      *
      * @return \DateTime|null
@@ -1758,7 +2136,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets oversold_by
      *
-     * @param float $oversold_by oversold_by
+     * @param float $oversold_by Units this order could NOT be covered from stock — an oversell (0 = normal). Set at detection by recordSale's shortfall; the seller must cancel or refund. See migration 0156.
      *
      * @return self
      */
@@ -1782,7 +2160,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_status_check_at
      *
-     * @param \DateTime|null $last_status_check_at last_status_check_at
+     * @param \DateTime|null $last_status_check_at Last time this order's status was reconciled against the platform. NULL = never. Drives the targeted sweeper for orders that fall off page 1 of the sold-list walk. See migration 0157.
      *
      * @return self
      */
@@ -1806,7 +2184,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_chat_check_at
      *
-     * @param \DateTime|null $last_chat_check_at last_chat_check_at
+     * @param \DateTime|null $last_chat_check_at Last time this order's platform CHAT thread was pulled. NULL = never. Separate from lastStatusCheckAt because the cadences differ by an order of magnitude — a buyer question needs answering in minutes, a status reconcile can wait an hour. See migration 0158.
      *
      * @return self
      */
@@ -2010,6 +2388,30 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets cancelled_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCancelledAt()
+    {
+        return $this->container['cancelled_at'];
+    }
+
+    /**
+     * Sets cancelled_at
+     *
+     * @param \DateTime|null $cancelled_at cancelled_at
+     *
+     * @return self
+     */
+    public function setCancelledAt($cancelled_at)
+    {
+        $this->container['cancelled_at'] = $cancelled_at;
+
+        return $this;
+    }
+
+    /**
      * Gets cancellation_reason
      *
      * @return string|null
@@ -2034,6 +2436,30 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets notes
+     *
+     * @return string|null
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param string|null $notes notes
+     *
+     * @return self
+     */
+    public function setNotes($notes)
+    {
+        $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
      * Gets arrival_condition_requested_at
      *
      * @return \DateTime|null
@@ -2046,7 +2472,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets arrival_condition_requested_at
      *
-     * @param \DateTime|null $arrival_condition_requested_at arrival_condition_requested_at
+     * @param \DateTime|null $arrival_condition_requested_at The arrival-condition ask, recorded on the ORDER rather than read off the seller's toggle at review time. The seller can flip that toggle later; what a reviewer needs is what was asked of THIS buyer on THIS delivery — including that they were asked and declined.
      *
      * @return self
      */
@@ -2118,13 +2544,37 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delivery_photo_url
      *
-     * @param string|null $delivery_photo_url delivery_photo_url
+     * @param string|null $delivery_photo_url The courier's proof-of-delivery photo, when one can be obtained. Third-party provenance, which makes it the strongest seal frame we can get — see services/evidence/delivery-photo.ts.
      *
      * @return self
      */
     public function setDeliveryPhotoUrl($delivery_photo_url)
     {
         $this->container['delivery_photo_url'] = $delivery_photo_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_photo_source
+     *
+     * @return string|null
+     */
+    public function getDeliveryPhotoSource()
+    {
+        return $this->container['delivery_photo_source'];
+    }
+
+    /**
+     * Sets delivery_photo_source
+     *
+     * @param string|null $delivery_photo_source Where it came from: 'carrier_api:ups' | 'trackified' | 'platform:<p>' | 'pasted' | 'uploaded' (shared delivery-photo-source.ts).
+     *
+     * @return self
+     */
+    public function setDeliveryPhotoSource($delivery_photo_source)
+    {
+        $this->container['delivery_photo_source'] = $delivery_photo_source;
 
         return $this;
     }
@@ -2142,7 +2592,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_order_ref
      *
-     * @param string|null $purchase_order_ref purchase_order_ref
+     * @param string|null $purchase_order_ref The buyer's OWN purchase-order reference.  A trade buyer's accounts department reconciles on their number, not ours. An order without it is one somebody has to chase by hand, which is the difference between getting paid on day 30 and day 75.
      *
      * @return self
      */
@@ -2166,7 +2616,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets arrival_condition_photos
      *
-     * @param string[] $arrival_condition_photos arrival_condition_photos
+     * @param string[] $arrival_condition_photos Buyer's arrival photos. Always read as a set, for one delivery.
      *
      * @return self
      */
@@ -2214,13 +2664,109 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fulfillment_method
      *
-     * @param string $fulfillment_method fulfillment_method
+     * @param string $fulfillment_method `'ship'` | `'pickup'` | `'mixed'` — a DERIVED summary of this order's lines, for reads that only need the headline.  The authority is `crossly_order_items.fulfillment_method`: a buyer can collect part of one seller's order and have the rest posted, so the order-level value is 'mixed' whenever its lines disagree. Anything that acts on the difference — buying a label, packing a parcel — must read the lines, not this (migrations 0219, 0220).
      *
      * @return self
      */
     public function setFulfillmentMethod($fulfillment_method)
     {
         $this->container['fulfillment_method'] = $fulfillment_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source 1074 — 'email' = the sale was found by the email monitor, not reported by the platform: the order is incomplete (no buyer address, label or confirmed fees) until the platform reports it. NULL = platform-reported.
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_confirmed_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPlatformConfirmedAt()
+    {
+        return $this->container['platform_confirmed_at'];
+    }
+
+    /**
+     * Sets platform_confirmed_at
+     *
+     * @param \DateTime|null $platform_confirmed_at 1074 — when the platform itself reported this email-found order (same order id). Clears the banner.
+     *
+     * @return self
+     */
+    public function setPlatformConfirmedAt($platform_confirmed_at)
+    {
+        $this->container['platform_confirmed_at'] = $platform_confirmed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
@@ -2238,7 +2784,7 @@ class ListOrdersItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param \DateTime|null $deleted_at deleted_at
+     * @param \DateTime|null $deleted_at Soft-delete tombstone for bulk-delete on /orders. UI list + count queries filter WHERE deleted_at IS NULL.
      *
      * @return self
      */

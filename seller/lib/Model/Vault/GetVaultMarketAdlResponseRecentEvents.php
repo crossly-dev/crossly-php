@@ -193,8 +193,8 @@ class GetVaultMarketAdlResponseRecentEvents implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
-    const BANKRUPT_SIDE_LONG = 'long';
     const BANKRUPT_SIDE_SHORT = 'short';
+    const BANKRUPT_SIDE_LONG = 'long';
 
     /**
      * Gets allowable values of the enum
@@ -204,8 +204,8 @@ class GetVaultMarketAdlResponseRecentEvents implements ModelInterface, ArrayAcce
     public function getBankruptSideAllowableValues()
     {
         return [
-            self::BANKRUPT_SIDE_LONG,
             self::BANKRUPT_SIDE_SHORT,
+            self::BANKRUPT_SIDE_LONG,
         ];
     }
 

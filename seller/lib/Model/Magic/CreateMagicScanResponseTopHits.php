@@ -67,7 +67,14 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
         'listing_url' => 'string',
         'origin' => 'string',
         'visual_sim' => 'float',
-        'state' => 'string'
+        'agreement' => 'float',
+        'carries_identifier' => 'bool',
+        'price_outlier' => 'bool',
+        'condition' => 'string',
+        'brand' => 'string',
+        'state' => 'string',
+        'shipping_cents' => 'float',
+        'format' => 'string'
     ];
 
     /**
@@ -85,7 +92,14 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
         'listing_url' => null,
         'origin' => null,
         'visual_sim' => null,
-        'state' => null
+        'agreement' => null,
+        'carries_identifier' => null,
+        'price_outlier' => null,
+        'condition' => null,
+        'brand' => null,
+        'state' => null,
+        'shipping_cents' => null,
+        'format' => null
     ];
 
     /**
@@ -122,7 +136,14 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
         'listing_url' => 'listingUrl',
         'origin' => 'origin',
         'visual_sim' => 'visualSim',
-        'state' => 'state'
+        'agreement' => 'agreement',
+        'carries_identifier' => 'carriesIdentifier',
+        'price_outlier' => 'priceOutlier',
+        'condition' => 'condition',
+        'brand' => 'brand',
+        'state' => 'state',
+        'shipping_cents' => 'shippingCents',
+        'format' => 'format'
     ];
 
     /**
@@ -138,7 +159,14 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
         'listing_url' => 'setListingUrl',
         'origin' => 'setOrigin',
         'visual_sim' => 'setVisualSim',
-        'state' => 'setState'
+        'agreement' => 'setAgreement',
+        'carries_identifier' => 'setCarriesIdentifier',
+        'price_outlier' => 'setPriceOutlier',
+        'condition' => 'setCondition',
+        'brand' => 'setBrand',
+        'state' => 'setState',
+        'shipping_cents' => 'setShippingCents',
+        'format' => 'setFormat'
     ];
 
     /**
@@ -154,7 +182,14 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
         'listing_url' => 'getListingUrl',
         'origin' => 'getOrigin',
         'visual_sim' => 'getVisualSim',
-        'state' => 'getState'
+        'agreement' => 'getAgreement',
+        'carries_identifier' => 'getCarriesIdentifier',
+        'price_outlier' => 'getPriceOutlier',
+        'condition' => 'getCondition',
+        'brand' => 'getBrand',
+        'state' => 'getState',
+        'shipping_cents' => 'getShippingCents',
+        'format' => 'getFormat'
     ];
 
     /**
@@ -200,6 +235,8 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
 
     const STATE_ACTIVE = 'active';
     const STATE_SOLD = 'sold';
+    const FORMAT_AUCTION = 'auction';
+    const FORMAT_FIXED_PRICE = 'fixed_price';
 
     /**
      * Gets allowable values of the enum
@@ -211,6 +248,19 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
         return [
             self::STATE_ACTIVE,
             self::STATE_SOLD,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatAllowableValues()
+    {
+        return [
+            self::FORMAT_AUCTION,
+            self::FORMAT_FIXED_PRICE,
         ];
     }
 
@@ -236,7 +286,14 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
         $this->container['listing_url'] = $data['listing_url'] ?? null;
         $this->container['origin'] = $data['origin'] ?? null;
         $this->container['visual_sim'] = $data['visual_sim'] ?? null;
+        $this->container['agreement'] = $data['agreement'] ?? null;
+        $this->container['carries_identifier'] = $data['carries_identifier'] ?? null;
+        $this->container['price_outlier'] = $data['price_outlier'] ?? null;
+        $this->container['condition'] = $data['condition'] ?? null;
+        $this->container['brand'] = $data['brand'] ?? null;
         $this->container['state'] = $data['state'] ?? null;
+        $this->container['shipping_cents'] = $data['shipping_cents'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
     }
 
     /**
@@ -268,6 +325,15 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'state', must be one of '%s'",
                 $this->container['state'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format', must be one of '%s'",
+                $this->container['format'],
                 implode("', '", $allowedValues)
             );
         }
@@ -420,7 +486,7 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets origin
      *
-     * @param string $origin Origin marker for the UI badge.
+     * @param string $origin Origin marker for the UI badge. Every eBay hit is an image-search hit ('ebay-image'); 'ebay-text' is kept in the union only for rows cached before that was fixed.
      *
      * @return self
      */
@@ -444,13 +510,133 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets visual_sim
      *
-     * @param float|null $visual_sim CLIP cosine [0,1]; populated after the visual-rank pass.
+     * @param float|null $visual_sim CLIP cosine [0,1]; populated after the visual-rank pass. ABSENT = unscored (no image, CLIP down) — never filled in with a made-up value.
      *
      * @return self
      */
     public function setVisualSim($visual_sim)
     {
         $this->container['visual_sim'] = $visual_sim;
+
+        return $this;
+    }
+
+    /**
+     * Gets agreement
+     *
+     * @return float|null
+     */
+    public function getAgreement()
+    {
+        return $this->container['agreement'];
+    }
+
+    /**
+     * Sets agreement
+     *
+     * @param float|null $agreement Title agreement with the match reference after the hard gates (rank.ts).
+     *
+     * @return self
+     */
+    public function setAgreement($agreement)
+    {
+        $this->container['agreement'] = $agreement;
+
+        return $this;
+    }
+
+    /**
+     * Gets carries_identifier
+     *
+     * @return bool|null
+     */
+    public function getCarriesIdentifier()
+    {
+        return $this->container['carries_identifier'];
+    }
+
+    /**
+     * Sets carries_identifier
+     *
+     * @param bool|null $carries_identifier True when the comp states the photo's own identifier (GTIN / style code).
+     *
+     * @return self
+     */
+    public function setCarriesIdentifier($carries_identifier)
+    {
+        $this->container['carries_identifier'] = $carries_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets price_outlier
+     *
+     * @return bool|null
+     */
+    public function getPriceOutlier()
+    {
+        return $this->container['price_outlier'];
+    }
+
+    /**
+     * Sets price_outlier
+     *
+     * @param bool|null $price_outlier Price outlier within its condition / grade bucket: shown, but not used for pricing.
+     *
+     * @return self
+     */
+    public function setPriceOutlier($price_outlier)
+    {
+        $this->container['price_outlier'] = $price_outlier;
+
+        return $this;
+    }
+
+    /**
+     * Gets condition
+     *
+     * @return string|null
+     */
+    public function getCondition()
+    {
+        return $this->container['condition'];
+    }
+
+    /**
+     * Sets condition
+     *
+     * @param string|null $condition Condition text the platform reported, for the pricing buckets.
+     *
+     * @return self
+     */
+    public function setCondition($condition)
+    {
+        $this->container['condition'] = $condition;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand
+     *
+     * @return string|null
+     */
+    public function getBrand()
+    {
+        return $this->container['brand'];
+    }
+
+    /**
+     * Sets brand
+     *
+     * @param string|null $brand Brand the platform reported, for the brand gate at verdict time.
+     *
+     * @return self
+     */
+    public function setBrand($brand)
+    {
+        $this->container['brand'] = $brand;
 
         return $this;
     }
@@ -485,6 +671,64 @@ class CreateMagicScanResponseTopHits implements ModelInterface, ArrayAccess, \Js
             );
         }
         $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipping_cents
+     *
+     * @return float|null
+     */
+    public function getShippingCents()
+    {
+        return $this->container['shipping_cents'];
+    }
+
+    /**
+     * Sets shipping_cents
+     *
+     * @param float|null $shipping_cents Shipping in cents (0 = free), where the platform reports it (ExternalSoldComp.shippingCents).
+     *
+     * @return self
+     */
+    public function setShippingCents($shipping_cents)
+    {
+        $this->container['shipping_cents'] = $shipping_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format Auction vs fixed price, where the platform says; an active auction's price is a bid (compPriceIsBid).
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($format) && !in_array($format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format'] = $format;
 
         return $this;
     }

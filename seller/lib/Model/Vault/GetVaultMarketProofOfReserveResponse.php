@@ -61,7 +61,7 @@ class GetVaultMarketProofOfReserveResponse implements ModelInterface, ArrayAcces
       */
     protected static $openAPITypes = [
         'latest' => '\Crossly\Model\Vault\GetVaultMarketProofOfReserveResponseLatest',
-        'history' => '\Crossly\Model\Vault\GetVaultMarketProofOfReserveByDayResponse[]',
+        'history' => '\Crossly\Model\Vault\GetVaultMarketProofOfReserveResponseHistory[]',
         'anchoring' => '\Crossly\Model\Vault\GetVaultMarketProofOfReserveResponseAnchoring',
         'method' => '\Crossly\Model\Vault\GetVaultMarketProofOfReserveResponseMethod'
     ];
@@ -260,7 +260,7 @@ class GetVaultMarketProofOfReserveResponse implements ModelInterface, ArrayAcces
     /**
      * Gets history
      *
-     * @return \Crossly\Model\Vault\GetVaultMarketProofOfReserveByDayResponse[]
+     * @return \Crossly\Model\Vault\GetVaultMarketProofOfReserveResponseHistory[]
      */
     public function getHistory()
     {
@@ -270,7 +270,7 @@ class GetVaultMarketProofOfReserveResponse implements ModelInterface, ArrayAcces
     /**
      * Sets history
      *
-     * @param \Crossly\Model\Vault\GetVaultMarketProofOfReserveByDayResponse[] $history history
+     * @param \Crossly\Model\Vault\GetVaultMarketProofOfReserveResponseHistory[] $history history
      *
      * @return self
      */

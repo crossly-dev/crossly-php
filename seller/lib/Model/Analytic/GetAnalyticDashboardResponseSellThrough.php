@@ -36,7 +36,6 @@ use \Crossly\ObjectSerializer;
  * GetAnalyticDashboardResponseSellThrough Class Doc Comment
  *
  * @category Class
- * @description The context the bare rate can&#39;t carry. &#x60;tooYoungToJudge&#x60; is the important one: a cohort measured the day its window closed has had no time to sell, and a low number there means \&quot;wait\&quot;, not \&quot;bad buys\&quot; — a seller acting on it would stop sourcing for no reason.
  * @package  Crossly
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -65,7 +64,8 @@ class GetAnalyticDashboardResponseSellThrough implements ModelInterface, ArrayAc
         'cohort_size' => 'float',
         'cohort_sold' => 'float',
         'maturity_days' => 'float',
-        'too_young_to_judge' => 'bool'
+        'too_young_to_judge' => 'bool',
+        'immature' => 'float'
     ];
 
     /**
@@ -80,7 +80,8 @@ class GetAnalyticDashboardResponseSellThrough implements ModelInterface, ArrayAc
         'cohort_size' => null,
         'cohort_sold' => null,
         'maturity_days' => null,
-        'too_young_to_judge' => null
+        'too_young_to_judge' => null,
+        'immature' => null
     ];
 
     /**
@@ -114,7 +115,8 @@ class GetAnalyticDashboardResponseSellThrough implements ModelInterface, ArrayAc
         'cohort_size' => 'cohortSize',
         'cohort_sold' => 'cohortSold',
         'maturity_days' => 'maturityDays',
-        'too_young_to_judge' => 'tooYoungToJudge'
+        'too_young_to_judge' => 'tooYoungToJudge',
+        'immature' => 'immature'
     ];
 
     /**
@@ -127,7 +129,8 @@ class GetAnalyticDashboardResponseSellThrough implements ModelInterface, ArrayAc
         'cohort_size' => 'setCohortSize',
         'cohort_sold' => 'setCohortSold',
         'maturity_days' => 'setMaturityDays',
-        'too_young_to_judge' => 'setTooYoungToJudge'
+        'too_young_to_judge' => 'setTooYoungToJudge',
+        'immature' => 'setImmature'
     ];
 
     /**
@@ -140,7 +143,8 @@ class GetAnalyticDashboardResponseSellThrough implements ModelInterface, ArrayAc
         'cohort_size' => 'getCohortSize',
         'cohort_sold' => 'getCohortSold',
         'maturity_days' => 'getMaturityDays',
-        'too_young_to_judge' => 'getTooYoungToJudge'
+        'too_young_to_judge' => 'getTooYoungToJudge',
+        'immature' => 'getImmature'
     ];
 
     /**
@@ -205,6 +209,7 @@ class GetAnalyticDashboardResponseSellThrough implements ModelInterface, ArrayAc
         $this->container['cohort_sold'] = $data['cohort_sold'] ?? null;
         $this->container['maturity_days'] = $data['maturity_days'] ?? null;
         $this->container['too_young_to_judge'] = $data['too_young_to_judge'] ?? null;
+        $this->container['immature'] = $data['immature'] ?? null;
     }
 
     /**
@@ -227,6 +232,9 @@ class GetAnalyticDashboardResponseSellThrough implements ModelInterface, ArrayAc
         }
         if ($this->container['too_young_to_judge'] === null) {
             $invalidProperties[] = "'too_young_to_judge' can't be null";
+        }
+        if ($this->container['immature'] === null) {
+            $invalidProperties[] = "'immature' can't be null";
         }
         return $invalidProperties;
     }
@@ -359,6 +367,30 @@ class GetAnalyticDashboardResponseSellThrough implements ModelInterface, ArrayAc
     public function setTooYoungToJudge($too_young_to_judge)
     {
         $this->container['too_young_to_judge'] = $too_young_to_judge;
+
+        return $this;
+    }
+
+    /**
+     * Gets immature
+     *
+     * @return float
+     */
+    public function getImmature()
+    {
+        return $this->container['immature'];
+    }
+
+    /**
+     * Sets immature
+     *
+     * @param float $immature immature
+     *
+     * @return self
+     */
+    public function setImmature($immature)
+    {
+        $this->container['immature'] = $immature;
 
         return $this;
     }

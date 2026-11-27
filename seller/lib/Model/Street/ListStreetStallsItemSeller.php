@@ -61,7 +61,7 @@ class ListStreetStallsItemSeller implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'shop' => '\Crossly\Model\Common\NameSlug',
+        'shop' => '\Crossly\Model\Common\NameSlug2',
         'level' => 'float'
     ];
 
@@ -251,7 +251,7 @@ class ListStreetStallsItemSeller implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets shop
      *
-     * @return \Crossly\Model\Common\NameSlug|null
+     * @return \Crossly\Model\Common\NameSlug2|null
      */
     public function getShop()
     {
@@ -261,7 +261,7 @@ class ListStreetStallsItemSeller implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets shop
      *
-     * @param \Crossly\Model\Common\NameSlug|null $shop shop
+     * @param \Crossly\Model\Common\NameSlug2|null $shop shop
      *
      * @return self
      */

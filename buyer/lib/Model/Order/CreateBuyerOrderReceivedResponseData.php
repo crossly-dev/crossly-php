@@ -62,8 +62,8 @@ class CreateBuyerOrderReceivedResponseData implements ModelInterface, ArrayAcces
     protected static $openAPITypes = [
         'ok' => 'bool',
         'can_review' => 'bool',
-        'buyer_received_at' => 'string',
-        'already_confirmed' => 'bool'
+        'already_confirmed' => 'bool',
+        'buyer_received_at' => 'string'
     ];
 
     /**
@@ -76,8 +76,8 @@ class CreateBuyerOrderReceivedResponseData implements ModelInterface, ArrayAcces
     protected static $openAPIFormats = [
         'ok' => null,
         'can_review' => null,
-        'buyer_received_at' => null,
-        'already_confirmed' => null
+        'already_confirmed' => null,
+        'buyer_received_at' => null
     ];
 
     /**
@@ -109,8 +109,8 @@ class CreateBuyerOrderReceivedResponseData implements ModelInterface, ArrayAcces
     protected static $attributeMap = [
         'ok' => 'ok',
         'can_review' => 'canReview',
-        'buyer_received_at' => 'buyerReceivedAt',
-        'already_confirmed' => 'alreadyConfirmed'
+        'already_confirmed' => 'alreadyConfirmed',
+        'buyer_received_at' => 'buyerReceivedAt'
     ];
 
     /**
@@ -121,8 +121,8 @@ class CreateBuyerOrderReceivedResponseData implements ModelInterface, ArrayAcces
     protected static $setters = [
         'ok' => 'setOk',
         'can_review' => 'setCanReview',
-        'buyer_received_at' => 'setBuyerReceivedAt',
-        'already_confirmed' => 'setAlreadyConfirmed'
+        'already_confirmed' => 'setAlreadyConfirmed',
+        'buyer_received_at' => 'setBuyerReceivedAt'
     ];
 
     /**
@@ -133,8 +133,8 @@ class CreateBuyerOrderReceivedResponseData implements ModelInterface, ArrayAcces
     protected static $getters = [
         'ok' => 'getOk',
         'can_review' => 'getCanReview',
-        'buyer_received_at' => 'getBuyerReceivedAt',
-        'already_confirmed' => 'getAlreadyConfirmed'
+        'already_confirmed' => 'getAlreadyConfirmed',
+        'buyer_received_at' => 'getBuyerReceivedAt'
     ];
 
     /**
@@ -196,8 +196,8 @@ class CreateBuyerOrderReceivedResponseData implements ModelInterface, ArrayAcces
     {
         $this->container['ok'] = $data['ok'] ?? null;
         $this->container['can_review'] = $data['can_review'] ?? null;
-        $this->container['buyer_received_at'] = $data['buyer_received_at'] ?? null;
         $this->container['already_confirmed'] = $data['already_confirmed'] ?? null;
+        $this->container['buyer_received_at'] = $data['buyer_received_at'] ?? null;
     }
 
     /**
@@ -279,30 +279,6 @@ class CreateBuyerOrderReceivedResponseData implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets buyer_received_at
-     *
-     * @return string|null
-     */
-    public function getBuyerReceivedAt()
-    {
-        return $this->container['buyer_received_at'];
-    }
-
-    /**
-     * Sets buyer_received_at
-     *
-     * @param string|null $buyer_received_at buyer_received_at
-     *
-     * @return self
-     */
-    public function setBuyerReceivedAt($buyer_received_at)
-    {
-        $this->container['buyer_received_at'] = $buyer_received_at;
-
-        return $this;
-    }
-
-    /**
      * Gets already_confirmed
      *
      * @return bool|null
@@ -322,6 +298,30 @@ class CreateBuyerOrderReceivedResponseData implements ModelInterface, ArrayAcces
     public function setAlreadyConfirmed($already_confirmed)
     {
         $this->container['already_confirmed'] = $already_confirmed;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer_received_at
+     *
+     * @return string|null
+     */
+    public function getBuyerReceivedAt()
+    {
+        return $this->container['buyer_received_at'];
+    }
+
+    /**
+     * Sets buyer_received_at
+     *
+     * @param string|null $buyer_received_at buyer_received_at
+     *
+     * @return self
+     */
+    public function setBuyerReceivedAt($buyer_received_at)
+    {
+        $this->container['buyer_received_at'] = $buyer_received_at;
 
         return $this;
     }

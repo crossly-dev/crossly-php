@@ -178,9 +178,9 @@ class GetWorldArcadeResponseDataScores implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
+    const KIND_RECORD = 'record';
     const KIND_TOP = 'top';
     const KIND_LEADERBOARD = 'leaderboard';
-    const KIND_RECORD = 'record';
 
     /**
      * Gets allowable values of the enum
@@ -190,9 +190,9 @@ class GetWorldArcadeResponseDataScores implements ModelInterface, ArrayAccess, \
     public function getKindAllowableValues()
     {
         return [
+            self::KIND_RECORD,
             self::KIND_TOP,
             self::KIND_LEADERBOARD,
-            self::KIND_RECORD,
         ];
     }
 

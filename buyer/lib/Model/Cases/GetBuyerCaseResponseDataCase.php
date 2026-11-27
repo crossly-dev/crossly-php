@@ -61,20 +61,20 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
-        'updated_at' => 'string',
+        'purchase_id' => 'string',
+        'seller_user_id' => 'string',
         'reason' => 'string',
         'state' => 'string',
-        'seller_user_id' => 'string',
-        'purchase_id' => 'string',
-        'resolved_at' => 'string',
+        'created_at' => 'string',
+        'updated_at' => 'string',
         'buyer_note' => 'string',
         'photo_urls' => 'string[]',
         'awaiting_party' => 'string',
         'escalate_after' => 'string',
         'offered_refund_cents' => 'float',
         'resolved_refund_cents' => 'float',
-        'resolved_decision' => 'string'
+        'resolved_decision' => 'string',
+        'resolved_at' => 'string'
     ];
 
     /**
@@ -86,20 +86,20 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null,
+        'purchase_id' => null,
+        'seller_user_id' => null,
         'reason' => null,
         'state' => null,
-        'seller_user_id' => null,
-        'purchase_id' => null,
-        'resolved_at' => null,
+        'created_at' => null,
+        'updated_at' => null,
         'buyer_note' => null,
         'photo_urls' => null,
         'awaiting_party' => null,
         'escalate_after' => null,
         'offered_refund_cents' => null,
         'resolved_refund_cents' => null,
-        'resolved_decision' => null
+        'resolved_decision' => null,
+        'resolved_at' => null
     ];
 
     /**
@@ -130,20 +130,20 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
+        'purchase_id' => 'purchaseId',
+        'seller_user_id' => 'sellerUserId',
         'reason' => 'reason',
         'state' => 'state',
-        'seller_user_id' => 'sellerUserId',
-        'purchase_id' => 'purchaseId',
-        'resolved_at' => 'resolvedAt',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt',
         'buyer_note' => 'buyerNote',
         'photo_urls' => 'photoUrls',
         'awaiting_party' => 'awaitingParty',
         'escalate_after' => 'escalateAfter',
         'offered_refund_cents' => 'offeredRefundCents',
         'resolved_refund_cents' => 'resolvedRefundCents',
-        'resolved_decision' => 'resolvedDecision'
+        'resolved_decision' => 'resolvedDecision',
+        'resolved_at' => 'resolvedAt'
     ];
 
     /**
@@ -153,20 +153,20 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
+        'purchase_id' => 'setPurchaseId',
+        'seller_user_id' => 'setSellerUserId',
         'reason' => 'setReason',
         'state' => 'setState',
-        'seller_user_id' => 'setSellerUserId',
-        'purchase_id' => 'setPurchaseId',
-        'resolved_at' => 'setResolvedAt',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt',
         'buyer_note' => 'setBuyerNote',
         'photo_urls' => 'setPhotoUrls',
         'awaiting_party' => 'setAwaitingParty',
         'escalate_after' => 'setEscalateAfter',
         'offered_refund_cents' => 'setOfferedRefundCents',
         'resolved_refund_cents' => 'setResolvedRefundCents',
-        'resolved_decision' => 'setResolvedDecision'
+        'resolved_decision' => 'setResolvedDecision',
+        'resolved_at' => 'setResolvedAt'
     ];
 
     /**
@@ -176,20 +176,20 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
+        'purchase_id' => 'getPurchaseId',
+        'seller_user_id' => 'getSellerUserId',
         'reason' => 'getReason',
         'state' => 'getState',
-        'seller_user_id' => 'getSellerUserId',
-        'purchase_id' => 'getPurchaseId',
-        'resolved_at' => 'getResolvedAt',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt',
         'buyer_note' => 'getBuyerNote',
         'photo_urls' => 'getPhotoUrls',
         'awaiting_party' => 'getAwaitingParty',
         'escalate_after' => 'getEscalateAfter',
         'offered_refund_cents' => 'getOfferedRefundCents',
         'resolved_refund_cents' => 'getResolvedRefundCents',
-        'resolved_decision' => 'getResolvedDecision'
+        'resolved_decision' => 'getResolvedDecision',
+        'resolved_at' => 'getResolvedAt'
     ];
 
     /**
@@ -250,13 +250,12 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['purchase_id'] = $data['purchase_id'] ?? null;
+        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['reason'] = $data['reason'] ?? null;
         $this->container['state'] = $data['state'] ?? null;
-        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
-        $this->container['purchase_id'] = $data['purchase_id'] ?? null;
-        $this->container['resolved_at'] = $data['resolved_at'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['buyer_note'] = $data['buyer_note'] ?? null;
         $this->container['photo_urls'] = $data['photo_urls'] ?? null;
         $this->container['awaiting_party'] = $data['awaiting_party'] ?? null;
@@ -264,6 +263,7 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
         $this->container['offered_refund_cents'] = $data['offered_refund_cents'] ?? null;
         $this->container['resolved_refund_cents'] = $data['resolved_refund_cents'] ?? null;
         $this->container['resolved_decision'] = $data['resolved_decision'] ?? null;
+        $this->container['resolved_at'] = $data['resolved_at'] ?? null;
     }
 
     /**
@@ -278,11 +278,11 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['seller_user_id'] === null) {
+            $invalidProperties[] = "'seller_user_id' can't be null";
         }
         if ($this->container['reason'] === null) {
             $invalidProperties[] = "'reason' can't be null";
@@ -290,11 +290,11 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
         if ($this->container['state'] === null) {
             $invalidProperties[] = "'state' can't be null";
         }
-        if ($this->container['seller_user_id'] === null) {
-            $invalidProperties[] = "'seller_user_id' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['purchase_id'] === null) {
-            $invalidProperties[] = "'purchase_id' can't be null";
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -336,49 +336,49 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets created_at
+     * Gets purchase_id
      *
      * @return string
      */
-    public function getCreatedAt()
+    public function getPurchaseId()
     {
-        return $this->container['created_at'];
+        return $this->container['purchase_id'];
     }
 
     /**
-     * Sets created_at
+     * Sets purchase_id
      *
-     * @param string $created_at created_at
+     * @param string $purchase_id purchase_id
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setPurchaseId($purchase_id)
     {
-        $this->container['created_at'] = $created_at;
+        $this->container['purchase_id'] = $purchase_id;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets seller_user_id
      *
      * @return string
      */
-    public function getUpdatedAt()
+    public function getSellerUserId()
     {
-        return $this->container['updated_at'];
+        return $this->container['seller_user_id'];
     }
 
     /**
-     * Sets updated_at
+     * Sets seller_user_id
      *
-     * @param string $updated_at updated_at
+     * @param string $seller_user_id seller_user_id
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setSellerUserId($seller_user_id)
     {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['seller_user_id'] = $seller_user_id;
 
         return $this;
     }
@@ -432,73 +432,49 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets seller_user_id
+     * Gets created_at
      *
      * @return string
      */
-    public function getSellerUserId()
+    public function getCreatedAt()
     {
-        return $this->container['seller_user_id'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets seller_user_id
+     * Sets created_at
      *
-     * @param string $seller_user_id seller_user_id
+     * @param string $created_at created_at
      *
      * @return self
      */
-    public function setSellerUserId($seller_user_id)
+    public function setCreatedAt($created_at)
     {
-        $this->container['seller_user_id'] = $seller_user_id;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
 
     /**
-     * Gets purchase_id
+     * Gets updated_at
      *
      * @return string
      */
-    public function getPurchaseId()
+    public function getUpdatedAt()
     {
-        return $this->container['purchase_id'];
+        return $this->container['updated_at'];
     }
 
     /**
-     * Sets purchase_id
+     * Sets updated_at
      *
-     * @param string $purchase_id purchase_id
+     * @param string $updated_at updated_at
      *
      * @return self
      */
-    public function setPurchaseId($purchase_id)
+    public function setUpdatedAt($updated_at)
     {
-        $this->container['purchase_id'] = $purchase_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets resolved_at
-     *
-     * @return string|null
-     */
-    public function getResolvedAt()
-    {
-        return $this->container['resolved_at'];
-    }
-
-    /**
-     * Sets resolved_at
-     *
-     * @param string|null $resolved_at resolved_at
-     *
-     * @return self
-     */
-    public function setResolvedAt($resolved_at)
-    {
-        $this->container['resolved_at'] = $resolved_at;
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
@@ -667,6 +643,30 @@ class GetBuyerCaseResponseDataCase implements ModelInterface, ArrayAccess, \Json
     public function setResolvedDecision($resolved_decision)
     {
         $this->container['resolved_decision'] = $resolved_decision;
+
+        return $this;
+    }
+
+    /**
+     * Gets resolved_at
+     *
+     * @return string|null
+     */
+    public function getResolvedAt()
+    {
+        return $this->container['resolved_at'];
+    }
+
+    /**
+     * Sets resolved_at
+     *
+     * @param string|null $resolved_at resolved_at
+     *
+     * @return self
+     */
+    public function setResolvedAt($resolved_at)
+    {
+        $this->container['resolved_at'] = $resolved_at;
 
         return $this;
     }

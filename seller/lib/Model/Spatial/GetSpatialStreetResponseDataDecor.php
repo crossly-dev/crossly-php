@@ -184,14 +184,14 @@ class GetSpatialStreetResponseDataDecor implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    const BANNER_COLOUR_RED = 'red';
-    const BANNER_COLOUR_GREEN = 'green';
-    const BANNER_COLOUR_TEAL = 'teal';
     const BANNER_COLOUR_BLUE = 'blue';
+    const BANNER_COLOUR_GREEN = 'green';
     const BANNER_COLOUR_PURPLE = 'purple';
+    const BANNER_COLOUR_RED = 'red';
+    const BANNER_COLOUR_TEAL = 'teal';
     const BANNER_COLOUR_CREAM = 'cream';
-    const BANNER_COLOUR_AMBER = 'amber';
     const BANNER_COLOUR_INK = 'ink';
+    const BANNER_COLOUR_AMBER = 'amber';
 
     /**
      * Gets allowable values of the enum
@@ -201,14 +201,14 @@ class GetSpatialStreetResponseDataDecor implements ModelInterface, ArrayAccess, 
     public function getBannerColourAllowableValues()
     {
         return [
-            self::BANNER_COLOUR_RED,
-            self::BANNER_COLOUR_GREEN,
-            self::BANNER_COLOUR_TEAL,
             self::BANNER_COLOUR_BLUE,
+            self::BANNER_COLOUR_GREEN,
             self::BANNER_COLOUR_PURPLE,
+            self::BANNER_COLOUR_RED,
+            self::BANNER_COLOUR_TEAL,
             self::BANNER_COLOUR_CREAM,
-            self::BANNER_COLOUR_AMBER,
             self::BANNER_COLOUR_INK,
+            self::BANNER_COLOUR_AMBER,
         ];
     }
 

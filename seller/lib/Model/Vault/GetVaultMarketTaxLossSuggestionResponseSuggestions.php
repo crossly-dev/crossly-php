@@ -234,11 +234,11 @@ class GetVaultMarketTaxLossSuggestionResponseSuggestions implements ModelInterfa
     }
 
     const MARK_QUALITY_NONE = 'none';
+    const MARK_QUALITY_C = 'C';
     const MARK_QUALITY_A = 'A';
     const MARK_QUALITY_B = 'B';
-    const MARK_QUALITY_C = 'C';
-    const TERM_LONG = 'long';
     const TERM_SHORT = 'short';
+    const TERM_LONG = 'long';
 
     /**
      * Gets allowable values of the enum
@@ -249,9 +249,9 @@ class GetVaultMarketTaxLossSuggestionResponseSuggestions implements ModelInterfa
     {
         return [
             self::MARK_QUALITY_NONE,
+            self::MARK_QUALITY_C,
             self::MARK_QUALITY_A,
             self::MARK_QUALITY_B,
-            self::MARK_QUALITY_C,
         ];
     }
 
@@ -263,8 +263,8 @@ class GetVaultMarketTaxLossSuggestionResponseSuggestions implements ModelInterfa
     public function getTermAllowableValues()
     {
         return [
-            self::TERM_LONG,
             self::TERM_SHORT,
+            self::TERM_LONG,
         ];
     }
 

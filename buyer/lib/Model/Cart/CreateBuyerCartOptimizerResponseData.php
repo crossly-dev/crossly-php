@@ -60,11 +60,11 @@ class CreateBuyerCartOptimizerResponseData implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
+        'lines' => '\Crossly\Buyer\Model\Cart\CreateBuyerCartOptimizerResponseDataLines[]',
+        'items_cents' => 'float',
         'shipping_cents' => 'float',
         'total_cents' => 'float',
-        'lines' => '\Crossly\Buyer\Model\Cart\CreateBuyerCartOptimizerResponseDataLines[]',
         'sellers' => 'float',
-        'items_cents' => 'float',
         'unmatched' => 'string[]'
     ];
 
@@ -76,11 +76,11 @@ class CreateBuyerCartOptimizerResponseData implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'lines' => null,
+        'items_cents' => null,
         'shipping_cents' => null,
         'total_cents' => null,
-        'lines' => null,
         'sellers' => null,
-        'items_cents' => null,
         'unmatched' => null
     ];
 
@@ -111,11 +111,11 @@ class CreateBuyerCartOptimizerResponseData implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
+        'lines' => 'lines',
+        'items_cents' => 'itemsCents',
         'shipping_cents' => 'shippingCents',
         'total_cents' => 'totalCents',
-        'lines' => 'lines',
         'sellers' => 'sellers',
-        'items_cents' => 'itemsCents',
         'unmatched' => 'unmatched'
     ];
 
@@ -125,11 +125,11 @@ class CreateBuyerCartOptimizerResponseData implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
+        'lines' => 'setLines',
+        'items_cents' => 'setItemsCents',
         'shipping_cents' => 'setShippingCents',
         'total_cents' => 'setTotalCents',
-        'lines' => 'setLines',
         'sellers' => 'setSellers',
-        'items_cents' => 'setItemsCents',
         'unmatched' => 'setUnmatched'
     ];
 
@@ -139,11 +139,11 @@ class CreateBuyerCartOptimizerResponseData implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
+        'lines' => 'getLines',
+        'items_cents' => 'getItemsCents',
         'shipping_cents' => 'getShippingCents',
         'total_cents' => 'getTotalCents',
-        'lines' => 'getLines',
         'sellers' => 'getSellers',
-        'items_cents' => 'getItemsCents',
         'unmatched' => 'getUnmatched'
     ];
 
@@ -204,11 +204,11 @@ class CreateBuyerCartOptimizerResponseData implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
+        $this->container['lines'] = $data['lines'] ?? null;
+        $this->container['items_cents'] = $data['items_cents'] ?? null;
         $this->container['shipping_cents'] = $data['shipping_cents'] ?? null;
         $this->container['total_cents'] = $data['total_cents'] ?? null;
-        $this->container['lines'] = $data['lines'] ?? null;
         $this->container['sellers'] = $data['sellers'] ?? null;
-        $this->container['items_cents'] = $data['items_cents'] ?? null;
         $this->container['unmatched'] = $data['unmatched'] ?? null;
     }
 
@@ -221,20 +221,20 @@ class CreateBuyerCartOptimizerResponseData implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
+        if ($this->container['lines'] === null) {
+            $invalidProperties[] = "'lines' can't be null";
+        }
+        if ($this->container['items_cents'] === null) {
+            $invalidProperties[] = "'items_cents' can't be null";
+        }
         if ($this->container['shipping_cents'] === null) {
             $invalidProperties[] = "'shipping_cents' can't be null";
         }
         if ($this->container['total_cents'] === null) {
             $invalidProperties[] = "'total_cents' can't be null";
         }
-        if ($this->container['lines'] === null) {
-            $invalidProperties[] = "'lines' can't be null";
-        }
         if ($this->container['sellers'] === null) {
             $invalidProperties[] = "'sellers' can't be null";
-        }
-        if ($this->container['items_cents'] === null) {
-            $invalidProperties[] = "'items_cents' can't be null";
         }
         if ($this->container['unmatched'] === null) {
             $invalidProperties[] = "'unmatched' can't be null";
@@ -253,6 +253,54 @@ class CreateBuyerCartOptimizerResponseData implements ModelInterface, ArrayAcces
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets lines
+     *
+     * @return \Crossly\Buyer\Model\Cart\CreateBuyerCartOptimizerResponseDataLines[]
+     */
+    public function getLines()
+    {
+        return $this->container['lines'];
+    }
+
+    /**
+     * Sets lines
+     *
+     * @param \Crossly\Buyer\Model\Cart\CreateBuyerCartOptimizerResponseDataLines[] $lines lines
+     *
+     * @return self
+     */
+    public function setLines($lines)
+    {
+        $this->container['lines'] = $lines;
+
+        return $this;
+    }
+
+    /**
+     * Gets items_cents
+     *
+     * @return float
+     */
+    public function getItemsCents()
+    {
+        return $this->container['items_cents'];
+    }
+
+    /**
+     * Sets items_cents
+     *
+     * @param float $items_cents items_cents
+     *
+     * @return self
+     */
+    public function setItemsCents($items_cents)
+    {
+        $this->container['items_cents'] = $items_cents;
+
+        return $this;
+    }
 
     /**
      * Gets shipping_cents
@@ -303,30 +351,6 @@ class CreateBuyerCartOptimizerResponseData implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets lines
-     *
-     * @return \Crossly\Buyer\Model\Cart\CreateBuyerCartOptimizerResponseDataLines[]
-     */
-    public function getLines()
-    {
-        return $this->container['lines'];
-    }
-
-    /**
-     * Sets lines
-     *
-     * @param \Crossly\Buyer\Model\Cart\CreateBuyerCartOptimizerResponseDataLines[] $lines lines
-     *
-     * @return self
-     */
-    public function setLines($lines)
-    {
-        $this->container['lines'] = $lines;
-
-        return $this;
-    }
-
-    /**
      * Gets sellers
      *
      * @return float
@@ -346,30 +370,6 @@ class CreateBuyerCartOptimizerResponseData implements ModelInterface, ArrayAcces
     public function setSellers($sellers)
     {
         $this->container['sellers'] = $sellers;
-
-        return $this;
-    }
-
-    /**
-     * Gets items_cents
-     *
-     * @return float
-     */
-    public function getItemsCents()
-    {
-        return $this->container['items_cents'];
-    }
-
-    /**
-     * Sets items_cents
-     *
-     * @param float $items_cents items_cents
-     *
-     * @return self
-     */
-    public function setItemsCents($items_cents)
-    {
-        $this->container['items_cents'] = $items_cents;
 
         return $this;
     }

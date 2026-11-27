@@ -174,11 +174,11 @@ class GetSpatialEmployeeConfigResponseDataConfigRules implements ModelInterface,
     }
 
     const WHEN_ENTERED = 'entered';
+    const WHEN_ASKED = 'asked';
     const WHEN_LINGERED = 'lingered';
     const WHEN_INSPECTED = 'inspected';
     const WHEN_ADDED_TO_CART = 'added_to_cart';
     const WHEN_LEAVING_WITH_CART = 'leaving_with_cart';
-    const WHEN_ASKED = 'asked';
 
     /**
      * Gets allowable values of the enum
@@ -189,11 +189,11 @@ class GetSpatialEmployeeConfigResponseDataConfigRules implements ModelInterface,
     {
         return [
             self::WHEN_ENTERED,
+            self::WHEN_ASKED,
             self::WHEN_LINGERED,
             self::WHEN_INSPECTED,
             self::WHEN_ADDED_TO_CART,
             self::WHEN_LEAVING_WITH_CART,
-            self::WHEN_ASKED,
         ];
     }
 

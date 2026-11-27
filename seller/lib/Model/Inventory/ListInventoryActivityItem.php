@@ -64,9 +64,9 @@ class ListInventoryActivityItem implements ModelInterface, ArrayAccess, \JsonSer
         'created_at' => '\DateTime',
         'user_id' => 'string',
         'platform' => 'string',
-        'type' => 'string',
-        'order_id' => 'string',
         'inventory_item_id' => 'string',
+        'order_id' => 'string',
+        'type' => 'string',
         'delta' => 'float',
         'quantity_before' => 'float',
         'quantity_after' => 'float',
@@ -85,9 +85,9 @@ class ListInventoryActivityItem implements ModelInterface, ArrayAccess, \JsonSer
         'created_at' => 'date-time',
         'user_id' => null,
         'platform' => null,
-        'type' => null,
-        'order_id' => null,
         'inventory_item_id' => null,
+        'order_id' => null,
+        'type' => null,
         'delta' => null,
         'quantity_before' => null,
         'quantity_after' => null,
@@ -125,9 +125,9 @@ class ListInventoryActivityItem implements ModelInterface, ArrayAccess, \JsonSer
         'created_at' => 'createdAt',
         'user_id' => 'userId',
         'platform' => 'platform',
-        'type' => 'type',
-        'order_id' => 'orderId',
         'inventory_item_id' => 'inventoryItemId',
+        'order_id' => 'orderId',
+        'type' => 'type',
         'delta' => 'delta',
         'quantity_before' => 'quantityBefore',
         'quantity_after' => 'quantityAfter',
@@ -144,9 +144,9 @@ class ListInventoryActivityItem implements ModelInterface, ArrayAccess, \JsonSer
         'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
         'platform' => 'setPlatform',
-        'type' => 'setType',
-        'order_id' => 'setOrderId',
         'inventory_item_id' => 'setInventoryItemId',
+        'order_id' => 'setOrderId',
+        'type' => 'setType',
         'delta' => 'setDelta',
         'quantity_before' => 'setQuantityBefore',
         'quantity_after' => 'setQuantityAfter',
@@ -163,9 +163,9 @@ class ListInventoryActivityItem implements ModelInterface, ArrayAccess, \JsonSer
         'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
         'platform' => 'getPlatform',
-        'type' => 'getType',
-        'order_id' => 'getOrderId',
         'inventory_item_id' => 'getInventoryItemId',
+        'order_id' => 'getOrderId',
+        'type' => 'getType',
         'delta' => 'getDelta',
         'quantity_before' => 'getQuantityBefore',
         'quantity_after' => 'getQuantityAfter',
@@ -233,9 +233,9 @@ class ListInventoryActivityItem implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['platform'] = $data['platform'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['order_id'] = $data['order_id'] ?? null;
         $this->container['inventory_item_id'] = $data['inventory_item_id'] ?? null;
+        $this->container['order_id'] = $data['order_id'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
         $this->container['delta'] = $data['delta'] ?? null;
         $this->container['quantity_before'] = $data['quantity_before'] ?? null;
         $this->container['quantity_after'] = $data['quantity_after'] ?? null;
@@ -375,25 +375,25 @@ class ListInventoryActivityItem implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets type
+     * Gets inventory_item_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getInventoryItemId()
     {
-        return $this->container['type'];
+        return $this->container['inventory_item_id'];
     }
 
     /**
-     * Sets type
+     * Sets inventory_item_id
      *
-     * @param string $type type
+     * @param string|null $inventory_item_id inventory_item_id
      *
      * @return self
      */
-    public function setType($type)
+    public function setInventoryItemId($inventory_item_id)
     {
-        $this->container['type'] = $type;
+        $this->container['inventory_item_id'] = $inventory_item_id;
 
         return $this;
     }
@@ -423,25 +423,25 @@ class ListInventoryActivityItem implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets inventory_item_id
+     * Gets type
      *
-     * @return string|null
+     * @return string
      */
-    public function getInventoryItemId()
+    public function getType()
     {
-        return $this->container['inventory_item_id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets inventory_item_id
+     * Sets type
      *
-     * @param string|null $inventory_item_id inventory_item_id
+     * @param string $type type
      *
      * @return self
      */
-    public function setInventoryItemId($inventory_item_id)
+    public function setType($type)
     {
-        $this->container['inventory_item_id'] = $inventory_item_id;
+        $this->container['type'] = $type;
 
         return $this;
     }

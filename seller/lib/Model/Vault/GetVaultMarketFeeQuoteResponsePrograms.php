@@ -178,8 +178,8 @@ class GetVaultMarketFeeQuoteResponsePrograms implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
-    const MEMBER_TIER_CLASSIC = 'classic';
     const MEMBER_TIER_PRO = 'pro';
+    const MEMBER_TIER_CLASSIC = 'classic';
 
     /**
      * Gets allowable values of the enum
@@ -189,8 +189,8 @@ class GetVaultMarketFeeQuoteResponsePrograms implements ModelInterface, ArrayAcc
     public function getMemberTierAllowableValues()
     {
         return [
-            self::MEMBER_TIER_CLASSIC,
             self::MEMBER_TIER_PRO,
+            self::MEMBER_TIER_CLASSIC,
         ];
     }
 

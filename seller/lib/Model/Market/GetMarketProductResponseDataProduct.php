@@ -67,16 +67,16 @@ class GetMarketProductResponseDataProduct implements ModelInterface, ArrayAccess
         'created_at' => '\DateTime',
         'status' => 'string',
         'retail_cents' => 'float',
-        'category_slug' => 'string',
-        'external_id' => 'string',
         'image_url' => 'string',
+        'category_slug' => 'string',
+        'approved_by_user_id' => 'string',
+        'approved_at' => '\DateTime',
+        'external_id' => 'string',
         'model' => 'string',
         'colorway' => 'string',
         'style_code' => 'string',
         'release_date' => 'string',
         'submitted_by_user_id' => 'string',
-        'approved_by_user_id' => 'string',
-        'approved_at' => '\DateTime',
         'rejection_reason' => 'string',
         'proposed_variants' => '\Crossly\Model\Market\GetMarketProductResponseDataProductProposedVariants[]',
         'verification' => 'array<string,mixed>',
@@ -117,16 +117,16 @@ class GetMarketProductResponseDataProduct implements ModelInterface, ArrayAccess
         'created_at' => 'date-time',
         'status' => null,
         'retail_cents' => null,
-        'category_slug' => null,
-        'external_id' => null,
         'image_url' => null,
+        'category_slug' => null,
+        'approved_by_user_id' => null,
+        'approved_at' => 'date-time',
+        'external_id' => null,
         'model' => null,
         'colorway' => null,
         'style_code' => null,
         'release_date' => null,
         'submitted_by_user_id' => null,
-        'approved_by_user_id' => null,
-        'approved_at' => 'date-time',
         'rejection_reason' => null,
         'proposed_variants' => null,
         'verification' => null,
@@ -186,16 +186,16 @@ class GetMarketProductResponseDataProduct implements ModelInterface, ArrayAccess
         'created_at' => 'createdAt',
         'status' => 'status',
         'retail_cents' => 'retailCents',
-        'category_slug' => 'categorySlug',
-        'external_id' => 'externalId',
         'image_url' => 'imageUrl',
+        'category_slug' => 'categorySlug',
+        'approved_by_user_id' => 'approvedByUserId',
+        'approved_at' => 'approvedAt',
+        'external_id' => 'externalId',
         'model' => 'model',
         'colorway' => 'colorway',
         'style_code' => 'styleCode',
         'release_date' => 'releaseDate',
         'submitted_by_user_id' => 'submittedByUserId',
-        'approved_by_user_id' => 'approvedByUserId',
-        'approved_at' => 'approvedAt',
         'rejection_reason' => 'rejectionReason',
         'proposed_variants' => 'proposedVariants',
         'verification' => 'verification',
@@ -234,16 +234,16 @@ class GetMarketProductResponseDataProduct implements ModelInterface, ArrayAccess
         'created_at' => 'setCreatedAt',
         'status' => 'setStatus',
         'retail_cents' => 'setRetailCents',
-        'category_slug' => 'setCategorySlug',
-        'external_id' => 'setExternalId',
         'image_url' => 'setImageUrl',
+        'category_slug' => 'setCategorySlug',
+        'approved_by_user_id' => 'setApprovedByUserId',
+        'approved_at' => 'setApprovedAt',
+        'external_id' => 'setExternalId',
         'model' => 'setModel',
         'colorway' => 'setColorway',
         'style_code' => 'setStyleCode',
         'release_date' => 'setReleaseDate',
         'submitted_by_user_id' => 'setSubmittedByUserId',
-        'approved_by_user_id' => 'setApprovedByUserId',
-        'approved_at' => 'setApprovedAt',
         'rejection_reason' => 'setRejectionReason',
         'proposed_variants' => 'setProposedVariants',
         'verification' => 'setVerification',
@@ -282,16 +282,16 @@ class GetMarketProductResponseDataProduct implements ModelInterface, ArrayAccess
         'created_at' => 'getCreatedAt',
         'status' => 'getStatus',
         'retail_cents' => 'getRetailCents',
-        'category_slug' => 'getCategorySlug',
-        'external_id' => 'getExternalId',
         'image_url' => 'getImageUrl',
+        'category_slug' => 'getCategorySlug',
+        'approved_by_user_id' => 'getApprovedByUserId',
+        'approved_at' => 'getApprovedAt',
+        'external_id' => 'getExternalId',
         'model' => 'getModel',
         'colorway' => 'getColorway',
         'style_code' => 'getStyleCode',
         'release_date' => 'getReleaseDate',
         'submitted_by_user_id' => 'getSubmittedByUserId',
-        'approved_by_user_id' => 'getApprovedByUserId',
-        'approved_at' => 'getApprovedAt',
         'rejection_reason' => 'getRejectionReason',
         'proposed_variants' => 'getProposedVariants',
         'verification' => 'getVerification',
@@ -381,16 +381,16 @@ class GetMarketProductResponseDataProduct implements ModelInterface, ArrayAccess
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['retail_cents'] = $data['retail_cents'] ?? null;
-        $this->container['category_slug'] = $data['category_slug'] ?? null;
-        $this->container['external_id'] = $data['external_id'] ?? null;
         $this->container['image_url'] = $data['image_url'] ?? null;
+        $this->container['category_slug'] = $data['category_slug'] ?? null;
+        $this->container['approved_by_user_id'] = $data['approved_by_user_id'] ?? null;
+        $this->container['approved_at'] = $data['approved_at'] ?? null;
+        $this->container['external_id'] = $data['external_id'] ?? null;
         $this->container['model'] = $data['model'] ?? null;
         $this->container['colorway'] = $data['colorway'] ?? null;
         $this->container['style_code'] = $data['style_code'] ?? null;
         $this->container['release_date'] = $data['release_date'] ?? null;
         $this->container['submitted_by_user_id'] = $data['submitted_by_user_id'] ?? null;
-        $this->container['approved_by_user_id'] = $data['approved_by_user_id'] ?? null;
-        $this->container['approved_at'] = $data['approved_at'] ?? null;
         $this->container['rejection_reason'] = $data['rejection_reason'] ?? null;
         $this->container['proposed_variants'] = $data['proposed_variants'] ?? null;
         $this->container['verification'] = $data['verification'] ?? null;
@@ -651,6 +651,30 @@ class GetMarketProductResponseDataProduct implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets image_url
+     *
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     *
+     * @param string|null $image_url image_url
+     *
+     * @return self
+     */
+    public function setImageUrl($image_url)
+    {
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
      * Gets category_slug
      *
      * @return string
@@ -675,6 +699,54 @@ class GetMarketProductResponseDataProduct implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets approved_by_user_id
+     *
+     * @return string|null
+     */
+    public function getApprovedByUserId()
+    {
+        return $this->container['approved_by_user_id'];
+    }
+
+    /**
+     * Sets approved_by_user_id
+     *
+     * @param string|null $approved_by_user_id approved_by_user_id
+     *
+     * @return self
+     */
+    public function setApprovedByUserId($approved_by_user_id)
+    {
+        $this->container['approved_by_user_id'] = $approved_by_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets approved_at
+     *
+     * @return \DateTime|null
+     */
+    public function getApprovedAt()
+    {
+        return $this->container['approved_at'];
+    }
+
+    /**
+     * Sets approved_at
+     *
+     * @param \DateTime|null $approved_at approved_at
+     *
+     * @return self
+     */
+    public function setApprovedAt($approved_at)
+    {
+        $this->container['approved_at'] = $approved_at;
+
+        return $this;
+    }
+
+    /**
      * Gets external_id
      *
      * @return string|null
@@ -694,30 +766,6 @@ class GetMarketProductResponseDataProduct implements ModelInterface, ArrayAccess
     public function setExternalId($external_id)
     {
         $this->container['external_id'] = $external_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets image_url
-     *
-     * @return string|null
-     */
-    public function getImageUrl()
-    {
-        return $this->container['image_url'];
-    }
-
-    /**
-     * Sets image_url
-     *
-     * @param string|null $image_url image_url
-     *
-     * @return self
-     */
-    public function setImageUrl($image_url)
-    {
-        $this->container['image_url'] = $image_url;
 
         return $this;
     }
@@ -838,54 +886,6 @@ class GetMarketProductResponseDataProduct implements ModelInterface, ArrayAccess
     public function setSubmittedByUserId($submitted_by_user_id)
     {
         $this->container['submitted_by_user_id'] = $submitted_by_user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets approved_by_user_id
-     *
-     * @return string|null
-     */
-    public function getApprovedByUserId()
-    {
-        return $this->container['approved_by_user_id'];
-    }
-
-    /**
-     * Sets approved_by_user_id
-     *
-     * @param string|null $approved_by_user_id approved_by_user_id
-     *
-     * @return self
-     */
-    public function setApprovedByUserId($approved_by_user_id)
-    {
-        $this->container['approved_by_user_id'] = $approved_by_user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets approved_at
-     *
-     * @return \DateTime|null
-     */
-    public function getApprovedAt()
-    {
-        return $this->container['approved_at'];
-    }
-
-    /**
-     * Sets approved_at
-     *
-     * @param \DateTime|null $approved_at approved_at
-     *
-     * @return self
-     */
-    public function setApprovedAt($approved_at)
-    {
-        $this->container['approved_at'] = $approved_at;
 
         return $this;
     }

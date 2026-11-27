@@ -65,6 +65,7 @@ class ListVaultMarketShareCardsItem implements ModelInterface, ArrayAccess, \Jso
         'verified' => 'bool',
         'created_at' => 'string',
         'show_amounts' => 'bool',
+        'owner' => '\Crossly\Model\Vault\ListVaultMarketShareCardsItemOwner',
         'title' => 'string',
         'subtitle' => 'string',
         'image_url' => 'string',
@@ -91,6 +92,7 @@ class ListVaultMarketShareCardsItem implements ModelInterface, ArrayAccess, \Jso
         'verified' => null,
         'created_at' => null,
         'show_amounts' => null,
+        'owner' => null,
         'title' => null,
         'subtitle' => null,
         'image_url' => null,
@@ -136,6 +138,7 @@ class ListVaultMarketShareCardsItem implements ModelInterface, ArrayAccess, \Jso
         'verified' => 'verified',
         'created_at' => 'createdAt',
         'show_amounts' => 'showAmounts',
+        'owner' => 'owner',
         'title' => 'title',
         'subtitle' => 'subtitle',
         'image_url' => 'imageUrl',
@@ -160,6 +163,7 @@ class ListVaultMarketShareCardsItem implements ModelInterface, ArrayAccess, \Jso
         'verified' => 'setVerified',
         'created_at' => 'setCreatedAt',
         'show_amounts' => 'setShowAmounts',
+        'owner' => 'setOwner',
         'title' => 'setTitle',
         'subtitle' => 'setSubtitle',
         'image_url' => 'setImageUrl',
@@ -184,6 +188,7 @@ class ListVaultMarketShareCardsItem implements ModelInterface, ArrayAccess, \Jso
         'verified' => 'getVerified',
         'created_at' => 'getCreatedAt',
         'show_amounts' => 'getShowAmounts',
+        'owner' => 'getOwner',
         'title' => 'getTitle',
         'subtitle' => 'getSubtitle',
         'image_url' => 'getImageUrl',
@@ -240,8 +245,8 @@ class ListVaultMarketShareCardsItem implements ModelInterface, ArrayAccess, \Jso
 
     const KIND_POSITION = 'position';
     const KIND_UNIT = 'unit';
-    const KIND_INDEX = 'index';
     const KIND_PORTFOLIO = 'portfolio';
+    const KIND_INDEX = 'index';
 
     /**
      * Gets allowable values of the enum
@@ -253,8 +258,8 @@ class ListVaultMarketShareCardsItem implements ModelInterface, ArrayAccess, \Jso
         return [
             self::KIND_POSITION,
             self::KIND_UNIT,
-            self::KIND_INDEX,
             self::KIND_PORTFOLIO,
+            self::KIND_INDEX,
         ];
     }
 
@@ -278,6 +283,7 @@ class ListVaultMarketShareCardsItem implements ModelInterface, ArrayAccess, \Jso
         $this->container['verified'] = $data['verified'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['show_amounts'] = $data['show_amounts'] ?? null;
+        $this->container['owner'] = $data['owner'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['subtitle'] = $data['subtitle'] ?? null;
         $this->container['image_url'] = $data['image_url'] ?? null;
@@ -323,6 +329,9 @@ class ListVaultMarketShareCardsItem implements ModelInterface, ArrayAccess, \Jso
         }
         if ($this->container['show_amounts'] === null) {
             $invalidProperties[] = "'show_amounts' can't be null";
+        }
+        if ($this->container['owner'] === null) {
+            $invalidProperties[] = "'owner' can't be null";
         }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
@@ -474,6 +483,30 @@ class ListVaultMarketShareCardsItem implements ModelInterface, ArrayAccess, \Jso
     public function setShowAmounts($show_amounts)
     {
         $this->container['show_amounts'] = $show_amounts;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketShareCardsItemOwner
+     */
+    public function getOwner()
+    {
+        return $this->container['owner'];
+    }
+
+    /**
+     * Sets owner
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketShareCardsItemOwner $owner owner
+     *
+     * @return self
+     */
+    public function setOwner($owner)
+    {
+        $this->container['owner'] = $owner;
 
         return $this;
     }

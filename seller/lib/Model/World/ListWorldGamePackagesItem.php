@@ -65,6 +65,8 @@ class ListWorldGamePackagesItem implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'string',
         'design_id' => 'string',
         'created_at' => '\DateTime',
+        'updated_at' => '\DateTime',
+        'unpublished_at' => '\DateTime',
         'versions' => '\Crossly\Model\World\GetWorldGamePackageResponseDataVersions[]'
     ];
 
@@ -81,6 +83,8 @@ class ListWorldGamePackagesItem implements ModelInterface, ArrayAccess, \JsonSer
         'name' => null,
         'design_id' => null,
         'created_at' => 'date-time',
+        'updated_at' => 'date-time',
+        'unpublished_at' => 'date-time',
         'versions' => null
     ];
 
@@ -116,6 +120,8 @@ class ListWorldGamePackagesItem implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'name',
         'design_id' => 'designId',
         'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt',
+        'unpublished_at' => 'unpublishedAt',
         'versions' => 'versions'
     ];
 
@@ -130,6 +136,8 @@ class ListWorldGamePackagesItem implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'setName',
         'design_id' => 'setDesignId',
         'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt',
+        'unpublished_at' => 'setUnpublishedAt',
         'versions' => 'setVersions'
     ];
 
@@ -144,6 +152,8 @@ class ListWorldGamePackagesItem implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'getName',
         'design_id' => 'getDesignId',
         'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt',
+        'unpublished_at' => 'getUnpublishedAt',
         'versions' => 'getVersions'
     ];
 
@@ -209,6 +219,8 @@ class ListWorldGamePackagesItem implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['name'] = $data['name'] ?? null;
         $this->container['design_id'] = $data['design_id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['unpublished_at'] = $data['unpublished_at'] ?? null;
         $this->container['versions'] = $data['versions'] ?? null;
     }
 
@@ -235,6 +247,9 @@ class ListWorldGamePackagesItem implements ModelInterface, ArrayAccess, \JsonSer
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         if ($this->container['versions'] === null) {
             $invalidProperties[] = "'versions' can't be null";
@@ -370,6 +385,54 @@ class ListWorldGamePackagesItem implements ModelInterface, ArrayAccess, \JsonSer
     public function setCreatedAt($created_at)
     {
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets unpublished_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUnpublishedAt()
+    {
+        return $this->container['unpublished_at'];
+    }
+
+    /**
+     * Sets unpublished_at
+     *
+     * @param \DateTime|null $unpublished_at unpublished_at
+     *
+     * @return self
+     */
+    public function setUnpublishedAt($unpublished_at)
+    {
+        $this->container['unpublished_at'] = $unpublished_at;
 
         return $this;
     }

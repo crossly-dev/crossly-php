@@ -200,9 +200,6 @@ class GetInventoryValueHistoryResponseData implements ModelInterface, ArrayAcces
         if ($this->container['points'] === null) {
             $invalidProperties[] = "'points' can't be null";
         }
-        if ($this->container['collecting_since'] === null) {
-            $invalidProperties[] = "'collecting_since' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -245,7 +242,7 @@ class GetInventoryValueHistoryResponseData implements ModelInterface, ArrayAcces
     /**
      * Gets collecting_since
      *
-     * @return string
+     * @return string|null
      */
     public function getCollectingSince()
     {
@@ -255,7 +252,7 @@ class GetInventoryValueHistoryResponseData implements ModelInterface, ArrayAcces
     /**
      * Sets collecting_since
      *
-     * @param string $collecting_since collecting_since
+     * @param string|null $collecting_since collecting_since
      *
      * @return self
      */

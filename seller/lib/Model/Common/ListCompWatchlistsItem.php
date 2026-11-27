@@ -65,9 +65,9 @@ class ListCompWatchlistsItem implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'string',
         'created_at' => '\DateTime',
         'user_id' => 'string',
+        'platform' => 'string',
         'condition' => 'string',
         'category_main' => 'string',
-        'platform' => 'string',
         'min_price' => 'string',
         'max_price' => 'string',
         'last_matched_at' => '\DateTime',
@@ -87,9 +87,9 @@ class ListCompWatchlistsItem implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => null,
         'created_at' => 'date-time',
         'user_id' => null,
+        'platform' => null,
         'condition' => null,
         'category_main' => null,
-        'platform' => null,
         'min_price' => null,
         'max_price' => null,
         'last_matched_at' => 'date-time',
@@ -128,9 +128,9 @@ class ListCompWatchlistsItem implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'name',
         'created_at' => 'createdAt',
         'user_id' => 'userId',
+        'platform' => 'platform',
         'condition' => 'condition',
         'category_main' => 'categoryMain',
-        'platform' => 'platform',
         'min_price' => 'minPrice',
         'max_price' => 'maxPrice',
         'last_matched_at' => 'lastMatchedAt',
@@ -148,9 +148,9 @@ class ListCompWatchlistsItem implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'setName',
         'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
+        'platform' => 'setPlatform',
         'condition' => 'setCondition',
         'category_main' => 'setCategoryMain',
-        'platform' => 'setPlatform',
         'min_price' => 'setMinPrice',
         'max_price' => 'setMaxPrice',
         'last_matched_at' => 'setLastMatchedAt',
@@ -168,9 +168,9 @@ class ListCompWatchlistsItem implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'getName',
         'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
+        'platform' => 'getPlatform',
         'condition' => 'getCondition',
         'category_main' => 'getCategoryMain',
-        'platform' => 'getPlatform',
         'min_price' => 'getMinPrice',
         'max_price' => 'getMaxPrice',
         'last_matched_at' => 'getLastMatchedAt',
@@ -239,9 +239,9 @@ class ListCompWatchlistsItem implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['name'] = $data['name'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['platform'] = $data['platform'] ?? null;
         $this->container['condition'] = $data['condition'] ?? null;
         $this->container['category_main'] = $data['category_main'] ?? null;
-        $this->container['platform'] = $data['platform'] ?? null;
         $this->container['min_price'] = $data['min_price'] ?? null;
         $this->container['max_price'] = $data['max_price'] ?? null;
         $this->container['last_matched_at'] = $data['last_matched_at'] ?? null;
@@ -405,6 +405,30 @@ class ListCompWatchlistsItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets platform
+     *
+     * @return string|null
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string|null $platform platform
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
      * Gets condition
      *
      * @return string|null
@@ -448,30 +472,6 @@ class ListCompWatchlistsItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCategoryMain($category_main)
     {
         $this->container['category_main'] = $category_main;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform
-     *
-     * @return string|null
-     */
-    public function getPlatform()
-    {
-        return $this->container['platform'];
-    }
-
-    /**
-     * Sets platform
-     *
-     * @param string|null $platform platform
-     *
-     * @return self
-     */
-    public function setPlatform($platform)
-    {
-        $this->container['platform'] = $platform;
 
         return $this;
     }

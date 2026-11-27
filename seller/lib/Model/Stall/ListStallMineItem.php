@@ -79,6 +79,8 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'refunded_cents' => 'float',
         'cancellable' => 'bool',
         'listing_ids' => 'string[]',
+        'booth_kind' => 'string',
+        'capacity' => 'float',
         'awning' => '\Crossly\Model\Common\ColourPattern',
         'booth' => '\Crossly\Model\Stall\CreateStallBookResponseBookingBooth',
         'sign' => 'string',
@@ -113,6 +115,8 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'refunded_cents' => null,
         'cancellable' => null,
         'listing_ids' => null,
+        'booth_kind' => null,
+        'capacity' => null,
         'awning' => null,
         'booth' => null,
         'sign' => null,
@@ -166,6 +170,8 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'refunded_cents' => 'refundedCents',
         'cancellable' => 'cancellable',
         'listing_ids' => 'listingIds',
+        'booth_kind' => 'boothKind',
+        'capacity' => 'capacity',
         'awning' => 'awning',
         'booth' => 'booth',
         'sign' => 'sign',
@@ -198,6 +204,8 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'refunded_cents' => 'setRefundedCents',
         'cancellable' => 'setCancellable',
         'listing_ids' => 'setListingIds',
+        'booth_kind' => 'setBoothKind',
+        'capacity' => 'setCapacity',
         'awning' => 'setAwning',
         'booth' => 'setBooth',
         'sign' => 'setSign',
@@ -230,6 +238,8 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'refunded_cents' => 'getRefundedCents',
         'cancellable' => 'getCancellable',
         'listing_ids' => 'getListingIds',
+        'booth_kind' => 'getBoothKind',
+        'capacity' => 'getCapacity',
         'awning' => 'getAwning',
         'booth' => 'getBooth',
         'sign' => 'getSign',
@@ -278,15 +288,18 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
-    const UNIT_EVENT = 'event';
     const UNIT_DAY = 'day';
+    const UNIT_EVENT = 'event';
     const STATUS_CANCELLED = 'cancelled';
     const STATUS_ENDED = 'ended';
     const STATUS_BOOKED = 'booked';
     const STATUS_FOLDED = 'folded';
     const RAIL_CARD = 'card';
-    const RAIL_BUCKS = 'bucks';
     const RAIL_CBX = 'cbx';
+    const RAIL_BUCKS = 'bucks';
+    const BOOTH_KIND_BOOTH = 'booth';
+    const BOOTH_KIND_CART = 'cart';
+    const BOOTH_KIND_PAVILION = 'pavilion';
 
     /**
      * Gets allowable values of the enum
@@ -296,8 +309,8 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function getUnitAllowableValues()
     {
         return [
-            self::UNIT_EVENT,
             self::UNIT_DAY,
+            self::UNIT_EVENT,
         ];
     }
 
@@ -325,8 +338,22 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         return [
             self::RAIL_CARD,
-            self::RAIL_BUCKS,
             self::RAIL_CBX,
+            self::RAIL_BUCKS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBoothKindAllowableValues()
+    {
+        return [
+            self::BOOTH_KIND_BOOTH,
+            self::BOOTH_KIND_CART,
+            self::BOOTH_KIND_PAVILION,
         ];
     }
 
@@ -364,6 +391,8 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->container['refunded_cents'] = $data['refunded_cents'] ?? null;
         $this->container['cancellable'] = $data['cancellable'] ?? null;
         $this->container['listing_ids'] = $data['listing_ids'] ?? null;
+        $this->container['booth_kind'] = $data['booth_kind'] ?? null;
+        $this->container['capacity'] = $data['capacity'] ?? null;
         $this->container['awning'] = $data['awning'] ?? null;
         $this->container['booth'] = $data['booth'] ?? null;
         $this->container['sign'] = $data['sign'] ?? null;
@@ -460,6 +489,21 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         }
         if ($this->container['listing_ids'] === null) {
             $invalidProperties[] = "'listing_ids' can't be null";
+        }
+        if ($this->container['booth_kind'] === null) {
+            $invalidProperties[] = "'booth_kind' can't be null";
+        }
+        $allowedValues = $this->getBoothKindAllowableValues();
+        if (!is_null($this->container['booth_kind']) && !in_array($this->container['booth_kind'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'booth_kind', must be one of '%s'",
+                $this->container['booth_kind'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['capacity'] === null) {
+            $invalidProperties[] = "'capacity' can't be null";
         }
         if ($this->container['attendant'] === null) {
             $invalidProperties[] = "'attendant' can't be null";
@@ -964,6 +1008,64 @@ class ListStallMineItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setListingIds($listing_ids)
     {
         $this->container['listing_ids'] = $listing_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets booth_kind
+     *
+     * @return string
+     */
+    public function getBoothKind()
+    {
+        return $this->container['booth_kind'];
+    }
+
+    /**
+     * Sets booth_kind
+     *
+     * @param string $booth_kind booth_kind
+     *
+     * @return self
+     */
+    public function setBoothKind($booth_kind)
+    {
+        $allowedValues = $this->getBoothKindAllowableValues();
+        if (!in_array($booth_kind, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'booth_kind', must be one of '%s'",
+                    $booth_kind,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['booth_kind'] = $booth_kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets capacity
+     *
+     * @return float
+     */
+    public function getCapacity()
+    {
+        return $this->container['capacity'];
+    }
+
+    /**
+     * Sets capacity
+     *
+     * @param float $capacity capacity
+     *
+     * @return self
+     */
+    public function setCapacity($capacity)
+    {
+        $this->container['capacity'] = $capacity;
 
         return $this;
     }

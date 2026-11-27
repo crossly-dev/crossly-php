@@ -169,8 +169,8 @@ class CreateVaultMarketEntityKybResponse implements ModelInterface, ArrayAccess,
     }
 
     const KYB_STATUS_PENDING = 'pending';
-    const KYB_STATUS_APPROVED = 'approved';
     const KYB_STATUS_REJECTED = 'rejected';
+    const KYB_STATUS_APPROVED = 'approved';
     const KYB_STATUS_RESTRICTED = 'restricted';
 
     /**
@@ -182,8 +182,8 @@ class CreateVaultMarketEntityKybResponse implements ModelInterface, ArrayAccess,
     {
         return [
             self::KYB_STATUS_PENDING,
-            self::KYB_STATUS_APPROVED,
             self::KYB_STATUS_REJECTED,
+            self::KYB_STATUS_APPROVED,
             self::KYB_STATUS_RESTRICTED,
         ];
     }

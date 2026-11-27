@@ -184,8 +184,8 @@ class GetVaultMarketAlertPrefResponseChannels implements ModelInterface, ArrayAc
     }
 
     const KEY_EMAIL = 'email';
-    const KEY_WEBHOOK = 'webhook';
     const KEY_PUSH = 'push';
+    const KEY_WEBHOOK = 'webhook';
     const KEY_TELEGRAM = 'telegram';
     const KEY_TERMINAL = 'terminal';
 
@@ -198,8 +198,8 @@ class GetVaultMarketAlertPrefResponseChannels implements ModelInterface, ArrayAc
     {
         return [
             self::KEY_EMAIL,
-            self::KEY_WEBHOOK,
             self::KEY_PUSH,
+            self::KEY_WEBHOOK,
             self::KEY_TELEGRAM,
             self::KEY_TERMINAL,
         ];

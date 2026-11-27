@@ -68,6 +68,8 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
         'usable' => 'float',
         'total_rows' => 'float',
         'listings_created' => 'float',
+        'skipped_over_limit' => 'float',
+        'capacity' => '\Crossly\Model\Inventory\CreateInventoryCsvImportResponseCapacity',
         'dry_run' => 'bool'
     ];
 
@@ -87,6 +89,8 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
         'usable' => null,
         'total_rows' => null,
         'listings_created' => null,
+        'skipped_over_limit' => null,
+        'capacity' => null,
         'dry_run' => null
     ];
 
@@ -125,6 +129,8 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
         'usable' => 'usable',
         'total_rows' => 'totalRows',
         'listings_created' => 'listingsCreated',
+        'skipped_over_limit' => 'skippedOverLimit',
+        'capacity' => 'capacity',
         'dry_run' => 'dryRun'
     ];
 
@@ -142,6 +148,8 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
         'usable' => 'setUsable',
         'total_rows' => 'setTotalRows',
         'listings_created' => 'setListingsCreated',
+        'skipped_over_limit' => 'setSkippedOverLimit',
+        'capacity' => 'setCapacity',
         'dry_run' => 'setDryRun'
     ];
 
@@ -159,6 +167,8 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
         'usable' => 'getUsable',
         'total_rows' => 'getTotalRows',
         'listings_created' => 'getListingsCreated',
+        'skipped_over_limit' => 'getSkippedOverLimit',
+        'capacity' => 'getCapacity',
         'dry_run' => 'getDryRun'
     ];
 
@@ -227,6 +237,8 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
         $this->container['usable'] = $data['usable'] ?? null;
         $this->container['total_rows'] = $data['total_rows'] ?? null;
         $this->container['listings_created'] = $data['listings_created'] ?? null;
+        $this->container['skipped_over_limit'] = $data['skipped_over_limit'] ?? null;
+        $this->container['capacity'] = $data['capacity'] ?? null;
         $this->container['dry_run'] = $data['dry_run'] ?? null;
     }
 
@@ -262,6 +274,12 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
         }
         if ($this->container['listings_created'] === null) {
             $invalidProperties[] = "'listings_created' can't be null";
+        }
+        if ($this->container['skipped_over_limit'] === null) {
+            $invalidProperties[] = "'skipped_over_limit' can't be null";
+        }
+        if ($this->container['capacity'] === null) {
+            $invalidProperties[] = "'capacity' can't be null";
         }
         if ($this->container['dry_run'] === null) {
             $invalidProperties[] = "'dry_run' can't be null";
@@ -366,7 +384,7 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets created
      *
-     * @param float $created created
+     * @param float $created New items written — or, on a dry run, that WOULD be written.
      *
      * @return self
      */
@@ -390,7 +408,7 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets updated
      *
-     * @param float $updated updated
+     * @param float $updated Existing items updated by SKU — or, on a dry run, that would be.
      *
      * @return self
      */
@@ -414,7 +432,7 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets usable
      *
-     * @param float $usable Rows that mapped cleanly. `created + updated` when not a dry run.
+     * @param float $usable Rows that can be imported: `created + updated + skippedOverLimit`. Zero means the file has nothing usable in it.
      *
      * @return self
      */
@@ -469,6 +487,54 @@ class CreateInventoryCsvImportResponse implements ModelInterface, ArrayAccess, \
     public function setListingsCreated($listings_created)
     {
         $this->container['listings_created'] = $listings_created;
+
+        return $this;
+    }
+
+    /**
+     * Gets skipped_over_limit
+     *
+     * @return float
+     */
+    public function getSkippedOverLimit()
+    {
+        return $this->container['skipped_over_limit'];
+    }
+
+    /**
+     * Sets skipped_over_limit
+     *
+     * @param float $skipped_over_limit New rows left out because the monthly item limit was reached.
+     *
+     * @return self
+     */
+    public function setSkippedOverLimit($skipped_over_limit)
+    {
+        $this->container['skipped_over_limit'] = $skipped_over_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets capacity
+     *
+     * @return \Crossly\Model\Inventory\CreateInventoryCsvImportResponseCapacity
+     */
+    public function getCapacity()
+    {
+        return $this->container['capacity'];
+    }
+
+    /**
+     * Sets capacity
+     *
+     * @param \Crossly\Model\Inventory\CreateInventoryCsvImportResponseCapacity $capacity capacity
+     *
+     * @return self
+     */
+    public function setCapacity($capacity)
+    {
+        $this->container['capacity'] = $capacity;
 
         return $this;
     }

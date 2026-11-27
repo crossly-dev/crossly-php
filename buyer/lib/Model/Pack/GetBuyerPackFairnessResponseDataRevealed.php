@@ -61,11 +61,11 @@ class GetBuyerPackFairnessResponseDataRevealed implements ModelInterface, ArrayA
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'nonce' => 'float',
-        'revealed_at' => 'string',
         'server_seed' => 'string',
         'server_seed_hash' => 'string',
-        'client_seed' => 'string'
+        'client_seed' => 'string',
+        'nonce' => 'float',
+        'revealed_at' => 'string'
     ];
 
     /**
@@ -77,11 +77,11 @@ class GetBuyerPackFairnessResponseDataRevealed implements ModelInterface, ArrayA
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'nonce' => null,
-        'revealed_at' => null,
         'server_seed' => null,
         'server_seed_hash' => null,
-        'client_seed' => null
+        'client_seed' => null,
+        'nonce' => null,
+        'revealed_at' => null
     ];
 
     /**
@@ -112,11 +112,11 @@ class GetBuyerPackFairnessResponseDataRevealed implements ModelInterface, ArrayA
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'nonce' => 'nonce',
-        'revealed_at' => 'revealedAt',
         'server_seed' => 'serverSeed',
         'server_seed_hash' => 'serverSeedHash',
-        'client_seed' => 'clientSeed'
+        'client_seed' => 'clientSeed',
+        'nonce' => 'nonce',
+        'revealed_at' => 'revealedAt'
     ];
 
     /**
@@ -126,11 +126,11 @@ class GetBuyerPackFairnessResponseDataRevealed implements ModelInterface, ArrayA
      */
     protected static $setters = [
         'id' => 'setId',
-        'nonce' => 'setNonce',
-        'revealed_at' => 'setRevealedAt',
         'server_seed' => 'setServerSeed',
         'server_seed_hash' => 'setServerSeedHash',
-        'client_seed' => 'setClientSeed'
+        'client_seed' => 'setClientSeed',
+        'nonce' => 'setNonce',
+        'revealed_at' => 'setRevealedAt'
     ];
 
     /**
@@ -140,11 +140,11 @@ class GetBuyerPackFairnessResponseDataRevealed implements ModelInterface, ArrayA
      */
     protected static $getters = [
         'id' => 'getId',
-        'nonce' => 'getNonce',
-        'revealed_at' => 'getRevealedAt',
         'server_seed' => 'getServerSeed',
         'server_seed_hash' => 'getServerSeedHash',
-        'client_seed' => 'getClientSeed'
+        'client_seed' => 'getClientSeed',
+        'nonce' => 'getNonce',
+        'revealed_at' => 'getRevealedAt'
     ];
 
     /**
@@ -205,11 +205,11 @@ class GetBuyerPackFairnessResponseDataRevealed implements ModelInterface, ArrayA
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['nonce'] = $data['nonce'] ?? null;
-        $this->container['revealed_at'] = $data['revealed_at'] ?? null;
         $this->container['server_seed'] = $data['server_seed'] ?? null;
         $this->container['server_seed_hash'] = $data['server_seed_hash'] ?? null;
         $this->container['client_seed'] = $data['client_seed'] ?? null;
+        $this->container['nonce'] = $data['nonce'] ?? null;
+        $this->container['revealed_at'] = $data['revealed_at'] ?? null;
     }
 
     /**
@@ -224,12 +224,6 @@ class GetBuyerPackFairnessResponseDataRevealed implements ModelInterface, ArrayA
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['nonce'] === null) {
-            $invalidProperties[] = "'nonce' can't be null";
-        }
-        if ($this->container['revealed_at'] === null) {
-            $invalidProperties[] = "'revealed_at' can't be null";
-        }
         if ($this->container['server_seed'] === null) {
             $invalidProperties[] = "'server_seed' can't be null";
         }
@@ -238,6 +232,12 @@ class GetBuyerPackFairnessResponseDataRevealed implements ModelInterface, ArrayA
         }
         if ($this->container['client_seed'] === null) {
             $invalidProperties[] = "'client_seed' can't be null";
+        }
+        if ($this->container['nonce'] === null) {
+            $invalidProperties[] = "'nonce' can't be null";
+        }
+        if ($this->container['revealed_at'] === null) {
+            $invalidProperties[] = "'revealed_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -274,54 +274,6 @@ class GetBuyerPackFairnessResponseDataRevealed implements ModelInterface, ArrayA
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets nonce
-     *
-     * @return float
-     */
-    public function getNonce()
-    {
-        return $this->container['nonce'];
-    }
-
-    /**
-     * Sets nonce
-     *
-     * @param float $nonce nonce
-     *
-     * @return self
-     */
-    public function setNonce($nonce)
-    {
-        $this->container['nonce'] = $nonce;
-
-        return $this;
-    }
-
-    /**
-     * Gets revealed_at
-     *
-     * @return string
-     */
-    public function getRevealedAt()
-    {
-        return $this->container['revealed_at'];
-    }
-
-    /**
-     * Sets revealed_at
-     *
-     * @param string $revealed_at revealed_at
-     *
-     * @return self
-     */
-    public function setRevealedAt($revealed_at)
-    {
-        $this->container['revealed_at'] = $revealed_at;
 
         return $this;
     }
@@ -394,6 +346,54 @@ class GetBuyerPackFairnessResponseDataRevealed implements ModelInterface, ArrayA
     public function setClientSeed($client_seed)
     {
         $this->container['client_seed'] = $client_seed;
+
+        return $this;
+    }
+
+    /**
+     * Gets nonce
+     *
+     * @return float
+     */
+    public function getNonce()
+    {
+        return $this->container['nonce'];
+    }
+
+    /**
+     * Sets nonce
+     *
+     * @param float $nonce nonce
+     *
+     * @return self
+     */
+    public function setNonce($nonce)
+    {
+        $this->container['nonce'] = $nonce;
+
+        return $this;
+    }
+
+    /**
+     * Gets revealed_at
+     *
+     * @return string
+     */
+    public function getRevealedAt()
+    {
+        return $this->container['revealed_at'];
+    }
+
+    /**
+     * Sets revealed_at
+     *
+     * @param string $revealed_at revealed_at
+     *
+     * @return self
+     */
+    public function setRevealedAt($revealed_at)
+    {
+        $this->container['revealed_at'] = $revealed_at;
 
         return $this;
     }

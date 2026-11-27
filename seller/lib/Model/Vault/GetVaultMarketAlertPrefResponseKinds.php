@@ -183,10 +183,12 @@ class GetVaultMarketAlertPrefResponseKinds implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
-    const KEY_PRICE = 'price';
-    const KEY_AUCTION = 'auction';
-    const KEY_FILL = 'fill';
     const KEY_ACCOUNT = 'account';
+    const KEY_PRICE = 'price';
+    const KEY_FILL = 'fill';
+    const KEY_AUCTION = 'auction';
+    const KEY_PREDICTION = 'prediction';
+    const KEY_OPTION_EXPIRY = 'option_expiry';
     const KEY_MARGIN_CALL = 'margin_call';
     const KEY_ADL = 'adl';
     const KEY_P2P_LOAN = 'p2p_loan';
@@ -194,6 +196,10 @@ class GetVaultMarketAlertPrefResponseKinds implements ModelInterface, ArrayAcces
     const KEY_RECEIPT_TOKEN = 'receipt_token';
     const KEY_SET_GOAL = 'set_goal';
     const KEY_FOLLOW = 'follow';
+    const KEY_SHARE_OFFERING = 'share_offering';
+    const KEY_SHARE_VOTE = 'share_vote';
+    const KEY_OPTION_SETTLEMENT = 'option_settlement';
+    const KEY_PREDICTION_ODDS = 'prediction_odds';
 
     /**
      * Gets allowable values of the enum
@@ -203,10 +209,12 @@ class GetVaultMarketAlertPrefResponseKinds implements ModelInterface, ArrayAcces
     public function getKeyAllowableValues()
     {
         return [
-            self::KEY_PRICE,
-            self::KEY_AUCTION,
-            self::KEY_FILL,
             self::KEY_ACCOUNT,
+            self::KEY_PRICE,
+            self::KEY_FILL,
+            self::KEY_AUCTION,
+            self::KEY_PREDICTION,
+            self::KEY_OPTION_EXPIRY,
             self::KEY_MARGIN_CALL,
             self::KEY_ADL,
             self::KEY_P2P_LOAN,
@@ -214,6 +222,10 @@ class GetVaultMarketAlertPrefResponseKinds implements ModelInterface, ArrayAcces
             self::KEY_RECEIPT_TOKEN,
             self::KEY_SET_GOAL,
             self::KEY_FOLLOW,
+            self::KEY_SHARE_OFFERING,
+            self::KEY_SHARE_VOTE,
+            self::KEY_OPTION_SETTLEMENT,
+            self::KEY_PREDICTION_ODDS,
         ];
     }
 

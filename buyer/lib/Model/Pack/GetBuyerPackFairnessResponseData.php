@@ -60,9 +60,9 @@ class GetBuyerPackFairnessResponseData implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'nonce' => 'float',
         'server_seed_hash' => 'string',
         'client_seed' => 'string',
+        'nonce' => 'float',
         'revealed' => '\Crossly\Buyer\Model\Pack\GetBuyerPackFairnessResponseDataRevealed[]'
     ];
 
@@ -74,9 +74,9 @@ class GetBuyerPackFairnessResponseData implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'nonce' => null,
         'server_seed_hash' => null,
         'client_seed' => null,
+        'nonce' => null,
         'revealed' => null
     ];
 
@@ -107,9 +107,9 @@ class GetBuyerPackFairnessResponseData implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'nonce' => 'nonce',
         'server_seed_hash' => 'serverSeedHash',
         'client_seed' => 'clientSeed',
+        'nonce' => 'nonce',
         'revealed' => 'revealed'
     ];
 
@@ -119,9 +119,9 @@ class GetBuyerPackFairnessResponseData implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'nonce' => 'setNonce',
         'server_seed_hash' => 'setServerSeedHash',
         'client_seed' => 'setClientSeed',
+        'nonce' => 'setNonce',
         'revealed' => 'setRevealed'
     ];
 
@@ -131,9 +131,9 @@ class GetBuyerPackFairnessResponseData implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'nonce' => 'getNonce',
         'server_seed_hash' => 'getServerSeedHash',
         'client_seed' => 'getClientSeed',
+        'nonce' => 'getNonce',
         'revealed' => 'getRevealed'
     ];
 
@@ -194,9 +194,9 @@ class GetBuyerPackFairnessResponseData implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['nonce'] = $data['nonce'] ?? null;
         $this->container['server_seed_hash'] = $data['server_seed_hash'] ?? null;
         $this->container['client_seed'] = $data['client_seed'] ?? null;
+        $this->container['nonce'] = $data['nonce'] ?? null;
         $this->container['revealed'] = $data['revealed'] ?? null;
     }
 
@@ -209,14 +209,14 @@ class GetBuyerPackFairnessResponseData implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if ($this->container['nonce'] === null) {
-            $invalidProperties[] = "'nonce' can't be null";
-        }
         if ($this->container['server_seed_hash'] === null) {
             $invalidProperties[] = "'server_seed_hash' can't be null";
         }
         if ($this->container['client_seed'] === null) {
             $invalidProperties[] = "'client_seed' can't be null";
+        }
+        if ($this->container['nonce'] === null) {
+            $invalidProperties[] = "'nonce' can't be null";
         }
         if ($this->container['revealed'] === null) {
             $invalidProperties[] = "'revealed' can't be null";
@@ -235,30 +235,6 @@ class GetBuyerPackFairnessResponseData implements ModelInterface, ArrayAccess, \
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets nonce
-     *
-     * @return float
-     */
-    public function getNonce()
-    {
-        return $this->container['nonce'];
-    }
-
-    /**
-     * Sets nonce
-     *
-     * @param float $nonce nonce
-     *
-     * @return self
-     */
-    public function setNonce($nonce)
-    {
-        $this->container['nonce'] = $nonce;
-
-        return $this;
-    }
 
     /**
      * Gets server_seed_hash
@@ -304,6 +280,30 @@ class GetBuyerPackFairnessResponseData implements ModelInterface, ArrayAccess, \
     public function setClientSeed($client_seed)
     {
         $this->container['client_seed'] = $client_seed;
+
+        return $this;
+    }
+
+    /**
+     * Gets nonce
+     *
+     * @return float
+     */
+    public function getNonce()
+    {
+        return $this->container['nonce'];
+    }
+
+    /**
+     * Sets nonce
+     *
+     * @param float $nonce nonce
+     *
+     * @return self
+     */
+    public function setNonce($nonce)
+    {
+        $this->container['nonce'] = $nonce;
 
         return $this;
     }

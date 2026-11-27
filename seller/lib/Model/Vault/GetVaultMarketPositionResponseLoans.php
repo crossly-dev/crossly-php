@@ -63,14 +63,14 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
         'id' => 'string',
         'status' => 'string',
         'closed_at' => '\DateTime',
+        'opened_at' => '\DateTime',
         'vault_item_id' => 'string',
         'holder_account_id' => 'string',
-        'opened_at' => '\DateTime',
+        'position_id' => 'string',
         'book_key' => 'string',
         'fees_paid_cents' => 'float',
         'late_penalty_paid_cents' => 'float',
         'lender_user_id' => 'string',
-        'position_id' => 'string',
         'apr_bps' => 'float',
         'mark_cents_at_open' => 'float',
         'fees_accrued_cents' => 'string',
@@ -92,14 +92,14 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
         'id' => null,
         'status' => null,
         'closed_at' => 'date-time',
+        'opened_at' => 'date-time',
         'vault_item_id' => null,
         'holder_account_id' => null,
-        'opened_at' => 'date-time',
+        'position_id' => null,
         'book_key' => null,
         'fees_paid_cents' => null,
         'late_penalty_paid_cents' => null,
         'lender_user_id' => null,
-        'position_id' => null,
         'apr_bps' => null,
         'mark_cents_at_open' => null,
         'fees_accrued_cents' => null,
@@ -140,14 +140,14 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
         'id' => 'id',
         'status' => 'status',
         'closed_at' => 'closedAt',
+        'opened_at' => 'openedAt',
         'vault_item_id' => 'vaultItemId',
         'holder_account_id' => 'holderAccountId',
-        'opened_at' => 'openedAt',
+        'position_id' => 'positionId',
         'book_key' => 'bookKey',
         'fees_paid_cents' => 'feesPaidCents',
         'late_penalty_paid_cents' => 'latePenaltyPaidCents',
         'lender_user_id' => 'lenderUserId',
-        'position_id' => 'positionId',
         'apr_bps' => 'aprBps',
         'mark_cents_at_open' => 'markCentsAtOpen',
         'fees_accrued_cents' => 'feesAccruedCents',
@@ -167,14 +167,14 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'status' => 'setStatus',
         'closed_at' => 'setClosedAt',
+        'opened_at' => 'setOpenedAt',
         'vault_item_id' => 'setVaultItemId',
         'holder_account_id' => 'setHolderAccountId',
-        'opened_at' => 'setOpenedAt',
+        'position_id' => 'setPositionId',
         'book_key' => 'setBookKey',
         'fees_paid_cents' => 'setFeesPaidCents',
         'late_penalty_paid_cents' => 'setLatePenaltyPaidCents',
         'lender_user_id' => 'setLenderUserId',
-        'position_id' => 'setPositionId',
         'apr_bps' => 'setAprBps',
         'mark_cents_at_open' => 'setMarkCentsAtOpen',
         'fees_accrued_cents' => 'setFeesAccruedCents',
@@ -194,14 +194,14 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'status' => 'getStatus',
         'closed_at' => 'getClosedAt',
+        'opened_at' => 'getOpenedAt',
         'vault_item_id' => 'getVaultItemId',
         'holder_account_id' => 'getHolderAccountId',
-        'opened_at' => 'getOpenedAt',
+        'position_id' => 'getPositionId',
         'book_key' => 'getBookKey',
         'fees_paid_cents' => 'getFeesPaidCents',
         'late_penalty_paid_cents' => 'getLatePenaltyPaidCents',
         'lender_user_id' => 'getLenderUserId',
-        'position_id' => 'getPositionId',
         'apr_bps' => 'getAprBps',
         'mark_cents_at_open' => 'getMarkCentsAtOpen',
         'fees_accrued_cents' => 'getFeesAccruedCents',
@@ -272,14 +272,14 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
         $this->container['id'] = $data['id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['closed_at'] = $data['closed_at'] ?? null;
+        $this->container['opened_at'] = $data['opened_at'] ?? null;
         $this->container['vault_item_id'] = $data['vault_item_id'] ?? null;
         $this->container['holder_account_id'] = $data['holder_account_id'] ?? null;
-        $this->container['opened_at'] = $data['opened_at'] ?? null;
+        $this->container['position_id'] = $data['position_id'] ?? null;
         $this->container['book_key'] = $data['book_key'] ?? null;
         $this->container['fees_paid_cents'] = $data['fees_paid_cents'] ?? null;
         $this->container['late_penalty_paid_cents'] = $data['late_penalty_paid_cents'] ?? null;
         $this->container['lender_user_id'] = $data['lender_user_id'] ?? null;
-        $this->container['position_id'] = $data['position_id'] ?? null;
         $this->container['apr_bps'] = $data['apr_bps'] ?? null;
         $this->container['mark_cents_at_open'] = $data['mark_cents_at_open'] ?? null;
         $this->container['fees_accrued_cents'] = $data['fees_accrued_cents'] ?? null;
@@ -305,11 +305,14 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
+        if ($this->container['opened_at'] === null) {
+            $invalidProperties[] = "'opened_at' can't be null";
+        }
         if ($this->container['vault_item_id'] === null) {
             $invalidProperties[] = "'vault_item_id' can't be null";
         }
-        if ($this->container['opened_at'] === null) {
-            $invalidProperties[] = "'opened_at' can't be null";
+        if ($this->container['position_id'] === null) {
+            $invalidProperties[] = "'position_id' can't be null";
         }
         if ($this->container['book_key'] === null) {
             $invalidProperties[] = "'book_key' can't be null";
@@ -322,9 +325,6 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
         }
         if ($this->container['lender_user_id'] === null) {
             $invalidProperties[] = "'lender_user_id' can't be null";
-        }
-        if ($this->container['position_id'] === null) {
-            $invalidProperties[] = "'position_id' can't be null";
         }
         if ($this->container['apr_bps'] === null) {
             $invalidProperties[] = "'apr_bps' can't be null";
@@ -429,6 +429,30 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets opened_at
+     *
+     * @return \DateTime
+     */
+    public function getOpenedAt()
+    {
+        return $this->container['opened_at'];
+    }
+
+    /**
+     * Sets opened_at
+     *
+     * @param \DateTime $opened_at opened_at
+     *
+     * @return self
+     */
+    public function setOpenedAt($opened_at)
+    {
+        $this->container['opened_at'] = $opened_at;
+
+        return $this;
+    }
+
+    /**
      * Gets vault_item_id
      *
      * @return string
@@ -477,25 +501,25 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets opened_at
+     * Gets position_id
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getOpenedAt()
+    public function getPositionId()
     {
-        return $this->container['opened_at'];
+        return $this->container['position_id'];
     }
 
     /**
-     * Sets opened_at
+     * Sets position_id
      *
-     * @param \DateTime $opened_at opened_at
+     * @param string $position_id position_id
      *
      * @return self
      */
-    public function setOpenedAt($opened_at)
+    public function setPositionId($position_id)
     {
-        $this->container['opened_at'] = $opened_at;
+        $this->container['position_id'] = $position_id;
 
         return $this;
     }
@@ -592,30 +616,6 @@ class GetVaultMarketPositionResponseLoans implements ModelInterface, ArrayAccess
     public function setLenderUserId($lender_user_id)
     {
         $this->container['lender_user_id'] = $lender_user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets position_id
-     *
-     * @return string
-     */
-    public function getPositionId()
-    {
-        return $this->container['position_id'];
-    }
-
-    /**
-     * Sets position_id
-     *
-     * @param string $position_id position_id
-     *
-     * @return self
-     */
-    public function setPositionId($position_id)
-    {
-        $this->container['position_id'] = $position_id;
 
         return $this;
     }

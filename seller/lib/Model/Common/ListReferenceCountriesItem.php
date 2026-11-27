@@ -69,7 +69,7 @@ class ListReferenceCountriesItem implements ModelInterface, ArrayAccess, \JsonSe
         'postal_label' => 'string',
         'state_required' => 'bool',
         'state_label' => 'string',
-        'subdivisions' => '\Crossly\Model\Common\ListReferenceCountriesItemSubdivisions[]',
+        'subdivisions' => '\Crossly\Model\Common\CodeName[]',
         'embargoed' => 'bool'
     ];
 
@@ -515,7 +515,7 @@ class ListReferenceCountriesItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets subdivisions
      *
-     * @return \Crossly\Model\Common\ListReferenceCountriesItemSubdivisions[]|null
+     * @return \Crossly\Model\Common\CodeName[]|null
      */
     public function getSubdivisions()
     {
@@ -525,7 +525,7 @@ class ListReferenceCountriesItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets subdivisions
      *
-     * @param \Crossly\Model\Common\ListReferenceCountriesItemSubdivisions[]|null $subdivisions subdivisions
+     * @param \Crossly\Model\Common\CodeName[]|null $subdivisions subdivisions
      *
      * @return self
      */

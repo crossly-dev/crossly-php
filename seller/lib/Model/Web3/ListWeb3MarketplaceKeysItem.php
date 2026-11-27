@@ -173,10 +173,10 @@ class ListWeb3MarketplaceKeysItem implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    const MARKETPLACE_OPENSEA = 'opensea';
-    const MARKETPLACE_TENSOR = 'tensor';
-    const MARKETPLACE_MAGIC_EDEN = 'magic_eden';
     const MARKETPLACE_RARIBLE = 'rarible';
+    const MARKETPLACE_MAGIC_EDEN = 'magic_eden';
+    const MARKETPLACE_TENSOR = 'tensor';
+    const MARKETPLACE_OPENSEA = 'opensea';
 
     /**
      * Gets allowable values of the enum
@@ -186,10 +186,10 @@ class ListWeb3MarketplaceKeysItem implements ModelInterface, ArrayAccess, \JsonS
     public function getMarketplaceAllowableValues()
     {
         return [
-            self::MARKETPLACE_OPENSEA,
-            self::MARKETPLACE_TENSOR,
-            self::MARKETPLACE_MAGIC_EDEN,
             self::MARKETPLACE_RARIBLE,
+            self::MARKETPLACE_MAGIC_EDEN,
+            self::MARKETPLACE_TENSOR,
+            self::MARKETPLACE_OPENSEA,
         ];
     }
 

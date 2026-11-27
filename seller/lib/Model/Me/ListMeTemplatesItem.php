@@ -66,6 +66,9 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'user_id' => 'string',
+        'description' => 'string',
+        'notes' => 'string',
+        'is_default' => 'bool',
         'condition' => 'string',
         'size' => 'string',
         'material' => 'string',
@@ -77,17 +80,14 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'size_system' => 'string',
         'color' => 'string',
         'tags' => 'string[]',
-        'notes' => 'string',
         'weight_oz' => 'float',
-        'description' => 'string',
-        'is_default' => 'bool',
         'title' => 'string',
-        'scope' => 'string',
-        'share_token' => 'string',
         'sort_order' => 'float',
+        'scope' => 'string',
         'description_variants' => 'string[]',
         'title_variants' => 'string[]',
-        'default_for_category' => 'string'
+        'default_for_category' => 'string',
+        'share_token' => 'string'
     ];
 
     /**
@@ -104,6 +104,9 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
         'user_id' => null,
+        'description' => null,
+        'notes' => null,
+        'is_default' => null,
         'condition' => null,
         'size' => null,
         'material' => null,
@@ -115,17 +118,14 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'size_system' => null,
         'color' => null,
         'tags' => null,
-        'notes' => null,
         'weight_oz' => null,
-        'description' => null,
-        'is_default' => null,
         'title' => null,
-        'scope' => null,
-        'share_token' => null,
         'sort_order' => null,
+        'scope' => null,
         'description_variants' => null,
         'title_variants' => null,
-        'default_for_category' => null
+        'default_for_category' => null,
+        'share_token' => null
     ];
 
     /**
@@ -161,6 +161,9 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
+        'description' => 'description',
+        'notes' => 'notes',
+        'is_default' => 'isDefault',
         'condition' => 'condition',
         'size' => 'size',
         'material' => 'material',
@@ -172,17 +175,14 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'size_system' => 'sizeSystem',
         'color' => 'color',
         'tags' => 'tags',
-        'notes' => 'notes',
         'weight_oz' => 'weightOz',
-        'description' => 'description',
-        'is_default' => 'isDefault',
         'title' => 'title',
-        'scope' => 'scope',
-        'share_token' => 'shareToken',
         'sort_order' => 'sortOrder',
+        'scope' => 'scope',
         'description_variants' => 'descriptionVariants',
         'title_variants' => 'titleVariants',
-        'default_for_category' => 'defaultForCategory'
+        'default_for_category' => 'defaultForCategory',
+        'share_token' => 'shareToken'
     ];
 
     /**
@@ -197,6 +197,9 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
+        'description' => 'setDescription',
+        'notes' => 'setNotes',
+        'is_default' => 'setIsDefault',
         'condition' => 'setCondition',
         'size' => 'setSize',
         'material' => 'setMaterial',
@@ -208,17 +211,14 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'size_system' => 'setSizeSystem',
         'color' => 'setColor',
         'tags' => 'setTags',
-        'notes' => 'setNotes',
         'weight_oz' => 'setWeightOz',
-        'description' => 'setDescription',
-        'is_default' => 'setIsDefault',
         'title' => 'setTitle',
-        'scope' => 'setScope',
-        'share_token' => 'setShareToken',
         'sort_order' => 'setSortOrder',
+        'scope' => 'setScope',
         'description_variants' => 'setDescriptionVariants',
         'title_variants' => 'setTitleVariants',
-        'default_for_category' => 'setDefaultForCategory'
+        'default_for_category' => 'setDefaultForCategory',
+        'share_token' => 'setShareToken'
     ];
 
     /**
@@ -233,6 +233,9 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
+        'description' => 'getDescription',
+        'notes' => 'getNotes',
+        'is_default' => 'getIsDefault',
         'condition' => 'getCondition',
         'size' => 'getSize',
         'material' => 'getMaterial',
@@ -244,17 +247,14 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         'size_system' => 'getSizeSystem',
         'color' => 'getColor',
         'tags' => 'getTags',
-        'notes' => 'getNotes',
         'weight_oz' => 'getWeightOz',
-        'description' => 'getDescription',
-        'is_default' => 'getIsDefault',
         'title' => 'getTitle',
-        'scope' => 'getScope',
-        'share_token' => 'getShareToken',
         'sort_order' => 'getSortOrder',
+        'scope' => 'getScope',
         'description_variants' => 'getDescriptionVariants',
         'title_variants' => 'getTitleVariants',
-        'default_for_category' => 'getDefaultForCategory'
+        'default_for_category' => 'getDefaultForCategory',
+        'share_token' => 'getShareToken'
     ];
 
     /**
@@ -320,6 +320,9 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['notes'] = $data['notes'] ?? null;
+        $this->container['is_default'] = $data['is_default'] ?? null;
         $this->container['condition'] = $data['condition'] ?? null;
         $this->container['size'] = $data['size'] ?? null;
         $this->container['material'] = $data['material'] ?? null;
@@ -331,17 +334,14 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->container['size_system'] = $data['size_system'] ?? null;
         $this->container['color'] = $data['color'] ?? null;
         $this->container['tags'] = $data['tags'] ?? null;
-        $this->container['notes'] = $data['notes'] ?? null;
         $this->container['weight_oz'] = $data['weight_oz'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['is_default'] = $data['is_default'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
-        $this->container['scope'] = $data['scope'] ?? null;
-        $this->container['share_token'] = $data['share_token'] ?? null;
         $this->container['sort_order'] = $data['sort_order'] ?? null;
+        $this->container['scope'] = $data['scope'] ?? null;
         $this->container['description_variants'] = $data['description_variants'] ?? null;
         $this->container['title_variants'] = $data['title_variants'] ?? null;
         $this->container['default_for_category'] = $data['default_for_category'] ?? null;
+        $this->container['share_token'] = $data['share_token'] ?? null;
     }
 
     /**
@@ -371,11 +371,11 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['is_default'] === null) {
             $invalidProperties[] = "'is_default' can't be null";
         }
-        if ($this->container['scope'] === null) {
-            $invalidProperties[] = "'scope' can't be null";
-        }
         if ($this->container['sort_order'] === null) {
             $invalidProperties[] = "'sort_order' can't be null";
+        }
+        if ($this->container['scope'] === null) {
+            $invalidProperties[] = "'scope' can't be null";
         }
         return $invalidProperties;
     }
@@ -532,6 +532,78 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setUserId($user_id)
     {
         $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets notes
+     *
+     * @return string|null
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param string|null $notes notes
+     *
+     * @return self
+     */
+    public function setNotes($notes)
+    {
+        $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_default
+     *
+     * @return bool
+     */
+    public function getIsDefault()
+    {
+        return $this->container['is_default'];
+    }
+
+    /**
+     * Sets is_default
+     *
+     * @param bool $is_default is_default
+     *
+     * @return self
+     */
+    public function setIsDefault($is_default)
+    {
+        $this->container['is_default'] = $is_default;
 
         return $this;
     }
@@ -801,30 +873,6 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets notes
-     *
-     * @return string|null
-     */
-    public function getNotes()
-    {
-        return $this->container['notes'];
-    }
-
-    /**
-     * Sets notes
-     *
-     * @param string|null $notes notes
-     *
-     * @return self
-     */
-    public function setNotes($notes)
-    {
-        $this->container['notes'] = $notes;
-
-        return $this;
-    }
-
-    /**
      * Gets weight_oz
      *
      * @return float|null
@@ -844,54 +892,6 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setWeightOz($weight_oz)
     {
         $this->container['weight_oz'] = $weight_oz;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_default
-     *
-     * @return bool
-     */
-    public function getIsDefault()
-    {
-        return $this->container['is_default'];
-    }
-
-    /**
-     * Sets is_default
-     *
-     * @param bool $is_default is_default
-     *
-     * @return self
-     */
-    public function setIsDefault($is_default)
-    {
-        $this->container['is_default'] = $is_default;
 
         return $this;
     }
@@ -921,54 +921,6 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets scope
-     *
-     * @return string
-     */
-    public function getScope()
-    {
-        return $this->container['scope'];
-    }
-
-    /**
-     * Sets scope
-     *
-     * @param string $scope scope
-     *
-     * @return self
-     */
-    public function setScope($scope)
-    {
-        $this->container['scope'] = $scope;
-
-        return $this;
-    }
-
-    /**
-     * Gets share_token
-     *
-     * @return string|null
-     */
-    public function getShareToken()
-    {
-        return $this->container['share_token'];
-    }
-
-    /**
-     * Sets share_token
-     *
-     * @param string|null $share_token share_token
-     *
-     * @return self
-     */
-    public function setShareToken($share_token)
-    {
-        $this->container['share_token'] = $share_token;
-
-        return $this;
-    }
-
-    /**
      * Gets sort_order
      *
      * @return float
@@ -988,6 +940,30 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSortOrder($sort_order)
     {
         $this->container['sort_order'] = $sort_order;
+
+        return $this;
+    }
+
+    /**
+     * Gets scope
+     *
+     * @return string
+     */
+    public function getScope()
+    {
+        return $this->container['scope'];
+    }
+
+    /**
+     * Sets scope
+     *
+     * @param string $scope scope
+     *
+     * @return self
+     */
+    public function setScope($scope)
+    {
+        $this->container['scope'] = $scope;
 
         return $this;
     }
@@ -1060,6 +1036,30 @@ class ListMeTemplatesItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDefaultForCategory($default_for_category)
     {
         $this->container['default_for_category'] = $default_for_category;
+
+        return $this;
+    }
+
+    /**
+     * Gets share_token
+     *
+     * @return string|null
+     */
+    public function getShareToken()
+    {
+        return $this->container['share_token'];
+    }
+
+    /**
+     * Sets share_token
+     *
+     * @param string|null $share_token share_token
+     *
+     * @return self
+     */
+    public function setShareToken($share_token)
+    {
+        $this->container['share_token'] = $share_token;
 
         return $this;
     }

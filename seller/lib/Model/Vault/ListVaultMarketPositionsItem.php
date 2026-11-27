@@ -328,8 +328,8 @@ class ListVaultMarketPositionsItem implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    const KIND_LONG = 'long';
     const KIND_SHORT = 'short';
+    const KIND_LONG = 'long';
 
     /**
      * Gets allowable values of the enum
@@ -339,8 +339,8 @@ class ListVaultMarketPositionsItem implements ModelInterface, ArrayAccess, \Json
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_LONG,
             self::KIND_SHORT,
+            self::KIND_LONG,
         ];
     }
 

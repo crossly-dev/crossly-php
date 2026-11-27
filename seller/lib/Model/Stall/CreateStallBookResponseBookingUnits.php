@@ -64,7 +64,8 @@ class CreateStallBookResponseBookingUnits implements ModelInterface, ArrayAccess
         'starts_at' => 'string',
         'ends_at' => 'string',
         'cents' => 'float',
-        'external_id' => 'string'
+        'external_id' => 'string',
+        'payment_id' => 'string'
     ];
 
     /**
@@ -79,7 +80,8 @@ class CreateStallBookResponseBookingUnits implements ModelInterface, ArrayAccess
         'starts_at' => null,
         'ends_at' => null,
         'cents' => null,
-        'external_id' => null
+        'external_id' => null,
+        'payment_id' => null
     ];
 
     /**
@@ -113,7 +115,8 @@ class CreateStallBookResponseBookingUnits implements ModelInterface, ArrayAccess
         'starts_at' => 'startsAt',
         'ends_at' => 'endsAt',
         'cents' => 'cents',
-        'external_id' => 'externalId'
+        'external_id' => 'externalId',
+        'payment_id' => 'paymentId'
     ];
 
     /**
@@ -126,7 +129,8 @@ class CreateStallBookResponseBookingUnits implements ModelInterface, ArrayAccess
         'starts_at' => 'setStartsAt',
         'ends_at' => 'setEndsAt',
         'cents' => 'setCents',
-        'external_id' => 'setExternalId'
+        'external_id' => 'setExternalId',
+        'payment_id' => 'setPaymentId'
     ];
 
     /**
@@ -139,7 +143,8 @@ class CreateStallBookResponseBookingUnits implements ModelInterface, ArrayAccess
         'starts_at' => 'getStartsAt',
         'ends_at' => 'getEndsAt',
         'cents' => 'getCents',
-        'external_id' => 'getExternalId'
+        'external_id' => 'getExternalId',
+        'payment_id' => 'getPaymentId'
     ];
 
     /**
@@ -204,6 +209,7 @@ class CreateStallBookResponseBookingUnits implements ModelInterface, ArrayAccess
         $this->container['ends_at'] = $data['ends_at'] ?? null;
         $this->container['cents'] = $data['cents'] ?? null;
         $this->container['external_id'] = $data['external_id'] ?? null;
+        $this->container['payment_id'] = $data['payment_id'] ?? null;
     }
 
     /**
@@ -358,6 +364,30 @@ class CreateStallBookResponseBookingUnits implements ModelInterface, ArrayAccess
     public function setExternalId($external_id)
     {
         $this->container['external_id'] = $external_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_id
+     *
+     * @return string|null
+     */
+    public function getPaymentId()
+    {
+        return $this->container['payment_id'];
+    }
+
+    /**
+     * Sets payment_id
+     *
+     * @param string|null $payment_id CBX only, booked since gap 6: this unit's world_payments row (refunds go through refundWorld).
+     *
+     * @return self
+     */
+    public function setPaymentId($payment_id)
+    {
+        $this->container['payment_id'] = $payment_id;
 
         return $this;
     }

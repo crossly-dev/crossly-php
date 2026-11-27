@@ -218,17 +218,17 @@ class GetVaultMarketUnitStoryResponseEvents implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
-    const KIND_TRANSFER = 'transfer';
-    const KIND_EVIDENCE = 'evidence';
     const KIND_SALE = 'sale';
-    const KIND_GRADED = 'graded';
-    const KIND_PLEDGED = 'pledged';
-    const KIND_RELEASED = 'released';
-    const KIND_RECEIVED = 'received';
     const KIND_RECEIPT = 'receipt';
+    const KIND_RECEIVED = 'received';
+    const KIND_RELEASED = 'released';
+    const KIND_EVIDENCE = 'evidence';
+    const KIND_GRADED = 'graded';
+    const KIND_TRANSFER = 'transfer';
+    const KIND_PLEDGED = 'pledged';
     const KIND_LENT = 'lent';
-    const KIND_RECALLED = 'recalled';
     const KIND_FORECLOSED = 'foreclosed';
+    const KIND_RECALLED = 'recalled';
     const KIND_SENT_IN = 'sent_in';
     const KIND_VAULTED_FROM_GRADING = 'vaulted_from_grading';
     const KIND_BOUGHT_IN = 'bought_in';
@@ -240,14 +240,14 @@ class GetVaultMarketUnitStoryResponseEvents implements ModelInterface, ArrayAcce
     const KIND_TOKEN_EXPORTED = 'token_exported';
     const KIND_TOKEN_REDEEMED = 'token_redeemed';
     const KIND_SHIPPED_OUT = 'shipped_out';
-    const GROUP_TOKEN = 'token';
     const GROUP_GRADE = 'grade';
-    const GROUP_LOAN = 'loan';
-    const GROUP_HALL = 'hall';
+    const GROUP_TOKEN = 'token';
     const GROUP_RECEIPT = 'receipt';
-    const GROUP_INTAKE = 'intake';
     const GROUP_OWNER = 'owner';
+    const GROUP_HALL = 'hall';
+    const GROUP_INTAKE = 'intake';
     const GROUP_CUSTODY = 'custody';
+    const GROUP_LOAN = 'loan';
 
     /**
      * Gets allowable values of the enum
@@ -257,17 +257,17 @@ class GetVaultMarketUnitStoryResponseEvents implements ModelInterface, ArrayAcce
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_TRANSFER,
-            self::KIND_EVIDENCE,
             self::KIND_SALE,
-            self::KIND_GRADED,
-            self::KIND_PLEDGED,
-            self::KIND_RELEASED,
-            self::KIND_RECEIVED,
             self::KIND_RECEIPT,
+            self::KIND_RECEIVED,
+            self::KIND_RELEASED,
+            self::KIND_EVIDENCE,
+            self::KIND_GRADED,
+            self::KIND_TRANSFER,
+            self::KIND_PLEDGED,
             self::KIND_LENT,
-            self::KIND_RECALLED,
             self::KIND_FORECLOSED,
+            self::KIND_RECALLED,
             self::KIND_SENT_IN,
             self::KIND_VAULTED_FROM_GRADING,
             self::KIND_BOUGHT_IN,
@@ -290,14 +290,14 @@ class GetVaultMarketUnitStoryResponseEvents implements ModelInterface, ArrayAcce
     public function getGroupAllowableValues()
     {
         return [
-            self::GROUP_TOKEN,
             self::GROUP_GRADE,
-            self::GROUP_LOAN,
-            self::GROUP_HALL,
+            self::GROUP_TOKEN,
             self::GROUP_RECEIPT,
-            self::GROUP_INTAKE,
             self::GROUP_OWNER,
+            self::GROUP_HALL,
+            self::GROUP_INTAKE,
             self::GROUP_CUSTODY,
+            self::GROUP_LOAN,
         ];
     }
 

@@ -173,12 +173,12 @@ class GetWeb3BrowseResponseChains implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    const KEY_SOLANA = 'solana';
     const KEY_ETHEREUM = 'ethereum';
     const KEY_BASE = 'base';
     const KEY_POLYGON = 'polygon';
     const KEY_ARBITRUM = 'arbitrum';
     const KEY_OPTIMISM = 'optimism';
+    const KEY_SOLANA = 'solana';
 
     /**
      * Gets allowable values of the enum
@@ -188,12 +188,12 @@ class GetWeb3BrowseResponseChains implements ModelInterface, ArrayAccess, \JsonS
     public function getKeyAllowableValues()
     {
         return [
-            self::KEY_SOLANA,
             self::KEY_ETHEREUM,
             self::KEY_BASE,
             self::KEY_POLYGON,
             self::KEY_ARBITRUM,
             self::KEY_OPTIMISM,
+            self::KEY_SOLANA,
         ];
     }
 

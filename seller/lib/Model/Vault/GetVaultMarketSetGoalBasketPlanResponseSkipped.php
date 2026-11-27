@@ -183,8 +183,8 @@ class GetVaultMarketSetGoalBasketPlanResponseSkipped implements ModelInterface, 
         return self::$openAPIModelName;
     }
 
-    const REASON_TOO_MANY = 'too_many';
     const REASON_NO_PRICE = 'no_price';
+    const REASON_TOO_MANY = 'too_many';
     const REASON_OVER_BUDGET = 'over_budget';
     const REASON_NOT_CHOSEN = 'not_chosen';
 
@@ -196,8 +196,8 @@ class GetVaultMarketSetGoalBasketPlanResponseSkipped implements ModelInterface, 
     public function getReasonAllowableValues()
     {
         return [
-            self::REASON_TOO_MANY,
             self::REASON_NO_PRICE,
+            self::REASON_TOO_MANY,
             self::REASON_OVER_BUDGET,
             self::REASON_NOT_CHOSEN,
         ];

@@ -200,8 +200,8 @@ class GetVaultMarketPositionResponseLegs implements ModelInterface, ArrayAccess,
 
     const SIDE_ASK = 'ask';
     const SIDE_BID = 'bid';
-    const STATUS_FILLED = 'filled';
     const STATUS_CANCELLED = 'cancelled';
+    const STATUS_FILLED = 'filled';
     const STATUS_WORKING = 'working';
     const STATUS_BUSTED = 'busted';
 
@@ -226,8 +226,8 @@ class GetVaultMarketPositionResponseLegs implements ModelInterface, ArrayAccess,
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_FILLED,
             self::STATUS_CANCELLED,
+            self::STATUS_FILLED,
             self::STATUS_WORKING,
             self::STATUS_BUSTED,
         ];

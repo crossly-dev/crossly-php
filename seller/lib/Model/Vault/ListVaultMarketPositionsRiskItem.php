@@ -230,15 +230,15 @@ class ListVaultMarketPositionsRiskItem implements ModelInterface, ArrayAccess, \
 
     const DIRECTION_ABOVE = 'at_or_above';
     const DIRECTION_BELOW = 'at_or_below';
-    const KIND_LONG = 'long';
     const KIND_SHORT = 'short';
-    const TIER_STANDARD = 'standard';
+    const KIND_LONG = 'long';
     const TIER_CLOSED = 'closed';
+    const TIER_STANDARD = 'standard';
     const TIER_DEEP = 'deep';
     const TIER_THIN = 'thin';
-    const MARGIN_STATE_BUY_IN = 'buy_in';
     const MARGIN_STATE_HEALTHY = 'healthy';
     const MARGIN_STATE_CALL = 'call';
+    const MARGIN_STATE_BUY_IN = 'buy_in';
 
     /**
      * Gets allowable values of the enum
@@ -261,8 +261,8 @@ class ListVaultMarketPositionsRiskItem implements ModelInterface, ArrayAccess, \
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_LONG,
             self::KIND_SHORT,
+            self::KIND_LONG,
         ];
     }
 
@@ -274,8 +274,8 @@ class ListVaultMarketPositionsRiskItem implements ModelInterface, ArrayAccess, \
     public function getTierAllowableValues()
     {
         return [
-            self::TIER_STANDARD,
             self::TIER_CLOSED,
+            self::TIER_STANDARD,
             self::TIER_DEEP,
             self::TIER_THIN,
         ];
@@ -289,9 +289,9 @@ class ListVaultMarketPositionsRiskItem implements ModelInterface, ArrayAccess, \
     public function getMarginStateAllowableValues()
     {
         return [
-            self::MARGIN_STATE_BUY_IN,
             self::MARGIN_STATE_HEALTHY,
             self::MARGIN_STATE_CALL,
+            self::MARGIN_STATE_BUY_IN,
         ];
     }
 

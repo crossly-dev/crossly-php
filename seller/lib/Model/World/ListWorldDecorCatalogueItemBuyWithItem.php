@@ -44,9 +44,9 @@ class ListWorldDecorCatalogueItemBuyWithItem
     /**
      * Possible values of this enum
      */
-    const CBX = 'cbx';
-
     const COSM = 'cosm';
+
+    const CBX = 'cbx';
 
     /**
      * Gets allowable values of the enum
@@ -55,8 +55,8 @@ class ListWorldDecorCatalogueItemBuyWithItem
     public static function getAllowableEnumValues()
     {
         return [
-            self::CBX,
-            self::COSM
+            self::COSM,
+            self::CBX
         ];
     }
 }

@@ -193,9 +193,9 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestionMarket implements Model
         return self::$openAPIModelName;
     }
 
+    const TIER_C = 'C';
     const TIER_A = 'A';
     const TIER_B = 'B';
-    const TIER_C = 'C';
     const TIER_D = 'D';
 
     /**
@@ -206,9 +206,9 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestionMarket implements Model
     public function getTierAllowableValues()
     {
         return [
+            self::TIER_C,
             self::TIER_A,
             self::TIER_B,
-            self::TIER_C,
             self::TIER_D,
         ];
     }

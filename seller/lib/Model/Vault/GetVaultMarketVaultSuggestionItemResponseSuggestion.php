@@ -79,7 +79,8 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion implements ModelInterf
         'strength' => 'string',
         'parts' => '\Crossly\Model\Vault\GetVaultMarketVaultSuggestionItemResponseSuggestionParts',
         'reasons' => 'string[]',
-        'market_path' => 'string'
+        'market_path' => 'string',
+        'fractionalize' => '\Crossly\Model\Vault\GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize'
     ];
 
     /**
@@ -109,7 +110,8 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion implements ModelInterf
         'strength' => null,
         'parts' => null,
         'reasons' => null,
-        'market_path' => null
+        'market_path' => null,
+        'fractionalize' => null
     ];
 
     /**
@@ -158,7 +160,8 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion implements ModelInterf
         'strength' => 'strength',
         'parts' => 'parts',
         'reasons' => 'reasons',
-        'market_path' => 'marketPath'
+        'market_path' => 'marketPath',
+        'fractionalize' => 'fractionalize'
     ];
 
     /**
@@ -186,7 +189,8 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion implements ModelInterf
         'strength' => 'setStrength',
         'parts' => 'setParts',
         'reasons' => 'setReasons',
-        'market_path' => 'setMarketPath'
+        'market_path' => 'setMarketPath',
+        'fractionalize' => 'setFractionalize'
     ];
 
     /**
@@ -214,7 +218,8 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion implements ModelInterf
         'strength' => 'getStrength',
         'parts' => 'getParts',
         'reasons' => 'getReasons',
-        'market_path' => 'getMarketPath'
+        'market_path' => 'getMarketPath',
+        'fractionalize' => 'getFractionalize'
     ];
 
     /**
@@ -326,6 +331,7 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion implements ModelInterf
         $this->container['parts'] = $data['parts'] ?? null;
         $this->container['reasons'] = $data['reasons'] ?? null;
         $this->container['market_path'] = $data['market_path'] ?? null;
+        $this->container['fractionalize'] = $data['fractionalize'] ?? null;
     }
 
     /**
@@ -905,6 +911,30 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion implements ModelInterf
     public function setMarketPath($market_path)
     {
         $this->container['market_path'] = $market_path;
+
+        return $this;
+    }
+
+    /**
+     * Gets fractionalize
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize|null
+     */
+    public function getFractionalize()
+    {
+        return $this->container['fractionalize'];
+    }
+
+    /**
+     * Sets fractionalize
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize|null $fractionalize fractionalize
+     *
+     * @return self
+     */
+    public function setFractionalize($fractionalize)
+    {
+        $this->container['fractionalize'] = $fractionalize;
 
         return $this;
     }

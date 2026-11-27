@@ -60,6 +60,7 @@ class ListVaultMarketFollowFollowingItem implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
+        'person' => '\Crossly\Model\Vault\ListVaultMarketFollowFollowingItemPerson',
         'since' => 'string',
         'shares' => '\Crossly\Model\Vault\ListVaultMarketFollowFollowingItemShares',
         'copy_watching' => 'bool'
@@ -73,6 +74,7 @@ class ListVaultMarketFollowFollowingItem implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'person' => null,
         'since' => null,
         'shares' => null,
         'copy_watching' => null
@@ -105,6 +107,7 @@ class ListVaultMarketFollowFollowingItem implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
+        'person' => 'person',
         'since' => 'since',
         'shares' => 'shares',
         'copy_watching' => 'copyWatching'
@@ -116,6 +119,7 @@ class ListVaultMarketFollowFollowingItem implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
+        'person' => 'setPerson',
         'since' => 'setSince',
         'shares' => 'setShares',
         'copy_watching' => 'setCopyWatching'
@@ -127,6 +131,7 @@ class ListVaultMarketFollowFollowingItem implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
+        'person' => 'getPerson',
         'since' => 'getSince',
         'shares' => 'getShares',
         'copy_watching' => 'getCopyWatching'
@@ -189,6 +194,7 @@ class ListVaultMarketFollowFollowingItem implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
+        $this->container['person'] = $data['person'] ?? null;
         $this->container['since'] = $data['since'] ?? null;
         $this->container['shares'] = $data['shares'] ?? null;
         $this->container['copy_watching'] = $data['copy_watching'] ?? null;
@@ -203,6 +209,9 @@ class ListVaultMarketFollowFollowingItem implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['person'] === null) {
+            $invalidProperties[] = "'person' can't be null";
+        }
         if ($this->container['shares'] === null) {
             $invalidProperties[] = "'shares' can't be null";
         }
@@ -223,6 +232,30 @@ class ListVaultMarketFollowFollowingItem implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets person
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketFollowFollowingItemPerson
+     */
+    public function getPerson()
+    {
+        return $this->container['person'];
+    }
+
+    /**
+     * Sets person
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketFollowFollowingItemPerson $person person
+     *
+     * @return self
+     */
+    public function setPerson($person)
+    {
+        $this->container['person'] = $person;
+
+        return $this;
+    }
 
     /**
      * Gets since

@@ -209,16 +209,16 @@ class GetVaultMarketMarketResponseMark implements ModelInterface, ArrayAccess, \
     }
 
     const SOURCE_NONE = 'none';
-    const SOURCE_TWAP = 'twap';
-    const SOURCE_MID = 'mid';
     const SOURCE_ASK = 'ask';
-    const SOURCE_BID = 'bid';
+    const SOURCE_MID = 'mid';
     const SOURCE_LAST = 'last';
+    const SOURCE_BID = 'bid';
+    const SOURCE_TWAP = 'twap';
     const SOURCE_IMPLIED = 'implied';
     const QUALITY_NONE = 'none';
+    const QUALITY_C = 'C';
     const QUALITY_A = 'A';
     const QUALITY_B = 'B';
-    const QUALITY_C = 'C';
 
     /**
      * Gets allowable values of the enum
@@ -229,11 +229,11 @@ class GetVaultMarketMarketResponseMark implements ModelInterface, ArrayAccess, \
     {
         return [
             self::SOURCE_NONE,
-            self::SOURCE_TWAP,
-            self::SOURCE_MID,
             self::SOURCE_ASK,
-            self::SOURCE_BID,
+            self::SOURCE_MID,
             self::SOURCE_LAST,
+            self::SOURCE_BID,
+            self::SOURCE_TWAP,
             self::SOURCE_IMPLIED,
         ];
     }
@@ -247,9 +247,9 @@ class GetVaultMarketMarketResponseMark implements ModelInterface, ArrayAccess, \
     {
         return [
             self::QUALITY_NONE,
+            self::QUALITY_C,
             self::QUALITY_A,
             self::QUALITY_B,
-            self::QUALITY_C,
         ];
     }
 

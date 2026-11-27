@@ -65,10 +65,14 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'user_id' => 'string',
+        'status' => 'string',
+        'notes' => 'string',
+        'source' => 'string',
         'sku' => 'string',
         'quantity' => 'float',
         'quantity_available' => 'float',
         'quantity_reserved' => 'float',
+        'wholesale_reserve' => 'float',
         'quantity_sold' => 'float',
         'original_price' => 'string',
         'condition' => 'string',
@@ -87,7 +91,6 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'provenance_receipt_id' => 'string',
         'tags' => 'string[]',
         'labels' => 'string[]',
-        'notes' => 'string',
         'custom_label' => 'string',
         'warehouse_location' => 'string',
         'storage_bin' => 'string',
@@ -95,10 +98,12 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'market_sku_id' => 'string',
         'market_variant_id' => 'string',
         'grade_key' => 'string',
-        'grading' => '\Crossly\Model\Grading\ListGradingSubmissionsItemGrading',
+        'vault_sell_from' => 'string',
+        'grading' => '\Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading',
         'first_listed_at' => '\DateTime',
         'include_tax_in_landed' => 'bool',
         'cost_basis_cents' => 'float',
+        'supplier' => '\Crossly\Model\Inventory\ListInventoryItemSupplier',
         'price_floor_cents' => 'float',
         'floor_is_net' => 'bool',
         'acquired_at' => '\DateTime',
@@ -108,8 +113,7 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'dimension_lin' => 'string',
         'dimension_win' => 'string',
         'dimension_hin' => 'string',
-        'status' => 'string',
-        'source' => 'string',
+        'allowance_app_id' => 'string',
         'category' => '\Crossly\Model\Common\MainSub'
     ];
 
@@ -126,10 +130,14 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
         'user_id' => null,
+        'status' => null,
+        'notes' => null,
+        'source' => null,
         'sku' => null,
         'quantity' => null,
         'quantity_available' => null,
         'quantity_reserved' => null,
+        'wholesale_reserve' => null,
         'quantity_sold' => null,
         'original_price' => null,
         'condition' => null,
@@ -148,7 +156,6 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'provenance_receipt_id' => null,
         'tags' => null,
         'labels' => null,
-        'notes' => null,
         'custom_label' => null,
         'warehouse_location' => null,
         'storage_bin' => null,
@@ -156,10 +163,12 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'market_sku_id' => null,
         'market_variant_id' => null,
         'grade_key' => null,
+        'vault_sell_from' => null,
         'grading' => null,
         'first_listed_at' => 'date-time',
         'include_tax_in_landed' => null,
         'cost_basis_cents' => null,
+        'supplier' => null,
         'price_floor_cents' => null,
         'floor_is_net' => null,
         'acquired_at' => 'date-time',
@@ -169,8 +178,7 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'dimension_lin' => null,
         'dimension_win' => null,
         'dimension_hin' => null,
-        'status' => null,
-        'source' => null,
+        'allowance_app_id' => null,
         'category' => null
     ];
 
@@ -206,10 +214,14 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
+        'status' => 'status',
+        'notes' => 'notes',
+        'source' => 'source',
         'sku' => 'sku',
         'quantity' => 'quantity',
         'quantity_available' => 'quantityAvailable',
         'quantity_reserved' => 'quantityReserved',
+        'wholesale_reserve' => 'wholesaleReserve',
         'quantity_sold' => 'quantitySold',
         'original_price' => 'originalPrice',
         'condition' => 'condition',
@@ -228,7 +240,6 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'provenance_receipt_id' => 'provenanceReceiptId',
         'tags' => 'tags',
         'labels' => 'labels',
-        'notes' => 'notes',
         'custom_label' => 'customLabel',
         'warehouse_location' => 'warehouseLocation',
         'storage_bin' => 'storageBin',
@@ -236,10 +247,12 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'market_sku_id' => 'marketSkuId',
         'market_variant_id' => 'marketVariantId',
         'grade_key' => 'gradeKey',
+        'vault_sell_from' => 'vaultSellFrom',
         'grading' => 'grading',
         'first_listed_at' => 'firstListedAt',
         'include_tax_in_landed' => 'includeTaxInLanded',
         'cost_basis_cents' => 'costBasisCents',
+        'supplier' => 'supplier',
         'price_floor_cents' => 'priceFloorCents',
         'floor_is_net' => 'floorIsNet',
         'acquired_at' => 'acquiredAt',
@@ -249,8 +262,7 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'dimension_lin' => 'dimensionLIn',
         'dimension_win' => 'dimensionWIn',
         'dimension_hin' => 'dimensionHIn',
-        'status' => 'status',
-        'source' => 'source',
+        'allowance_app_id' => 'allowanceAppId',
         'category' => 'category'
     ];
 
@@ -265,10 +277,14 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
+        'status' => 'setStatus',
+        'notes' => 'setNotes',
+        'source' => 'setSource',
         'sku' => 'setSku',
         'quantity' => 'setQuantity',
         'quantity_available' => 'setQuantityAvailable',
         'quantity_reserved' => 'setQuantityReserved',
+        'wholesale_reserve' => 'setWholesaleReserve',
         'quantity_sold' => 'setQuantitySold',
         'original_price' => 'setOriginalPrice',
         'condition' => 'setCondition',
@@ -287,7 +303,6 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'provenance_receipt_id' => 'setProvenanceReceiptId',
         'tags' => 'setTags',
         'labels' => 'setLabels',
-        'notes' => 'setNotes',
         'custom_label' => 'setCustomLabel',
         'warehouse_location' => 'setWarehouseLocation',
         'storage_bin' => 'setStorageBin',
@@ -295,10 +310,12 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'market_sku_id' => 'setMarketSkuId',
         'market_variant_id' => 'setMarketVariantId',
         'grade_key' => 'setGradeKey',
+        'vault_sell_from' => 'setVaultSellFrom',
         'grading' => 'setGrading',
         'first_listed_at' => 'setFirstListedAt',
         'include_tax_in_landed' => 'setIncludeTaxInLanded',
         'cost_basis_cents' => 'setCostBasisCents',
+        'supplier' => 'setSupplier',
         'price_floor_cents' => 'setPriceFloorCents',
         'floor_is_net' => 'setFloorIsNet',
         'acquired_at' => 'setAcquiredAt',
@@ -308,8 +325,7 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'dimension_lin' => 'setDimensionLin',
         'dimension_win' => 'setDimensionWin',
         'dimension_hin' => 'setDimensionHin',
-        'status' => 'setStatus',
-        'source' => 'setSource',
+        'allowance_app_id' => 'setAllowanceAppId',
         'category' => 'setCategory'
     ];
 
@@ -324,10 +340,14 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
+        'status' => 'getStatus',
+        'notes' => 'getNotes',
+        'source' => 'getSource',
         'sku' => 'getSku',
         'quantity' => 'getQuantity',
         'quantity_available' => 'getQuantityAvailable',
         'quantity_reserved' => 'getQuantityReserved',
+        'wholesale_reserve' => 'getWholesaleReserve',
         'quantity_sold' => 'getQuantitySold',
         'original_price' => 'getOriginalPrice',
         'condition' => 'getCondition',
@@ -346,7 +366,6 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'provenance_receipt_id' => 'getProvenanceReceiptId',
         'tags' => 'getTags',
         'labels' => 'getLabels',
-        'notes' => 'getNotes',
         'custom_label' => 'getCustomLabel',
         'warehouse_location' => 'getWarehouseLocation',
         'storage_bin' => 'getStorageBin',
@@ -354,10 +373,12 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'market_sku_id' => 'getMarketSkuId',
         'market_variant_id' => 'getMarketVariantId',
         'grade_key' => 'getGradeKey',
+        'vault_sell_from' => 'getVaultSellFrom',
         'grading' => 'getGrading',
         'first_listed_at' => 'getFirstListedAt',
         'include_tax_in_landed' => 'getIncludeTaxInLanded',
         'cost_basis_cents' => 'getCostBasisCents',
+        'supplier' => 'getSupplier',
         'price_floor_cents' => 'getPriceFloorCents',
         'floor_is_net' => 'getFloorIsNet',
         'acquired_at' => 'getAcquiredAt',
@@ -367,8 +388,7 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'dimension_lin' => 'getDimensionLin',
         'dimension_win' => 'getDimensionWin',
         'dimension_hin' => 'getDimensionHin',
-        'status' => 'getStatus',
-        'source' => 'getSource',
+        'allowance_app_id' => 'getAllowanceAppId',
         'category' => 'getCategory'
     ];
 
@@ -413,6 +433,23 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
+    const VAULT_SELL_FROM_VAULT_FIRST = 'vault_first';
+    const VAULT_SELL_FROM_WAREHOUSE_FIRST = 'warehouse_first';
+    const VAULT_SELL_FROM_CHEAPEST = 'cheapest';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getVaultSellFromAllowableValues()
+    {
+        return [
+            self::VAULT_SELL_FROM_VAULT_FIRST,
+            self::VAULT_SELL_FROM_WAREHOUSE_FIRST,
+            self::VAULT_SELL_FROM_CHEAPEST,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -434,10 +471,14 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['notes'] = $data['notes'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
         $this->container['sku'] = $data['sku'] ?? null;
         $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['quantity_available'] = $data['quantity_available'] ?? null;
         $this->container['quantity_reserved'] = $data['quantity_reserved'] ?? null;
+        $this->container['wholesale_reserve'] = $data['wholesale_reserve'] ?? null;
         $this->container['quantity_sold'] = $data['quantity_sold'] ?? null;
         $this->container['original_price'] = $data['original_price'] ?? null;
         $this->container['condition'] = $data['condition'] ?? null;
@@ -456,7 +497,6 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->container['provenance_receipt_id'] = $data['provenance_receipt_id'] ?? null;
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['labels'] = $data['labels'] ?? null;
-        $this->container['notes'] = $data['notes'] ?? null;
         $this->container['custom_label'] = $data['custom_label'] ?? null;
         $this->container['warehouse_location'] = $data['warehouse_location'] ?? null;
         $this->container['storage_bin'] = $data['storage_bin'] ?? null;
@@ -464,10 +504,12 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->container['market_sku_id'] = $data['market_sku_id'] ?? null;
         $this->container['market_variant_id'] = $data['market_variant_id'] ?? null;
         $this->container['grade_key'] = $data['grade_key'] ?? null;
+        $this->container['vault_sell_from'] = $data['vault_sell_from'] ?? null;
         $this->container['grading'] = $data['grading'] ?? null;
         $this->container['first_listed_at'] = $data['first_listed_at'] ?? null;
         $this->container['include_tax_in_landed'] = $data['include_tax_in_landed'] ?? null;
         $this->container['cost_basis_cents'] = $data['cost_basis_cents'] ?? null;
+        $this->container['supplier'] = $data['supplier'] ?? null;
         $this->container['price_floor_cents'] = $data['price_floor_cents'] ?? null;
         $this->container['floor_is_net'] = $data['floor_is_net'] ?? null;
         $this->container['acquired_at'] = $data['acquired_at'] ?? null;
@@ -477,8 +519,7 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->container['dimension_lin'] = $data['dimension_lin'] ?? null;
         $this->container['dimension_win'] = $data['dimension_win'] ?? null;
         $this->container['dimension_hin'] = $data['dimension_hin'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['source'] = $data['source'] ?? null;
+        $this->container['allowance_app_id'] = $data['allowance_app_id'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
     }
 
@@ -503,6 +544,12 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
         }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['source'] === null) {
+            $invalidProperties[] = "'source' can't be null";
+        }
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
         }
@@ -511,6 +558,9 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         }
         if ($this->container['quantity_reserved'] === null) {
             $invalidProperties[] = "'quantity_reserved' can't be null";
+        }
+        if ($this->container['wholesale_reserve'] === null) {
+            $invalidProperties[] = "'wholesale_reserve' can't be null";
         }
         if ($this->container['quantity_sold'] === null) {
             $invalidProperties[] = "'quantity_sold' can't be null";
@@ -530,17 +580,20 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['labels'] === null) {
             $invalidProperties[] = "'labels' can't be null";
         }
+        $allowedValues = $this->getVaultSellFromAllowableValues();
+        if (!is_null($this->container['vault_sell_from']) && !in_array($this->container['vault_sell_from'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'vault_sell_from', must be one of '%s'",
+                $this->container['vault_sell_from'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['include_tax_in_landed'] === null) {
             $invalidProperties[] = "'include_tax_in_landed' can't be null";
         }
         if ($this->container['floor_is_net'] === null) {
             $invalidProperties[] = "'floor_is_net' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['source'] === null) {
-            $invalidProperties[] = "'source' can't be null";
         }
         return $invalidProperties;
     }
@@ -678,6 +731,78 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets notes
+     *
+     * @return string|null
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param string|null $notes notes
+     *
+     * @return self
+     */
+    public function setNotes($notes)
+    {
+        $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string $source source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
      * Gets sku
      *
      * @return string|null
@@ -769,6 +894,30 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setQuantityReserved($quantity_reserved)
     {
         $this->container['quantity_reserved'] = $quantity_reserved;
+
+        return $this;
+    }
+
+    /**
+     * Gets wholesale_reserve
+     *
+     * @return float
+     */
+    public function getWholesaleReserve()
+    {
+        return $this->container['wholesale_reserve'];
+    }
+
+    /**
+     * Sets wholesale_reserve
+     *
+     * @param float $wholesale_reserve wholesale_reserve
+     *
+     * @return self
+     */
+    public function setWholesaleReserve($wholesale_reserve)
+    {
+        $this->container['wholesale_reserve'] = $wholesale_reserve;
 
         return $this;
     }
@@ -1206,30 +1355,6 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets notes
-     *
-     * @return string|null
-     */
-    public function getNotes()
-    {
-        return $this->container['notes'];
-    }
-
-    /**
-     * Sets notes
-     *
-     * @param string|null $notes notes
-     *
-     * @return self
-     */
-    public function setNotes($notes)
-    {
-        $this->container['notes'] = $notes;
-
-        return $this;
-    }
-
-    /**
      * Gets custom_label
      *
      * @return string|null
@@ -1398,9 +1523,43 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
+     * Gets vault_sell_from
+     *
+     * @return string|null
+     */
+    public function getVaultSellFrom()
+    {
+        return $this->container['vault_sell_from'];
+    }
+
+    /**
+     * Sets vault_sell_from
+     *
+     * @param string|null $vault_sell_from vault_sell_from
+     *
+     * @return self
+     */
+    public function setVaultSellFrom($vault_sell_from)
+    {
+        $allowedValues = $this->getVaultSellFromAllowableValues();
+        if (!is_null($vault_sell_from) && !in_array($vault_sell_from, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'vault_sell_from', must be one of '%s'",
+                    $vault_sell_from,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['vault_sell_from'] = $vault_sell_from;
+
+        return $this;
+    }
+
+    /**
      * Gets grading
      *
-     * @return \Crossly\Model\Grading\ListGradingSubmissionsItemGrading|null
+     * @return \Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading|null
      */
     public function getGrading()
     {
@@ -1410,7 +1569,7 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets grading
      *
-     * @param \Crossly\Model\Grading\ListGradingSubmissionsItemGrading|null $grading grading
+     * @param \Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading|null $grading grading
      *
      * @return self
      */
@@ -1489,6 +1648,30 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCostBasisCents($cost_basis_cents)
     {
         $this->container['cost_basis_cents'] = $cost_basis_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets supplier
+     *
+     * @return \Crossly\Model\Inventory\ListInventoryItemSupplier|null
+     */
+    public function getSupplier()
+    {
+        return $this->container['supplier'];
+    }
+
+    /**
+     * Sets supplier
+     *
+     * @param \Crossly\Model\Inventory\ListInventoryItemSupplier|null $supplier supplier
+     *
+     * @return self
+     */
+    public function setSupplier($supplier)
+    {
+        $this->container['supplier'] = $supplier;
 
         return $this;
     }
@@ -1710,49 +1893,25 @@ class ListInventoryItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets status
+     * Gets allowance_app_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getStatus()
+    public function getAllowanceAppId()
     {
-        return $this->container['status'];
+        return $this->container['allowance_app_id'];
     }
 
     /**
-     * Sets status
+     * Sets allowance_app_id
      *
-     * @param string $status status
+     * @param string|null $allowance_app_id allowance_app_id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setAllowanceAppId($allowance_app_id)
     {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets source
-     *
-     * @return string
-     */
-    public function getSource()
-    {
-        return $this->container['source'];
-    }
-
-    /**
-     * Sets source
-     *
-     * @param string $source source
-     *
-     * @return self
-     */
-    public function setSource($source)
-    {
-        $this->container['source'] = $source;
+        $this->container['allowance_app_id'] = $allowance_app_id;
 
         return $this;
     }

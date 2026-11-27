@@ -61,18 +61,22 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'user_id' => 'string',
         'name' => 'string',
+        'is_active' => 'bool',
+        'trigger_type' => 'string',
+        'trigger_config' => 'array<string,mixed>',
+        'condition_type' => 'string',
+        'condition_config' => 'array<string,mixed>',
+        'action_type' => 'string',
+        'action_config' => 'array<string,mixed>',
+        'platforms' => 'string[]',
+        'last_run_at' => '\DateTime',
+        'next_run_at' => '\DateTime',
+        'run_count' => 'float',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'user_id' => 'string',
-        'is_active' => 'bool',
-        'platforms' => 'string[]',
-        'next_run_at' => '\DateTime',
-        'last_run_at' => '\DateTime',
-        'trigger_type' => 'string',
-        'condition_type' => 'string',
-        'action_type' => 'string',
-        'run_count' => 'float'
+        'workflow_id' => 'string'
     ];
 
     /**
@@ -84,18 +88,22 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'user_id' => null,
         'name' => null,
+        'is_active' => null,
+        'trigger_type' => null,
+        'trigger_config' => null,
+        'condition_type' => null,
+        'condition_config' => null,
+        'action_type' => null,
+        'action_config' => null,
+        'platforms' => null,
+        'last_run_at' => 'date-time',
+        'next_run_at' => 'date-time',
+        'run_count' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'user_id' => null,
-        'is_active' => null,
-        'platforms' => null,
-        'next_run_at' => 'date-time',
-        'last_run_at' => 'date-time',
-        'trigger_type' => null,
-        'condition_type' => null,
-        'action_type' => null,
-        'run_count' => null
+        'workflow_id' => null
     ];
 
     /**
@@ -126,18 +134,22 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'user_id' => 'userId',
         'name' => 'name',
+        'is_active' => 'isActive',
+        'trigger_type' => 'triggerType',
+        'trigger_config' => 'triggerConfig',
+        'condition_type' => 'conditionType',
+        'condition_config' => 'conditionConfig',
+        'action_type' => 'actionType',
+        'action_config' => 'actionConfig',
+        'platforms' => 'platforms',
+        'last_run_at' => 'lastRunAt',
+        'next_run_at' => 'nextRunAt',
+        'run_count' => 'runCount',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
-        'user_id' => 'userId',
-        'is_active' => 'isActive',
-        'platforms' => 'platforms',
-        'next_run_at' => 'nextRunAt',
-        'last_run_at' => 'lastRunAt',
-        'trigger_type' => 'triggerType',
-        'condition_type' => 'conditionType',
-        'action_type' => 'actionType',
-        'run_count' => 'runCount'
+        'workflow_id' => 'workflowId'
     ];
 
     /**
@@ -147,18 +159,22 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'id' => 'setId',
+        'user_id' => 'setUserId',
         'name' => 'setName',
+        'is_active' => 'setIsActive',
+        'trigger_type' => 'setTriggerType',
+        'trigger_config' => 'setTriggerConfig',
+        'condition_type' => 'setConditionType',
+        'condition_config' => 'setConditionConfig',
+        'action_type' => 'setActionType',
+        'action_config' => 'setActionConfig',
+        'platforms' => 'setPlatforms',
+        'last_run_at' => 'setLastRunAt',
+        'next_run_at' => 'setNextRunAt',
+        'run_count' => 'setRunCount',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'user_id' => 'setUserId',
-        'is_active' => 'setIsActive',
-        'platforms' => 'setPlatforms',
-        'next_run_at' => 'setNextRunAt',
-        'last_run_at' => 'setLastRunAt',
-        'trigger_type' => 'setTriggerType',
-        'condition_type' => 'setConditionType',
-        'action_type' => 'setActionType',
-        'run_count' => 'setRunCount'
+        'workflow_id' => 'setWorkflowId'
     ];
 
     /**
@@ -168,18 +184,22 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'id' => 'getId',
+        'user_id' => 'getUserId',
         'name' => 'getName',
+        'is_active' => 'getIsActive',
+        'trigger_type' => 'getTriggerType',
+        'trigger_config' => 'getTriggerConfig',
+        'condition_type' => 'getConditionType',
+        'condition_config' => 'getConditionConfig',
+        'action_type' => 'getActionType',
+        'action_config' => 'getActionConfig',
+        'platforms' => 'getPlatforms',
+        'last_run_at' => 'getLastRunAt',
+        'next_run_at' => 'getNextRunAt',
+        'run_count' => 'getRunCount',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'user_id' => 'getUserId',
-        'is_active' => 'getIsActive',
-        'platforms' => 'getPlatforms',
-        'next_run_at' => 'getNextRunAt',
-        'last_run_at' => 'getLastRunAt',
-        'trigger_type' => 'getTriggerType',
-        'condition_type' => 'getConditionType',
-        'action_type' => 'getActionType',
-        'run_count' => 'getRunCount'
+        'workflow_id' => 'getWorkflowId'
     ];
 
     /**
@@ -240,18 +260,22 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['is_active'] = $data['is_active'] ?? null;
+        $this->container['trigger_type'] = $data['trigger_type'] ?? null;
+        $this->container['trigger_config'] = $data['trigger_config'] ?? null;
+        $this->container['condition_type'] = $data['condition_type'] ?? null;
+        $this->container['condition_config'] = $data['condition_config'] ?? null;
+        $this->container['action_type'] = $data['action_type'] ?? null;
+        $this->container['action_config'] = $data['action_config'] ?? null;
+        $this->container['platforms'] = $data['platforms'] ?? null;
+        $this->container['last_run_at'] = $data['last_run_at'] ?? null;
+        $this->container['next_run_at'] = $data['next_run_at'] ?? null;
+        $this->container['run_count'] = $data['run_count'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['user_id'] = $data['user_id'] ?? null;
-        $this->container['is_active'] = $data['is_active'] ?? null;
-        $this->container['platforms'] = $data['platforms'] ?? null;
-        $this->container['next_run_at'] = $data['next_run_at'] ?? null;
-        $this->container['last_run_at'] = $data['last_run_at'] ?? null;
-        $this->container['trigger_type'] = $data['trigger_type'] ?? null;
-        $this->container['condition_type'] = $data['condition_type'] ?? null;
-        $this->container['action_type'] = $data['action_type'] ?? null;
-        $this->container['run_count'] = $data['run_count'] ?? null;
+        $this->container['workflow_id'] = $data['workflow_id'] ?? null;
     }
 
     /**
@@ -266,17 +290,11 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['is_active'] === null) {
             $invalidProperties[] = "'is_active' can't be null";
@@ -284,11 +302,26 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['trigger_type'] === null) {
             $invalidProperties[] = "'trigger_type' can't be null";
         }
+        if ($this->container['trigger_config'] === null) {
+            $invalidProperties[] = "'trigger_config' can't be null";
+        }
         if ($this->container['action_type'] === null) {
             $invalidProperties[] = "'action_type' can't be null";
         }
+        if ($this->container['action_config'] === null) {
+            $invalidProperties[] = "'action_config' can't be null";
+        }
         if ($this->container['run_count'] === null) {
             $invalidProperties[] = "'run_count' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['workflow_id'] === null) {
+            $invalidProperties[] = "'workflow_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -330,6 +363,30 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
+     * Gets user_id
+     *
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     *
+     * @param string $user_id user_id
+     *
+     * @return self
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string
@@ -349,6 +406,270 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_active
+     *
+     * @return bool
+     */
+    public function getIsActive()
+    {
+        return $this->container['is_active'];
+    }
+
+    /**
+     * Sets is_active
+     *
+     * @param bool $is_active is_active
+     *
+     * @return self
+     */
+    public function setIsActive($is_active)
+    {
+        $this->container['is_active'] = $is_active;
+
+        return $this;
+    }
+
+    /**
+     * Gets trigger_type
+     *
+     * @return string
+     */
+    public function getTriggerType()
+    {
+        return $this->container['trigger_type'];
+    }
+
+    /**
+     * Sets trigger_type
+     *
+     * @param string $trigger_type trigger_type
+     *
+     * @return self
+     */
+    public function setTriggerType($trigger_type)
+    {
+        $this->container['trigger_type'] = $trigger_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets trigger_config
+     *
+     * @return array<string,mixed>
+     */
+    public function getTriggerConfig()
+    {
+        return $this->container['trigger_config'];
+    }
+
+    /**
+     * Sets trigger_config
+     *
+     * @param array<string,mixed> $trigger_config trigger_config
+     *
+     * @return self
+     */
+    public function setTriggerConfig($trigger_config)
+    {
+        $this->container['trigger_config'] = $trigger_config;
+
+        return $this;
+    }
+
+    /**
+     * Gets condition_type
+     *
+     * @return string|null
+     */
+    public function getConditionType()
+    {
+        return $this->container['condition_type'];
+    }
+
+    /**
+     * Sets condition_type
+     *
+     * @param string|null $condition_type condition_type
+     *
+     * @return self
+     */
+    public function setConditionType($condition_type)
+    {
+        $this->container['condition_type'] = $condition_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets condition_config
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getConditionConfig()
+    {
+        return $this->container['condition_config'];
+    }
+
+    /**
+     * Sets condition_config
+     *
+     * @param array<string,mixed>|null $condition_config condition_config
+     *
+     * @return self
+     */
+    public function setConditionConfig($condition_config)
+    {
+        $this->container['condition_config'] = $condition_config;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_type
+     *
+     * @return string
+     */
+    public function getActionType()
+    {
+        return $this->container['action_type'];
+    }
+
+    /**
+     * Sets action_type
+     *
+     * @param string $action_type action_type
+     *
+     * @return self
+     */
+    public function setActionType($action_type)
+    {
+        $this->container['action_type'] = $action_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_config
+     *
+     * @return array<string,mixed>
+     */
+    public function getActionConfig()
+    {
+        return $this->container['action_config'];
+    }
+
+    /**
+     * Sets action_config
+     *
+     * @param array<string,mixed> $action_config action_config
+     *
+     * @return self
+     */
+    public function setActionConfig($action_config)
+    {
+        $this->container['action_config'] = $action_config;
+
+        return $this;
+    }
+
+    /**
+     * Gets platforms
+     *
+     * @return string[]|null
+     */
+    public function getPlatforms()
+    {
+        return $this->container['platforms'];
+    }
+
+    /**
+     * Sets platforms
+     *
+     * @param string[]|null $platforms platforms
+     *
+     * @return self
+     */
+    public function setPlatforms($platforms)
+    {
+        $this->container['platforms'] = $platforms;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_run_at
+     *
+     * @return \DateTime|null
+     */
+    public function getLastRunAt()
+    {
+        return $this->container['last_run_at'];
+    }
+
+    /**
+     * Sets last_run_at
+     *
+     * @param \DateTime|null $last_run_at last_run_at
+     *
+     * @return self
+     */
+    public function setLastRunAt($last_run_at)
+    {
+        $this->container['last_run_at'] = $last_run_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets next_run_at
+     *
+     * @return \DateTime|null
+     */
+    public function getNextRunAt()
+    {
+        return $this->container['next_run_at'];
+    }
+
+    /**
+     * Sets next_run_at
+     *
+     * @param \DateTime|null $next_run_at next_run_at
+     *
+     * @return self
+     */
+    public function setNextRunAt($next_run_at)
+    {
+        $this->container['next_run_at'] = $next_run_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets run_count
+     *
+     * @return float
+     */
+    public function getRunCount()
+    {
+        return $this->container['run_count'];
+    }
+
+    /**
+     * Sets run_count
+     *
+     * @param float $run_count run_count
+     *
+     * @return self
+     */
+    public function setRunCount($run_count)
+    {
+        $this->container['run_count'] = $run_count;
 
         return $this;
     }
@@ -402,217 +723,25 @@ class ListAutomationRulesItem implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets user_id
+     * Gets workflow_id
      *
      * @return string
      */
-    public function getUserId()
+    public function getWorkflowId()
     {
-        return $this->container['user_id'];
+        return $this->container['workflow_id'];
     }
 
     /**
-     * Sets user_id
+     * Sets workflow_id
      *
-     * @param string $user_id user_id
+     * @param string $workflow_id The workflow this rule is (open it in /v1/workflows).
      *
      * @return self
      */
-    public function setUserId($user_id)
+    public function setWorkflowId($workflow_id)
     {
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_active
-     *
-     * @return bool
-     */
-    public function getIsActive()
-    {
-        return $this->container['is_active'];
-    }
-
-    /**
-     * Sets is_active
-     *
-     * @param bool $is_active is_active
-     *
-     * @return self
-     */
-    public function setIsActive($is_active)
-    {
-        $this->container['is_active'] = $is_active;
-
-        return $this;
-    }
-
-    /**
-     * Gets platforms
-     *
-     * @return string[]|null
-     */
-    public function getPlatforms()
-    {
-        return $this->container['platforms'];
-    }
-
-    /**
-     * Sets platforms
-     *
-     * @param string[]|null $platforms platforms
-     *
-     * @return self
-     */
-    public function setPlatforms($platforms)
-    {
-        $this->container['platforms'] = $platforms;
-
-        return $this;
-    }
-
-    /**
-     * Gets next_run_at
-     *
-     * @return \DateTime|null
-     */
-    public function getNextRunAt()
-    {
-        return $this->container['next_run_at'];
-    }
-
-    /**
-     * Sets next_run_at
-     *
-     * @param \DateTime|null $next_run_at next_run_at
-     *
-     * @return self
-     */
-    public function setNextRunAt($next_run_at)
-    {
-        $this->container['next_run_at'] = $next_run_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_run_at
-     *
-     * @return \DateTime|null
-     */
-    public function getLastRunAt()
-    {
-        return $this->container['last_run_at'];
-    }
-
-    /**
-     * Sets last_run_at
-     *
-     * @param \DateTime|null $last_run_at last_run_at
-     *
-     * @return self
-     */
-    public function setLastRunAt($last_run_at)
-    {
-        $this->container['last_run_at'] = $last_run_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets trigger_type
-     *
-     * @return string
-     */
-    public function getTriggerType()
-    {
-        return $this->container['trigger_type'];
-    }
-
-    /**
-     * Sets trigger_type
-     *
-     * @param string $trigger_type trigger_type
-     *
-     * @return self
-     */
-    public function setTriggerType($trigger_type)
-    {
-        $this->container['trigger_type'] = $trigger_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets condition_type
-     *
-     * @return string|null
-     */
-    public function getConditionType()
-    {
-        return $this->container['condition_type'];
-    }
-
-    /**
-     * Sets condition_type
-     *
-     * @param string|null $condition_type condition_type
-     *
-     * @return self
-     */
-    public function setConditionType($condition_type)
-    {
-        $this->container['condition_type'] = $condition_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets action_type
-     *
-     * @return string
-     */
-    public function getActionType()
-    {
-        return $this->container['action_type'];
-    }
-
-    /**
-     * Sets action_type
-     *
-     * @param string $action_type action_type
-     *
-     * @return self
-     */
-    public function setActionType($action_type)
-    {
-        $this->container['action_type'] = $action_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets run_count
-     *
-     * @return float
-     */
-    public function getRunCount()
-    {
-        return $this->container['run_count'];
-    }
-
-    /**
-     * Sets run_count
-     *
-     * @param float $run_count run_count
-     *
-     * @return self
-     */
-    public function setRunCount($run_count)
-    {
-        $this->container['run_count'] = $run_count;
+        $this->container['workflow_id'] = $workflow_id;
 
         return $this;
     }

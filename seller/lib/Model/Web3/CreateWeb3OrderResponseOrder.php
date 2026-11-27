@@ -64,21 +64,21 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'user_id' => 'string',
-        'quantity' => 'float',
         'status' => 'string',
+        'quantity' => 'float',
         'inventory_item_id' => 'string',
         'currency' => 'string',
         'bundle' => '\Crossly\Model\Web3\CreateWeb3OrderResponseOrderBundle[]',
         'last_checked_at' => '\DateTime',
+        'storefront_id' => 'string',
         'kind' => 'string',
+        'marketplace' => 'string',
+        'token_id' => 'string',
         'external_url' => 'string',
-        'wallet_id' => 'string',
         'chain' => 'string',
         'contract' => 'string',
-        'token_id' => 'string',
-        'collection_name' => 'string',
         'order_hash' => 'string',
-        'marketplace' => 'string',
+        'wallet_id' => 'string',
         'maker' => 'string',
         'price_wei' => 'string',
         'end_price_wei' => 'string',
@@ -88,6 +88,7 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         'status_reason' => 'string',
         'item_name' => 'string',
         'item_image' => 'string',
+        'collection_name' => 'string',
         'taker' => 'string',
         'filled_tx' => 'string',
         'filled_at' => '\DateTime',
@@ -107,21 +108,21 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
         'user_id' => null,
-        'quantity' => null,
         'status' => null,
+        'quantity' => null,
         'inventory_item_id' => null,
         'currency' => null,
         'bundle' => null,
         'last_checked_at' => 'date-time',
+        'storefront_id' => null,
         'kind' => null,
+        'marketplace' => null,
+        'token_id' => null,
         'external_url' => null,
-        'wallet_id' => null,
         'chain' => null,
         'contract' => null,
-        'token_id' => null,
-        'collection_name' => null,
         'order_hash' => null,
-        'marketplace' => null,
+        'wallet_id' => null,
         'maker' => null,
         'price_wei' => null,
         'end_price_wei' => null,
@@ -131,6 +132,7 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         'status_reason' => null,
         'item_name' => null,
         'item_image' => null,
+        'collection_name' => null,
         'taker' => null,
         'filled_tx' => null,
         'filled_at' => 'date-time',
@@ -169,21 +171,21 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
-        'quantity' => 'quantity',
         'status' => 'status',
+        'quantity' => 'quantity',
         'inventory_item_id' => 'inventoryItemId',
         'currency' => 'currency',
         'bundle' => 'bundle',
         'last_checked_at' => 'lastCheckedAt',
+        'storefront_id' => 'storefrontId',
         'kind' => 'kind',
+        'marketplace' => 'marketplace',
+        'token_id' => 'tokenId',
         'external_url' => 'externalUrl',
-        'wallet_id' => 'walletId',
         'chain' => 'chain',
         'contract' => 'contract',
-        'token_id' => 'tokenId',
-        'collection_name' => 'collectionName',
         'order_hash' => 'orderHash',
-        'marketplace' => 'marketplace',
+        'wallet_id' => 'walletId',
         'maker' => 'maker',
         'price_wei' => 'priceWei',
         'end_price_wei' => 'endPriceWei',
@@ -193,6 +195,7 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         'status_reason' => 'statusReason',
         'item_name' => 'itemName',
         'item_image' => 'itemImage',
+        'collection_name' => 'collectionName',
         'taker' => 'taker',
         'filled_tx' => 'filledTx',
         'filled_at' => 'filledAt',
@@ -210,21 +213,21 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
-        'quantity' => 'setQuantity',
         'status' => 'setStatus',
+        'quantity' => 'setQuantity',
         'inventory_item_id' => 'setInventoryItemId',
         'currency' => 'setCurrency',
         'bundle' => 'setBundle',
         'last_checked_at' => 'setLastCheckedAt',
+        'storefront_id' => 'setStorefrontId',
         'kind' => 'setKind',
+        'marketplace' => 'setMarketplace',
+        'token_id' => 'setTokenId',
         'external_url' => 'setExternalUrl',
-        'wallet_id' => 'setWalletId',
         'chain' => 'setChain',
         'contract' => 'setContract',
-        'token_id' => 'setTokenId',
-        'collection_name' => 'setCollectionName',
         'order_hash' => 'setOrderHash',
-        'marketplace' => 'setMarketplace',
+        'wallet_id' => 'setWalletId',
         'maker' => 'setMaker',
         'price_wei' => 'setPriceWei',
         'end_price_wei' => 'setEndPriceWei',
@@ -234,6 +237,7 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         'status_reason' => 'setStatusReason',
         'item_name' => 'setItemName',
         'item_image' => 'setItemImage',
+        'collection_name' => 'setCollectionName',
         'taker' => 'setTaker',
         'filled_tx' => 'setFilledTx',
         'filled_at' => 'setFilledAt',
@@ -251,21 +255,21 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
-        'quantity' => 'getQuantity',
         'status' => 'getStatus',
+        'quantity' => 'getQuantity',
         'inventory_item_id' => 'getInventoryItemId',
         'currency' => 'getCurrency',
         'bundle' => 'getBundle',
         'last_checked_at' => 'getLastCheckedAt',
+        'storefront_id' => 'getStorefrontId',
         'kind' => 'getKind',
+        'marketplace' => 'getMarketplace',
+        'token_id' => 'getTokenId',
         'external_url' => 'getExternalUrl',
-        'wallet_id' => 'getWalletId',
         'chain' => 'getChain',
         'contract' => 'getContract',
-        'token_id' => 'getTokenId',
-        'collection_name' => 'getCollectionName',
         'order_hash' => 'getOrderHash',
-        'marketplace' => 'getMarketplace',
+        'wallet_id' => 'getWalletId',
         'maker' => 'getMaker',
         'price_wei' => 'getPriceWei',
         'end_price_wei' => 'getEndPriceWei',
@@ -275,6 +279,7 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         'status_reason' => 'getStatusReason',
         'item_name' => 'getItemName',
         'item_image' => 'getItemImage',
+        'collection_name' => 'getCollectionName',
         'taker' => 'getTaker',
         'filled_tx' => 'getFilledTx',
         'filled_at' => 'getFilledAt',
@@ -323,15 +328,15 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    const STATUS_OPEN = 'open';
-    const STATUS_FILLED = 'filled';
     const STATUS_CANCELLED = 'cancelled';
+    const STATUS_OPEN = 'open';
     const STATUS_EXPIRED = 'expired';
+    const STATUS_FILLED = 'filled';
     const STATUS_INVALID = 'invalid';
     const KIND_BUNDLE = 'bundle';
+    const KIND_OFFER = 'offer';
     const KIND_LISTING = 'listing';
     const KIND_PRIVATE_LISTING = 'private_listing';
-    const KIND_OFFER = 'offer';
     const KIND_COLLECTION_OFFER = 'collection_offer';
     const KIND_TRAIT_OFFER = 'trait_offer';
 
@@ -343,10 +348,10 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_OPEN,
-            self::STATUS_FILLED,
             self::STATUS_CANCELLED,
+            self::STATUS_OPEN,
             self::STATUS_EXPIRED,
+            self::STATUS_FILLED,
             self::STATUS_INVALID,
         ];
     }
@@ -360,9 +365,9 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
     {
         return [
             self::KIND_BUNDLE,
+            self::KIND_OFFER,
             self::KIND_LISTING,
             self::KIND_PRIVATE_LISTING,
-            self::KIND_OFFER,
             self::KIND_COLLECTION_OFFER,
             self::KIND_TRAIT_OFFER,
         ];
@@ -387,21 +392,21 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['inventory_item_id'] = $data['inventory_item_id'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['bundle'] = $data['bundle'] ?? null;
         $this->container['last_checked_at'] = $data['last_checked_at'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
+        $this->container['marketplace'] = $data['marketplace'] ?? null;
+        $this->container['token_id'] = $data['token_id'] ?? null;
         $this->container['external_url'] = $data['external_url'] ?? null;
-        $this->container['wallet_id'] = $data['wallet_id'] ?? null;
         $this->container['chain'] = $data['chain'] ?? null;
         $this->container['contract'] = $data['contract'] ?? null;
-        $this->container['token_id'] = $data['token_id'] ?? null;
-        $this->container['collection_name'] = $data['collection_name'] ?? null;
         $this->container['order_hash'] = $data['order_hash'] ?? null;
-        $this->container['marketplace'] = $data['marketplace'] ?? null;
+        $this->container['wallet_id'] = $data['wallet_id'] ?? null;
         $this->container['maker'] = $data['maker'] ?? null;
         $this->container['price_wei'] = $data['price_wei'] ?? null;
         $this->container['end_price_wei'] = $data['end_price_wei'] ?? null;
@@ -411,6 +416,7 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         $this->container['status_reason'] = $data['status_reason'] ?? null;
         $this->container['item_name'] = $data['item_name'] ?? null;
         $this->container['item_image'] = $data['item_image'] ?? null;
+        $this->container['collection_name'] = $data['collection_name'] ?? null;
         $this->container['taker'] = $data['taker'] ?? null;
         $this->container['filled_tx'] = $data['filled_tx'] ?? null;
         $this->container['filled_at'] = $data['filled_at'] ?? null;
@@ -436,9 +442,6 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
-        if ($this->container['quantity'] === null) {
-            $invalidProperties[] = "'quantity' can't be null";
-        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -451,6 +454,9 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
             );
         }
 
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
+        }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
@@ -466,6 +472,9 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
             );
         }
 
+        if ($this->container['marketplace'] === null) {
+            $invalidProperties[] = "'marketplace' can't be null";
+        }
         if ($this->container['chain'] === null) {
             $invalidProperties[] = "'chain' can't be null";
         }
@@ -474,9 +483,6 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
         }
         if ($this->container['order_hash'] === null) {
             $invalidProperties[] = "'order_hash' can't be null";
-        }
-        if ($this->container['marketplace'] === null) {
-            $invalidProperties[] = "'marketplace' can't be null";
         }
         if ($this->container['maker'] === null) {
             $invalidProperties[] = "'maker' can't be null";
@@ -605,30 +611,6 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets quantity
-     *
-     * @return float
-     */
-    public function getQuantity()
-    {
-        return $this->container['quantity'];
-    }
-
-    /**
-     * Sets quantity
-     *
-     * @param float $quantity quantity
-     *
-     * @return self
-     */
-    public function setQuantity($quantity)
-    {
-        $this->container['quantity'] = $quantity;
-
-        return $this;
-    }
-
-    /**
      * Gets status
      *
      * @return string
@@ -658,6 +640,30 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return float
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param float $quantity quantity
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }
@@ -759,6 +765,30 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id storefront_id
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
+
+        return $this;
+    }
+
+    /**
      * Gets kind
      *
      * @return string
@@ -793,6 +823,54 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets marketplace
+     *
+     * @return string
+     */
+    public function getMarketplace()
+    {
+        return $this->container['marketplace'];
+    }
+
+    /**
+     * Sets marketplace
+     *
+     * @param string $marketplace marketplace
+     *
+     * @return self
+     */
+    public function setMarketplace($marketplace)
+    {
+        $this->container['marketplace'] = $marketplace;
+
+        return $this;
+    }
+
+    /**
+     * Gets token_id
+     *
+     * @return string|null
+     */
+    public function getTokenId()
+    {
+        return $this->container['token_id'];
+    }
+
+    /**
+     * Sets token_id
+     *
+     * @param string|null $token_id token_id
+     *
+     * @return self
+     */
+    public function setTokenId($token_id)
+    {
+        $this->container['token_id'] = $token_id;
+
+        return $this;
+    }
+
+    /**
      * Gets external_url
      *
      * @return string|null
@@ -812,30 +890,6 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
     public function setExternalUrl($external_url)
     {
         $this->container['external_url'] = $external_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets wallet_id
-     *
-     * @return string|null
-     */
-    public function getWalletId()
-    {
-        return $this->container['wallet_id'];
-    }
-
-    /**
-     * Sets wallet_id
-     *
-     * @param string|null $wallet_id wallet_id
-     *
-     * @return self
-     */
-    public function setWalletId($wallet_id)
-    {
-        $this->container['wallet_id'] = $wallet_id;
 
         return $this;
     }
@@ -889,54 +943,6 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets token_id
-     *
-     * @return string|null
-     */
-    public function getTokenId()
-    {
-        return $this->container['token_id'];
-    }
-
-    /**
-     * Sets token_id
-     *
-     * @param string|null $token_id token_id
-     *
-     * @return self
-     */
-    public function setTokenId($token_id)
-    {
-        $this->container['token_id'] = $token_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets collection_name
-     *
-     * @return string|null
-     */
-    public function getCollectionName()
-    {
-        return $this->container['collection_name'];
-    }
-
-    /**
-     * Sets collection_name
-     *
-     * @param string|null $collection_name collection_name
-     *
-     * @return self
-     */
-    public function setCollectionName($collection_name)
-    {
-        $this->container['collection_name'] = $collection_name;
-
-        return $this;
-    }
-
-    /**
      * Gets order_hash
      *
      * @return string
@@ -961,25 +967,25 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets marketplace
+     * Gets wallet_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getMarketplace()
+    public function getWalletId()
     {
-        return $this->container['marketplace'];
+        return $this->container['wallet_id'];
     }
 
     /**
-     * Sets marketplace
+     * Sets wallet_id
      *
-     * @param string $marketplace marketplace
+     * @param string|null $wallet_id wallet_id
      *
      * @return self
      */
-    public function setMarketplace($marketplace)
+    public function setWalletId($wallet_id)
     {
-        $this->container['marketplace'] = $marketplace;
+        $this->container['wallet_id'] = $wallet_id;
 
         return $this;
     }
@@ -1196,6 +1202,30 @@ class CreateWeb3OrderResponseOrder implements ModelInterface, ArrayAccess, \Json
     public function setItemImage($item_image)
     {
         $this->container['item_image'] = $item_image;
+
+        return $this;
+    }
+
+    /**
+     * Gets collection_name
+     *
+     * @return string|null
+     */
+    public function getCollectionName()
+    {
+        return $this->container['collection_name'];
+    }
+
+    /**
+     * Sets collection_name
+     *
+     * @param string|null $collection_name collection_name
+     *
+     * @return self
+     */
+    public function setCollectionName($collection_name)
+    {
+        $this->container['collection_name'] = $collection_name;
 
         return $this;
     }

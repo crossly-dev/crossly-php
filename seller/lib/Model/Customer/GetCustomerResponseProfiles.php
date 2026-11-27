@@ -272,8 +272,8 @@ class GetCustomerResponseProfiles implements ModelInterface, ArrayAccess, \JsonS
     const SOURCE_ORDER = 'order';
     const SOURCE_PROFILE_FETCH = 'profile_fetch';
     const FETCH_STATUS_ERROR = 'error';
-    const FETCH_STATUS_UNSUPPORTED = 'unsupported';
     const FETCH_STATUS_OK = 'ok';
+    const FETCH_STATUS_UNSUPPORTED = 'unsupported';
     const FETCH_STATUS_NOT_FOUND = 'not_found';
 
     /**
@@ -299,8 +299,8 @@ class GetCustomerResponseProfiles implements ModelInterface, ArrayAccess, \JsonS
     {
         return [
             self::FETCH_STATUS_ERROR,
-            self::FETCH_STATUS_UNSUPPORTED,
             self::FETCH_STATUS_OK,
+            self::FETCH_STATUS_UNSUPPORTED,
             self::FETCH_STATUS_NOT_FOUND,
         ];
     }

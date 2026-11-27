@@ -65,6 +65,7 @@ class GetVaultMarketNavResponse implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => 'string',
         'totals' => '\Crossly\Model\Vault\GetVaultMarketNavResponseTotals',
         'holdings' => '\Crossly\Model\Vault\GetVaultMarketNavResponseHoldings[]',
+        'options' => '\Crossly\Model\Vault\GetVaultMarketNavResponseOptions',
         'policy' => 'string[]'
     ];
 
@@ -81,6 +82,7 @@ class GetVaultMarketNavResponse implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => null,
         'totals' => null,
         'holdings' => null,
+        'options' => null,
         'policy' => null
     ];
 
@@ -116,6 +118,7 @@ class GetVaultMarketNavResponse implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => 'currency',
         'totals' => 'totals',
         'holdings' => 'holdings',
+        'options' => 'options',
         'policy' => 'policy'
     ];
 
@@ -130,6 +133,7 @@ class GetVaultMarketNavResponse implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => 'setCurrency',
         'totals' => 'setTotals',
         'holdings' => 'setHoldings',
+        'options' => 'setOptions',
         'policy' => 'setPolicy'
     ];
 
@@ -144,6 +148,7 @@ class GetVaultMarketNavResponse implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => 'getCurrency',
         'totals' => 'getTotals',
         'holdings' => 'getHoldings',
+        'options' => 'getOptions',
         'policy' => 'getPolicy'
     ];
 
@@ -209,6 +214,7 @@ class GetVaultMarketNavResponse implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['totals'] = $data['totals'] ?? null;
         $this->container['holdings'] = $data['holdings'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
         $this->container['policy'] = $data['policy'] ?? null;
     }
 
@@ -370,6 +376,30 @@ class GetVaultMarketNavResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setHoldings($holdings)
     {
         $this->container['holdings'] = $holdings;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketNavResponseOptions|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketNavResponseOptions|null $options options
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
 
         return $this;
     }

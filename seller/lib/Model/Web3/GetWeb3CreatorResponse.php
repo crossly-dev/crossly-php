@@ -67,10 +67,10 @@ class GetWeb3CreatorResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'royalty_bps' => 'float',
         'royalty_estimate_wei' => 'string',
         'sales' => '\Crossly\Model\Web3\GetWeb3CreatorResponseSales',
-        'daily' => '\Crossly\Model\Web3\GetWeb3CreatorResponseDaily[]',
-        'recent' => '\Crossly\Model\Web3\GetWeb3CreatorResponseRecent[]',
+        'daily' => '\Crossly\Model\Creator\GetCreatorCollectionResponseDataDashboardDaily[]',
+        'recent' => '\Crossly\Model\Creator\GetCreatorCollectionResponseDataDashboardRecent[]',
         'holders' => '\Crossly\Model\Web3\GetWeb3CreatorResponseHolders',
-        'mint' => '\Crossly\Model\Web3\GetWeb3CreatorResponseMint'
+        'mint' => '\Crossly\Model\Creator\GetCreatorCollectionResponseDataDashboardMint'
     ];
 
     /**
@@ -458,7 +458,7 @@ class GetWeb3CreatorResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets daily
      *
-     * @return \Crossly\Model\Web3\GetWeb3CreatorResponseDaily[]
+     * @return \Crossly\Model\Creator\GetCreatorCollectionResponseDataDashboardDaily[]
      */
     public function getDaily()
     {
@@ -468,7 +468,7 @@ class GetWeb3CreatorResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets daily
      *
-     * @param \Crossly\Model\Web3\GetWeb3CreatorResponseDaily[] $daily daily
+     * @param \Crossly\Model\Creator\GetCreatorCollectionResponseDataDashboardDaily[] $daily daily
      *
      * @return self
      */
@@ -482,7 +482,7 @@ class GetWeb3CreatorResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets recent
      *
-     * @return \Crossly\Model\Web3\GetWeb3CreatorResponseRecent[]
+     * @return \Crossly\Model\Creator\GetCreatorCollectionResponseDataDashboardRecent[]
      */
     public function getRecent()
     {
@@ -492,7 +492,7 @@ class GetWeb3CreatorResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets recent
      *
-     * @param \Crossly\Model\Web3\GetWeb3CreatorResponseRecent[] $recent recent
+     * @param \Crossly\Model\Creator\GetCreatorCollectionResponseDataDashboardRecent[] $recent recent
      *
      * @return self
      */
@@ -530,7 +530,7 @@ class GetWeb3CreatorResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets mint
      *
-     * @return \Crossly\Model\Web3\GetWeb3CreatorResponseMint|null
+     * @return \Crossly\Model\Creator\GetCreatorCollectionResponseDataDashboardMint|null
      */
     public function getMint()
     {
@@ -540,7 +540,7 @@ class GetWeb3CreatorResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets mint
      *
-     * @param \Crossly\Model\Web3\GetWeb3CreatorResponseMint|null $mint mint
+     * @param \Crossly\Model\Creator\GetCreatorCollectionResponseDataDashboardMint|null $mint mint
      *
      * @return self
      */

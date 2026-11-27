@@ -61,8 +61,8 @@ class GetBuyerListingFitResponseDataChart implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'kind' => 'string',
-        'rows' => '\Crossly\Buyer\Model\Listing\GetBuyerListingFitResponseDataChartRows[]',
-        'kind_label' => 'string'
+        'kind_label' => 'string',
+        'rows' => '\Crossly\Buyer\Model\Listing\GetBuyerListingFitResponseDataChartRows[]'
     ];
 
     /**
@@ -74,8 +74,8 @@ class GetBuyerListingFitResponseDataChart implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'kind' => null,
-        'rows' => null,
-        'kind_label' => null
+        'kind_label' => null,
+        'rows' => null
     ];
 
     /**
@@ -106,8 +106,8 @@ class GetBuyerListingFitResponseDataChart implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'kind' => 'kind',
-        'rows' => 'rows',
-        'kind_label' => 'kindLabel'
+        'kind_label' => 'kindLabel',
+        'rows' => 'rows'
     ];
 
     /**
@@ -117,8 +117,8 @@ class GetBuyerListingFitResponseDataChart implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'kind' => 'setKind',
-        'rows' => 'setRows',
-        'kind_label' => 'setKindLabel'
+        'kind_label' => 'setKindLabel',
+        'rows' => 'setRows'
     ];
 
     /**
@@ -128,8 +128,8 @@ class GetBuyerListingFitResponseDataChart implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'kind' => 'getKind',
-        'rows' => 'getRows',
-        'kind_label' => 'getKindLabel'
+        'kind_label' => 'getKindLabel',
+        'rows' => 'getRows'
     ];
 
     /**
@@ -190,8 +190,8 @@ class GetBuyerListingFitResponseDataChart implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['kind'] = $data['kind'] ?? null;
-        $this->container['rows'] = $data['rows'] ?? null;
         $this->container['kind_label'] = $data['kind_label'] ?? null;
+        $this->container['rows'] = $data['rows'] ?? null;
     }
 
     /**
@@ -206,11 +206,11 @@ class GetBuyerListingFitResponseDataChart implements ModelInterface, ArrayAccess
         if ($this->container['kind'] === null) {
             $invalidProperties[] = "'kind' can't be null";
         }
-        if ($this->container['rows'] === null) {
-            $invalidProperties[] = "'rows' can't be null";
-        }
         if ($this->container['kind_label'] === null) {
             $invalidProperties[] = "'kind_label' can't be null";
+        }
+        if ($this->container['rows'] === null) {
+            $invalidProperties[] = "'rows' can't be null";
         }
         return $invalidProperties;
     }
@@ -252,30 +252,6 @@ class GetBuyerListingFitResponseDataChart implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets rows
-     *
-     * @return \Crossly\Buyer\Model\Listing\GetBuyerListingFitResponseDataChartRows[]
-     */
-    public function getRows()
-    {
-        return $this->container['rows'];
-    }
-
-    /**
-     * Sets rows
-     *
-     * @param \Crossly\Buyer\Model\Listing\GetBuyerListingFitResponseDataChartRows[] $rows rows
-     *
-     * @return self
-     */
-    public function setRows($rows)
-    {
-        $this->container['rows'] = $rows;
-
-        return $this;
-    }
-
-    /**
      * Gets kind_label
      *
      * @return string
@@ -295,6 +271,30 @@ class GetBuyerListingFitResponseDataChart implements ModelInterface, ArrayAccess
     public function setKindLabel($kind_label)
     {
         $this->container['kind_label'] = $kind_label;
+
+        return $this;
+    }
+
+    /**
+     * Gets rows
+     *
+     * @return \Crossly\Buyer\Model\Listing\GetBuyerListingFitResponseDataChartRows[]
+     */
+    public function getRows()
+    {
+        return $this->container['rows'];
+    }
+
+    /**
+     * Sets rows
+     *
+     * @param \Crossly\Buyer\Model\Listing\GetBuyerListingFitResponseDataChartRows[] $rows rows
+     *
+     * @return self
+     */
+    public function setRows($rows)
+    {
+        $this->container['rows'] = $rows;
 
         return $this;
     }

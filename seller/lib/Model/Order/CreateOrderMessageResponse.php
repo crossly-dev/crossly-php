@@ -62,6 +62,8 @@ class CreateOrderMessageResponse implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'order_id' => 'string',
         'sent' => 'bool',
+        'relayed' => 'bool',
+        'command_id' => 'string',
         'platform_conversation_id' => 'string'
     ];
 
@@ -75,6 +77,8 @@ class CreateOrderMessageResponse implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'order_id' => null,
         'sent' => null,
+        'relayed' => null,
+        'command_id' => null,
         'platform_conversation_id' => null
     ];
 
@@ -107,6 +111,8 @@ class CreateOrderMessageResponse implements ModelInterface, ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'order_id' => 'orderId',
         'sent' => 'sent',
+        'relayed' => 'relayed',
+        'command_id' => 'commandId',
         'platform_conversation_id' => 'platformConversationId'
     ];
 
@@ -118,6 +124,8 @@ class CreateOrderMessageResponse implements ModelInterface, ArrayAccess, \JsonSe
     protected static $setters = [
         'order_id' => 'setOrderId',
         'sent' => 'setSent',
+        'relayed' => 'setRelayed',
+        'command_id' => 'setCommandId',
         'platform_conversation_id' => 'setPlatformConversationId'
     ];
 
@@ -129,6 +137,8 @@ class CreateOrderMessageResponse implements ModelInterface, ArrayAccess, \JsonSe
     protected static $getters = [
         'order_id' => 'getOrderId',
         'sent' => 'getSent',
+        'relayed' => 'getRelayed',
+        'command_id' => 'getCommandId',
         'platform_conversation_id' => 'getPlatformConversationId'
     ];
 
@@ -191,6 +201,8 @@ class CreateOrderMessageResponse implements ModelInterface, ArrayAccess, \JsonSe
     {
         $this->container['order_id'] = $data['order_id'] ?? null;
         $this->container['sent'] = $data['sent'] ?? null;
+        $this->container['relayed'] = $data['relayed'] ?? null;
+        $this->container['command_id'] = $data['command_id'] ?? null;
         $this->container['platform_conversation_id'] = $data['platform_conversation_id'] ?? null;
     }
 
@@ -208,9 +220,6 @@ class CreateOrderMessageResponse implements ModelInterface, ArrayAccess, \JsonSe
         }
         if ($this->container['sent'] === null) {
             $invalidProperties[] = "'sent' can't be null";
-        }
-        if ($this->container['platform_conversation_id'] === null) {
-            $invalidProperties[] = "'platform_conversation_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -276,9 +285,57 @@ class CreateOrderMessageResponse implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets relayed
+     *
+     * @return bool|null
+     */
+    public function getRelayed()
+    {
+        return $this->container['relayed'];
+    }
+
+    /**
+     * Sets relayed
+     *
+     * @param bool|null $relayed True when the managing app was asked to send it (action authority).
+     *
+     * @return self
+     */
+    public function setRelayed($relayed)
+    {
+        $this->container['relayed'] = $relayed;
+
+        return $this;
+    }
+
+    /**
+     * Gets command_id
+     *
+     * @return string|null
+     */
+    public function getCommandId()
+    {
+        return $this->container['command_id'];
+    }
+
+    /**
+     * Sets command_id
+     *
+     * @param string|null $command_id The managing-app command id, on a relay.
+     *
+     * @return self
+     */
+    public function setCommandId($command_id)
+    {
+        $this->container['command_id'] = $command_id;
+
+        return $this;
+    }
+
+    /**
      * Gets platform_conversation_id
      *
-     * @return string
+     * @return string|null
      */
     public function getPlatformConversationId()
     {
@@ -288,7 +345,7 @@ class CreateOrderMessageResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets platform_conversation_id
      *
-     * @param string $platform_conversation_id platform_conversation_id
+     * @param string|null $platform_conversation_id platform_conversation_id
      *
      * @return self
      */

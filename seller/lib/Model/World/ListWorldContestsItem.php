@@ -63,10 +63,10 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'string',
         'created_at' => '\DateTime',
         'status' => 'string',
+        'owner_user_id' => 'string',
         'ends_at' => '\DateTime',
         'starts_at' => '\DateTime',
         'fee_cents' => 'float',
-        'owner_user_id' => 'string',
         'settled_at' => '\DateTime',
         'game_place' => 'string',
         'game_object' => 'string',
@@ -85,10 +85,10 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => null,
         'created_at' => 'date-time',
         'status' => null,
+        'owner_user_id' => null,
         'ends_at' => 'date-time',
         'starts_at' => 'date-time',
         'fee_cents' => null,
-        'owner_user_id' => null,
         'settled_at' => 'date-time',
         'game_place' => null,
         'game_object' => null,
@@ -126,10 +126,10 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'id',
         'created_at' => 'createdAt',
         'status' => 'status',
+        'owner_user_id' => 'ownerUserId',
         'ends_at' => 'endsAt',
         'starts_at' => 'startsAt',
         'fee_cents' => 'feeCents',
-        'owner_user_id' => 'ownerUserId',
         'settled_at' => 'settledAt',
         'game_place' => 'gamePlace',
         'game_object' => 'gameObject',
@@ -146,10 +146,10 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'status' => 'setStatus',
+        'owner_user_id' => 'setOwnerUserId',
         'ends_at' => 'setEndsAt',
         'starts_at' => 'setStartsAt',
         'fee_cents' => 'setFeeCents',
-        'owner_user_id' => 'setOwnerUserId',
         'settled_at' => 'setSettledAt',
         'game_place' => 'setGamePlace',
         'game_object' => 'setGameObject',
@@ -166,10 +166,10 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'status' => 'getStatus',
+        'owner_user_id' => 'getOwnerUserId',
         'ends_at' => 'getEndsAt',
         'starts_at' => 'getStartsAt',
         'fee_cents' => 'getFeeCents',
-        'owner_user_id' => 'getOwnerUserId',
         'settled_at' => 'getSettledAt',
         'game_place' => 'getGamePlace',
         'game_object' => 'getGameObject',
@@ -218,12 +218,12 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    const STATUS_OPEN = 'open';
     const STATUS_CANCELLED = 'cancelled';
+    const STATUS_OPEN = 'open';
     const STATUS_SETTLED = 'settled';
     const ENTRY_MODE_FREE = 'free';
-    const ENTRY_MODE_SPONSORED = 'sponsored';
     const ENTRY_MODE_PAID = 'paid';
+    const ENTRY_MODE_SPONSORED = 'sponsored';
     const SCORE_ORDER_ASC = 'asc';
     const SCORE_ORDER_DESC = 'desc';
 
@@ -235,8 +235,8 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_OPEN,
             self::STATUS_CANCELLED,
+            self::STATUS_OPEN,
             self::STATUS_SETTLED,
         ];
     }
@@ -250,8 +250,8 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         return [
             self::ENTRY_MODE_FREE,
-            self::ENTRY_MODE_SPONSORED,
             self::ENTRY_MODE_PAID,
+            self::ENTRY_MODE_SPONSORED,
         ];
     }
 
@@ -286,10 +286,10 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['owner_user_id'] = $data['owner_user_id'] ?? null;
         $this->container['ends_at'] = $data['ends_at'] ?? null;
         $this->container['starts_at'] = $data['starts_at'] ?? null;
         $this->container['fee_cents'] = $data['fee_cents'] ?? null;
-        $this->container['owner_user_id'] = $data['owner_user_id'] ?? null;
         $this->container['settled_at'] = $data['settled_at'] ?? null;
         $this->container['game_place'] = $data['game_place'] ?? null;
         $this->container['game_object'] = $data['game_object'] ?? null;
@@ -324,14 +324,14 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
             );
         }
 
+        if ($this->container['owner_user_id'] === null) {
+            $invalidProperties[] = "'owner_user_id' can't be null";
+        }
         if ($this->container['ends_at'] === null) {
             $invalidProperties[] = "'ends_at' can't be null";
         }
         if ($this->container['starts_at'] === null) {
             $invalidProperties[] = "'starts_at' can't be null";
-        }
-        if ($this->container['owner_user_id'] === null) {
-            $invalidProperties[] = "'owner_user_id' can't be null";
         }
         if ($this->container['game_place'] === null) {
             $invalidProperties[] = "'game_place' can't be null";
@@ -461,6 +461,30 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets owner_user_id
+     *
+     * @return string
+     */
+    public function getOwnerUserId()
+    {
+        return $this->container['owner_user_id'];
+    }
+
+    /**
+     * Sets owner_user_id
+     *
+     * @param string $owner_user_id owner_user_id
+     *
+     * @return self
+     */
+    public function setOwnerUserId($owner_user_id)
+    {
+        $this->container['owner_user_id'] = $owner_user_id;
+
+        return $this;
+    }
+
+    /**
      * Gets ends_at
      *
      * @return \DateTime
@@ -528,30 +552,6 @@ class ListWorldContestsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFeeCents($fee_cents)
     {
         $this->container['fee_cents'] = $fee_cents;
-
-        return $this;
-    }
-
-    /**
-     * Gets owner_user_id
-     *
-     * @return string
-     */
-    public function getOwnerUserId()
-    {
-        return $this->container['owner_user_id'];
-    }
-
-    /**
-     * Sets owner_user_id
-     *
-     * @param string $owner_user_id owner_user_id
-     *
-     * @return self
-     */
-    public function setOwnerUserId($owner_user_id)
-    {
-        $this->container['owner_user_id'] = $owner_user_id;
 
         return $this;
     }

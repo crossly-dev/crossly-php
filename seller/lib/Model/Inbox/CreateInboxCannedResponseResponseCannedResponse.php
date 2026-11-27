@@ -65,8 +65,9 @@ class CreateInboxCannedResponseResponseCannedResponse implements ModelInterface,
         'created_at' => '\DateTime',
         'user_id' => 'string',
         'title' => 'string',
+        'body' => 'string',
         'surface' => 'string',
-        'body' => 'string'
+        'sort_order' => 'float'
     ];
 
     /**
@@ -82,8 +83,9 @@ class CreateInboxCannedResponseResponseCannedResponse implements ModelInterface,
         'created_at' => 'date-time',
         'user_id' => null,
         'title' => null,
+        'body' => null,
         'surface' => null,
-        'body' => null
+        'sort_order' => null
     ];
 
     /**
@@ -118,8 +120,9 @@ class CreateInboxCannedResponseResponseCannedResponse implements ModelInterface,
         'created_at' => 'createdAt',
         'user_id' => 'userId',
         'title' => 'title',
+        'body' => 'body',
         'surface' => 'surface',
-        'body' => 'body'
+        'sort_order' => 'sortOrder'
     ];
 
     /**
@@ -133,8 +136,9 @@ class CreateInboxCannedResponseResponseCannedResponse implements ModelInterface,
         'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
         'title' => 'setTitle',
+        'body' => 'setBody',
         'surface' => 'setSurface',
-        'body' => 'setBody'
+        'sort_order' => 'setSortOrder'
     ];
 
     /**
@@ -148,8 +152,9 @@ class CreateInboxCannedResponseResponseCannedResponse implements ModelInterface,
         'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
         'title' => 'getTitle',
+        'body' => 'getBody',
         'surface' => 'getSurface',
-        'body' => 'getBody'
+        'sort_order' => 'getSortOrder'
     ];
 
     /**
@@ -214,8 +219,9 @@ class CreateInboxCannedResponseResponseCannedResponse implements ModelInterface,
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
-        $this->container['surface'] = $data['surface'] ?? null;
         $this->container['body'] = $data['body'] ?? null;
+        $this->container['surface'] = $data['surface'] ?? null;
+        $this->container['sort_order'] = $data['sort_order'] ?? null;
     }
 
     /**
@@ -239,11 +245,14 @@ class CreateInboxCannedResponseResponseCannedResponse implements ModelInterface,
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
         }
+        if ($this->container['body'] === null) {
+            $invalidProperties[] = "'body' can't be null";
+        }
         if ($this->container['surface'] === null) {
             $invalidProperties[] = "'surface' can't be null";
         }
-        if ($this->container['body'] === null) {
-            $invalidProperties[] = "'body' can't be null";
+        if ($this->container['sort_order'] === null) {
+            $invalidProperties[] = "'sort_order' can't be null";
         }
         return $invalidProperties;
     }
@@ -381,6 +390,30 @@ class CreateInboxCannedResponseResponseCannedResponse implements ModelInterface,
     }
 
     /**
+     * Gets body
+     *
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->container['body'];
+    }
+
+    /**
+     * Sets body
+     *
+     * @param string $body body
+     *
+     * @return self
+     */
+    public function setBody($body)
+    {
+        $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
      * Gets surface
      *
      * @return string
@@ -405,25 +438,25 @@ class CreateInboxCannedResponseResponseCannedResponse implements ModelInterface,
     }
 
     /**
-     * Gets body
+     * Gets sort_order
      *
-     * @return string
+     * @return float
      */
-    public function getBody()
+    public function getSortOrder()
     {
-        return $this->container['body'];
+        return $this->container['sort_order'];
     }
 
     /**
-     * Sets body
+     * Sets sort_order
      *
-     * @param string $body body
+     * @param float $sort_order sort_order
      *
      * @return self
      */
-    public function setBody($body)
+    public function setSortOrder($sort_order)
     {
-        $this->container['body'] = $body;
+        $this->container['sort_order'] = $sort_order;
 
         return $this;
     }

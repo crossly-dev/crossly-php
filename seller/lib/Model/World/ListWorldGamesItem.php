@@ -66,7 +66,7 @@ class ListWorldGamesItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'version' => 'string',
         'description' => 'string',
         'mode' => 'string',
-        'players' => '\Crossly\Model\World\GetWorldGameResponseDataPlayers',
+        'players' => '\Crossly\Model\Common\MinMax',
         'places' => '\Crossly\Model\World\ListWorldGamesItemPlacesItem[]',
         'rating' => 'string',
         'scoring' => '\Crossly\Model\World\GetWorldGameLeaderboardResponseDataScoring',
@@ -536,7 +536,7 @@ class ListWorldGamesItem implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets players
      *
-     * @return \Crossly\Model\World\GetWorldGameResponseDataPlayers
+     * @return \Crossly\Model\Common\MinMax
      */
     public function getPlayers()
     {
@@ -546,7 +546,7 @@ class ListWorldGamesItem implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets players
      *
-     * @param \Crossly\Model\World\GetWorldGameResponseDataPlayers $players players
+     * @param \Crossly\Model\Common\MinMax $players players
      *
      * @return self
      */

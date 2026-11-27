@@ -65,6 +65,11 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'closed_at' => 'string',
         'created_at' => 'string',
         'ship_to' => 'array<string,mixed>',
+        'platform_listing_id' => 'string',
+        'payout_timing' => 'string',
+        'payout_released_at' => 'string',
+        'order_id' => 'string',
+        'crossly_fee_cents' => 'float',
         'id' => 'string',
         'status' => 'string',
         'slug' => 'string',
@@ -86,7 +91,22 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'condition_photos_out' => 'string[]',
         'condition_photos_in' => 'string[]',
         'approval_due_at' => 'string',
-        'deposit_refunded_cents' => 'float'
+        'deposit_refunded_cents' => 'float',
+        'unit' => 'float',
+        'fulfilment' => 'string',
+        'cleaning_fee_cents' => 'float',
+        'damage_waiver' => 'bool',
+        'damage_waiver_cents' => 'float',
+        'late_fee_cents' => 'float',
+        'rent_refunded_cents' => 'float',
+        'buyout_cents' => 'float',
+        'charges' => 'array<string,mixed>',
+        'condition_photos_return' => 'string[]',
+        'approved_at' => 'string',
+        'delivered_at' => 'string',
+        'return_shipped_at' => 'string',
+        'inspected_at' => 'string',
+        'bought_out_at' => 'string'
     ];
 
     /**
@@ -102,6 +122,11 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'closed_at' => null,
         'created_at' => null,
         'ship_to' => null,
+        'platform_listing_id' => null,
+        'payout_timing' => null,
+        'payout_released_at' => null,
+        'order_id' => null,
+        'crossly_fee_cents' => null,
         'id' => null,
         'status' => null,
         'slug' => null,
@@ -123,7 +148,22 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'condition_photos_out' => null,
         'condition_photos_in' => null,
         'approval_due_at' => null,
-        'deposit_refunded_cents' => null
+        'deposit_refunded_cents' => null,
+        'unit' => null,
+        'fulfilment' => null,
+        'cleaning_fee_cents' => null,
+        'damage_waiver' => null,
+        'damage_waiver_cents' => null,
+        'late_fee_cents' => null,
+        'rent_refunded_cents' => null,
+        'buyout_cents' => null,
+        'charges' => null,
+        'condition_photos_return' => null,
+        'approved_at' => null,
+        'delivered_at' => null,
+        'return_shipped_at' => null,
+        'inspected_at' => null,
+        'bought_out_at' => null
     ];
 
     /**
@@ -158,6 +198,11 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'closed_at' => 'closedAt',
         'created_at' => 'createdAt',
         'ship_to' => 'shipTo',
+        'platform_listing_id' => 'platformListingId',
+        'payout_timing' => 'payoutTiming',
+        'payout_released_at' => 'payoutReleasedAt',
+        'order_id' => 'orderId',
+        'crossly_fee_cents' => 'crosslyFeeCents',
         'id' => 'id',
         'status' => 'status',
         'slug' => 'slug',
@@ -179,7 +224,22 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'condition_photos_out' => 'conditionPhotosOut',
         'condition_photos_in' => 'conditionPhotosIn',
         'approval_due_at' => 'approvalDueAt',
-        'deposit_refunded_cents' => 'depositRefundedCents'
+        'deposit_refunded_cents' => 'depositRefundedCents',
+        'unit' => 'unit',
+        'fulfilment' => 'fulfilment',
+        'cleaning_fee_cents' => 'cleaningFeeCents',
+        'damage_waiver' => 'damageWaiver',
+        'damage_waiver_cents' => 'damageWaiverCents',
+        'late_fee_cents' => 'lateFeeCents',
+        'rent_refunded_cents' => 'rentRefundedCents',
+        'buyout_cents' => 'buyoutCents',
+        'charges' => 'charges',
+        'condition_photos_return' => 'conditionPhotosReturn',
+        'approved_at' => 'approvedAt',
+        'delivered_at' => 'deliveredAt',
+        'return_shipped_at' => 'returnShippedAt',
+        'inspected_at' => 'inspectedAt',
+        'bought_out_at' => 'boughtOutAt'
     ];
 
     /**
@@ -193,6 +253,11 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'closed_at' => 'setClosedAt',
         'created_at' => 'setCreatedAt',
         'ship_to' => 'setShipTo',
+        'platform_listing_id' => 'setPlatformListingId',
+        'payout_timing' => 'setPayoutTiming',
+        'payout_released_at' => 'setPayoutReleasedAt',
+        'order_id' => 'setOrderId',
+        'crossly_fee_cents' => 'setCrosslyFeeCents',
         'id' => 'setId',
         'status' => 'setStatus',
         'slug' => 'setSlug',
@@ -214,7 +279,22 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'condition_photos_out' => 'setConditionPhotosOut',
         'condition_photos_in' => 'setConditionPhotosIn',
         'approval_due_at' => 'setApprovalDueAt',
-        'deposit_refunded_cents' => 'setDepositRefundedCents'
+        'deposit_refunded_cents' => 'setDepositRefundedCents',
+        'unit' => 'setUnit',
+        'fulfilment' => 'setFulfilment',
+        'cleaning_fee_cents' => 'setCleaningFeeCents',
+        'damage_waiver' => 'setDamageWaiver',
+        'damage_waiver_cents' => 'setDamageWaiverCents',
+        'late_fee_cents' => 'setLateFeeCents',
+        'rent_refunded_cents' => 'setRentRefundedCents',
+        'buyout_cents' => 'setBuyoutCents',
+        'charges' => 'setCharges',
+        'condition_photos_return' => 'setConditionPhotosReturn',
+        'approved_at' => 'setApprovedAt',
+        'delivered_at' => 'setDeliveredAt',
+        'return_shipped_at' => 'setReturnShippedAt',
+        'inspected_at' => 'setInspectedAt',
+        'bought_out_at' => 'setBoughtOutAt'
     ];
 
     /**
@@ -228,6 +308,11 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'closed_at' => 'getClosedAt',
         'created_at' => 'getCreatedAt',
         'ship_to' => 'getShipTo',
+        'platform_listing_id' => 'getPlatformListingId',
+        'payout_timing' => 'getPayoutTiming',
+        'payout_released_at' => 'getPayoutReleasedAt',
+        'order_id' => 'getOrderId',
+        'crossly_fee_cents' => 'getCrosslyFeeCents',
         'id' => 'getId',
         'status' => 'getStatus',
         'slug' => 'getSlug',
@@ -249,7 +334,22 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'condition_photos_out' => 'getConditionPhotosOut',
         'condition_photos_in' => 'getConditionPhotosIn',
         'approval_due_at' => 'getApprovalDueAt',
-        'deposit_refunded_cents' => 'getDepositRefundedCents'
+        'deposit_refunded_cents' => 'getDepositRefundedCents',
+        'unit' => 'getUnit',
+        'fulfilment' => 'getFulfilment',
+        'cleaning_fee_cents' => 'getCleaningFeeCents',
+        'damage_waiver' => 'getDamageWaiver',
+        'damage_waiver_cents' => 'getDamageWaiverCents',
+        'late_fee_cents' => 'getLateFeeCents',
+        'rent_refunded_cents' => 'getRentRefundedCents',
+        'buyout_cents' => 'getBuyoutCents',
+        'charges' => 'getCharges',
+        'condition_photos_return' => 'getConditionPhotosReturn',
+        'approved_at' => 'getApprovedAt',
+        'delivered_at' => 'getDeliveredAt',
+        'return_shipped_at' => 'getReturnShippedAt',
+        'inspected_at' => 'getInspectedAt',
+        'bought_out_at' => 'getBoughtOutAt'
     ];
 
     /**
@@ -314,6 +414,11 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['closed_at'] = $data['closed_at'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['ship_to'] = $data['ship_to'] ?? null;
+        $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
+        $this->container['payout_timing'] = $data['payout_timing'] ?? null;
+        $this->container['payout_released_at'] = $data['payout_released_at'] ?? null;
+        $this->container['order_id'] = $data['order_id'] ?? null;
+        $this->container['crossly_fee_cents'] = $data['crossly_fee_cents'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
@@ -336,6 +441,21 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['condition_photos_in'] = $data['condition_photos_in'] ?? null;
         $this->container['approval_due_at'] = $data['approval_due_at'] ?? null;
         $this->container['deposit_refunded_cents'] = $data['deposit_refunded_cents'] ?? null;
+        $this->container['unit'] = $data['unit'] ?? null;
+        $this->container['fulfilment'] = $data['fulfilment'] ?? null;
+        $this->container['cleaning_fee_cents'] = $data['cleaning_fee_cents'] ?? null;
+        $this->container['damage_waiver'] = $data['damage_waiver'] ?? null;
+        $this->container['damage_waiver_cents'] = $data['damage_waiver_cents'] ?? null;
+        $this->container['late_fee_cents'] = $data['late_fee_cents'] ?? null;
+        $this->container['rent_refunded_cents'] = $data['rent_refunded_cents'] ?? null;
+        $this->container['buyout_cents'] = $data['buyout_cents'] ?? null;
+        $this->container['charges'] = $data['charges'] ?? null;
+        $this->container['condition_photos_return'] = $data['condition_photos_return'] ?? null;
+        $this->container['approved_at'] = $data['approved_at'] ?? null;
+        $this->container['delivered_at'] = $data['delivered_at'] ?? null;
+        $this->container['return_shipped_at'] = $data['return_shipped_at'] ?? null;
+        $this->container['inspected_at'] = $data['inspected_at'] ?? null;
+        $this->container['bought_out_at'] = $data['bought_out_at'] ?? null;
     }
 
     /**
@@ -397,6 +517,33 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['deposit_refunded_cents'] === null) {
             $invalidProperties[] = "'deposit_refunded_cents' can't be null";
+        }
+        if ($this->container['unit'] === null) {
+            $invalidProperties[] = "'unit' can't be null";
+        }
+        if ($this->container['fulfilment'] === null) {
+            $invalidProperties[] = "'fulfilment' can't be null";
+        }
+        if ($this->container['cleaning_fee_cents'] === null) {
+            $invalidProperties[] = "'cleaning_fee_cents' can't be null";
+        }
+        if ($this->container['damage_waiver'] === null) {
+            $invalidProperties[] = "'damage_waiver' can't be null";
+        }
+        if ($this->container['damage_waiver_cents'] === null) {
+            $invalidProperties[] = "'damage_waiver_cents' can't be null";
+        }
+        if ($this->container['late_fee_cents'] === null) {
+            $invalidProperties[] = "'late_fee_cents' can't be null";
+        }
+        if ($this->container['rent_refunded_cents'] === null) {
+            $invalidProperties[] = "'rent_refunded_cents' can't be null";
+        }
+        if ($this->container['charges'] === null) {
+            $invalidProperties[] = "'charges' can't be null";
+        }
+        if ($this->container['condition_photos_return'] === null) {
+            $invalidProperties[] = "'condition_photos_return' can't be null";
         }
         return $invalidProperties;
     }
@@ -529,6 +676,126 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setShipTo($ship_to)
     {
         $this->container['ship_to'] = $ship_to;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_listing_id
+     *
+     * @return string|null
+     */
+    public function getPlatformListingId()
+    {
+        return $this->container['platform_listing_id'];
+    }
+
+    /**
+     * Sets platform_listing_id
+     *
+     * @param string|null $platform_listing_id platform_listing_id
+     *
+     * @return self
+     */
+    public function setPlatformListingId($platform_listing_id)
+    {
+        $this->container['platform_listing_id'] = $platform_listing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets payout_timing
+     *
+     * @return string|null
+     */
+    public function getPayoutTiming()
+    {
+        return $this->container['payout_timing'];
+    }
+
+    /**
+     * Sets payout_timing
+     *
+     * @param string|null $payout_timing payout_timing
+     *
+     * @return self
+     */
+    public function setPayoutTiming($payout_timing)
+    {
+        $this->container['payout_timing'] = $payout_timing;
+
+        return $this;
+    }
+
+    /**
+     * Gets payout_released_at
+     *
+     * @return string|null
+     */
+    public function getPayoutReleasedAt()
+    {
+        return $this->container['payout_released_at'];
+    }
+
+    /**
+     * Sets payout_released_at
+     *
+     * @param string|null $payout_released_at payout_released_at
+     *
+     * @return self
+     */
+    public function setPayoutReleasedAt($payout_released_at)
+    {
+        $this->container['payout_released_at'] = $payout_released_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_id
+     *
+     * @return string|null
+     */
+    public function getOrderId()
+    {
+        return $this->container['order_id'];
+    }
+
+    /**
+     * Sets order_id
+     *
+     * @param string|null $order_id order_id
+     *
+     * @return self
+     */
+    public function setOrderId($order_id)
+    {
+        $this->container['order_id'] = $order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets crossly_fee_cents
+     *
+     * @return float|null
+     */
+    public function getCrosslyFeeCents()
+    {
+        return $this->container['crossly_fee_cents'];
+    }
+
+    /**
+     * Sets crossly_fee_cents
+     *
+     * @param float|null $crossly_fee_cents crossly_fee_cents
+     *
+     * @return self
+     */
+    public function setCrosslyFeeCents($crossly_fee_cents)
+    {
+        $this->container['crossly_fee_cents'] = $crossly_fee_cents;
 
         return $this;
     }
@@ -1057,6 +1324,366 @@ class ListRentalsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDepositRefundedCents($deposit_refunded_cents)
     {
         $this->container['deposit_refunded_cents'] = $deposit_refunded_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit
+     *
+     * @return float
+     */
+    public function getUnit()
+    {
+        return $this->container['unit'];
+    }
+
+    /**
+     * Sets unit
+     *
+     * @param float $unit unit
+     *
+     * @return self
+     */
+    public function setUnit($unit)
+    {
+        $this->container['unit'] = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets fulfilment
+     *
+     * @return string
+     */
+    public function getFulfilment()
+    {
+        return $this->container['fulfilment'];
+    }
+
+    /**
+     * Sets fulfilment
+     *
+     * @param string $fulfilment fulfilment
+     *
+     * @return self
+     */
+    public function setFulfilment($fulfilment)
+    {
+        $this->container['fulfilment'] = $fulfilment;
+
+        return $this;
+    }
+
+    /**
+     * Gets cleaning_fee_cents
+     *
+     * @return float
+     */
+    public function getCleaningFeeCents()
+    {
+        return $this->container['cleaning_fee_cents'];
+    }
+
+    /**
+     * Sets cleaning_fee_cents
+     *
+     * @param float $cleaning_fee_cents cleaning_fee_cents
+     *
+     * @return self
+     */
+    public function setCleaningFeeCents($cleaning_fee_cents)
+    {
+        $this->container['cleaning_fee_cents'] = $cleaning_fee_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets damage_waiver
+     *
+     * @return bool
+     */
+    public function getDamageWaiver()
+    {
+        return $this->container['damage_waiver'];
+    }
+
+    /**
+     * Sets damage_waiver
+     *
+     * @param bool $damage_waiver damage_waiver
+     *
+     * @return self
+     */
+    public function setDamageWaiver($damage_waiver)
+    {
+        $this->container['damage_waiver'] = $damage_waiver;
+
+        return $this;
+    }
+
+    /**
+     * Gets damage_waiver_cents
+     *
+     * @return float
+     */
+    public function getDamageWaiverCents()
+    {
+        return $this->container['damage_waiver_cents'];
+    }
+
+    /**
+     * Sets damage_waiver_cents
+     *
+     * @param float $damage_waiver_cents damage_waiver_cents
+     *
+     * @return self
+     */
+    public function setDamageWaiverCents($damage_waiver_cents)
+    {
+        $this->container['damage_waiver_cents'] = $damage_waiver_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets late_fee_cents
+     *
+     * @return float
+     */
+    public function getLateFeeCents()
+    {
+        return $this->container['late_fee_cents'];
+    }
+
+    /**
+     * Sets late_fee_cents
+     *
+     * @param float $late_fee_cents late_fee_cents
+     *
+     * @return self
+     */
+    public function setLateFeeCents($late_fee_cents)
+    {
+        $this->container['late_fee_cents'] = $late_fee_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets rent_refunded_cents
+     *
+     * @return float
+     */
+    public function getRentRefundedCents()
+    {
+        return $this->container['rent_refunded_cents'];
+    }
+
+    /**
+     * Sets rent_refunded_cents
+     *
+     * @param float $rent_refunded_cents rent_refunded_cents
+     *
+     * @return self
+     */
+    public function setRentRefundedCents($rent_refunded_cents)
+    {
+        $this->container['rent_refunded_cents'] = $rent_refunded_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyout_cents
+     *
+     * @return float|null
+     */
+    public function getBuyoutCents()
+    {
+        return $this->container['buyout_cents'];
+    }
+
+    /**
+     * Sets buyout_cents
+     *
+     * @param float|null $buyout_cents buyout_cents
+     *
+     * @return self
+     */
+    public function setBuyoutCents($buyout_cents)
+    {
+        $this->container['buyout_cents'] = $buyout_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets charges
+     *
+     * @return array<string,mixed>
+     */
+    public function getCharges()
+    {
+        return $this->container['charges'];
+    }
+
+    /**
+     * Sets charges
+     *
+     * @param array<string,mixed> $charges charges
+     *
+     * @return self
+     */
+    public function setCharges($charges)
+    {
+        $this->container['charges'] = $charges;
+
+        return $this;
+    }
+
+    /**
+     * Gets condition_photos_return
+     *
+     * @return string[]
+     */
+    public function getConditionPhotosReturn()
+    {
+        return $this->container['condition_photos_return'];
+    }
+
+    /**
+     * Sets condition_photos_return
+     *
+     * @param string[] $condition_photos_return condition_photos_return
+     *
+     * @return self
+     */
+    public function setConditionPhotosReturn($condition_photos_return)
+    {
+        $this->container['condition_photos_return'] = $condition_photos_return;
+
+        return $this;
+    }
+
+    /**
+     * Gets approved_at
+     *
+     * @return string|null
+     */
+    public function getApprovedAt()
+    {
+        return $this->container['approved_at'];
+    }
+
+    /**
+     * Sets approved_at
+     *
+     * @param string|null $approved_at approved_at
+     *
+     * @return self
+     */
+    public function setApprovedAt($approved_at)
+    {
+        $this->container['approved_at'] = $approved_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivered_at
+     *
+     * @return string|null
+     */
+    public function getDeliveredAt()
+    {
+        return $this->container['delivered_at'];
+    }
+
+    /**
+     * Sets delivered_at
+     *
+     * @param string|null $delivered_at delivered_at
+     *
+     * @return self
+     */
+    public function setDeliveredAt($delivered_at)
+    {
+        $this->container['delivered_at'] = $delivered_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets return_shipped_at
+     *
+     * @return string|null
+     */
+    public function getReturnShippedAt()
+    {
+        return $this->container['return_shipped_at'];
+    }
+
+    /**
+     * Sets return_shipped_at
+     *
+     * @param string|null $return_shipped_at return_shipped_at
+     *
+     * @return self
+     */
+    public function setReturnShippedAt($return_shipped_at)
+    {
+        $this->container['return_shipped_at'] = $return_shipped_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets inspected_at
+     *
+     * @return string|null
+     */
+    public function getInspectedAt()
+    {
+        return $this->container['inspected_at'];
+    }
+
+    /**
+     * Sets inspected_at
+     *
+     * @param string|null $inspected_at inspected_at
+     *
+     * @return self
+     */
+    public function setInspectedAt($inspected_at)
+    {
+        $this->container['inspected_at'] = $inspected_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets bought_out_at
+     *
+     * @return string|null
+     */
+    public function getBoughtOutAt()
+    {
+        return $this->container['bought_out_at'];
+    }
+
+    /**
+     * Sets bought_out_at
+     *
+     * @param string|null $bought_out_at bought_out_at
+     *
+     * @return self
+     */
+    public function setBoughtOutAt($bought_out_at)
+    {
+        $this->container['bought_out_at'] = $bought_out_at;
 
         return $this;
     }

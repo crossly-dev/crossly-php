@@ -61,7 +61,8 @@ class GetVaultMarketPortfolioHistoryResponse implements ModelInterface, ArrayAcc
       */
     protected static $openAPITypes = [
         'series' => '\Crossly\Model\Vault\GetVaultMarketPortfolioHistoryResponseSeries[]',
-        'now' => '\Crossly\Model\Vault\GetVaultMarketPortfolioHistoryResponseNow'
+        'now' => '\Crossly\Model\Vault\GetVaultMarketPortfolioHistoryResponseNow',
+        'today' => '\Crossly\Model\Vault\GetVaultMarketPortfolioHistoryResponseToday'
     ];
 
     /**
@@ -73,7 +74,8 @@ class GetVaultMarketPortfolioHistoryResponse implements ModelInterface, ArrayAcc
       */
     protected static $openAPIFormats = [
         'series' => null,
-        'now' => null
+        'now' => null,
+        'today' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class GetVaultMarketPortfolioHistoryResponse implements ModelInterface, ArrayAcc
      */
     protected static $attributeMap = [
         'series' => 'series',
-        'now' => 'now'
+        'now' => 'now',
+        'today' => 'today'
     ];
 
     /**
@@ -114,7 +117,8 @@ class GetVaultMarketPortfolioHistoryResponse implements ModelInterface, ArrayAcc
      */
     protected static $setters = [
         'series' => 'setSeries',
-        'now' => 'setNow'
+        'now' => 'setNow',
+        'today' => 'setToday'
     ];
 
     /**
@@ -124,7 +128,8 @@ class GetVaultMarketPortfolioHistoryResponse implements ModelInterface, ArrayAcc
      */
     protected static $getters = [
         'series' => 'getSeries',
-        'now' => 'getNow'
+        'now' => 'getNow',
+        'today' => 'getToday'
     ];
 
     /**
@@ -186,6 +191,7 @@ class GetVaultMarketPortfolioHistoryResponse implements ModelInterface, ArrayAcc
     {
         $this->container['series'] = $data['series'] ?? null;
         $this->container['now'] = $data['now'] ?? null;
+        $this->container['today'] = $data['today'] ?? null;
     }
 
     /**
@@ -202,6 +208,9 @@ class GetVaultMarketPortfolioHistoryResponse implements ModelInterface, ArrayAcc
         }
         if ($this->container['now'] === null) {
             $invalidProperties[] = "'now' can't be null";
+        }
+        if ($this->container['today'] === null) {
+            $invalidProperties[] = "'today' can't be null";
         }
         return $invalidProperties;
     }
@@ -262,6 +271,30 @@ class GetVaultMarketPortfolioHistoryResponse implements ModelInterface, ArrayAcc
     public function setNow($now)
     {
         $this->container['now'] = $now;
+
+        return $this;
+    }
+
+    /**
+     * Gets today
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketPortfolioHistoryResponseToday
+     */
+    public function getToday()
+    {
+        return $this->container['today'];
+    }
+
+    /**
+     * Sets today
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketPortfolioHistoryResponseToday $today today
+     *
+     * @return self
+     */
+    public function setToday($today)
+    {
+        $this->container['today'] = $today;
 
         return $this;
     }

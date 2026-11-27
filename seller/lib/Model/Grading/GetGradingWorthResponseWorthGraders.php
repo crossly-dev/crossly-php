@@ -198,8 +198,8 @@ class GetGradingWorthResponseWorthGraders implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const VIA_RUN = 'run';
     const VIA_SINGLE = 'single';
+    const VIA_RUN = 'run';
 
     /**
      * Gets allowable values of the enum
@@ -209,8 +209,8 @@ class GetGradingWorthResponseWorthGraders implements ModelInterface, ArrayAccess
     public function getViaAllowableValues()
     {
         return [
-            self::VIA_RUN,
             self::VIA_SINGLE,
+            self::VIA_RUN,
         ];
     }
 

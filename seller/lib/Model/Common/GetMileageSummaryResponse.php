@@ -62,8 +62,10 @@ class GetMileageSummaryResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'year' => 'float',
         'rate_per_mile' => 'float',
+        'rates' => '\Crossly\Model\Common\GetMileageSummaryResponseRates[]',
         'total_miles' => 'float',
         'deduction' => 'float',
+        'deduction_cents' => 'float',
         'entry_count' => 'float'
     ];
 
@@ -77,8 +79,10 @@ class GetMileageSummaryResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'year' => null,
         'rate_per_mile' => null,
+        'rates' => null,
         'total_miles' => null,
         'deduction' => null,
+        'deduction_cents' => null,
         'entry_count' => null
     ];
 
@@ -111,8 +115,10 @@ class GetMileageSummaryResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'year' => 'year',
         'rate_per_mile' => 'ratePerMile',
+        'rates' => 'rates',
         'total_miles' => 'totalMiles',
         'deduction' => 'deduction',
+        'deduction_cents' => 'deductionCents',
         'entry_count' => 'entryCount'
     ];
 
@@ -124,8 +130,10 @@ class GetMileageSummaryResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'year' => 'setYear',
         'rate_per_mile' => 'setRatePerMile',
+        'rates' => 'setRates',
         'total_miles' => 'setTotalMiles',
         'deduction' => 'setDeduction',
+        'deduction_cents' => 'setDeductionCents',
         'entry_count' => 'setEntryCount'
     ];
 
@@ -137,8 +145,10 @@ class GetMileageSummaryResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'year' => 'getYear',
         'rate_per_mile' => 'getRatePerMile',
+        'rates' => 'getRates',
         'total_miles' => 'getTotalMiles',
         'deduction' => 'getDeduction',
+        'deduction_cents' => 'getDeductionCents',
         'entry_count' => 'getEntryCount'
     ];
 
@@ -201,8 +211,10 @@ class GetMileageSummaryResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->container['year'] = $data['year'] ?? null;
         $this->container['rate_per_mile'] = $data['rate_per_mile'] ?? null;
+        $this->container['rates'] = $data['rates'] ?? null;
         $this->container['total_miles'] = $data['total_miles'] ?? null;
         $this->container['deduction'] = $data['deduction'] ?? null;
+        $this->container['deduction_cents'] = $data['deduction_cents'] ?? null;
         $this->container['entry_count'] = $data['entry_count'] ?? null;
     }
 
@@ -221,11 +233,17 @@ class GetMileageSummaryResponse implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['rate_per_mile'] === null) {
             $invalidProperties[] = "'rate_per_mile' can't be null";
         }
+        if ($this->container['rates'] === null) {
+            $invalidProperties[] = "'rates' can't be null";
+        }
         if ($this->container['total_miles'] === null) {
             $invalidProperties[] = "'total_miles' can't be null";
         }
         if ($this->container['deduction'] === null) {
             $invalidProperties[] = "'deduction' can't be null";
+        }
+        if ($this->container['deduction_cents'] === null) {
+            $invalidProperties[] = "'deduction_cents' can't be null";
         }
         if ($this->container['entry_count'] === null) {
             $invalidProperties[] = "'entry_count' can't be null";
@@ -294,6 +312,30 @@ class GetMileageSummaryResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets rates
+     *
+     * @return \Crossly\Model\Common\GetMileageSummaryResponseRates[]
+     */
+    public function getRates()
+    {
+        return $this->container['rates'];
+    }
+
+    /**
+     * Sets rates
+     *
+     * @param \Crossly\Model\Common\GetMileageSummaryResponseRates[] $rates rates
+     *
+     * @return self
+     */
+    public function setRates($rates)
+    {
+        $this->container['rates'] = $rates;
+
+        return $this;
+    }
+
+    /**
      * Gets total_miles
      *
      * @return float
@@ -337,6 +379,30 @@ class GetMileageSummaryResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setDeduction($deduction)
     {
         $this->container['deduction'] = $deduction;
+
+        return $this;
+    }
+
+    /**
+     * Gets deduction_cents
+     *
+     * @return float
+     */
+    public function getDeductionCents()
+    {
+        return $this->container['deduction_cents'];
+    }
+
+    /**
+     * Sets deduction_cents
+     *
+     * @param float $deduction_cents deduction_cents
+     *
+     * @return self
+     */
+    public function setDeductionCents($deduction_cents)
+    {
+        $this->container['deduction_cents'] = $deduction_cents;
 
         return $this;
     }

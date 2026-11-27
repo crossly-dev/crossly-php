@@ -223,9 +223,9 @@ class GetVaultMarketMarketModelResponse implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
+    const TIER_C = 'C';
     const TIER_A = 'A';
     const TIER_B = 'B';
-    const TIER_C = 'C';
     const TIER_D = 'D';
     const MODE_CALL = 'call';
     const MODE_CONTINUOUS = 'continuous';
@@ -238,9 +238,9 @@ class GetVaultMarketMarketModelResponse implements ModelInterface, ArrayAccess, 
     public function getTierAllowableValues()
     {
         return [
+            self::TIER_C,
             self::TIER_A,
             self::TIER_B,
-            self::TIER_C,
             self::TIER_D,
         ];
     }

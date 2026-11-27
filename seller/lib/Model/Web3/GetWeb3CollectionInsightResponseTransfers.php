@@ -198,10 +198,10 @@ class GetWeb3CollectionInsightResponseTransfers implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    const KIND_TRANSFER = 'transfer';
-    const KIND_LISTING = 'listing';
     const KIND_SALE = 'sale';
+    const KIND_LISTING = 'listing';
     const KIND_MINT = 'mint';
+    const KIND_TRANSFER = 'transfer';
     const KIND_BURN = 'burn';
 
     /**
@@ -212,10 +212,10 @@ class GetWeb3CollectionInsightResponseTransfers implements ModelInterface, Array
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_TRANSFER,
-            self::KIND_LISTING,
             self::KIND_SALE,
+            self::KIND_LISTING,
             self::KIND_MINT,
+            self::KIND_TRANSFER,
             self::KIND_BURN,
         ];
     }

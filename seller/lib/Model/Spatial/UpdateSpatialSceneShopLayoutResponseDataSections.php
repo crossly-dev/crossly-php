@@ -65,7 +65,9 @@ class UpdateSpatialSceneShopLayoutResponseDataSections implements ModelInterface
         'position' => 'float[]',
         'rotation_y' => 'float',
         'sign' => 'string',
-        'hidden' => 'bool'
+        'hidden' => 'bool',
+        'units' => 'float',
+        'holder' => 'string'
     ];
 
     /**
@@ -81,7 +83,9 @@ class UpdateSpatialSceneShopLayoutResponseDataSections implements ModelInterface
         'position' => null,
         'rotation_y' => null,
         'sign' => null,
-        'hidden' => null
+        'hidden' => null,
+        'units' => null,
+        'holder' => null
     ];
 
     /**
@@ -116,7 +120,9 @@ class UpdateSpatialSceneShopLayoutResponseDataSections implements ModelInterface
         'position' => 'position',
         'rotation_y' => 'rotationY',
         'sign' => 'sign',
-        'hidden' => 'hidden'
+        'hidden' => 'hidden',
+        'units' => 'units',
+        'holder' => 'holder'
     ];
 
     /**
@@ -130,7 +136,9 @@ class UpdateSpatialSceneShopLayoutResponseDataSections implements ModelInterface
         'position' => 'setPosition',
         'rotation_y' => 'setRotationY',
         'sign' => 'setSign',
-        'hidden' => 'setHidden'
+        'hidden' => 'setHidden',
+        'units' => 'setUnits',
+        'holder' => 'setHolder'
     ];
 
     /**
@@ -144,7 +152,9 @@ class UpdateSpatialSceneShopLayoutResponseDataSections implements ModelInterface
         'position' => 'getPosition',
         'rotation_y' => 'getRotationY',
         'sign' => 'getSign',
-        'hidden' => 'getHidden'
+        'hidden' => 'getHidden',
+        'units' => 'getUnits',
+        'holder' => 'getHolder'
     ];
 
     /**
@@ -210,6 +220,8 @@ class UpdateSpatialSceneShopLayoutResponseDataSections implements ModelInterface
         $this->container['rotation_y'] = $data['rotation_y'] ?? null;
         $this->container['sign'] = $data['sign'] ?? null;
         $this->container['hidden'] = $data['hidden'] ?? null;
+        $this->container['units'] = $data['units'] ?? null;
+        $this->container['holder'] = $data['holder'] ?? null;
     }
 
     /**
@@ -397,6 +409,54 @@ class UpdateSpatialSceneShopLayoutResponseDataSections implements ModelInterface
     public function setHidden($hidden)
     {
         $this->container['hidden'] = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Gets units
+     *
+     * @return float|null
+     */
+    public function getUnits()
+    {
+        return $this->container['units'];
+    }
+
+    /**
+     * Sets units
+     *
+     * @param float|null $units How many units (cases, bays, pages) it stands with, at least; absent = as many as its stock needs. Set from the showroom organizer so an empty display has slots to fill (shared showroom/).
+     *
+     * @return self
+     */
+    public function setUnits($units)
+    {
+        $this->container['units'] = $units;
+
+        return $this;
+    }
+
+    /**
+     * Gets holder
+     *
+     * @return string|null
+     */
+    public function getHolder()
+    {
+        return $this->container['holder'];
+    }
+
+    /**
+     * Sets holder
+     *
+     * @param string|null $holder The holder model it stands as (showroom/fixtures.ts FIXTURE_HOLDERS); absent = its type's free holder.
+     *
+     * @return self
+     */
+    public function setHolder($holder)
+    {
+        $this->container['holder'] = $holder;
 
         return $this;
     }

@@ -178,8 +178,8 @@ class GetVariationGroupPublishPlanResponsePlans implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    const MODE_GROUPED = 'grouped';
     const MODE_SEPARATE = 'separate';
+    const MODE_GROUPED = 'grouped';
 
     /**
      * Gets allowable values of the enum
@@ -189,8 +189,8 @@ class GetVariationGroupPublishPlanResponsePlans implements ModelInterface, Array
     public function getModeAllowableValues()
     {
         return [
-            self::MODE_GROUPED,
             self::MODE_SEPARATE,
+            self::MODE_GROUPED,
         ];
     }
 

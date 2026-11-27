@@ -188,9 +188,9 @@ class CreateBuyerAgentSessionActResponseQuotePriceCheck implements ModelInterfac
         return self::$openAPIModelName;
     }
 
-    const VERDICT_HIGH = 'high';
-    const VERDICT_FAIR = 'fair';
     const VERDICT_GOOD = 'good';
+    const VERDICT_FAIR = 'fair';
+    const VERDICT_HIGH = 'high';
     const VERDICT_GREAT = 'great';
 
     /**
@@ -201,9 +201,9 @@ class CreateBuyerAgentSessionActResponseQuotePriceCheck implements ModelInterfac
     public function getVerdictAllowableValues()
     {
         return [
-            self::VERDICT_HIGH,
-            self::VERDICT_FAIR,
             self::VERDICT_GOOD,
+            self::VERDICT_FAIR,
+            self::VERDICT_HIGH,
             self::VERDICT_GREAT,
         ];
     }

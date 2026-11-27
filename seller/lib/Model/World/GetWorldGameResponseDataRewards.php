@@ -184,9 +184,9 @@ class GetWorldGameResponseDataRewards implements ModelInterface, ArrayAccess, \J
     }
 
     const GRANT_ITEM = 'item';
+    const GRANT_COSM = 'cosm';
     const GRANT_DECOR = 'decor';
     const GRANT_CBX = 'cbx';
-    const GRANT_COSM = 'cosm';
     const GRANT_PIN = 'pin';
     const GRANT_EMOTE = 'emote';
     const WHEN_SCORE = 'score';
@@ -202,9 +202,9 @@ class GetWorldGameResponseDataRewards implements ModelInterface, ArrayAccess, \J
     {
         return [
             self::GRANT_ITEM,
+            self::GRANT_COSM,
             self::GRANT_DECOR,
             self::GRANT_CBX,
-            self::GRANT_COSM,
             self::GRANT_PIN,
             self::GRANT_EMOTE,
         ];

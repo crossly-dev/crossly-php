@@ -169,13 +169,13 @@ class ListWorldCapabilityDeclarationsItemDeclarationCollection implements ModelI
         return self::$openAPIModelName;
     }
 
-    const CHAIN_SOLANA = 'solana';
-    const CHAIN_COSM = 'cosm';
     const CHAIN_ETHEREUM = 'ethereum';
     const CHAIN_BASE = 'base';
     const CHAIN_POLYGON = 'polygon';
     const CHAIN_ARBITRUM = 'arbitrum';
     const CHAIN_OPTIMISM = 'optimism';
+    const CHAIN_SOLANA = 'solana';
+    const CHAIN_COSM = 'cosm';
 
     /**
      * Gets allowable values of the enum
@@ -185,13 +185,13 @@ class ListWorldCapabilityDeclarationsItemDeclarationCollection implements ModelI
     public function getChainAllowableValues()
     {
         return [
-            self::CHAIN_SOLANA,
-            self::CHAIN_COSM,
             self::CHAIN_ETHEREUM,
             self::CHAIN_BASE,
             self::CHAIN_POLYGON,
             self::CHAIN_ARBITRUM,
             self::CHAIN_OPTIMISM,
+            self::CHAIN_SOLANA,
+            self::CHAIN_COSM,
         ];
     }
 

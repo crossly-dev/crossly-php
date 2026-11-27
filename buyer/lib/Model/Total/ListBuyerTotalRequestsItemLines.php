@@ -60,8 +60,8 @@ class ListBuyerTotalRequestsItemLines implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'quantity' => 'float',
-        'platform_listing_id' => 'string'
+        'platform_listing_id' => 'string',
+        'quantity' => 'float'
     ];
 
     /**
@@ -72,8 +72,8 @@ class ListBuyerTotalRequestsItemLines implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'quantity' => null,
-        'platform_listing_id' => null
+        'platform_listing_id' => null,
+        'quantity' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class ListBuyerTotalRequestsItemLines implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'quantity' => 'quantity',
-        'platform_listing_id' => 'platformListingId'
+        'platform_listing_id' => 'platformListingId',
+        'quantity' => 'quantity'
     ];
 
     /**
@@ -113,8 +113,8 @@ class ListBuyerTotalRequestsItemLines implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'quantity' => 'setQuantity',
-        'platform_listing_id' => 'setPlatformListingId'
+        'platform_listing_id' => 'setPlatformListingId',
+        'quantity' => 'setQuantity'
     ];
 
     /**
@@ -123,8 +123,8 @@ class ListBuyerTotalRequestsItemLines implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'quantity' => 'getQuantity',
-        'platform_listing_id' => 'getPlatformListingId'
+        'platform_listing_id' => 'getPlatformListingId',
+        'quantity' => 'getQuantity'
     ];
 
     /**
@@ -184,8 +184,8 @@ class ListBuyerTotalRequestsItemLines implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
     }
 
     /**
@@ -197,11 +197,11 @@ class ListBuyerTotalRequestsItemLines implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['quantity'] === null) {
-            $invalidProperties[] = "'quantity' can't be null";
-        }
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
+        }
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,30 +217,6 @@ class ListBuyerTotalRequestsItemLines implements ModelInterface, ArrayAccess, \J
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets quantity
-     *
-     * @return float
-     */
-    public function getQuantity()
-    {
-        return $this->container['quantity'];
-    }
-
-    /**
-     * Sets quantity
-     *
-     * @param float $quantity quantity
-     *
-     * @return self
-     */
-    public function setQuantity($quantity)
-    {
-        $this->container['quantity'] = $quantity;
-
-        return $this;
-    }
 
     /**
      * Gets platform_listing_id
@@ -262,6 +238,30 @@ class ListBuyerTotalRequestsItemLines implements ModelInterface, ArrayAccess, \J
     public function setPlatformListingId($platform_listing_id)
     {
         $this->container['platform_listing_id'] = $platform_listing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return float
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param float $quantity quantity
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }

@@ -61,15 +61,15 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
-        'status' => 'string',
         'seller_user_id' => 'string',
+        'status' => 'string',
         'lines' => '\Crossly\Buyer\Model\Total\ListBuyerTotalRequestsItemLines[]',
+        'created_at' => 'string',
         'matches_cart' => 'bool',
-        'expires_at' => 'string',
+        'seller_display_name' => 'string',
         'quoted_shipping_cents' => 'float',
         'seller_message' => 'string',
-        'seller_display_name' => 'string'
+        'expires_at' => 'string'
     ];
 
     /**
@@ -81,15 +81,15 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
-        'status' => null,
         'seller_user_id' => null,
+        'status' => null,
         'lines' => null,
+        'created_at' => null,
         'matches_cart' => null,
-        'expires_at' => null,
+        'seller_display_name' => null,
         'quoted_shipping_cents' => null,
         'seller_message' => null,
-        'seller_display_name' => null
+        'expires_at' => null
     ];
 
     /**
@@ -120,15 +120,15 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'status' => 'status',
         'seller_user_id' => 'sellerUserId',
+        'status' => 'status',
         'lines' => 'lines',
+        'created_at' => 'createdAt',
         'matches_cart' => 'matchesCart',
-        'expires_at' => 'expiresAt',
+        'seller_display_name' => 'sellerDisplayName',
         'quoted_shipping_cents' => 'quotedShippingCents',
         'seller_message' => 'sellerMessage',
-        'seller_display_name' => 'sellerDisplayName'
+        'expires_at' => 'expiresAt'
     ];
 
     /**
@@ -138,15 +138,15 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'status' => 'setStatus',
         'seller_user_id' => 'setSellerUserId',
+        'status' => 'setStatus',
         'lines' => 'setLines',
+        'created_at' => 'setCreatedAt',
         'matches_cart' => 'setMatchesCart',
-        'expires_at' => 'setExpiresAt',
+        'seller_display_name' => 'setSellerDisplayName',
         'quoted_shipping_cents' => 'setQuotedShippingCents',
         'seller_message' => 'setSellerMessage',
-        'seller_display_name' => 'setSellerDisplayName'
+        'expires_at' => 'setExpiresAt'
     ];
 
     /**
@@ -156,15 +156,15 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'status' => 'getStatus',
         'seller_user_id' => 'getSellerUserId',
+        'status' => 'getStatus',
         'lines' => 'getLines',
+        'created_at' => 'getCreatedAt',
         'matches_cart' => 'getMatchesCart',
-        'expires_at' => 'getExpiresAt',
+        'seller_display_name' => 'getSellerDisplayName',
         'quoted_shipping_cents' => 'getQuotedShippingCents',
         'seller_message' => 'getSellerMessage',
-        'seller_display_name' => 'getSellerDisplayName'
+        'expires_at' => 'getExpiresAt'
     ];
 
     /**
@@ -225,15 +225,15 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['lines'] = $data['lines'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['matches_cart'] = $data['matches_cart'] ?? null;
-        $this->container['expires_at'] = $data['expires_at'] ?? null;
+        $this->container['seller_display_name'] = $data['seller_display_name'] ?? null;
         $this->container['quoted_shipping_cents'] = $data['quoted_shipping_cents'] ?? null;
         $this->container['seller_message'] = $data['seller_message'] ?? null;
-        $this->container['seller_display_name'] = $data['seller_display_name'] ?? null;
+        $this->container['expires_at'] = $data['expires_at'] ?? null;
     }
 
     /**
@@ -248,17 +248,17 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['seller_user_id'] === null) {
+            $invalidProperties[] = "'seller_user_id' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['seller_user_id'] === null) {
-            $invalidProperties[] = "'seller_user_id' can't be null";
-        }
         if ($this->container['lines'] === null) {
             $invalidProperties[] = "'lines' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['matches_cart'] === null) {
             $invalidProperties[] = "'matches_cart' can't be null";
@@ -303,25 +303,25 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets created_at
+     * Gets seller_user_id
      *
      * @return string
      */
-    public function getCreatedAt()
+    public function getSellerUserId()
     {
-        return $this->container['created_at'];
+        return $this->container['seller_user_id'];
     }
 
     /**
-     * Sets created_at
+     * Sets seller_user_id
      *
-     * @param string $created_at created_at
+     * @param string $seller_user_id seller_user_id
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setSellerUserId($seller_user_id)
     {
-        $this->container['created_at'] = $created_at;
+        $this->container['seller_user_id'] = $seller_user_id;
 
         return $this;
     }
@@ -351,30 +351,6 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets seller_user_id
-     *
-     * @return string
-     */
-    public function getSellerUserId()
-    {
-        return $this->container['seller_user_id'];
-    }
-
-    /**
-     * Sets seller_user_id
-     *
-     * @param string $seller_user_id seller_user_id
-     *
-     * @return self
-     */
-    public function setSellerUserId($seller_user_id)
-    {
-        $this->container['seller_user_id'] = $seller_user_id;
-
-        return $this;
-    }
-
-    /**
      * Gets lines
      *
      * @return \Crossly\Buyer\Model\Total\ListBuyerTotalRequestsItemLines[]
@@ -394,6 +370,30 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setLines($lines)
     {
         $this->container['lines'] = $lines;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -423,25 +423,25 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets expires_at
+     * Gets seller_display_name
      *
      * @return string|null
      */
-    public function getExpiresAt()
+    public function getSellerDisplayName()
     {
-        return $this->container['expires_at'];
+        return $this->container['seller_display_name'];
     }
 
     /**
-     * Sets expires_at
+     * Sets seller_display_name
      *
-     * @param string|null $expires_at expires_at
+     * @param string|null $seller_display_name seller_display_name
      *
      * @return self
      */
-    public function setExpiresAt($expires_at)
+    public function setSellerDisplayName($seller_display_name)
     {
-        $this->container['expires_at'] = $expires_at;
+        $this->container['seller_display_name'] = $seller_display_name;
 
         return $this;
     }
@@ -495,25 +495,25 @@ class ListBuyerTotalRequestsItem implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets seller_display_name
+     * Gets expires_at
      *
      * @return string|null
      */
-    public function getSellerDisplayName()
+    public function getExpiresAt()
     {
-        return $this->container['seller_display_name'];
+        return $this->container['expires_at'];
     }
 
     /**
-     * Sets seller_display_name
+     * Sets expires_at
      *
-     * @param string|null $seller_display_name seller_display_name
+     * @param string|null $expires_at expires_at
      *
      * @return self
      */
-    public function setSellerDisplayName($seller_display_name)
+    public function setExpiresAt($expires_at)
     {
-        $this->container['seller_display_name'] = $seller_display_name;
+        $this->container['expires_at'] = $expires_at;
 
         return $this;
     }

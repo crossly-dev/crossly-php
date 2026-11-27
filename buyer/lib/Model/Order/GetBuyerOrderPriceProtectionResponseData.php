@@ -60,8 +60,8 @@ class GetBuyerOrderPriceProtectionResponseData implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'active' => 'bool',
         'until' => 'string',
+        'active' => 'bool',
         'credited_cents' => 'float'
     ];
 
@@ -73,8 +73,8 @@ class GetBuyerOrderPriceProtectionResponseData implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'active' => null,
         'until' => null,
+        'active' => null,
         'credited_cents' => null
     ];
 
@@ -105,8 +105,8 @@ class GetBuyerOrderPriceProtectionResponseData implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'active' => 'active',
         'until' => 'until',
+        'active' => 'active',
         'credited_cents' => 'creditedCents'
     ];
 
@@ -116,8 +116,8 @@ class GetBuyerOrderPriceProtectionResponseData implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'active' => 'setActive',
         'until' => 'setUntil',
+        'active' => 'setActive',
         'credited_cents' => 'setCreditedCents'
     ];
 
@@ -127,8 +127,8 @@ class GetBuyerOrderPriceProtectionResponseData implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'active' => 'getActive',
         'until' => 'getUntil',
+        'active' => 'getActive',
         'credited_cents' => 'getCreditedCents'
     ];
 
@@ -189,8 +189,8 @@ class GetBuyerOrderPriceProtectionResponseData implements ModelInterface, ArrayA
      */
     public function __construct(array $data = null)
     {
-        $this->container['active'] = $data['active'] ?? null;
         $this->container['until'] = $data['until'] ?? null;
+        $this->container['active'] = $data['active'] ?? null;
         $this->container['credited_cents'] = $data['credited_cents'] ?? null;
     }
 
@@ -203,11 +203,11 @@ class GetBuyerOrderPriceProtectionResponseData implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        if ($this->container['active'] === null) {
-            $invalidProperties[] = "'active' can't be null";
-        }
         if ($this->container['until'] === null) {
             $invalidProperties[] = "'until' can't be null";
+        }
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
         }
         if ($this->container['credited_cents'] === null) {
             $invalidProperties[] = "'credited_cents' can't be null";
@@ -226,30 +226,6 @@ class GetBuyerOrderPriceProtectionResponseData implements ModelInterface, ArrayA
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets active
-     *
-     * @return bool
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool $active active
-     *
-     * @return self
-     */
-    public function setActive($active)
-    {
-        $this->container['active'] = $active;
-
-        return $this;
-    }
 
     /**
      * Gets until
@@ -271,6 +247,30 @@ class GetBuyerOrderPriceProtectionResponseData implements ModelInterface, ArrayA
     public function setUntil($until)
     {
         $this->container['until'] = $until;
+
+        return $this;
+    }
+
+    /**
+     * Gets active
+     *
+     * @return bool
+     */
+    public function getActive()
+    {
+        return $this->container['active'];
+    }
+
+    /**
+     * Sets active
+     *
+     * @param bool $active active
+     *
+     * @return self
+     */
+    public function setActive($active)
+    {
+        $this->container['active'] = $active;
 
         return $this;
     }

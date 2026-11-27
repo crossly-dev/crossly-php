@@ -213,9 +213,9 @@ class ListWeb3ActivityItem implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-    const EVENT_LISTING = 'listing';
-    const EVENT_OFFER = 'offer';
     const EVENT_SALE = 'sale';
+    const EVENT_OFFER = 'offer';
+    const EVENT_LISTING = 'listing';
     const EVENT_CANCEL = 'cancel';
 
     /**
@@ -226,9 +226,9 @@ class ListWeb3ActivityItem implements ModelInterface, ArrayAccess, \JsonSerializ
     public function getEventAllowableValues()
     {
         return [
-            self::EVENT_LISTING,
-            self::EVENT_OFFER,
             self::EVENT_SALE,
+            self::EVENT_OFFER,
+            self::EVENT_LISTING,
             self::EVENT_CANCEL,
         ];
     }

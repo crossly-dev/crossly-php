@@ -61,10 +61,10 @@ class CreateBuyerOfferResponseDataOffer implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'status' => 'string',
         'platform_listing_id' => 'string',
         'buyer_user_id' => 'string',
         'amount_cents' => 'float',
+        'status' => 'string',
         'message' => 'string'
     ];
 
@@ -77,10 +77,10 @@ class CreateBuyerOfferResponseDataOffer implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'status' => null,
         'platform_listing_id' => null,
         'buyer_user_id' => null,
         'amount_cents' => null,
+        'status' => null,
         'message' => null
     ];
 
@@ -112,10 +112,10 @@ class CreateBuyerOfferResponseDataOffer implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'status' => 'status',
         'platform_listing_id' => 'platformListingId',
         'buyer_user_id' => 'buyerUserId',
         'amount_cents' => 'amountCents',
+        'status' => 'status',
         'message' => 'message'
     ];
 
@@ -126,10 +126,10 @@ class CreateBuyerOfferResponseDataOffer implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'id' => 'setId',
-        'status' => 'setStatus',
         'platform_listing_id' => 'setPlatformListingId',
         'buyer_user_id' => 'setBuyerUserId',
         'amount_cents' => 'setAmountCents',
+        'status' => 'setStatus',
         'message' => 'setMessage'
     ];
 
@@ -140,10 +140,10 @@ class CreateBuyerOfferResponseDataOffer implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'id' => 'getId',
-        'status' => 'getStatus',
         'platform_listing_id' => 'getPlatformListingId',
         'buyer_user_id' => 'getBuyerUserId',
         'amount_cents' => 'getAmountCents',
+        'status' => 'getStatus',
         'message' => 'getMessage'
     ];
 
@@ -205,10 +205,10 @@ class CreateBuyerOfferResponseDataOffer implements ModelInterface, ArrayAccess, 
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
         $this->container['buyer_user_id'] = $data['buyer_user_id'] ?? null;
         $this->container['amount_cents'] = $data['amount_cents'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['message'] = $data['message'] ?? null;
     }
 
@@ -224,9 +224,6 @@ class CreateBuyerOfferResponseDataOffer implements ModelInterface, ArrayAccess, 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
         }
@@ -235,6 +232,9 @@ class CreateBuyerOfferResponseDataOffer implements ModelInterface, ArrayAccess, 
         }
         if ($this->container['amount_cents'] === null) {
             $invalidProperties[] = "'amount_cents' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         return $invalidProperties;
     }
@@ -271,30 +271,6 @@ class CreateBuyerOfferResponseDataOffer implements ModelInterface, ArrayAccess, 
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
 
         return $this;
     }
@@ -367,6 +343,30 @@ class CreateBuyerOfferResponseDataOffer implements ModelInterface, ArrayAccess, 
     public function setAmountCents($amount_cents)
     {
         $this->container['amount_cents'] = $amount_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

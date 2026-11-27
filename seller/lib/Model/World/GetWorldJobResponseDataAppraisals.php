@@ -223,8 +223,8 @@ class GetWorldJobResponseDataAppraisals implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    const RAIL_BUCKS = 'bucks';
     const RAIL_CBX = 'cbx';
+    const RAIL_BUCKS = 'bucks';
 
     /**
      * Gets allowable values of the enum
@@ -234,8 +234,8 @@ class GetWorldJobResponseDataAppraisals implements ModelInterface, ArrayAccess, 
     public function getRailAllowableValues()
     {
         return [
-            self::RAIL_BUCKS,
             self::RAIL_CBX,
+            self::RAIL_BUCKS,
         ];
     }
 

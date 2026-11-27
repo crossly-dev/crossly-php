@@ -72,7 +72,9 @@ class GetInboxConversationMessageResponseMessages implements ModelInterface, Arr
         'ai_urgency' => 'string',
         'ai_scam_score' => 'float',
         'ai_suggested_reply' => 'string',
-        'ai_triaged_at' => '\DateTime'
+        'ai_triaged_at' => '\DateTime',
+        'offer_amount' => 'string',
+        'offer_status' => 'string'
     ];
 
     /**
@@ -95,7 +97,9 @@ class GetInboxConversationMessageResponseMessages implements ModelInterface, Arr
         'ai_urgency' => null,
         'ai_scam_score' => null,
         'ai_suggested_reply' => null,
-        'ai_triaged_at' => 'date-time'
+        'ai_triaged_at' => 'date-time',
+        'offer_amount' => null,
+        'offer_status' => null
     ];
 
     /**
@@ -137,7 +141,9 @@ class GetInboxConversationMessageResponseMessages implements ModelInterface, Arr
         'ai_urgency' => 'aiUrgency',
         'ai_scam_score' => 'aiScamScore',
         'ai_suggested_reply' => 'aiSuggestedReply',
-        'ai_triaged_at' => 'aiTriagedAt'
+        'ai_triaged_at' => 'aiTriagedAt',
+        'offer_amount' => 'offerAmount',
+        'offer_status' => 'offerStatus'
     ];
 
     /**
@@ -158,7 +164,9 @@ class GetInboxConversationMessageResponseMessages implements ModelInterface, Arr
         'ai_urgency' => 'setAiUrgency',
         'ai_scam_score' => 'setAiScamScore',
         'ai_suggested_reply' => 'setAiSuggestedReply',
-        'ai_triaged_at' => 'setAiTriagedAt'
+        'ai_triaged_at' => 'setAiTriagedAt',
+        'offer_amount' => 'setOfferAmount',
+        'offer_status' => 'setOfferStatus'
     ];
 
     /**
@@ -179,7 +187,9 @@ class GetInboxConversationMessageResponseMessages implements ModelInterface, Arr
         'ai_urgency' => 'getAiUrgency',
         'ai_scam_score' => 'getAiScamScore',
         'ai_suggested_reply' => 'getAiSuggestedReply',
-        'ai_triaged_at' => 'getAiTriagedAt'
+        'ai_triaged_at' => 'getAiTriagedAt',
+        'offer_amount' => 'getOfferAmount',
+        'offer_status' => 'getOfferStatus'
     ];
 
     /**
@@ -223,6 +233,27 @@ class GetInboxConversationMessageResponseMessages implements ModelInterface, Arr
         return self::$openAPIModelName;
     }
 
+    const OFFER_STATUS_PENDING = 'pending';
+    const OFFER_STATUS_ACCEPTED = 'accepted';
+    const OFFER_STATUS_DECLINED = 'declined';
+    const OFFER_STATUS_EXPIRED = 'expired';
+    const OFFER_STATUS_VOIDED = 'voided';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOfferStatusAllowableValues()
+    {
+        return [
+            self::OFFER_STATUS_PENDING,
+            self::OFFER_STATUS_ACCEPTED,
+            self::OFFER_STATUS_DECLINED,
+            self::OFFER_STATUS_EXPIRED,
+            self::OFFER_STATUS_VOIDED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,6 +283,8 @@ class GetInboxConversationMessageResponseMessages implements ModelInterface, Arr
         $this->container['ai_scam_score'] = $data['ai_scam_score'] ?? null;
         $this->container['ai_suggested_reply'] = $data['ai_suggested_reply'] ?? null;
         $this->container['ai_triaged_at'] = $data['ai_triaged_at'] ?? null;
+        $this->container['offer_amount'] = $data['offer_amount'] ?? null;
+        $this->container['offer_status'] = $data['offer_status'] ?? null;
     }
 
     /**
@@ -275,6 +308,15 @@ class GetInboxConversationMessageResponseMessages implements ModelInterface, Arr
         if ($this->container['sent_at'] === null) {
             $invalidProperties[] = "'sent_at' can't be null";
         }
+        $allowedValues = $this->getOfferStatusAllowableValues();
+        if (!is_null($this->container['offer_status']) && !in_array($this->container['offer_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'offer_status', must be one of '%s'",
+                $this->container['offer_status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -598,6 +640,64 @@ class GetInboxConversationMessageResponseMessages implements ModelInterface, Arr
     public function setAiTriagedAt($ai_triaged_at)
     {
         $this->container['ai_triaged_at'] = $ai_triaged_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer_amount
+     *
+     * @return string|null
+     */
+    public function getOfferAmount()
+    {
+        return $this->container['offer_amount'];
+    }
+
+    /**
+     * Sets offer_amount
+     *
+     * @param string|null $offer_amount offer_amount
+     *
+     * @return self
+     */
+    public function setOfferAmount($offer_amount)
+    {
+        $this->container['offer_amount'] = $offer_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer_status
+     *
+     * @return string|null
+     */
+    public function getOfferStatus()
+    {
+        return $this->container['offer_status'];
+    }
+
+    /**
+     * Sets offer_status
+     *
+     * @param string|null $offer_status offer_status
+     *
+     * @return self
+     */
+    public function setOfferStatus($offer_status)
+    {
+        $allowedValues = $this->getOfferStatusAllowableValues();
+        if (!is_null($offer_status) && !in_array($offer_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'offer_status', must be one of '%s'",
+                    $offer_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['offer_status'] = $offer_status;
 
         return $this;
     }

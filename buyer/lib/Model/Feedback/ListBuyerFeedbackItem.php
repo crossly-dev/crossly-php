@@ -61,18 +61,18 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
         'rating' => 'float',
+        'created_at' => 'string',
         'body' => 'string',
-        'rating_communication' => 'float',
-        'rating_ship_speed' => 'float',
-        'rating_ship_cost' => 'float',
-        'rating_as_described' => 'float',
+        'revised_at' => 'string',
         'seller_reply' => 'string',
         'seller_replied_at' => 'string',
-        'revised_at' => 'string',
+        'seller_name' => 'string',
         'item_title' => 'string',
-        'seller_name' => 'string'
+        'rating_as_described' => 'float',
+        'rating_communication' => 'float',
+        'rating_ship_speed' => 'float',
+        'rating_ship_cost' => 'float'
     ];
 
     /**
@@ -84,18 +84,18 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
         'rating' => null,
+        'created_at' => null,
         'body' => null,
-        'rating_communication' => null,
-        'rating_ship_speed' => null,
-        'rating_ship_cost' => null,
-        'rating_as_described' => null,
+        'revised_at' => null,
         'seller_reply' => null,
         'seller_replied_at' => null,
-        'revised_at' => null,
+        'seller_name' => null,
         'item_title' => null,
-        'seller_name' => null
+        'rating_as_described' => null,
+        'rating_communication' => null,
+        'rating_ship_speed' => null,
+        'rating_ship_cost' => null
     ];
 
     /**
@@ -126,18 +126,18 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
         'rating' => 'rating',
+        'created_at' => 'createdAt',
         'body' => 'body',
-        'rating_communication' => 'ratingCommunication',
-        'rating_ship_speed' => 'ratingShipSpeed',
-        'rating_ship_cost' => 'ratingShipCost',
-        'rating_as_described' => 'ratingAsDescribed',
+        'revised_at' => 'revisedAt',
         'seller_reply' => 'sellerReply',
         'seller_replied_at' => 'sellerRepliedAt',
-        'revised_at' => 'revisedAt',
+        'seller_name' => 'sellerName',
         'item_title' => 'itemTitle',
-        'seller_name' => 'sellerName'
+        'rating_as_described' => 'ratingAsDescribed',
+        'rating_communication' => 'ratingCommunication',
+        'rating_ship_speed' => 'ratingShipSpeed',
+        'rating_ship_cost' => 'ratingShipCost'
     ];
 
     /**
@@ -147,18 +147,18 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
         'rating' => 'setRating',
+        'created_at' => 'setCreatedAt',
         'body' => 'setBody',
-        'rating_communication' => 'setRatingCommunication',
-        'rating_ship_speed' => 'setRatingShipSpeed',
-        'rating_ship_cost' => 'setRatingShipCost',
-        'rating_as_described' => 'setRatingAsDescribed',
+        'revised_at' => 'setRevisedAt',
         'seller_reply' => 'setSellerReply',
         'seller_replied_at' => 'setSellerRepliedAt',
-        'revised_at' => 'setRevisedAt',
+        'seller_name' => 'setSellerName',
         'item_title' => 'setItemTitle',
-        'seller_name' => 'setSellerName'
+        'rating_as_described' => 'setRatingAsDescribed',
+        'rating_communication' => 'setRatingCommunication',
+        'rating_ship_speed' => 'setRatingShipSpeed',
+        'rating_ship_cost' => 'setRatingShipCost'
     ];
 
     /**
@@ -168,18 +168,18 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
         'rating' => 'getRating',
+        'created_at' => 'getCreatedAt',
         'body' => 'getBody',
-        'rating_communication' => 'getRatingCommunication',
-        'rating_ship_speed' => 'getRatingShipSpeed',
-        'rating_ship_cost' => 'getRatingShipCost',
-        'rating_as_described' => 'getRatingAsDescribed',
+        'revised_at' => 'getRevisedAt',
         'seller_reply' => 'getSellerReply',
         'seller_replied_at' => 'getSellerRepliedAt',
-        'revised_at' => 'getRevisedAt',
+        'seller_name' => 'getSellerName',
         'item_title' => 'getItemTitle',
-        'seller_name' => 'getSellerName'
+        'rating_as_described' => 'getRatingAsDescribed',
+        'rating_communication' => 'getRatingCommunication',
+        'rating_ship_speed' => 'getRatingShipSpeed',
+        'rating_ship_cost' => 'getRatingShipCost'
     ];
 
     /**
@@ -240,18 +240,18 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['rating'] = $data['rating'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['body'] = $data['body'] ?? null;
+        $this->container['revised_at'] = $data['revised_at'] ?? null;
+        $this->container['seller_reply'] = $data['seller_reply'] ?? null;
+        $this->container['seller_replied_at'] = $data['seller_replied_at'] ?? null;
+        $this->container['seller_name'] = $data['seller_name'] ?? null;
+        $this->container['item_title'] = $data['item_title'] ?? null;
+        $this->container['rating_as_described'] = $data['rating_as_described'] ?? null;
         $this->container['rating_communication'] = $data['rating_communication'] ?? null;
         $this->container['rating_ship_speed'] = $data['rating_ship_speed'] ?? null;
         $this->container['rating_ship_cost'] = $data['rating_ship_cost'] ?? null;
-        $this->container['rating_as_described'] = $data['rating_as_described'] ?? null;
-        $this->container['seller_reply'] = $data['seller_reply'] ?? null;
-        $this->container['seller_replied_at'] = $data['seller_replied_at'] ?? null;
-        $this->container['revised_at'] = $data['revised_at'] ?? null;
-        $this->container['item_title'] = $data['item_title'] ?? null;
-        $this->container['seller_name'] = $data['seller_name'] ?? null;
     }
 
     /**
@@ -266,11 +266,11 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['rating'] === null) {
             $invalidProperties[] = "'rating' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -312,30 +312,6 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets created_at
-     *
-     * @return string
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param string $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
      * Gets rating
      *
      * @return float
@@ -360,6 +336,30 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
      * Gets body
      *
      * @return string|null
@@ -379,6 +379,150 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setBody($body)
     {
         $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets revised_at
+     *
+     * @return string|null
+     */
+    public function getRevisedAt()
+    {
+        return $this->container['revised_at'];
+    }
+
+    /**
+     * Sets revised_at
+     *
+     * @param string|null $revised_at revised_at
+     *
+     * @return self
+     */
+    public function setRevisedAt($revised_at)
+    {
+        $this->container['revised_at'] = $revised_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_reply
+     *
+     * @return string|null
+     */
+    public function getSellerReply()
+    {
+        return $this->container['seller_reply'];
+    }
+
+    /**
+     * Sets seller_reply
+     *
+     * @param string|null $seller_reply seller_reply
+     *
+     * @return self
+     */
+    public function setSellerReply($seller_reply)
+    {
+        $this->container['seller_reply'] = $seller_reply;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_replied_at
+     *
+     * @return string|null
+     */
+    public function getSellerRepliedAt()
+    {
+        return $this->container['seller_replied_at'];
+    }
+
+    /**
+     * Sets seller_replied_at
+     *
+     * @param string|null $seller_replied_at seller_replied_at
+     *
+     * @return self
+     */
+    public function setSellerRepliedAt($seller_replied_at)
+    {
+        $this->container['seller_replied_at'] = $seller_replied_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_name
+     *
+     * @return string|null
+     */
+    public function getSellerName()
+    {
+        return $this->container['seller_name'];
+    }
+
+    /**
+     * Sets seller_name
+     *
+     * @param string|null $seller_name seller_name
+     *
+     * @return self
+     */
+    public function setSellerName($seller_name)
+    {
+        $this->container['seller_name'] = $seller_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets item_title
+     *
+     * @return string|null
+     */
+    public function getItemTitle()
+    {
+        return $this->container['item_title'];
+    }
+
+    /**
+     * Sets item_title
+     *
+     * @param string|null $item_title item_title
+     *
+     * @return self
+     */
+    public function setItemTitle($item_title)
+    {
+        $this->container['item_title'] = $item_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets rating_as_described
+     *
+     * @return float|null
+     */
+    public function getRatingAsDescribed()
+    {
+        return $this->container['rating_as_described'];
+    }
+
+    /**
+     * Sets rating_as_described
+     *
+     * @param float|null $rating_as_described rating_as_described
+     *
+     * @return self
+     */
+    public function setRatingAsDescribed($rating_as_described)
+    {
+        $this->container['rating_as_described'] = $rating_as_described;
 
         return $this;
     }
@@ -451,150 +595,6 @@ class ListBuyerFeedbackItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setRatingShipCost($rating_ship_cost)
     {
         $this->container['rating_ship_cost'] = $rating_ship_cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets rating_as_described
-     *
-     * @return float|null
-     */
-    public function getRatingAsDescribed()
-    {
-        return $this->container['rating_as_described'];
-    }
-
-    /**
-     * Sets rating_as_described
-     *
-     * @param float|null $rating_as_described rating_as_described
-     *
-     * @return self
-     */
-    public function setRatingAsDescribed($rating_as_described)
-    {
-        $this->container['rating_as_described'] = $rating_as_described;
-
-        return $this;
-    }
-
-    /**
-     * Gets seller_reply
-     *
-     * @return string|null
-     */
-    public function getSellerReply()
-    {
-        return $this->container['seller_reply'];
-    }
-
-    /**
-     * Sets seller_reply
-     *
-     * @param string|null $seller_reply seller_reply
-     *
-     * @return self
-     */
-    public function setSellerReply($seller_reply)
-    {
-        $this->container['seller_reply'] = $seller_reply;
-
-        return $this;
-    }
-
-    /**
-     * Gets seller_replied_at
-     *
-     * @return string|null
-     */
-    public function getSellerRepliedAt()
-    {
-        return $this->container['seller_replied_at'];
-    }
-
-    /**
-     * Sets seller_replied_at
-     *
-     * @param string|null $seller_replied_at seller_replied_at
-     *
-     * @return self
-     */
-    public function setSellerRepliedAt($seller_replied_at)
-    {
-        $this->container['seller_replied_at'] = $seller_replied_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets revised_at
-     *
-     * @return string|null
-     */
-    public function getRevisedAt()
-    {
-        return $this->container['revised_at'];
-    }
-
-    /**
-     * Sets revised_at
-     *
-     * @param string|null $revised_at revised_at
-     *
-     * @return self
-     */
-    public function setRevisedAt($revised_at)
-    {
-        $this->container['revised_at'] = $revised_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets item_title
-     *
-     * @return string|null
-     */
-    public function getItemTitle()
-    {
-        return $this->container['item_title'];
-    }
-
-    /**
-     * Sets item_title
-     *
-     * @param string|null $item_title item_title
-     *
-     * @return self
-     */
-    public function setItemTitle($item_title)
-    {
-        $this->container['item_title'] = $item_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets seller_name
-     *
-     * @return string|null
-     */
-    public function getSellerName()
-    {
-        return $this->container['seller_name'];
-    }
-
-    /**
-     * Sets seller_name
-     *
-     * @param string|null $seller_name seller_name
-     *
-     * @return self
-     */
-    public function setSellerName($seller_name)
-    {
-        $this->container['seller_name'] = $seller_name;
 
         return $this;
     }

@@ -60,17 +60,17 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'available' => 'bool',
-        'title' => 'string',
         'platform_listing_id' => 'string',
         'slug' => 'string',
+        'title' => 'string',
         'price_cents' => 'float',
-        'note' => 'string',
         'image_url' => 'string',
+        'available' => 'bool',
         'x' => 'float',
         'y' => 'float',
         'w' => 'float',
-        'z' => 'float'
+        'z' => 'float',
+        'note' => 'string'
     ];
 
     /**
@@ -81,17 +81,17 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'available' => null,
-        'title' => null,
         'platform_listing_id' => null,
         'slug' => null,
+        'title' => null,
         'price_cents' => null,
-        'note' => null,
         'image_url' => null,
+        'available' => null,
         'x' => null,
         'y' => null,
         'w' => null,
-        'z' => null
+        'z' => null,
+        'note' => null
     ];
 
     /**
@@ -121,17 +121,17 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'available' => 'available',
-        'title' => 'title',
         'platform_listing_id' => 'platformListingId',
         'slug' => 'slug',
+        'title' => 'title',
         'price_cents' => 'priceCents',
-        'note' => 'note',
         'image_url' => 'imageUrl',
+        'available' => 'available',
         'x' => 'x',
         'y' => 'y',
         'w' => 'w',
-        'z' => 'z'
+        'z' => 'z',
+        'note' => 'note'
     ];
 
     /**
@@ -140,17 +140,17 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'available' => 'setAvailable',
-        'title' => 'setTitle',
         'platform_listing_id' => 'setPlatformListingId',
         'slug' => 'setSlug',
+        'title' => 'setTitle',
         'price_cents' => 'setPriceCents',
-        'note' => 'setNote',
         'image_url' => 'setImageUrl',
+        'available' => 'setAvailable',
         'x' => 'setX',
         'y' => 'setY',
         'w' => 'setW',
-        'z' => 'setZ'
+        'z' => 'setZ',
+        'note' => 'setNote'
     ];
 
     /**
@@ -159,17 +159,17 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'available' => 'getAvailable',
-        'title' => 'getTitle',
         'platform_listing_id' => 'getPlatformListingId',
         'slug' => 'getSlug',
+        'title' => 'getTitle',
         'price_cents' => 'getPriceCents',
-        'note' => 'getNote',
         'image_url' => 'getImageUrl',
+        'available' => 'getAvailable',
         'x' => 'getX',
         'y' => 'getY',
         'w' => 'getW',
-        'z' => 'getZ'
+        'z' => 'getZ',
+        'note' => 'getNote'
     ];
 
     /**
@@ -229,17 +229,17 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['available'] = $data['available'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
-        $this->container['note'] = $data['note'] ?? null;
         $this->container['image_url'] = $data['image_url'] ?? null;
+        $this->container['available'] = $data['available'] ?? null;
         $this->container['x'] = $data['x'] ?? null;
         $this->container['y'] = $data['y'] ?? null;
         $this->container['w'] = $data['w'] ?? null;
         $this->container['z'] = $data['z'] ?? null;
+        $this->container['note'] = $data['note'] ?? null;
     }
 
     /**
@@ -251,14 +251,14 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['available'] === null) {
-            $invalidProperties[] = "'available' can't be null";
-        }
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
         }
         if ($this->container['price_cents'] === null) {
             $invalidProperties[] = "'price_cents' can't be null";
+        }
+        if ($this->container['available'] === null) {
+            $invalidProperties[] = "'available' can't be null";
         }
         if ($this->container['x'] === null) {
             $invalidProperties[] = "'x' can't be null";
@@ -286,54 +286,6 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets available
-     *
-     * @return bool
-     */
-    public function getAvailable()
-    {
-        return $this->container['available'];
-    }
-
-    /**
-     * Sets available
-     *
-     * @param bool $available available
-     *
-     * @return self
-     */
-    public function setAvailable($available)
-    {
-        $this->container['available'] = $available;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
 
     /**
      * Gets platform_listing_id
@@ -384,6 +336,30 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
      * Gets price_cents
      *
      * @return float
@@ -408,30 +384,6 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets note
-     *
-     * @return string|null
-     */
-    public function getNote()
-    {
-        return $this->container['note'];
-    }
-
-    /**
-     * Sets note
-     *
-     * @param string|null $note note
-     *
-     * @return self
-     */
-    public function setNote($note)
-    {
-        $this->container['note'] = $note;
-
-        return $this;
-    }
-
-    /**
      * Gets image_url
      *
      * @return string|null
@@ -451,6 +403,30 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
     public function setImageUrl($image_url)
     {
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets available
+     *
+     * @return bool
+     */
+    public function getAvailable()
+    {
+        return $this->container['available'];
+    }
+
+    /**
+     * Sets available
+     *
+     * @param bool $available available
+     *
+     * @return self
+     */
+    public function setAvailable($available)
+    {
+        $this->container['available'] = $available;
 
         return $this;
     }
@@ -547,6 +523,30 @@ class BuyerBoardResponseDataItems implements ModelInterface, ArrayAccess, \JsonS
     public function setZ($z)
     {
         $this->container['z'] = $z;
+
+        return $this;
+    }
+
+    /**
+     * Gets note
+     *
+     * @return string|null
+     */
+    public function getNote()
+    {
+        return $this->container['note'];
+    }
+
+    /**
+     * Sets note
+     *
+     * @param string|null $note note
+     *
+     * @return self
+     */
+    public function setNote($note)
+    {
+        $this->container['note'] = $note;
 
         return $this;
     }

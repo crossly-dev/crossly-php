@@ -174,8 +174,8 @@ class GetVaultMarketHomeUnitResponseHome implements ModelInterface, ArrayAccess,
     }
 
     const PRIVACY_OPEN = 'open';
-    const PRIVACY_LOCKED = 'locked';
     const PRIVACY_FRIENDS = 'friends';
+    const PRIVACY_LOCKED = 'locked';
 
     /**
      * Gets allowable values of the enum
@@ -186,8 +186,8 @@ class GetVaultMarketHomeUnitResponseHome implements ModelInterface, ArrayAccess,
     {
         return [
             self::PRIVACY_OPEN,
-            self::PRIVACY_LOCKED,
             self::PRIVACY_FRIENDS,
+            self::PRIVACY_LOCKED,
         ];
     }
 

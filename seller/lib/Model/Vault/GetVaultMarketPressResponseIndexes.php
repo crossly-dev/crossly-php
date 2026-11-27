@@ -226,17 +226,17 @@ class GetVaultMarketPressResponseIndexes implements ModelInterface, ArrayAccess,
     const KIND_CUSTOM = 'custom';
     const KIND_BRAND = 'brand';
     const KIND_CATEGORY = 'category';
+    const KIND_SEGMENT = 'segment';
     const KIND_CURATED = 'curated';
     const KIND_COMPOSITE = 'composite';
-    const KIND_SEGMENT = 'segment';
     const WEIGHTING_MARK = 'mark';
     const WEIGHTING_EQUAL = 'equal';
     const WEIGHTING_VAULT_CAP = 'vault_cap';
     const WEIGHTING_TURNOVER = 'turnover';
     const QUALITY_NONE = 'none';
+    const QUALITY_C = 'C';
     const QUALITY_A = 'A';
     const QUALITY_B = 'B';
-    const QUALITY_C = 'C';
 
     /**
      * Gets allowable values of the enum
@@ -249,9 +249,9 @@ class GetVaultMarketPressResponseIndexes implements ModelInterface, ArrayAccess,
             self::KIND_CUSTOM,
             self::KIND_BRAND,
             self::KIND_CATEGORY,
+            self::KIND_SEGMENT,
             self::KIND_CURATED,
             self::KIND_COMPOSITE,
-            self::KIND_SEGMENT,
         ];
     }
 
@@ -279,9 +279,9 @@ class GetVaultMarketPressResponseIndexes implements ModelInterface, ArrayAccess,
     {
         return [
             self::QUALITY_NONE,
+            self::QUALITY_C,
             self::QUALITY_A,
             self::QUALITY_B,
-            self::QUALITY_C,
         ];
     }
 

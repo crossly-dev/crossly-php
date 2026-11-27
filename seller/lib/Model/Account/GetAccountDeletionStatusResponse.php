@@ -191,9 +191,6 @@ class GetAccountDeletionStatusResponse implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if ($this->container['pending'] === null) {
-            $invalidProperties[] = "'pending' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -212,7 +209,7 @@ class GetAccountDeletionStatusResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets pending
      *
-     * @return \Crossly\Model\Account\GetAccountDeletionStatusResponsePending
+     * @return \Crossly\Model\Account\GetAccountDeletionStatusResponsePending|null
      */
     public function getPending()
     {
@@ -222,7 +219,7 @@ class GetAccountDeletionStatusResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets pending
      *
-     * @param \Crossly\Model\Account\GetAccountDeletionStatusResponsePending $pending pending
+     * @param \Crossly\Model\Account\GetAccountDeletionStatusResponsePending|null $pending pending
      *
      * @return self
      */

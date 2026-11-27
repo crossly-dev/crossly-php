@@ -60,8 +60,8 @@ class CreateBuyerTotalRequestResponseData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'ok' => 'bool'
+        'ok' => 'bool',
+        'id' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class CreateBuyerTotalRequestResponseData implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'ok' => null
+        'ok' => null,
+        'id' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CreateBuyerTotalRequestResponseData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'ok' => 'ok'
+        'ok' => 'ok',
+        'id' => 'id'
     ];
 
     /**
@@ -113,8 +113,8 @@ class CreateBuyerTotalRequestResponseData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'ok' => 'setOk'
+        'ok' => 'setOk',
+        'id' => 'setId'
     ];
 
     /**
@@ -123,8 +123,8 @@ class CreateBuyerTotalRequestResponseData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'ok' => 'getOk'
+        'ok' => 'getOk',
+        'id' => 'getId'
     ];
 
     /**
@@ -184,8 +184,8 @@ class CreateBuyerTotalRequestResponseData implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['ok'] = $data['ok'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -197,11 +197,11 @@ class CreateBuyerTotalRequestResponseData implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['ok'] === null) {
             $invalidProperties[] = "'ok' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,30 +217,6 @@ class CreateBuyerTotalRequestResponseData implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets ok
@@ -262,6 +238,30 @@ class CreateBuyerTotalRequestResponseData implements ModelInterface, ArrayAccess
     public function setOk($ok)
     {
         $this->container['ok'] = $ok;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

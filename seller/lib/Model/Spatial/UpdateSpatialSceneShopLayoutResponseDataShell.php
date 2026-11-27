@@ -168,9 +168,9 @@ class UpdateSpatialSceneShopLayoutResponseDataShell implements ModelInterface, A
         return self::$openAPIModelName;
     }
 
+    const SIZE_AUTO = 'auto';
     const SIZE_STANDARD = 'standard';
     const SIZE_LARGE = 'large';
-    const SIZE_AUTO = 'auto';
     const SIZE_COMPACT = 'compact';
     const SIZE_FLAGSHIP = 'flagship';
 
@@ -182,9 +182,9 @@ class UpdateSpatialSceneShopLayoutResponseDataShell implements ModelInterface, A
     public function getSizeAllowableValues()
     {
         return [
+            self::SIZE_AUTO,
             self::SIZE_STANDARD,
             self::SIZE_LARGE,
-            self::SIZE_AUTO,
             self::SIZE_COMPACT,
             self::SIZE_FLAGSHIP,
         ];

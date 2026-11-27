@@ -223,8 +223,8 @@ class GetVaultMarketRiskReportResponsePartnerDcmPositions implements ModelInterf
         return self::$openAPIModelName;
     }
 
-    const SIDE_LONG = 'long';
     const SIDE_SHORT = 'short';
+    const SIDE_LONG = 'long';
 
     /**
      * Gets allowable values of the enum
@@ -234,8 +234,8 @@ class GetVaultMarketRiskReportResponsePartnerDcmPositions implements ModelInterf
     public function getSideAllowableValues()
     {
         return [
-            self::SIDE_LONG,
             self::SIDE_SHORT,
+            self::SIDE_LONG,
         ];
     }
 

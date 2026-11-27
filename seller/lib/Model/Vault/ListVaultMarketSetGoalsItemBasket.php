@@ -193,10 +193,10 @@ class ListVaultMarketSetGoalsItemBasket implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
+    const STATUS_COMPLETED = 'completed';
     const STATUS_CANCELLED = 'cancelled';
     const STATUS_ENDED = 'ended';
     const STATUS_WORKING = 'working';
-    const STATUS_COMPLETED = 'completed';
 
     /**
      * Gets allowable values of the enum
@@ -206,10 +206,10 @@ class ListVaultMarketSetGoalsItemBasket implements ModelInterface, ArrayAccess, 
     public function getStatusAllowableValues()
     {
         return [
+            self::STATUS_COMPLETED,
             self::STATUS_CANCELLED,
             self::STATUS_ENDED,
             self::STATUS_WORKING,
-            self::STATUS_COMPLETED,
         ];
     }
 

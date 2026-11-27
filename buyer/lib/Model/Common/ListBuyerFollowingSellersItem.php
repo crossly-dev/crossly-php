@@ -64,9 +64,9 @@ class ListBuyerFollowingSellersItem implements ModelInterface, ArrayAccess, \Jso
         'followed_at' => 'string',
         'active_listings' => 'float',
         'new_listings' => 'float',
+        'username' => 'string',
         'name' => 'string',
         'avatar_url' => 'string',
-        'username' => 'string',
         'last_seen_at' => 'string'
     ];
 
@@ -82,9 +82,9 @@ class ListBuyerFollowingSellersItem implements ModelInterface, ArrayAccess, \Jso
         'followed_at' => null,
         'active_listings' => null,
         'new_listings' => null,
+        'username' => null,
         'name' => null,
         'avatar_url' => null,
-        'username' => null,
         'last_seen_at' => null
     ];
 
@@ -119,9 +119,9 @@ class ListBuyerFollowingSellersItem implements ModelInterface, ArrayAccess, \Jso
         'followed_at' => 'followedAt',
         'active_listings' => 'activeListings',
         'new_listings' => 'newListings',
+        'username' => 'username',
         'name' => 'name',
         'avatar_url' => 'avatarUrl',
-        'username' => 'username',
         'last_seen_at' => 'lastSeenAt'
     ];
 
@@ -135,9 +135,9 @@ class ListBuyerFollowingSellersItem implements ModelInterface, ArrayAccess, \Jso
         'followed_at' => 'setFollowedAt',
         'active_listings' => 'setActiveListings',
         'new_listings' => 'setNewListings',
+        'username' => 'setUsername',
         'name' => 'setName',
         'avatar_url' => 'setAvatarUrl',
-        'username' => 'setUsername',
         'last_seen_at' => 'setLastSeenAt'
     ];
 
@@ -151,9 +151,9 @@ class ListBuyerFollowingSellersItem implements ModelInterface, ArrayAccess, \Jso
         'followed_at' => 'getFollowedAt',
         'active_listings' => 'getActiveListings',
         'new_listings' => 'getNewListings',
+        'username' => 'getUsername',
         'name' => 'getName',
         'avatar_url' => 'getAvatarUrl',
-        'username' => 'getUsername',
         'last_seen_at' => 'getLastSeenAt'
     ];
 
@@ -218,9 +218,9 @@ class ListBuyerFollowingSellersItem implements ModelInterface, ArrayAccess, \Jso
         $this->container['followed_at'] = $data['followed_at'] ?? null;
         $this->container['active_listings'] = $data['active_listings'] ?? null;
         $this->container['new_listings'] = $data['new_listings'] ?? null;
+        $this->container['username'] = $data['username'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['avatar_url'] = $data['avatar_url'] ?? null;
-        $this->container['username'] = $data['username'] ?? null;
         $this->container['last_seen_at'] = $data['last_seen_at'] ?? null;
     }
 
@@ -357,6 +357,30 @@ class ListBuyerFollowingSellersItem implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
+     * Gets username
+     *
+     * @return string|null
+     */
+    public function getUsername()
+    {
+        return $this->container['username'];
+    }
+
+    /**
+     * Sets username
+     *
+     * @param string|null $username username
+     *
+     * @return self
+     */
+    public function setUsername($username)
+    {
+        $this->container['username'] = $username;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string|null
@@ -400,30 +424,6 @@ class ListBuyerFollowingSellersItem implements ModelInterface, ArrayAccess, \Jso
     public function setAvatarUrl($avatar_url)
     {
         $this->container['avatar_url'] = $avatar_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets username
-     *
-     * @return string|null
-     */
-    public function getUsername()
-    {
-        return $this->container['username'];
-    }
-
-    /**
-     * Sets username
-     *
-     * @param string|null $username username
-     *
-     * @return self
-     */
-    public function setUsername($username)
-    {
-        $this->container['username'] = $username;
 
         return $this;
     }

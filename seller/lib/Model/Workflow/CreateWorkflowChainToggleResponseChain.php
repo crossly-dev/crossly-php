@@ -64,8 +64,10 @@ class CreateWorkflowChainToggleResponseChain implements ModelInterface, ArrayAcc
         'user_id' => 'string',
         'name' => 'string',
         'trigger_id' => 'string',
+        'trigger_config' => 'array<string,mixed>',
         'is_active' => 'bool',
-        'created_at' => '\DateTime'
+        'created_at' => '\DateTime',
+        'workflow_id' => 'string'
     ];
 
     /**
@@ -80,8 +82,10 @@ class CreateWorkflowChainToggleResponseChain implements ModelInterface, ArrayAcc
         'user_id' => null,
         'name' => null,
         'trigger_id' => null,
+        'trigger_config' => null,
         'is_active' => null,
-        'created_at' => 'date-time'
+        'created_at' => 'date-time',
+        'workflow_id' => null
     ];
 
     /**
@@ -115,8 +119,10 @@ class CreateWorkflowChainToggleResponseChain implements ModelInterface, ArrayAcc
         'user_id' => 'userId',
         'name' => 'name',
         'trigger_id' => 'triggerId',
+        'trigger_config' => 'triggerConfig',
         'is_active' => 'isActive',
-        'created_at' => 'createdAt'
+        'created_at' => 'createdAt',
+        'workflow_id' => 'workflowId'
     ];
 
     /**
@@ -129,8 +135,10 @@ class CreateWorkflowChainToggleResponseChain implements ModelInterface, ArrayAcc
         'user_id' => 'setUserId',
         'name' => 'setName',
         'trigger_id' => 'setTriggerId',
+        'trigger_config' => 'setTriggerConfig',
         'is_active' => 'setIsActive',
-        'created_at' => 'setCreatedAt'
+        'created_at' => 'setCreatedAt',
+        'workflow_id' => 'setWorkflowId'
     ];
 
     /**
@@ -143,8 +151,10 @@ class CreateWorkflowChainToggleResponseChain implements ModelInterface, ArrayAcc
         'user_id' => 'getUserId',
         'name' => 'getName',
         'trigger_id' => 'getTriggerId',
+        'trigger_config' => 'getTriggerConfig',
         'is_active' => 'getIsActive',
-        'created_at' => 'getCreatedAt'
+        'created_at' => 'getCreatedAt',
+        'workflow_id' => 'getWorkflowId'
     ];
 
     /**
@@ -208,8 +218,10 @@ class CreateWorkflowChainToggleResponseChain implements ModelInterface, ArrayAcc
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['trigger_id'] = $data['trigger_id'] ?? null;
+        $this->container['trigger_config'] = $data['trigger_config'] ?? null;
         $this->container['is_active'] = $data['is_active'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['workflow_id'] = $data['workflow_id'] ?? null;
     }
 
     /**
@@ -233,11 +245,17 @@ class CreateWorkflowChainToggleResponseChain implements ModelInterface, ArrayAcc
         if ($this->container['trigger_id'] === null) {
             $invalidProperties[] = "'trigger_id' can't be null";
         }
+        if ($this->container['trigger_config'] === null) {
+            $invalidProperties[] = "'trigger_config' can't be null";
+        }
         if ($this->container['is_active'] === null) {
             $invalidProperties[] = "'is_active' can't be null";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['workflow_id'] === null) {
+            $invalidProperties[] = "'workflow_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -351,6 +369,30 @@ class CreateWorkflowChainToggleResponseChain implements ModelInterface, ArrayAcc
     }
 
     /**
+     * Gets trigger_config
+     *
+     * @return array<string,mixed>
+     */
+    public function getTriggerConfig()
+    {
+        return $this->container['trigger_config'];
+    }
+
+    /**
+     * Sets trigger_config
+     *
+     * @param array<string,mixed> $trigger_config trigger_config
+     *
+     * @return self
+     */
+    public function setTriggerConfig($trigger_config)
+    {
+        $this->container['trigger_config'] = $trigger_config;
+
+        return $this;
+    }
+
+    /**
      * Gets is_active
      *
      * @return bool
@@ -394,6 +436,30 @@ class CreateWorkflowChainToggleResponseChain implements ModelInterface, ArrayAcc
     public function setCreatedAt($created_at)
     {
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets workflow_id
+     *
+     * @return string
+     */
+    public function getWorkflowId()
+    {
+        return $this->container['workflow_id'];
+    }
+
+    /**
+     * Sets workflow_id
+     *
+     * @param string $workflow_id workflow_id
+     *
+     * @return self
+     */
+    public function setWorkflowId($workflow_id)
+    {
+        $this->container['workflow_id'] = $workflow_id;
 
         return $this;
     }

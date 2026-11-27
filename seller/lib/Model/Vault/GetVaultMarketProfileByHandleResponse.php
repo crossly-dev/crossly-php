@@ -68,7 +68,7 @@ class GetVaultMarketProfileByHandleResponse implements ModelInterface, ArrayAcce
         'followers' => 'float',
         'following' => 'bool',
         'is_me' => 'bool',
-        'recent_buys' => '\Crossly\Model\Vault\ListVaultMarketFeedItem[]',
+        'recent_buys' => '\Crossly\Model\Vault\GetVaultMarketProfileByHandleResponseOneOfRecentBuys[]',
         'display_name' => 'string',
         'avatar_url' => 'mixed',
         'profile_url' => 'mixed'
@@ -497,7 +497,7 @@ class GetVaultMarketProfileByHandleResponse implements ModelInterface, ArrayAcce
     /**
      * Gets recent_buys
      *
-     * @return \Crossly\Model\Vault\ListVaultMarketFeedItem[]
+     * @return \Crossly\Model\Vault\GetVaultMarketProfileByHandleResponseOneOfRecentBuys[]
      */
     public function getRecentBuys()
     {
@@ -507,7 +507,7 @@ class GetVaultMarketProfileByHandleResponse implements ModelInterface, ArrayAcce
     /**
      * Sets recent_buys
      *
-     * @param \Crossly\Model\Vault\ListVaultMarketFeedItem[] $recent_buys recent_buys
+     * @param \Crossly\Model\Vault\GetVaultMarketProfileByHandleResponseOneOfRecentBuys[] $recent_buys recent_buys
      *
      * @return self
      */

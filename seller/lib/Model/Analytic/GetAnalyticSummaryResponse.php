@@ -60,10 +60,15 @@ class GetAnalyticSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
+        'days' => 'float',
         'sales' => 'float',
         'revenue' => 'float',
         'fees' => 'float',
-        'days' => 'float'
+        'pending_details_count' => 'float',
+        'units_sold' => 'float',
+        'net_sales_cents' => 'float',
+        'fees_cents' => 'float',
+        'net_profit_cents' => 'float'
     ];
 
     /**
@@ -74,10 +79,15 @@ class GetAnalyticSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'days' => null,
         'sales' => null,
         'revenue' => null,
         'fees' => null,
-        'days' => null
+        'pending_details_count' => null,
+        'units_sold' => null,
+        'net_sales_cents' => null,
+        'fees_cents' => null,
+        'net_profit_cents' => null
     ];
 
     /**
@@ -107,10 +117,15 @@ class GetAnalyticSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
+        'days' => 'days',
         'sales' => 'sales',
         'revenue' => 'revenue',
         'fees' => 'fees',
-        'days' => 'days'
+        'pending_details_count' => 'pendingDetailsCount',
+        'units_sold' => 'unitsSold',
+        'net_sales_cents' => 'netSalesCents',
+        'fees_cents' => 'feesCents',
+        'net_profit_cents' => 'netProfitCents'
     ];
 
     /**
@@ -119,10 +134,15 @@ class GetAnalyticSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
+        'days' => 'setDays',
         'sales' => 'setSales',
         'revenue' => 'setRevenue',
         'fees' => 'setFees',
-        'days' => 'setDays'
+        'pending_details_count' => 'setPendingDetailsCount',
+        'units_sold' => 'setUnitsSold',
+        'net_sales_cents' => 'setNetSalesCents',
+        'fees_cents' => 'setFeesCents',
+        'net_profit_cents' => 'setNetProfitCents'
     ];
 
     /**
@@ -131,10 +151,15 @@ class GetAnalyticSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
+        'days' => 'getDays',
         'sales' => 'getSales',
         'revenue' => 'getRevenue',
         'fees' => 'getFees',
-        'days' => 'getDays'
+        'pending_details_count' => 'getPendingDetailsCount',
+        'units_sold' => 'getUnitsSold',
+        'net_sales_cents' => 'getNetSalesCents',
+        'fees_cents' => 'getFeesCents',
+        'net_profit_cents' => 'getNetProfitCents'
     ];
 
     /**
@@ -194,10 +219,15 @@ class GetAnalyticSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
+        $this->container['days'] = $data['days'] ?? null;
         $this->container['sales'] = $data['sales'] ?? null;
         $this->container['revenue'] = $data['revenue'] ?? null;
         $this->container['fees'] = $data['fees'] ?? null;
-        $this->container['days'] = $data['days'] ?? null;
+        $this->container['pending_details_count'] = $data['pending_details_count'] ?? null;
+        $this->container['units_sold'] = $data['units_sold'] ?? null;
+        $this->container['net_sales_cents'] = $data['net_sales_cents'] ?? null;
+        $this->container['fees_cents'] = $data['fees_cents'] ?? null;
+        $this->container['net_profit_cents'] = $data['net_profit_cents'] ?? null;
     }
 
     /**
@@ -209,6 +239,9 @@ class GetAnalyticSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['days'] === null) {
+            $invalidProperties[] = "'days' can't be null";
+        }
         if ($this->container['sales'] === null) {
             $invalidProperties[] = "'sales' can't be null";
         }
@@ -218,8 +251,17 @@ class GetAnalyticSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['fees'] === null) {
             $invalidProperties[] = "'fees' can't be null";
         }
-        if ($this->container['days'] === null) {
-            $invalidProperties[] = "'days' can't be null";
+        if ($this->container['pending_details_count'] === null) {
+            $invalidProperties[] = "'pending_details_count' can't be null";
+        }
+        if ($this->container['units_sold'] === null) {
+            $invalidProperties[] = "'units_sold' can't be null";
+        }
+        if ($this->container['net_sales_cents'] === null) {
+            $invalidProperties[] = "'net_sales_cents' can't be null";
+        }
+        if ($this->container['fees_cents'] === null) {
+            $invalidProperties[] = "'fees_cents' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,6 +277,30 @@ class GetAnalyticSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets days
+     *
+     * @return float
+     */
+    public function getDays()
+    {
+        return $this->container['days'];
+    }
+
+    /**
+     * Sets days
+     *
+     * @param float $days days
+     *
+     * @return self
+     */
+    public function setDays($days)
+    {
+        $this->container['days'] = $days;
+
+        return $this;
+    }
 
     /**
      * Gets sales
@@ -309,25 +375,121 @@ class GetAnalyticSummaryResponse implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets days
+     * Gets pending_details_count
      *
      * @return float
      */
-    public function getDays()
+    public function getPendingDetailsCount()
     {
-        return $this->container['days'];
+        return $this->container['pending_details_count'];
     }
 
     /**
-     * Sets days
+     * Sets pending_details_count
      *
-     * @param float $days days
+     * @param float $pending_details_count pending_details_count
      *
      * @return self
      */
-    public function setDays($days)
+    public function setPendingDetailsCount($pending_details_count)
     {
-        $this->container['days'] = $days;
+        $this->container['pending_details_count'] = $pending_details_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets units_sold
+     *
+     * @return float
+     */
+    public function getUnitsSold()
+    {
+        return $this->container['units_sold'];
+    }
+
+    /**
+     * Sets units_sold
+     *
+     * @param float $units_sold units_sold
+     *
+     * @return self
+     */
+    public function setUnitsSold($units_sold)
+    {
+        $this->container['units_sold'] = $units_sold;
+
+        return $this;
+    }
+
+    /**
+     * Gets net_sales_cents
+     *
+     * @return float
+     */
+    public function getNetSalesCents()
+    {
+        return $this->container['net_sales_cents'];
+    }
+
+    /**
+     * Sets net_sales_cents
+     *
+     * @param float $net_sales_cents net_sales_cents
+     *
+     * @return self
+     */
+    public function setNetSalesCents($net_sales_cents)
+    {
+        $this->container['net_sales_cents'] = $net_sales_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets fees_cents
+     *
+     * @return float
+     */
+    public function getFeesCents()
+    {
+        return $this->container['fees_cents'];
+    }
+
+    /**
+     * Sets fees_cents
+     *
+     * @param float $fees_cents fees_cents
+     *
+     * @return self
+     */
+    public function setFeesCents($fees_cents)
+    {
+        $this->container['fees_cents'] = $fees_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets net_profit_cents
+     *
+     * @return float|null
+     */
+    public function getNetProfitCents()
+    {
+        return $this->container['net_profit_cents'];
+    }
+
+    /**
+     * Sets net_profit_cents
+     *
+     * @param float|null $net_profit_cents net_profit_cents
+     *
+     * @return self
+     */
+    public function setNetProfitCents($net_profit_cents)
+    {
+        $this->container['net_profit_cents'] = $net_profit_cents;
 
         return $this;
     }

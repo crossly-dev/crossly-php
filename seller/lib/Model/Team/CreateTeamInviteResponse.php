@@ -260,9 +260,6 @@ class CreateTeamInviteResponse implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['expires_at'] === null) {
             $invalidProperties[] = "'expires_at' can't be null";
         }
-        if ($this->container['accept_url'] === null) {
-            $invalidProperties[] = "'accept_url' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -411,7 +408,7 @@ class CreateTeamInviteResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets accept_url
      *
-     * @return string
+     * @return string|null
      */
     public function getAcceptUrl()
     {
@@ -421,7 +418,7 @@ class CreateTeamInviteResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets accept_url
      *
-     * @param string $accept_url accept_url
+     * @param string|null $accept_url accept_url
      *
      * @return self
      */

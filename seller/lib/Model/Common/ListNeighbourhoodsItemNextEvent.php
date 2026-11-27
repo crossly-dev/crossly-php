@@ -61,8 +61,8 @@ class ListNeighbourhoodsItemNextEvent implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'live' => 'bool',
         'title' => 'string',
+        'live' => 'bool',
         'ends_at' => 'string',
         'kind' => 'string',
         'starts_at' => 'string'
@@ -77,8 +77,8 @@ class ListNeighbourhoodsItemNextEvent implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'live' => null,
         'title' => null,
+        'live' => null,
         'ends_at' => null,
         'kind' => null,
         'starts_at' => null
@@ -112,8 +112,8 @@ class ListNeighbourhoodsItemNextEvent implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'live' => 'live',
         'title' => 'title',
+        'live' => 'live',
         'ends_at' => 'endsAt',
         'kind' => 'kind',
         'starts_at' => 'startsAt'
@@ -126,8 +126,8 @@ class ListNeighbourhoodsItemNextEvent implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         'id' => 'setId',
-        'live' => 'setLive',
         'title' => 'setTitle',
+        'live' => 'setLive',
         'ends_at' => 'setEndsAt',
         'kind' => 'setKind',
         'starts_at' => 'setStartsAt'
@@ -140,8 +140,8 @@ class ListNeighbourhoodsItemNextEvent implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         'id' => 'getId',
-        'live' => 'getLive',
         'title' => 'getTitle',
+        'live' => 'getLive',
         'ends_at' => 'getEndsAt',
         'kind' => 'getKind',
         'starts_at' => 'getStartsAt'
@@ -220,8 +220,8 @@ class ListNeighbourhoodsItemNextEvent implements ModelInterface, ArrayAccess, \J
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['live'] = $data['live'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
+        $this->container['live'] = $data['live'] ?? null;
         $this->container['ends_at'] = $data['ends_at'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
         $this->container['starts_at'] = $data['starts_at'] ?? null;
@@ -239,11 +239,11 @@ class ListNeighbourhoodsItemNextEvent implements ModelInterface, ArrayAccess, \J
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['live'] === null) {
-            $invalidProperties[] = "'live' can't be null";
-        }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['live'] === null) {
+            $invalidProperties[] = "'live' can't be null";
         }
         if ($this->container['ends_at'] === null) {
             $invalidProperties[] = "'ends_at' can't be null";
@@ -303,30 +303,6 @@ class ListNeighbourhoodsItemNextEvent implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets live
-     *
-     * @return bool
-     */
-    public function getLive()
-    {
-        return $this->container['live'];
-    }
-
-    /**
-     * Sets live
-     *
-     * @param bool $live live
-     *
-     * @return self
-     */
-    public function setLive($live)
-    {
-        $this->container['live'] = $live;
-
-        return $this;
-    }
-
-    /**
      * Gets title
      *
      * @return string
@@ -346,6 +322,30 @@ class ListNeighbourhoodsItemNextEvent implements ModelInterface, ArrayAccess, \J
     public function setTitle($title)
     {
         $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets live
+     *
+     * @return bool
+     */
+    public function getLive()
+    {
+        return $this->container['live'];
+    }
+
+    /**
+     * Sets live
+     *
+     * @param bool $live live
+     *
+     * @return self
+     */
+    public function setLive($live)
+    {
+        $this->container['live'] = $live;
 
         return $this;
     }

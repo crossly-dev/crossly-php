@@ -46,9 +46,9 @@ class GetWorldGameResponseDataContestsEntryItem
      */
     const FREE = 'free';
 
-    const SPONSORED = 'sponsored';
-
     const PAID = 'paid';
+
+    const SPONSORED = 'sponsored';
 
     /**
      * Gets allowable values of the enum
@@ -58,8 +58,8 @@ class GetWorldGameResponseDataContestsEntryItem
     {
         return [
             self::FREE,
-            self::SPONSORED,
-            self::PAID
+            self::PAID,
+            self::SPONSORED
         ];
     }
 }

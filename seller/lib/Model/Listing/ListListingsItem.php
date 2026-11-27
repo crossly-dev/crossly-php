@@ -62,12 +62,16 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'ai_media' => 'bool',
         'ai_media_detected' => 'bool',
+        'pricing' => '\Crossly\Model\Listing\ListListingsItemPricing',
         'id' => 'string',
         'brand' => 'string',
         'name' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'user_id' => 'string',
+        'description' => 'string',
+        'status' => 'string',
+        'source' => 'string',
         'sku' => 'string',
         'quantity' => 'float',
         'quantity_available' => 'float',
@@ -85,7 +89,7 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'video_url' => 'string',
         'tags' => 'string[]',
         'grade_key' => 'string',
-        'grading' => '\Crossly\Model\Grading\ListGradingSubmissionsItemGrading',
+        'grading' => '\Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading',
         'price_floor_cents' => 'float',
         'floor_is_net' => 'bool',
         'weight_lb' => 'string',
@@ -93,9 +97,6 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'dimension_lin' => 'string',
         'dimension_win' => 'string',
         'dimension_hin' => 'string',
-        'status' => 'string',
-        'source' => 'string',
-        'description' => 'string',
         'title' => 'string',
         'description_html' => 'string',
         'price' => 'string',
@@ -113,13 +114,18 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'automation_blocked_rule_ids' => 'string[]',
         'automation_assigned_chain_ids' => 'string[]',
         'automation_blocked_chain_ids' => 'string[]',
+        'workflow_blocked_ids' => 'string[]',
+        'workflow_assigned_ids' => 'string[]',
         'hs_code' => 'string',
         'country_of_origin' => 'string',
         'delisted_at' => '\DateTime',
         'sold_at' => '\DateTime',
         'ebay_attributes_enriched_at' => '\DateTime',
         'duplicate_of_listing_id' => 'string',
-        'client_draft_id' => 'string'
+        'client_draft_id' => 'string',
+        'attributed_oauth_app_id' => 'string',
+        'attributed_grant_id' => 'string',
+        'quota_bucket' => 'string'
     ];
 
     /**
@@ -132,12 +138,16 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'ai_media' => null,
         'ai_media_detected' => null,
+        'pricing' => null,
         'id' => null,
         'brand' => null,
         'name' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
         'user_id' => null,
+        'description' => null,
+        'status' => null,
+        'source' => null,
         'sku' => null,
         'quantity' => null,
         'quantity_available' => null,
@@ -163,9 +173,6 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'dimension_lin' => null,
         'dimension_win' => null,
         'dimension_hin' => null,
-        'status' => null,
-        'source' => null,
-        'description' => null,
         'title' => null,
         'description_html' => null,
         'price' => null,
@@ -183,13 +190,18 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'automation_blocked_rule_ids' => null,
         'automation_assigned_chain_ids' => null,
         'automation_blocked_chain_ids' => null,
+        'workflow_blocked_ids' => null,
+        'workflow_assigned_ids' => null,
         'hs_code' => null,
         'country_of_origin' => null,
         'delisted_at' => 'date-time',
         'sold_at' => 'date-time',
         'ebay_attributes_enriched_at' => 'date-time',
         'duplicate_of_listing_id' => null,
-        'client_draft_id' => null
+        'client_draft_id' => null,
+        'attributed_oauth_app_id' => null,
+        'attributed_grant_id' => null,
+        'quota_bucket' => null
     ];
 
     /**
@@ -221,12 +233,16 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'ai_media' => 'aiMedia',
         'ai_media_detected' => 'aiMediaDetected',
+        'pricing' => 'pricing',
         'id' => 'id',
         'brand' => 'brand',
         'name' => 'name',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
+        'description' => 'description',
+        'status' => 'status',
+        'source' => 'source',
         'sku' => 'sku',
         'quantity' => 'quantity',
         'quantity_available' => 'quantityAvailable',
@@ -252,9 +268,6 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'dimension_lin' => 'dimensionLIn',
         'dimension_win' => 'dimensionWIn',
         'dimension_hin' => 'dimensionHIn',
-        'status' => 'status',
-        'source' => 'source',
-        'description' => 'description',
         'title' => 'title',
         'description_html' => 'descriptionHtml',
         'price' => 'price',
@@ -272,13 +285,18 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'automation_blocked_rule_ids' => 'automationBlockedRuleIds',
         'automation_assigned_chain_ids' => 'automationAssignedChainIds',
         'automation_blocked_chain_ids' => 'automationBlockedChainIds',
+        'workflow_blocked_ids' => 'workflowBlockedIds',
+        'workflow_assigned_ids' => 'workflowAssignedIds',
         'hs_code' => 'hsCode',
         'country_of_origin' => 'countryOfOrigin',
         'delisted_at' => 'delistedAt',
         'sold_at' => 'soldAt',
         'ebay_attributes_enriched_at' => 'ebayAttributesEnrichedAt',
         'duplicate_of_listing_id' => 'duplicateOfListingId',
-        'client_draft_id' => 'clientDraftId'
+        'client_draft_id' => 'clientDraftId',
+        'attributed_oauth_app_id' => 'attributedOauthAppId',
+        'attributed_grant_id' => 'attributedGrantId',
+        'quota_bucket' => 'quotaBucket'
     ];
 
     /**
@@ -289,12 +307,16 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'ai_media' => 'setAiMedia',
         'ai_media_detected' => 'setAiMediaDetected',
+        'pricing' => 'setPricing',
         'id' => 'setId',
         'brand' => 'setBrand',
         'name' => 'setName',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
+        'description' => 'setDescription',
+        'status' => 'setStatus',
+        'source' => 'setSource',
         'sku' => 'setSku',
         'quantity' => 'setQuantity',
         'quantity_available' => 'setQuantityAvailable',
@@ -320,9 +342,6 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'dimension_lin' => 'setDimensionLin',
         'dimension_win' => 'setDimensionWin',
         'dimension_hin' => 'setDimensionHin',
-        'status' => 'setStatus',
-        'source' => 'setSource',
-        'description' => 'setDescription',
         'title' => 'setTitle',
         'description_html' => 'setDescriptionHtml',
         'price' => 'setPrice',
@@ -340,13 +359,18 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'automation_blocked_rule_ids' => 'setAutomationBlockedRuleIds',
         'automation_assigned_chain_ids' => 'setAutomationAssignedChainIds',
         'automation_blocked_chain_ids' => 'setAutomationBlockedChainIds',
+        'workflow_blocked_ids' => 'setWorkflowBlockedIds',
+        'workflow_assigned_ids' => 'setWorkflowAssignedIds',
         'hs_code' => 'setHsCode',
         'country_of_origin' => 'setCountryOfOrigin',
         'delisted_at' => 'setDelistedAt',
         'sold_at' => 'setSoldAt',
         'ebay_attributes_enriched_at' => 'setEbayAttributesEnrichedAt',
         'duplicate_of_listing_id' => 'setDuplicateOfListingId',
-        'client_draft_id' => 'setClientDraftId'
+        'client_draft_id' => 'setClientDraftId',
+        'attributed_oauth_app_id' => 'setAttributedOauthAppId',
+        'attributed_grant_id' => 'setAttributedGrantId',
+        'quota_bucket' => 'setQuotaBucket'
     ];
 
     /**
@@ -357,12 +381,16 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'ai_media' => 'getAiMedia',
         'ai_media_detected' => 'getAiMediaDetected',
+        'pricing' => 'getPricing',
         'id' => 'getId',
         'brand' => 'getBrand',
         'name' => 'getName',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
+        'description' => 'getDescription',
+        'status' => 'getStatus',
+        'source' => 'getSource',
         'sku' => 'getSku',
         'quantity' => 'getQuantity',
         'quantity_available' => 'getQuantityAvailable',
@@ -388,9 +416,6 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'dimension_lin' => 'getDimensionLin',
         'dimension_win' => 'getDimensionWin',
         'dimension_hin' => 'getDimensionHin',
-        'status' => 'getStatus',
-        'source' => 'getSource',
-        'description' => 'getDescription',
         'title' => 'getTitle',
         'description_html' => 'getDescriptionHtml',
         'price' => 'getPrice',
@@ -408,13 +433,18 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'automation_blocked_rule_ids' => 'getAutomationBlockedRuleIds',
         'automation_assigned_chain_ids' => 'getAutomationAssignedChainIds',
         'automation_blocked_chain_ids' => 'getAutomationBlockedChainIds',
+        'workflow_blocked_ids' => 'getWorkflowBlockedIds',
+        'workflow_assigned_ids' => 'getWorkflowAssignedIds',
         'hs_code' => 'getHsCode',
         'country_of_origin' => 'getCountryOfOrigin',
         'delisted_at' => 'getDelistedAt',
         'sold_at' => 'getSoldAt',
         'ebay_attributes_enriched_at' => 'getEbayAttributesEnrichedAt',
         'duplicate_of_listing_id' => 'getDuplicateOfListingId',
-        'client_draft_id' => 'getClientDraftId'
+        'client_draft_id' => 'getClientDraftId',
+        'attributed_oauth_app_id' => 'getAttributedOauthAppId',
+        'attributed_grant_id' => 'getAttributedGrantId',
+        'quota_bucket' => 'getQuotaBucket'
     ];
 
     /**
@@ -493,12 +523,16 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->container['ai_media'] = $data['ai_media'] ?? null;
         $this->container['ai_media_detected'] = $data['ai_media_detected'] ?? null;
+        $this->container['pricing'] = $data['pricing'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['brand'] = $data['brand'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
         $this->container['sku'] = $data['sku'] ?? null;
         $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['quantity_available'] = $data['quantity_available'] ?? null;
@@ -524,9 +558,6 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['dimension_lin'] = $data['dimension_lin'] ?? null;
         $this->container['dimension_win'] = $data['dimension_win'] ?? null;
         $this->container['dimension_hin'] = $data['dimension_hin'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['source'] = $data['source'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['description_html'] = $data['description_html'] ?? null;
         $this->container['price'] = $data['price'] ?? null;
@@ -544,6 +575,8 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['automation_blocked_rule_ids'] = $data['automation_blocked_rule_ids'] ?? null;
         $this->container['automation_assigned_chain_ids'] = $data['automation_assigned_chain_ids'] ?? null;
         $this->container['automation_blocked_chain_ids'] = $data['automation_blocked_chain_ids'] ?? null;
+        $this->container['workflow_blocked_ids'] = $data['workflow_blocked_ids'] ?? null;
+        $this->container['workflow_assigned_ids'] = $data['workflow_assigned_ids'] ?? null;
         $this->container['hs_code'] = $data['hs_code'] ?? null;
         $this->container['country_of_origin'] = $data['country_of_origin'] ?? null;
         $this->container['delisted_at'] = $data['delisted_at'] ?? null;
@@ -551,6 +584,9 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['ebay_attributes_enriched_at'] = $data['ebay_attributes_enriched_at'] ?? null;
         $this->container['duplicate_of_listing_id'] = $data['duplicate_of_listing_id'] ?? null;
         $this->container['client_draft_id'] = $data['client_draft_id'] ?? null;
+        $this->container['attributed_oauth_app_id'] = $data['attributed_oauth_app_id'] ?? null;
+        $this->container['attributed_grant_id'] = $data['attributed_grant_id'] ?? null;
+        $this->container['quota_bucket'] = $data['quota_bucket'] ?? null;
     }
 
     /**
@@ -568,6 +604,9 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['ai_media_detected'] === null) {
             $invalidProperties[] = "'ai_media_detected' can't be null";
         }
+        if ($this->container['pricing'] === null) {
+            $invalidProperties[] = "'pricing' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -579,6 +618,12 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['source'] === null) {
+            $invalidProperties[] = "'source' can't be null";
         }
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
@@ -594,12 +639,6 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['floor_is_net'] === null) {
             $invalidProperties[] = "'floor_is_net' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['source'] === null) {
-            $invalidProperties[] = "'source' can't be null";
         }
         if ($this->container['ai_media_urls'] === null) {
             $invalidProperties[] = "'ai_media_urls' can't be null";
@@ -636,6 +675,12 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['automation_blocked_chain_ids'] === null) {
             $invalidProperties[] = "'automation_blocked_chain_ids' can't be null";
+        }
+        if ($this->container['workflow_blocked_ids'] === null) {
+            $invalidProperties[] = "'workflow_blocked_ids' can't be null";
+        }
+        if ($this->container['workflow_assigned_ids'] === null) {
+            $invalidProperties[] = "'workflow_assigned_ids' can't be null";
         }
         return $invalidProperties;
     }
@@ -696,6 +741,30 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAiMediaDetected($ai_media_detected)
     {
         $this->container['ai_media_detected'] = $ai_media_detected;
+
+        return $this;
+    }
+
+    /**
+     * Gets pricing
+     *
+     * @return \Crossly\Model\Listing\ListListingsItemPricing
+     */
+    public function getPricing()
+    {
+        return $this->container['pricing'];
+    }
+
+    /**
+     * Sets pricing
+     *
+     * @param \Crossly\Model\Listing\ListListingsItemPricing $pricing pricing
+     *
+     * @return self
+     */
+    public function setPricing($pricing)
+    {
+        $this->container['pricing'] = $pricing;
 
         return $this;
     }
@@ -840,6 +909,78 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUserId($user_id)
     {
         $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string $source source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        $this->container['source'] = $source;
 
         return $this;
     }
@@ -1255,7 +1396,7 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets grading
      *
-     * @return \Crossly\Model\Grading\ListGradingSubmissionsItemGrading|null
+     * @return \Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading|null
      */
     public function getGrading()
     {
@@ -1265,7 +1406,7 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets grading
      *
-     * @param \Crossly\Model\Grading\ListGradingSubmissionsItemGrading|null $grading grading
+     * @param \Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading|null $grading grading
      *
      * @return self
      */
@@ -1440,78 +1581,6 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDimensionHin($dimension_hin)
     {
         $this->container['dimension_hin'] = $dimension_hin;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets source
-     *
-     * @return string
-     */
-    public function getSource()
-    {
-        return $this->container['source'];
-    }
-
-    /**
-     * Sets source
-     *
-     * @param string $source source
-     *
-     * @return self
-     */
-    public function setSource($source)
-    {
-        $this->container['source'] = $source;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
 
         return $this;
     }
@@ -1935,6 +2004,54 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets workflow_blocked_ids
+     *
+     * @return string[]
+     */
+    public function getWorkflowBlockedIds()
+    {
+        return $this->container['workflow_blocked_ids'];
+    }
+
+    /**
+     * Sets workflow_blocked_ids
+     *
+     * @param string[] $workflow_blocked_ids workflow_blocked_ids
+     *
+     * @return self
+     */
+    public function setWorkflowBlockedIds($workflow_blocked_ids)
+    {
+        $this->container['workflow_blocked_ids'] = $workflow_blocked_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets workflow_assigned_ids
+     *
+     * @return string[]
+     */
+    public function getWorkflowAssignedIds()
+    {
+        return $this->container['workflow_assigned_ids'];
+    }
+
+    /**
+     * Sets workflow_assigned_ids
+     *
+     * @param string[] $workflow_assigned_ids workflow_assigned_ids
+     *
+     * @return self
+     */
+    public function setWorkflowAssignedIds($workflow_assigned_ids)
+    {
+        $this->container['workflow_assigned_ids'] = $workflow_assigned_ids;
+
+        return $this;
+    }
+
+    /**
      * Gets hs_code
      *
      * @return string|null
@@ -2098,6 +2215,78 @@ class ListListingsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setClientDraftId($client_draft_id)
     {
         $this->container['client_draft_id'] = $client_draft_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributed_oauth_app_id
+     *
+     * @return string|null
+     */
+    public function getAttributedOauthAppId()
+    {
+        return $this->container['attributed_oauth_app_id'];
+    }
+
+    /**
+     * Sets attributed_oauth_app_id
+     *
+     * @param string|null $attributed_oauth_app_id attributed_oauth_app_id
+     *
+     * @return self
+     */
+    public function setAttributedOauthAppId($attributed_oauth_app_id)
+    {
+        $this->container['attributed_oauth_app_id'] = $attributed_oauth_app_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributed_grant_id
+     *
+     * @return string|null
+     */
+    public function getAttributedGrantId()
+    {
+        return $this->container['attributed_grant_id'];
+    }
+
+    /**
+     * Sets attributed_grant_id
+     *
+     * @param string|null $attributed_grant_id attributed_grant_id
+     *
+     * @return self
+     */
+    public function setAttributedGrantId($attributed_grant_id)
+    {
+        $this->container['attributed_grant_id'] = $attributed_grant_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets quota_bucket
+     *
+     * @return string|null
+     */
+    public function getQuotaBucket()
+    {
+        return $this->container['quota_bucket'];
+    }
+
+    /**
+     * Sets quota_bucket
+     *
+     * @param string|null $quota_bucket quota_bucket
+     *
+     * @return self
+     */
+    public function setQuotaBucket($quota_bucket)
+    {
+        $this->container['quota_bucket'] = $quota_bucket;
 
         return $this;
     }

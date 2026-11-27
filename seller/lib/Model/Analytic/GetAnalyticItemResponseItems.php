@@ -61,11 +61,16 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'sale_id' => 'string',
+        'inventory_item_id' => 'string',
+        'listing_id' => 'string',
+        'platform_listing_id' => 'string',
+        'image_url' => 'string',
         'platform' => 'string',
         'platform_order_id' => 'string',
         'item_title' => 'string',
         'item_brand' => 'string',
         'item_sku' => 'string',
+        'details_pending' => 'bool',
         'sale_price' => 'float',
         'platform_fee' => 'float',
         'shipping_cost' => 'float',
@@ -85,11 +90,16 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'sale_id' => null,
+        'inventory_item_id' => null,
+        'listing_id' => null,
+        'platform_listing_id' => null,
+        'image_url' => null,
         'platform' => null,
         'platform_order_id' => null,
         'item_title' => null,
         'item_brand' => null,
         'item_sku' => null,
+        'details_pending' => null,
         'sale_price' => null,
         'platform_fee' => null,
         'shipping_cost' => null,
@@ -128,11 +138,16 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'sale_id' => 'saleId',
+        'inventory_item_id' => 'inventoryItemId',
+        'listing_id' => 'listingId',
+        'platform_listing_id' => 'platformListingId',
+        'image_url' => 'imageUrl',
         'platform' => 'platform',
         'platform_order_id' => 'platformOrderId',
         'item_title' => 'itemTitle',
         'item_brand' => 'itemBrand',
         'item_sku' => 'itemSku',
+        'details_pending' => 'detailsPending',
         'sale_price' => 'salePrice',
         'platform_fee' => 'platformFee',
         'shipping_cost' => 'shippingCost',
@@ -150,11 +165,16 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'sale_id' => 'setSaleId',
+        'inventory_item_id' => 'setInventoryItemId',
+        'listing_id' => 'setListingId',
+        'platform_listing_id' => 'setPlatformListingId',
+        'image_url' => 'setImageUrl',
         'platform' => 'setPlatform',
         'platform_order_id' => 'setPlatformOrderId',
         'item_title' => 'setItemTitle',
         'item_brand' => 'setItemBrand',
         'item_sku' => 'setItemSku',
+        'details_pending' => 'setDetailsPending',
         'sale_price' => 'setSalePrice',
         'platform_fee' => 'setPlatformFee',
         'shipping_cost' => 'setShippingCost',
@@ -172,11 +192,16 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'sale_id' => 'getSaleId',
+        'inventory_item_id' => 'getInventoryItemId',
+        'listing_id' => 'getListingId',
+        'platform_listing_id' => 'getPlatformListingId',
+        'image_url' => 'getImageUrl',
         'platform' => 'getPlatform',
         'platform_order_id' => 'getPlatformOrderId',
         'item_title' => 'getItemTitle',
         'item_brand' => 'getItemBrand',
         'item_sku' => 'getItemSku',
+        'details_pending' => 'getDetailsPending',
         'sale_price' => 'getSalePrice',
         'platform_fee' => 'getPlatformFee',
         'shipping_cost' => 'getShippingCost',
@@ -245,11 +270,16 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
     public function __construct(array $data = null)
     {
         $this->container['sale_id'] = $data['sale_id'] ?? null;
+        $this->container['inventory_item_id'] = $data['inventory_item_id'] ?? null;
+        $this->container['listing_id'] = $data['listing_id'] ?? null;
+        $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
+        $this->container['image_url'] = $data['image_url'] ?? null;
         $this->container['platform'] = $data['platform'] ?? null;
         $this->container['platform_order_id'] = $data['platform_order_id'] ?? null;
         $this->container['item_title'] = $data['item_title'] ?? null;
         $this->container['item_brand'] = $data['item_brand'] ?? null;
         $this->container['item_sku'] = $data['item_sku'] ?? null;
+        $this->container['details_pending'] = $data['details_pending'] ?? null;
         $this->container['sale_price'] = $data['sale_price'] ?? null;
         $this->container['platform_fee'] = $data['platform_fee'] ?? null;
         $this->container['shipping_cost'] = $data['shipping_cost'] ?? null;
@@ -275,8 +305,8 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
         if ($this->container['platform'] === null) {
             $invalidProperties[] = "'platform' can't be null";
         }
-        if ($this->container['margin_pct'] === null) {
-            $invalidProperties[] = "'margin_pct' can't be null";
+        if ($this->container['details_pending'] === null) {
+            $invalidProperties[] = "'details_pending' can't be null";
         }
         if ($this->container['detected_at'] === null) {
             $invalidProperties[] = "'detected_at' can't be null";
@@ -316,6 +346,102 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
     public function setSaleId($sale_id)
     {
         $this->container['sale_id'] = $sale_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets inventory_item_id
+     *
+     * @return string|null
+     */
+    public function getInventoryItemId()
+    {
+        return $this->container['inventory_item_id'];
+    }
+
+    /**
+     * Sets inventory_item_id
+     *
+     * @param string|null $inventory_item_id inventory_item_id
+     *
+     * @return self
+     */
+    public function setInventoryItemId($inventory_item_id)
+    {
+        $this->container['inventory_item_id'] = $inventory_item_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets listing_id
+     *
+     * @return string|null
+     */
+    public function getListingId()
+    {
+        return $this->container['listing_id'];
+    }
+
+    /**
+     * Sets listing_id
+     *
+     * @param string|null $listing_id listing_id
+     *
+     * @return self
+     */
+    public function setListingId($listing_id)
+    {
+        $this->container['listing_id'] = $listing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_listing_id
+     *
+     * @return string|null
+     */
+    public function getPlatformListingId()
+    {
+        return $this->container['platform_listing_id'];
+    }
+
+    /**
+     * Sets platform_listing_id
+     *
+     * @param string|null $platform_listing_id platform_listing_id
+     *
+     * @return self
+     */
+    public function setPlatformListingId($platform_listing_id)
+    {
+        $this->container['platform_listing_id'] = $platform_listing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     *
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     *
+     * @param string|null $image_url image_url
+     *
+     * @return self
+     */
+    public function setImageUrl($image_url)
+    {
+        $this->container['image_url'] = $image_url;
 
         return $this;
     }
@@ -436,6 +562,30 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
     public function setItemSku($item_sku)
     {
         $this->container['item_sku'] = $item_sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets details_pending
+     *
+     * @return bool
+     */
+    public function getDetailsPending()
+    {
+        return $this->container['details_pending'];
+    }
+
+    /**
+     * Sets details_pending
+     *
+     * @param bool $details_pending details_pending
+     *
+     * @return self
+     */
+    public function setDetailsPending($details_pending)
+    {
+        $this->container['details_pending'] = $details_pending;
 
         return $this;
     }
@@ -563,7 +713,7 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets margin_pct
      *
-     * @return float
+     * @return float|null
      */
     public function getMarginPct()
     {
@@ -573,7 +723,7 @@ class GetAnalyticItemResponseItems implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets margin_pct
      *
-     * @param float $margin_pct margin_pct
+     * @param float|null $margin_pct margin_pct
      *
      * @return self
      */

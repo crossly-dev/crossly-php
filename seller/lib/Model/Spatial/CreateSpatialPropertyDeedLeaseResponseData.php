@@ -63,16 +63,18 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
         'id' => 'string',
         'created_at' => '\DateTime',
         'status' => 'string',
-        'ended_at' => '\DateTime',
         'owner_user_id' => 'string',
-        'end_reason' => 'string',
-        'paid_through' => '\DateTime',
+        'ended_at' => '\DateTime',
+        'rail' => 'string',
         'plot_id' => 'string',
+        'paid_through' => '\DateTime',
         'deed_id' => 'string',
         'tenant_user_id' => 'string',
         'tenant_scene_id' => 'string',
         'rent_weekly_cents' => 'float',
-        'terms_frozen_at' => '\DateTime'
+        'terms_frozen_at' => '\DateTime',
+        'end_reason' => 'string',
+        'autopay' => 'bool'
     ];
 
     /**
@@ -86,16 +88,18 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
         'id' => null,
         'created_at' => 'date-time',
         'status' => null,
-        'ended_at' => 'date-time',
         'owner_user_id' => null,
-        'end_reason' => null,
-        'paid_through' => 'date-time',
+        'ended_at' => 'date-time',
+        'rail' => null,
         'plot_id' => null,
+        'paid_through' => 'date-time',
         'deed_id' => null,
         'tenant_user_id' => null,
         'tenant_scene_id' => null,
         'rent_weekly_cents' => null,
-        'terms_frozen_at' => 'date-time'
+        'terms_frozen_at' => 'date-time',
+        'end_reason' => null,
+        'autopay' => null
     ];
 
     /**
@@ -128,16 +132,18 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
         'id' => 'id',
         'created_at' => 'createdAt',
         'status' => 'status',
-        'ended_at' => 'endedAt',
         'owner_user_id' => 'ownerUserId',
-        'end_reason' => 'endReason',
-        'paid_through' => 'paidThrough',
+        'ended_at' => 'endedAt',
+        'rail' => 'rail',
         'plot_id' => 'plotId',
+        'paid_through' => 'paidThrough',
         'deed_id' => 'deedId',
         'tenant_user_id' => 'tenantUserId',
         'tenant_scene_id' => 'tenantSceneId',
         'rent_weekly_cents' => 'rentWeeklyCents',
-        'terms_frozen_at' => 'termsFrozenAt'
+        'terms_frozen_at' => 'termsFrozenAt',
+        'end_reason' => 'endReason',
+        'autopay' => 'autopay'
     ];
 
     /**
@@ -149,16 +155,18 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'status' => 'setStatus',
-        'ended_at' => 'setEndedAt',
         'owner_user_id' => 'setOwnerUserId',
-        'end_reason' => 'setEndReason',
-        'paid_through' => 'setPaidThrough',
+        'ended_at' => 'setEndedAt',
+        'rail' => 'setRail',
         'plot_id' => 'setPlotId',
+        'paid_through' => 'setPaidThrough',
         'deed_id' => 'setDeedId',
         'tenant_user_id' => 'setTenantUserId',
         'tenant_scene_id' => 'setTenantSceneId',
         'rent_weekly_cents' => 'setRentWeeklyCents',
-        'terms_frozen_at' => 'setTermsFrozenAt'
+        'terms_frozen_at' => 'setTermsFrozenAt',
+        'end_reason' => 'setEndReason',
+        'autopay' => 'setAutopay'
     ];
 
     /**
@@ -170,16 +178,18 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'status' => 'getStatus',
-        'ended_at' => 'getEndedAt',
         'owner_user_id' => 'getOwnerUserId',
-        'end_reason' => 'getEndReason',
-        'paid_through' => 'getPaidThrough',
+        'ended_at' => 'getEndedAt',
+        'rail' => 'getRail',
         'plot_id' => 'getPlotId',
+        'paid_through' => 'getPaidThrough',
         'deed_id' => 'getDeedId',
         'tenant_user_id' => 'getTenantUserId',
         'tenant_scene_id' => 'getTenantSceneId',
         'rent_weekly_cents' => 'getRentWeeklyCents',
-        'terms_frozen_at' => 'getTermsFrozenAt'
+        'terms_frozen_at' => 'getTermsFrozenAt',
+        'end_reason' => 'getEndReason',
+        'autopay' => 'getAutopay'
     ];
 
     /**
@@ -242,16 +252,18 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['ended_at'] = $data['ended_at'] ?? null;
         $this->container['owner_user_id'] = $data['owner_user_id'] ?? null;
-        $this->container['end_reason'] = $data['end_reason'] ?? null;
-        $this->container['paid_through'] = $data['paid_through'] ?? null;
+        $this->container['ended_at'] = $data['ended_at'] ?? null;
+        $this->container['rail'] = $data['rail'] ?? null;
         $this->container['plot_id'] = $data['plot_id'] ?? null;
+        $this->container['paid_through'] = $data['paid_through'] ?? null;
         $this->container['deed_id'] = $data['deed_id'] ?? null;
         $this->container['tenant_user_id'] = $data['tenant_user_id'] ?? null;
         $this->container['tenant_scene_id'] = $data['tenant_scene_id'] ?? null;
         $this->container['rent_weekly_cents'] = $data['rent_weekly_cents'] ?? null;
         $this->container['terms_frozen_at'] = $data['terms_frozen_at'] ?? null;
+        $this->container['end_reason'] = $data['end_reason'] ?? null;
+        $this->container['autopay'] = $data['autopay'] ?? null;
     }
 
     /**
@@ -283,6 +295,9 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
         }
         if ($this->container['rent_weekly_cents'] === null) {
             $invalidProperties[] = "'rent_weekly_cents' can't be null";
+        }
+        if ($this->container['autopay'] === null) {
+            $invalidProperties[] = "'autopay' can't be null";
         }
         return $invalidProperties;
     }
@@ -372,30 +387,6 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
     }
 
     /**
-     * Gets ended_at
-     *
-     * @return \DateTime|null
-     */
-    public function getEndedAt()
-    {
-        return $this->container['ended_at'];
-    }
-
-    /**
-     * Sets ended_at
-     *
-     * @param \DateTime|null $ended_at ended_at
-     *
-     * @return self
-     */
-    public function setEndedAt($ended_at)
-    {
-        $this->container['ended_at'] = $ended_at;
-
-        return $this;
-    }
-
-    /**
      * Gets owner_user_id
      *
      * @return string
@@ -420,49 +411,49 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
     }
 
     /**
-     * Gets end_reason
+     * Gets ended_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getEndReason()
+    public function getEndedAt()
     {
-        return $this->container['end_reason'];
+        return $this->container['ended_at'];
     }
 
     /**
-     * Sets end_reason
+     * Sets ended_at
      *
-     * @param string|null $end_reason end_reason
+     * @param \DateTime|null $ended_at ended_at
      *
      * @return self
      */
-    public function setEndReason($end_reason)
+    public function setEndedAt($ended_at)
     {
-        $this->container['end_reason'] = $end_reason;
+        $this->container['ended_at'] = $ended_at;
 
         return $this;
     }
 
     /**
-     * Gets paid_through
+     * Gets rail
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getPaidThrough()
+    public function getRail()
     {
-        return $this->container['paid_through'];
+        return $this->container['rail'];
     }
 
     /**
-     * Sets paid_through
+     * Sets rail
      *
-     * @param \DateTime|null $paid_through paid_through
+     * @param string|null $rail rail
      *
      * @return self
      */
-    public function setPaidThrough($paid_through)
+    public function setRail($rail)
     {
-        $this->container['paid_through'] = $paid_through;
+        $this->container['rail'] = $rail;
 
         return $this;
     }
@@ -487,6 +478,30 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
     public function setPlotId($plot_id)
     {
         $this->container['plot_id'] = $plot_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets paid_through
+     *
+     * @return \DateTime|null
+     */
+    public function getPaidThrough()
+    {
+        return $this->container['paid_through'];
+    }
+
+    /**
+     * Sets paid_through
+     *
+     * @param \DateTime|null $paid_through paid_through
+     *
+     * @return self
+     */
+    public function setPaidThrough($paid_through)
+    {
+        $this->container['paid_through'] = $paid_through;
 
         return $this;
     }
@@ -607,6 +622,54 @@ class CreateSpatialPropertyDeedLeaseResponseData implements ModelInterface, Arra
     public function setTermsFrozenAt($terms_frozen_at)
     {
         $this->container['terms_frozen_at'] = $terms_frozen_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_reason
+     *
+     * @return string|null
+     */
+    public function getEndReason()
+    {
+        return $this->container['end_reason'];
+    }
+
+    /**
+     * Sets end_reason
+     *
+     * @param string|null $end_reason end_reason
+     *
+     * @return self
+     */
+    public function setEndReason($end_reason)
+    {
+        $this->container['end_reason'] = $end_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets autopay
+     *
+     * @return bool
+     */
+    public function getAutopay()
+    {
+        return $this->container['autopay'];
+    }
+
+    /**
+     * Sets autopay
+     *
+     * @param bool $autopay autopay
+     *
+     * @return self
+     */
+    public function setAutopay($autopay)
+    {
+        $this->container['autopay'] = $autopay;
 
         return $this;
     }

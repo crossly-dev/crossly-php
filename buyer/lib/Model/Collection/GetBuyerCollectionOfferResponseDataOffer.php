@@ -61,8 +61,8 @@ class GetBuyerCollectionOfferResponseDataOffer implements ModelInterface, ArrayA
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'expires_at' => 'string',
-        'cents' => 'float'
+        'cents' => 'float',
+        'expires_at' => 'string'
     ];
 
     /**
@@ -74,8 +74,8 @@ class GetBuyerCollectionOfferResponseDataOffer implements ModelInterface, ArrayA
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'expires_at' => null,
-        'cents' => null
+        'cents' => null,
+        'expires_at' => null
     ];
 
     /**
@@ -106,8 +106,8 @@ class GetBuyerCollectionOfferResponseDataOffer implements ModelInterface, ArrayA
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'expires_at' => 'expiresAt',
-        'cents' => 'cents'
+        'cents' => 'cents',
+        'expires_at' => 'expiresAt'
     ];
 
     /**
@@ -117,8 +117,8 @@ class GetBuyerCollectionOfferResponseDataOffer implements ModelInterface, ArrayA
      */
     protected static $setters = [
         'id' => 'setId',
-        'expires_at' => 'setExpiresAt',
-        'cents' => 'setCents'
+        'cents' => 'setCents',
+        'expires_at' => 'setExpiresAt'
     ];
 
     /**
@@ -128,8 +128,8 @@ class GetBuyerCollectionOfferResponseDataOffer implements ModelInterface, ArrayA
      */
     protected static $getters = [
         'id' => 'getId',
-        'expires_at' => 'getExpiresAt',
-        'cents' => 'getCents'
+        'cents' => 'getCents',
+        'expires_at' => 'getExpiresAt'
     ];
 
     /**
@@ -190,8 +190,8 @@ class GetBuyerCollectionOfferResponseDataOffer implements ModelInterface, ArrayA
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['expires_at'] = $data['expires_at'] ?? null;
         $this->container['cents'] = $data['cents'] ?? null;
+        $this->container['expires_at'] = $data['expires_at'] ?? null;
     }
 
     /**
@@ -206,11 +206,11 @@ class GetBuyerCollectionOfferResponseDataOffer implements ModelInterface, ArrayA
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['expires_at'] === null) {
-            $invalidProperties[] = "'expires_at' can't be null";
-        }
         if ($this->container['cents'] === null) {
             $invalidProperties[] = "'cents' can't be null";
+        }
+        if ($this->container['expires_at'] === null) {
+            $invalidProperties[] = "'expires_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -252,30 +252,6 @@ class GetBuyerCollectionOfferResponseDataOffer implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets expires_at
-     *
-     * @return string
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param string $expires_at expires_at
-     *
-     * @return self
-     */
-    public function setExpiresAt($expires_at)
-    {
-        $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
      * Gets cents
      *
      * @return float
@@ -295,6 +271,30 @@ class GetBuyerCollectionOfferResponseDataOffer implements ModelInterface, ArrayA
     public function setCents($cents)
     {
         $this->container['cents'] = $cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_at
+     *
+     * @return string
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param string $expires_at expires_at
+     *
+     * @return self
+     */
+    public function setExpiresAt($expires_at)
+    {
+        $this->container['expires_at'] = $expires_at;
 
         return $this;
     }

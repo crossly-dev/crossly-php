@@ -60,15 +60,15 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'action' => '\Crossly\Model\Automation\GetAutomationRuleExportByIdResponseAction',
         'schema_version' => 'float',
-        'trigger' => '\Crossly\Model\Automation\GetAutomationRuleExportByIdResponseAction',
-        'condition' => '\Crossly\Model\Automation\GetAutomationRuleExportByIdResponseCondition',
-        'metadata' => '\Crossly\Model\Automation\GetAutomationRuleExportByIdResponseMetadata',
+        'name' => 'string',
+        'trigger' => '\Crossly\Model\Automation\GetAutomationRuleExportByIdResponseTrigger',
+        'action' => '\Crossly\Model\Automation\GetAutomationRuleExportByIdResponseTrigger',
+        'schema' => 'string',
         'description' => 'string',
+        'condition' => '\Crossly\Model\Automation\GetAutomationRuleExportByIdResponseCondition',
         'platforms' => 'string[]',
-        'schema' => 'string'
+        'metadata' => '\Crossly\Model\Automation\GetAutomationRuleExportByIdResponseMetadata'
     ];
 
     /**
@@ -79,15 +79,15 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'action' => null,
         'schema_version' => null,
+        'name' => null,
         'trigger' => null,
-        'condition' => null,
-        'metadata' => null,
+        'action' => null,
+        'schema' => null,
         'description' => null,
+        'condition' => null,
         'platforms' => null,
-        'schema' => null
+        'metadata' => null
     ];
 
     /**
@@ -117,15 +117,15 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'action' => 'action',
         'schema_version' => 'schemaVersion',
+        'name' => 'name',
         'trigger' => 'trigger',
-        'condition' => 'condition',
-        'metadata' => 'metadata',
+        'action' => 'action',
+        'schema' => '$schema',
         'description' => 'description',
+        'condition' => 'condition',
         'platforms' => 'platforms',
-        'schema' => '$schema'
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -134,15 +134,15 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'action' => 'setAction',
         'schema_version' => 'setSchemaVersion',
+        'name' => 'setName',
         'trigger' => 'setTrigger',
-        'condition' => 'setCondition',
-        'metadata' => 'setMetadata',
+        'action' => 'setAction',
+        'schema' => 'setSchema',
         'description' => 'setDescription',
+        'condition' => 'setCondition',
         'platforms' => 'setPlatforms',
-        'schema' => 'setSchema'
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -151,15 +151,15 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'action' => 'getAction',
         'schema_version' => 'getSchemaVersion',
+        'name' => 'getName',
         'trigger' => 'getTrigger',
-        'condition' => 'getCondition',
-        'metadata' => 'getMetadata',
+        'action' => 'getAction',
+        'schema' => 'getSchema',
         'description' => 'getDescription',
+        'condition' => 'getCondition',
         'platforms' => 'getPlatforms',
-        'schema' => 'getSchema'
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -219,15 +219,15 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['action'] = $data['action'] ?? null;
         $this->container['schema_version'] = $data['schema_version'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
         $this->container['trigger'] = $data['trigger'] ?? null;
-        $this->container['condition'] = $data['condition'] ?? null;
-        $this->container['metadata'] = $data['metadata'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['platforms'] = $data['platforms'] ?? null;
+        $this->container['action'] = $data['action'] ?? null;
         $this->container['schema'] = $data['schema'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['condition'] = $data['condition'] ?? null;
+        $this->container['platforms'] = $data['platforms'] ?? null;
+        $this->container['metadata'] = $data['metadata'] ?? null;
     }
 
     /**
@@ -239,17 +239,17 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['action'] === null) {
-            $invalidProperties[] = "'action' can't be null";
-        }
         if ($this->container['schema_version'] === null) {
             $invalidProperties[] = "'schema_version' can't be null";
         }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         if ($this->container['trigger'] === null) {
             $invalidProperties[] = "'trigger' can't be null";
+        }
+        if ($this->container['action'] === null) {
+            $invalidProperties[] = "'action' can't be null";
         }
         return $invalidProperties;
     }
@@ -265,54 +265,6 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets action
-     *
-     * @return \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseAction
-     */
-    public function getAction()
-    {
-        return $this->container['action'];
-    }
-
-    /**
-     * Sets action
-     *
-     * @param \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseAction $action action
-     *
-     * @return self
-     */
-    public function setAction($action)
-    {
-        $this->container['action'] = $action;
-
-        return $this;
-    }
 
     /**
      * Gets schema_version
@@ -339,9 +291,33 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
      * Gets trigger
      *
-     * @return \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseAction
+     * @return \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseTrigger
      */
     public function getTrigger()
     {
@@ -351,7 +327,7 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
     /**
      * Sets trigger
      *
-     * @param \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseAction $trigger trigger
+     * @param \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseTrigger $trigger trigger
      *
      * @return self
      */
@@ -363,49 +339,49 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets condition
+     * Gets action
      *
-     * @return \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseCondition|null
+     * @return \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseTrigger
      */
-    public function getCondition()
+    public function getAction()
     {
-        return $this->container['condition'];
+        return $this->container['action'];
     }
 
     /**
-     * Sets condition
+     * Sets action
      *
-     * @param \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseCondition|null $condition condition
+     * @param \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseTrigger $action action
      *
      * @return self
      */
-    public function setCondition($condition)
+    public function setAction($action)
     {
-        $this->container['condition'] = $condition;
+        $this->container['action'] = $action;
 
         return $this;
     }
 
     /**
-     * Gets metadata
+     * Gets schema
      *
-     * @return \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseMetadata|null
+     * @return string|null
      */
-    public function getMetadata()
+    public function getSchema()
     {
-        return $this->container['metadata'];
+        return $this->container['schema'];
     }
 
     /**
-     * Sets metadata
+     * Sets schema
      *
-     * @param \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseMetadata|null $metadata metadata
+     * @param string|null $schema Optional reference to the public schema URL — purely cosmetic.
      *
      * @return self
      */
-    public function setMetadata($metadata)
+    public function setSchema($schema)
     {
-        $this->container['metadata'] = $metadata;
+        $this->container['schema'] = $schema;
 
         return $this;
     }
@@ -435,6 +411,30 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets condition
+     *
+     * @return \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseCondition|null
+     */
+    public function getCondition()
+    {
+        return $this->container['condition'];
+    }
+
+    /**
+     * Sets condition
+     *
+     * @param \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseCondition|null $condition condition
+     *
+     * @return self
+     */
+    public function setCondition($condition)
+    {
+        $this->container['condition'] = $condition;
+
+        return $this;
+    }
+
+    /**
      * Gets platforms
      *
      * @return string[]|null
@@ -459,25 +459,25 @@ class GetAutomationRuleExportByIdResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets schema
+     * Gets metadata
      *
-     * @return string|null
+     * @return \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseMetadata|null
      */
-    public function getSchema()
+    public function getMetadata()
     {
-        return $this->container['schema'];
+        return $this->container['metadata'];
     }
 
     /**
-     * Sets schema
+     * Sets metadata
      *
-     * @param string|null $schema Optional reference to the public schema URL — purely cosmetic.
+     * @param \Crossly\Model\Automation\GetAutomationRuleExportByIdResponseMetadata|null $metadata metadata
      *
      * @return self
      */
-    public function setSchema($schema)
+    public function setMetadata($metadata)
     {
-        $this->container['schema'] = $schema;
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

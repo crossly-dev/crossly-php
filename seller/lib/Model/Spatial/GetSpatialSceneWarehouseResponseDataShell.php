@@ -179,12 +179,12 @@ class GetSpatialSceneWarehouseResponseDataShell implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    const THEME_STORYBOOK = 'storybook';
     const THEME_STUDIO = 'studio';
     const THEME_NOIR = 'noir';
     const THEME_DAYLIGHT = 'daylight';
     const THEME_VITRINE = 'vitrine';
     const THEME_STREET = 'street';
+    const THEME_STORYBOOK = 'storybook';
 
     /**
      * Gets allowable values of the enum
@@ -194,12 +194,12 @@ class GetSpatialSceneWarehouseResponseDataShell implements ModelInterface, Array
     public function getThemeAllowableValues()
     {
         return [
-            self::THEME_STORYBOOK,
             self::THEME_STUDIO,
             self::THEME_NOIR,
             self::THEME_DAYLIGHT,
             self::THEME_VITRINE,
             self::THEME_STREET,
+            self::THEME_STORYBOOK,
         ];
     }
 

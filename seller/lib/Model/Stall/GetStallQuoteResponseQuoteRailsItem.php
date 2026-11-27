@@ -46,9 +46,9 @@ class GetStallQuoteResponseQuoteRailsItem
      */
     const CARD = 'card';
 
-    const BUCKS = 'bucks';
-
     const CBX = 'cbx';
+
+    const BUCKS = 'bucks';
 
     /**
      * Gets allowable values of the enum
@@ -58,8 +58,8 @@ class GetStallQuoteResponseQuoteRailsItem
     {
         return [
             self::CARD,
-            self::BUCKS,
-            self::CBX
+            self::CBX,
+            self::BUCKS
         ];
     }
 }

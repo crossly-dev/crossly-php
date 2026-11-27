@@ -70,6 +70,7 @@ class GetVaultMarketWorthVaultResponse implements ModelInterface, ArrayAccess, \
         'marks' => '\Crossly\Model\Vault\GetVaultMarketPortfolioHistoryResponseNowMarks',
         'cost_cents' => 'float',
         'pnl_cents' => 'float',
+        'today' => '\Crossly\Model\Vault\GetVaultMarketWorthVaultResponseToday',
         'sell_now' => '\Crossly\Model\Vault\GetVaultMarketWorthVaultResponseSellNow',
         'note' => 'string'
     ];
@@ -92,6 +93,7 @@ class GetVaultMarketWorthVaultResponse implements ModelInterface, ArrayAccess, \
         'marks' => null,
         'cost_cents' => null,
         'pnl_cents' => null,
+        'today' => null,
         'sell_now' => null,
         'note' => null
     ];
@@ -133,6 +135,7 @@ class GetVaultMarketWorthVaultResponse implements ModelInterface, ArrayAccess, \
         'marks' => 'marks',
         'cost_cents' => 'costCents',
         'pnl_cents' => 'pnlCents',
+        'today' => 'today',
         'sell_now' => 'sellNow',
         'note' => 'note'
     ];
@@ -153,6 +156,7 @@ class GetVaultMarketWorthVaultResponse implements ModelInterface, ArrayAccess, \
         'marks' => 'setMarks',
         'cost_cents' => 'setCostCents',
         'pnl_cents' => 'setPnlCents',
+        'today' => 'setToday',
         'sell_now' => 'setSellNow',
         'note' => 'setNote'
     ];
@@ -173,6 +177,7 @@ class GetVaultMarketWorthVaultResponse implements ModelInterface, ArrayAccess, \
         'marks' => 'getMarks',
         'cost_cents' => 'getCostCents',
         'pnl_cents' => 'getPnlCents',
+        'today' => 'getToday',
         'sell_now' => 'getSellNow',
         'note' => 'getNote'
     ];
@@ -244,6 +249,7 @@ class GetVaultMarketWorthVaultResponse implements ModelInterface, ArrayAccess, \
         $this->container['marks'] = $data['marks'] ?? null;
         $this->container['cost_cents'] = $data['cost_cents'] ?? null;
         $this->container['pnl_cents'] = $data['pnl_cents'] ?? null;
+        $this->container['today'] = $data['today'] ?? null;
         $this->container['sell_now'] = $data['sell_now'] ?? null;
         $this->container['note'] = $data['note'] ?? null;
     }
@@ -286,6 +292,9 @@ class GetVaultMarketWorthVaultResponse implements ModelInterface, ArrayAccess, \
         }
         if ($this->container['pnl_cents'] === null) {
             $invalidProperties[] = "'pnl_cents' can't be null";
+        }
+        if ($this->container['today'] === null) {
+            $invalidProperties[] = "'today' can't be null";
         }
         if ($this->container['sell_now'] === null) {
             $invalidProperties[] = "'sell_now' can't be null";
@@ -544,6 +553,30 @@ class GetVaultMarketWorthVaultResponse implements ModelInterface, ArrayAccess, \
     public function setPnlCents($pnl_cents)
     {
         $this->container['pnl_cents'] = $pnl_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets today
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketWorthVaultResponseToday
+     */
+    public function getToday()
+    {
+        return $this->container['today'];
+    }
+
+    /**
+     * Sets today
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketWorthVaultResponseToday $today today
+     *
+     * @return self
+     */
+    public function setToday($today)
+    {
+        $this->container['today'] = $today;
 
         return $this;
     }

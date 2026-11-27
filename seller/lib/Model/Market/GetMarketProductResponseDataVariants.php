@@ -63,12 +63,12 @@ class GetMarketProductResponseDataVariants implements ModelInterface, ArrayAcces
         'id' => 'string',
         'label' => 'string',
         'sort_key' => 'float',
+        'sku_id' => 'string',
         'external_id' => 'string',
         'external_source' => 'string',
         'external_synced_at' => '\DateTime',
         'last_sale_cents' => 'float',
         'trades_count' => 'float',
-        'sku_id' => 'string',
         'last_sale_at' => '\DateTime',
         'best_bid_cents' => 'float',
         'best_ask_cents' => 'float'
@@ -85,12 +85,12 @@ class GetMarketProductResponseDataVariants implements ModelInterface, ArrayAcces
         'id' => null,
         'label' => null,
         'sort_key' => null,
+        'sku_id' => null,
         'external_id' => null,
         'external_source' => null,
         'external_synced_at' => 'date-time',
         'last_sale_cents' => null,
         'trades_count' => null,
-        'sku_id' => null,
         'last_sale_at' => 'date-time',
         'best_bid_cents' => null,
         'best_ask_cents' => null
@@ -126,12 +126,12 @@ class GetMarketProductResponseDataVariants implements ModelInterface, ArrayAcces
         'id' => 'id',
         'label' => 'label',
         'sort_key' => 'sortKey',
+        'sku_id' => 'skuId',
         'external_id' => 'externalId',
         'external_source' => 'externalSource',
         'external_synced_at' => 'externalSyncedAt',
         'last_sale_cents' => 'lastSaleCents',
         'trades_count' => 'tradesCount',
-        'sku_id' => 'skuId',
         'last_sale_at' => 'lastSaleAt',
         'best_bid_cents' => 'bestBidCents',
         'best_ask_cents' => 'bestAskCents'
@@ -146,12 +146,12 @@ class GetMarketProductResponseDataVariants implements ModelInterface, ArrayAcces
         'id' => 'setId',
         'label' => 'setLabel',
         'sort_key' => 'setSortKey',
+        'sku_id' => 'setSkuId',
         'external_id' => 'setExternalId',
         'external_source' => 'setExternalSource',
         'external_synced_at' => 'setExternalSyncedAt',
         'last_sale_cents' => 'setLastSaleCents',
         'trades_count' => 'setTradesCount',
-        'sku_id' => 'setSkuId',
         'last_sale_at' => 'setLastSaleAt',
         'best_bid_cents' => 'setBestBidCents',
         'best_ask_cents' => 'setBestAskCents'
@@ -166,12 +166,12 @@ class GetMarketProductResponseDataVariants implements ModelInterface, ArrayAcces
         'id' => 'getId',
         'label' => 'getLabel',
         'sort_key' => 'getSortKey',
+        'sku_id' => 'getSkuId',
         'external_id' => 'getExternalId',
         'external_source' => 'getExternalSource',
         'external_synced_at' => 'getExternalSyncedAt',
         'last_sale_cents' => 'getLastSaleCents',
         'trades_count' => 'getTradesCount',
-        'sku_id' => 'getSkuId',
         'last_sale_at' => 'getLastSaleAt',
         'best_bid_cents' => 'getBestBidCents',
         'best_ask_cents' => 'getBestAskCents'
@@ -237,12 +237,12 @@ class GetMarketProductResponseDataVariants implements ModelInterface, ArrayAcces
         $this->container['id'] = $data['id'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['sort_key'] = $data['sort_key'] ?? null;
+        $this->container['sku_id'] = $data['sku_id'] ?? null;
         $this->container['external_id'] = $data['external_id'] ?? null;
         $this->container['external_source'] = $data['external_source'] ?? null;
         $this->container['external_synced_at'] = $data['external_synced_at'] ?? null;
         $this->container['last_sale_cents'] = $data['last_sale_cents'] ?? null;
         $this->container['trades_count'] = $data['trades_count'] ?? null;
-        $this->container['sku_id'] = $data['sku_id'] ?? null;
         $this->container['last_sale_at'] = $data['last_sale_at'] ?? null;
         $this->container['best_bid_cents'] = $data['best_bid_cents'] ?? null;
         $this->container['best_ask_cents'] = $data['best_ask_cents'] ?? null;
@@ -266,11 +266,11 @@ class GetMarketProductResponseDataVariants implements ModelInterface, ArrayAcces
         if ($this->container['sort_key'] === null) {
             $invalidProperties[] = "'sort_key' can't be null";
         }
-        if ($this->container['trades_count'] === null) {
-            $invalidProperties[] = "'trades_count' can't be null";
-        }
         if ($this->container['sku_id'] === null) {
             $invalidProperties[] = "'sku_id' can't be null";
+        }
+        if ($this->container['trades_count'] === null) {
+            $invalidProperties[] = "'trades_count' can't be null";
         }
         return $invalidProperties;
     }
@@ -355,6 +355,30 @@ class GetMarketProductResponseDataVariants implements ModelInterface, ArrayAcces
     public function setSortKey($sort_key)
     {
         $this->container['sort_key'] = $sort_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_id
+     *
+     * @return string
+     */
+    public function getSkuId()
+    {
+        return $this->container['sku_id'];
+    }
+
+    /**
+     * Sets sku_id
+     *
+     * @param string $sku_id sku_id
+     *
+     * @return self
+     */
+    public function setSkuId($sku_id)
+    {
+        $this->container['sku_id'] = $sku_id;
 
         return $this;
     }
@@ -475,30 +499,6 @@ class GetMarketProductResponseDataVariants implements ModelInterface, ArrayAcces
     public function setTradesCount($trades_count)
     {
         $this->container['trades_count'] = $trades_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets sku_id
-     *
-     * @return string
-     */
-    public function getSkuId()
-    {
-        return $this->container['sku_id'];
-    }
-
-    /**
-     * Sets sku_id
-     *
-     * @param string $sku_id sku_id
-     *
-     * @return self
-     */
-    public function setSkuId($sku_id)
-    {
-        $this->container['sku_id'] = $sku_id;
 
         return $this;
     }

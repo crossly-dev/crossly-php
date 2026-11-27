@@ -203,6 +203,7 @@ class ListGameResultMineItem implements ModelInterface, ArrayAccess, \JsonSerial
     const GAME_HUNT = 'hunt';
     const GAME_SPEED_TRADE = 'speed_trade';
     const GAME_BREAK_HOST = 'break_host';
+    const GAME_PACK_BREAK = 'pack_break';
 
     /**
      * Gets allowable values of the enum
@@ -217,6 +218,7 @@ class ListGameResultMineItem implements ModelInterface, ArrayAccess, \JsonSerial
             self::GAME_HUNT,
             self::GAME_SPEED_TRADE,
             self::GAME_BREAK_HOST,
+            self::GAME_PACK_BREAK,
         ];
     }
 

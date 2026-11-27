@@ -69,7 +69,7 @@ class GetWorldGameResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         'version' => 'string',
         'description' => 'string',
         'mode' => 'string',
-        'players' => '\Crossly\Model\World\GetWorldGameResponseDataPlayers',
+        'players' => '\Crossly\Model\Common\MinMax',
         'places' => '\Crossly\Model\World\GetWorldGameResponseDataPlacesItem[]',
         'rating' => 'string',
         'scoring' => '\Crossly\Model\World\GetWorldGameLeaderboardResponseDataScoring',
@@ -632,7 +632,7 @@ class GetWorldGameResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets players
      *
-     * @return \Crossly\Model\World\GetWorldGameResponseDataPlayers
+     * @return \Crossly\Model\Common\MinMax
      */
     public function getPlayers()
     {
@@ -642,7 +642,7 @@ class GetWorldGameResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets players
      *
-     * @param \Crossly\Model\World\GetWorldGameResponseDataPlayers $players players
+     * @param \Crossly\Model\Common\MinMax $players players
      *
      * @return self
      */

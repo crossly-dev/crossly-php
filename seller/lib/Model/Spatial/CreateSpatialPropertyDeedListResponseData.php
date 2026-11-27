@@ -63,9 +63,10 @@ class CreateSpatialPropertyDeedListResponseData implements ModelInterface, Array
         'id' => 'string',
         'created_at' => '\DateTime',
         'status' => 'string',
-        'seller_user_id' => 'string',
+        'storefront_id' => 'string',
         'buyer_user_id' => 'string',
         'price_cents' => 'float',
+        'seller_user_id' => 'string',
         'closed_at' => '\DateTime',
         'deed_id' => 'string'
     ];
@@ -81,9 +82,10 @@ class CreateSpatialPropertyDeedListResponseData implements ModelInterface, Array
         'id' => null,
         'created_at' => 'date-time',
         'status' => null,
-        'seller_user_id' => null,
+        'storefront_id' => null,
         'buyer_user_id' => null,
         'price_cents' => null,
+        'seller_user_id' => null,
         'closed_at' => 'date-time',
         'deed_id' => null
     ];
@@ -118,9 +120,10 @@ class CreateSpatialPropertyDeedListResponseData implements ModelInterface, Array
         'id' => 'id',
         'created_at' => 'createdAt',
         'status' => 'status',
-        'seller_user_id' => 'sellerUserId',
+        'storefront_id' => 'storefrontId',
         'buyer_user_id' => 'buyerUserId',
         'price_cents' => 'priceCents',
+        'seller_user_id' => 'sellerUserId',
         'closed_at' => 'closedAt',
         'deed_id' => 'deedId'
     ];
@@ -134,9 +137,10 @@ class CreateSpatialPropertyDeedListResponseData implements ModelInterface, Array
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'status' => 'setStatus',
-        'seller_user_id' => 'setSellerUserId',
+        'storefront_id' => 'setStorefrontId',
         'buyer_user_id' => 'setBuyerUserId',
         'price_cents' => 'setPriceCents',
+        'seller_user_id' => 'setSellerUserId',
         'closed_at' => 'setClosedAt',
         'deed_id' => 'setDeedId'
     ];
@@ -150,9 +154,10 @@ class CreateSpatialPropertyDeedListResponseData implements ModelInterface, Array
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'status' => 'getStatus',
-        'seller_user_id' => 'getSellerUserId',
+        'storefront_id' => 'getStorefrontId',
         'buyer_user_id' => 'getBuyerUserId',
         'price_cents' => 'getPriceCents',
+        'seller_user_id' => 'getSellerUserId',
         'closed_at' => 'getClosedAt',
         'deed_id' => 'getDeedId'
     ];
@@ -217,9 +222,10 @@ class CreateSpatialPropertyDeedListResponseData implements ModelInterface, Array
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
         $this->container['buyer_user_id'] = $data['buyer_user_id'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
+        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['closed_at'] = $data['closed_at'] ?? null;
         $this->container['deed_id'] = $data['deed_id'] ?? null;
     }
@@ -242,11 +248,11 @@ class CreateSpatialPropertyDeedListResponseData implements ModelInterface, Array
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['seller_user_id'] === null) {
-            $invalidProperties[] = "'seller_user_id' can't be null";
-        }
         if ($this->container['price_cents'] === null) {
             $invalidProperties[] = "'price_cents' can't be null";
+        }
+        if ($this->container['seller_user_id'] === null) {
+            $invalidProperties[] = "'seller_user_id' can't be null";
         }
         if ($this->container['deed_id'] === null) {
             $invalidProperties[] = "'deed_id' can't be null";
@@ -339,25 +345,25 @@ class CreateSpatialPropertyDeedListResponseData implements ModelInterface, Array
     }
 
     /**
-     * Gets seller_user_id
+     * Gets storefront_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getSellerUserId()
+    public function getStorefrontId()
     {
-        return $this->container['seller_user_id'];
+        return $this->container['storefront_id'];
     }
 
     /**
-     * Sets seller_user_id
+     * Sets storefront_id
      *
-     * @param string $seller_user_id seller_user_id
+     * @param string|null $storefront_id storefront_id
      *
      * @return self
      */
-    public function setSellerUserId($seller_user_id)
+    public function setStorefrontId($storefront_id)
     {
-        $this->container['seller_user_id'] = $seller_user_id;
+        $this->container['storefront_id'] = $storefront_id;
 
         return $this;
     }
@@ -406,6 +412,30 @@ class CreateSpatialPropertyDeedListResponseData implements ModelInterface, Array
     public function setPriceCents($price_cents)
     {
         $this->container['price_cents'] = $price_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_user_id
+     *
+     * @return string
+     */
+    public function getSellerUserId()
+    {
+        return $this->container['seller_user_id'];
+    }
+
+    /**
+     * Sets seller_user_id
+     *
+     * @param string $seller_user_id seller_user_id
+     *
+     * @return self
+     */
+    public function setSellerUserId($seller_user_id)
+    {
+        $this->container['seller_user_id'] = $seller_user_id;
 
         return $this;
     }

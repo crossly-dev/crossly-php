@@ -61,15 +61,15 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
-        'status' => 'string',
-        'url' => 'string',
-        'opened_at' => 'string',
-        'revealed_at' => 'string',
-        'recipient_email' => 'string',
         'recipient_name' => 'string',
+        'recipient_email' => 'string',
+        'status' => 'string',
         'teaser_sent_at' => 'string',
-        'thanks_message' => 'string'
+        'revealed_at' => 'string',
+        'opened_at' => 'string',
+        'thanks_message' => 'string',
+        'created_at' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -81,15 +81,15 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
-        'status' => null,
-        'url' => null,
-        'opened_at' => null,
-        'revealed_at' => null,
-        'recipient_email' => null,
         'recipient_name' => null,
+        'recipient_email' => null,
+        'status' => null,
         'teaser_sent_at' => null,
-        'thanks_message' => null
+        'revealed_at' => null,
+        'opened_at' => null,
+        'thanks_message' => null,
+        'created_at' => null,
+        'url' => null
     ];
 
     /**
@@ -120,15 +120,15 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'status' => 'status',
-        'url' => 'url',
-        'opened_at' => 'openedAt',
-        'revealed_at' => 'revealedAt',
-        'recipient_email' => 'recipientEmail',
         'recipient_name' => 'recipientName',
+        'recipient_email' => 'recipientEmail',
+        'status' => 'status',
         'teaser_sent_at' => 'teaserSentAt',
-        'thanks_message' => 'thanksMessage'
+        'revealed_at' => 'revealedAt',
+        'opened_at' => 'openedAt',
+        'thanks_message' => 'thanksMessage',
+        'created_at' => 'createdAt',
+        'url' => 'url'
     ];
 
     /**
@@ -138,15 +138,15 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'status' => 'setStatus',
-        'url' => 'setUrl',
-        'opened_at' => 'setOpenedAt',
-        'revealed_at' => 'setRevealedAt',
-        'recipient_email' => 'setRecipientEmail',
         'recipient_name' => 'setRecipientName',
+        'recipient_email' => 'setRecipientEmail',
+        'status' => 'setStatus',
         'teaser_sent_at' => 'setTeaserSentAt',
-        'thanks_message' => 'setThanksMessage'
+        'revealed_at' => 'setRevealedAt',
+        'opened_at' => 'setOpenedAt',
+        'thanks_message' => 'setThanksMessage',
+        'created_at' => 'setCreatedAt',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -156,15 +156,15 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'status' => 'getStatus',
-        'url' => 'getUrl',
-        'opened_at' => 'getOpenedAt',
-        'revealed_at' => 'getRevealedAt',
-        'recipient_email' => 'getRecipientEmail',
         'recipient_name' => 'getRecipientName',
+        'recipient_email' => 'getRecipientEmail',
+        'status' => 'getStatus',
         'teaser_sent_at' => 'getTeaserSentAt',
-        'thanks_message' => 'getThanksMessage'
+        'revealed_at' => 'getRevealedAt',
+        'opened_at' => 'getOpenedAt',
+        'thanks_message' => 'getThanksMessage',
+        'created_at' => 'getCreatedAt',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -225,15 +225,15 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['url'] = $data['url'] ?? null;
-        $this->container['opened_at'] = $data['opened_at'] ?? null;
-        $this->container['revealed_at'] = $data['revealed_at'] ?? null;
-        $this->container['recipient_email'] = $data['recipient_email'] ?? null;
         $this->container['recipient_name'] = $data['recipient_name'] ?? null;
+        $this->container['recipient_email'] = $data['recipient_email'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['teaser_sent_at'] = $data['teaser_sent_at'] ?? null;
+        $this->container['revealed_at'] = $data['revealed_at'] ?? null;
+        $this->container['opened_at'] = $data['opened_at'] ?? null;
         $this->container['thanks_message'] = $data['thanks_message'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
     }
 
     /**
@@ -248,20 +248,20 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
+        if ($this->container['recipient_name'] === null) {
+            $invalidProperties[] = "'recipient_name' can't be null";
         }
         if ($this->container['recipient_email'] === null) {
             $invalidProperties[] = "'recipient_email' can't be null";
         }
-        if ($this->container['recipient_name'] === null) {
-            $invalidProperties[] = "'recipient_name' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,121 +303,25 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets created_at
+     * Gets recipient_name
      *
      * @return string
      */
-    public function getCreatedAt()
+    public function getRecipientName()
     {
-        return $this->container['created_at'];
+        return $this->container['recipient_name'];
     }
 
     /**
-     * Sets created_at
+     * Sets recipient_name
      *
-     * @param string $created_at created_at
+     * @param string $recipient_name recipient_name
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setRecipientName($recipient_name)
     {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url url
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets opened_at
-     *
-     * @return string|null
-     */
-    public function getOpenedAt()
-    {
-        return $this->container['opened_at'];
-    }
-
-    /**
-     * Sets opened_at
-     *
-     * @param string|null $opened_at opened_at
-     *
-     * @return self
-     */
-    public function setOpenedAt($opened_at)
-    {
-        $this->container['opened_at'] = $opened_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets revealed_at
-     *
-     * @return string|null
-     */
-    public function getRevealedAt()
-    {
-        return $this->container['revealed_at'];
-    }
-
-    /**
-     * Sets revealed_at
-     *
-     * @param string|null $revealed_at revealed_at
-     *
-     * @return self
-     */
-    public function setRevealedAt($revealed_at)
-    {
-        $this->container['revealed_at'] = $revealed_at;
+        $this->container['recipient_name'] = $recipient_name;
 
         return $this;
     }
@@ -447,25 +351,25 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets recipient_name
+     * Gets status
      *
      * @return string
      */
-    public function getRecipientName()
+    public function getStatus()
     {
-        return $this->container['recipient_name'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets recipient_name
+     * Sets status
      *
-     * @param string $recipient_name recipient_name
+     * @param string $status status
      *
      * @return self
      */
-    public function setRecipientName($recipient_name)
+    public function setStatus($status)
     {
-        $this->container['recipient_name'] = $recipient_name;
+        $this->container['status'] = $status;
 
         return $this;
     }
@@ -495,6 +399,54 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets revealed_at
+     *
+     * @return string|null
+     */
+    public function getRevealedAt()
+    {
+        return $this->container['revealed_at'];
+    }
+
+    /**
+     * Sets revealed_at
+     *
+     * @param string|null $revealed_at revealed_at
+     *
+     * @return self
+     */
+    public function setRevealedAt($revealed_at)
+    {
+        $this->container['revealed_at'] = $revealed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets opened_at
+     *
+     * @return string|null
+     */
+    public function getOpenedAt()
+    {
+        return $this->container['opened_at'];
+    }
+
+    /**
+     * Sets opened_at
+     *
+     * @param string|null $opened_at opened_at
+     *
+     * @return self
+     */
+    public function setOpenedAt($opened_at)
+    {
+        $this->container['opened_at'] = $opened_at;
+
+        return $this;
+    }
+
+    /**
      * Gets thanks_message
      *
      * @return string|null
@@ -514,6 +466,54 @@ class ListBuyerGiftSentItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setThanksMessage($thanks_message)
     {
         $this->container['thanks_message'] = $thanks_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url url
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }

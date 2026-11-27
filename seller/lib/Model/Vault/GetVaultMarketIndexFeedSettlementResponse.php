@@ -60,7 +60,7 @@ class GetVaultMarketIndexFeedSettlementResponse implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'index' => '\Crossly\Model\Common\SlugName',
+        'index' => '\Crossly\Model\Common\NameSlug',
         'method' => 'string',
         'series' => '\Crossly\Model\Vault\GetVaultMarketIndexFeedSettlementResponseSeries[]'
     ];
@@ -230,7 +230,7 @@ class GetVaultMarketIndexFeedSettlementResponse implements ModelInterface, Array
     /**
      * Gets index
      *
-     * @return \Crossly\Model\Common\SlugName
+     * @return \Crossly\Model\Common\NameSlug
      */
     public function getIndex()
     {
@@ -240,7 +240,7 @@ class GetVaultMarketIndexFeedSettlementResponse implements ModelInterface, Array
     /**
      * Sets index
      *
-     * @param \Crossly\Model\Common\SlugName $index index
+     * @param \Crossly\Model\Common\NameSlug $index index
      *
      * @return self
      */

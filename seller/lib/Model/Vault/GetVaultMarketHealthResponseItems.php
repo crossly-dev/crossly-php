@@ -209,12 +209,12 @@ class GetVaultMarketHealthResponseItems implements ModelInterface, ArrayAccess, 
     }
 
     const QUALITY_NONE = 'none';
+    const QUALITY_C = 'C';
     const QUALITY_A = 'A';
     const QUALITY_B = 'B';
-    const QUALITY_C = 'C';
+    const TIER_C = 'C';
     const TIER_A = 'A';
     const TIER_B = 'B';
-    const TIER_C = 'C';
     const TIER_D = 'D';
     const TIER_UNCLASSIFIED = 'unclassified';
 
@@ -227,9 +227,9 @@ class GetVaultMarketHealthResponseItems implements ModelInterface, ArrayAccess, 
     {
         return [
             self::QUALITY_NONE,
+            self::QUALITY_C,
             self::QUALITY_A,
             self::QUALITY_B,
-            self::QUALITY_C,
         ];
     }
 
@@ -241,9 +241,9 @@ class GetVaultMarketHealthResponseItems implements ModelInterface, ArrayAccess, 
     public function getTierAllowableValues()
     {
         return [
+            self::TIER_C,
             self::TIER_A,
             self::TIER_B,
-            self::TIER_C,
             self::TIER_D,
             self::TIER_UNCLASSIFIED,
         ];

@@ -60,8 +60,8 @@ class GetBuyerBreakResponseDataDraw implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'position' => 'float',
-        'entry' => 'float'
+        'entry' => 'float',
+        'position' => 'float'
     ];
 
     /**
@@ -72,8 +72,8 @@ class GetBuyerBreakResponseDataDraw implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'position' => null,
-        'entry' => null
+        'entry' => null,
+        'position' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class GetBuyerBreakResponseDataDraw implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'position' => 'position',
-        'entry' => 'entry'
+        'entry' => 'entry',
+        'position' => 'position'
     ];
 
     /**
@@ -113,8 +113,8 @@ class GetBuyerBreakResponseDataDraw implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'position' => 'setPosition',
-        'entry' => 'setEntry'
+        'entry' => 'setEntry',
+        'position' => 'setPosition'
     ];
 
     /**
@@ -123,8 +123,8 @@ class GetBuyerBreakResponseDataDraw implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'position' => 'getPosition',
-        'entry' => 'getEntry'
+        'entry' => 'getEntry',
+        'position' => 'getPosition'
     ];
 
     /**
@@ -184,8 +184,8 @@ class GetBuyerBreakResponseDataDraw implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['position'] = $data['position'] ?? null;
         $this->container['entry'] = $data['entry'] ?? null;
+        $this->container['position'] = $data['position'] ?? null;
     }
 
     /**
@@ -197,11 +197,11 @@ class GetBuyerBreakResponseDataDraw implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['position'] === null) {
-            $invalidProperties[] = "'position' can't be null";
-        }
         if ($this->container['entry'] === null) {
             $invalidProperties[] = "'entry' can't be null";
+        }
+        if ($this->container['position'] === null) {
+            $invalidProperties[] = "'position' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,30 +217,6 @@ class GetBuyerBreakResponseDataDraw implements ModelInterface, ArrayAccess, \Jso
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets position
-     *
-     * @return float
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param float $position position
-     *
-     * @return self
-     */
-    public function setPosition($position)
-    {
-        $this->container['position'] = $position;
-
-        return $this;
-    }
 
     /**
      * Gets entry
@@ -262,6 +238,30 @@ class GetBuyerBreakResponseDataDraw implements ModelInterface, ArrayAccess, \Jso
     public function setEntry($entry)
     {
         $this->container['entry'] = $entry;
+
+        return $this;
+    }
+
+    /**
+     * Gets position
+     *
+     * @return float
+     */
+    public function getPosition()
+    {
+        return $this->container['position'];
+    }
+
+    /**
+     * Sets position
+     *
+     * @param float $position position
+     *
+     * @return self
+     */
+    public function setPosition($position)
+    {
+        $this->container['position'] = $position;
 
         return $this;
     }

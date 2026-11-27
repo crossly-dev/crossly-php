@@ -297,15 +297,15 @@ class ListVaultMarketP2pLoansItem implements ModelInterface, ArrayAccess, \JsonS
     const ROLE_BORROWER = 'borrower';
     const ROLE_LENDER = 'lender';
     const STATUS_ACTIVE = 'active';
-    const STATUS_FUNDING = 'funding';
     const STATUS_CANCELLED = 'cancelled';
+    const STATUS_FUNDING = 'funding';
     const STATUS_AUCTION = 'auction';
+    const STATUS_REPAID = 'repaid';
+    const STATUS_FORECLOSED = 'foreclosed';
     const STATUS_REPAYING = 'repaying';
     const STATUS_REFINANCING = 'refinancing';
     const STATUS_REFI_PENDING = 'refi_pending';
-    const STATUS_REPAID = 'repaid';
     const STATUS_REFINANCED = 'refinanced';
-    const STATUS_FORECLOSED = 'foreclosed';
 
     /**
      * Gets allowable values of the enum
@@ -330,15 +330,15 @@ class ListVaultMarketP2pLoansItem implements ModelInterface, ArrayAccess, \JsonS
     {
         return [
             self::STATUS_ACTIVE,
-            self::STATUS_FUNDING,
             self::STATUS_CANCELLED,
+            self::STATUS_FUNDING,
             self::STATUS_AUCTION,
+            self::STATUS_REPAID,
+            self::STATUS_FORECLOSED,
             self::STATUS_REPAYING,
             self::STATUS_REFINANCING,
             self::STATUS_REFI_PENDING,
-            self::STATUS_REPAID,
             self::STATUS_REFINANCED,
-            self::STATUS_FORECLOSED,
         ];
     }
 

@@ -60,17 +60,23 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice',
-        'auction' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice',
-        'fill' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice',
-        'account' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice',
-        'margin_call' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice',
-        'adl' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice',
-        'p2p_loan' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice',
-        'market_open' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice',
-        'receipt_token' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice',
-        'set_goal' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice',
-        'follow' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice'
+        'account' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'price' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'fill' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'auction' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'prediction' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'option_expiry' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'margin_call' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'adl' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'p2p_loan' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'market_open' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'receipt_token' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'set_goal' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'follow' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'share_offering' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'share_vote' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'option_settlement' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount',
+        'prediction_odds' => '\Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount'
     ];
 
     /**
@@ -81,17 +87,23 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'price' => null,
-        'auction' => null,
-        'fill' => null,
         'account' => null,
+        'price' => null,
+        'fill' => null,
+        'auction' => null,
+        'prediction' => null,
+        'option_expiry' => null,
         'margin_call' => null,
         'adl' => null,
         'p2p_loan' => null,
         'market_open' => null,
         'receipt_token' => null,
         'set_goal' => null,
-        'follow' => null
+        'follow' => null,
+        'share_offering' => null,
+        'share_vote' => null,
+        'option_settlement' => null,
+        'prediction_odds' => null
     ];
 
     /**
@@ -121,17 +133,23 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price',
-        'auction' => 'auction',
-        'fill' => 'fill',
         'account' => 'account',
+        'price' => 'price',
+        'fill' => 'fill',
+        'auction' => 'auction',
+        'prediction' => 'prediction',
+        'option_expiry' => 'option_expiry',
         'margin_call' => 'margin_call',
         'adl' => 'adl',
         'p2p_loan' => 'p2p_loan',
         'market_open' => 'market_open',
         'receipt_token' => 'receipt_token',
         'set_goal' => 'set_goal',
-        'follow' => 'follow'
+        'follow' => 'follow',
+        'share_offering' => 'share_offering',
+        'share_vote' => 'share_vote',
+        'option_settlement' => 'option_settlement',
+        'prediction_odds' => 'prediction_odds'
     ];
 
     /**
@@ -140,17 +158,23 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice',
-        'auction' => 'setAuction',
-        'fill' => 'setFill',
         'account' => 'setAccount',
+        'price' => 'setPrice',
+        'fill' => 'setFill',
+        'auction' => 'setAuction',
+        'prediction' => 'setPrediction',
+        'option_expiry' => 'setOptionExpiry',
         'margin_call' => 'setMarginCall',
         'adl' => 'setAdl',
         'p2p_loan' => 'setP2pLoan',
         'market_open' => 'setMarketOpen',
         'receipt_token' => 'setReceiptToken',
         'set_goal' => 'setSetGoal',
-        'follow' => 'setFollow'
+        'follow' => 'setFollow',
+        'share_offering' => 'setShareOffering',
+        'share_vote' => 'setShareVote',
+        'option_settlement' => 'setOptionSettlement',
+        'prediction_odds' => 'setPredictionOdds'
     ];
 
     /**
@@ -159,17 +183,23 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice',
-        'auction' => 'getAuction',
-        'fill' => 'getFill',
         'account' => 'getAccount',
+        'price' => 'getPrice',
+        'fill' => 'getFill',
+        'auction' => 'getAuction',
+        'prediction' => 'getPrediction',
+        'option_expiry' => 'getOptionExpiry',
         'margin_call' => 'getMarginCall',
         'adl' => 'getAdl',
         'p2p_loan' => 'getP2pLoan',
         'market_open' => 'getMarketOpen',
         'receipt_token' => 'getReceiptToken',
         'set_goal' => 'getSetGoal',
-        'follow' => 'getFollow'
+        'follow' => 'getFollow',
+        'share_offering' => 'getShareOffering',
+        'share_vote' => 'getShareVote',
+        'option_settlement' => 'getOptionSettlement',
+        'prediction_odds' => 'getPredictionOdds'
     ];
 
     /**
@@ -229,10 +259,12 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
-        $this->container['price'] = $data['price'] ?? null;
-        $this->container['auction'] = $data['auction'] ?? null;
-        $this->container['fill'] = $data['fill'] ?? null;
         $this->container['account'] = $data['account'] ?? null;
+        $this->container['price'] = $data['price'] ?? null;
+        $this->container['fill'] = $data['fill'] ?? null;
+        $this->container['auction'] = $data['auction'] ?? null;
+        $this->container['prediction'] = $data['prediction'] ?? null;
+        $this->container['option_expiry'] = $data['option_expiry'] ?? null;
         $this->container['margin_call'] = $data['margin_call'] ?? null;
         $this->container['adl'] = $data['adl'] ?? null;
         $this->container['p2p_loan'] = $data['p2p_loan'] ?? null;
@@ -240,6 +272,10 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
         $this->container['receipt_token'] = $data['receipt_token'] ?? null;
         $this->container['set_goal'] = $data['set_goal'] ?? null;
         $this->container['follow'] = $data['follow'] ?? null;
+        $this->container['share_offering'] = $data['share_offering'] ?? null;
+        $this->container['share_vote'] = $data['share_vote'] ?? null;
+        $this->container['option_settlement'] = $data['option_settlement'] ?? null;
+        $this->container['prediction_odds'] = $data['prediction_odds'] ?? null;
     }
 
     /**
@@ -251,17 +287,23 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
+        if ($this->container['account'] === null) {
+            $invalidProperties[] = "'account' can't be null";
+        }
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
-        }
-        if ($this->container['auction'] === null) {
-            $invalidProperties[] = "'auction' can't be null";
         }
         if ($this->container['fill'] === null) {
             $invalidProperties[] = "'fill' can't be null";
         }
-        if ($this->container['account'] === null) {
-            $invalidProperties[] = "'account' can't be null";
+        if ($this->container['auction'] === null) {
+            $invalidProperties[] = "'auction' can't be null";
+        }
+        if ($this->container['prediction'] === null) {
+            $invalidProperties[] = "'prediction' can't be null";
+        }
+        if ($this->container['option_expiry'] === null) {
+            $invalidProperties[] = "'option_expiry' can't be null";
         }
         if ($this->container['margin_call'] === null) {
             $invalidProperties[] = "'margin_call' can't be null";
@@ -284,6 +326,18 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
         if ($this->container['follow'] === null) {
             $invalidProperties[] = "'follow' can't be null";
         }
+        if ($this->container['share_offering'] === null) {
+            $invalidProperties[] = "'share_offering' can't be null";
+        }
+        if ($this->container['share_vote'] === null) {
+            $invalidProperties[] = "'share_vote' can't be null";
+        }
+        if ($this->container['option_settlement'] === null) {
+            $invalidProperties[] = "'option_settlement' can't be null";
+        }
+        if ($this->container['prediction_odds'] === null) {
+            $invalidProperties[] = "'prediction_odds' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -300,81 +354,9 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
 
 
     /**
-     * Gets price
-     *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price
-     *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $price price
-     *
-     * @return self
-     */
-    public function setPrice($price)
-    {
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets auction
-     *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
-     */
-    public function getAuction()
-    {
-        return $this->container['auction'];
-    }
-
-    /**
-     * Sets auction
-     *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $auction auction
-     *
-     * @return self
-     */
-    public function setAuction($auction)
-    {
-        $this->container['auction'] = $auction;
-
-        return $this;
-    }
-
-    /**
-     * Gets fill
-     *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
-     */
-    public function getFill()
-    {
-        return $this->container['fill'];
-    }
-
-    /**
-     * Sets fill
-     *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $fill fill
-     *
-     * @return self
-     */
-    public function setFill($fill)
-    {
-        $this->container['fill'] = $fill;
-
-        return $this;
-    }
-
-    /**
      * Gets account
      *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
      */
     public function getAccount()
     {
@@ -384,7 +366,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Sets account
      *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $account account
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $account account
      *
      * @return self
      */
@@ -396,9 +378,129 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     }
 
     /**
+     * Gets price
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $price price
+     *
+     * @return self
+     */
+    public function setPrice($price)
+    {
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets fill
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
+     */
+    public function getFill()
+    {
+        return $this->container['fill'];
+    }
+
+    /**
+     * Sets fill
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $fill fill
+     *
+     * @return self
+     */
+    public function setFill($fill)
+    {
+        $this->container['fill'] = $fill;
+
+        return $this;
+    }
+
+    /**
+     * Gets auction
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
+     */
+    public function getAuction()
+    {
+        return $this->container['auction'];
+    }
+
+    /**
+     * Sets auction
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $auction auction
+     *
+     * @return self
+     */
+    public function setAuction($auction)
+    {
+        $this->container['auction'] = $auction;
+
+        return $this;
+    }
+
+    /**
+     * Gets prediction
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
+     */
+    public function getPrediction()
+    {
+        return $this->container['prediction'];
+    }
+
+    /**
+     * Sets prediction
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $prediction prediction
+     *
+     * @return self
+     */
+    public function setPrediction($prediction)
+    {
+        $this->container['prediction'] = $prediction;
+
+        return $this;
+    }
+
+    /**
+     * Gets option_expiry
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
+     */
+    public function getOptionExpiry()
+    {
+        return $this->container['option_expiry'];
+    }
+
+    /**
+     * Sets option_expiry
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $option_expiry option_expiry
+     *
+     * @return self
+     */
+    public function setOptionExpiry($option_expiry)
+    {
+        $this->container['option_expiry'] = $option_expiry;
+
+        return $this;
+    }
+
+    /**
      * Gets margin_call
      *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
      */
     public function getMarginCall()
     {
@@ -408,7 +510,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Sets margin_call
      *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $margin_call margin_call
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $margin_call margin_call
      *
      * @return self
      */
@@ -422,7 +524,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Gets adl
      *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
      */
     public function getAdl()
     {
@@ -432,7 +534,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Sets adl
      *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $adl adl
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $adl adl
      *
      * @return self
      */
@@ -446,7 +548,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Gets p2p_loan
      *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
      */
     public function getP2pLoan()
     {
@@ -456,7 +558,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Sets p2p_loan
      *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $p2p_loan p2p_loan
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $p2p_loan p2p_loan
      *
      * @return self
      */
@@ -470,7 +572,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Gets market_open
      *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
      */
     public function getMarketOpen()
     {
@@ -480,7 +582,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Sets market_open
      *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $market_open market_open
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $market_open market_open
      *
      * @return self
      */
@@ -494,7 +596,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Gets receipt_token
      *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
      */
     public function getReceiptToken()
     {
@@ -504,7 +606,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Sets receipt_token
      *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $receipt_token receipt_token
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $receipt_token receipt_token
      *
      * @return self
      */
@@ -518,7 +620,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Gets set_goal
      *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
      */
     public function getSetGoal()
     {
@@ -528,7 +630,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Sets set_goal
      *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $set_goal set_goal
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $set_goal set_goal
      *
      * @return self
      */
@@ -542,7 +644,7 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Gets follow
      *
-     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
      */
     public function getFollow()
     {
@@ -552,13 +654,109 @@ class GetVaultMarketAlertPrefResponseMatrix implements ModelInterface, ArrayAcce
     /**
      * Sets follow
      *
-     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixPrice $follow follow
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $follow follow
      *
      * @return self
      */
     public function setFollow($follow)
     {
         $this->container['follow'] = $follow;
+
+        return $this;
+    }
+
+    /**
+     * Gets share_offering
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
+     */
+    public function getShareOffering()
+    {
+        return $this->container['share_offering'];
+    }
+
+    /**
+     * Sets share_offering
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $share_offering share_offering
+     *
+     * @return self
+     */
+    public function setShareOffering($share_offering)
+    {
+        $this->container['share_offering'] = $share_offering;
+
+        return $this;
+    }
+
+    /**
+     * Gets share_vote
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
+     */
+    public function getShareVote()
+    {
+        return $this->container['share_vote'];
+    }
+
+    /**
+     * Sets share_vote
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $share_vote share_vote
+     *
+     * @return self
+     */
+    public function setShareVote($share_vote)
+    {
+        $this->container['share_vote'] = $share_vote;
+
+        return $this;
+    }
+
+    /**
+     * Gets option_settlement
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
+     */
+    public function getOptionSettlement()
+    {
+        return $this->container['option_settlement'];
+    }
+
+    /**
+     * Sets option_settlement
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $option_settlement option_settlement
+     *
+     * @return self
+     */
+    public function setOptionSettlement($option_settlement)
+    {
+        $this->container['option_settlement'] = $option_settlement;
+
+        return $this;
+    }
+
+    /**
+     * Gets prediction_odds
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount
+     */
+    public function getPredictionOdds()
+    {
+        return $this->container['prediction_odds'];
+    }
+
+    /**
+     * Sets prediction_odds
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketAlertPrefResponseMatrixAccount $prediction_odds prediction_odds
+     *
+     * @return self
+     */
+    public function setPredictionOdds($prediction_odds)
+    {
+        $this->container['prediction_odds'] = $prediction_odds;
 
         return $this;
     }

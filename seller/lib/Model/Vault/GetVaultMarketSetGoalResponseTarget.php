@@ -178,9 +178,9 @@ class GetVaultMarketSetGoalResponseTarget implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const GRADE_MODE_ANY = 'any';
     const GRADE_MODE_EXACT = 'exact';
     const GRADE_MODE_UNGRADED = 'ungraded';
-    const GRADE_MODE_ANY = 'any';
 
     /**
      * Gets allowable values of the enum
@@ -190,9 +190,9 @@ class GetVaultMarketSetGoalResponseTarget implements ModelInterface, ArrayAccess
     public function getGradeModeAllowableValues()
     {
         return [
+            self::GRADE_MODE_ANY,
             self::GRADE_MODE_EXACT,
             self::GRADE_MODE_UNGRADED,
-            self::GRADE_MODE_ANY,
         ];
     }
 

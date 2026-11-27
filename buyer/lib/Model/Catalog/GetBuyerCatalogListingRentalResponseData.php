@@ -69,7 +69,10 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
         'rent_only' => 'bool',
         'require_approval' => 'bool',
         'available' => 'bool',
-        'booked' => '\Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingRentalResponseDataBooked[]'
+        'return_policy' => 'string',
+        'booked' => '\Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingRentalResponseDataBooked[]',
+        'options' => '\Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingRentalResponseDataOptions',
+        'units_free' => 'array<string,mixed>'
     ];
 
     /**
@@ -89,7 +92,10 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
         'rent_only' => null,
         'require_approval' => null,
         'available' => null,
-        'booked' => null
+        'return_policy' => null,
+        'booked' => null,
+        'options' => null,
+        'units_free' => null
     ];
 
     /**
@@ -128,7 +134,10 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
         'rent_only' => 'rentOnly',
         'require_approval' => 'requireApproval',
         'available' => 'available',
-        'booked' => 'booked'
+        'return_policy' => 'returnPolicy',
+        'booked' => 'booked',
+        'options' => 'options',
+        'units_free' => 'unitsFree'
     ];
 
     /**
@@ -146,7 +155,10 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
         'rent_only' => 'setRentOnly',
         'require_approval' => 'setRequireApproval',
         'available' => 'setAvailable',
-        'booked' => 'setBooked'
+        'return_policy' => 'setReturnPolicy',
+        'booked' => 'setBooked',
+        'options' => 'setOptions',
+        'units_free' => 'setUnitsFree'
     ];
 
     /**
@@ -164,7 +176,10 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
         'rent_only' => 'getRentOnly',
         'require_approval' => 'getRequireApproval',
         'available' => 'getAvailable',
-        'booked' => 'getBooked'
+        'return_policy' => 'getReturnPolicy',
+        'booked' => 'getBooked',
+        'options' => 'getOptions',
+        'units_free' => 'getUnitsFree'
     ];
 
     /**
@@ -233,7 +248,10 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
         $this->container['rent_only'] = $data['rent_only'] ?? null;
         $this->container['require_approval'] = $data['require_approval'] ?? null;
         $this->container['available'] = $data['available'] ?? null;
+        $this->container['return_policy'] = $data['return_policy'] ?? null;
         $this->container['booked'] = $data['booked'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
+        $this->container['units_free'] = $data['units_free'] ?? null;
     }
 
     /**
@@ -247,9 +265,6 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
 
         if ($this->container['daily_cents'] === null) {
             $invalidProperties[] = "'daily_cents' can't be null";
-        }
-        if ($this->container['deposit_cents'] === null) {
-            $invalidProperties[] = "'deposit_cents' can't be null";
         }
         if ($this->container['min_days'] === null) {
             $invalidProperties[] = "'min_days' can't be null";
@@ -271,6 +286,12 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
         }
         if ($this->container['booked'] === null) {
             $invalidProperties[] = "'booked' can't be null";
+        }
+        if ($this->container['options'] === null) {
+            $invalidProperties[] = "'options' can't be null";
+        }
+        if ($this->container['units_free'] === null) {
+            $invalidProperties[] = "'units_free' can't be null";
         }
         return $invalidProperties;
     }
@@ -338,7 +359,7 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
     /**
      * Gets deposit_cents
      *
-     * @return float
+     * @return float|null
      */
     public function getDepositCents()
     {
@@ -348,7 +369,7 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
     /**
      * Sets deposit_cents
      *
-     * @param float $deposit_cents deposit_cents
+     * @param float|null $deposit_cents deposit_cents
      *
      * @return self
      */
@@ -504,6 +525,30 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
     }
 
     /**
+     * Gets return_policy
+     *
+     * @return string|null
+     */
+    public function getReturnPolicy()
+    {
+        return $this->container['return_policy'];
+    }
+
+    /**
+     * Sets return_policy
+     *
+     * @param string|null $return_policy return_policy
+     *
+     * @return self
+     */
+    public function setReturnPolicy($return_policy)
+    {
+        $this->container['return_policy'] = $return_policy;
+
+        return $this;
+    }
+
+    /**
      * Gets booked
      *
      * @return \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingRentalResponseDataBooked[]
@@ -523,6 +568,54 @@ class GetBuyerCatalogListingRentalResponseData implements ModelInterface, ArrayA
     public function setBooked($booked)
     {
         $this->container['booked'] = $booked;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingRentalResponseDataOptions
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingRentalResponseDataOptions $options options
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets units_free
+     *
+     * @return array<string,mixed>
+     */
+    public function getUnitsFree()
+    {
+        return $this->container['units_free'];
+    }
+
+    /**
+     * Sets units_free
+     *
+     * @param array<string,mixed> $units_free units_free
+     *
+     * @return self
+     */
+    public function setUnitsFree($units_free)
+    {
+        $this->container['units_free'] = $units_free;
 
         return $this;
     }

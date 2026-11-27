@@ -62,6 +62,7 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'id' => 'string',
         'mode' => 'string',
+        'order_id' => 'string',
         'run_id' => 'string',
         'run_cutoff_at' => 'string',
         'run_status' => 'string',
@@ -81,7 +82,7 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
         'inbound_tracking' => 'string',
         'return_tracking' => 'string',
         'prescreen_note' => 'string',
-        'grading' => '\Crossly\Model\Grading\ListGradingSubmissionsItemGrading',
+        'grading' => '\Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading',
         'cert_verified' => 'bool',
         'created_at' => 'string',
         'updated_at' => 'string'
@@ -97,6 +98,7 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'id' => null,
         'mode' => null,
+        'order_id' => null,
         'run_id' => null,
         'run_cutoff_at' => null,
         'run_status' => null,
@@ -151,6 +153,7 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'id' => 'id',
         'mode' => 'mode',
+        'order_id' => 'orderId',
         'run_id' => 'runId',
         'run_cutoff_at' => 'runCutoffAt',
         'run_status' => 'runStatus',
@@ -184,6 +187,7 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
     protected static $setters = [
         'id' => 'setId',
         'mode' => 'setMode',
+        'order_id' => 'setOrderId',
         'run_id' => 'setRunId',
         'run_cutoff_at' => 'setRunCutoffAt',
         'run_status' => 'setRunStatus',
@@ -217,6 +221,7 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
     protected static $getters = [
         'id' => 'getId',
         'mode' => 'getMode',
+        'order_id' => 'getOrderId',
         'run_id' => 'getRunId',
         'run_cutoff_at' => 'getRunCutoffAt',
         'run_status' => 'getRunStatus',
@@ -283,19 +288,20 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    const MODE_RUN = 'run';
     const MODE_DIRECT = 'direct';
-    const STATUS_GRADED = 'graded';
-    const STATUS_RETURNED = 'returned';
-    const STATUS_RELEASED = 'released';
+    const MODE_ORDER = 'order';
+    const MODE_RUN = 'run';
     const STATUS_REFUNDED = 'refunded';
-    const STATUS_RESERVED = 'reserved';
     const STATUS_RECEIVED = 'received';
+    const STATUS_RELEASED = 'released';
+    const STATUS_RESERVED = 'reserved';
     const STATUS_CHARGED = 'charged';
     const STATUS_SHIPPED_TO_HUB = 'shipped_to_hub';
     const STATUS_PRESCREEN_FAILED = 'prescreen_failed';
     const STATUS_AT_GRADER = 'at_grader';
+    const STATUS_GRADED = 'graded';
     const STATUS_RETURNING = 'returning';
+    const STATUS_RETURNED = 'returned';
     const STATUS_VAULTED = 'vaulted';
 
     /**
@@ -306,8 +312,9 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
     public function getModeAllowableValues()
     {
         return [
-            self::MODE_RUN,
             self::MODE_DIRECT,
+            self::MODE_ORDER,
+            self::MODE_RUN,
         ];
     }
 
@@ -319,17 +326,17 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_GRADED,
-            self::STATUS_RETURNED,
-            self::STATUS_RELEASED,
             self::STATUS_REFUNDED,
-            self::STATUS_RESERVED,
             self::STATUS_RECEIVED,
+            self::STATUS_RELEASED,
+            self::STATUS_RESERVED,
             self::STATUS_CHARGED,
             self::STATUS_SHIPPED_TO_HUB,
             self::STATUS_PRESCREEN_FAILED,
             self::STATUS_AT_GRADER,
+            self::STATUS_GRADED,
             self::STATUS_RETURNING,
+            self::STATUS_RETURNED,
             self::STATUS_VAULTED,
         ];
     }
@@ -351,6 +358,7 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['mode'] = $data['mode'] ?? null;
+        $this->container['order_id'] = $data['order_id'] ?? null;
         $this->container['run_id'] = $data['run_id'] ?? null;
         $this->container['run_cutoff_at'] = $data['run_cutoff_at'] ?? null;
         $this->container['run_status'] = $data['run_status'] ?? null;
@@ -517,6 +525,30 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
             );
         }
         $this->container['mode'] = $mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_id
+     *
+     * @return string|null
+     */
+    public function getOrderId()
+    {
+        return $this->container['order_id'];
+    }
+
+    /**
+     * Sets order_id
+     *
+     * @param string|null $order_id The grading order (submission through Crossly) this card is in.
+     *
+     * @return self
+     */
+    public function setOrderId($order_id)
+    {
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }
@@ -990,7 +1022,7 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets grading
      *
-     * @return \Crossly\Model\Grading\ListGradingSubmissionsItemGrading|null
+     * @return \Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading|null
      */
     public function getGrading()
     {
@@ -1000,7 +1032,7 @@ class ListGradingSubmissionsItem implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets grading
      *
-     * @param \Crossly\Model\Grading\ListGradingSubmissionsItemGrading|null $grading grading
+     * @param \Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading|null $grading grading
      *
      * @return self
      */

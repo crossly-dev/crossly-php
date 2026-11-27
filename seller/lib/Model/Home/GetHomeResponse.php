@@ -72,6 +72,7 @@ class GetHomeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'layout' => '\Crossly\Model\Home\GetHomeResponseLayout[]',
         'guestbook' => '\Crossly\Model\Home\GetHomeResponseGuestbook[]',
         'gift_shelf' => '\Crossly\Model\Home\GetHomeResponseGiftShelf',
+        'pulls_shelf' => '\Crossly\Model\Home\GetHomeResponsePullsShelf',
         'pin_case' => '\Crossly\Model\Home\GetHomeResponsePinCase[]',
         'vault_wall' => '\Crossly\Model\Home\GetHomeResponseVaultWall',
         'set_wall' => '\Crossly\Model\Home\GetHomeResponseSetWall',
@@ -99,6 +100,7 @@ class GetHomeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'layout' => null,
         'guestbook' => null,
         'gift_shelf' => null,
+        'pulls_shelf' => null,
         'pin_case' => null,
         'vault_wall' => null,
         'set_wall' => null,
@@ -145,6 +147,7 @@ class GetHomeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'layout' => 'layout',
         'guestbook' => 'guestbook',
         'gift_shelf' => 'giftShelf',
+        'pulls_shelf' => 'pullsShelf',
         'pin_case' => 'pinCase',
         'vault_wall' => 'vaultWall',
         'set_wall' => 'setWall',
@@ -170,6 +173,7 @@ class GetHomeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'layout' => 'setLayout',
         'guestbook' => 'setGuestbook',
         'gift_shelf' => 'setGiftShelf',
+        'pulls_shelf' => 'setPullsShelf',
         'pin_case' => 'setPinCase',
         'vault_wall' => 'setVaultWall',
         'set_wall' => 'setSetWall',
@@ -195,6 +199,7 @@ class GetHomeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'layout' => 'getLayout',
         'guestbook' => 'getGuestbook',
         'gift_shelf' => 'getGiftShelf',
+        'pulls_shelf' => 'getPullsShelf',
         'pin_case' => 'getPinCase',
         'vault_wall' => 'getVaultWall',
         'set_wall' => 'getSetWall',
@@ -244,13 +249,13 @@ class GetHomeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     const PRIVACY_OPEN = 'open';
-    const PRIVACY_LOCKED = 'locked';
     const PRIVACY_FRIENDS = 'friends';
-    const THEME_STORYBOOK = 'storybook';
+    const PRIVACY_LOCKED = 'locked';
     const THEME_STUDIO = 'studio';
     const THEME_NOIR = 'noir';
     const THEME_DAYLIGHT = 'daylight';
     const THEME_VITRINE = 'vitrine';
+    const THEME_STORYBOOK = 'storybook';
 
     /**
      * Gets allowable values of the enum
@@ -261,8 +266,8 @@ class GetHomeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::PRIVACY_OPEN,
-            self::PRIVACY_LOCKED,
             self::PRIVACY_FRIENDS,
+            self::PRIVACY_LOCKED,
         ];
     }
 
@@ -274,11 +279,11 @@ class GetHomeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getThemeAllowableValues()
     {
         return [
-            self::THEME_STORYBOOK,
             self::THEME_STUDIO,
             self::THEME_NOIR,
             self::THEME_DAYLIGHT,
             self::THEME_VITRINE,
+            self::THEME_STORYBOOK,
         ];
     }
 
@@ -309,6 +314,7 @@ class GetHomeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['layout'] = $data['layout'] ?? null;
         $this->container['guestbook'] = $data['guestbook'] ?? null;
         $this->container['gift_shelf'] = $data['gift_shelf'] ?? null;
+        $this->container['pulls_shelf'] = $data['pulls_shelf'] ?? null;
         $this->container['pin_case'] = $data['pin_case'] ?? null;
         $this->container['vault_wall'] = $data['vault_wall'] ?? null;
         $this->container['set_wall'] = $data['set_wall'] ?? null;
@@ -701,6 +707,30 @@ class GetHomeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGiftShelf($gift_shelf)
     {
         $this->container['gift_shelf'] = $gift_shelf;
+
+        return $this;
+    }
+
+    /**
+     * Gets pulls_shelf
+     *
+     * @return \Crossly\Model\Home\GetHomeResponsePullsShelf|null
+     */
+    public function getPullsShelf()
+    {
+        return $this->container['pulls_shelf'];
+    }
+
+    /**
+     * Sets pulls_shelf
+     *
+     * @param \Crossly\Model\Home\GetHomeResponsePullsShelf|null $pulls_shelf pulls_shelf
+     *
+     * @return self
+     */
+    public function setPullsShelf($pulls_shelf)
+    {
+        $this->container['pulls_shelf'] = $pulls_shelf;
 
         return $this;
     }

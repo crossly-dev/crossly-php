@@ -5,24 +5,27 @@ All URIs are relative to https://crossly.net/api.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createInboxAiSuggest()**](InboxApi.md#createInboxAiSuggest) | **POST** /v1/inbox/ai-suggest | AI reply suggestion for a conversation.
-[**createInboxCannedResponse()**](InboxApi.md#createInboxCannedResponse) | **POST** /v1/inbox/canned-responses | Create a canned response.
+[**createInboxCannedResponse()**](InboxApi.md#createInboxCannedResponse) | **POST** /v1/inbox/canned-responses | Create a canned response (added to the end of the list).
 [**createInboxConversationBulk()**](InboxApi.md#createInboxConversationBulk) | **POST** /v1/inbox/conversations/bulk | Bulk mark read / mark unread / soft-delete conversations.
 [**createInboxConversationBulkAiRespond()**](InboxApi.md#createInboxConversationBulkAiRespond) | **POST** /v1/inbox/conversations/bulk-ai-respond | AI reply suggestion for multiple conversations — draft or send.
 [**createInboxConversationOfferAction()**](InboxApi.md#createInboxConversationOfferAction) | **POST** /v1/inbox/conversations/{id}/offer-action | Accept / counter / decline an active offer on a conversation.
 [**createInboxMessageTriage()**](InboxApi.md#createInboxMessageTriage) | **POST** /v1/inbox/messages/{id}/triage | Manually re-triage a buyer message.
 [**createInboxOffer()**](InboxApi.md#createInboxOffer) | **POST** /v1/inbox/{id}/offer | Accept, counter, or decline an offer on a conversation.
 [**createInboxReply()**](InboxApi.md#createInboxReply) | **POST** /v1/inbox/{id}/reply | Send a reply to a conversation thread.
+[**createInboxSendOffer()**](InboxApi.md#createInboxSendOffer) | **POST** /v1/inbox/{id}/send-offer | Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
 [**createVideoRequestAnswer()**](InboxApi.md#createVideoRequestAnswer) | **POST** /v1/video-requests/{id}/answer | Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
 [**createVideoRequestDecline()**](InboxApi.md#createVideoRequestDecline) | **POST** /v1/video-requests/{id}/decline | Decline a video request, with an optional note to the buyer.
 [**createVideoRequestUploadUrl()**](InboxApi.md#createVideoRequestUploadUrl) | **POST** /v1/video-requests/upload-url | A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
 [**deleteInboxCannedResponse()**](InboxApi.md#deleteInboxCannedResponse) | **DELETE** /v1/inbox/canned-responses/{id} | Delete a canned response.
-[**getInbox()**](InboxApi.md#getInbox) | **GET** /v1/inbox/{id} | Get one conversation with its messages.
-[**getInboxCannedResponse()**](InboxApi.md#getInboxCannedResponse) | **GET** /v1/inbox/canned-responses | List canned responses.
+[**getInbox()**](InboxApi.md#getInbox) | **GET** /v1/inbox/{id} | Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
+[**getInboxCannedResponse()**](InboxApi.md#getInboxCannedResponse) | **GET** /v1/inbox/canned-responses | List canned responses in the seller&#39;s order.
 [**getInboxConversationMessage()**](InboxApi.md#getInboxConversationMessage) | **GET** /v1/inbox/conversations/{id}/messages | Paginated messages for a conversation.
-[**getInboxConversationUnreadCount()**](InboxApi.md#getInboxConversationUnreadCount) | **GET** /v1/inbox/conversations/unread-count | Sidebar badge: unread conversation count.
-[**listInbox()**](InboxApi.md#listInbox) | **GET** /v1/inbox | List conversations.
+[**getInboxConversationUnreadCount()**](InboxApi.md#getInboxConversationUnreadCount) | **GET** /v1/inbox/conversations/unread-count | Unread conversation count (threads only; /v1/inbox/counts adds offers).
+[**getInboxCount()**](InboxApi.md#getInboxCount) | **GET** /v1/inbox/counts | Inbox badges: unread and needs-reply, split into conversations and offers.
+[**listInbox()**](InboxApi.md#listInbox) | **GET** /v1/inbox | List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts.
 [**listVideoRequests()**](InboxApi.md#listVideoRequests) | **GET** /v1/video-requests | Buyers asking for a video of your items. status: open (default), answered, declined or all.
 [**updateInboxCannedResponse()**](InboxApi.md#updateInboxCannedResponse) | **PUT** /v1/inbox/canned-responses/{id} | Update a canned response.
+[**updateInboxCannedResponseOrder()**](InboxApi.md#updateInboxCannedResponseOrder) | **PUT** /v1/inbox/canned-responses/order | Reorder canned responses.
 [**updateInboxConversation()**](InboxApi.md#updateInboxConversation) | **PATCH** /v1/inbox/conversations/{id} | Mark read / change status / close conversation.
 
 
@@ -86,7 +89,7 @@ This endpoint does not need any parameter.
 createInboxCannedResponse(): \Crossly\Model\Inbox\CreateInboxCannedResponseResponse
 ```
 
-Create a canned response.
+Create a canned response (added to the end of the list).
 
 ### Example
 
@@ -470,6 +473,65 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `createInboxSendOffer()`
+
+```php
+createInboxSendOffer($id, $create_inbox_send_offer_request): \Crossly\Model\Inbox\CreateInboxSendOfferResponse
+```
+
+Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation's canSendOffer is true (Grailed today). `amount` is in the listing's currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus 'sending' until the platform confirms.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\InboxApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string
+$create_inbox_send_offer_request = new \Crossly\Model\Inbox\CreateInboxSendOfferRequest(); // \Crossly\Model\Inbox\CreateInboxSendOfferRequest
+
+try {
+    $result = $apiInstance->createInboxSendOffer($id, $create_inbox_send_offer_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InboxApi->createInboxSendOffer: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  |
+ **create_inbox_send_offer_request** | **\Crossly\Model\Inbox\CreateInboxSendOfferRequest**|  |
+
+### Return type
+
+**\Crossly\Model\Inbox\CreateInboxSendOfferResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `createVideoRequestAnswer()`
 
 ```php
@@ -641,7 +703,7 @@ This endpoint does not need any parameter.
 ## `deleteInboxCannedResponse()`
 
 ```php
-deleteInboxCannedResponse($id): \Crossly\Model\Order\CreateOrderDisputeResponse
+deleteInboxCannedResponse($id)
 ```
 
 Delete a canned response.
@@ -666,8 +728,7 @@ $apiInstance = new Crossly\Api\InboxApi(
 $id = 'id_example'; // string
 
 try {
-    $result = $apiInstance->deleteInboxCannedResponse($id);
-    print_r($result);
+    $apiInstance->deleteInboxCannedResponse($id);
 } catch (Exception $e) {
     echo 'Exception when calling InboxApi->deleteInboxCannedResponse: ', $e->getMessage(), PHP_EOL;
 }
@@ -681,7 +742,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**\Crossly\Model\Order\CreateOrderDisputeResponse**
+void (empty response body)
 
 ### Authorization
 
@@ -701,7 +762,7 @@ Name | Type | Description  | Notes
 getInbox($id): \Crossly\Model\Inbox\GetInboxResponse
 ```
 
-Get one conversation with its messages.
+Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
 
 ### Example
 
@@ -758,7 +819,7 @@ Name | Type | Description  | Notes
 getInboxCannedResponse(): \Crossly\Model\Inbox\GetInboxCannedResponseResponse
 ```
 
-List canned responses.
+List canned responses in the seller's order.
 
 ### Example
 
@@ -869,7 +930,7 @@ Name | Type | Description  | Notes
 getInboxConversationUnreadCount(): \Crossly\Model\Web3\CreateWeb3LaunchArtResponse
 ```
 
-Sidebar badge: unread conversation count.
+Unread conversation count (threads only; /v1/inbox/counts adds offers).
 
 ### Example
 
@@ -917,13 +978,67 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `getInboxCount()`
+
+```php
+getInboxCount(): \Crossly\Model\Inbox\GetInboxCountResponse
+```
+
+Inbox badges: unread and needs-reply, split into conversations and offers.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\InboxApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getInboxCount();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InboxApi->getInboxCount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Model\Inbox\GetInboxCountResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `listInbox()`
 
 ```php
-listInbox($page, $limit): \Crossly\Model\Inbox\ListInboxResponse
+listInbox($page, $limit, $filter): \Crossly\Model\Inbox\ListInboxResponse
 ```
 
-List conversations.
+List conversations. `filter` narrows to the rows GET /v1/inbox/counts counts.
 
 ### Example
 
@@ -944,9 +1059,10 @@ $apiInstance = new Crossly\Api\InboxApi(
 );
 $page = 1; // int
 $limit = 25; // int
+$filter = 'filter_example'; // string | unread | needs_reply (services/inbox/attention.ts). Omit for all.
 
 try {
-    $result = $apiInstance->listInbox($page, $limit);
+    $result = $apiInstance->listInbox($page, $limit, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InboxApi->listInbox: ', $e->getMessage(), PHP_EOL;
@@ -959,6 +1075,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**|  | [optional] [default to 1]
  **limit** | **int**|  | [optional] [default to 25]
+ **filter** | **string**| unread | needs_reply (services/inbox/attention.ts). Omit for all. | [optional]
 
 ### Return type
 
@@ -1082,6 +1199,65 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateInboxCannedResponseOrder()`
+
+```php
+updateInboxCannedResponseOrder($update_inbox_canned_response_order_request): \Crossly\Model\Inbox\GetInboxCannedResponseResponse
+```
+
+Reorder canned responses.
+
+Pass EVERY canned response id in the new order (first = top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\InboxApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$update_inbox_canned_response_order_request = new \Crossly\Model\Inbox\UpdateInboxCannedResponseOrderRequest(); // \Crossly\Model\Inbox\UpdateInboxCannedResponseOrderRequest
+
+try {
+    $result = $apiInstance->updateInboxCannedResponseOrder($update_inbox_canned_response_order_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InboxApi->updateInboxCannedResponseOrder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **update_inbox_canned_response_order_request** | **\Crossly\Model\Inbox\UpdateInboxCannedResponseOrderRequest**|  |
+
+### Return type
+
+**\Crossly\Model\Inbox\GetInboxCannedResponseResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

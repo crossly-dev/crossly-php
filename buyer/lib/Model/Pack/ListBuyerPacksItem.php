@@ -61,15 +61,15 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'status' => 'string',
-        'description' => 'string',
-        'title' => 'string',
         'slug' => 'string',
-        'price_cents' => 'float',
+        'title' => 'string',
+        'description' => 'string',
         'image_url' => 'string',
-        'tiers' => '\Crossly\Buyer\Model\Pack\ListBuyerPacksItemTiers[]',
+        'price_cents' => 'float',
+        'status' => 'string',
         'buyback_bps' => 'float',
         'buyback_days' => 'float',
+        'tiers' => '\Crossly\Buyer\Model\Pack\ListBuyerPacksItemTiers[]',
         'expected_value_cents' => 'float',
         'openable' => 'bool',
         'chase' => '\Crossly\Buyer\Model\Pack\ListBuyerPacksItemChase[]'
@@ -84,15 +84,15 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'status' => null,
-        'description' => null,
-        'title' => null,
         'slug' => null,
-        'price_cents' => null,
+        'title' => null,
+        'description' => null,
         'image_url' => null,
-        'tiers' => null,
+        'price_cents' => null,
+        'status' => null,
         'buyback_bps' => null,
         'buyback_days' => null,
+        'tiers' => null,
         'expected_value_cents' => null,
         'openable' => null,
         'chase' => null
@@ -126,15 +126,15 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'status' => 'status',
-        'description' => 'description',
-        'title' => 'title',
         'slug' => 'slug',
-        'price_cents' => 'priceCents',
+        'title' => 'title',
+        'description' => 'description',
         'image_url' => 'imageUrl',
-        'tiers' => 'tiers',
+        'price_cents' => 'priceCents',
+        'status' => 'status',
         'buyback_bps' => 'buybackBps',
         'buyback_days' => 'buybackDays',
+        'tiers' => 'tiers',
         'expected_value_cents' => 'expectedValueCents',
         'openable' => 'openable',
         'chase' => 'chase'
@@ -147,15 +147,15 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'id' => 'setId',
-        'status' => 'setStatus',
-        'description' => 'setDescription',
-        'title' => 'setTitle',
         'slug' => 'setSlug',
-        'price_cents' => 'setPriceCents',
+        'title' => 'setTitle',
+        'description' => 'setDescription',
         'image_url' => 'setImageUrl',
-        'tiers' => 'setTiers',
+        'price_cents' => 'setPriceCents',
+        'status' => 'setStatus',
         'buyback_bps' => 'setBuybackBps',
         'buyback_days' => 'setBuybackDays',
+        'tiers' => 'setTiers',
         'expected_value_cents' => 'setExpectedValueCents',
         'openable' => 'setOpenable',
         'chase' => 'setChase'
@@ -168,15 +168,15 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'id' => 'getId',
-        'status' => 'getStatus',
-        'description' => 'getDescription',
-        'title' => 'getTitle',
         'slug' => 'getSlug',
-        'price_cents' => 'getPriceCents',
+        'title' => 'getTitle',
+        'description' => 'getDescription',
         'image_url' => 'getImageUrl',
-        'tiers' => 'getTiers',
+        'price_cents' => 'getPriceCents',
+        'status' => 'getStatus',
         'buyback_bps' => 'getBuybackBps',
         'buyback_days' => 'getBuybackDays',
+        'tiers' => 'getTiers',
         'expected_value_cents' => 'getExpectedValueCents',
         'openable' => 'getOpenable',
         'chase' => 'getChase'
@@ -240,15 +240,15 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
-        $this->container['price_cents'] = $data['price_cents'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
         $this->container['image_url'] = $data['image_url'] ?? null;
-        $this->container['tiers'] = $data['tiers'] ?? null;
+        $this->container['price_cents'] = $data['price_cents'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['buyback_bps'] = $data['buyback_bps'] ?? null;
         $this->container['buyback_days'] = $data['buyback_days'] ?? null;
+        $this->container['tiers'] = $data['tiers'] ?? null;
         $this->container['expected_value_cents'] = $data['expected_value_cents'] ?? null;
         $this->container['openable'] = $data['openable'] ?? null;
         $this->container['chase'] = $data['chase'] ?? null;
@@ -266,26 +266,26 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['slug'] === null) {
+            $invalidProperties[] = "'slug' can't be null";
         }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
         }
-        if ($this->container['slug'] === null) {
-            $invalidProperties[] = "'slug' can't be null";
-        }
         if ($this->container['price_cents'] === null) {
             $invalidProperties[] = "'price_cents' can't be null";
         }
-        if ($this->container['tiers'] === null) {
-            $invalidProperties[] = "'tiers' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         if ($this->container['buyback_bps'] === null) {
             $invalidProperties[] = "'buyback_bps' can't be null";
         }
         if ($this->container['buyback_days'] === null) {
             $invalidProperties[] = "'buyback_days' can't be null";
+        }
+        if ($this->container['tiers'] === null) {
+            $invalidProperties[] = "'tiers' can't be null";
         }
         if ($this->container['expected_value_cents'] === null) {
             $invalidProperties[] = "'expected_value_cents' can't be null";
@@ -336,49 +336,25 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets status
+     * Gets slug
      *
      * @return string
      */
-    public function getStatus()
+    public function getSlug()
     {
-        return $this->container['status'];
+        return $this->container['slug'];
     }
 
     /**
-     * Sets status
+     * Sets slug
      *
-     * @param string $status status
+     * @param string $slug slug
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setSlug($slug)
     {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
+        $this->container['slug'] = $slug;
 
         return $this;
     }
@@ -408,49 +384,25 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets slug
+     * Gets description
      *
-     * @return string
+     * @return string|null
      */
-    public function getSlug()
+    public function getDescription()
     {
-        return $this->container['slug'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets slug
+     * Sets description
      *
-     * @param string $slug slug
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setSlug($slug)
+    public function setDescription($description)
     {
-        $this->container['slug'] = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Gets price_cents
-     *
-     * @return float
-     */
-    public function getPriceCents()
-    {
-        return $this->container['price_cents'];
-    }
-
-    /**
-     * Sets price_cents
-     *
-     * @param float $price_cents price_cents
-     *
-     * @return self
-     */
-    public function setPriceCents($price_cents)
-    {
-        $this->container['price_cents'] = $price_cents;
+        $this->container['description'] = $description;
 
         return $this;
     }
@@ -480,25 +432,49 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets tiers
+     * Gets price_cents
      *
-     * @return \Crossly\Buyer\Model\Pack\ListBuyerPacksItemTiers[]
+     * @return float
      */
-    public function getTiers()
+    public function getPriceCents()
     {
-        return $this->container['tiers'];
+        return $this->container['price_cents'];
     }
 
     /**
-     * Sets tiers
+     * Sets price_cents
      *
-     * @param \Crossly\Buyer\Model\Pack\ListBuyerPacksItemTiers[] $tiers tiers
+     * @param float $price_cents price_cents
      *
      * @return self
      */
-    public function setTiers($tiers)
+    public function setPriceCents($price_cents)
     {
-        $this->container['tiers'] = $tiers;
+        $this->container['price_cents'] = $price_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
@@ -547,6 +523,30 @@ class ListBuyerPacksItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setBuybackDays($buyback_days)
     {
         $this->container['buyback_days'] = $buyback_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets tiers
+     *
+     * @return \Crossly\Buyer\Model\Pack\ListBuyerPacksItemTiers[]
+     */
+    public function getTiers()
+    {
+        return $this->container['tiers'];
+    }
+
+    /**
+     * Sets tiers
+     *
+     * @param \Crossly\Buyer\Model\Pack\ListBuyerPacksItemTiers[] $tiers tiers
+     *
+     * @return self
+     */
+    public function setTiers($tiers)
+    {
+        $this->container['tiers'] = $tiers;
 
         return $this;
     }

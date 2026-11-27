@@ -64,15 +64,16 @@ class GetOrderShipmentResponseData implements ModelInterface, ArrayAccess, \Json
         'created_at' => '\DateTime',
         'user_id' => 'string',
         'source' => 'string',
-        'order_id' => 'string',
         'carrier' => 'string',
         'service' => 'string',
         'tracking_number' => 'string',
-        'voided_at' => '\DateTime',
+        'order_id' => 'string',
         'label_cost_cents' => 'float',
         'label_url' => 'string',
+        'label_qr_url' => 'string',
         'shippo_shipment_id' => 'string',
-        'tracking_registered_at' => '\DateTime'
+        'tracking_registered_at' => '\DateTime',
+        'voided_at' => '\DateTime'
     ];
 
     /**
@@ -87,15 +88,16 @@ class GetOrderShipmentResponseData implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'date-time',
         'user_id' => null,
         'source' => null,
-        'order_id' => null,
         'carrier' => null,
         'service' => null,
         'tracking_number' => null,
-        'voided_at' => 'date-time',
+        'order_id' => null,
         'label_cost_cents' => null,
         'label_url' => null,
+        'label_qr_url' => null,
         'shippo_shipment_id' => null,
-        'tracking_registered_at' => 'date-time'
+        'tracking_registered_at' => 'date-time',
+        'voided_at' => 'date-time'
     ];
 
     /**
@@ -129,15 +131,16 @@ class GetOrderShipmentResponseData implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'createdAt',
         'user_id' => 'userId',
         'source' => 'source',
-        'order_id' => 'orderId',
         'carrier' => 'carrier',
         'service' => 'service',
         'tracking_number' => 'trackingNumber',
-        'voided_at' => 'voidedAt',
+        'order_id' => 'orderId',
         'label_cost_cents' => 'labelCostCents',
         'label_url' => 'labelUrl',
+        'label_qr_url' => 'labelQrUrl',
         'shippo_shipment_id' => 'shippoShipmentId',
-        'tracking_registered_at' => 'trackingRegisteredAt'
+        'tracking_registered_at' => 'trackingRegisteredAt',
+        'voided_at' => 'voidedAt'
     ];
 
     /**
@@ -150,15 +153,16 @@ class GetOrderShipmentResponseData implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
         'source' => 'setSource',
-        'order_id' => 'setOrderId',
         'carrier' => 'setCarrier',
         'service' => 'setService',
         'tracking_number' => 'setTrackingNumber',
-        'voided_at' => 'setVoidedAt',
+        'order_id' => 'setOrderId',
         'label_cost_cents' => 'setLabelCostCents',
         'label_url' => 'setLabelUrl',
+        'label_qr_url' => 'setLabelQrUrl',
         'shippo_shipment_id' => 'setShippoShipmentId',
-        'tracking_registered_at' => 'setTrackingRegisteredAt'
+        'tracking_registered_at' => 'setTrackingRegisteredAt',
+        'voided_at' => 'setVoidedAt'
     ];
 
     /**
@@ -171,15 +175,16 @@ class GetOrderShipmentResponseData implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
         'source' => 'getSource',
-        'order_id' => 'getOrderId',
         'carrier' => 'getCarrier',
         'service' => 'getService',
         'tracking_number' => 'getTrackingNumber',
-        'voided_at' => 'getVoidedAt',
+        'order_id' => 'getOrderId',
         'label_cost_cents' => 'getLabelCostCents',
         'label_url' => 'getLabelUrl',
+        'label_qr_url' => 'getLabelQrUrl',
         'shippo_shipment_id' => 'getShippoShipmentId',
-        'tracking_registered_at' => 'getTrackingRegisteredAt'
+        'tracking_registered_at' => 'getTrackingRegisteredAt',
+        'voided_at' => 'getVoidedAt'
     ];
 
     /**
@@ -243,15 +248,16 @@ class GetOrderShipmentResponseData implements ModelInterface, ArrayAccess, \Json
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['source'] = $data['source'] ?? null;
-        $this->container['order_id'] = $data['order_id'] ?? null;
         $this->container['carrier'] = $data['carrier'] ?? null;
         $this->container['service'] = $data['service'] ?? null;
         $this->container['tracking_number'] = $data['tracking_number'] ?? null;
-        $this->container['voided_at'] = $data['voided_at'] ?? null;
+        $this->container['order_id'] = $data['order_id'] ?? null;
         $this->container['label_cost_cents'] = $data['label_cost_cents'] ?? null;
         $this->container['label_url'] = $data['label_url'] ?? null;
+        $this->container['label_qr_url'] = $data['label_qr_url'] ?? null;
         $this->container['shippo_shipment_id'] = $data['shippo_shipment_id'] ?? null;
         $this->container['tracking_registered_at'] = $data['tracking_registered_at'] ?? null;
+        $this->container['voided_at'] = $data['voided_at'] ?? null;
     }
 
     /**
@@ -390,30 +396,6 @@ class GetOrderShipmentResponseData implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets order_id
-     *
-     * @return string
-     */
-    public function getOrderId()
-    {
-        return $this->container['order_id'];
-    }
-
-    /**
-     * Sets order_id
-     *
-     * @param string $order_id order_id
-     *
-     * @return self
-     */
-    public function setOrderId($order_id)
-    {
-        $this->container['order_id'] = $order_id;
-
-        return $this;
-    }
-
-    /**
      * Gets carrier
      *
      * @return string|null
@@ -486,25 +468,25 @@ class GetOrderShipmentResponseData implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets voided_at
+     * Gets order_id
      *
-     * @return \DateTime|null
+     * @return string
      */
-    public function getVoidedAt()
+    public function getOrderId()
     {
-        return $this->container['voided_at'];
+        return $this->container['order_id'];
     }
 
     /**
-     * Sets voided_at
+     * Sets order_id
      *
-     * @param \DateTime|null $voided_at voided_at
+     * @param string $order_id order_id
      *
      * @return self
      */
-    public function setVoidedAt($voided_at)
+    public function setOrderId($order_id)
     {
-        $this->container['voided_at'] = $voided_at;
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }
@@ -558,6 +540,30 @@ class GetOrderShipmentResponseData implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets label_qr_url
+     *
+     * @return string|null
+     */
+    public function getLabelQrUrl()
+    {
+        return $this->container['label_qr_url'];
+    }
+
+    /**
+     * Sets label_qr_url
+     *
+     * @param string|null $label_qr_url label_qr_url
+     *
+     * @return self
+     */
+    public function setLabelQrUrl($label_qr_url)
+    {
+        $this->container['label_qr_url'] = $label_qr_url;
+
+        return $this;
+    }
+
+    /**
      * Gets shippo_shipment_id
      *
      * @return string|null
@@ -601,6 +607,30 @@ class GetOrderShipmentResponseData implements ModelInterface, ArrayAccess, \Json
     public function setTrackingRegisteredAt($tracking_registered_at)
     {
         $this->container['tracking_registered_at'] = $tracking_registered_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets voided_at
+     *
+     * @return \DateTime|null
+     */
+    public function getVoidedAt()
+    {
+        return $this->container['voided_at'];
+    }
+
+    /**
+     * Sets voided_at
+     *
+     * @param \DateTime|null $voided_at voided_at
+     *
+     * @return self
+     */
+    public function setVoidedAt($voided_at)
+    {
+        $this->container['voided_at'] = $voided_at;
 
         return $this;
     }

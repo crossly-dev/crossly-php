@@ -74,15 +74,18 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'holder_start' => 'string',
         'public_start' => 'string',
         'end_time' => 'string',
-        'holder_gate' => '\Crossly\Model\Web3\ListWeb3LaunchesItemHolderGate',
+        'holder_gate' => '\Crossly\Model\Common\ContractName',
         'max_per_wallet' => 'float',
         'royalty_bps' => 'float',
         'platform_bps' => 'float',
         'phase' => 'string',
-        'creator' => '\Crossly\Model\Web3\ListWeb3LaunchesItemCreator',
+        'creator' => '\Crossly\Model\Common\NameObject',
         'card' => 'bool',
         'allowlist' => 'bool',
-        'revealed' => 'bool'
+        'revealed' => 'bool',
+        'card_set_id' => 'string',
+        'creation_refs' => 'string[]',
+        'holder_perks' => '\Crossly\Model\Web3\ListWeb3LaunchesItemHolderPerksItem[]'
     ];
 
     /**
@@ -115,7 +118,10 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'creator' => null,
         'card' => null,
         'allowlist' => null,
-        'revealed' => null
+        'revealed' => null,
+        'card_set_id' => null,
+        'creation_refs' => null,
+        'holder_perks' => null
     ];
 
     /**
@@ -167,7 +173,10 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'creator' => 'creator',
         'card' => 'card',
         'allowlist' => 'allowlist',
-        'revealed' => 'revealed'
+        'revealed' => 'revealed',
+        'card_set_id' => 'cardSetId',
+        'creation_refs' => 'creationRefs',
+        'holder_perks' => 'holderPerks'
     ];
 
     /**
@@ -198,7 +207,10 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'creator' => 'setCreator',
         'card' => 'setCard',
         'allowlist' => 'setAllowlist',
-        'revealed' => 'setRevealed'
+        'revealed' => 'setRevealed',
+        'card_set_id' => 'setCardSetId',
+        'creation_refs' => 'setCreationRefs',
+        'holder_perks' => 'setHolderPerks'
     ];
 
     /**
@@ -229,7 +241,10 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'creator' => 'getCreator',
         'card' => 'getCard',
         'allowlist' => 'getAllowlist',
-        'revealed' => 'getRevealed'
+        'revealed' => 'getRevealed',
+        'card_set_id' => 'getCardSetId',
+        'creation_refs' => 'getCreationRefs',
+        'holder_perks' => 'getHolderPerks'
     ];
 
     /**
@@ -273,20 +288,20 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-    const CHAIN_SOLANA = 'solana';
     const CHAIN_ETHEREUM = 'ethereum';
     const CHAIN_BASE = 'base';
     const CHAIN_POLYGON = 'polygon';
     const CHAIN_ARBITRUM = 'arbitrum';
     const CHAIN_OPTIMISM = 'optimism';
-    const STATUS_LIVE = 'live';
+    const CHAIN_SOLANA = 'solana';
     const STATUS_DRAFT = 'draft';
+    const STATUS_LIVE = 'live';
     const STATUS_FAILED = 'failed';
     const STATUS_DEPLOYING = 'deploying';
-    const PHASE_ENDED = 'ended';
-    const PHASE_HOLDER = 'holder';
     const PHASE__PUBLIC = 'public';
+    const PHASE_ENDED = 'ended';
     const PHASE_UPCOMING = 'upcoming';
+    const PHASE_HOLDER = 'holder';
     const PHASE_SOLD_OUT = 'sold_out';
 
     /**
@@ -297,12 +312,12 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     public function getChainAllowableValues()
     {
         return [
-            self::CHAIN_SOLANA,
             self::CHAIN_ETHEREUM,
             self::CHAIN_BASE,
             self::CHAIN_POLYGON,
             self::CHAIN_ARBITRUM,
             self::CHAIN_OPTIMISM,
+            self::CHAIN_SOLANA,
         ];
     }
 
@@ -314,8 +329,8 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_LIVE,
             self::STATUS_DRAFT,
+            self::STATUS_LIVE,
             self::STATUS_FAILED,
             self::STATUS_DEPLOYING,
         ];
@@ -329,10 +344,10 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     public function getPhaseAllowableValues()
     {
         return [
-            self::PHASE_ENDED,
-            self::PHASE_HOLDER,
             self::PHASE__PUBLIC,
+            self::PHASE_ENDED,
             self::PHASE_UPCOMING,
+            self::PHASE_HOLDER,
             self::PHASE_SOLD_OUT,
         ];
     }
@@ -375,6 +390,9 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['card'] = $data['card'] ?? null;
         $this->container['allowlist'] = $data['allowlist'] ?? null;
         $this->container['revealed'] = $data['revealed'] ?? null;
+        $this->container['card_set_id'] = $data['card_set_id'] ?? null;
+        $this->container['creation_refs'] = $data['creation_refs'] ?? null;
+        $this->container['holder_perks'] = $data['holder_perks'] ?? null;
     }
 
     /**
@@ -838,7 +856,7 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets holder_gate
      *
-     * @return \Crossly\Model\Web3\ListWeb3LaunchesItemHolderGate|null
+     * @return \Crossly\Model\Common\ContractName|null
      */
     public function getHolderGate()
     {
@@ -848,7 +866,7 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets holder_gate
      *
-     * @param \Crossly\Model\Web3\ListWeb3LaunchesItemHolderGate|null $holder_gate holder_gate
+     * @param \Crossly\Model\Common\ContractName|null $holder_gate holder_gate
      *
      * @return self
      */
@@ -968,7 +986,7 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets creator
      *
-     * @return \Crossly\Model\Web3\ListWeb3LaunchesItemCreator
+     * @return \Crossly\Model\Common\NameObject
      */
     public function getCreator()
     {
@@ -978,7 +996,7 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets creator
      *
-     * @param \Crossly\Model\Web3\ListWeb3LaunchesItemCreator $creator creator
+     * @param \Crossly\Model\Common\NameObject $creator creator
      *
      * @return self
      */
@@ -1057,6 +1075,78 @@ class ListWeb3LaunchesItem implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setRevealed($revealed)
     {
         $this->container['revealed'] = $revealed;
+
+        return $this;
+    }
+
+    /**
+     * Gets card_set_id
+     *
+     * @return string|null
+     */
+    public function getCardSetId()
+    {
+        return $this->container['card_set_id'];
+    }
+
+    /**
+     * Sets card_set_id
+     *
+     * @param string|null $card_set_id Creator Studio (migration 1163): the card set this collection takes on chain, and the creations it mints.
+     *
+     * @return self
+     */
+    public function setCardSetId($card_set_id)
+    {
+        $this->container['card_set_id'] = $card_set_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets creation_refs
+     *
+     * @return string[]|null
+     */
+    public function getCreationRefs()
+    {
+        return $this->container['creation_refs'];
+    }
+
+    /**
+     * Sets creation_refs
+     *
+     * @param string[]|null $creation_refs creation_refs
+     *
+     * @return self
+     */
+    public function setCreationRefs($creation_refs)
+    {
+        $this->container['creation_refs'] = $creation_refs;
+
+        return $this;
+    }
+
+    /**
+     * Gets holder_perks
+     *
+     * @return \Crossly\Model\Web3\ListWeb3LaunchesItemHolderPerksItem[]|null
+     */
+    public function getHolderPerks()
+    {
+        return $this->container['holder_perks'];
+    }
+
+    /**
+     * Sets holder_perks
+     *
+     * @param \Crossly\Model\Web3\ListWeb3LaunchesItemHolderPerksItem[]|null $holder_perks Migration 1178 (R-studio-15): what holding a token gets you, decided at mint (shared/creator/holder-perks).
+     *
+     * @return self
+     */
+    public function setHolderPerks($holder_perks)
+    {
+        $this->container['holder_perks'] = $holder_perks;
 
         return $this;
     }

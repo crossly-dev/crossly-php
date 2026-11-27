@@ -63,12 +63,12 @@ class UpdateProductionPoResponsePo implements ModelInterface, ArrayAccess, \Json
         'id' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'notes' => 'string',
         'status' => 'string',
+        'notes' => 'string',
+        'supplier_name' => 'string',
+        'tracking_code' => 'string',
         'merchant_id' => 'string',
         'candidate_id' => 'string',
-        'tracking_code' => 'string',
-        'supplier_name' => 'string',
         'supplier_contact' => 'string',
         'freight_mode' => 'string',
         'estimate_landed_cents' => 'float',
@@ -96,12 +96,12 @@ class UpdateProductionPoResponsePo implements ModelInterface, ArrayAccess, \Json
         'id' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'notes' => null,
         'status' => null,
+        'notes' => null,
+        'supplier_name' => null,
+        'tracking_code' => null,
         'merchant_id' => null,
         'candidate_id' => null,
-        'tracking_code' => null,
-        'supplier_name' => null,
         'supplier_contact' => null,
         'freight_mode' => null,
         'estimate_landed_cents' => null,
@@ -148,12 +148,12 @@ class UpdateProductionPoResponsePo implements ModelInterface, ArrayAccess, \Json
         'id' => 'id',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
-        'notes' => 'notes',
         'status' => 'status',
+        'notes' => 'notes',
+        'supplier_name' => 'supplierName',
+        'tracking_code' => 'trackingCode',
         'merchant_id' => 'merchantId',
         'candidate_id' => 'candidateId',
-        'tracking_code' => 'trackingCode',
-        'supplier_name' => 'supplierName',
         'supplier_contact' => 'supplierContact',
         'freight_mode' => 'freightMode',
         'estimate_landed_cents' => 'estimateLandedCents',
@@ -179,12 +179,12 @@ class UpdateProductionPoResponsePo implements ModelInterface, ArrayAccess, \Json
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'notes' => 'setNotes',
         'status' => 'setStatus',
+        'notes' => 'setNotes',
+        'supplier_name' => 'setSupplierName',
+        'tracking_code' => 'setTrackingCode',
         'merchant_id' => 'setMerchantId',
         'candidate_id' => 'setCandidateId',
-        'tracking_code' => 'setTrackingCode',
-        'supplier_name' => 'setSupplierName',
         'supplier_contact' => 'setSupplierContact',
         'freight_mode' => 'setFreightMode',
         'estimate_landed_cents' => 'setEstimateLandedCents',
@@ -210,12 +210,12 @@ class UpdateProductionPoResponsePo implements ModelInterface, ArrayAccess, \Json
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'notes' => 'getNotes',
         'status' => 'getStatus',
+        'notes' => 'getNotes',
+        'supplier_name' => 'getSupplierName',
+        'tracking_code' => 'getTrackingCode',
         'merchant_id' => 'getMerchantId',
         'candidate_id' => 'getCandidateId',
-        'tracking_code' => 'getTrackingCode',
-        'supplier_name' => 'getSupplierName',
         'supplier_contact' => 'getSupplierContact',
         'freight_mode' => 'getFreightMode',
         'estimate_landed_cents' => 'getEstimateLandedCents',
@@ -292,12 +292,12 @@ class UpdateProductionPoResponsePo implements ModelInterface, ArrayAccess, \Json
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['notes'] = $data['notes'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['notes'] = $data['notes'] ?? null;
+        $this->container['supplier_name'] = $data['supplier_name'] ?? null;
+        $this->container['tracking_code'] = $data['tracking_code'] ?? null;
         $this->container['merchant_id'] = $data['merchant_id'] ?? null;
         $this->container['candidate_id'] = $data['candidate_id'] ?? null;
-        $this->container['tracking_code'] = $data['tracking_code'] ?? null;
-        $this->container['supplier_name'] = $data['supplier_name'] ?? null;
         $this->container['supplier_contact'] = $data['supplier_contact'] ?? null;
         $this->container['freight_mode'] = $data['freight_mode'] ?? null;
         $this->container['estimate_landed_cents'] = $data['estimate_landed_cents'] ?? null;
@@ -432,6 +432,30 @@ class UpdateProductionPoResponsePo implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
      * Gets notes
      *
      * @return string|null
@@ -456,25 +480,49 @@ class UpdateProductionPoResponsePo implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets status
+     * Gets supplier_name
      *
-     * @return string
+     * @return string|null
      */
-    public function getStatus()
+    public function getSupplierName()
     {
-        return $this->container['status'];
+        return $this->container['supplier_name'];
     }
 
     /**
-     * Sets status
+     * Sets supplier_name
      *
-     * @param string $status status
+     * @param string|null $supplier_name supplier_name
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setSupplierName($supplier_name)
     {
-        $this->container['status'] = $status;
+        $this->container['supplier_name'] = $supplier_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_code
+     *
+     * @return string|null
+     */
+    public function getTrackingCode()
+    {
+        return $this->container['tracking_code'];
+    }
+
+    /**
+     * Sets tracking_code
+     *
+     * @param string|null $tracking_code tracking_code
+     *
+     * @return self
+     */
+    public function setTrackingCode($tracking_code)
+    {
+        $this->container['tracking_code'] = $tracking_code;
 
         return $this;
     }
@@ -523,54 +571,6 @@ class UpdateProductionPoResponsePo implements ModelInterface, ArrayAccess, \Json
     public function setCandidateId($candidate_id)
     {
         $this->container['candidate_id'] = $candidate_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets tracking_code
-     *
-     * @return string|null
-     */
-    public function getTrackingCode()
-    {
-        return $this->container['tracking_code'];
-    }
-
-    /**
-     * Sets tracking_code
-     *
-     * @param string|null $tracking_code tracking_code
-     *
-     * @return self
-     */
-    public function setTrackingCode($tracking_code)
-    {
-        $this->container['tracking_code'] = $tracking_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets supplier_name
-     *
-     * @return string|null
-     */
-    public function getSupplierName()
-    {
-        return $this->container['supplier_name'];
-    }
-
-    /**
-     * Sets supplier_name
-     *
-     * @param string|null $supplier_name supplier_name
-     *
-     * @return self
-     */
-    public function setSupplierName($supplier_name)
-    {
-        $this->container['supplier_name'] = $supplier_name;
 
         return $this;
     }

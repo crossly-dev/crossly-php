@@ -61,13 +61,13 @@ class GetBuyerCaseResponseDataReturnShipment implements ModelInterface, ArrayAcc
       */
     protected static $openAPITypes = [
         'tracking_code' => 'string',
-        'updated_at' => 'string',
-        'status' => 'string',
         'carrier' => 'string',
-        'delivered_at' => 'string',
-        'label_url' => 'string',
         'tracking_url' => 'string',
-        'status_detail' => 'string'
+        'label_url' => 'string',
+        'status' => 'string',
+        'status_detail' => 'string',
+        'updated_at' => 'string',
+        'delivered_at' => 'string'
     ];
 
     /**
@@ -79,13 +79,13 @@ class GetBuyerCaseResponseDataReturnShipment implements ModelInterface, ArrayAcc
       */
     protected static $openAPIFormats = [
         'tracking_code' => null,
-        'updated_at' => null,
-        'status' => null,
         'carrier' => null,
-        'delivered_at' => null,
-        'label_url' => null,
         'tracking_url' => null,
-        'status_detail' => null
+        'label_url' => null,
+        'status' => null,
+        'status_detail' => null,
+        'updated_at' => null,
+        'delivered_at' => null
     ];
 
     /**
@@ -116,13 +116,13 @@ class GetBuyerCaseResponseDataReturnShipment implements ModelInterface, ArrayAcc
      */
     protected static $attributeMap = [
         'tracking_code' => 'trackingCode',
-        'updated_at' => 'updatedAt',
-        'status' => 'status',
         'carrier' => 'carrier',
-        'delivered_at' => 'deliveredAt',
-        'label_url' => 'labelUrl',
         'tracking_url' => 'trackingUrl',
-        'status_detail' => 'statusDetail'
+        'label_url' => 'labelUrl',
+        'status' => 'status',
+        'status_detail' => 'statusDetail',
+        'updated_at' => 'updatedAt',
+        'delivered_at' => 'deliveredAt'
     ];
 
     /**
@@ -132,13 +132,13 @@ class GetBuyerCaseResponseDataReturnShipment implements ModelInterface, ArrayAcc
      */
     protected static $setters = [
         'tracking_code' => 'setTrackingCode',
-        'updated_at' => 'setUpdatedAt',
-        'status' => 'setStatus',
         'carrier' => 'setCarrier',
-        'delivered_at' => 'setDeliveredAt',
-        'label_url' => 'setLabelUrl',
         'tracking_url' => 'setTrackingUrl',
-        'status_detail' => 'setStatusDetail'
+        'label_url' => 'setLabelUrl',
+        'status' => 'setStatus',
+        'status_detail' => 'setStatusDetail',
+        'updated_at' => 'setUpdatedAt',
+        'delivered_at' => 'setDeliveredAt'
     ];
 
     /**
@@ -148,13 +148,13 @@ class GetBuyerCaseResponseDataReturnShipment implements ModelInterface, ArrayAcc
      */
     protected static $getters = [
         'tracking_code' => 'getTrackingCode',
-        'updated_at' => 'getUpdatedAt',
-        'status' => 'getStatus',
         'carrier' => 'getCarrier',
-        'delivered_at' => 'getDeliveredAt',
-        'label_url' => 'getLabelUrl',
         'tracking_url' => 'getTrackingUrl',
-        'status_detail' => 'getStatusDetail'
+        'label_url' => 'getLabelUrl',
+        'status' => 'getStatus',
+        'status_detail' => 'getStatusDetail',
+        'updated_at' => 'getUpdatedAt',
+        'delivered_at' => 'getDeliveredAt'
     ];
 
     /**
@@ -215,13 +215,13 @@ class GetBuyerCaseResponseDataReturnShipment implements ModelInterface, ArrayAcc
     public function __construct(array $data = null)
     {
         $this->container['tracking_code'] = $data['tracking_code'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['carrier'] = $data['carrier'] ?? null;
-        $this->container['delivered_at'] = $data['delivered_at'] ?? null;
-        $this->container['label_url'] = $data['label_url'] ?? null;
         $this->container['tracking_url'] = $data['tracking_url'] ?? null;
+        $this->container['label_url'] = $data['label_url'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['status_detail'] = $data['status_detail'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['delivered_at'] = $data['delivered_at'] ?? null;
     }
 
     /**
@@ -276,54 +276,6 @@ class GetBuyerCaseResponseDataReturnShipment implements ModelInterface, ArrayAcc
     }
 
     /**
-     * Gets updated_at
-     *
-     * @return string|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param string|null $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
      * Gets carrier
      *
      * @return string|null
@@ -343,54 +295,6 @@ class GetBuyerCaseResponseDataReturnShipment implements ModelInterface, ArrayAcc
     public function setCarrier($carrier)
     {
         $this->container['carrier'] = $carrier;
-
-        return $this;
-    }
-
-    /**
-     * Gets delivered_at
-     *
-     * @return string|null
-     */
-    public function getDeliveredAt()
-    {
-        return $this->container['delivered_at'];
-    }
-
-    /**
-     * Sets delivered_at
-     *
-     * @param string|null $delivered_at delivered_at
-     *
-     * @return self
-     */
-    public function setDeliveredAt($delivered_at)
-    {
-        $this->container['delivered_at'] = $delivered_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets label_url
-     *
-     * @return string|null
-     */
-    public function getLabelUrl()
-    {
-        return $this->container['label_url'];
-    }
-
-    /**
-     * Sets label_url
-     *
-     * @param string|null $label_url label_url
-     *
-     * @return self
-     */
-    public function setLabelUrl($label_url)
-    {
-        $this->container['label_url'] = $label_url;
 
         return $this;
     }
@@ -420,6 +324,54 @@ class GetBuyerCaseResponseDataReturnShipment implements ModelInterface, ArrayAcc
     }
 
     /**
+     * Gets label_url
+     *
+     * @return string|null
+     */
+    public function getLabelUrl()
+    {
+        return $this->container['label_url'];
+    }
+
+    /**
+     * Sets label_url
+     *
+     * @param string|null $label_url label_url
+     *
+     * @return self
+     */
+    public function setLabelUrl($label_url)
+    {
+        $this->container['label_url'] = $label_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
      * Gets status_detail
      *
      * @return string|null
@@ -439,6 +391,54 @@ class GetBuyerCaseResponseDataReturnShipment implements ModelInterface, ArrayAcc
     public function setStatusDetail($status_detail)
     {
         $this->container['status_detail'] = $status_detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return string|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param string|null $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivered_at
+     *
+     * @return string|null
+     */
+    public function getDeliveredAt()
+    {
+        return $this->container['delivered_at'];
+    }
+
+    /**
+     * Sets delivered_at
+     *
+     * @param string|null $delivered_at delivered_at
+     *
+     * @return self
+     */
+    public function setDeliveredAt($delivered_at)
+    {
+        $this->container['delivered_at'] = $delivered_at;
 
         return $this;
     }

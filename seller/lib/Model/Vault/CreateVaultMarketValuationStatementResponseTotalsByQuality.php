@@ -61,9 +61,9 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality implements Mode
       */
     protected static $openAPITypes = [
         'none' => '\Crossly\Model\Common\UnitsCents',
+        'c' => '\Crossly\Model\Common\UnitsCents',
         'a' => '\Crossly\Model\Common\UnitsCents',
-        'b' => '\Crossly\Model\Common\UnitsCents',
-        'c' => '\Crossly\Model\Common\UnitsCents'
+        'b' => '\Crossly\Model\Common\UnitsCents'
     ];
 
     /**
@@ -75,9 +75,9 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality implements Mode
       */
     protected static $openAPIFormats = [
         'none' => null,
+        'c' => null,
         'a' => null,
-        'b' => null,
-        'c' => null
+        'b' => null
     ];
 
     /**
@@ -108,9 +108,9 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality implements Mode
      */
     protected static $attributeMap = [
         'none' => 'none',
+        'c' => 'C',
         'a' => 'A',
-        'b' => 'B',
-        'c' => 'C'
+        'b' => 'B'
     ];
 
     /**
@@ -120,9 +120,9 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality implements Mode
      */
     protected static $setters = [
         'none' => 'setNone',
+        'c' => 'setC',
         'a' => 'setA',
-        'b' => 'setB',
-        'c' => 'setC'
+        'b' => 'setB'
     ];
 
     /**
@@ -132,9 +132,9 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality implements Mode
      */
     protected static $getters = [
         'none' => 'getNone',
+        'c' => 'getC',
         'a' => 'getA',
-        'b' => 'getB',
-        'c' => 'getC'
+        'b' => 'getB'
     ];
 
     /**
@@ -195,9 +195,9 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality implements Mode
     public function __construct(array $data = null)
     {
         $this->container['none'] = $data['none'] ?? null;
+        $this->container['c'] = $data['c'] ?? null;
         $this->container['a'] = $data['a'] ?? null;
         $this->container['b'] = $data['b'] ?? null;
-        $this->container['c'] = $data['c'] ?? null;
     }
 
     /**
@@ -212,14 +212,14 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality implements Mode
         if ($this->container['none'] === null) {
             $invalidProperties[] = "'none' can't be null";
         }
+        if ($this->container['c'] === null) {
+            $invalidProperties[] = "'c' can't be null";
+        }
         if ($this->container['a'] === null) {
             $invalidProperties[] = "'a' can't be null";
         }
         if ($this->container['b'] === null) {
             $invalidProperties[] = "'b' can't be null";
-        }
-        if ($this->container['c'] === null) {
-            $invalidProperties[] = "'c' can't be null";
         }
         return $invalidProperties;
     }
@@ -256,6 +256,30 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality implements Mode
     public function setNone($none)
     {
         $this->container['none'] = $none;
+
+        return $this;
+    }
+
+    /**
+     * Gets c
+     *
+     * @return \Crossly\Model\Common\UnitsCents
+     */
+    public function getC()
+    {
+        return $this->container['c'];
+    }
+
+    /**
+     * Sets c
+     *
+     * @param \Crossly\Model\Common\UnitsCents $c c
+     *
+     * @return self
+     */
+    public function setC($c)
+    {
+        $this->container['c'] = $c;
 
         return $this;
     }
@@ -304,30 +328,6 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality implements Mode
     public function setB($b)
     {
         $this->container['b'] = $b;
-
-        return $this;
-    }
-
-    /**
-     * Gets c
-     *
-     * @return \Crossly\Model\Common\UnitsCents
-     */
-    public function getC()
-    {
-        return $this->container['c'];
-    }
-
-    /**
-     * Sets c
-     *
-     * @param \Crossly\Model\Common\UnitsCents $c c
-     *
-     * @return self
-     */
-    public function setC($c)
-    {
-        $this->container['c'] = $c;
 
         return $this;
     }

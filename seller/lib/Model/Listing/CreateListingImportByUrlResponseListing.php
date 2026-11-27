@@ -859,7 +859,7 @@ class CreateListingImportByUrlResponseListing implements ModelInterface, ArrayAc
     /**
      * Sets category_id
      *
-     * @param string|null $category_id The platform's raw numeric category id, same space as overrides.<platform>.categoryId — distinct from `category`'s human-readable path. Only set by platforms whose id space is directly comparable to what we publish (currently eBay's drift-check second call — see diff-fields/second-call.ts's ebayRemoteFields). eBay's own CategoryName wording/depth is a different vocabulary from Crossly's master taxonomy breadcrumb and will essentially never string-match it, so drift-detection compares ids instead of names.
+     * @param string|null $category_id The platform's raw numeric category id, same space as overrides.<platform>.categoryId — distinct from `category`'s human-readable path. Only set by platforms whose id space is directly comparable to what we publish (currently eBay's drift-check second call — see platform-parsers/ebay/listing-detail.ts). eBay's own CategoryName wording/depth is a different vocabulary from Crossly's master taxonomy breadcrumb and will essentially never string-match it, so drift-detection compares ids instead of names.
      *
      * @return self
      */

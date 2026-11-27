@@ -63,9 +63,9 @@ class CreateProductionDesignSpecResponsePrefs implements ModelInterface, ArrayAc
         'id' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
+        'cosmetic_id' => 'string',
         'merchant_id' => 'string',
         'creator_subject_id' => 'string',
-        'cosmetic_id' => 'string',
         'spec' => '\Crossly\Model\Production\CreateProductionDesignSpecResponsePrefsSpec',
         'physical_opt_out' => 'bool',
         'brief' => '\Crossly\Model\Production\CreateProductionDesignSpecResponsePrefsBrief',
@@ -83,9 +83,9 @@ class CreateProductionDesignSpecResponsePrefs implements ModelInterface, ArrayAc
         'id' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
+        'cosmetic_id' => null,
         'merchant_id' => null,
         'creator_subject_id' => null,
-        'cosmetic_id' => null,
         'spec' => null,
         'physical_opt_out' => null,
         'brief' => null,
@@ -122,9 +122,9 @@ class CreateProductionDesignSpecResponsePrefs implements ModelInterface, ArrayAc
         'id' => 'id',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
+        'cosmetic_id' => 'cosmeticId',
         'merchant_id' => 'merchantId',
         'creator_subject_id' => 'creatorSubjectId',
-        'cosmetic_id' => 'cosmeticId',
         'spec' => 'spec',
         'physical_opt_out' => 'physicalOptOut',
         'brief' => 'brief',
@@ -140,9 +140,9 @@ class CreateProductionDesignSpecResponsePrefs implements ModelInterface, ArrayAc
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
+        'cosmetic_id' => 'setCosmeticId',
         'merchant_id' => 'setMerchantId',
         'creator_subject_id' => 'setCreatorSubjectId',
-        'cosmetic_id' => 'setCosmeticId',
         'spec' => 'setSpec',
         'physical_opt_out' => 'setPhysicalOptOut',
         'brief' => 'setBrief',
@@ -158,9 +158,9 @@ class CreateProductionDesignSpecResponsePrefs implements ModelInterface, ArrayAc
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
+        'cosmetic_id' => 'getCosmeticId',
         'merchant_id' => 'getMerchantId',
         'creator_subject_id' => 'getCreatorSubjectId',
-        'cosmetic_id' => 'getCosmeticId',
         'spec' => 'getSpec',
         'physical_opt_out' => 'getPhysicalOptOut',
         'brief' => 'getBrief',
@@ -227,9 +227,9 @@ class CreateProductionDesignSpecResponsePrefs implements ModelInterface, ArrayAc
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['cosmetic_id'] = $data['cosmetic_id'] ?? null;
         $this->container['merchant_id'] = $data['merchant_id'] ?? null;
         $this->container['creator_subject_id'] = $data['creator_subject_id'] ?? null;
-        $this->container['cosmetic_id'] = $data['cosmetic_id'] ?? null;
         $this->container['spec'] = $data['spec'] ?? null;
         $this->container['physical_opt_out'] = $data['physical_opt_out'] ?? null;
         $this->container['brief'] = $data['brief'] ?? null;
@@ -254,14 +254,14 @@ class CreateProductionDesignSpecResponsePrefs implements ModelInterface, ArrayAc
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
+        if ($this->container['cosmetic_id'] === null) {
+            $invalidProperties[] = "'cosmetic_id' can't be null";
+        }
         if ($this->container['merchant_id'] === null) {
             $invalidProperties[] = "'merchant_id' can't be null";
         }
         if ($this->container['creator_subject_id'] === null) {
             $invalidProperties[] = "'creator_subject_id' can't be null";
-        }
-        if ($this->container['cosmetic_id'] === null) {
-            $invalidProperties[] = "'cosmetic_id' can't be null";
         }
         if ($this->container['physical_opt_out'] === null) {
             $invalidProperties[] = "'physical_opt_out' can't be null";
@@ -354,6 +354,30 @@ class CreateProductionDesignSpecResponsePrefs implements ModelInterface, ArrayAc
     }
 
     /**
+     * Gets cosmetic_id
+     *
+     * @return string
+     */
+    public function getCosmeticId()
+    {
+        return $this->container['cosmetic_id'];
+    }
+
+    /**
+     * Sets cosmetic_id
+     *
+     * @param string $cosmetic_id cosmetic_id
+     *
+     * @return self
+     */
+    public function setCosmeticId($cosmetic_id)
+    {
+        $this->container['cosmetic_id'] = $cosmetic_id;
+
+        return $this;
+    }
+
+    /**
      * Gets merchant_id
      *
      * @return string
@@ -397,30 +421,6 @@ class CreateProductionDesignSpecResponsePrefs implements ModelInterface, ArrayAc
     public function setCreatorSubjectId($creator_subject_id)
     {
         $this->container['creator_subject_id'] = $creator_subject_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets cosmetic_id
-     *
-     * @return string
-     */
-    public function getCosmeticId()
-    {
-        return $this->container['cosmetic_id'];
-    }
-
-    /**
-     * Sets cosmetic_id
-     *
-     * @param string $cosmetic_id cosmetic_id
-     *
-     * @return self
-     */
-    public function setCosmeticId($cosmetic_id)
-    {
-        $this->container['cosmetic_id'] = $cosmetic_id;
 
         return $this;
     }

@@ -63,25 +63,25 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
         'id' => 'string',
         'created_at' => 'string',
         'status' => 'string',
-        'title' => 'string',
         'category' => 'string',
+        'title' => 'string',
         'options' => '\Crossly\Model\Vault\GetVaultMarketSetGoalResponseOptions',
         'completed_at' => 'string',
-        'progress' => 'string',
-        'brand_slug' => 'string',
-        'model_slug' => 'string',
         'target' => '\Crossly\Model\Vault\GetVaultMarketSetGoalResponseTarget',
-        'held' => 'float',
-        'complete' => 'bool',
-        'href' => 'string',
         'total' => 'float',
-        'set_found' => 'bool',
-        'basket' => '\Crossly\Model\Vault\GetVaultMarketSetGoalResponseBasket',
+        'href' => 'string',
+        'brand_slug' => 'string',
+        'progress' => 'string',
         'missing' => 'float',
+        'held' => 'float',
+        'model_slug' => 'string',
+        'basket' => '\Crossly\Model\Vault\GetVaultMarketSetGoalResponseBasket',
+        'pieces' => '\Crossly\Model\Vault\GetVaultMarketSetGoalResponsePieces[]',
+        'complete' => 'bool',
+        'set_found' => 'bool',
         'priced' => 'float',
         'missing_mark_cents' => 'float',
         'too_big' => 'bool',
-        'pieces' => '\Crossly\Model\Vault\GetVaultMarketSetGoalResponsePieces[]',
         'card_set_href' => 'string'
     ];
 
@@ -96,25 +96,25 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
         'id' => null,
         'created_at' => null,
         'status' => null,
-        'title' => null,
         'category' => null,
+        'title' => null,
         'options' => null,
         'completed_at' => null,
-        'progress' => null,
-        'brand_slug' => null,
-        'model_slug' => null,
         'target' => null,
-        'held' => null,
-        'complete' => null,
-        'href' => null,
         'total' => null,
-        'set_found' => null,
-        'basket' => null,
+        'href' => null,
+        'brand_slug' => null,
+        'progress' => null,
         'missing' => null,
+        'held' => null,
+        'model_slug' => null,
+        'basket' => null,
+        'pieces' => null,
+        'complete' => null,
+        'set_found' => null,
         'priced' => null,
         'missing_mark_cents' => null,
         'too_big' => null,
-        'pieces' => null,
         'card_set_href' => null
     ];
 
@@ -148,25 +148,25 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
         'id' => 'id',
         'created_at' => 'createdAt',
         'status' => 'status',
-        'title' => 'title',
         'category' => 'category',
+        'title' => 'title',
         'options' => 'options',
         'completed_at' => 'completedAt',
-        'progress' => 'progress',
-        'brand_slug' => 'brandSlug',
-        'model_slug' => 'modelSlug',
         'target' => 'target',
-        'held' => 'held',
-        'complete' => 'complete',
-        'href' => 'href',
         'total' => 'total',
-        'set_found' => 'setFound',
-        'basket' => 'basket',
+        'href' => 'href',
+        'brand_slug' => 'brandSlug',
+        'progress' => 'progress',
         'missing' => 'missing',
+        'held' => 'held',
+        'model_slug' => 'modelSlug',
+        'basket' => 'basket',
+        'pieces' => 'pieces',
+        'complete' => 'complete',
+        'set_found' => 'setFound',
         'priced' => 'priced',
         'missing_mark_cents' => 'missingMarkCents',
         'too_big' => 'tooBig',
-        'pieces' => 'pieces',
         'card_set_href' => 'cardSetHref'
     ];
 
@@ -179,25 +179,25 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'status' => 'setStatus',
-        'title' => 'setTitle',
         'category' => 'setCategory',
+        'title' => 'setTitle',
         'options' => 'setOptions',
         'completed_at' => 'setCompletedAt',
-        'progress' => 'setProgress',
-        'brand_slug' => 'setBrandSlug',
-        'model_slug' => 'setModelSlug',
         'target' => 'setTarget',
-        'held' => 'setHeld',
-        'complete' => 'setComplete',
-        'href' => 'setHref',
         'total' => 'setTotal',
-        'set_found' => 'setSetFound',
-        'basket' => 'setBasket',
+        'href' => 'setHref',
+        'brand_slug' => 'setBrandSlug',
+        'progress' => 'setProgress',
         'missing' => 'setMissing',
+        'held' => 'setHeld',
+        'model_slug' => 'setModelSlug',
+        'basket' => 'setBasket',
+        'pieces' => 'setPieces',
+        'complete' => 'setComplete',
+        'set_found' => 'setSetFound',
         'priced' => 'setPriced',
         'missing_mark_cents' => 'setMissingMarkCents',
         'too_big' => 'setTooBig',
-        'pieces' => 'setPieces',
         'card_set_href' => 'setCardSetHref'
     ];
 
@@ -210,25 +210,25 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'status' => 'getStatus',
-        'title' => 'getTitle',
         'category' => 'getCategory',
+        'title' => 'getTitle',
         'options' => 'getOptions',
         'completed_at' => 'getCompletedAt',
-        'progress' => 'getProgress',
-        'brand_slug' => 'getBrandSlug',
-        'model_slug' => 'getModelSlug',
         'target' => 'getTarget',
-        'held' => 'getHeld',
-        'complete' => 'getComplete',
-        'href' => 'getHref',
         'total' => 'getTotal',
-        'set_found' => 'getSetFound',
-        'basket' => 'getBasket',
+        'href' => 'getHref',
+        'brand_slug' => 'getBrandSlug',
+        'progress' => 'getProgress',
         'missing' => 'getMissing',
+        'held' => 'getHeld',
+        'model_slug' => 'getModelSlug',
+        'basket' => 'getBasket',
+        'pieces' => 'getPieces',
+        'complete' => 'getComplete',
+        'set_found' => 'getSetFound',
         'priced' => 'getPriced',
         'missing_mark_cents' => 'getMissingMarkCents',
         'too_big' => 'getTooBig',
-        'pieces' => 'getPieces',
         'card_set_href' => 'getCardSetHref'
     ];
 
@@ -274,8 +274,8 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
     }
 
     const STATUS_ACTIVE = 'active';
-    const STATUS_COMPLETE = 'complete';
     const STATUS_ARCHIVED = 'archived';
+    const STATUS_COMPLETE = 'complete';
 
     /**
      * Gets allowable values of the enum
@@ -286,8 +286,8 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
     {
         return [
             self::STATUS_ACTIVE,
-            self::STATUS_COMPLETE,
             self::STATUS_ARCHIVED,
+            self::STATUS_COMPLETE,
         ];
     }
 
@@ -309,25 +309,25 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['options'] = $data['options'] ?? null;
         $this->container['completed_at'] = $data['completed_at'] ?? null;
-        $this->container['progress'] = $data['progress'] ?? null;
-        $this->container['brand_slug'] = $data['brand_slug'] ?? null;
-        $this->container['model_slug'] = $data['model_slug'] ?? null;
         $this->container['target'] = $data['target'] ?? null;
-        $this->container['held'] = $data['held'] ?? null;
-        $this->container['complete'] = $data['complete'] ?? null;
-        $this->container['href'] = $data['href'] ?? null;
         $this->container['total'] = $data['total'] ?? null;
-        $this->container['set_found'] = $data['set_found'] ?? null;
-        $this->container['basket'] = $data['basket'] ?? null;
+        $this->container['href'] = $data['href'] ?? null;
+        $this->container['brand_slug'] = $data['brand_slug'] ?? null;
+        $this->container['progress'] = $data['progress'] ?? null;
         $this->container['missing'] = $data['missing'] ?? null;
+        $this->container['held'] = $data['held'] ?? null;
+        $this->container['model_slug'] = $data['model_slug'] ?? null;
+        $this->container['basket'] = $data['basket'] ?? null;
+        $this->container['pieces'] = $data['pieces'] ?? null;
+        $this->container['complete'] = $data['complete'] ?? null;
+        $this->container['set_found'] = $data['set_found'] ?? null;
         $this->container['priced'] = $data['priced'] ?? null;
         $this->container['missing_mark_cents'] = $data['missing_mark_cents'] ?? null;
         $this->container['too_big'] = $data['too_big'] ?? null;
-        $this->container['pieces'] = $data['pieces'] ?? null;
         $this->container['card_set_href'] = $data['card_set_href'] ?? null;
     }
 
@@ -358,44 +358,47 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
             );
         }
 
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
         if ($this->container['category'] === null) {
             $invalidProperties[] = "'category' can't be null";
+        }
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
         if ($this->container['options'] === null) {
             $invalidProperties[] = "'options' can't be null";
         }
-        if ($this->container['progress'] === null) {
-            $invalidProperties[] = "'progress' can't be null";
-        }
-        if ($this->container['brand_slug'] === null) {
-            $invalidProperties[] = "'brand_slug' can't be null";
-        }
-        if ($this->container['model_slug'] === null) {
-            $invalidProperties[] = "'model_slug' can't be null";
-        }
         if ($this->container['target'] === null) {
             $invalidProperties[] = "'target' can't be null";
-        }
-        if ($this->container['held'] === null) {
-            $invalidProperties[] = "'held' can't be null";
-        }
-        if ($this->container['complete'] === null) {
-            $invalidProperties[] = "'complete' can't be null";
-        }
-        if ($this->container['href'] === null) {
-            $invalidProperties[] = "'href' can't be null";
         }
         if ($this->container['total'] === null) {
             $invalidProperties[] = "'total' can't be null";
         }
-        if ($this->container['set_found'] === null) {
-            $invalidProperties[] = "'set_found' can't be null";
+        if ($this->container['href'] === null) {
+            $invalidProperties[] = "'href' can't be null";
+        }
+        if ($this->container['brand_slug'] === null) {
+            $invalidProperties[] = "'brand_slug' can't be null";
+        }
+        if ($this->container['progress'] === null) {
+            $invalidProperties[] = "'progress' can't be null";
         }
         if ($this->container['missing'] === null) {
             $invalidProperties[] = "'missing' can't be null";
+        }
+        if ($this->container['held'] === null) {
+            $invalidProperties[] = "'held' can't be null";
+        }
+        if ($this->container['model_slug'] === null) {
+            $invalidProperties[] = "'model_slug' can't be null";
+        }
+        if ($this->container['pieces'] === null) {
+            $invalidProperties[] = "'pieces' can't be null";
+        }
+        if ($this->container['complete'] === null) {
+            $invalidProperties[] = "'complete' can't be null";
+        }
+        if ($this->container['set_found'] === null) {
+            $invalidProperties[] = "'set_found' can't be null";
         }
         if ($this->container['priced'] === null) {
             $invalidProperties[] = "'priced' can't be null";
@@ -405,9 +408,6 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
         }
         if ($this->container['too_big'] === null) {
             $invalidProperties[] = "'too_big' can't be null";
-        }
-        if ($this->container['pieces'] === null) {
-            $invalidProperties[] = "'pieces' can't be null";
         }
         if ($this->container['card_set_href'] === null) {
             $invalidProperties[] = "'card_set_href' can't be null";
@@ -510,30 +510,6 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
      * Gets category
      *
      * @return string
@@ -553,6 +529,30 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
     public function setCategory($category)
     {
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
 
         return $this;
     }
@@ -606,78 +606,6 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets progress
-     *
-     * @return string
-     */
-    public function getProgress()
-    {
-        return $this->container['progress'];
-    }
-
-    /**
-     * Sets progress
-     *
-     * @param string $progress progress
-     *
-     * @return self
-     */
-    public function setProgress($progress)
-    {
-        $this->container['progress'] = $progress;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand_slug
-     *
-     * @return string
-     */
-    public function getBrandSlug()
-    {
-        return $this->container['brand_slug'];
-    }
-
-    /**
-     * Sets brand_slug
-     *
-     * @param string $brand_slug brand_slug
-     *
-     * @return self
-     */
-    public function setBrandSlug($brand_slug)
-    {
-        $this->container['brand_slug'] = $brand_slug;
-
-        return $this;
-    }
-
-    /**
-     * Gets model_slug
-     *
-     * @return string
-     */
-    public function getModelSlug()
-    {
-        return $this->container['model_slug'];
-    }
-
-    /**
-     * Sets model_slug
-     *
-     * @param string $model_slug model_slug
-     *
-     * @return self
-     */
-    public function setModelSlug($model_slug)
-    {
-        $this->container['model_slug'] = $model_slug;
-
-        return $this;
-    }
-
-    /**
      * Gets target
      *
      * @return \Crossly\Model\Vault\GetVaultMarketSetGoalResponseTarget
@@ -697,78 +625,6 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
     public function setTarget($target)
     {
         $this->container['target'] = $target;
-
-        return $this;
-    }
-
-    /**
-     * Gets held
-     *
-     * @return float
-     */
-    public function getHeld()
-    {
-        return $this->container['held'];
-    }
-
-    /**
-     * Sets held
-     *
-     * @param float $held held
-     *
-     * @return self
-     */
-    public function setHeld($held)
-    {
-        $this->container['held'] = $held;
-
-        return $this;
-    }
-
-    /**
-     * Gets complete
-     *
-     * @return bool
-     */
-    public function getComplete()
-    {
-        return $this->container['complete'];
-    }
-
-    /**
-     * Sets complete
-     *
-     * @param bool $complete complete
-     *
-     * @return self
-     */
-    public function setComplete($complete)
-    {
-        $this->container['complete'] = $complete;
-
-        return $this;
-    }
-
-    /**
-     * Gets href
-     *
-     * @return string
-     */
-    public function getHref()
-    {
-        return $this->container['href'];
-    }
-
-    /**
-     * Sets href
-     *
-     * @param string $href href
-     *
-     * @return self
-     */
-    public function setHref($href)
-    {
-        $this->container['href'] = $href;
 
         return $this;
     }
@@ -798,25 +654,145 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets set_found
+     * Gets href
      *
-     * @return bool
+     * @return string
      */
-    public function getSetFound()
+    public function getHref()
     {
-        return $this->container['set_found'];
+        return $this->container['href'];
     }
 
     /**
-     * Sets set_found
+     * Sets href
      *
-     * @param bool $set_found set_found
+     * @param string $href href
      *
      * @return self
      */
-    public function setSetFound($set_found)
+    public function setHref($href)
     {
-        $this->container['set_found'] = $set_found;
+        $this->container['href'] = $href;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_slug
+     *
+     * @return string
+     */
+    public function getBrandSlug()
+    {
+        return $this->container['brand_slug'];
+    }
+
+    /**
+     * Sets brand_slug
+     *
+     * @param string $brand_slug brand_slug
+     *
+     * @return self
+     */
+    public function setBrandSlug($brand_slug)
+    {
+        $this->container['brand_slug'] = $brand_slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets progress
+     *
+     * @return string
+     */
+    public function getProgress()
+    {
+        return $this->container['progress'];
+    }
+
+    /**
+     * Sets progress
+     *
+     * @param string $progress progress
+     *
+     * @return self
+     */
+    public function setProgress($progress)
+    {
+        $this->container['progress'] = $progress;
+
+        return $this;
+    }
+
+    /**
+     * Gets missing
+     *
+     * @return float
+     */
+    public function getMissing()
+    {
+        return $this->container['missing'];
+    }
+
+    /**
+     * Sets missing
+     *
+     * @param float $missing missing
+     *
+     * @return self
+     */
+    public function setMissing($missing)
+    {
+        $this->container['missing'] = $missing;
+
+        return $this;
+    }
+
+    /**
+     * Gets held
+     *
+     * @return float
+     */
+    public function getHeld()
+    {
+        return $this->container['held'];
+    }
+
+    /**
+     * Sets held
+     *
+     * @param float $held held
+     *
+     * @return self
+     */
+    public function setHeld($held)
+    {
+        $this->container['held'] = $held;
+
+        return $this;
+    }
+
+    /**
+     * Gets model_slug
+     *
+     * @return string
+     */
+    public function getModelSlug()
+    {
+        return $this->container['model_slug'];
+    }
+
+    /**
+     * Sets model_slug
+     *
+     * @param string $model_slug model_slug
+     *
+     * @return self
+     */
+    public function setModelSlug($model_slug)
+    {
+        $this->container['model_slug'] = $model_slug;
 
         return $this;
     }
@@ -846,25 +822,73 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets missing
+     * Gets pieces
      *
-     * @return float
+     * @return \Crossly\Model\Vault\GetVaultMarketSetGoalResponsePieces[]
      */
-    public function getMissing()
+    public function getPieces()
     {
-        return $this->container['missing'];
+        return $this->container['pieces'];
     }
 
     /**
-     * Sets missing
+     * Sets pieces
      *
-     * @param float $missing missing
+     * @param \Crossly\Model\Vault\GetVaultMarketSetGoalResponsePieces[] $pieces pieces
      *
      * @return self
      */
-    public function setMissing($missing)
+    public function setPieces($pieces)
     {
-        $this->container['missing'] = $missing;
+        $this->container['pieces'] = $pieces;
+
+        return $this;
+    }
+
+    /**
+     * Gets complete
+     *
+     * @return bool
+     */
+    public function getComplete()
+    {
+        return $this->container['complete'];
+    }
+
+    /**
+     * Sets complete
+     *
+     * @param bool $complete complete
+     *
+     * @return self
+     */
+    public function setComplete($complete)
+    {
+        $this->container['complete'] = $complete;
+
+        return $this;
+    }
+
+    /**
+     * Gets set_found
+     *
+     * @return bool
+     */
+    public function getSetFound()
+    {
+        return $this->container['set_found'];
+    }
+
+    /**
+     * Sets set_found
+     *
+     * @param bool $set_found set_found
+     *
+     * @return self
+     */
+    public function setSetFound($set_found)
+    {
+        $this->container['set_found'] = $set_found;
 
         return $this;
     }
@@ -937,30 +961,6 @@ class GetVaultMarketSetGoalResponse implements ModelInterface, ArrayAccess, \Jso
     public function setTooBig($too_big)
     {
         $this->container['too_big'] = $too_big;
-
-        return $this;
-    }
-
-    /**
-     * Gets pieces
-     *
-     * @return \Crossly\Model\Vault\GetVaultMarketSetGoalResponsePieces[]
-     */
-    public function getPieces()
-    {
-        return $this->container['pieces'];
-    }
-
-    /**
-     * Sets pieces
-     *
-     * @param \Crossly\Model\Vault\GetVaultMarketSetGoalResponsePieces[] $pieces pieces
-     *
-     * @return self
-     */
-    public function setPieces($pieces)
-    {
-        $this->container['pieces'] = $pieces;
 
         return $this;
     }

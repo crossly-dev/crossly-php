@@ -60,8 +60,8 @@ class GetBuyerPurchaseReturnResponseData implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'reasons' => '\Crossly\Buyer\Model\Purchase\GetBuyerPurchaseReturnResponseDataReasons[]',
         'terms' => 'array<string,mixed>',
+        'reasons' => '\Crossly\Buyer\Model\Purchase\GetBuyerPurchaseReturnResponseDataReasons[]',
         'existing' => 'array<string,mixed>'
     ];
 
@@ -73,8 +73,8 @@ class GetBuyerPurchaseReturnResponseData implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'reasons' => null,
         'terms' => null,
+        'reasons' => null,
         'existing' => null
     ];
 
@@ -105,8 +105,8 @@ class GetBuyerPurchaseReturnResponseData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'reasons' => 'reasons',
         'terms' => 'terms',
+        'reasons' => 'reasons',
         'existing' => 'existing'
     ];
 
@@ -116,8 +116,8 @@ class GetBuyerPurchaseReturnResponseData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'reasons' => 'setReasons',
         'terms' => 'setTerms',
+        'reasons' => 'setReasons',
         'existing' => 'setExisting'
     ];
 
@@ -127,8 +127,8 @@ class GetBuyerPurchaseReturnResponseData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'reasons' => 'getReasons',
         'terms' => 'getTerms',
+        'reasons' => 'getReasons',
         'existing' => 'getExisting'
     ];
 
@@ -189,8 +189,8 @@ class GetBuyerPurchaseReturnResponseData implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['reasons'] = $data['reasons'] ?? null;
         $this->container['terms'] = $data['terms'] ?? null;
+        $this->container['reasons'] = $data['reasons'] ?? null;
         $this->container['existing'] = $data['existing'] ?? null;
     }
 
@@ -203,11 +203,11 @@ class GetBuyerPurchaseReturnResponseData implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['reasons'] === null) {
-            $invalidProperties[] = "'reasons' can't be null";
-        }
         if ($this->container['terms'] === null) {
             $invalidProperties[] = "'terms' can't be null";
+        }
+        if ($this->container['reasons'] === null) {
+            $invalidProperties[] = "'reasons' can't be null";
         }
         return $invalidProperties;
     }
@@ -223,30 +223,6 @@ class GetBuyerPurchaseReturnResponseData implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets reasons
-     *
-     * @return \Crossly\Buyer\Model\Purchase\GetBuyerPurchaseReturnResponseDataReasons[]
-     */
-    public function getReasons()
-    {
-        return $this->container['reasons'];
-    }
-
-    /**
-     * Sets reasons
-     *
-     * @param \Crossly\Buyer\Model\Purchase\GetBuyerPurchaseReturnResponseDataReasons[] $reasons reasons
-     *
-     * @return self
-     */
-    public function setReasons($reasons)
-    {
-        $this->container['reasons'] = $reasons;
-
-        return $this;
-    }
 
     /**
      * Gets terms
@@ -268,6 +244,30 @@ class GetBuyerPurchaseReturnResponseData implements ModelInterface, ArrayAccess,
     public function setTerms($terms)
     {
         $this->container['terms'] = $terms;
+
+        return $this;
+    }
+
+    /**
+     * Gets reasons
+     *
+     * @return \Crossly\Buyer\Model\Purchase\GetBuyerPurchaseReturnResponseDataReasons[]
+     */
+    public function getReasons()
+    {
+        return $this->container['reasons'];
+    }
+
+    /**
+     * Sets reasons
+     *
+     * @param \Crossly\Buyer\Model\Purchase\GetBuyerPurchaseReturnResponseDataReasons[] $reasons reasons
+     *
+     * @return self
+     */
+    public function setReasons($reasons)
+    {
+        $this->container['reasons'] = $reasons;
 
         return $this;
     }

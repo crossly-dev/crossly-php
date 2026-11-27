@@ -200,9 +200,9 @@ class GetSpatialPartyResponsePartyInvites implements ModelInterface, ArrayAccess
 
     const STATUS_PENDING = 'pending';
     const STATUS_CANCELLED = 'cancelled';
-    const STATUS_EXPIRED = 'expired';
     const STATUS_ACCEPTED = 'accepted';
     const STATUS_DECLINED = 'declined';
+    const STATUS_EXPIRED = 'expired';
 
     /**
      * Gets allowable values of the enum
@@ -214,9 +214,9 @@ class GetSpatialPartyResponsePartyInvites implements ModelInterface, ArrayAccess
         return [
             self::STATUS_PENDING,
             self::STATUS_CANCELLED,
-            self::STATUS_EXPIRED,
             self::STATUS_ACCEPTED,
             self::STATUS_DECLINED,
+            self::STATUS_EXPIRED,
         ];
     }
 

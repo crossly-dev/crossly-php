@@ -174,8 +174,8 @@ class GetOrderEvidenceResponseDataSealAssessment implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    const VERDICT_OPENED = 'opened';
     const VERDICT_UNKNOWN = 'unknown';
+    const VERDICT_OPENED = 'opened';
     const VERDICT_INTACT = 'intact';
     const VERDICT_SUSPECT = 'suspect';
 
@@ -187,8 +187,8 @@ class GetOrderEvidenceResponseDataSealAssessment implements ModelInterface, Arra
     public function getVerdictAllowableValues()
     {
         return [
-            self::VERDICT_OPENED,
             self::VERDICT_UNKNOWN,
+            self::VERDICT_OPENED,
             self::VERDICT_INTACT,
             self::VERDICT_SUSPECT,
         ];

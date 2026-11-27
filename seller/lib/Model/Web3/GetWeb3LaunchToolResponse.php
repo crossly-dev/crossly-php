@@ -60,6 +60,7 @@ class GetWeb3LaunchToolResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
+        'royalties' => '\Crossly\Model\Web3\GetWeb3LaunchToolResponseRoyalties',
         'allowlist' => '\Crossly\Model\Web3\GetWeb3LaunchToolResponseAllowlist',
         'art' => '\Crossly\Model\Web3\GetWeb3LaunchToolResponseArt',
         'supply' => '\Crossly\Model\Web3\GetWeb3LaunchToolResponseSupply'
@@ -73,6 +74,7 @@ class GetWeb3LaunchToolResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'royalties' => null,
         'allowlist' => null,
         'art' => null,
         'supply' => null
@@ -105,6 +107,7 @@ class GetWeb3LaunchToolResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
+        'royalties' => 'royalties',
         'allowlist' => 'allowlist',
         'art' => 'art',
         'supply' => 'supply'
@@ -116,6 +119,7 @@ class GetWeb3LaunchToolResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
+        'royalties' => 'setRoyalties',
         'allowlist' => 'setAllowlist',
         'art' => 'setArt',
         'supply' => 'setSupply'
@@ -127,6 +131,7 @@ class GetWeb3LaunchToolResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
+        'royalties' => 'getRoyalties',
         'allowlist' => 'getAllowlist',
         'art' => 'getArt',
         'supply' => 'getSupply'
@@ -189,6 +194,7 @@ class GetWeb3LaunchToolResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
+        $this->container['royalties'] = $data['royalties'] ?? null;
         $this->container['allowlist'] = $data['allowlist'] ?? null;
         $this->container['art'] = $data['art'] ?? null;
         $this->container['supply'] = $data['supply'] ?? null;
@@ -203,6 +209,9 @@ class GetWeb3LaunchToolResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['royalties'] === null) {
+            $invalidProperties[] = "'royalties' can't be null";
+        }
         if ($this->container['allowlist'] === null) {
             $invalidProperties[] = "'allowlist' can't be null";
         }
@@ -226,6 +235,30 @@ class GetWeb3LaunchToolResponse implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets royalties
+     *
+     * @return \Crossly\Model\Web3\GetWeb3LaunchToolResponseRoyalties
+     */
+    public function getRoyalties()
+    {
+        return $this->container['royalties'];
+    }
+
+    /**
+     * Sets royalties
+     *
+     * @param \Crossly\Model\Web3\GetWeb3LaunchToolResponseRoyalties $royalties royalties
+     *
+     * @return self
+     */
+    public function setRoyalties($royalties)
+    {
+        $this->container['royalties'] = $royalties;
+
+        return $this;
+    }
 
     /**
      * Gets allowlist

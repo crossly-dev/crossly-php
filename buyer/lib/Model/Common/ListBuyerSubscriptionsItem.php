@@ -62,11 +62,11 @@ class ListBuyerSubscriptionsItem implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'id' => 'string',
         'status' => 'string',
-        'title' => 'string',
-        'slug' => 'string',
-        'next_run_at' => 'string',
         'interval_days' => 'float',
-        'discount_bps' => 'float'
+        'discount_bps' => 'float',
+        'next_run_at' => 'string',
+        'slug' => 'string',
+        'title' => 'string'
     ];
 
     /**
@@ -79,11 +79,11 @@ class ListBuyerSubscriptionsItem implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'id' => null,
         'status' => null,
-        'title' => null,
-        'slug' => null,
-        'next_run_at' => null,
         'interval_days' => null,
-        'discount_bps' => null
+        'discount_bps' => null,
+        'next_run_at' => null,
+        'slug' => null,
+        'title' => null
     ];
 
     /**
@@ -115,11 +115,11 @@ class ListBuyerSubscriptionsItem implements ModelInterface, ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'id' => 'id',
         'status' => 'status',
-        'title' => 'title',
-        'slug' => 'slug',
-        'next_run_at' => 'nextRunAt',
         'interval_days' => 'intervalDays',
-        'discount_bps' => 'discountBps'
+        'discount_bps' => 'discountBps',
+        'next_run_at' => 'nextRunAt',
+        'slug' => 'slug',
+        'title' => 'title'
     ];
 
     /**
@@ -130,11 +130,11 @@ class ListBuyerSubscriptionsItem implements ModelInterface, ArrayAccess, \JsonSe
     protected static $setters = [
         'id' => 'setId',
         'status' => 'setStatus',
-        'title' => 'setTitle',
-        'slug' => 'setSlug',
-        'next_run_at' => 'setNextRunAt',
         'interval_days' => 'setIntervalDays',
-        'discount_bps' => 'setDiscountBps'
+        'discount_bps' => 'setDiscountBps',
+        'next_run_at' => 'setNextRunAt',
+        'slug' => 'setSlug',
+        'title' => 'setTitle'
     ];
 
     /**
@@ -145,11 +145,11 @@ class ListBuyerSubscriptionsItem implements ModelInterface, ArrayAccess, \JsonSe
     protected static $getters = [
         'id' => 'getId',
         'status' => 'getStatus',
-        'title' => 'getTitle',
-        'slug' => 'getSlug',
-        'next_run_at' => 'getNextRunAt',
         'interval_days' => 'getIntervalDays',
-        'discount_bps' => 'getDiscountBps'
+        'discount_bps' => 'getDiscountBps',
+        'next_run_at' => 'getNextRunAt',
+        'slug' => 'getSlug',
+        'title' => 'getTitle'
     ];
 
     /**
@@ -211,11 +211,11 @@ class ListBuyerSubscriptionsItem implements ModelInterface, ArrayAccess, \JsonSe
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['slug'] = $data['slug'] ?? null;
-        $this->container['next_run_at'] = $data['next_run_at'] ?? null;
         $this->container['interval_days'] = $data['interval_days'] ?? null;
         $this->container['discount_bps'] = $data['discount_bps'] ?? null;
+        $this->container['next_run_at'] = $data['next_run_at'] ?? null;
+        $this->container['slug'] = $data['slug'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
     }
 
     /**
@@ -233,14 +233,14 @@ class ListBuyerSubscriptionsItem implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['next_run_at'] === null) {
-            $invalidProperties[] = "'next_run_at' can't be null";
-        }
         if ($this->container['interval_days'] === null) {
             $invalidProperties[] = "'interval_days' can't be null";
         }
         if ($this->container['discount_bps'] === null) {
             $invalidProperties[] = "'discount_bps' can't be null";
+        }
+        if ($this->container['next_run_at'] === null) {
+            $invalidProperties[] = "'next_run_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -306,78 +306,6 @@ class ListBuyerSubscriptionsItem implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets slug
-     *
-     * @return string|null
-     */
-    public function getSlug()
-    {
-        return $this->container['slug'];
-    }
-
-    /**
-     * Sets slug
-     *
-     * @param string|null $slug slug
-     *
-     * @return self
-     */
-    public function setSlug($slug)
-    {
-        $this->container['slug'] = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Gets next_run_at
-     *
-     * @return string
-     */
-    public function getNextRunAt()
-    {
-        return $this->container['next_run_at'];
-    }
-
-    /**
-     * Sets next_run_at
-     *
-     * @param string $next_run_at next_run_at
-     *
-     * @return self
-     */
-    public function setNextRunAt($next_run_at)
-    {
-        $this->container['next_run_at'] = $next_run_at;
-
-        return $this;
-    }
-
-    /**
      * Gets interval_days
      *
      * @return float
@@ -421,6 +349,78 @@ class ListBuyerSubscriptionsItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setDiscountBps($discount_bps)
     {
         $this->container['discount_bps'] = $discount_bps;
+
+        return $this;
+    }
+
+    /**
+     * Gets next_run_at
+     *
+     * @return string
+     */
+    public function getNextRunAt()
+    {
+        return $this->container['next_run_at'];
+    }
+
+    /**
+     * Sets next_run_at
+     *
+     * @param string $next_run_at next_run_at
+     *
+     * @return self
+     */
+    public function setNextRunAt($next_run_at)
+    {
+        $this->container['next_run_at'] = $next_run_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets slug
+     *
+     * @return string|null
+     */
+    public function getSlug()
+    {
+        return $this->container['slug'];
+    }
+
+    /**
+     * Sets slug
+     *
+     * @param string|null $slug slug
+     *
+     * @return self
+     */
+    public function setSlug($slug)
+    {
+        $this->container['slug'] = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
 
         return $this;
     }

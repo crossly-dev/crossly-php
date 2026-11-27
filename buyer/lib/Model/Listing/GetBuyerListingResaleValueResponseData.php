@@ -63,10 +63,10 @@ class GetBuyerListingResaleValueResponseData implements ModelInterface, ArrayAcc
         'brand' => 'string',
         'category' => 'string',
         'median_cents' => 'float',
-        'buyback_days' => 'float',
-        'buyback_cents' => 'float',
         'comps' => 'float',
-        'keeps_pct' => 'float'
+        'keeps_pct' => 'float',
+        'buyback_cents' => 'float',
+        'buyback_days' => 'float'
     ];
 
     /**
@@ -80,10 +80,10 @@ class GetBuyerListingResaleValueResponseData implements ModelInterface, ArrayAcc
         'brand' => null,
         'category' => null,
         'median_cents' => null,
-        'buyback_days' => null,
-        'buyback_cents' => null,
         'comps' => null,
-        'keeps_pct' => null
+        'keeps_pct' => null,
+        'buyback_cents' => null,
+        'buyback_days' => null
     ];
 
     /**
@@ -116,10 +116,10 @@ class GetBuyerListingResaleValueResponseData implements ModelInterface, ArrayAcc
         'brand' => 'brand',
         'category' => 'category',
         'median_cents' => 'medianCents',
-        'buyback_days' => 'buybackDays',
-        'buyback_cents' => 'buybackCents',
         'comps' => 'comps',
-        'keeps_pct' => 'keepsPct'
+        'keeps_pct' => 'keepsPct',
+        'buyback_cents' => 'buybackCents',
+        'buyback_days' => 'buybackDays'
     ];
 
     /**
@@ -131,10 +131,10 @@ class GetBuyerListingResaleValueResponseData implements ModelInterface, ArrayAcc
         'brand' => 'setBrand',
         'category' => 'setCategory',
         'median_cents' => 'setMedianCents',
-        'buyback_days' => 'setBuybackDays',
-        'buyback_cents' => 'setBuybackCents',
         'comps' => 'setComps',
-        'keeps_pct' => 'setKeepsPct'
+        'keeps_pct' => 'setKeepsPct',
+        'buyback_cents' => 'setBuybackCents',
+        'buyback_days' => 'setBuybackDays'
     ];
 
     /**
@@ -146,10 +146,10 @@ class GetBuyerListingResaleValueResponseData implements ModelInterface, ArrayAcc
         'brand' => 'getBrand',
         'category' => 'getCategory',
         'median_cents' => 'getMedianCents',
-        'buyback_days' => 'getBuybackDays',
-        'buyback_cents' => 'getBuybackCents',
         'comps' => 'getComps',
-        'keeps_pct' => 'getKeepsPct'
+        'keeps_pct' => 'getKeepsPct',
+        'buyback_cents' => 'getBuybackCents',
+        'buyback_days' => 'getBuybackDays'
     ];
 
     /**
@@ -212,10 +212,10 @@ class GetBuyerListingResaleValueResponseData implements ModelInterface, ArrayAcc
         $this->container['brand'] = $data['brand'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
         $this->container['median_cents'] = $data['median_cents'] ?? null;
-        $this->container['buyback_days'] = $data['buyback_days'] ?? null;
-        $this->container['buyback_cents'] = $data['buyback_cents'] ?? null;
         $this->container['comps'] = $data['comps'] ?? null;
         $this->container['keeps_pct'] = $data['keeps_pct'] ?? null;
+        $this->container['buyback_cents'] = $data['buyback_cents'] ?? null;
+        $this->container['buyback_days'] = $data['buyback_days'] ?? null;
     }
 
     /**
@@ -236,11 +236,11 @@ class GetBuyerListingResaleValueResponseData implements ModelInterface, ArrayAcc
         if ($this->container['median_cents'] === null) {
             $invalidProperties[] = "'median_cents' can't be null";
         }
-        if ($this->container['buyback_days'] === null) {
-            $invalidProperties[] = "'buyback_days' can't be null";
-        }
         if ($this->container['comps'] === null) {
             $invalidProperties[] = "'comps' can't be null";
+        }
+        if ($this->container['buyback_days'] === null) {
+            $invalidProperties[] = "'buyback_days' can't be null";
         }
         return $invalidProperties;
     }
@@ -330,54 +330,6 @@ class GetBuyerListingResaleValueResponseData implements ModelInterface, ArrayAcc
     }
 
     /**
-     * Gets buyback_days
-     *
-     * @return float
-     */
-    public function getBuybackDays()
-    {
-        return $this->container['buyback_days'];
-    }
-
-    /**
-     * Sets buyback_days
-     *
-     * @param float $buyback_days buyback_days
-     *
-     * @return self
-     */
-    public function setBuybackDays($buyback_days)
-    {
-        $this->container['buyback_days'] = $buyback_days;
-
-        return $this;
-    }
-
-    /**
-     * Gets buyback_cents
-     *
-     * @return float|null
-     */
-    public function getBuybackCents()
-    {
-        return $this->container['buyback_cents'];
-    }
-
-    /**
-     * Sets buyback_cents
-     *
-     * @param float|null $buyback_cents buyback_cents
-     *
-     * @return self
-     */
-    public function setBuybackCents($buyback_cents)
-    {
-        $this->container['buyback_cents'] = $buyback_cents;
-
-        return $this;
-    }
-
-    /**
      * Gets comps
      *
      * @return float
@@ -421,6 +373,54 @@ class GetBuyerListingResaleValueResponseData implements ModelInterface, ArrayAcc
     public function setKeepsPct($keeps_pct)
     {
         $this->container['keeps_pct'] = $keeps_pct;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyback_cents
+     *
+     * @return float|null
+     */
+    public function getBuybackCents()
+    {
+        return $this->container['buyback_cents'];
+    }
+
+    /**
+     * Sets buyback_cents
+     *
+     * @param float|null $buyback_cents buyback_cents
+     *
+     * @return self
+     */
+    public function setBuybackCents($buyback_cents)
+    {
+        $this->container['buyback_cents'] = $buyback_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyback_days
+     *
+     * @return float
+     */
+    public function getBuybackDays()
+    {
+        return $this->container['buyback_days'];
+    }
+
+    /**
+     * Sets buyback_days
+     *
+     * @param float $buyback_days buyback_days
+     *
+     * @return self
+     */
+    public function setBuybackDays($buyback_days)
+    {
+        $this->container['buyback_days'] = $buyback_days;
 
         return $this;
     }

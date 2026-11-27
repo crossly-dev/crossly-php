@@ -63,9 +63,9 @@ class ListBuyerHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'string',
         'name' => 'string',
         'mode' => 'string',
-        'status' => 'string',
         'max_price_cents' => 'float',
-        'buys_left' => 'float'
+        'buys_left' => 'float',
+        'status' => 'string'
     ];
 
     /**
@@ -79,9 +79,9 @@ class ListBuyerHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => null,
         'name' => null,
         'mode' => null,
-        'status' => null,
         'max_price_cents' => null,
-        'buys_left' => null
+        'buys_left' => null,
+        'status' => null
     ];
 
     /**
@@ -114,9 +114,9 @@ class ListBuyerHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'id',
         'name' => 'name',
         'mode' => 'mode',
-        'status' => 'status',
         'max_price_cents' => 'maxPriceCents',
-        'buys_left' => 'buysLeft'
+        'buys_left' => 'buysLeft',
+        'status' => 'status'
     ];
 
     /**
@@ -128,9 +128,9 @@ class ListBuyerHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'setId',
         'name' => 'setName',
         'mode' => 'setMode',
-        'status' => 'setStatus',
         'max_price_cents' => 'setMaxPriceCents',
-        'buys_left' => 'setBuysLeft'
+        'buys_left' => 'setBuysLeft',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -142,9 +142,9 @@ class ListBuyerHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'getId',
         'name' => 'getName',
         'mode' => 'getMode',
-        'status' => 'getStatus',
         'max_price_cents' => 'getMaxPriceCents',
-        'buys_left' => 'getBuysLeft'
+        'buys_left' => 'getBuysLeft',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -207,9 +207,9 @@ class ListBuyerHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['mode'] = $data['mode'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['max_price_cents'] = $data['max_price_cents'] ?? null;
         $this->container['buys_left'] = $data['buys_left'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -230,14 +230,14 @@ class ListBuyerHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['mode'] === null) {
             $invalidProperties[] = "'mode' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         if ($this->container['max_price_cents'] === null) {
             $invalidProperties[] = "'max_price_cents' can't be null";
         }
         if ($this->container['buys_left'] === null) {
             $invalidProperties[] = "'buys_left' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         return $invalidProperties;
     }
@@ -327,30 +327,6 @@ class ListBuyerHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
      * Gets max_price_cents
      *
      * @return float
@@ -394,6 +370,30 @@ class ListBuyerHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setBuysLeft($buys_left)
     {
         $this->container['buys_left'] = $buys_left;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

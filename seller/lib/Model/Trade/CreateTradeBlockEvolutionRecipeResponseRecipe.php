@@ -65,18 +65,18 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
         'active' => 'bool',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'note' => 'string',
+        'version' => 'float',
         'reviewed_at' => '\DateTime',
+        'note' => 'string',
         'merchant_id' => 'string',
         'creator_subject_id' => 'string',
+        'output_cosmetic_id' => 'string',
         'input_a_variant_id' => 'string',
         'input_a_condition' => 'string',
         'input_a_grade_key' => 'string',
         'input_b_variant_id' => 'string',
         'input_b_condition' => 'string',
         'input_b_grade_key' => 'string',
-        'output_cosmetic_id' => 'string',
-        'version' => 'float',
         'frozen_at' => '\DateTime'
     ];
 
@@ -93,18 +93,18 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
         'active' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'note' => null,
+        'version' => null,
         'reviewed_at' => 'date-time',
+        'note' => null,
         'merchant_id' => null,
         'creator_subject_id' => null,
+        'output_cosmetic_id' => null,
         'input_a_variant_id' => null,
         'input_a_condition' => null,
         'input_a_grade_key' => null,
         'input_b_variant_id' => null,
         'input_b_condition' => null,
         'input_b_grade_key' => null,
-        'output_cosmetic_id' => null,
-        'version' => null,
         'frozen_at' => 'date-time'
     ];
 
@@ -140,18 +140,18 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
         'active' => 'active',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
-        'note' => 'note',
+        'version' => 'version',
         'reviewed_at' => 'reviewedAt',
+        'note' => 'note',
         'merchant_id' => 'merchantId',
         'creator_subject_id' => 'creatorSubjectId',
+        'output_cosmetic_id' => 'outputCosmeticId',
         'input_a_variant_id' => 'inputAVariantId',
         'input_a_condition' => 'inputACondition',
         'input_a_grade_key' => 'inputAGradeKey',
         'input_b_variant_id' => 'inputBVariantId',
         'input_b_condition' => 'inputBCondition',
         'input_b_grade_key' => 'inputBGradeKey',
-        'output_cosmetic_id' => 'outputCosmeticId',
-        'version' => 'version',
         'frozen_at' => 'frozenAt'
     ];
 
@@ -166,18 +166,18 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
         'active' => 'setActive',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'note' => 'setNote',
+        'version' => 'setVersion',
         'reviewed_at' => 'setReviewedAt',
+        'note' => 'setNote',
         'merchant_id' => 'setMerchantId',
         'creator_subject_id' => 'setCreatorSubjectId',
+        'output_cosmetic_id' => 'setOutputCosmeticId',
         'input_a_variant_id' => 'setInputAVariantId',
         'input_a_condition' => 'setInputACondition',
         'input_a_grade_key' => 'setInputAGradeKey',
         'input_b_variant_id' => 'setInputBVariantId',
         'input_b_condition' => 'setInputBCondition',
         'input_b_grade_key' => 'setInputBGradeKey',
-        'output_cosmetic_id' => 'setOutputCosmeticId',
-        'version' => 'setVersion',
         'frozen_at' => 'setFrozenAt'
     ];
 
@@ -192,18 +192,18 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
         'active' => 'getActive',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'note' => 'getNote',
+        'version' => 'getVersion',
         'reviewed_at' => 'getReviewedAt',
+        'note' => 'getNote',
         'merchant_id' => 'getMerchantId',
         'creator_subject_id' => 'getCreatorSubjectId',
+        'output_cosmetic_id' => 'getOutputCosmeticId',
         'input_a_variant_id' => 'getInputAVariantId',
         'input_a_condition' => 'getInputACondition',
         'input_a_grade_key' => 'getInputAGradeKey',
         'input_b_variant_id' => 'getInputBVariantId',
         'input_b_condition' => 'getInputBCondition',
         'input_b_grade_key' => 'getInputBGradeKey',
-        'output_cosmetic_id' => 'getOutputCosmeticId',
-        'version' => 'getVersion',
         'frozen_at' => 'getFrozenAt'
     ];
 
@@ -269,18 +269,18 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
         $this->container['active'] = $data['active'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['note'] = $data['note'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
         $this->container['reviewed_at'] = $data['reviewed_at'] ?? null;
+        $this->container['note'] = $data['note'] ?? null;
         $this->container['merchant_id'] = $data['merchant_id'] ?? null;
         $this->container['creator_subject_id'] = $data['creator_subject_id'] ?? null;
+        $this->container['output_cosmetic_id'] = $data['output_cosmetic_id'] ?? null;
         $this->container['input_a_variant_id'] = $data['input_a_variant_id'] ?? null;
         $this->container['input_a_condition'] = $data['input_a_condition'] ?? null;
         $this->container['input_a_grade_key'] = $data['input_a_grade_key'] ?? null;
         $this->container['input_b_variant_id'] = $data['input_b_variant_id'] ?? null;
         $this->container['input_b_condition'] = $data['input_b_condition'] ?? null;
         $this->container['input_b_grade_key'] = $data['input_b_grade_key'] ?? null;
-        $this->container['output_cosmetic_id'] = $data['output_cosmetic_id'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
         $this->container['frozen_at'] = $data['frozen_at'] ?? null;
     }
 
@@ -308,20 +308,20 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
+        }
         if ($this->container['merchant_id'] === null) {
             $invalidProperties[] = "'merchant_id' can't be null";
         }
         if ($this->container['creator_subject_id'] === null) {
             $invalidProperties[] = "'creator_subject_id' can't be null";
         }
-        if ($this->container['input_a_variant_id'] === null) {
-            $invalidProperties[] = "'input_a_variant_id' can't be null";
-        }
         if ($this->container['output_cosmetic_id'] === null) {
             $invalidProperties[] = "'output_cosmetic_id' can't be null";
         }
-        if ($this->container['version'] === null) {
-            $invalidProperties[] = "'version' can't be null";
+        if ($this->container['input_a_variant_id'] === null) {
+            $invalidProperties[] = "'input_a_variant_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -459,25 +459,25 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
     }
 
     /**
-     * Gets note
+     * Gets version
      *
-     * @return string|null
+     * @return float
      */
-    public function getNote()
+    public function getVersion()
     {
-        return $this->container['note'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets note
+     * Sets version
      *
-     * @param string|null $note note
+     * @param float $version version
      *
      * @return self
      */
-    public function setNote($note)
+    public function setVersion($version)
     {
-        $this->container['note'] = $note;
+        $this->container['version'] = $version;
 
         return $this;
     }
@@ -502,6 +502,30 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
     public function setReviewedAt($reviewed_at)
     {
         $this->container['reviewed_at'] = $reviewed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets note
+     *
+     * @return string|null
+     */
+    public function getNote()
+    {
+        return $this->container['note'];
+    }
+
+    /**
+     * Sets note
+     *
+     * @param string|null $note note
+     *
+     * @return self
+     */
+    public function setNote($note)
+    {
+        $this->container['note'] = $note;
 
         return $this;
     }
@@ -550,6 +574,30 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
     public function setCreatorSubjectId($creator_subject_id)
     {
         $this->container['creator_subject_id'] = $creator_subject_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets output_cosmetic_id
+     *
+     * @return string
+     */
+    public function getOutputCosmeticId()
+    {
+        return $this->container['output_cosmetic_id'];
+    }
+
+    /**
+     * Sets output_cosmetic_id
+     *
+     * @param string $output_cosmetic_id output_cosmetic_id
+     *
+     * @return self
+     */
+    public function setOutputCosmeticId($output_cosmetic_id)
+    {
+        $this->container['output_cosmetic_id'] = $output_cosmetic_id;
 
         return $this;
     }
@@ -694,54 +742,6 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe implements ModelInterface, A
     public function setInputBGradeKey($input_b_grade_key)
     {
         $this->container['input_b_grade_key'] = $input_b_grade_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets output_cosmetic_id
-     *
-     * @return string
-     */
-    public function getOutputCosmeticId()
-    {
-        return $this->container['output_cosmetic_id'];
-    }
-
-    /**
-     * Sets output_cosmetic_id
-     *
-     * @param string $output_cosmetic_id output_cosmetic_id
-     *
-     * @return self
-     */
-    public function setOutputCosmeticId($output_cosmetic_id)
-    {
-        $this->container['output_cosmetic_id'] = $output_cosmetic_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
-     *
-     * @return float
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param float $version version
-     *
-     * @return self
-     */
-    public function setVersion($version)
-    {
-        $this->container['version'] = $version;
 
         return $this;
     }

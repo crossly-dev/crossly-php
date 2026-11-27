@@ -60,11 +60,11 @@ class ListBuyerCatalogSellersItem implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'display_name' => 'string',
         'username' => 'string',
-        'total_items_sold' => 'float',
+        'display_name' => 'string',
         'is_verified' => 'bool',
         'active_listings' => 'float',
+        'total_items_sold' => 'float',
         'avatar_url' => 'string'
     ];
 
@@ -76,11 +76,11 @@ class ListBuyerCatalogSellersItem implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'display_name' => null,
         'username' => null,
-        'total_items_sold' => null,
+        'display_name' => null,
         'is_verified' => null,
         'active_listings' => null,
+        'total_items_sold' => null,
         'avatar_url' => null
     ];
 
@@ -111,11 +111,11 @@ class ListBuyerCatalogSellersItem implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'display_name' => 'displayName',
         'username' => 'username',
-        'total_items_sold' => 'totalItemsSold',
+        'display_name' => 'displayName',
         'is_verified' => 'isVerified',
         'active_listings' => 'activeListings',
+        'total_items_sold' => 'totalItemsSold',
         'avatar_url' => 'avatarUrl'
     ];
 
@@ -125,11 +125,11 @@ class ListBuyerCatalogSellersItem implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'display_name' => 'setDisplayName',
         'username' => 'setUsername',
-        'total_items_sold' => 'setTotalItemsSold',
+        'display_name' => 'setDisplayName',
         'is_verified' => 'setIsVerified',
         'active_listings' => 'setActiveListings',
+        'total_items_sold' => 'setTotalItemsSold',
         'avatar_url' => 'setAvatarUrl'
     ];
 
@@ -139,11 +139,11 @@ class ListBuyerCatalogSellersItem implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'display_name' => 'getDisplayName',
         'username' => 'getUsername',
-        'total_items_sold' => 'getTotalItemsSold',
+        'display_name' => 'getDisplayName',
         'is_verified' => 'getIsVerified',
         'active_listings' => 'getActiveListings',
+        'total_items_sold' => 'getTotalItemsSold',
         'avatar_url' => 'getAvatarUrl'
     ];
 
@@ -204,11 +204,11 @@ class ListBuyerCatalogSellersItem implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['display_name'] = $data['display_name'] ?? null;
         $this->container['username'] = $data['username'] ?? null;
-        $this->container['total_items_sold'] = $data['total_items_sold'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
         $this->container['is_verified'] = $data['is_verified'] ?? null;
         $this->container['active_listings'] = $data['active_listings'] ?? null;
+        $this->container['total_items_sold'] = $data['total_items_sold'] ?? null;
         $this->container['avatar_url'] = $data['avatar_url'] ?? null;
     }
 
@@ -221,20 +221,20 @@ class ListBuyerCatalogSellersItem implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['display_name'] === null) {
-            $invalidProperties[] = "'display_name' can't be null";
-        }
         if ($this->container['username'] === null) {
             $invalidProperties[] = "'username' can't be null";
         }
-        if ($this->container['total_items_sold'] === null) {
-            $invalidProperties[] = "'total_items_sold' can't be null";
+        if ($this->container['display_name'] === null) {
+            $invalidProperties[] = "'display_name' can't be null";
         }
         if ($this->container['is_verified'] === null) {
             $invalidProperties[] = "'is_verified' can't be null";
         }
         if ($this->container['active_listings'] === null) {
             $invalidProperties[] = "'active_listings' can't be null";
+        }
+        if ($this->container['total_items_sold'] === null) {
+            $invalidProperties[] = "'total_items_sold' can't be null";
         }
         return $invalidProperties;
     }
@@ -250,30 +250,6 @@ class ListBuyerCatalogSellersItem implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets display_name
-     *
-     * @return string
-     */
-    public function getDisplayName()
-    {
-        return $this->container['display_name'];
-    }
-
-    /**
-     * Sets display_name
-     *
-     * @param string $display_name display_name
-     *
-     * @return self
-     */
-    public function setDisplayName($display_name)
-    {
-        $this->container['display_name'] = $display_name;
-
-        return $this;
-    }
 
     /**
      * Gets username
@@ -300,25 +276,25 @@ class ListBuyerCatalogSellersItem implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets total_items_sold
+     * Gets display_name
      *
-     * @return float
+     * @return string
      */
-    public function getTotalItemsSold()
+    public function getDisplayName()
     {
-        return $this->container['total_items_sold'];
+        return $this->container['display_name'];
     }
 
     /**
-     * Sets total_items_sold
+     * Sets display_name
      *
-     * @param float $total_items_sold total_items_sold
+     * @param string $display_name display_name
      *
      * @return self
      */
-    public function setTotalItemsSold($total_items_sold)
+    public function setDisplayName($display_name)
     {
-        $this->container['total_items_sold'] = $total_items_sold;
+        $this->container['display_name'] = $display_name;
 
         return $this;
     }
@@ -367,6 +343,30 @@ class ListBuyerCatalogSellersItem implements ModelInterface, ArrayAccess, \JsonS
     public function setActiveListings($active_listings)
     {
         $this->container['active_listings'] = $active_listings;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_items_sold
+     *
+     * @return float
+     */
+    public function getTotalItemsSold()
+    {
+        return $this->container['total_items_sold'];
+    }
+
+    /**
+     * Sets total_items_sold
+     *
+     * @param float $total_items_sold total_items_sold
+     *
+     * @return self
+     */
+    public function setTotalItemsSold($total_items_sold)
+    {
+        $this->container['total_items_sold'] = $total_items_sold;
 
         return $this;
     }

@@ -223,11 +223,11 @@ class GetVaultMarketValuationStatementVerifyResponse implements ModelInterface, 
         return self::$openAPIModelName;
     }
 
-    const PURPOSE_INSURANCE = 'insurance';
     const PURPOSE_APPRAISAL = 'appraisal';
-    const VERDICT_VALID = 'valid';
-    const VERDICT_ALTERED = 'altered';
+    const PURPOSE_INSURANCE = 'insurance';
     const VERDICT_MISMATCH = 'mismatch';
+    const VERDICT_ALTERED = 'altered';
+    const VERDICT_VALID = 'valid';
 
     /**
      * Gets allowable values of the enum
@@ -237,8 +237,8 @@ class GetVaultMarketValuationStatementVerifyResponse implements ModelInterface, 
     public function getPurposeAllowableValues()
     {
         return [
-            self::PURPOSE_INSURANCE,
             self::PURPOSE_APPRAISAL,
+            self::PURPOSE_INSURANCE,
         ];
     }
 
@@ -250,9 +250,9 @@ class GetVaultMarketValuationStatementVerifyResponse implements ModelInterface, 
     public function getVerdictAllowableValues()
     {
         return [
-            self::VERDICT_VALID,
-            self::VERDICT_ALTERED,
             self::VERDICT_MISMATCH,
+            self::VERDICT_ALTERED,
+            self::VERDICT_VALID,
         ];
     }
 

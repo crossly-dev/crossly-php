@@ -60,15 +60,15 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'available' => 'bool',
-        'label' => 'string',
-        'title' => 'string',
         'platform_listing_id' => 'string',
+        'x' => 'float',
+        'y' => 'float',
+        'label' => 'string',
         'slug' => 'string',
+        'title' => 'string',
         'price_cents' => 'float',
         'image_url' => 'string',
-        'x' => 'float',
-        'y' => 'float'
+        'available' => 'bool'
     ];
 
     /**
@@ -79,15 +79,15 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'available' => null,
-        'label' => null,
-        'title' => null,
         'platform_listing_id' => null,
+        'x' => null,
+        'y' => null,
+        'label' => null,
         'slug' => null,
+        'title' => null,
         'price_cents' => null,
         'image_url' => null,
-        'x' => null,
-        'y' => null
+        'available' => null
     ];
 
     /**
@@ -117,15 +117,15 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'available' => 'available',
-        'label' => 'label',
-        'title' => 'title',
         'platform_listing_id' => 'platformListingId',
+        'x' => 'x',
+        'y' => 'y',
+        'label' => 'label',
         'slug' => 'slug',
+        'title' => 'title',
         'price_cents' => 'priceCents',
         'image_url' => 'imageUrl',
-        'x' => 'x',
-        'y' => 'y'
+        'available' => 'available'
     ];
 
     /**
@@ -134,15 +134,15 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'available' => 'setAvailable',
-        'label' => 'setLabel',
-        'title' => 'setTitle',
         'platform_listing_id' => 'setPlatformListingId',
+        'x' => 'setX',
+        'y' => 'setY',
+        'label' => 'setLabel',
         'slug' => 'setSlug',
+        'title' => 'setTitle',
         'price_cents' => 'setPriceCents',
         'image_url' => 'setImageUrl',
-        'x' => 'setX',
-        'y' => 'setY'
+        'available' => 'setAvailable'
     ];
 
     /**
@@ -151,15 +151,15 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'available' => 'getAvailable',
-        'label' => 'getLabel',
-        'title' => 'getTitle',
         'platform_listing_id' => 'getPlatformListingId',
+        'x' => 'getX',
+        'y' => 'getY',
+        'label' => 'getLabel',
         'slug' => 'getSlug',
+        'title' => 'getTitle',
         'price_cents' => 'getPriceCents',
         'image_url' => 'getImageUrl',
-        'x' => 'getX',
-        'y' => 'getY'
+        'available' => 'getAvailable'
     ];
 
     /**
@@ -219,15 +219,15 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['available'] = $data['available'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
-        $this->container['slug'] = $data['slug'] ?? null;
-        $this->container['price_cents'] = $data['price_cents'] ?? null;
-        $this->container['image_url'] = $data['image_url'] ?? null;
         $this->container['x'] = $data['x'] ?? null;
         $this->container['y'] = $data['y'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
+        $this->container['slug'] = $data['slug'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['price_cents'] = $data['price_cents'] ?? null;
+        $this->container['image_url'] = $data['image_url'] ?? null;
+        $this->container['available'] = $data['available'] ?? null;
     }
 
     /**
@@ -239,20 +239,20 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['available'] === null) {
-            $invalidProperties[] = "'available' can't be null";
-        }
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
-        }
-        if ($this->container['price_cents'] === null) {
-            $invalidProperties[] = "'price_cents' can't be null";
         }
         if ($this->container['x'] === null) {
             $invalidProperties[] = "'x' can't be null";
         }
         if ($this->container['y'] === null) {
             $invalidProperties[] = "'y' can't be null";
+        }
+        if ($this->container['price_cents'] === null) {
+            $invalidProperties[] = "'price_cents' can't be null";
+        }
+        if ($this->container['available'] === null) {
+            $invalidProperties[] = "'available' can't be null";
         }
         return $invalidProperties;
     }
@@ -270,25 +270,73 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets available
+     * Gets platform_listing_id
      *
-     * @return bool
+     * @return string
      */
-    public function getAvailable()
+    public function getPlatformListingId()
     {
-        return $this->container['available'];
+        return $this->container['platform_listing_id'];
     }
 
     /**
-     * Sets available
+     * Sets platform_listing_id
      *
-     * @param bool $available available
+     * @param string $platform_listing_id platform_listing_id
      *
      * @return self
      */
-    public function setAvailable($available)
+    public function setPlatformListingId($platform_listing_id)
     {
-        $this->container['available'] = $available;
+        $this->container['platform_listing_id'] = $platform_listing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets x
+     *
+     * @return float
+     */
+    public function getX()
+    {
+        return $this->container['x'];
+    }
+
+    /**
+     * Sets x
+     *
+     * @param float $x x
+     *
+     * @return self
+     */
+    public function setX($x)
+    {
+        $this->container['x'] = $x;
+
+        return $this;
+    }
+
+    /**
+     * Gets y
+     *
+     * @return float
+     */
+    public function getY()
+    {
+        return $this->container['y'];
+    }
+
+    /**
+     * Sets y
+     *
+     * @param float $y y
+     *
+     * @return self
+     */
+    public function setY($y)
+    {
+        $this->container['y'] = $y;
 
         return $this;
     }
@@ -318,54 +366,6 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform_listing_id
-     *
-     * @return string
-     */
-    public function getPlatformListingId()
-    {
-        return $this->container['platform_listing_id'];
-    }
-
-    /**
-     * Sets platform_listing_id
-     *
-     * @param string $platform_listing_id platform_listing_id
-     *
-     * @return self
-     */
-    public function setPlatformListingId($platform_listing_id)
-    {
-        $this->container['platform_listing_id'] = $platform_listing_id;
-
-        return $this;
-    }
-
-    /**
      * Gets slug
      *
      * @return string|null
@@ -385,6 +385,30 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setSlug($slug)
     {
         $this->container['slug'] = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
 
         return $this;
     }
@@ -438,49 +462,25 @@ class UpdateHotspotItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets x
+     * Gets available
      *
-     * @return float
+     * @return bool
      */
-    public function getX()
+    public function getAvailable()
     {
-        return $this->container['x'];
+        return $this->container['available'];
     }
 
     /**
-     * Sets x
+     * Sets available
      *
-     * @param float $x x
+     * @param bool $available available
      *
      * @return self
      */
-    public function setX($x)
+    public function setAvailable($available)
     {
-        $this->container['x'] = $x;
-
-        return $this;
-    }
-
-    /**
-     * Gets y
-     *
-     * @return float
-     */
-    public function getY()
-    {
-        return $this->container['y'];
-    }
-
-    /**
-     * Sets y
-     *
-     * @param float $y y
-     *
-     * @return self
-     */
-    public function setY($y)
-    {
-        $this->container['y'] = $y;
+        $this->container['available'] = $available;
 
         return $this;
     }

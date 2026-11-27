@@ -174,9 +174,11 @@ class ListWorldCapabilityDeclarationsItemCapabilities implements ModelInterface,
     }
 
     const KIND_PORTAL = 'portal';
-    const KIND_DISPLAY = 'display';
+    const KIND_INTERACTIVE = 'interactive';
     const KIND_PLACE = 'place';
+    const KIND_DISPLAY = 'display';
     const KIND_BADGE = 'badge';
+    const KIND_PERK = 'perk';
     const KIND_WEAR = 'wear';
     const KIND_EMOTE = 'emote';
     const KIND_ROOM_THEME = 'room_theme';
@@ -184,8 +186,6 @@ class ListWorldCapabilityDeclarationsItemCapabilities implements ModelInterface,
     const KIND_GATE = 'gate';
     const KIND_QUEST = 'quest';
     const KIND_GAME_PASS = 'game_pass';
-    const KIND_PERK = 'perk';
-    const KIND_INTERACTIVE = 'interactive';
 
     /**
      * Gets allowable values of the enum
@@ -196,9 +196,11 @@ class ListWorldCapabilityDeclarationsItemCapabilities implements ModelInterface,
     {
         return [
             self::KIND_PORTAL,
-            self::KIND_DISPLAY,
+            self::KIND_INTERACTIVE,
             self::KIND_PLACE,
+            self::KIND_DISPLAY,
             self::KIND_BADGE,
+            self::KIND_PERK,
             self::KIND_WEAR,
             self::KIND_EMOTE,
             self::KIND_ROOM_THEME,
@@ -206,8 +208,6 @@ class ListWorldCapabilityDeclarationsItemCapabilities implements ModelInterface,
             self::KIND_GATE,
             self::KIND_QUEST,
             self::KIND_GAME_PASS,
-            self::KIND_PERK,
-            self::KIND_INTERACTIVE,
         ];
     }
 

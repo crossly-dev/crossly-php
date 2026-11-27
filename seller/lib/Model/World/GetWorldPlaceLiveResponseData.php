@@ -61,7 +61,7 @@ class GetWorldPlaceLiveResponseData implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'stream' => '\Crossly\Model\World\GetWorldPlaceLiveResponseDataStream',
-        'lot' => '\Crossly\Model\World\GetWorldPlaceLiveResponseDataLot'
+        'lot' => '\Crossly\Model\Main\GetMainStageResponseStreamLot'
     ];
 
     /**
@@ -239,7 +239,7 @@ class GetWorldPlaceLiveResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets lot
      *
-     * @return \Crossly\Model\World\GetWorldPlaceLiveResponseDataLot|null
+     * @return \Crossly\Model\Main\GetMainStageResponseStreamLot|null
      */
     public function getLot()
     {
@@ -249,7 +249,7 @@ class GetWorldPlaceLiveResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets lot
      *
-     * @param \Crossly\Model\World\GetWorldPlaceLiveResponseDataLot|null $lot lot
+     * @param \Crossly\Model\Main\GetMainStageResponseStreamLot|null $lot lot
      *
      * @return self
      */

@@ -183,8 +183,8 @@ class ListVaultReceiptTokenWalletsItem implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    const STATUS_ALLOWED = 'allowed';
     const STATUS_REVOKED = 'revoked';
+    const STATUS_ALLOWED = 'allowed';
     const STATUS_NOT_ALLOWED = 'not_allowed';
 
     /**
@@ -195,8 +195,8 @@ class ListVaultReceiptTokenWalletsItem implements ModelInterface, ArrayAccess, \
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_ALLOWED,
             self::STATUS_REVOKED,
+            self::STATUS_ALLOWED,
             self::STATUS_NOT_ALLOWED,
         ];
     }

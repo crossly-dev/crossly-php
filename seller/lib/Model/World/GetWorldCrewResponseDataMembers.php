@@ -63,7 +63,7 @@ class GetWorldCrewResponseDataMembers implements ModelInterface, ArrayAccess, \J
         'user_id' => 'string',
         'name' => 'string',
         'you' => 'bool',
-        'room' => '\Crossly\Model\Common\NameSlug'
+        'room' => '\Crossly\Model\Common\NameSlug2'
     ];
 
     /**
@@ -308,7 +308,7 @@ class GetWorldCrewResponseDataMembers implements ModelInterface, ArrayAccess, \J
     /**
      * Gets room
      *
-     * @return \Crossly\Model\Common\NameSlug|null
+     * @return \Crossly\Model\Common\NameSlug2|null
      */
     public function getRoom()
     {
@@ -318,7 +318,7 @@ class GetWorldCrewResponseDataMembers implements ModelInterface, ArrayAccess, \J
     /**
      * Sets room
      *
-     * @param \Crossly\Model\Common\NameSlug|null $room room
+     * @param \Crossly\Model\Common\NameSlug2|null $room room
      *
      * @return self
      */

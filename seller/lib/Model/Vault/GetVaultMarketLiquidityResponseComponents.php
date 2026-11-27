@@ -183,17 +183,17 @@ class GetVaultMarketLiquidityResponseComponents implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    const NAME_SPREAD_BPS = 'spreadBps';
     const NAME_TRADES30D = 'trades30d';
     const NAME_TRADES90D = 'trades90d';
     const NAME_COUNTERPARTIES90D = 'counterparties90d';
     const NAME_MEDIAN_GAP_DAYS = 'medianGapDays';
+    const NAME_SPREAD_BPS = 'spreadBps';
     const NAME_TWO_SIDED_SHARE = 'twoSidedShare';
     const NAME_DEPTH_CENTS = 'depthCents';
     const NAME_AMIHUD = 'amihud';
     const NAME_ROLL_BPS = 'rollBps';
-    const BETTER_HIGH = 'high';
     const BETTER_LOW = 'low';
+    const BETTER_HIGH = 'high';
 
     /**
      * Gets allowable values of the enum
@@ -203,11 +203,11 @@ class GetVaultMarketLiquidityResponseComponents implements ModelInterface, Array
     public function getNameAllowableValues()
     {
         return [
-            self::NAME_SPREAD_BPS,
             self::NAME_TRADES30D,
             self::NAME_TRADES90D,
             self::NAME_COUNTERPARTIES90D,
             self::NAME_MEDIAN_GAP_DAYS,
+            self::NAME_SPREAD_BPS,
             self::NAME_TWO_SIDED_SHARE,
             self::NAME_DEPTH_CENTS,
             self::NAME_AMIHUD,
@@ -223,8 +223,8 @@ class GetVaultMarketLiquidityResponseComponents implements ModelInterface, Array
     public function getBetterAllowableValues()
     {
         return [
-            self::BETTER_HIGH,
             self::BETTER_LOW,
+            self::BETTER_HIGH,
         ];
     }
 

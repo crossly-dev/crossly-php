@@ -58,6 +58,8 @@ class GetVaultMarketLearnByConceptResponseRelatedItem
 
     const MARKS = 'marks';
 
+    const VAULT_SHARES = 'vault-shares';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -71,7 +73,8 @@ class GetVaultMarketLearnByConceptResponseRelatedItem
             self::LIENS,
             self::AUCTIONS,
             self::INDEXES,
-            self::MARKS
+            self::MARKS,
+            self::VAULT_SHARES
         ];
     }
 }

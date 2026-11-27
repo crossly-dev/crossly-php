@@ -62,6 +62,7 @@ class GetPayoutConnectResponseData implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'status' => 'string',
         'default_country' => 'string',
+        'account_source' => 'string',
         'payouts_enabled' => 'bool',
         'charges_enabled' => 'bool',
         'transfers_active' => 'bool',
@@ -85,6 +86,7 @@ class GetPayoutConnectResponseData implements ModelInterface, ArrayAccess, \Json
     protected static $openAPIFormats = [
         'status' => null,
         'default_country' => null,
+        'account_source' => null,
         'payouts_enabled' => null,
         'charges_enabled' => null,
         'transfers_active' => null,
@@ -127,6 +129,7 @@ class GetPayoutConnectResponseData implements ModelInterface, ArrayAccess, \Json
     protected static $attributeMap = [
         'status' => 'status',
         'default_country' => 'defaultCountry',
+        'account_source' => 'accountSource',
         'payouts_enabled' => 'payoutsEnabled',
         'charges_enabled' => 'chargesEnabled',
         'transfers_active' => 'transfersActive',
@@ -148,6 +151,7 @@ class GetPayoutConnectResponseData implements ModelInterface, ArrayAccess, \Json
     protected static $setters = [
         'status' => 'setStatus',
         'default_country' => 'setDefaultCountry',
+        'account_source' => 'setAccountSource',
         'payouts_enabled' => 'setPayoutsEnabled',
         'charges_enabled' => 'setChargesEnabled',
         'transfers_active' => 'setTransfersActive',
@@ -169,6 +173,7 @@ class GetPayoutConnectResponseData implements ModelInterface, ArrayAccess, \Json
     protected static $getters = [
         'status' => 'getStatus',
         'default_country' => 'getDefaultCountry',
+        'account_source' => 'getAccountSource',
         'payouts_enabled' => 'getPayoutsEnabled',
         'charges_enabled' => 'getChargesEnabled',
         'transfers_active' => 'getTransfersActive',
@@ -256,6 +261,7 @@ class GetPayoutConnectResponseData implements ModelInterface, ArrayAccess, \Json
     {
         $this->container['status'] = $data['status'] ?? null;
         $this->container['default_country'] = $data['default_country'] ?? null;
+        $this->container['account_source'] = $data['account_source'] ?? null;
         $this->container['payouts_enabled'] = $data['payouts_enabled'] ?? null;
         $this->container['charges_enabled'] = $data['charges_enabled'] ?? null;
         $this->container['transfers_active'] = $data['transfers_active'] ?? null;
@@ -280,6 +286,9 @@ class GetPayoutConnectResponseData implements ModelInterface, ArrayAccess, \Json
 
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['account_source'] === null) {
+            $invalidProperties[] = "'account_source' can't be null";
         }
         $allowedValues = $this->getAgreementAllowableValues();
         if (!is_null($this->container['agreement']) && !in_array($this->container['agreement'], $allowedValues, true)) {
@@ -349,6 +358,30 @@ class GetPayoutConnectResponseData implements ModelInterface, ArrayAccess, \Json
     public function setDefaultCountry($default_country)
     {
         $this->container['default_country'] = $default_country;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_source
+     *
+     * @return string
+     */
+    public function getAccountSource()
+    {
+        return $this->container['account_source'];
+    }
+
+    /**
+     * Sets account_source
+     *
+     * @param string $account_source account_source
+     *
+     * @return self
+     */
+    public function setAccountSource($account_source)
+    {
+        $this->container['account_source'] = $account_source;
 
         return $this;
     }

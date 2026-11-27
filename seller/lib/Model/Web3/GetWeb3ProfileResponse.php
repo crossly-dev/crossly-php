@@ -188,8 +188,8 @@ class GetWeb3ProfileResponse implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    const FAMILY_EVM = 'evm';
     const FAMILY_SOLANA = 'solana';
+    const FAMILY_EVM = 'evm';
 
     /**
      * Gets allowable values of the enum
@@ -199,8 +199,8 @@ class GetWeb3ProfileResponse implements ModelInterface, ArrayAccess, \JsonSerial
     public function getFamilyAllowableValues()
     {
         return [
-            self::FAMILY_EVM,
             self::FAMILY_SOLANA,
+            self::FAMILY_EVM,
         ];
     }
 

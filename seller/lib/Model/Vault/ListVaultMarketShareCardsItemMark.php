@@ -174,9 +174,9 @@ class ListVaultMarketShareCardsItemMark implements ModelInterface, ArrayAccess, 
     }
 
     const QUALITY_NONE = 'none';
+    const QUALITY_C = 'C';
     const QUALITY_A = 'A';
     const QUALITY_B = 'B';
-    const QUALITY_C = 'C';
 
     /**
      * Gets allowable values of the enum
@@ -187,9 +187,9 @@ class ListVaultMarketShareCardsItemMark implements ModelInterface, ArrayAccess, 
     {
         return [
             self::QUALITY_NONE,
+            self::QUALITY_C,
             self::QUALITY_A,
             self::QUALITY_B,
-            self::QUALITY_C,
         ];
     }
 

@@ -65,9 +65,9 @@ class ListAuthSessionsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'user_agent' => 'string',
         'ip_address' => 'string',
         'ip_country' => 'string',
-        'created_at' => '\DateTime',
-        'last_used_at' => '\DateTime',
-        'expires_at' => '\DateTime'
+        'created_at' => 'string',
+        'last_used_at' => 'string',
+        'expires_at' => 'string'
     ];
 
     /**
@@ -83,9 +83,9 @@ class ListAuthSessionsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         'user_agent' => null,
         'ip_address' => null,
         'ip_country' => null,
-        'created_at' => 'date-time',
-        'last_used_at' => 'date-time',
-        'expires_at' => 'date-time'
+        'created_at' => null,
+        'last_used_at' => null,
+        'expires_at' => null
     ];
 
     /**
@@ -239,15 +239,6 @@ class ListAuthSessionsItem implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['last_used_at'] === null) {
-            $invalidProperties[] = "'last_used_at' can't be null";
-        }
-        if ($this->container['expires_at'] === null) {
-            $invalidProperties[] = "'expires_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -386,7 +377,7 @@ class ListAuthSessionsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets created_at
      *
-     * @return \DateTime
+     * @return string|null
      */
     public function getCreatedAt()
     {
@@ -396,7 +387,7 @@ class ListAuthSessionsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets created_at
      *
-     * @param \DateTime $created_at created_at
+     * @param string|null $created_at created_at
      *
      * @return self
      */
@@ -410,7 +401,7 @@ class ListAuthSessionsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets last_used_at
      *
-     * @return \DateTime
+     * @return string|null
      */
     public function getLastUsedAt()
     {
@@ -420,7 +411,7 @@ class ListAuthSessionsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets last_used_at
      *
-     * @param \DateTime $last_used_at last_used_at
+     * @param string|null $last_used_at last_used_at
      *
      * @return self
      */
@@ -434,7 +425,7 @@ class ListAuthSessionsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets expires_at
      *
-     * @return \DateTime
+     * @return string|null
      */
     public function getExpiresAt()
     {
@@ -444,7 +435,7 @@ class ListAuthSessionsItem implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets expires_at
      *
-     * @param \DateTime $expires_at expires_at
+     * @param string|null $expires_at expires_at
      *
      * @return self
      */

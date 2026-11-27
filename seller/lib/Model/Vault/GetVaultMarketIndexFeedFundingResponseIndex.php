@@ -191,9 +191,9 @@ class GetVaultMarketIndexFeedFundingResponseIndex implements ModelInterface, Arr
     const KIND_CUSTOM = 'custom';
     const KIND_BRAND = 'brand';
     const KIND_CATEGORY = 'category';
+    const KIND_SEGMENT = 'segment';
     const KIND_CURATED = 'curated';
     const KIND_COMPOSITE = 'composite';
-    const KIND_SEGMENT = 'segment';
     const WEIGHTING_MARK = 'mark';
     const WEIGHTING_EQUAL = 'equal';
     const WEIGHTING_VAULT_CAP = 'vault_cap';
@@ -210,9 +210,9 @@ class GetVaultMarketIndexFeedFundingResponseIndex implements ModelInterface, Arr
             self::KIND_CUSTOM,
             self::KIND_BRAND,
             self::KIND_CATEGORY,
+            self::KIND_SEGMENT,
             self::KIND_CURATED,
             self::KIND_COMPOSITE,
-            self::KIND_SEGMENT,
         ];
     }
 

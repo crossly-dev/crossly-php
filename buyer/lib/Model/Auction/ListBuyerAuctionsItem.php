@@ -62,13 +62,13 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'title' => 'string',
         'bid_count' => 'float',
-        'paid' => 'bool',
         'leading' => 'bool',
-        'status' => 'string',
-        'ends_at' => 'string',
+        'paid' => 'bool',
         'slug' => 'string',
-        'current_cents' => 'float',
         'thumbnail' => 'string',
+        'ends_at' => 'string',
+        'status' => 'string',
+        'current_cents' => 'float',
         'my_max_cents' => 'float',
         'winning_cents' => 'float'
     ];
@@ -83,13 +83,13 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPIFormats = [
         'title' => null,
         'bid_count' => null,
-        'paid' => null,
         'leading' => null,
-        'status' => null,
-        'ends_at' => null,
+        'paid' => null,
         'slug' => null,
-        'current_cents' => null,
         'thumbnail' => null,
+        'ends_at' => null,
+        'status' => null,
+        'current_cents' => null,
         'my_max_cents' => null,
         'winning_cents' => null
     ];
@@ -123,13 +123,13 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $attributeMap = [
         'title' => 'title',
         'bid_count' => 'bidCount',
-        'paid' => 'paid',
         'leading' => 'leading',
-        'status' => 'status',
-        'ends_at' => 'endsAt',
+        'paid' => 'paid',
         'slug' => 'slug',
-        'current_cents' => 'currentCents',
         'thumbnail' => 'thumbnail',
+        'ends_at' => 'endsAt',
+        'status' => 'status',
+        'current_cents' => 'currentCents',
         'my_max_cents' => 'myMaxCents',
         'winning_cents' => 'winningCents'
     ];
@@ -142,13 +142,13 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $setters = [
         'title' => 'setTitle',
         'bid_count' => 'setBidCount',
-        'paid' => 'setPaid',
         'leading' => 'setLeading',
-        'status' => 'setStatus',
-        'ends_at' => 'setEndsAt',
+        'paid' => 'setPaid',
         'slug' => 'setSlug',
-        'current_cents' => 'setCurrentCents',
         'thumbnail' => 'setThumbnail',
+        'ends_at' => 'setEndsAt',
+        'status' => 'setStatus',
+        'current_cents' => 'setCurrentCents',
         'my_max_cents' => 'setMyMaxCents',
         'winning_cents' => 'setWinningCents'
     ];
@@ -161,13 +161,13 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $getters = [
         'title' => 'getTitle',
         'bid_count' => 'getBidCount',
-        'paid' => 'getPaid',
         'leading' => 'getLeading',
-        'status' => 'getStatus',
-        'ends_at' => 'getEndsAt',
+        'paid' => 'getPaid',
         'slug' => 'getSlug',
-        'current_cents' => 'getCurrentCents',
         'thumbnail' => 'getThumbnail',
+        'ends_at' => 'getEndsAt',
+        'status' => 'getStatus',
+        'current_cents' => 'getCurrentCents',
         'my_max_cents' => 'getMyMaxCents',
         'winning_cents' => 'getWinningCents'
     ];
@@ -231,13 +231,13 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $this->container['title'] = $data['title'] ?? null;
         $this->container['bid_count'] = $data['bid_count'] ?? null;
-        $this->container['paid'] = $data['paid'] ?? null;
         $this->container['leading'] = $data['leading'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['ends_at'] = $data['ends_at'] ?? null;
+        $this->container['paid'] = $data['paid'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
-        $this->container['current_cents'] = $data['current_cents'] ?? null;
         $this->container['thumbnail'] = $data['thumbnail'] ?? null;
+        $this->container['ends_at'] = $data['ends_at'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['current_cents'] = $data['current_cents'] ?? null;
         $this->container['my_max_cents'] = $data['my_max_cents'] ?? null;
         $this->container['winning_cents'] = $data['winning_cents'] ?? null;
     }
@@ -257,11 +257,11 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['bid_count'] === null) {
             $invalidProperties[] = "'bid_count' can't be null";
         }
-        if ($this->container['paid'] === null) {
-            $invalidProperties[] = "'paid' can't be null";
-        }
         if ($this->container['leading'] === null) {
             $invalidProperties[] = "'leading' can't be null";
+        }
+        if ($this->container['paid'] === null) {
+            $invalidProperties[] = "'paid' can't be null";
         }
         return $invalidProperties;
     }
@@ -327,30 +327,6 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets paid
-     *
-     * @return bool
-     */
-    public function getPaid()
-    {
-        return $this->container['paid'];
-    }
-
-    /**
-     * Sets paid
-     *
-     * @param bool $paid paid
-     *
-     * @return self
-     */
-    public function setPaid($paid)
-    {
-        $this->container['paid'] = $paid;
-
-        return $this;
-    }
-
-    /**
      * Gets leading
      *
      * @return bool
@@ -375,49 +351,25 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets status
+     * Gets paid
      *
-     * @return string|null
+     * @return bool
      */
-    public function getStatus()
+    public function getPaid()
     {
-        return $this->container['status'];
+        return $this->container['paid'];
     }
 
     /**
-     * Sets status
+     * Sets paid
      *
-     * @param string|null $status status
+     * @param bool $paid paid
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setPaid($paid)
     {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets ends_at
-     *
-     * @return string|null
-     */
-    public function getEndsAt()
-    {
-        return $this->container['ends_at'];
-    }
-
-    /**
-     * Sets ends_at
-     *
-     * @param string|null $ends_at ends_at
-     *
-     * @return self
-     */
-    public function setEndsAt($ends_at)
-    {
-        $this->container['ends_at'] = $ends_at;
+        $this->container['paid'] = $paid;
 
         return $this;
     }
@@ -447,30 +399,6 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets current_cents
-     *
-     * @return float|null
-     */
-    public function getCurrentCents()
-    {
-        return $this->container['current_cents'];
-    }
-
-    /**
-     * Sets current_cents
-     *
-     * @param float|null $current_cents Current high bid, in cents.
-     *
-     * @return self
-     */
-    public function setCurrentCents($current_cents)
-    {
-        $this->container['current_cents'] = $current_cents;
-
-        return $this;
-    }
-
-    /**
      * Gets thumbnail
      *
      * @return string|null
@@ -490,6 +418,78 @@ class ListBuyerAuctionsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setThumbnail($thumbnail)
     {
         $this->container['thumbnail'] = $thumbnail;
+
+        return $this;
+    }
+
+    /**
+     * Gets ends_at
+     *
+     * @return string|null
+     */
+    public function getEndsAt()
+    {
+        return $this->container['ends_at'];
+    }
+
+    /**
+     * Sets ends_at
+     *
+     * @param string|null $ends_at ends_at
+     *
+     * @return self
+     */
+    public function setEndsAt($ends_at)
+    {
+        $this->container['ends_at'] = $ends_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets current_cents
+     *
+     * @return float|null
+     */
+    public function getCurrentCents()
+    {
+        return $this->container['current_cents'];
+    }
+
+    /**
+     * Sets current_cents
+     *
+     * @param float|null $current_cents Current high bid, in cents.
+     *
+     * @return self
+     */
+    public function setCurrentCents($current_cents)
+    {
+        $this->container['current_cents'] = $current_cents;
 
         return $this;
     }

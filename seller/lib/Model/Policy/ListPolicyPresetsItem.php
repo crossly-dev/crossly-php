@@ -60,13 +60,18 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
+        'summary' => 'string',
+        'incomplete' => 'bool',
+        'listing_count' => 'float',
         'id' => 'string',
         'name' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'user_id' => 'string',
         'is_default' => 'bool',
-        'kind' => 'string'
+        'kind' => 'string',
+        'revision' => 'float',
+        'has_domestic_rules' => 'bool'
     ];
 
     /**
@@ -77,13 +82,18 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'summary' => null,
+        'incomplete' => null,
+        'listing_count' => null,
         'id' => null,
         'name' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
         'user_id' => null,
         'is_default' => null,
-        'kind' => null
+        'kind' => null,
+        'revision' => null,
+        'has_domestic_rules' => null
     ];
 
     /**
@@ -113,13 +123,18 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'summary' => 'summary',
+        'incomplete' => 'incomplete',
+        'listing_count' => 'listingCount',
         'id' => 'id',
         'name' => 'name',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
         'is_default' => 'isDefault',
-        'kind' => 'kind'
+        'kind' => 'kind',
+        'revision' => 'revision',
+        'has_domestic_rules' => 'hasDomesticRules'
     ];
 
     /**
@@ -128,13 +143,18 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'summary' => 'setSummary',
+        'incomplete' => 'setIncomplete',
+        'listing_count' => 'setListingCount',
         'id' => 'setId',
         'name' => 'setName',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
         'is_default' => 'setIsDefault',
-        'kind' => 'setKind'
+        'kind' => 'setKind',
+        'revision' => 'setRevision',
+        'has_domestic_rules' => 'setHasDomesticRules'
     ];
 
     /**
@@ -143,13 +163,18 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'summary' => 'getSummary',
+        'incomplete' => 'getIncomplete',
+        'listing_count' => 'getListingCount',
         'id' => 'getId',
         'name' => 'getName',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
         'is_default' => 'getIsDefault',
-        'kind' => 'getKind'
+        'kind' => 'getKind',
+        'revision' => 'getRevision',
+        'has_domestic_rules' => 'getHasDomesticRules'
     ];
 
     /**
@@ -209,6 +234,9 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
+        $this->container['summary'] = $data['summary'] ?? null;
+        $this->container['incomplete'] = $data['incomplete'] ?? null;
+        $this->container['listing_count'] = $data['listing_count'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
@@ -216,6 +244,8 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['is_default'] = $data['is_default'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
+        $this->container['revision'] = $data['revision'] ?? null;
+        $this->container['has_domestic_rules'] = $data['has_domestic_rules'] ?? null;
     }
 
     /**
@@ -227,6 +257,15 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if ($this->container['summary'] === null) {
+            $invalidProperties[] = "'summary' can't be null";
+        }
+        if ($this->container['incomplete'] === null) {
+            $invalidProperties[] = "'incomplete' can't be null";
+        }
+        if ($this->container['listing_count'] === null) {
+            $invalidProperties[] = "'listing_count' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -248,6 +287,12 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['kind'] === null) {
             $invalidProperties[] = "'kind' can't be null";
         }
+        if ($this->container['revision'] === null) {
+            $invalidProperties[] = "'revision' can't be null";
+        }
+        if ($this->container['has_domestic_rules'] === null) {
+            $invalidProperties[] = "'has_domestic_rules' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -262,6 +307,78 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets summary
+     *
+     * @return string
+     */
+    public function getSummary()
+    {
+        return $this->container['summary'];
+    }
+
+    /**
+     * Sets summary
+     *
+     * @param string $summary summary
+     *
+     * @return self
+     */
+    public function setSummary($summary)
+    {
+        $this->container['summary'] = $summary;
+
+        return $this;
+    }
+
+    /**
+     * Gets incomplete
+     *
+     * @return bool
+     */
+    public function getIncomplete()
+    {
+        return $this->container['incomplete'];
+    }
+
+    /**
+     * Sets incomplete
+     *
+     * @param bool $incomplete incomplete
+     *
+     * @return self
+     */
+    public function setIncomplete($incomplete)
+    {
+        $this->container['incomplete'] = $incomplete;
+
+        return $this;
+    }
+
+    /**
+     * Gets listing_count
+     *
+     * @return float
+     */
+    public function getListingCount()
+    {
+        return $this->container['listing_count'];
+    }
+
+    /**
+     * Sets listing_count
+     *
+     * @param float $listing_count listing_count
+     *
+     * @return self
+     */
+    public function setListingCount($listing_count)
+    {
+        $this->container['listing_count'] = $listing_count;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -427,6 +544,54 @@ class ListPolicyPresetsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setKind($kind)
     {
         $this->container['kind'] = $kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets revision
+     *
+     * @return float
+     */
+    public function getRevision()
+    {
+        return $this->container['revision'];
+    }
+
+    /**
+     * Sets revision
+     *
+     * @param float $revision revision
+     *
+     * @return self
+     */
+    public function setRevision($revision)
+    {
+        $this->container['revision'] = $revision;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_domestic_rules
+     *
+     * @return bool
+     */
+    public function getHasDomesticRules()
+    {
+        return $this->container['has_domestic_rules'];
+    }
+
+    /**
+     * Sets has_domestic_rules
+     *
+     * @param bool $has_domestic_rules has_domestic_rules
+     *
+     * @return self
+     */
+    public function setHasDomesticRules($has_domestic_rules)
+    {
+        $this->container['has_domestic_rules'] = $has_domestic_rules;
 
         return $this;
     }

@@ -65,6 +65,7 @@ class GetVaultMarketTcaResponse implements ModelInterface, ArrayAccess, \JsonSer
         'to' => 'string',
         'summary' => '\Crossly\Model\Vault\GetVaultMarketTcaResponseSummary',
         'items' => '\Crossly\Model\Vault\GetVaultMarketTcaResponseItems[]',
+        'options' => '\Crossly\Model\Vault\GetVaultMarketTcaResponseOptions',
         'note' => 'string'
     ];
 
@@ -81,6 +82,7 @@ class GetVaultMarketTcaResponse implements ModelInterface, ArrayAccess, \JsonSer
         'to' => null,
         'summary' => null,
         'items' => null,
+        'options' => null,
         'note' => null
     ];
 
@@ -116,6 +118,7 @@ class GetVaultMarketTcaResponse implements ModelInterface, ArrayAccess, \JsonSer
         'to' => 'to',
         'summary' => 'summary',
         'items' => 'items',
+        'options' => 'options',
         'note' => 'note'
     ];
 
@@ -130,6 +133,7 @@ class GetVaultMarketTcaResponse implements ModelInterface, ArrayAccess, \JsonSer
         'to' => 'setTo',
         'summary' => 'setSummary',
         'items' => 'setItems',
+        'options' => 'setOptions',
         'note' => 'setNote'
     ];
 
@@ -144,6 +148,7 @@ class GetVaultMarketTcaResponse implements ModelInterface, ArrayAccess, \JsonSer
         'to' => 'getTo',
         'summary' => 'getSummary',
         'items' => 'getItems',
+        'options' => 'getOptions',
         'note' => 'getNote'
     ];
 
@@ -209,6 +214,7 @@ class GetVaultMarketTcaResponse implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['to'] = $data['to'] ?? null;
         $this->container['summary'] = $data['summary'] ?? null;
         $this->container['items'] = $data['items'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
         $this->container['note'] = $data['note'] ?? null;
     }
 
@@ -235,6 +241,9 @@ class GetVaultMarketTcaResponse implements ModelInterface, ArrayAccess, \JsonSer
         }
         if ($this->container['items'] === null) {
             $invalidProperties[] = "'items' can't be null";
+        }
+        if ($this->container['options'] === null) {
+            $invalidProperties[] = "'options' can't be null";
         }
         if ($this->container['note'] === null) {
             $invalidProperties[] = "'note' can't be null";
@@ -370,6 +379,30 @@ class GetVaultMarketTcaResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setItems($items)
     {
         $this->container['items'] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketTcaResponseOptions
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketTcaResponseOptions $options options
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
 
         return $this;
     }

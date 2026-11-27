@@ -65,8 +65,9 @@ class ListGameBreakUpcomingItem implements ModelInterface, ArrayAccess, \JsonSer
         'product' => 'string',
         'status' => 'string',
         'starts_at' => 'string',
+        'doors_open_at' => 'string',
         'live' => 'bool',
-        'shop' => '\Crossly\Model\Common\SlugName',
+        'shop' => '\Crossly\Model\Common\NameSlug',
         'buy_url' => 'string',
         'spots_left' => 'float',
         'spots' => '\Crossly\Model\Game\ListGameBreakUpcomingItemSpots[]',
@@ -86,6 +87,7 @@ class ListGameBreakUpcomingItem implements ModelInterface, ArrayAccess, \JsonSer
         'product' => null,
         'status' => null,
         'starts_at' => null,
+        'doors_open_at' => null,
         'live' => null,
         'shop' => null,
         'buy_url' => null,
@@ -126,6 +128,7 @@ class ListGameBreakUpcomingItem implements ModelInterface, ArrayAccess, \JsonSer
         'product' => 'product',
         'status' => 'status',
         'starts_at' => 'startsAt',
+        'doors_open_at' => 'doorsOpenAt',
         'live' => 'live',
         'shop' => 'shop',
         'buy_url' => 'buyUrl',
@@ -145,6 +148,7 @@ class ListGameBreakUpcomingItem implements ModelInterface, ArrayAccess, \JsonSer
         'product' => 'setProduct',
         'status' => 'setStatus',
         'starts_at' => 'setStartsAt',
+        'doors_open_at' => 'setDoorsOpenAt',
         'live' => 'setLive',
         'shop' => 'setShop',
         'buy_url' => 'setBuyUrl',
@@ -164,6 +168,7 @@ class ListGameBreakUpcomingItem implements ModelInterface, ArrayAccess, \JsonSer
         'product' => 'getProduct',
         'status' => 'getStatus',
         'starts_at' => 'getStartsAt',
+        'doors_open_at' => 'getDoorsOpenAt',
         'live' => 'getLive',
         'shop' => 'getShop',
         'buy_url' => 'getBuyUrl',
@@ -234,6 +239,7 @@ class ListGameBreakUpcomingItem implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['product'] = $data['product'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['starts_at'] = $data['starts_at'] ?? null;
+        $this->container['doors_open_at'] = $data['doors_open_at'] ?? null;
         $this->container['live'] = $data['live'] ?? null;
         $this->container['shop'] = $data['shop'] ?? null;
         $this->container['buy_url'] = $data['buy_url'] ?? null;
@@ -411,6 +417,30 @@ class ListGameBreakUpcomingItem implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets doors_open_at
+     *
+     * @return string|null
+     */
+    public function getDoorsOpenAt()
+    {
+        return $this->container['doors_open_at'];
+    }
+
+    /**
+     * Sets doors_open_at
+     *
+     * @param string|null $doors_open_at When the viewer gets in (ISO): the start, or earlier for a loyalty member with the seller's `live_early_entry` perk. Null with no start. Optional: a board read without a viewer leaves it at the start.
+     *
+     * @return self
+     */
+    public function setDoorsOpenAt($doors_open_at)
+    {
+        $this->container['doors_open_at'] = $doors_open_at;
+
+        return $this;
+    }
+
+    /**
      * Gets live
      *
      * @return bool
@@ -437,7 +467,7 @@ class ListGameBreakUpcomingItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets shop
      *
-     * @return \Crossly\Model\Common\SlugName
+     * @return \Crossly\Model\Common\NameSlug
      */
     public function getShop()
     {
@@ -447,7 +477,7 @@ class ListGameBreakUpcomingItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets shop
      *
-     * @param \Crossly\Model\Common\SlugName $shop shop
+     * @param \Crossly\Model\Common\NameSlug $shop shop
      *
      * @return self
      */

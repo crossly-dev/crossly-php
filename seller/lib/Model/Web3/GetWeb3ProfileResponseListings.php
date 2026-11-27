@@ -214,9 +214,9 @@ class GetWeb3ProfileResponseListings implements ModelInterface, ArrayAccess, \Js
     }
 
     const KIND_BUNDLE = 'bundle';
+    const KIND_OFFER = 'offer';
     const KIND_LISTING = 'listing';
     const KIND_PRIVATE_LISTING = 'private_listing';
-    const KIND_OFFER = 'offer';
     const KIND_COLLECTION_OFFER = 'collection_offer';
     const KIND_TRAIT_OFFER = 'trait_offer';
 
@@ -229,9 +229,9 @@ class GetWeb3ProfileResponseListings implements ModelInterface, ArrayAccess, \Js
     {
         return [
             self::KIND_BUNDLE,
+            self::KIND_OFFER,
             self::KIND_LISTING,
             self::KIND_PRIVATE_LISTING,
-            self::KIND_OFFER,
             self::KIND_COLLECTION_OFFER,
             self::KIND_TRAIT_OFFER,
         ];

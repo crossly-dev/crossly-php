@@ -68,7 +68,8 @@ class GetVaultMarketHealthResponse implements ModelInterface, ArrayAccess, \Json
         'stress' => '\Crossly\Model\Vault\GetVaultMarketHealthResponseStress',
         'marks' => '\Crossly\Model\Vault\GetVaultMarketHealthResponseMarks',
         'notes' => 'string[]',
-        'items' => '\Crossly\Model\Vault\GetVaultMarketHealthResponseItems[]'
+        'items' => '\Crossly\Model\Vault\GetVaultMarketHealthResponseItems[]',
+        'hedges' => '\Crossly\Model\Vault\GetVaultMarketHealthResponseHedges'
     ];
 
     /**
@@ -87,7 +88,8 @@ class GetVaultMarketHealthResponse implements ModelInterface, ArrayAccess, \Json
         'stress' => null,
         'marks' => null,
         'notes' => null,
-        'items' => null
+        'items' => null,
+        'hedges' => null
     ];
 
     /**
@@ -125,7 +127,8 @@ class GetVaultMarketHealthResponse implements ModelInterface, ArrayAccess, \Json
         'stress' => 'stress',
         'marks' => 'marks',
         'notes' => 'notes',
-        'items' => 'items'
+        'items' => 'items',
+        'hedges' => 'hedges'
     ];
 
     /**
@@ -142,7 +145,8 @@ class GetVaultMarketHealthResponse implements ModelInterface, ArrayAccess, \Json
         'stress' => 'setStress',
         'marks' => 'setMarks',
         'notes' => 'setNotes',
-        'items' => 'setItems'
+        'items' => 'setItems',
+        'hedges' => 'setHedges'
     ];
 
     /**
@@ -159,7 +163,8 @@ class GetVaultMarketHealthResponse implements ModelInterface, ArrayAccess, \Json
         'stress' => 'getStress',
         'marks' => 'getMarks',
         'notes' => 'getNotes',
-        'items' => 'getItems'
+        'items' => 'getItems',
+        'hedges' => 'getHedges'
     ];
 
     /**
@@ -228,6 +233,7 @@ class GetVaultMarketHealthResponse implements ModelInterface, ArrayAccess, \Json
         $this->container['marks'] = $data['marks'] ?? null;
         $this->container['notes'] = $data['notes'] ?? null;
         $this->container['items'] = $data['items'] ?? null;
+        $this->container['hedges'] = $data['hedges'] ?? null;
     }
 
     /**
@@ -265,6 +271,9 @@ class GetVaultMarketHealthResponse implements ModelInterface, ArrayAccess, \Json
         }
         if ($this->container['items'] === null) {
             $invalidProperties[] = "'items' can't be null";
+        }
+        if ($this->container['hedges'] === null) {
+            $invalidProperties[] = "'hedges' can't be null";
         }
         return $invalidProperties;
     }
@@ -493,6 +502,30 @@ class GetVaultMarketHealthResponse implements ModelInterface, ArrayAccess, \Json
     public function setItems($items)
     {
         $this->container['items'] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Gets hedges
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketHealthResponseHedges
+     */
+    public function getHedges()
+    {
+        return $this->container['hedges'];
+    }
+
+    /**
+     * Sets hedges
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketHealthResponseHedges $hedges hedges
+     *
+     * @return self
+     */
+    public function setHedges($hedges)
+    {
+        $this->container['hedges'] = $hedges;
 
         return $this;
     }

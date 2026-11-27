@@ -213,21 +213,26 @@ class ListVaultMarketPaperMissionsItem implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    const KEY_ROUND_TRIP = 'round_trip';
     const KEY_FIRST_FILL = 'first_fill';
     const KEY_READ_MARK = 'read_mark';
     const KEY_BID_BELOW = 'bid_below';
     const KEY_MAKER_FILL = 'maker_fill';
     const KEY_INSTANT_EXIT = 'instant_exit';
     const KEY_PRICE_WATCH = 'price_watch';
+    const KEY_ROUND_TRIP = 'round_trip';
     const KEY_MINI_SET = 'mini_set';
+    const KEY_SHARE_FIRST = 'share_first';
+    const KEY_SHARE_QUEUE = 'share_queue';
+    const KEY_OPTION_FIRST = 'option_first';
+    const KEY_OPTION_EXPIRY = 'option_expiry';
     const ACTION_MARKET = 'market';
-    const ACTION_ASSISTANT = 'assistant';
     const ACTION_PAPER = 'paper';
-    const ACTION_MARK_CHECK = 'mark_check';
+    const ACTION_ASSISTANT = 'assistant';
     const ACTION_SETS = 'sets';
+    const ACTION_MARK_CHECK = 'mark_check';
     const LEARN_INSTANT_EXIT = 'instant-exit';
     const LEARN_MARKS = 'marks';
+    const LEARN_VAULT_SHARES = 'vault-shares';
 
     /**
      * Gets allowable values of the enum
@@ -237,14 +242,18 @@ class ListVaultMarketPaperMissionsItem implements ModelInterface, ArrayAccess, \
     public function getKeyAllowableValues()
     {
         return [
-            self::KEY_ROUND_TRIP,
             self::KEY_FIRST_FILL,
             self::KEY_READ_MARK,
             self::KEY_BID_BELOW,
             self::KEY_MAKER_FILL,
             self::KEY_INSTANT_EXIT,
             self::KEY_PRICE_WATCH,
+            self::KEY_ROUND_TRIP,
             self::KEY_MINI_SET,
+            self::KEY_SHARE_FIRST,
+            self::KEY_SHARE_QUEUE,
+            self::KEY_OPTION_FIRST,
+            self::KEY_OPTION_EXPIRY,
         ];
     }
 
@@ -257,10 +266,10 @@ class ListVaultMarketPaperMissionsItem implements ModelInterface, ArrayAccess, \
     {
         return [
             self::ACTION_MARKET,
-            self::ACTION_ASSISTANT,
             self::ACTION_PAPER,
-            self::ACTION_MARK_CHECK,
+            self::ACTION_ASSISTANT,
             self::ACTION_SETS,
+            self::ACTION_MARK_CHECK,
         ];
     }
 
@@ -274,6 +283,7 @@ class ListVaultMarketPaperMissionsItem implements ModelInterface, ArrayAccess, \
         return [
             self::LEARN_INSTANT_EXIT,
             self::LEARN_MARKS,
+            self::LEARN_VAULT_SHARES,
         ];
     }
 

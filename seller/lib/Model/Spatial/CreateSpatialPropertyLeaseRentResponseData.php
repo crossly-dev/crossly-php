@@ -60,6 +60,9 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
+        'requires_action' => 'bool',
+        'payment_id' => 'string',
+        'client_secret' => 'string',
         'paid_through' => 'string',
         'waived' => 'bool',
         'paid_cents' => 'float'
@@ -73,6 +76,9 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'requires_action' => null,
+        'payment_id' => null,
+        'client_secret' => null,
         'paid_through' => null,
         'waived' => null,
         'paid_cents' => null
@@ -105,6 +111,9 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
+        'requires_action' => 'requiresAction',
+        'payment_id' => 'paymentId',
+        'client_secret' => 'clientSecret',
         'paid_through' => 'paidThrough',
         'waived' => 'waived',
         'paid_cents' => 'paidCents'
@@ -116,6 +125,9 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
+        'requires_action' => 'setRequiresAction',
+        'payment_id' => 'setPaymentId',
+        'client_secret' => 'setClientSecret',
         'paid_through' => 'setPaidThrough',
         'waived' => 'setWaived',
         'paid_cents' => 'setPaidCents'
@@ -127,6 +139,9 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
+        'requires_action' => 'getRequiresAction',
+        'payment_id' => 'getPaymentId',
+        'client_secret' => 'getClientSecret',
         'paid_through' => 'getPaidThrough',
         'waived' => 'getWaived',
         'paid_cents' => 'getPaidCents'
@@ -189,6 +204,9 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
      */
     public function __construct(array $data = null)
     {
+        $this->container['requires_action'] = $data['requires_action'] ?? null;
+        $this->container['payment_id'] = $data['payment_id'] ?? null;
+        $this->container['client_secret'] = $data['client_secret'] ?? null;
         $this->container['paid_through'] = $data['paid_through'] ?? null;
         $this->container['waived'] = $data['waived'] ?? null;
         $this->container['paid_cents'] = $data['paid_cents'] ?? null;
@@ -203,15 +221,6 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['paid_through'] === null) {
-            $invalidProperties[] = "'paid_through' can't be null";
-        }
-        if ($this->container['waived'] === null) {
-            $invalidProperties[] = "'waived' can't be null";
-        }
-        if ($this->container['paid_cents'] === null) {
-            $invalidProperties[] = "'paid_cents' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -228,9 +237,81 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
 
 
     /**
+     * Gets requires_action
+     *
+     * @return bool|null
+     */
+    public function getRequiresAction()
+    {
+        return $this->container['requires_action'];
+    }
+
+    /**
+     * Sets requires_action
+     *
+     * @param bool|null $requires_action requires_action
+     *
+     * @return self
+     */
+    public function setRequiresAction($requires_action)
+    {
+        $this->container['requires_action'] = $requires_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_id
+     *
+     * @return string|null
+     */
+    public function getPaymentId()
+    {
+        return $this->container['payment_id'];
+    }
+
+    /**
+     * Sets payment_id
+     *
+     * @param string|null $payment_id payment_id
+     *
+     * @return self
+     */
+    public function setPaymentId($payment_id)
+    {
+        $this->container['payment_id'] = $payment_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_secret
+     *
+     * @return string|null
+     */
+    public function getClientSecret()
+    {
+        return $this->container['client_secret'];
+    }
+
+    /**
+     * Sets client_secret
+     *
+     * @param string|null $client_secret client_secret
+     *
+     * @return self
+     */
+    public function setClientSecret($client_secret)
+    {
+        $this->container['client_secret'] = $client_secret;
+
+        return $this;
+    }
+
+    /**
      * Gets paid_through
      *
-     * @return string
+     * @return string|null
      */
     public function getPaidThrough()
     {
@@ -240,7 +321,7 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
     /**
      * Sets paid_through
      *
-     * @param string $paid_through paid_through
+     * @param string|null $paid_through paid_through
      *
      * @return self
      */
@@ -254,7 +335,7 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
     /**
      * Gets waived
      *
-     * @return bool
+     * @return bool|null
      */
     public function getWaived()
     {
@@ -264,7 +345,7 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
     /**
      * Sets waived
      *
-     * @param bool $waived waived
+     * @param bool|null $waived waived
      *
      * @return self
      */
@@ -278,7 +359,7 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
     /**
      * Gets paid_cents
      *
-     * @return float
+     * @return float|null
      */
     public function getPaidCents()
     {
@@ -288,7 +369,7 @@ class CreateSpatialPropertyLeaseRentResponseData implements ModelInterface, Arra
     /**
      * Sets paid_cents
      *
-     * @param float $paid_cents paid_cents
+     * @param float|null $paid_cents paid_cents
      *
      * @return self
      */

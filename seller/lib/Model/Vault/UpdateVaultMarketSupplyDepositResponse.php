@@ -179,12 +179,12 @@ class UpdateVaultMarketSupplyDepositResponse implements ModelInterface, ArrayAcc
     }
 
     const STATUS_STORED = 'stored';
-    const STATUS_LISTED = 'listed';
-    const STATUS_INBOUND = 'inbound';
     const STATUS_CANCELLED = 'cancelled';
+    const STATUS_LISTED = 'listed';
+    const STATUS_SHIPPED = 'shipped';
+    const STATUS_INBOUND = 'inbound';
     const STATUS_SOLD_ON_BOOK = 'sold_on_book';
     const STATUS_CHANNEL_SOLD = 'channel_sold';
-    const STATUS_SHIPPED = 'shipped';
 
     /**
      * Gets allowable values of the enum
@@ -195,12 +195,12 @@ class UpdateVaultMarketSupplyDepositResponse implements ModelInterface, ArrayAcc
     {
         return [
             self::STATUS_STORED,
-            self::STATUS_LISTED,
-            self::STATUS_INBOUND,
             self::STATUS_CANCELLED,
+            self::STATUS_LISTED,
+            self::STATUS_SHIPPED,
+            self::STATUS_INBOUND,
             self::STATUS_SOLD_ON_BOOK,
             self::STATUS_CHANNEL_SOLD,
-            self::STATUS_SHIPPED,
         ];
     }
 

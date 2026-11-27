@@ -190,6 +190,7 @@ class GetVaultMarketLearnResponseConcepts implements ModelInterface, ArrayAccess
     const SLUG_AUCTIONS = 'auctions';
     const SLUG_INDEXES = 'indexes';
     const SLUG_MARKS = 'marks';
+    const SLUG_VAULT_SHARES = 'vault-shares';
 
     /**
      * Gets allowable values of the enum
@@ -206,6 +207,7 @@ class GetVaultMarketLearnResponseConcepts implements ModelInterface, ArrayAccess
             self::SLUG_AUCTIONS,
             self::SLUG_INDEXES,
             self::SLUG_MARKS,
+            self::SLUG_VAULT_SHARES,
         ];
     }
 

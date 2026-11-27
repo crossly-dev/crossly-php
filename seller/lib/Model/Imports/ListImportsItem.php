@@ -63,11 +63,10 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'created_at' => '\DateTime',
         'user_id' => 'string',
-        'status' => 'string',
         'platform' => 'string',
+        'status' => 'string',
         'last_error' => 'string',
         'started_at' => '\DateTime',
-        'batch_id' => 'string',
         'finished_at' => '\DateTime',
         'filters' => '\Crossly\Model\Imports\ListImportsItemFilters',
         'import_mode' => 'string',
@@ -78,6 +77,7 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'imported_count' => 'float',
         'skipped_count' => 'float',
         'error_count' => 'float',
+        'batch_id' => 'string',
         'list_on_crossly' => 'bool',
         'crossly_listed_at' => '\DateTime'
     ];
@@ -93,11 +93,10 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'created_at' => 'date-time',
         'user_id' => null,
-        'status' => null,
         'platform' => null,
+        'status' => null,
         'last_error' => null,
         'started_at' => 'date-time',
-        'batch_id' => null,
         'finished_at' => 'date-time',
         'filters' => null,
         'import_mode' => null,
@@ -108,6 +107,7 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'imported_count' => null,
         'skipped_count' => null,
         'error_count' => null,
+        'batch_id' => null,
         'list_on_crossly' => null,
         'crossly_listed_at' => 'date-time'
     ];
@@ -142,11 +142,10 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'created_at' => 'createdAt',
         'user_id' => 'userId',
-        'status' => 'status',
         'platform' => 'platform',
+        'status' => 'status',
         'last_error' => 'lastError',
         'started_at' => 'startedAt',
-        'batch_id' => 'batchId',
         'finished_at' => 'finishedAt',
         'filters' => 'filters',
         'import_mode' => 'importMode',
@@ -157,6 +156,7 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'imported_count' => 'importedCount',
         'skipped_count' => 'skippedCount',
         'error_count' => 'errorCount',
+        'batch_id' => 'batchId',
         'list_on_crossly' => 'listOnCrossly',
         'crossly_listed_at' => 'crosslyListedAt'
     ];
@@ -170,11 +170,10 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
-        'status' => 'setStatus',
         'platform' => 'setPlatform',
+        'status' => 'setStatus',
         'last_error' => 'setLastError',
         'started_at' => 'setStartedAt',
-        'batch_id' => 'setBatchId',
         'finished_at' => 'setFinishedAt',
         'filters' => 'setFilters',
         'import_mode' => 'setImportMode',
@@ -185,6 +184,7 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'imported_count' => 'setImportedCount',
         'skipped_count' => 'setSkippedCount',
         'error_count' => 'setErrorCount',
+        'batch_id' => 'setBatchId',
         'list_on_crossly' => 'setListOnCrossly',
         'crossly_listed_at' => 'setCrosslyListedAt'
     ];
@@ -198,11 +198,10 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
-        'status' => 'getStatus',
         'platform' => 'getPlatform',
+        'status' => 'getStatus',
         'last_error' => 'getLastError',
         'started_at' => 'getStartedAt',
-        'batch_id' => 'getBatchId',
         'finished_at' => 'getFinishedAt',
         'filters' => 'getFilters',
         'import_mode' => 'getImportMode',
@@ -213,6 +212,7 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'imported_count' => 'getImportedCount',
         'skipped_count' => 'getSkippedCount',
         'error_count' => 'getErrorCount',
+        'batch_id' => 'getBatchId',
         'list_on_crossly' => 'getListOnCrossly',
         'crossly_listed_at' => 'getCrosslyListedAt'
     ];
@@ -277,11 +277,10 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['platform'] = $data['platform'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['last_error'] = $data['last_error'] ?? null;
         $this->container['started_at'] = $data['started_at'] ?? null;
-        $this->container['batch_id'] = $data['batch_id'] ?? null;
         $this->container['finished_at'] = $data['finished_at'] ?? null;
         $this->container['filters'] = $data['filters'] ?? null;
         $this->container['import_mode'] = $data['import_mode'] ?? null;
@@ -292,6 +291,7 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['imported_count'] = $data['imported_count'] ?? null;
         $this->container['skipped_count'] = $data['skipped_count'] ?? null;
         $this->container['error_count'] = $data['error_count'] ?? null;
+        $this->container['batch_id'] = $data['batch_id'] ?? null;
         $this->container['list_on_crossly'] = $data['list_on_crossly'] ?? null;
         $this->container['crossly_listed_at'] = $data['crossly_listed_at'] ?? null;
     }
@@ -314,11 +314,11 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         if ($this->container['platform'] === null) {
             $invalidProperties[] = "'platform' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         if ($this->container['import_mode'] === null) {
             $invalidProperties[] = "'import_mode' can't be null";
@@ -435,30 +435,6 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
      * Gets platform
      *
      * @return string
@@ -478,6 +454,30 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlatform($platform)
     {
         $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
@@ -526,30 +526,6 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStartedAt($started_at)
     {
         $this->container['started_at'] = $started_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets batch_id
-     *
-     * @return string|null
-     */
-    public function getBatchId()
-    {
-        return $this->container['batch_id'];
-    }
-
-    /**
-     * Sets batch_id
-     *
-     * @param string|null $batch_id batch_id
-     *
-     * @return self
-     */
-    public function setBatchId($batch_id)
-    {
-        $this->container['batch_id'] = $batch_id;
 
         return $this;
     }
@@ -790,6 +766,30 @@ class ListImportsItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setErrorCount($error_count)
     {
         $this->container['error_count'] = $error_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets batch_id
+     *
+     * @return string|null
+     */
+    public function getBatchId()
+    {
+        return $this->container['batch_id'];
+    }
+
+    /**
+     * Sets batch_id
+     *
+     * @param string|null $batch_id batch_id
+     *
+     * @return self
+     */
+    public function setBatchId($batch_id)
+    {
+        $this->container['batch_id'] = $batch_id;
 
         return $this;
     }

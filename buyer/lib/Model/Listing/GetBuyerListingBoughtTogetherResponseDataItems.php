@@ -60,8 +60,8 @@ class GetBuyerListingBoughtTogetherResponseDataItems implements ModelInterface, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
         'slug' => 'string',
+        'title' => 'string',
         'price_cents' => 'float',
         'image' => 'string',
         'same_seller' => 'bool'
@@ -75,8 +75,8 @@ class GetBuyerListingBoughtTogetherResponseDataItems implements ModelInterface, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'title' => null,
         'slug' => null,
+        'title' => null,
         'price_cents' => null,
         'image' => null,
         'same_seller' => null
@@ -109,8 +109,8 @@ class GetBuyerListingBoughtTogetherResponseDataItems implements ModelInterface, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
         'slug' => 'slug',
+        'title' => 'title',
         'price_cents' => 'priceCents',
         'image' => 'image',
         'same_seller' => 'sameSeller'
@@ -122,8 +122,8 @@ class GetBuyerListingBoughtTogetherResponseDataItems implements ModelInterface, 
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
         'slug' => 'setSlug',
+        'title' => 'setTitle',
         'price_cents' => 'setPriceCents',
         'image' => 'setImage',
         'same_seller' => 'setSameSeller'
@@ -135,8 +135,8 @@ class GetBuyerListingBoughtTogetherResponseDataItems implements ModelInterface, 
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
         'slug' => 'getSlug',
+        'title' => 'getTitle',
         'price_cents' => 'getPriceCents',
         'image' => 'getImage',
         'same_seller' => 'getSameSeller'
@@ -199,8 +199,8 @@ class GetBuyerListingBoughtTogetherResponseDataItems implements ModelInterface, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['image'] = $data['image'] ?? null;
         $this->container['same_seller'] = $data['same_seller'] ?? null;
@@ -240,30 +240,6 @@ class GetBuyerListingBoughtTogetherResponseDataItems implements ModelInterface, 
 
 
     /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
      * Gets slug
      *
      * @return string
@@ -283,6 +259,30 @@ class GetBuyerListingBoughtTogetherResponseDataItems implements ModelInterface, 
     public function setSlug($slug)
     {
         $this->container['slug'] = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
 
         return $this;
     }

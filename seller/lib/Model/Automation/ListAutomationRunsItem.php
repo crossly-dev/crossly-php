@@ -61,14 +61,16 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => '\DateTime',
         'user_id' => 'string',
+        'rule_id' => 'string',
+        'chain_id' => 'string',
         'status' => 'string',
+        'action_type' => 'string',
+        'summary' => 'array<string,mixed>',
         'error_message' => 'string',
         'duration_ms' => 'float',
-        'rule_id' => 'string',
-        'action_type' => 'string',
-        'chain_id' => 'string'
+        'created_at' => '\DateTime',
+        'workflow_run_id' => 'string'
     ];
 
     /**
@@ -80,14 +82,16 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => 'date-time',
         'user_id' => null,
+        'rule_id' => null,
+        'chain_id' => null,
         'status' => null,
+        'action_type' => null,
+        'summary' => null,
         'error_message' => null,
         'duration_ms' => null,
-        'rule_id' => null,
-        'action_type' => null,
-        'chain_id' => null
+        'created_at' => 'date-time',
+        'workflow_run_id' => null
     ];
 
     /**
@@ -118,14 +122,16 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
         'user_id' => 'userId',
+        'rule_id' => 'ruleId',
+        'chain_id' => 'chainId',
         'status' => 'status',
+        'action_type' => 'actionType',
+        'summary' => 'summary',
         'error_message' => 'errorMessage',
         'duration_ms' => 'durationMs',
-        'rule_id' => 'ruleId',
-        'action_type' => 'actionType',
-        'chain_id' => 'chainId'
+        'created_at' => 'createdAt',
+        'workflow_run_id' => 'workflowRunId'
     ];
 
     /**
@@ -135,14 +141,16 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
+        'rule_id' => 'setRuleId',
+        'chain_id' => 'setChainId',
         'status' => 'setStatus',
+        'action_type' => 'setActionType',
+        'summary' => 'setSummary',
         'error_message' => 'setErrorMessage',
         'duration_ms' => 'setDurationMs',
-        'rule_id' => 'setRuleId',
-        'action_type' => 'setActionType',
-        'chain_id' => 'setChainId'
+        'created_at' => 'setCreatedAt',
+        'workflow_run_id' => 'setWorkflowRunId'
     ];
 
     /**
@@ -152,14 +160,16 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
+        'rule_id' => 'getRuleId',
+        'chain_id' => 'getChainId',
         'status' => 'getStatus',
+        'action_type' => 'getActionType',
+        'summary' => 'getSummary',
         'error_message' => 'getErrorMessage',
         'duration_ms' => 'getDurationMs',
-        'rule_id' => 'getRuleId',
-        'action_type' => 'getActionType',
-        'chain_id' => 'getChainId'
+        'created_at' => 'getCreatedAt',
+        'workflow_run_id' => 'getWorkflowRunId'
     ];
 
     /**
@@ -220,14 +230,16 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['rule_id'] = $data['rule_id'] ?? null;
+        $this->container['chain_id'] = $data['chain_id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['action_type'] = $data['action_type'] ?? null;
+        $this->container['summary'] = $data['summary'] ?? null;
         $this->container['error_message'] = $data['error_message'] ?? null;
         $this->container['duration_ms'] = $data['duration_ms'] ?? null;
-        $this->container['rule_id'] = $data['rule_id'] ?? null;
-        $this->container['action_type'] = $data['action_type'] ?? null;
-        $this->container['chain_id'] = $data['chain_id'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['workflow_run_id'] = $data['workflow_run_id'] ?? null;
     }
 
     /**
@@ -242,9 +254,6 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
         }
@@ -253,6 +262,12 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
         }
         if ($this->container['action_type'] === null) {
             $invalidProperties[] = "'action_type' can't be null";
+        }
+        if ($this->container['summary'] === null) {
+            $invalidProperties[] = "'summary' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,30 +309,6 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
      * Gets user_id
      *
      * @return string
@@ -342,6 +333,54 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets rule_id
+     *
+     * @return string|null
+     */
+    public function getRuleId()
+    {
+        return $this->container['rule_id'];
+    }
+
+    /**
+     * Sets rule_id
+     *
+     * @param string|null $rule_id rule_id
+     *
+     * @return self
+     */
+    public function setRuleId($rule_id)
+    {
+        $this->container['rule_id'] = $rule_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets chain_id
+     *
+     * @return string|null
+     */
+    public function getChainId()
+    {
+        return $this->container['chain_id'];
+    }
+
+    /**
+     * Sets chain_id
+     *
+     * @param string|null $chain_id chain_id
+     *
+     * @return self
+     */
+    public function setChainId($chain_id)
+    {
+        $this->container['chain_id'] = $chain_id;
+
+        return $this;
+    }
+
+    /**
      * Gets status
      *
      * @return string
@@ -361,6 +400,54 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setStatus($status)
     {
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_type
+     *
+     * @return string
+     */
+    public function getActionType()
+    {
+        return $this->container['action_type'];
+    }
+
+    /**
+     * Sets action_type
+     *
+     * @param string $action_type action_type
+     *
+     * @return self
+     */
+    public function setActionType($action_type)
+    {
+        $this->container['action_type'] = $action_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets summary
+     *
+     * @return array<string,mixed>
+     */
+    public function getSummary()
+    {
+        return $this->container['summary'];
+    }
+
+    /**
+     * Sets summary
+     *
+     * @param array<string,mixed> $summary summary
+     *
+     * @return self
+     */
+    public function setSummary($summary)
+    {
+        $this->container['summary'] = $summary;
 
         return $this;
     }
@@ -414,73 +501,49 @@ class ListAutomationRunsItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets rule_id
+     * Gets created_at
      *
-     * @return string|null
+     * @return \DateTime
      */
-    public function getRuleId()
+    public function getCreatedAt()
     {
-        return $this->container['rule_id'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets rule_id
+     * Sets created_at
      *
-     * @param string|null $rule_id rule_id
+     * @param \DateTime $created_at created_at
      *
      * @return self
      */
-    public function setRuleId($rule_id)
+    public function setCreatedAt($created_at)
     {
-        $this->container['rule_id'] = $rule_id;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
 
     /**
-     * Gets action_type
-     *
-     * @return string
-     */
-    public function getActionType()
-    {
-        return $this->container['action_type'];
-    }
-
-    /**
-     * Sets action_type
-     *
-     * @param string $action_type action_type
-     *
-     * @return self
-     */
-    public function setActionType($action_type)
-    {
-        $this->container['action_type'] = $action_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets chain_id
+     * Gets workflow_run_id
      *
      * @return string|null
      */
-    public function getChainId()
+    public function getWorkflowRunId()
     {
-        return $this->container['chain_id'];
+        return $this->container['workflow_run_id'];
     }
 
     /**
-     * Sets chain_id
+     * Sets workflow_run_id
      *
-     * @param string|null $chain_id chain_id
+     * @param string|null $workflow_run_id Set for runs of the converted workflow.
      *
      * @return self
      */
-    public function setChainId($chain_id)
+    public function setWorkflowRunId($workflow_run_id)
     {
-        $this->container['chain_id'] = $chain_id;
+        $this->container['workflow_run_id'] = $workflow_run_id;
 
         return $this;
     }

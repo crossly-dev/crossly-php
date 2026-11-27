@@ -60,10 +60,14 @@ class GetAnalyticBookkeepingResponseAnnualTotals implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
+        'gross_sales' => 'float',
+        'refunds' => 'float',
         'revenue' => 'float',
         'cogs' => 'float',
         'platform_fees' => 'float',
         'shipping_costs' => 'float',
+        'mileage' => 'float',
+        'other_expenses' => 'float',
         'net_profit' => 'float'
     ];
 
@@ -75,10 +79,14 @@ class GetAnalyticBookkeepingResponseAnnualTotals implements ModelInterface, Arra
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'gross_sales' => null,
+        'refunds' => null,
         'revenue' => null,
         'cogs' => null,
         'platform_fees' => null,
         'shipping_costs' => null,
+        'mileage' => null,
+        'other_expenses' => null,
         'net_profit' => null
     ];
 
@@ -109,10 +117,14 @@ class GetAnalyticBookkeepingResponseAnnualTotals implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
+        'gross_sales' => 'grossSales',
+        'refunds' => 'refunds',
         'revenue' => 'revenue',
         'cogs' => 'cogs',
         'platform_fees' => 'platformFees',
         'shipping_costs' => 'shippingCosts',
+        'mileage' => 'mileage',
+        'other_expenses' => 'otherExpenses',
         'net_profit' => 'netProfit'
     ];
 
@@ -122,10 +134,14 @@ class GetAnalyticBookkeepingResponseAnnualTotals implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
+        'gross_sales' => 'setGrossSales',
+        'refunds' => 'setRefunds',
         'revenue' => 'setRevenue',
         'cogs' => 'setCogs',
         'platform_fees' => 'setPlatformFees',
         'shipping_costs' => 'setShippingCosts',
+        'mileage' => 'setMileage',
+        'other_expenses' => 'setOtherExpenses',
         'net_profit' => 'setNetProfit'
     ];
 
@@ -135,10 +151,14 @@ class GetAnalyticBookkeepingResponseAnnualTotals implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
+        'gross_sales' => 'getGrossSales',
+        'refunds' => 'getRefunds',
         'revenue' => 'getRevenue',
         'cogs' => 'getCogs',
         'platform_fees' => 'getPlatformFees',
         'shipping_costs' => 'getShippingCosts',
+        'mileage' => 'getMileage',
+        'other_expenses' => 'getOtherExpenses',
         'net_profit' => 'getNetProfit'
     ];
 
@@ -199,10 +219,14 @@ class GetAnalyticBookkeepingResponseAnnualTotals implements ModelInterface, Arra
      */
     public function __construct(array $data = null)
     {
+        $this->container['gross_sales'] = $data['gross_sales'] ?? null;
+        $this->container['refunds'] = $data['refunds'] ?? null;
         $this->container['revenue'] = $data['revenue'] ?? null;
         $this->container['cogs'] = $data['cogs'] ?? null;
         $this->container['platform_fees'] = $data['platform_fees'] ?? null;
         $this->container['shipping_costs'] = $data['shipping_costs'] ?? null;
+        $this->container['mileage'] = $data['mileage'] ?? null;
+        $this->container['other_expenses'] = $data['other_expenses'] ?? null;
         $this->container['net_profit'] = $data['net_profit'] ?? null;
     }
 
@@ -215,6 +239,12 @@ class GetAnalyticBookkeepingResponseAnnualTotals implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
+        if ($this->container['gross_sales'] === null) {
+            $invalidProperties[] = "'gross_sales' can't be null";
+        }
+        if ($this->container['refunds'] === null) {
+            $invalidProperties[] = "'refunds' can't be null";
+        }
         if ($this->container['revenue'] === null) {
             $invalidProperties[] = "'revenue' can't be null";
         }
@@ -226,6 +256,12 @@ class GetAnalyticBookkeepingResponseAnnualTotals implements ModelInterface, Arra
         }
         if ($this->container['shipping_costs'] === null) {
             $invalidProperties[] = "'shipping_costs' can't be null";
+        }
+        if ($this->container['mileage'] === null) {
+            $invalidProperties[] = "'mileage' can't be null";
+        }
+        if ($this->container['other_expenses'] === null) {
+            $invalidProperties[] = "'other_expenses' can't be null";
         }
         if ($this->container['net_profit'] === null) {
             $invalidProperties[] = "'net_profit' can't be null";
@@ -244,6 +280,54 @@ class GetAnalyticBookkeepingResponseAnnualTotals implements ModelInterface, Arra
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets gross_sales
+     *
+     * @return float
+     */
+    public function getGrossSales()
+    {
+        return $this->container['gross_sales'];
+    }
+
+    /**
+     * Sets gross_sales
+     *
+     * @param float $gross_sales gross_sales
+     *
+     * @return self
+     */
+    public function setGrossSales($gross_sales)
+    {
+        $this->container['gross_sales'] = $gross_sales;
+
+        return $this;
+    }
+
+    /**
+     * Gets refunds
+     *
+     * @return float
+     */
+    public function getRefunds()
+    {
+        return $this->container['refunds'];
+    }
+
+    /**
+     * Sets refunds
+     *
+     * @param float $refunds refunds
+     *
+     * @return self
+     */
+    public function setRefunds($refunds)
+    {
+        $this->container['refunds'] = $refunds;
+
+        return $this;
+    }
 
     /**
      * Gets revenue
@@ -337,6 +421,54 @@ class GetAnalyticBookkeepingResponseAnnualTotals implements ModelInterface, Arra
     public function setShippingCosts($shipping_costs)
     {
         $this->container['shipping_costs'] = $shipping_costs;
+
+        return $this;
+    }
+
+    /**
+     * Gets mileage
+     *
+     * @return float
+     */
+    public function getMileage()
+    {
+        return $this->container['mileage'];
+    }
+
+    /**
+     * Sets mileage
+     *
+     * @param float $mileage mileage
+     *
+     * @return self
+     */
+    public function setMileage($mileage)
+    {
+        $this->container['mileage'] = $mileage;
+
+        return $this;
+    }
+
+    /**
+     * Gets other_expenses
+     *
+     * @return float
+     */
+    public function getOtherExpenses()
+    {
+        return $this->container['other_expenses'];
+    }
+
+    /**
+     * Sets other_expenses
+     *
+     * @param float $other_expenses other_expenses
+     *
+     * @return self
+     */
+    public function setOtherExpenses($other_expenses)
+    {
+        $this->container['other_expenses'] = $other_expenses;
 
         return $this;
     }

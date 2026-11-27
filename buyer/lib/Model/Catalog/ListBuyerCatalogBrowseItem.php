@@ -79,6 +79,7 @@ class ListBuyerCatalogBrowseItem implements ModelInterface, ArrayAccess, \JsonSe
         'ai_media' => 'bool',
         'ai_media_detected' => 'bool',
         'ships_from_country' => 'string',
+        'has_passport' => 'bool',
         'sold_at' => 'string',
         'sold_price_cents' => 'float',
         'sold_quantity' => 'float'
@@ -111,6 +112,7 @@ class ListBuyerCatalogBrowseItem implements ModelInterface, ArrayAccess, \JsonSe
         'ai_media' => null,
         'ai_media_detected' => null,
         'ships_from_country' => null,
+        'has_passport' => null,
         'sold_at' => null,
         'sold_price_cents' => null,
         'sold_quantity' => null
@@ -162,6 +164,7 @@ class ListBuyerCatalogBrowseItem implements ModelInterface, ArrayAccess, \JsonSe
         'ai_media' => 'aiMedia',
         'ai_media_detected' => 'aiMediaDetected',
         'ships_from_country' => 'shipsFromCountry',
+        'has_passport' => 'hasPassport',
         'sold_at' => 'soldAt',
         'sold_price_cents' => 'soldPriceCents',
         'sold_quantity' => 'soldQuantity'
@@ -192,6 +195,7 @@ class ListBuyerCatalogBrowseItem implements ModelInterface, ArrayAccess, \JsonSe
         'ai_media' => 'setAiMedia',
         'ai_media_detected' => 'setAiMediaDetected',
         'ships_from_country' => 'setShipsFromCountry',
+        'has_passport' => 'setHasPassport',
         'sold_at' => 'setSoldAt',
         'sold_price_cents' => 'setSoldPriceCents',
         'sold_quantity' => 'setSoldQuantity'
@@ -222,6 +226,7 @@ class ListBuyerCatalogBrowseItem implements ModelInterface, ArrayAccess, \JsonSe
         'ai_media' => 'getAiMedia',
         'ai_media_detected' => 'getAiMediaDetected',
         'ships_from_country' => 'getShipsFromCountry',
+        'has_passport' => 'getHasPassport',
         'sold_at' => 'getSoldAt',
         'sold_price_cents' => 'getSoldPriceCents',
         'sold_quantity' => 'getSoldQuantity'
@@ -303,6 +308,7 @@ class ListBuyerCatalogBrowseItem implements ModelInterface, ArrayAccess, \JsonSe
         $this->container['ai_media'] = $data['ai_media'] ?? null;
         $this->container['ai_media_detected'] = $data['ai_media_detected'] ?? null;
         $this->container['ships_from_country'] = $data['ships_from_country'] ?? null;
+        $this->container['has_passport'] = $data['has_passport'] ?? null;
         $this->container['sold_at'] = $data['sold_at'] ?? null;
         $this->container['sold_price_cents'] = $data['sold_price_cents'] ?? null;
         $this->container['sold_quantity'] = $data['sold_quantity'] ?? null;
@@ -814,6 +820,30 @@ class ListBuyerCatalogBrowseItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setShipsFromCountry($ships_from_country)
     {
         $this->container['ships_from_country'] = $ships_from_country;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_passport
+     *
+     * @return bool|null
+     */
+    public function getHasPassport()
+    {
+        return $this->container['has_passport'];
+    }
+
+    /**
+     * Sets has_passport
+     *
+     * @param bool|null $has_passport The item has an active Crossly Passport (the tile's \"Crossly Passport\" chip, docs/PASSPORTS.md §7.4).  Optional: only the main browse query reads it; other row builders leave it out.
+     *
+     * @return self
+     */
+    public function setHasPassport($has_passport)
+    {
+        $this->container['has_passport'] = $has_passport;
 
         return $this;
     }

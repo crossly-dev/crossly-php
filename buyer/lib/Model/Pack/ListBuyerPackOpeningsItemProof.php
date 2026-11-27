@@ -60,14 +60,14 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'nonce' => 'float',
-        'tier_id' => 'string',
-        'server_seed' => 'string',
         'server_seed_hash' => 'string',
+        'server_seed' => 'string',
         'client_seed' => 'string',
-        'pool_item_id' => 'string',
+        'nonce' => 'float',
         'tier_item_ids' => 'string[]',
-        'tier_weights' => '\Crossly\Buyer\Model\Pack\ListBuyerPackOpeningsItemProofTierWeights[]'
+        'tier_weights' => '\Crossly\Buyer\Model\Pack\ListBuyerPackOpeningsItemProofTierWeights[]',
+        'tier_id' => 'string',
+        'pool_item_id' => 'string'
     ];
 
     /**
@@ -78,14 +78,14 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'nonce' => null,
-        'tier_id' => null,
-        'server_seed' => null,
         'server_seed_hash' => null,
+        'server_seed' => null,
         'client_seed' => null,
-        'pool_item_id' => null,
+        'nonce' => null,
         'tier_item_ids' => null,
-        'tier_weights' => null
+        'tier_weights' => null,
+        'tier_id' => null,
+        'pool_item_id' => null
     ];
 
     /**
@@ -115,14 +115,14 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'nonce' => 'nonce',
-        'tier_id' => 'tierId',
-        'server_seed' => 'serverSeed',
         'server_seed_hash' => 'serverSeedHash',
+        'server_seed' => 'serverSeed',
         'client_seed' => 'clientSeed',
-        'pool_item_id' => 'poolItemId',
+        'nonce' => 'nonce',
         'tier_item_ids' => 'tierItemIds',
-        'tier_weights' => 'tierWeights'
+        'tier_weights' => 'tierWeights',
+        'tier_id' => 'tierId',
+        'pool_item_id' => 'poolItemId'
     ];
 
     /**
@@ -131,14 +131,14 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'nonce' => 'setNonce',
-        'tier_id' => 'setTierId',
-        'server_seed' => 'setServerSeed',
         'server_seed_hash' => 'setServerSeedHash',
+        'server_seed' => 'setServerSeed',
         'client_seed' => 'setClientSeed',
-        'pool_item_id' => 'setPoolItemId',
+        'nonce' => 'setNonce',
         'tier_item_ids' => 'setTierItemIds',
-        'tier_weights' => 'setTierWeights'
+        'tier_weights' => 'setTierWeights',
+        'tier_id' => 'setTierId',
+        'pool_item_id' => 'setPoolItemId'
     ];
 
     /**
@@ -147,14 +147,14 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'nonce' => 'getNonce',
-        'tier_id' => 'getTierId',
-        'server_seed' => 'getServerSeed',
         'server_seed_hash' => 'getServerSeedHash',
+        'server_seed' => 'getServerSeed',
         'client_seed' => 'getClientSeed',
-        'pool_item_id' => 'getPoolItemId',
+        'nonce' => 'getNonce',
         'tier_item_ids' => 'getTierItemIds',
-        'tier_weights' => 'getTierWeights'
+        'tier_weights' => 'getTierWeights',
+        'tier_id' => 'getTierId',
+        'pool_item_id' => 'getPoolItemId'
     ];
 
     /**
@@ -214,14 +214,14 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['nonce'] = $data['nonce'] ?? null;
-        $this->container['tier_id'] = $data['tier_id'] ?? null;
-        $this->container['server_seed'] = $data['server_seed'] ?? null;
         $this->container['server_seed_hash'] = $data['server_seed_hash'] ?? null;
+        $this->container['server_seed'] = $data['server_seed'] ?? null;
         $this->container['client_seed'] = $data['client_seed'] ?? null;
-        $this->container['pool_item_id'] = $data['pool_item_id'] ?? null;
+        $this->container['nonce'] = $data['nonce'] ?? null;
         $this->container['tier_item_ids'] = $data['tier_item_ids'] ?? null;
         $this->container['tier_weights'] = $data['tier_weights'] ?? null;
+        $this->container['tier_id'] = $data['tier_id'] ?? null;
+        $this->container['pool_item_id'] = $data['pool_item_id'] ?? null;
     }
 
     /**
@@ -233,14 +233,14 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['nonce'] === null) {
-            $invalidProperties[] = "'nonce' can't be null";
-        }
         if ($this->container['server_seed_hash'] === null) {
             $invalidProperties[] = "'server_seed_hash' can't be null";
         }
         if ($this->container['client_seed'] === null) {
             $invalidProperties[] = "'client_seed' can't be null";
+        }
+        if ($this->container['nonce'] === null) {
+            $invalidProperties[] = "'nonce' can't be null";
         }
         return $invalidProperties;
     }
@@ -258,49 +258,25 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets nonce
+     * Gets server_seed_hash
      *
-     * @return float
+     * @return string
      */
-    public function getNonce()
+    public function getServerSeedHash()
     {
-        return $this->container['nonce'];
+        return $this->container['server_seed_hash'];
     }
 
     /**
-     * Sets nonce
+     * Sets server_seed_hash
      *
-     * @param float $nonce nonce
+     * @param string $server_seed_hash server_seed_hash
      *
      * @return self
      */
-    public function setNonce($nonce)
+    public function setServerSeedHash($server_seed_hash)
     {
-        $this->container['nonce'] = $nonce;
-
-        return $this;
-    }
-
-    /**
-     * Gets tier_id
-     *
-     * @return string|null
-     */
-    public function getTierId()
-    {
-        return $this->container['tier_id'];
-    }
-
-    /**
-     * Sets tier_id
-     *
-     * @param string|null $tier_id tier_id
-     *
-     * @return self
-     */
-    public function setTierId($tier_id)
-    {
-        $this->container['tier_id'] = $tier_id;
+        $this->container['server_seed_hash'] = $server_seed_hash;
 
         return $this;
     }
@@ -330,30 +306,6 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets server_seed_hash
-     *
-     * @return string
-     */
-    public function getServerSeedHash()
-    {
-        return $this->container['server_seed_hash'];
-    }
-
-    /**
-     * Sets server_seed_hash
-     *
-     * @param string $server_seed_hash server_seed_hash
-     *
-     * @return self
-     */
-    public function setServerSeedHash($server_seed_hash)
-    {
-        $this->container['server_seed_hash'] = $server_seed_hash;
-
-        return $this;
-    }
-
-    /**
      * Gets client_seed
      *
      * @return string
@@ -378,25 +330,25 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets pool_item_id
+     * Gets nonce
      *
-     * @return string|null
+     * @return float
      */
-    public function getPoolItemId()
+    public function getNonce()
     {
-        return $this->container['pool_item_id'];
+        return $this->container['nonce'];
     }
 
     /**
-     * Sets pool_item_id
+     * Sets nonce
      *
-     * @param string|null $pool_item_id pool_item_id
+     * @param float $nonce nonce
      *
      * @return self
      */
-    public function setPoolItemId($pool_item_id)
+    public function setNonce($nonce)
     {
-        $this->container['pool_item_id'] = $pool_item_id;
+        $this->container['nonce'] = $nonce;
 
         return $this;
     }
@@ -445,6 +397,54 @@ class ListBuyerPackOpeningsItemProof implements ModelInterface, ArrayAccess, \Js
     public function setTierWeights($tier_weights)
     {
         $this->container['tier_weights'] = $tier_weights;
+
+        return $this;
+    }
+
+    /**
+     * Gets tier_id
+     *
+     * @return string|null
+     */
+    public function getTierId()
+    {
+        return $this->container['tier_id'];
+    }
+
+    /**
+     * Sets tier_id
+     *
+     * @param string|null $tier_id tier_id
+     *
+     * @return self
+     */
+    public function setTierId($tier_id)
+    {
+        $this->container['tier_id'] = $tier_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets pool_item_id
+     *
+     * @return string|null
+     */
+    public function getPoolItemId()
+    {
+        return $this->container['pool_item_id'];
+    }
+
+    /**
+     * Sets pool_item_id
+     *
+     * @param string|null $pool_item_id pool_item_id
+     *
+     * @return self
+     */
+    public function setPoolItemId($pool_item_id)
+    {
+        $this->container['pool_item_id'] = $pool_item_id;
 
         return $this;
     }

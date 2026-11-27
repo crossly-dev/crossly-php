@@ -60,8 +60,8 @@ class CreateBuyerCartOptimizerResponseDataLinesLine implements ModelInterface, A
       * @var string[]
       */
     protected static $openAPITypes = [
-        'quantity' => 'float',
-        'query' => 'string'
+        'query' => 'string',
+        'quantity' => 'float'
     ];
 
     /**
@@ -72,8 +72,8 @@ class CreateBuyerCartOptimizerResponseDataLinesLine implements ModelInterface, A
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'quantity' => null,
-        'query' => null
+        'query' => null,
+        'quantity' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CreateBuyerCartOptimizerResponseDataLinesLine implements ModelInterface, A
      * @var string[]
      */
     protected static $attributeMap = [
-        'quantity' => 'quantity',
-        'query' => 'query'
+        'query' => 'query',
+        'quantity' => 'quantity'
     ];
 
     /**
@@ -113,8 +113,8 @@ class CreateBuyerCartOptimizerResponseDataLinesLine implements ModelInterface, A
      * @var string[]
      */
     protected static $setters = [
-        'quantity' => 'setQuantity',
-        'query' => 'setQuery'
+        'query' => 'setQuery',
+        'quantity' => 'setQuantity'
     ];
 
     /**
@@ -123,8 +123,8 @@ class CreateBuyerCartOptimizerResponseDataLinesLine implements ModelInterface, A
      * @var string[]
      */
     protected static $getters = [
-        'quantity' => 'getQuantity',
-        'query' => 'getQuery'
+        'query' => 'getQuery',
+        'quantity' => 'getQuantity'
     ];
 
     /**
@@ -184,8 +184,8 @@ class CreateBuyerCartOptimizerResponseDataLinesLine implements ModelInterface, A
      */
     public function __construct(array $data = null)
     {
-        $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['query'] = $data['query'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
     }
 
     /**
@@ -197,11 +197,11 @@ class CreateBuyerCartOptimizerResponseDataLinesLine implements ModelInterface, A
     {
         $invalidProperties = [];
 
-        if ($this->container['quantity'] === null) {
-            $invalidProperties[] = "'quantity' can't be null";
-        }
         if ($this->container['query'] === null) {
             $invalidProperties[] = "'query' can't be null";
+        }
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,30 +217,6 @@ class CreateBuyerCartOptimizerResponseDataLinesLine implements ModelInterface, A
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets quantity
-     *
-     * @return float
-     */
-    public function getQuantity()
-    {
-        return $this->container['quantity'];
-    }
-
-    /**
-     * Sets quantity
-     *
-     * @param float $quantity quantity
-     *
-     * @return self
-     */
-    public function setQuantity($quantity)
-    {
-        $this->container['quantity'] = $quantity;
-
-        return $this;
-    }
 
     /**
      * Gets query
@@ -262,6 +238,30 @@ class CreateBuyerCartOptimizerResponseDataLinesLine implements ModelInterface, A
     public function setQuery($query)
     {
         $this->container['query'] = $query;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return float
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param float $quantity quantity
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }

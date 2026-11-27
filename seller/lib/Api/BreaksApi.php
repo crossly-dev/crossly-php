@@ -500,7 +500,7 @@ class BreaksApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Crossly\Model\Breaks\CreateBreakCancelResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @return \Crossly\Model\Group\UpdateGroupBuyResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
     public function createBreakCancel($id)
     {
@@ -517,7 +517,7 @@ class BreaksApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Crossly\Model\Breaks\CreateBreakCancelResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Crossly\Model\Group\UpdateGroupBuyResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createBreakCancelWithHttpInfo($id)
     {
@@ -560,14 +560,14 @@ class BreaksApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Crossly\Model\Breaks\CreateBreakCancelResponse' === '\SplFileObject') {
+                    if ('\Crossly\Model\Group\UpdateGroupBuyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Crossly\Model\Breaks\CreateBreakCancelResponse', []),
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Group\UpdateGroupBuyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -645,7 +645,7 @@ class BreaksApi
                     ];
             }
 
-            $returnType = '\Crossly\Model\Breaks\CreateBreakCancelResponse';
+            $returnType = '\Crossly\Model\Group\UpdateGroupBuyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -663,7 +663,7 @@ class BreaksApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Crossly\Model\Breaks\CreateBreakCancelResponse',
+                        '\Crossly\Model\Group\UpdateGroupBuyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -753,7 +753,7 @@ class BreaksApi
      */
     public function createBreakCancelAsyncWithHttpInfo($id)
     {
-        $returnType = '\Crossly\Model\Breaks\CreateBreakCancelResponse';
+        $returnType = '\Crossly\Model\Group\UpdateGroupBuyResponse';
         $request = $this->createBreakCancelRequest($id);
 
         return $this->client
@@ -1290,7 +1290,7 @@ class BreaksApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Crossly\Model\Breaks\CreateBreakCancelResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @return \Crossly\Model\Group\UpdateGroupBuyResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
     public function createBreakOpened($id)
     {
@@ -1307,7 +1307,7 @@ class BreaksApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Crossly\Model\Breaks\CreateBreakCancelResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Crossly\Model\Group\UpdateGroupBuyResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createBreakOpenedWithHttpInfo($id)
     {
@@ -1350,14 +1350,14 @@ class BreaksApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Crossly\Model\Breaks\CreateBreakCancelResponse' === '\SplFileObject') {
+                    if ('\Crossly\Model\Group\UpdateGroupBuyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Crossly\Model\Breaks\CreateBreakCancelResponse', []),
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Group\UpdateGroupBuyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1435,7 +1435,7 @@ class BreaksApi
                     ];
             }
 
-            $returnType = '\Crossly\Model\Breaks\CreateBreakCancelResponse';
+            $returnType = '\Crossly\Model\Group\UpdateGroupBuyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1453,7 +1453,7 @@ class BreaksApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Crossly\Model\Breaks\CreateBreakCancelResponse',
+                        '\Crossly\Model\Group\UpdateGroupBuyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1543,7 +1543,7 @@ class BreaksApi
      */
     public function createBreakOpenedAsyncWithHttpInfo($id)
     {
-        $returnType = '\Crossly\Model\Breaks\CreateBreakCancelResponse';
+        $returnType = '\Crossly\Model\Group\UpdateGroupBuyResponse';
         $request = $this->createBreakOpenedRequest($id);
 
         return $this->client
@@ -1686,7 +1686,7 @@ class BreaksApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Crossly\Model\Breaks\CreateBreakCancelResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @return \Crossly\Model\Group\UpdateGroupBuyResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
      */
     public function createBreakSpotHit($id, $spot_id)
     {
@@ -1704,7 +1704,7 @@ class BreaksApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Crossly\Model\Breaks\CreateBreakCancelResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Crossly\Model\Group\UpdateGroupBuyResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createBreakSpotHitWithHttpInfo($id, $spot_id)
     {
@@ -1747,14 +1747,14 @@ class BreaksApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Crossly\Model\Breaks\CreateBreakCancelResponse' === '\SplFileObject') {
+                    if ('\Crossly\Model\Group\UpdateGroupBuyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Crossly\Model\Breaks\CreateBreakCancelResponse', []),
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Group\UpdateGroupBuyResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1832,7 +1832,7 @@ class BreaksApi
                     ];
             }
 
-            $returnType = '\Crossly\Model\Breaks\CreateBreakCancelResponse';
+            $returnType = '\Crossly\Model\Group\UpdateGroupBuyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1850,7 +1850,7 @@ class BreaksApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Crossly\Model\Breaks\CreateBreakCancelResponse',
+                        '\Crossly\Model\Group\UpdateGroupBuyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1942,7 +1942,7 @@ class BreaksApi
      */
     public function createBreakSpotHitAsyncWithHttpInfo($id, $spot_id)
     {
-        $returnType = '\Crossly\Model\Breaks\CreateBreakCancelResponse';
+        $returnType = '\Crossly\Model\Group\UpdateGroupBuyResponse';
         $request = $this->createBreakSpotHitRequest($id, $spot_id);
 
         return $this->client

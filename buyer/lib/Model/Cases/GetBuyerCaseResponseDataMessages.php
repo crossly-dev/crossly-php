@@ -61,10 +61,10 @@ class GetBuyerCaseResponseDataMessages implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
-        'kind' => 'string',
-        'body' => 'string',
         'author_role' => 'string',
+        'body' => 'string',
+        'kind' => 'string',
+        'created_at' => 'string',
         'attachment_urls' => 'string[]'
     ];
 
@@ -77,10 +77,10 @@ class GetBuyerCaseResponseDataMessages implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
-        'kind' => null,
-        'body' => null,
         'author_role' => null,
+        'body' => null,
+        'kind' => null,
+        'created_at' => null,
         'attachment_urls' => null
     ];
 
@@ -112,10 +112,10 @@ class GetBuyerCaseResponseDataMessages implements ModelInterface, ArrayAccess, \
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'kind' => 'kind',
-        'body' => 'body',
         'author_role' => 'authorRole',
+        'body' => 'body',
+        'kind' => 'kind',
+        'created_at' => 'createdAt',
         'attachment_urls' => 'attachmentUrls'
     ];
 
@@ -126,10 +126,10 @@ class GetBuyerCaseResponseDataMessages implements ModelInterface, ArrayAccess, \
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'kind' => 'setKind',
-        'body' => 'setBody',
         'author_role' => 'setAuthorRole',
+        'body' => 'setBody',
+        'kind' => 'setKind',
+        'created_at' => 'setCreatedAt',
         'attachment_urls' => 'setAttachmentUrls'
     ];
 
@@ -140,10 +140,10 @@ class GetBuyerCaseResponseDataMessages implements ModelInterface, ArrayAccess, \
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'kind' => 'getKind',
-        'body' => 'getBody',
         'author_role' => 'getAuthorRole',
+        'body' => 'getBody',
+        'kind' => 'getKind',
+        'created_at' => 'getCreatedAt',
         'attachment_urls' => 'getAttachmentUrls'
     ];
 
@@ -205,10 +205,10 @@ class GetBuyerCaseResponseDataMessages implements ModelInterface, ArrayAccess, \
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['kind'] = $data['kind'] ?? null;
-        $this->container['body'] = $data['body'] ?? null;
         $this->container['author_role'] = $data['author_role'] ?? null;
+        $this->container['body'] = $data['body'] ?? null;
+        $this->container['kind'] = $data['kind'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['attachment_urls'] = $data['attachment_urls'] ?? null;
     }
 
@@ -224,17 +224,17 @@ class GetBuyerCaseResponseDataMessages implements ModelInterface, ArrayAccess, \
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['kind'] === null) {
-            $invalidProperties[] = "'kind' can't be null";
+        if ($this->container['author_role'] === null) {
+            $invalidProperties[] = "'author_role' can't be null";
         }
         if ($this->container['body'] === null) {
             $invalidProperties[] = "'body' can't be null";
         }
-        if ($this->container['author_role'] === null) {
-            $invalidProperties[] = "'author_role' can't be null";
+        if ($this->container['kind'] === null) {
+            $invalidProperties[] = "'kind' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -276,49 +276,25 @@ class GetBuyerCaseResponseDataMessages implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets created_at
+     * Gets author_role
      *
      * @return string
      */
-    public function getCreatedAt()
+    public function getAuthorRole()
     {
-        return $this->container['created_at'];
+        return $this->container['author_role'];
     }
 
     /**
-     * Sets created_at
+     * Sets author_role
      *
-     * @param string $created_at created_at
+     * @param string $author_role buyer | seller | ops | system.
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setAuthorRole($author_role)
     {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets kind
-     *
-     * @return string
-     */
-    public function getKind()
-    {
-        return $this->container['kind'];
-    }
-
-    /**
-     * Sets kind
-     *
-     * @param string $kind message | offer | decision | state_change.
-     *
-     * @return self
-     */
-    public function setKind($kind)
-    {
-        $this->container['kind'] = $kind;
+        $this->container['author_role'] = $author_role;
 
         return $this;
     }
@@ -348,25 +324,49 @@ class GetBuyerCaseResponseDataMessages implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets author_role
+     * Gets kind
      *
      * @return string
      */
-    public function getAuthorRole()
+    public function getKind()
     {
-        return $this->container['author_role'];
+        return $this->container['kind'];
     }
 
     /**
-     * Sets author_role
+     * Sets kind
      *
-     * @param string $author_role buyer | seller | ops | system.
+     * @param string $kind message | offer | decision | state_change.
      *
      * @return self
      */
-    public function setAuthorRole($author_role)
+    public function setKind($kind)
     {
-        $this->container['author_role'] = $author_role;
+        $this->container['kind'] = $kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

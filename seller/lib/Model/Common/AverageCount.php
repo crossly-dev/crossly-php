@@ -36,6 +36,7 @@ use \Crossly\ObjectSerializer;
  * AverageCount Class Doc Comment
  *
  * @category Class
+ * @description 1172 ratings: average stars (null before the first) and how many.
  * @package  Crossly
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

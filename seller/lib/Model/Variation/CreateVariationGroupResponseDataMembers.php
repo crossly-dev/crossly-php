@@ -62,6 +62,7 @@ class CreateVariationGroupResponseDataMembers implements ModelInterface, ArrayAc
     protected static $openAPITypes = [
         'listing_id' => 'string',
         'axis_value' => 'string',
+        'options' => 'array<string,mixed>',
         'sort_key' => 'float',
         'title' => 'string',
         'price' => 'string',
@@ -81,6 +82,7 @@ class CreateVariationGroupResponseDataMembers implements ModelInterface, ArrayAc
     protected static $openAPIFormats = [
         'listing_id' => null,
         'axis_value' => null,
+        'options' => null,
         'sort_key' => null,
         'title' => null,
         'price' => null,
@@ -119,6 +121,7 @@ class CreateVariationGroupResponseDataMembers implements ModelInterface, ArrayAc
     protected static $attributeMap = [
         'listing_id' => 'listingId',
         'axis_value' => 'axisValue',
+        'options' => 'options',
         'sort_key' => 'sortKey',
         'title' => 'title',
         'price' => 'price',
@@ -136,6 +139,7 @@ class CreateVariationGroupResponseDataMembers implements ModelInterface, ArrayAc
     protected static $setters = [
         'listing_id' => 'setListingId',
         'axis_value' => 'setAxisValue',
+        'options' => 'setOptions',
         'sort_key' => 'setSortKey',
         'title' => 'setTitle',
         'price' => 'setPrice',
@@ -153,6 +157,7 @@ class CreateVariationGroupResponseDataMembers implements ModelInterface, ArrayAc
     protected static $getters = [
         'listing_id' => 'getListingId',
         'axis_value' => 'getAxisValue',
+        'options' => 'getOptions',
         'sort_key' => 'getSortKey',
         'title' => 'getTitle',
         'price' => 'getPrice',
@@ -221,6 +226,7 @@ class CreateVariationGroupResponseDataMembers implements ModelInterface, ArrayAc
     {
         $this->container['listing_id'] = $data['listing_id'] ?? null;
         $this->container['axis_value'] = $data['axis_value'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
         $this->container['sort_key'] = $data['sort_key'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['price'] = $data['price'] ?? null;
@@ -310,6 +316,30 @@ class CreateVariationGroupResponseDataMembers implements ModelInterface, ArrayAc
     public function setAxisValue($axis_value)
     {
         $this->container['axis_value'] = $axis_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param array<string,mixed>|null $options The member's value on every axis of a multi-axis group; null on a single-axis member.
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
 
         return $this;
     }

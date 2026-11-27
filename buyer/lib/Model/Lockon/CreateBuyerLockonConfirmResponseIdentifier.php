@@ -168,8 +168,8 @@ class CreateBuyerLockonConfirmResponseIdentifier implements ModelInterface, Arra
         return self::$openAPIModelName;
     }
 
-    const NS_STYLE_CODE = 'style_code';
     const NS_GTIN = 'gtin';
+    const NS_STYLE_CODE = 'style_code';
     const NS_LEGO_SET = 'lego_set';
     const NS_TCGPLAYER = 'tcgplayer';
     const NS_DISCOGS = 'discogs';
@@ -183,8 +183,8 @@ class CreateBuyerLockonConfirmResponseIdentifier implements ModelInterface, Arra
     public function getNsAllowableValues()
     {
         return [
-            self::NS_STYLE_CODE,
             self::NS_GTIN,
+            self::NS_STYLE_CODE,
             self::NS_LEGO_SET,
             self::NS_TCGPLAYER,
             self::NS_DISCOGS,

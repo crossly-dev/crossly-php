@@ -97,14 +97,19 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**createBuyerCatalogListingRental**](docs/Api/BuyerApi.md#createbuyercataloglistingrental) | **POST** /v1/buyer/catalog/listings/{slug}/rental | Book a rental. Returns a Stripe PaymentIntent client secret for rent + shipping both ways + deposit; the dates are held 30 minutes for payment. Crossly buys both labels; the deposit comes back after the item does.
 *BuyerApi* | [**createBuyerCatalogListingRentalQuote**](docs/Api/BuyerApi.md#createbuyercataloglistingrentalquote) | **POST** /v1/buyer/catalog/listings/{slug}/rental/quote | Price a rental: rent (the cheaper of by-the-day and by-the-week), both shipping legs once a ship-to is given, and the deposit. &#x60;problem&#x60; says why the dates can’t be booked.
 *BuyerApi* | [**createBuyerCatalogListingVideoRequest**](docs/Api/BuyerApi.md#createbuyercataloglistingvideorequest) | **POST** /v1/buyer/catalog/listings/{slug}/video-requests | Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
+*BuyerApi* | [**createBuyerCompany**](docs/Api/BuyerApi.md#createbuyercompany) | **POST** /v1/buyer/company | Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
+*BuyerApi* | [**createBuyerCompanyApproval**](docs/Api/BuyerApi.md#createbuyercompanyapproval) | **POST** /v1/buyer/company/approvals | Ask for approval of a trade order above your limit: sellerUserId, amountCents, note?, poReference?. Good for 7 days, used once at checkout.
+*BuyerApi* | [**createBuyerCompanyApprovalDecide**](docs/Api/BuyerApi.md#createbuyercompanyapprovaldecide) | **POST** /v1/buyer/company/approvals/{id}/decide | Approve or decline a pending request (owner, accounts payable): decision approved | declined, note?.
+*BuyerApi* | [**createBuyerCompanyMember**](docs/Api/BuyerApi.md#createbuyercompanymember) | **POST** /v1/buyer/company/members | Invite a teammate by email (owner): role owner | buyer | accounts_payable | viewer, approvalLimitCents for a buyer (orders above it need an approval).
 *BuyerApi* | [**createBuyerConversationInvite**](docs/Api/BuyerApi.md#createbuyerconversationinvite) | **POST** /v1/buyer/conversations/{id}/invite | Invite a friend into a chat with a seller: a single-use link (7 days) that makes whoever opens it a guest who can read and post. Only the thread’s buyer can invite; at most 5 guests.
 *BuyerApi* | [**createBuyerConversationJoin**](docs/Api/BuyerApi.md#createbuyerconversationjoin) | **POST** /v1/buyer/conversations/join/{token} | Join a chat you were invited into, as a guest.
+*BuyerApi* | [**createBuyerEventRsvp**](docs/Api/BuyerApi.md#createbuyereventrsvp) | **POST** /v1/buyer/events/{slug}/rsvp | RSVP to an event: going (counts against its capacity) or interested.
 *BuyerApi* | [**createBuyerFeedback**](docs/Api/BuyerApi.md#createbuyerfeedback) | **POST** /v1/buyer/feedback | Leave feedback on up to 25 orders at once, with optional detailed seller ratings.
 *BuyerApi* | [**createBuyerFitRef**](docs/Api/BuyerApi.md#createbuyerfitref) | **POST** /v1/buyer/fit/refs | Save a reference garment (flat measurements, inches) to compare listings against.
 *BuyerApi* | [**createBuyerFollowingSellerSeen**](docs/Api/BuyerApi.md#createbuyerfollowingsellerseen) | **POST** /v1/buyer/following/sellers/seen | Clear the \&quot;new listings\&quot; count on a followed seller, or on all of them.
 *BuyerApi* | [**createBuyerGiftCard**](docs/Api/BuyerApi.md#createbuyergiftcard) | **POST** /v1/buyer/gift-cards | Start a gift card purchase.
 *BuyerApi* | [**createBuyerGiftCardRedeem**](docs/Api/BuyerApi.md#createbuyergiftcardredeem) | **POST** /v1/buyer/gift-cards/redeem | Redeem a gift card code into your own balance.
-*BuyerApi* | [**createBuyerGroupBuyJoin**](docs/Api/BuyerApi.md#createbuyergroupbuyjoin) | **POST** /v1/buyer/group-buys/{id}/join | Join a group buy: a hold at the starting price, captured at the price the group reaches. Checked against this key’s spending controls; send an Idempotency-Key.
+*BuyerApi* | [**createBuyerGroupBuyJoin**](docs/Api/BuyerApi.md#createbuyergroupbuyjoin) | **POST** /v1/buyer/group-buys/{id}/join | Join a group buy with a quantity (up to its per-buyer max): a hold (or, for pay-now pools, a charge refunded the difference) at the starting price, settled at the price the group reaches. &#x60;linkToken&#x60; opens a link-only pool. Checked against this key’s spending controls; send an Idempotency-Key.
 *BuyerApi* | [**createBuyerGroupBuyLeave**](docs/Api/BuyerApi.md#createbuyergroupbuyleave) | **POST** /v1/buyer/group-buys/{id}/leave | Leave a group buy and release your hold.
 *BuyerApi* | [**createBuyerHunt**](docs/Api/BuyerApi.md#createbuyerhunt) | **POST** /v1/buyer/hunts | Start a buyer-agent hunt — over a search (filters), or auto-buy on one listing (listingSlug: buy it once its price, sale applied, is within maxPriceCents). &#x60;offer&#x60; and &#x60;buy&#x60; modes also need buyer:checkout:write, and the budget is checked against this key’s spending controls.
 *BuyerApi* | [**createBuyerInstantOfferAccept**](docs/Api/BuyerApi.md#createbuyerinstantofferaccept) | **POST** /v1/buyer/instant-offers/{id}/accept | Accept Crossly’s instant offer on a collection item. Ops then send a prepaid label; the store credit is paid once the item arrives and checks out.
@@ -125,22 +130,28 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**createBuyerPackFairnessRotate**](docs/Api/BuyerApi.md#createbuyerpackfairnessrotate) | **POST** /v1/buyer/packs/fairness/rotate | Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
 *BuyerApi* | [**createBuyerPackOpen**](docs/Api/BuyerApi.md#createbuyerpackopen) | **POST** /v1/buyer/packs/{slug}/open | Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
 *BuyerApi* | [**createBuyerPackOpeningSellBack**](docs/Api/BuyerApi.md#createbuyerpackopeningsellback) | **POST** /v1/buyer/pack-openings/{id}/sell-back | Sell a pull straight back for Crossly credit at the pack’s buyback rate, within its window, while it is still in your vault.
-*BuyerApi* | [**createBuyerPassportClaim**](docs/Api/BuyerApi.md#createbuyerpassportclaim) | **POST** /v1/buyer/passports/{code}/claim | Claim a passport as the item’s current owner (the buyer of its latest sale) — shown as “in its owner’s hands” until it sells again.
+*BuyerApi* | [**createBuyerPassportClaim**](docs/Api/BuyerApi.md#createbuyerpassportclaim) | **POST** /v1/buyer/passports/{code}/claim | Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
 *BuyerApi* | [**createBuyerProtectionPlanCancel**](docs/Api/BuyerApi.md#createbuyerprotectionplancancel) | **POST** /v1/buyer/protection-plans/{id}/cancel | Cancel a protection plan. The insurer decides what is refundable (pro-rata after the free-look window); that amount goes back to the card.
-*BuyerApi* | [**createBuyerPurchaseDownload**](docs/Api/BuyerApi.md#createbuyerpurchasedownload) | **POST** /v1/buyer/purchases/{id}/download | A ten-minute link to a digital purchase’s file; each call uses one of its downloads.
 *BuyerApi* | [**createBuyerPurchaseFit**](docs/Api/BuyerApi.md#createbuyerpurchasefit) | **POST** /v1/buyer/purchases/{id}/fit | Say how a delivered purchase fit: true_to_size, small or large. It teaches your size memory and, pooled with other buyers, how the brand runs.
 *BuyerApi* | [**createBuyerPurchaseReturn**](docs/Api/BuyerApi.md#createbuyerpurchasereturn) | **POST** /v1/buyer/purchases/{id}/return | Return a purchase under the seller’s policy, or send back a try-at-home item. With reason doesnt_fit, &#x60;fit&#x60; (small | large) says which way, and it feeds your size memory.
 *BuyerApi* | [**createBuyerRegistry**](docs/Api/BuyerApi.md#createbuyerregistry) | **POST** /v1/buyer/registries | Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
 *BuyerApi* | [**createBuyerRegistryGiftThanked**](docs/Api/BuyerApi.md#createbuyerregistrygiftthanked) | **POST** /v1/buyer/registries/{id}/gifts/{giftId}/thanked | Tick a gift as thanked (or untick it).
 *BuyerApi* | [**createBuyerRentalArrivalPhoto**](docs/Api/BuyerApi.md#createbuyerrentalarrivalphoto) | **POST** /v1/buyer/rentals/{id}/arrival-photos | Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
+*BuyerApi* | [**createBuyerRentalBuyout**](docs/Api/BuyerApi.md#createbuyerrentalbuyout) | **POST** /v1/buyer/rentals/{id}/buyout | Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
 *BuyerApi* | [**createBuyerRentalCancel**](docs/Api/BuyerApi.md#createbuyerrentalcancel) | **POST** /v1/buyer/rentals/{id}/cancel | Cancel a rental that has not shipped: everything is refunded.
 *BuyerApi* | [**createBuyerRentalClaimResponse**](docs/Api/BuyerApi.md#createbuyerrentalclaimresponse) | **POST** /v1/buyer/rentals/{id}/claim-response | Answer a deposit claim: accept (the claim is paid, the rest refunded) or dispute (Crossly decides).
+*BuyerApi* | [**createBuyerRentalDelivered**](docs/Api/BuyerApi.md#createbuyerrentaldelivered) | **POST** /v1/buyer/rentals/{id}/delivered | Confirm your rental arrived.
+*BuyerApi* | [**createBuyerRentalExtension**](docs/Api/BuyerApi.md#createbuyerrentalextension) | **POST** /v1/buyer/rentals/{id}/extensions | Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
+*BuyerApi* | [**createBuyerRentalExtensionPay**](docs/Api/BuyerApi.md#createbuyerrentalextensionpay) | **POST** /v1/buyer/rentals/{id}/extensions/{extensionId}/pay | Pay for an extension the seller approved → clientSecret.
 *BuyerApi* | [**createBuyerRentalIdentityStart**](docs/Api/BuyerApi.md#createbuyerrentalidentitystart) | **POST** /v1/buyer/rentals/identity/start | Start the ID check renting needs (Stripe Identity: photo ID + selfie). Open &#x60;url&#x60; (hosted) or use &#x60;clientSecret&#x60; with Stripe.js.
+*BuyerApi* | [**createBuyerRentalReturnShipped**](docs/Api/BuyerApi.md#createbuyerrentalreturnshipped) | **POST** /v1/buyer/rentals/{id}/return-shipped | Say you sent your rental back (optionally with photos).
 *BuyerApi* | [**createBuyerReturnCancel**](docs/Api/BuyerApi.md#createbuyerreturncancel) | **POST** /v1/buyer/returns/{id}/cancel | Cancel a return before it ships.
 *BuyerApi* | [**createBuyerReturnTracking**](docs/Api/BuyerApi.md#createbuyerreturntracking) | **POST** /v1/buyer/returns/{id}/tracking | Add tracking to a return you shipped on your own label.
 *BuyerApi* | [**createBuyerSellerClubJoin**](docs/Api/BuyerApi.md#createbuyersellerclubjoin) | **POST** /v1/buyer/sellers/{sellerUserId}/club/join | Join a seller’s loyalty club (free). Your tier’s discount then applies to their items — the best of it and any other rate you have with them, never stacked.
+*BuyerApi* | [**createBuyerSellerLoyaltyJoin**](docs/Api/BuyerApi.md#createbuyersellerloyaltyjoin) | **POST** /v1/buyer/sellers/{sellerUserId}/loyalty/join | Join a seller’s loyalty club. Invite-only clubs take only invited buyers. Your tier and its perks are granted at once.
 *BuyerApi* | [**createBuyerSellerReport**](docs/Api/BuyerApi.md#createbuyersellerreport) | **POST** /v1/buyer/sellers/{username}/report | Report a seller to Crossly’s trust team.
 *BuyerApi* | [**createBuyerSplitCancel**](docs/Api/BuyerApi.md#createbuyersplitcancel) | **POST** /v1/buyer/splits/{id}/cancel | Cancel a split you organised; every held share is released.
+*BuyerApi* | [**createBuyerStoreReport**](docs/Api/BuyerApi.md#createbuyerstorereport) | **POST** /v1/buyer/stores/{slug}/report | Report a store to Crossly’s trust team.
 *BuyerApi* | [**createBuyerTogether**](docs/Api/BuyerApi.md#createbuyertogether) | **POST** /v1/buyer/together | Start a shop-together room.
 *BuyerApi* | [**createBuyerTogetherItem**](docs/Api/BuyerApi.md#createbuyertogetheritem) | **POST** /v1/buyer/together/{code}/items | Add a listing to a shop-together board.
 *BuyerApi* | [**createBuyerTogetherItemVote**](docs/Api/BuyerApi.md#createbuyertogetheritemvote) | **POST** /v1/buyer/together/{code}/items/{id}/vote | Vote an item on a room’s board up (1), down (-1) or clear (0).
@@ -151,6 +162,14 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**createBuyerVaultList**](docs/Api/BuyerApi.md#createbuyervaultlist) | **POST** /v1/buyer/vault/{id}/list | Sell a vault item on the market at your price. It is already authenticated, so when it sells nothing ships in: the buyer keeps it vaulted or it ships straight to them.
 *BuyerApi* | [**createBuyerVaultUnlist**](docs/Api/BuyerApi.md#createbuyervaultunlist) | **POST** /v1/buyer/vault/{id}/unlist | Take a vault item off the market; it stays stored.
 *BuyerApi* | [**createBuyerVaultWithdraw**](docs/Api/BuyerApi.md#createbuyervaultwithdraw) | **POST** /v1/buyer/vault/{id}/withdraw | Ship a vault item home, standard or expedited. The shipping, any storage it owes and the early-withdrawal fee (within 90 days of arriving) are charged to your saved card now, all checked against this key’s spending controls; send an Idempotency-Key.
+*BuyerApi* | [**createBuyerWholesaleCatalogApply**](docs/Api/BuyerApi.md#createbuyerwholesalecatalogapply) | **POST** /v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply | Apply to a store&#39;s wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller&#39;s requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
+*BuyerApi* | [**createBuyerWholesaleFreightRequest**](docs/Api/BuyerApi.md#createbuyerwholesalefreightrequest) | **POST** /v1/buyer/wholesale/freight-requests | Ask a seller to quote freight for their lines in your cart (an order over their pallet threshold): { sellerUserId, weightLbs?, shipTo? { postalCode, country, city?, region?, liftgate?, dock? }, note? }. One open request per seller.
+*BuyerApi* | [**createBuyerWholesaleInvoicePayLink**](docs/Api/BuyerApi.md#createbuyerwholesaleinvoicepaylink) | **POST** /v1/buyer/wholesale/invoices/{id}/pay-link | A hosted payment page for an on-account invoice: amountCents? (part of the balance, at least $1), method? card | ach. Nothing is charged until the buyer completes the page.
+*BuyerApi* | [**createBuyerWholesaleOrderSheet**](docs/Api/BuyerApi.md#createbuyerwholesaleordersheet) | **POST** /v1/buyer/wholesale/order-sheets | Save an order sheet: name, lines [{ platformListingId, listingVariantId?, catalogId?, quantity }] from one seller, optional catalogId, poReference, note.
+*BuyerApi* | [**createBuyerWholesaleQuote**](docs/Api/BuyerApi.md#createbuyerwholesalequote) | **POST** /v1/buyer/wholesale/quotes | Ask one seller for a quote: items [{ platformListingId, listingVariantId?, quantity, targetUnitPriceCents? }] (one seller per quote), optional catalogId, note, poReference.
+*BuyerApi* | [**createBuyerWholesaleQuoteAccept**](docs/Api/BuyerApi.md#createbuyerwholesalequoteaccept) | **POST** /v1/buyer/wholesale/quotes/{id}/accept | Accept an answered quote: its priced items go into your cart at the quoted quantities, locked at the quoted prices until the quote expires (changing a line&#39;s quantity drops the lock). Paying happens at checkout on Crossly.
+*BuyerApi* | [**createBuyerWholesaleQuoteWithdraw**](docs/Api/BuyerApi.md#createbuyerwholesalequotewithdraw) | **POST** /v1/buyer/wholesale/quotes/{id}/withdraw | Withdraw a quote request that is still requested or answered.
+*BuyerApi* | [**createBuyerWholesaleUploadValidate**](docs/Api/BuyerApi.md#createbuyerwholesaleuploadvalidate) | **POST** /v1/buyer/wholesale/upload/validate | Validate a CSV / PO against one catalog: rows [{ line, sku, quantity }] are matched by SKU (item or option SKU, or listing slug), merged per item and priced today; unmatched rows come back by line.
 *BuyerApi* | [**createBuyerWishlist**](docs/Api/BuyerApi.md#createbuyerwishlist) | **POST** /v1/buyer/wishlists | Create a wishlist.
 *BuyerApi* | [**createBuyerWishlistInvite**](docs/Api/BuyerApi.md#createbuyerwishlistinvite) | **POST** /v1/buyer/wishlists/{id}/invite | Share a wishlist with a co-editor: a single-use link (14 days). Members add and remove items; only the owner renames, deletes or removes members. At most 20.
 *BuyerApi* | [**createBuyerWishlistItem**](docs/Api/BuyerApi.md#createbuyerwishlistitem) | **POST** /v1/buyer/wishlists/{id}/items | Add a listing to a wishlist.
@@ -161,8 +180,12 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**deleteBuyerBreakSpotHold**](docs/Api/BuyerApi.md#deletebuyerbreakspothold) | **DELETE** /v1/buyer/breaks/{id}/spots/{spotId}/hold | Release a break spot you hold.
 *BuyerApi* | [**deleteBuyerCartItem**](docs/Api/BuyerApi.md#deletebuyercartitem) | **DELETE** /v1/buyer/cart/items/{id} | Remove a line from your cart.
 *BuyerApi* | [**deleteBuyerCartSaved**](docs/Api/BuyerApi.md#deletebuyercartsaved) | **DELETE** /v1/buyer/cart/saved/{id} | Remove an item from saved-for-later. Returns the remaining list.
+*BuyerApi* | [**deleteBuyerCompanyMember**](docs/Api/BuyerApi.md#deletebuyercompanymember) | **DELETE** /v1/buyer/company/members/{id} | Remove a member or cancel an invite (owner), or leave the company (your own member id).
 *BuyerApi* | [**deleteBuyerConversationGuest**](docs/Api/BuyerApi.md#deletebuyerconversationguest) | **DELETE** /v1/buyer/conversations/{id}/guests/{userId} | Remove a guest (the thread’s buyer), or leave (a guest, with your own user id).
+*BuyerApi* | [**deleteBuyerCreationReview**](docs/Api/BuyerApi.md#deletebuyercreationreview) | **DELETE** /v1/buyer/creations/{format}/{id}/review | Remove your review of a creation (its vote leaves the rating with it).
+*BuyerApi* | [**deleteBuyerEventRsvp**](docs/Api/BuyerApi.md#deletebuyereventrsvp) | **DELETE** /v1/buyer/events/{slug}/rsvp | Take back your RSVP.
 *BuyerApi* | [**deleteBuyerFitRef**](docs/Api/BuyerApi.md#deletebuyerfitref) | **DELETE** /v1/buyer/fit/refs/{id} | Delete a reference garment.
+*BuyerApi* | [**deleteBuyerHomeGuestbook**](docs/Api/BuyerApi.md#deletebuyerhomeguestbook) | **DELETE** /v1/buyer/home/guestbook/{id} | Hide a line from your home’s guestbook.
 *BuyerApi* | [**deleteBuyerMarketBid**](docs/Api/BuyerApi.md#deletebuyermarketbid) | **DELETE** /v1/buyer/market/bids/{id} | Cancel a resting market bid.
 *BuyerApi* | [**deleteBuyerMarketWatch**](docs/Api/BuyerApi.md#deletebuyermarketwatch) | **DELETE** /v1/buyer/market/watches/{id} | Stop watching a market variant.
 *BuyerApi* | [**deleteBuyerOffer**](docs/Api/BuyerApi.md#deletebuyeroffer) | **DELETE** /v1/buyer/offers/{id} | Withdraw an offer you made that the seller has not answered.
@@ -170,9 +193,11 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**deleteBuyerRecentlyViewed2**](docs/Api/BuyerApi.md#deletebuyerrecentlyviewed2) | **DELETE** /v1/buyer/recently-viewed | Clear your recently viewed list.
 *BuyerApi* | [**deleteBuyerRegistry**](docs/Api/BuyerApi.md#deletebuyerregistry) | **DELETE** /v1/buyer/registries/{id} | Delete a registry (and the wishlist behind it).
 *BuyerApi* | [**deleteBuyerSellerClubJoin**](docs/Api/BuyerApi.md#deletebuyersellerclubjoin) | **DELETE** /v1/buyer/sellers/{sellerUserId}/club/join | Leave a seller’s loyalty club.
+*BuyerApi* | [**deleteBuyerSellerLoyaltyJoin**](docs/Api/BuyerApi.md#deletebuyersellerloyaltyjoin) | **DELETE** /v1/buyer/sellers/{sellerUserId}/loyalty/join | Leave a seller’s loyalty club.
 *BuyerApi* | [**deleteBuyerTogetherItem**](docs/Api/BuyerApi.md#deletebuyertogetheritem) | **DELETE** /v1/buyer/together/{code}/items/{id} | Take an item you added off a room’s board.
 *BuyerApi* | [**deleteBuyerTotalRequest**](docs/Api/BuyerApi.md#deletebuyertotalrequest) | **DELETE** /v1/buyer/total-requests/{id} | Cancel a total request you made.
 *BuyerApi* | [**deleteBuyerTryOn**](docs/Api/BuyerApi.md#deletebuyertryon) | **DELETE** /v1/buyer/try-ons/{id} | Delete a try-on and its images — or pass &#x60;all&#x60; to delete every photo and result.
+*BuyerApi* | [**deleteBuyerWholesaleOrderSheet**](docs/Api/BuyerApi.md#deletebuyerwholesaleordersheet) | **DELETE** /v1/buyer/wholesale/order-sheets/{id} | Delete an order sheet.
 *BuyerApi* | [**deleteBuyerWishlist**](docs/Api/BuyerApi.md#deletebuyerwishlist) | **DELETE** /v1/buyer/wishlists/{id} | Delete a wishlist and everything on it.
 *BuyerApi* | [**deleteBuyerWishlistItem**](docs/Api/BuyerApi.md#deletebuyerwishlistitem) | **DELETE** /v1/buyer/wishlists/{id}/items/{slug} | Take a listing off a wishlist.
 *BuyerApi* | [**deleteBuyerWishlistMember**](docs/Api/BuyerApi.md#deletebuyerwishlistmember) | **DELETE** /v1/buyer/wishlists/{id}/members/{userId} | Remove a co-editor (the owner), or leave a list shared with you (your own user id).
@@ -188,9 +213,14 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**getBuyerCheckoutUsdc**](docs/Api/BuyerApi.md#getbuyercheckoutusdc) | **GET** /v1/buyer/checkout/usdc | Whether Crossly takes USDC (Stripe stablecoin payments: Solana, Ethereum, Base, Polygon), and its per-order limit. Paying needs the buyer’s wallet, so it happens in the browser checkout, never unattended.
 *BuyerApi* | [**getBuyerCollectionOffer**](docs/Api/BuyerApi.md#getbuyercollectionoffer) | **GET** /v1/buyer/collection/{id}/offer | What an item in your collection would fetch now: the top open bid on the market for the same variant, condition and grade, and Crossly’s instant offer in store credit when that is switched on (a quote valid for a limited time).
 *BuyerApi* | [**getBuyerCollectionSet**](docs/Api/BuyerApi.md#getbuyercollectionset) | **GET** /v1/buyer/collection/sets/{category}/{brand}/{model} | One set: every piece (owned or missing, with its lowest ask on the market), what completing it would cost now, and the leaderboard of collectors who opted in, with your rank.
+*BuyerApi* | [**getBuyerCompany**](docs/Api/BuyerApi.md#getbuyercompany) | **GET** /v1/buyer/company | Your buyer company (members, roles, approval limits, shared addresses), or null when you are in none.
+*BuyerApi* | [**getBuyerCreation**](docs/Api/BuyerApi.md#getbuyercreation) | **GET** /v1/buyer/creations/{format}/{id} | A live creation&#39;s public page: its rating breakdown, recent reviews and whether you can review it.
 *BuyerApi* | [**getBuyerCreator**](docs/Api/BuyerApi.md#getbuyercreator) | **GET** /v1/buyer/creators/{handle} | A creator storefront: profile, affiliate code, and shelves of live picks.
+*BuyerApi* | [**getBuyerEvent**](docs/Api/BuyerApi.md#getbuyerevent) | **GET** /v1/buyer/events/{slug} | A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
 *BuyerApi* | [**getBuyerFitVocabulary**](docs/Api/BuyerApi.md#getbuyerfitvocabulary) | **GET** /v1/buyer/fit/vocabulary | Garment kinds and the measurements each takes.
 *BuyerApi* | [**getBuyerGiftFinderOption**](docs/Api/BuyerApi.md#getbuyergiftfinderoption) | **GET** /v1/buyer/gift-finder/options | The gift finder’s questions: recipients, interests, budgets.
+*BuyerApi* | [**getBuyerHome**](docs/Api/BuyerApi.md#getbuyerhome) | **GET** /v1/buyer/home | Your home in Crossly World (made on first read).
+*BuyerApi* | [**getBuyerHomePlaceable**](docs/Api/BuyerApi.md#getbuyerhomeplaceable) | **GET** /v1/buyer/home/placeable | What you could place in your home: your items and delivered furniture.
 *BuyerApi* | [**getBuyerImpact**](docs/Api/BuyerApi.md#getbuyerimpact) | **GET** /v1/buyer/impact | The sourced footprint your secondhand purchases avoided.
 *BuyerApi* | [**getBuyerLayaway**](docs/Api/BuyerApi.md#getbuyerlayaway) | **GET** /v1/buyer/layaways/{id} | One layaway and its schedule.
 *BuyerApi* | [**getBuyerListingAudioSummary**](docs/Api/BuyerApi.md#getbuyerlistingaudiosummary) | **GET** /v1/buyer/listings/{slug}/audio-summary | A spoken summary of a listing (accessibility): the text, built only from the listing’s own fields and the seller’s description, and the recording of it when one exists.
@@ -211,7 +241,7 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**getBuyerPack**](docs/Api/BuyerApi.md#getbuyerpack) | **GET** /v1/buyer/packs/{slug} | One pack: tiers and odds, items left, expected value, the chase items still in it.
 *BuyerApi* | [**getBuyerPackFairness**](docs/Api/BuyerApi.md#getbuyerpackfairness) | **GET** /v1/buyer/packs/fairness | Your provably-fair seeds: the active server-seed commitment (sha256), your client seed and nonce, and every retired seed in full so past openings can be re-run.
 *BuyerApi* | [**getBuyerParty**](docs/Api/BuyerApi.md#getbuyerparty) | **GET** /v1/buyer/parties/{slug} | One shopping party.
-*BuyerApi* | [**getBuyerPassport**](docs/Api/BuyerApi.md#getbuyerpassport) | **GET** /v1/buyer/passports/{code} | What a product passport tag opens: the item, whether it was authenticated, how many owners on Crossly and since when — never who or for how much.
+*BuyerApi* | [**getBuyerPassport**](docs/Api/BuyerApi.md#getbuyerpassport) | **GET** /v1/buyer/passports/{code} | What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid&#x3D;, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
 *BuyerApi* | [**getBuyerPreference**](docs/Api/BuyerApi.md#getbuyerpreference) | **GET** /v1/buyer/preferences | The shopping profile derived from that activity.
 *BuyerApi* | [**getBuyerPriceGuide**](docs/Api/BuyerApi.md#getbuyerpriceguide) | **GET** /v1/buyer/price-guide | What matching items actually sold for on Crossly: median, quartiles, by month, and recent sales. Needs q, brand or category.
 *BuyerApi* | [**getBuyerProfile**](docs/Api/BuyerApi.md#getbuyerprofile) | **GET** /v1/buyer/profile | Your Crossly shopping profile — name, email, saved address, Bucks balance.
@@ -221,14 +251,38 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**getBuyerPurchaseStory**](docs/Api/BuyerApi.md#getbuyerpurchasestory) | **GET** /v1/buyer/purchases/{id}/story | Your owner story on a purchase, passed on to the next owner if you resell it.
 *BuyerApi* | [**getBuyerRegistry**](docs/Api/BuyerApi.md#getbuyerregistry) | **GET** /v1/buyer/registries/{id} | One of your registries: items with how many are wanted and bought.
 *BuyerApi* | [**getBuyerRegistryByToken**](docs/Api/BuyerApi.md#getbuyerregistrybytoken) | **GET** /v1/buyer/registry/{token} | A registry as a guest sees it: items, how many are still wanted, and whether it can ship. Never the address.
+*BuyerApi* | [**getBuyerRental**](docs/Api/BuyerApi.md#getbuyerrental) | **GET** /v1/buyer/rentals/{id} | One of your rentals: timeline, payments, the return label, extension and buy-out terms.
 *BuyerApi* | [**getBuyerRentalEligibility**](docs/Api/BuyerApi.md#getbuyerrentaleligibility) | **GET** /v1/buyer/rentals/eligibility | Can you rent right now: ID-verified (a photo ID and a matching selfie, once), the verified name rentals ship to, and your standing (one rental at a time until your first comes back; none after one that never did).
 *BuyerApi* | [**getBuyerSellerClub**](docs/Api/BuyerApi.md#getbuyersellerclub) | **GET** /v1/buyer/sellers/{sellerUserId}/club | A seller’s loyalty club: its tiers (spend threshold, discount, perks) and your standing. null when the seller has none.
+*BuyerApi* | [**getBuyerSellerLoyalty**](docs/Api/BuyerApi.md#getbuyersellerloyalty) | **GET** /v1/buyer/sellers/{sellerUserId}/loyalty | A seller’s loyalty club with its typed perks per tier, its join mode (automatic, opt-in, invite-only) and your standing. null when they run none.
 *BuyerApi* | [**getBuyerSellerTrust**](docs/Api/BuyerApi.md#getbuyersellertrust) | **GET** /v1/buyer/sellers/{username}/trust | Seller at a glance: member since, completed sales, independent rating, typical handling time, dispute rate, trust tier, badges — and the plain sentences the profile shows.
 *BuyerApi* | [**getBuyerTogether**](docs/Api/BuyerApi.md#getbuyertogether) | **GET** /v1/buyer/together/{code} | A shop-together room: members, the board with votes, and chat.
 *BuyerApi* | [**getBuyerVaultMarketHistory**](docs/Api/BuyerApi.md#getbuyervaultmarkethistory) | **GET** /v1/buyer/vault-markets/history | Your Vault Markets value by day at the marks (oldest first, today live) over &#x60;days&#x60; (default 90), and today’s change against yesterday’s close.
 *BuyerApi* | [**getBuyerVaultMarketIndex**](docs/Api/BuyerApi.md#getbuyervaultmarketindex) | **GET** /v1/buyer/vault-markets/indexes/{slug} | One index with its published daily closes (oldest first, &#x60;days&#x60; default 365) and its level now.
 *BuyerApi* | [**getBuyerVaultMarketInstantExit**](docs/Api/BuyerApi.md#getbuyervaultmarketinstantexit) | **GET** /v1/buyer/vault-markets/instant-exit/{id} | The Instant Exit quote for one vault unit you hold, and whether it can be sold now.
+*BuyerApi* | [**getBuyerVaultMarketOptionAnalytic**](docs/Api/BuyerApi.md#getbuyervaultmarketoptionanalytic) | **GET** /v1/buyer/vault-markets/options/analytics/{underlying} | Options analytics on an underlying: vol surface and smile, IV rank and percentile, open interest and volume by strike and expiry, put/call ratios, expected move and historical vol. Derived, display only. Read only.
+*BuyerApi* | [**getBuyerVaultMarketOptionChain**](docs/Api/BuyerApi.md#getbuyervaultmarketoptionchain) | **GET** /v1/buyer/vault-markets/options/chain/{underlying} | The option chain for an underlying (index slug or book key): expiries, and for one expiry each strike’s call and put with bid / ask, last, open interest, theoretical price, implied vol (display only) and Greeks. Prices are cents per contract.
+*BuyerApi* | [**getBuyerVaultMarketOptionIv**](docs/Api/BuyerApi.md#getbuyervaultmarketoptioniv) | **GET** /v1/buyer/vault-markets/options/iv/{underlying} | The at-the-money implied vol on an underlying’s nearest expiry, for display: derived from the options book, quality C, never a mark.
+*BuyerApi* | [**getBuyerVaultMarketOptionPosition**](docs/Api/BuyerApi.md#getbuyervaultmarketoptionposition) | **GET** /v1/buyer/vault-markets/options/positions | Your fractional options positions with their marks, P&amp;L and Greeks (open by default; &#x60;status&#x60; all for closed and settled too). Read only.
+*BuyerApi* | [**getBuyerVaultMarketOptionRisk**](docs/Api/BuyerApi.md#getbuyervaultmarketoptionrisk) | **GET** /v1/buyer/vault-markets/options/risk | Your options portfolio Greeks, a scenario&#39;s P&amp;L (&#x60;priceShift&#x60;, &#x60;volShift&#x60;, &#x60;daysForward&#x60;) and the beta-weighted delta against an index. Read only.
+*BuyerApi* | [**getBuyerVaultMarketPredictionBoard**](docs/Api/BuyerApi.md#getbuyervaultmarketpredictionboard) | **GET** /v1/buyer/vault-markets/predictions/board | The busiest open prediction markets and their odds (the Trading Floor board). Anonymous.
+*BuyerApi* | [**getBuyerVaultMarketPredictionEvent**](docs/Api/BuyerApi.md#getbuyervaultmarketpredictionevent) | **GET** /v1/buyer/vault-markets/predictions/events/{id} | One expiry’s markets with your holdings in each and their real worst and best case across them.
+*BuyerApi* | [**getBuyerVaultMarketPredictionLeaderboard**](docs/Api/BuyerApi.md#getbuyervaultmarketpredictionleaderboard) | **GET** /v1/buyer/vault-markets/predictions/leaderboard | Opt-in forecaster leaderboards (&#x60;period&#x60; week | month | all; &#x60;metric&#x60; pnl | accuracy | brier; &#x60;venue&#x60; live | paper).
+*BuyerApi* | [**getBuyerVaultMarketPredictionMarket**](docs/Api/BuyerApi.md#getbuyervaultmarketpredictionmarket) | **GET** /v1/buyer/vault-markets/predictions/markets/{id} | One prediction market: terms, the Yes ladder (live and practice), recent trades, settlement history and the series rules with their hash.
+*BuyerApi* | [**getBuyerVaultMarketPredictionMarketHistory**](docs/Api/BuyerApi.md#getbuyervaultmarketpredictionmarkethistory) | **GET** /v1/buyer/vault-markets/predictions/markets/{id}/history | A prediction market’s probability over time (display only, never a mark), candles on the Yes price, volume and open interest (&#x60;range&#x60; 1d, 1w, 1m, all; &#x60;venue&#x60; live or paper).
+*BuyerApi* | [**getBuyerVaultMarketShare**](docs/Api/BuyerApi.md#getbuyervaultmarketshare) | **GET** /v1/buyer/vault-markets/shares | Your Vault Shares: shares and percent of each item, cost, implied value at the last share price (display only, never a mark), subscriptions and payouts.
+*BuyerApi* | [**getBuyerVaultMarketShareBasket**](docs/Api/BuyerApi.md#getbuyervaultmarketsharebasket) | **GET** /v1/buyer/vault-markets/shares/baskets/{id} | One theme basket: its series, weights and prices, and your holdings against them.
+*BuyerApi* | [**getBuyerVaultMarketShareSery**](docs/Api/BuyerApi.md#getbuyervaultmarketsharesery) | **GET** /v1/buyer/vault-markets/shares/series/{id} | One Vault Shares series: the offering, the share book, the latest fills, holders as percentages (nobody named) and buyouts.
+*BuyerApi* | [**getBuyerVaultMarketShareSeryHistory**](docs/Api/BuyerApi.md#getbuyervaultmarketshareseryhistory) | **GET** /v1/buyer/vault-markets/shares/series/{id}/history | A Vault Shares series’ full price history (candles), the offering price and the appraisal history. Display only, never a mark.
+*BuyerApi* | [**getBuyerVaultMarketShareSeryPerk**](docs/Api/BuyerApi.md#getbuyervaultmarketshareseryperk) | **GET** /v1/buyer/vault-markets/shares/series/{id}/perks | Your holder perks on a series: badge, visit links, viewing days and your bookings.
 *BuyerApi* | [**getBuyerVaultMarketWorth**](docs/Api/BuyerApi.md#getbuyervaultmarketworth) | **GET** /v1/buyer/vault-markets/worth | What your vault is worth now: value at the market prices (marks come only from trades) split into reliable and indicative marks, cost and P&amp;L, today’s change, and an estimate of what the units free to sell would fetch from the bids resting on the book now. Read only.
+*BuyerApi* | [**getBuyerWholesaleCart**](docs/Api/BuyerApi.md#getbuyerwholesalecart) | **GET** /v1/buyer/wholesale/cart | Your cart grouped per seller: trade terms, the order-minimum progress, every rule the cart breaks (the messages checkout would refuse with), PO reference, quote-locked lines, and the checkout methods, deposit and freight threshold for each group.
+*BuyerApi* | [**getBuyerWholesaleCatalogApply**](docs/Api/BuyerApi.md#getbuyerwholesalecatalogapply) | **GET** /v1/buyer/wholesale/catalogs/{storeSlug}/{catalogSlug}/apply | The application form for a store&#39;s wholesale catalog: the seller&#39;s requirements (resale certificate and accepted states, tax id, their custom questions) and your business info pre-filled. applicable&#x3D;false for a catalog you cannot apply to.
+*BuyerApi* | [**getBuyerWholesaleDrop**](docs/Api/BuyerApi.md#getbuyerwholesaledrop) | **GET** /v1/buyer/wholesale/drops/{id} | One trade drop open to you: its listings once live (add one to your cart to reserve or buy it), and your reservations in it. 404 for a drop not open to you.
+*BuyerApi* | [**getBuyerWholesaleInvoicePayQuote**](docs/Api/BuyerApi.md#getbuyerwholesaleinvoicepayquote) | **GET** /v1/buyer/wholesale/invoices/{id}/pay-quote | What paying an on-account invoice costs now: balance due, the early-pay discount if still open, the minimum part payment and the methods (card, ach).
+*BuyerApi* | [**getBuyerWholesaleOrderSheet**](docs/Api/BuyerApi.md#getbuyerwholesaleordersheet) | **GET** /v1/buyer/wholesale/order-sheets/{id} | One order sheet priced TODAY at its quantities, with stock, trade terms and flags (unavailable, out_of_stock, short_stock, price_hidden, needs_option).
+*BuyerApi* | [**getBuyerWholesaleQuote**](docs/Api/BuyerApi.md#getbuyerwholesalequote) | **GET** /v1/buyer/wholesale/quotes/{id} | One of your quotes with its items, the seller&#39;s prices and expiry.
+*BuyerApi* | [**getBuyerWholesaleReorder**](docs/Api/BuyerApi.md#getbuyerwholesalereorder) | **GET** /v1/buyer/wholesale/reorder/{id} | Buy again: a past wholesale order (purchase or order id) as order-sheet lines at the same quantities, priced today, out-of-stock flagged.
 *BuyerApi* | [**listBuyerActivity**](docs/Api/BuyerApi.md#listbuyeractivity) | **GET** /v1/buyer/activity | What this buyer has compared lately.
 *BuyerApi* | [**listBuyerAuctionBids**](docs/Api/BuyerApi.md#listbuyerauctionbids) | **GET** /v1/buyer/auctions/{slug}/bids | An auction’s bid history, highest first, bidders anonymised.
 *BuyerApi* | [**listBuyerAuctions**](docs/Api/BuyerApi.md#listbuyerauctions) | **GET** /v1/buyer/auctions | Auctions you have bid in — bidding, won or lost (last 100).
@@ -242,8 +296,11 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**listBuyerCatalogListingVideos**](docs/Api/BuyerApi.md#listbuyercataloglistingvideos) | **GET** /v1/buyer/catalog/listings/{slug}/videos | Videos the seller recorded for this item on request, newest first, with the question each one answers.
 *BuyerApi* | [**listBuyerClubs**](docs/Api/BuyerApi.md#listbuyerclubs) | **GET** /v1/buyer/clubs | Sellers’ loyalty clubs you belong to: your spend with each, your tier and its discount, and the next tier.
 *BuyerApi* | [**listBuyerCollectionSets**](docs/Api/BuyerApi.md#listbuyercollectionsets) | **GET** /v1/buyer/collection/sets | Sets you are collecting — a catalogue brand + model you own at least two pieces of — with owned / total and percent complete, most complete first; and whether you show on set leaderboards.
+*BuyerApi* | [**listBuyerCompanyApprovals**](docs/Api/BuyerApi.md#listbuyercompanyapprovals) | **GET** /v1/buyer/company/approvals | Spend approval requests (owners and accounts payable see all; others their own). ?status&#x3D;pending|approved|declined|used|expired.
 *BuyerApi* | [**listBuyerConsolidations**](docs/Api/BuyerApi.md#listbuyerconsolidations) | **GET** /v1/buyer/consolidations | Your ship-together orders: parcels at the hub, and the one box out.
 *BuyerApi* | [**listBuyerConversationGuests**](docs/Api/BuyerApi.md#listbuyerconversationguests) | **GET** /v1/buyer/conversations/{id}/guests | Guests in a chat.
+*BuyerApi* | [**listBuyerCreationReviewable**](docs/Api/BuyerApi.md#listbuyercreationreviewable) | **GET** /v1/buyer/creations/reviewable | Creations you bought (decor, wearables, interactive objects, cards from packs) and your review of each.
+*BuyerApi* | [**listBuyerEvents**](docs/Api/BuyerApi.md#listbuyerevents) | **GET** /v1/buyer/events | Upcoming and live seller events across Crossly, soonest first.
 *BuyerApi* | [**listBuyerFeedback**](docs/Api/BuyerApi.md#listbuyerfeedback) | **GET** /v1/buyer/feedback | Feedback you have left sellers, newest first — with the ids you revise by.
 *BuyerApi* | [**listBuyerFeedbackPending**](docs/Api/BuyerApi.md#listbuyerfeedbackpending) | **GET** /v1/buyer/feedback/pending | Orders from the last 60 days that are on their way or arrived and still need your feedback.
 *BuyerApi* | [**listBuyerFitRefs**](docs/Api/BuyerApi.md#listbuyerfitrefs) | **GET** /v1/buyer/fit/refs | Your saved reference garments for fit comparison.
@@ -252,6 +309,8 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**listBuyerGiftCards**](docs/Api/BuyerApi.md#listbuyergiftcards) | **GET** /v1/buyer/gift-cards | Gift cards you bought, newest first.
 *BuyerApi* | [**listBuyerGiftFinder**](docs/Api/BuyerApi.md#listbuyergiftfinder) | **GET** /v1/buyer/gift-finder | Live listings for a recipient, interest and budget.
 *BuyerApi* | [**listBuyerGiftSent**](docs/Api/BuyerApi.md#listbuyergiftsent) | **GET** /v1/buyer/gifts/sent | Items you sent as gifts: whether the teaser went out, whether it arrived and was opened, and any thank-you. Send one with &#x60;gift&#x60; on checkout.
+*BuyerApi* | [**listBuyerHomeBuilders**](docs/Api/BuyerApi.md#listbuyerhomebuilders) | **GET** /v1/buyer/home/builders | Your co-builders: friends who may arrange your home with you.
+*BuyerApi* | [**listBuyerHomeBuilding**](docs/Api/BuyerApi.md#listbuyerhomebuilding) | **GET** /v1/buyer/homes/building | The homes you co-build, to visit and arrange.
 *BuyerApi* | [**listBuyerHotspots**](docs/Api/BuyerApi.md#listbuyerhotspots) | **GET** /v1/buyer/hotspots | Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
 *BuyerApi* | [**listBuyerHunts**](docs/Api/BuyerApi.md#listbuyerhunts) | **GET** /v1/buyer/hunts | Your buyer-agent hunts and what they did.
 *BuyerApi* | [**listBuyerInstantOffers**](docs/Api/BuyerApi.md#listbuyerinstantoffers) | **GET** /v1/buyer/instant-offers | Your instant offers: live quotes, accepted ones awaiting a label, approved ones (with the prepaid label) and paid ones.
@@ -260,6 +319,7 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**listBuyerListingSellerReviews**](docs/Api/BuyerApi.md#listbuyerlistingsellerreviews) | **GET** /v1/buyer/listings/{slug}/seller-reviews | The seller’s public reviews: summary, text, photos, replies.
 *BuyerApi* | [**listBuyerLiveShipments**](docs/Api/BuyerApi.md#listbuyerliveshipments) | **GET** /v1/buyer/live-shipments | Your one-box-per-show shipments: every order won in a show ships together, and postage is charged once (the rest refunded when it ships).
 *BuyerApi* | [**listBuyerLiveStreamLineup**](docs/Api/BuyerApi.md#listbuyerlivestreamlineup) | **GET** /v1/buyer/live-streams/{id}/lineup | What a live show will sell, in order: each item, its price, and whether it is still available.
+*BuyerApi* | [**listBuyerLoyalty**](docs/Api/BuyerApi.md#listbuyerloyalty) | **GET** /v1/buyer/loyalty | Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
 *BuyerApi* | [**listBuyerMarketBids**](docs/Api/BuyerApi.md#listbuyermarketbids) | **GET** /v1/buyer/market/bids | Your resting market bids.
 *BuyerApi* | [**listBuyerMarketWatches**](docs/Api/BuyerApi.md#listbuyermarketwatches) | **GET** /v1/buyer/market/watches | Market variants you watch, with the price you are waiting for.
 *BuyerApi* | [**listBuyerOffers**](docs/Api/BuyerApi.md#listbuyeroffers) | **GET** /v1/buyer/offers | Offers you have made, newest first (last 100).
@@ -268,6 +328,7 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**listBuyerPacks**](docs/Api/BuyerApi.md#listbuyerpacks) | **GET** /v1/buyer/packs | Packs you can open: price, every tier with its published odds, what is left in it and its value range, and the expected value of one opening.
 *BuyerApi* | [**listBuyerParties**](docs/Api/BuyerApi.md#listbuyerparties) | **GET** /v1/buyer/parties | Themed shopping parties, live and upcoming.
 *BuyerApi* | [**listBuyerPartyListings**](docs/Api/BuyerApi.md#listbuyerpartylistings) | **GET** /v1/buyer/parties/{slug}/listings | Listings shared to a party, featured first.
+*BuyerApi* | [**listBuyerPaymentMethods**](docs/Api/BuyerApi.md#listbuyerpaymentmethods) | **GET** /v1/buyer/payment-methods | Your saved cards, the default first.
 *BuyerApi* | [**listBuyerPickupPoints**](docs/Api/BuyerApi.md#listbuyerpickuppoints) | **GET** /v1/buyer/pickup-points | Carrier pickup points (UPS Access Point / FedEx Hold at Location) near an address; pass one as &#x60;pickupPoint&#x60; to POST /v1/buyer/checkout.
 *BuyerApi* | [**listBuyerProtectionPlans**](docs/Api/BuyerApi.md#listbuyerprotectionplans) | **GET** /v1/buyer/protection-plans | Your protection plans (bought at checkout with &#x60;protection&#x60;): status, term, coverage, contract id, and any refund.
 *BuyerApi* | [**listBuyerRegistries**](docs/Api/BuyerApi.md#listbuyerregistries) | **GET** /v1/buyer/registries | Your gift registries.
@@ -277,6 +338,7 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**listBuyerSizeMemoryPrompts**](docs/Api/BuyerApi.md#listbuyersizememoryprompts) | **GET** /v1/buyer/size-memory/prompts | Delivered orders with a size that you haven’t said how they fit (the last 60 days).
 *BuyerApi* | [**listBuyerSizeMemorySizes**](docs/Api/BuyerApi.md#listbuyersizememorysizes) | **GET** /v1/buyer/size-memory/sizes | The sizes learned from what you bought and kept, by kind of item (shoes, tops, bottoms, dresses, outerwear) and department.
 *BuyerApi* | [**listBuyerSplits**](docs/Api/BuyerApi.md#listbuyersplits) | **GET** /v1/buyer/splits | Purchases you split, with each share’s status.
+*BuyerApi* | [**listBuyerStoreListings**](docs/Api/BuyerApi.md#listbuyerstorelistings) | **GET** /v1/buyer/stores/{slug}/listings | A store&#39;s live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
 *BuyerApi* | [**listBuyerSubscriptions**](docs/Api/BuyerApi.md#listbuyersubscriptions) | **GET** /v1/buyer/subscriptions | Your subscribe &amp; save standing orders.
 *BuyerApi* | [**listBuyerTogether**](docs/Api/BuyerApi.md#listbuyertogether) | **GET** /v1/buyer/together | Shop-together rooms you are in.
 *BuyerApi* | [**listBuyerTotalRequests**](docs/Api/BuyerApi.md#listbuyertotalrequests) | **GET** /v1/buyer/total-requests | Your combined-shipping total requests, newest per seller.
@@ -285,20 +347,51 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**listBuyerVaultMarketHoldings**](docs/Api/BuyerApi.md#listbuyervaultmarketholdings) | **GET** /v1/buyer/vault-markets/holdings | Each unit you hold in the vault at its market price, with the mark’s quality (A or B reliable, C indicative, none), cost, P&amp;L and where it stands (stored, listed, lent, pledged, at the grader); &#x60;meta&#x60; carries the totals and the units you have out on loan.
 *BuyerApi* | [**listBuyerVaultMarketIndexes**](docs/Api/BuyerApi.md#listbuyervaultmarketindexes) | **GET** /v1/buyer/vault-markets/indexes | Crossly indexes over vault book keys (category, brand, curated, composite, segment, and your own), each with its level now and change since the last daily close. Index levels are valued only from the book’s marks.
 *BuyerApi* | [**listBuyerVaultMarketInstantExit**](docs/Api/BuyerApi.md#listbuyervaultmarketinstantexit) | **GET** /v1/buyer/vault-markets/instant-exit | Instant Exit quotes for what you hold, one per book key: the best resting bid (yours left out), its share of the mark, the bid levels, units held and which are free to sell, and why a key cannot be sold instantly. A quote, not an order.
+*BuyerApi* | [**listBuyerVaultMarketOptionCombos**](docs/Api/BuyerApi.md#listbuyervaultmarketoptioncombos) | **GET** /v1/buyer/vault-markets/options/combos | Your options strategies (working by default) with their legs, net price per unit and fills. Read only.
+*BuyerApi* | [**listBuyerVaultMarketOptionNotices**](docs/Api/BuyerApi.md#listbuyervaultmarketoptionnotices) | **GET** /v1/buyer/vault-markets/options/notices | Your options notices: expiry warnings, auto-closes, exercises, assignments, expiries worthless and rolls. Read only.
+*BuyerApi* | [**listBuyerVaultMarketOptionSeries**](docs/Api/BuyerApi.md#listbuyervaultmarketoptionseries) | **GET** /v1/buyer/vault-markets/options/series | Fractional options series on Crossly prices (indexes, and tier A item keys with 90 days of reliable marks): underlying, status and eligibility. Read only.
+*BuyerApi* | [**listBuyerVaultMarketOptionStrategies**](docs/Api/BuyerApi.md#listbuyervaultmarketoptionstrategies) | **GET** /v1/buyer/vault-markets/options/strategies | The options strategies the picker builds (vertical, calendar, diagonal, straddle, strangle, butterfly, iron condor, collar) and what each does. Read only.
+*BuyerApi* | [**listBuyerVaultMarketPredictionComments**](docs/Api/BuyerApi.md#listbuyervaultmarketpredictioncomments) | **GET** /v1/buyer/vault-markets/predictions/comments | A prediction market’s (or series’) discussion thread. Read only.
+*BuyerApi* | [**listBuyerVaultMarketPredictionMarkets**](docs/Api/BuyerApi.md#listbuyervaultmarketpredictionmarkets) | **GET** /v1/buyer/vault-markets/predictions/markets | \&quot;Will it hit?\&quot; prediction markets on Crossly prices (filter by book key, index slug, kind, status, expiry or text): strike, expiry, best Yes bid and ask, last price and the probability (the market&#39;s own price, display only).
+*BuyerApi* | [**listBuyerVaultMarketPredictionPositions**](docs/Api/BuyerApi.md#listbuyervaultmarketpredictionpositions) | **GET** /v1/buyer/vault-markets/predictions/positions | Your prediction positions (practice and live): side, contracts, cost, value at the last price, payout or refund once settled.
+*BuyerApi* | [**listBuyerVaultMarketShareAutoInvest**](docs/Api/BuyerApi.md#listbuyervaultmarketshareautoinvest) | **GET** /v1/buyer/vault-markets/shares/auto-invest | Your recurring Vault Shares auto-invest plans.
+*BuyerApi* | [**listBuyerVaultMarketShareBaskets**](docs/Api/BuyerApi.md#listbuyervaultmarketsharebaskets) | **GET** /v1/buyer/vault-markets/shares/baskets | Theme baskets: model portfolios of Vault Shares series you would own directly, never a fund.
+*BuyerApi* | [**listBuyerVaultMarketShareDrops**](docs/Api/BuyerApi.md#listbuyervaultmarketsharedrops) | **GET** /v1/buyer/vault-markets/shares/drops | Upcoming and open Vault Shares drops: phase, countdown, allocation (first come, pro-rata or lottery), your Crossly One early-access time (never a better price).
+*BuyerApi* | [**listBuyerVaultMarketShareGifts**](docs/Api/BuyerApi.md#listbuyervaultmarketsharegifts) | **GET** /v1/buyer/vault-markets/shares/gifts | Vault Shares gifts you sent or were offered.
+*BuyerApi* | [**listBuyerVaultMarketShareSeries**](docs/Api/BuyerApi.md#listbuyervaultmarketshareseries) | **GET** /v1/buyer/vault-markets/shares/series | Vault Shares series: open offerings first, then trading. Terms, progress, last share price and implied item value, and your holding.
 *BuyerApi* | [**listBuyerVaultMarketWatchlist**](docs/Api/BuyerApi.md#listbuyervaultmarketwatchlist) | **GET** /v1/buyer/vault-markets/watchlist | The book keys you watch, with mark and its quality, 24 h and 7 d change, and the last 30 daily marks.
 *BuyerApi* | [**listBuyerVideoRequests**](docs/Api/BuyerApi.md#listbuyervideorequests) | **GET** /v1/buyer/video-requests | Your video requests and their answers.
+*BuyerApi* | [**listBuyerWalletPerks**](docs/Api/BuyerApi.md#listbuyerwalletperks) | **GET** /v1/buyer/wallet/perks | The perks your wallets unlock: each Collection holders deal (a shop’s percent off for holders of a collection) and creator shop perk on a collection a linked wallet or your Crossly wallet holds, best first. Checkout applies the best one; perks never stack with each other.
+*BuyerApi* | [**listBuyerWholesaleDrops**](docs/Api/BuyerApi.md#listbuyerwholesaledrops) | **GET** /v1/buyer/wholesale/drops | Upcoming and live trade drops open to you: drops sellers release only to their approved trade buyers or to a catalog audience. kind prebook &#x3D; reserve quantity now with a deposit (depositBps) at checkout; the balance is invoiced when the seller releases the stock.
+*BuyerApi* | [**listBuyerWholesaleFreightRequests**](docs/Api/BuyerApi.md#listbuyerwholesalefreightrequests) | **GET** /v1/buyer/wholesale/freight-requests | Your freight (LTL) quote requests to sellers, with the seller&#39;s figure in cents once quoted.
+*BuyerApi* | [**listBuyerWholesaleOrderSheets**](docs/Api/BuyerApi.md#listbuyerwholesaleordersheets) | **GET** /v1/buyer/wholesale/order-sheets | Your saved wholesale order sheets (one seller each), newest first.
+*BuyerApi* | [**listBuyerWholesaleOrders**](docs/Api/BuyerApi.md#listbuyerwholesaleorders) | **GET** /v1/buyer/wholesale/orders | Your past wholesale orders (trade-priced or on account), newest first — the starting point for reorder.
+*BuyerApi* | [**listBuyerWholesalePrebooks**](docs/Api/BuyerApi.md#listbuyerwholesaleprebooks) | **GET** /v1/buyer/wholesale/prebooks | Your pre-books: the drop, item, quantity, deposit paid, balance, status (awaiting_release, invoiced, paid, cancelled, failed) and the balance invoice once the seller released the stock.
+*BuyerApi* | [**listBuyerWholesaleQuotes**](docs/Api/BuyerApi.md#listbuyerwholesalequotes) | **GET** /v1/buyer/wholesale/quotes | Your requests for a quote (RFQ) to wholesale sellers. ?status&#x3D;open|all|requested|answered|accepted|declined|withdrawn|expired. An answered or accepted quote past expiresAt reads expired.
+*BuyerApi* | [**listBuyerWholesaleStatement**](docs/Api/BuyerApi.md#listbuyerwholesalestatement) | **GET** /v1/buyer/wholesale/statement | Your open trade balances per seller in aging buckets (current, 1-30, 31-60, 61-90, 90+ days past due), with the invoices behind them.
+*BuyerApi* | [**listBuyerWholesaleSuppliers**](docs/Api/BuyerApi.md#listbuyerwholesalesuppliers) | **GET** /v1/buyer/wholesale/suppliers | The sellers you trade with: catalogs you can open, your terms (net days, credit limit, discount), customer groups, and what you owe each.
 *BuyerApi* | [**listBuyerWishlistItems**](docs/Api/BuyerApi.md#listbuyerwishlistitems) | **GET** /v1/buyer/wishlists/{id}/items | What is on one wishlist.
 *BuyerApi* | [**listBuyerWishlistMembers**](docs/Api/BuyerApi.md#listbuyerwishlistmembers) | **GET** /v1/buyer/wishlists/{id}/members | Co-editors of a shared wishlist.
 *BuyerApi* | [**listBuyerWishlists**](docs/Api/BuyerApi.md#listbuyerwishlists) | **GET** /v1/buyer/wishlists | Your wishlists.
 *BuyerApi* | [**updateBuyerBoard**](docs/Api/BuyerApi.md#updatebuyerboard) | **PATCH** /v1/buyer/boards/{id} | Rename a board, change its description, or make it public / private.
 *BuyerApi* | [**updateBuyerBoardLayout**](docs/Api/BuyerApi.md#updatebuyerboardlayout) | **PUT** /v1/buyer/boards/{id}/layout | Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
 *BuyerApi* | [**updateBuyerCollectionSetLeaderboard**](docs/Api/BuyerApi.md#updatebuyercollectionsetleaderboard) | **PUT** /v1/buyer/collection/sets/leaderboard | Show or hide yourself (by your public handle) on set leaderboards.
+*BuyerApi* | [**updateBuyerCompany**](docs/Api/BuyerApi.md#updatebuyercompany) | **PATCH** /v1/buyer/company | Rename the company or change its tax id / website (owner).
+*BuyerApi* | [**updateBuyerCompanyAddress**](docs/Api/BuyerApi.md#updatebuyercompanyaddress) | **PUT** /v1/buyer/company/addresses | Replace the shared address book (owner): addresses [{ id, label, name, line1, line2?, city, region, postalCode, country, phone?, isDefault? }], at most 20.
+*BuyerApi* | [**updateBuyerCompanyMember**](docs/Api/BuyerApi.md#updatebuyercompanymember) | **PATCH** /v1/buyer/company/members/{id} | Change a member&#39;s role or approval limit (owner). The last owner stays an owner.
+*BuyerApi* | [**updateBuyerCreationReview**](docs/Api/BuyerApi.md#updatebuyercreationreview) | **PUT** /v1/buyer/creations/{format}/{id}/review | Review a creation you bought (or change your review): 1-5 stars and an optional comment.
 *BuyerApi* | [**updateBuyerFeedback**](docs/Api/BuyerApi.md#updatebuyerfeedback) | **PATCH** /v1/buyer/feedback/{id} | Revise feedback you left, within 60 days.
+*BuyerApi* | [**updateBuyerHome**](docs/Api/BuyerApi.md#updatebuyerhome) | **PATCH** /v1/buyer/home | Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
+*BuyerApi* | [**updateBuyerHomeBuilder**](docs/Api/BuyerApi.md#updatebuyerhomebuilder) | **PUT** /v1/buyer/home/builders | Set your co-builders (friends only, at most 4).
+*BuyerApi* | [**updateBuyerHomeLayout**](docs/Api/BuyerApi.md#updatebuyerhomelayout) | **PUT** /v1/buyer/home/layout | Arrange your home: the whole layout, checked against what you own.
 *BuyerApi* | [**updateBuyerHunt**](docs/Api/BuyerApi.md#updatebuyerhunt) | **PATCH** /v1/buyer/hunts/{id} | Pause, resume or stop a hunt.
+*BuyerApi* | [**updateBuyerPaymentMethodDefault**](docs/Api/BuyerApi.md#updatebuyerpaymentmethoddefault) | **PUT** /v1/buyer/payment-methods/{id}/default | Make one of your saved cards the default.
 *BuyerApi* | [**updateBuyerPurchaseStory**](docs/Api/BuyerApi.md#updatebuyerpurchasestory) | **PUT** /v1/buyer/purchases/{id}/story | Write your owner story (280 characters); it travels with the item if you resell it.
 *BuyerApi* | [**updateBuyerRegistry**](docs/Api/BuyerApi.md#updatebuyerregistry) | **PATCH** /v1/buyer/registries/{id} | Edit a registry: title, kind, date, message, ship-to address.
 *BuyerApi* | [**updateBuyerRegistryItem**](docs/Api/BuyerApi.md#updatebuyerregistryitem) | **PUT** /v1/buyer/registries/{id}/items/{platformListingId} | How many of an item you want (1–50).
 *BuyerApi* | [**updateBuyerSubscription**](docs/Api/BuyerApi.md#updatebuyersubscription) | **PATCH** /v1/buyer/subscriptions/{id} | Pause, resume, skip the next delivery, change the interval, or cancel.
+*BuyerApi* | [**updateBuyerWholesaleCartPo**](docs/Api/BuyerApi.md#updatebuyerwholesalecartpo) | **PUT** /v1/buyer/wholesale/cart/po | Set the PO reference for one seller&#39;s group of your cart: { sellerUserId, poReference } (empty clears it).
+*BuyerApi* | [**updateBuyerWholesaleOrderSheet**](docs/Api/BuyerApi.md#updatebuyerwholesaleordersheet) | **PATCH** /v1/buyer/wholesale/order-sheets/{id} | Rename an order sheet, change its PO reference or note, or replace its lines.
 *BuyerApi* | [**updateBuyerWishlist**](docs/Api/BuyerApi.md#updatebuyerwishlist) | **PATCH** /v1/buyer/wishlists/{id} | Rename a wishlist, or make it public / private.
 *BuyerAgentApi* | [**createBuyerAgentSession**](docs/Api/BuyerAgentApi.md#createbuyeragentsession) | **POST** /v1/buyer/agent/sessions | Start a shopping agent conversation.
 *BuyerAgentApi* | [**createBuyerAgentSessionAct**](docs/Api/BuyerAgentApi.md#createbuyeragentsessionact) | **POST** /v1/buyer/agent/sessions/{id}/act | Act on an option: save, cart, alert, registry, price (real-sales check), offer (prepare / confirm), or buy (quote — complete with POST /api/v1/buyer/checkout). Needs the action’s own scope too.
@@ -345,14 +438,51 @@ Class | Method | HTTP request | Description
 - BuyerBoardResponseData
 - BuyerBoardResponseDataItems
 - BuyerCartResponse
+- BuyerCompanyResponse
+- BuyerCompanyResponseData
+- BuyerCompanyResponseDataAddresses
+- BuyerCompanyResponseDataMembers
+- BuyerCompanyResponseDataYou
+- BuyerHomeResponse
+- BuyerHomeResponseData
+- BuyerHomeResponseDataDecor
+- BuyerHomeResponseDataGiftShelf
+- BuyerHomeResponseDataGiftShelfItems
+- BuyerHomeResponseDataGuestbook
+- BuyerHomeResponseDataGuestbookAuthor
+- BuyerHomeResponseDataLayout
+- BuyerHomeResponseDataLayoutItem
+- BuyerHomeResponseDataLayoutRef
+- BuyerHomeResponseDataOwner
+- BuyerHomeResponseDataPinCase
+- BuyerHomeResponseDataPullsShelf
+- BuyerHomeResponseDataPullsShelfItems
+- BuyerHomeResponseDataRoom
+- BuyerHomeResponseDataRoomFloor
+- BuyerHomeResponseDataSetWall
+- BuyerHomeResponseDataSetWallChoices
+- BuyerHomeResponseDataSetWallPieces
+- BuyerHomeResponseDataVaultWall
+- BuyerHomeResponseDataVaultWallUnits
 - BuyerLayawayResponse
 - BuyerRegistryResponse
 - BuyerRegistryResponseData
 - BuyerRegistryResponseDataItems
+- BuyerRentalResponse
+- BuyerRentalResponseData
+- BuyerRentalResponseDataInspection
 - BuyerResponse
 - BuyerResponse2
 - BuyerResponse2Data
 - BuyerResponse3
+- BuyerWholesaleOrderSheetResponse
+- BuyerWholesaleOrderSheetResponseData
+- BuyerWholesaleOrderSheetResponseDataLines
+- BuyerWholesaleOrderSheetResponseDataLinesFlagsItem
+- BuyerWholesaleOrderSheetResponseDataLinesTerms
+- BuyerWholesaleQuoteResponse
+- BuyerWholesaleQuoteResponseData
+- BuyerWholesaleQuoteResponseDataItems
 - CreateBuyerActivityRequest
 - CreateBuyerActivityResponse
 - CreateBuyerActivityResponseData
@@ -403,15 +533,24 @@ Class | Method | HTTP request | Description
 - CreateBuyerCaseRespondRequest
 - CreateBuyerCatalogListingRentalQuoteResponse
 - CreateBuyerCatalogListingRentalQuoteResponseData
+- CreateBuyerCatalogListingRentalQuoteResponseDataBuyout
+- CreateBuyerCatalogListingRentalQuoteResponseDataCancellation
+- CreateBuyerCatalogListingRentalQuoteResponseDataCancellationTiers
+- CreateBuyerCatalogListingRentalQuoteResponseDataLines
 - CreateBuyerCatalogListingRentalResponse
 - CreateBuyerCatalogListingRentalResponseData
+- CreateBuyerCatalogListingRentalResponseDataQuote
 - CreateBuyerCatalogListingVideoRequestResponse
 - CreateBuyerCatalogListingVideoRequestResponseData
 - CreateBuyerCheckoutResponse
+- CreateBuyerCompanyApprovalResponse
+- CreateBuyerCompanyApprovalResponseData
 - CreateBuyerConversationJoinResponse
 - CreateBuyerConversationJoinResponseData
 - CreateBuyerDropJoinResponse
 - CreateBuyerDropJoinResponseMe
+- CreateBuyerEventRsvpResponse
+- CreateBuyerEventRsvpResponseData
 - CreateBuyerFeedbackItem
 - CreateBuyerFeedbackRequest
 - CreateBuyerFeedbackRequestReviews
@@ -470,14 +609,16 @@ Class | Method | HTTP request | Description
 - CreateBuyerPackOpeningSellBackResponseData
 - CreateBuyerProtectionPlanCancelResponse
 - CreateBuyerProtectionPlanCancelResponseData
-- CreateBuyerPurchaseDownloadResponse
-- CreateBuyerPurchaseDownloadResponseData
 - CreateBuyerRegistryGiftThankedResponse
 - CreateBuyerRegistryGiftThankedResponseData
 - CreateBuyerRegistryResponse
 - CreateBuyerRegistryResponseData
-- CreateBuyerRentalArrivalPhotoResponse
-- CreateBuyerRentalArrivalPhotoResponseData
+- CreateBuyerRentalBuyoutResponse
+- CreateBuyerRentalBuyoutResponseData
+- CreateBuyerRentalExtensionPayResponse
+- CreateBuyerRentalExtensionPayResponseData
+- CreateBuyerRentalExtensionResponse
+- CreateBuyerRentalExtensionResponseData
 - CreateBuyerRentalIdentityStartResponse
 - CreateBuyerRentalIdentityStartResponseData
 - CreateBuyerScanResponse
@@ -490,8 +631,8 @@ Class | Method | HTTP request | Description
 - CreateBuyerSellerClubJoinResponseDataMemberNext
 - CreateBuyerSellerClubJoinResponseDataTiers
 - CreateBuyerSellerReportRequest
-- CreateBuyerSellerReportResponse
-- CreateBuyerSellerReportResponseData
+- CreateBuyerStoreReportResponse
+- CreateBuyerStoreReportResponseData
 - CreateBuyerTogetherResponse
 - CreateBuyerTogetherResponseData
 - CreateBuyerTotalRequestRequest
@@ -501,6 +642,20 @@ Class | Method | HTTP request | Description
 - CreateBuyerVaultListResponseData
 - CreateBuyerVaultWithdrawResponse
 - CreateBuyerVaultWithdrawResponseData
+- CreateBuyerWholesaleCatalogApplyResponse
+- CreateBuyerWholesaleCatalogApplyResponseData
+- CreateBuyerWholesaleFreightRequestResponse
+- CreateBuyerWholesaleFreightRequestResponseData
+- CreateBuyerWholesaleFreightRequestResponseDataLines
+- CreateBuyerWholesaleInvoicePayLinkResponse
+- CreateBuyerWholesaleInvoicePayLinkResponseData
+- CreateBuyerWholesaleQuoteAcceptResponse
+- CreateBuyerWholesaleQuoteAcceptResponseData
+- CreateBuyerWholesaleUploadValidateResponse
+- CreateBuyerWholesaleUploadValidateResponseData
+- CreateBuyerWholesaleUploadValidateResponseDataLines
+- CreateBuyerWholesaleUploadValidateResponseDataLinesFlagsItem
+- CreateBuyerWholesaleUploadValidateResponseDataUnmatched
 - CreateBuyerWishlistInviteResponse
 - CreateBuyerWishlistInviteResponseData
 - CreateBuyerWishlistItemRequest
@@ -516,6 +671,8 @@ Class | Method | HTTP request | Description
 - DeleteBuyerDropJoinResponse
 - DeleteBuyerTryOnResponse
 - DeleteBuyerTryOnResponseData
+- DeleteBuyerWholesaleOrderSheetResponse
+- DeleteBuyerWholesaleOrderSheetResponseData
 - DeleteBuyerWishlistItemResponse
 - DeleteBuyerWishlistItemResponseData
 - Error
@@ -553,7 +710,21 @@ Class | Method | HTTP request | Description
 - GetBuyerCatalogListingRentalResponse
 - GetBuyerCatalogListingRentalResponseData
 - GetBuyerCatalogListingRentalResponseDataBooked
+- GetBuyerCatalogListingRentalResponseDataOptions
+- GetBuyerCatalogListingRentalResponseDataOptionsCancellation
+- GetBuyerCatalogListingRentalResponseDataOptionsDamageWaiver
+- GetBuyerCatalogListingRentalResponseDataOptionsDeposit
+- GetBuyerCatalogListingRentalResponseDataOptionsExtensions
+- GetBuyerCatalogListingRentalResponseDataOptionsLastMinute
+- GetBuyerCatalogListingRentalResponseDataOptionsLateEscalation
+- GetBuyerCatalogListingRentalResponseDataOptionsLengthDiscounts
+- GetBuyerCatalogListingRentalResponseDataOptionsPhotosOut
+- GetBuyerCatalogListingRentalResponseDataOptionsPickup
+- GetBuyerCatalogListingRentalResponseDataOptionsSeasonal
 - GetBuyerCatalogListingResponse
+- GetBuyerCatalogListingResponseDescriptionBlocksItem
+- GetBuyerCatalogListingResponseTokenGate
+- GetBuyerCatalogListingResponseVariants
 - GetBuyerCatalogListingShippingResponse
 - GetBuyerCatalogListingShippingResponseInternational
 - GetBuyerCatalogListingShippingResponseServices
@@ -569,10 +740,24 @@ Class | Method | HTTP request | Description
 - GetBuyerCollectionSetResponseDataGroup
 - GetBuyerCollectionSetResponseDataLeaderboard
 - GetBuyerCollectionSetResponseDataPieces
+- GetBuyerCreationResponse
+- GetBuyerCreationResponseData
+- GetBuyerCreationResponseDataReviews
+- GetBuyerCreationResponseDataSummary
+- GetBuyerCreationResponseDataViewer
+- GetBuyerCreationResponseDataViewerReview
 - GetBuyerCreatorResponse
 - GetBuyerCreatorResponseData
 - GetBuyerCreatorResponseDataCreator
 - GetBuyerDropMeResponse
+- GetBuyerEventResponse
+- GetBuyerEventResponseData
+- GetBuyerEventResponseDataDropRef
+- GetBuyerEventResponseDataHost
+- GetBuyerEventResponseDataHostStore
+- GetBuyerEventResponseDataListings
+- GetBuyerEventResponseDataLiveShow
+- GetBuyerEventResponseDataPromo
 - GetBuyerFitVocabularyResponse
 - GetBuyerFitVocabularyResponseData
 - GetBuyerFitVocabularyResponseDataKinds
@@ -580,6 +765,10 @@ Class | Method | HTTP request | Description
 - GetBuyerGiftFinderOptionResponseData
 - GetBuyerGiftFinderOptionResponseDataBudgets
 - GetBuyerGiftFinderOptionResponseDataRecipients
+- GetBuyerHomePlaceableResponse
+- GetBuyerHomePlaceableResponseData
+- GetBuyerHomePlaceableResponseDataItems
+- GetBuyerHomePlaceableResponseDataItemsRef
 - GetBuyerImpactResponse
 - GetBuyerImpactResponseData
 - GetBuyerListingAudioSummaryResponse
@@ -628,8 +817,14 @@ Class | Method | HTTP request | Description
 - GetBuyerPassportResponse
 - GetBuyerPassportResponseData
 - GetBuyerPassportResponseDataAuthenticated
+- GetBuyerPassportResponseDataDetails
+- GetBuyerPassportResponseDataGrading
 - GetBuyerPassportResponseDataHistory
+- GetBuyerPassportResponseDataHolder
 - GetBuyerPassportResponseDataItem
+- GetBuyerPassportResponseDataTimeline
+- GetBuyerPassportResponseDataVerdict
+- GetBuyerPassportResponseDataVerdictChecks
 - GetBuyerPreferenceResponse
 - GetBuyerPreferenceResponseData
 - GetBuyerPreferenceResponseDataBrands
@@ -650,11 +845,29 @@ Class | Method | HTTP request | Description
 - GetBuyerPurchaseStoryResponseData
 - GetBuyerRentalEligibilityResponse
 - GetBuyerRentalEligibilityResponseData
+- GetBuyerRentalResponse
+- GetBuyerRentalResponseData
+- GetBuyerRentalResponseDataBuyout
+- GetBuyerRentalResponseDataEvents
+- GetBuyerRentalResponseDataExtension
+- GetBuyerRentalResponseDataExtensions
+- GetBuyerRentalResponseDataPayments
+- GetBuyerRentalResponseDataShipping
+- GetBuyerRentalResponseDataTimeline
 - GetBuyerScanSessionResponse
 - GetBuyerScanSessionResponseCaptures
 - GetBuyerScanSessionResponseCapturesIdentifier
 - GetBuyerSellerClubResponse
 - GetBuyerSellerClubResponseData
+- GetBuyerSellerLoyaltyResponse
+- GetBuyerSellerLoyaltyResponseData
+- GetBuyerSellerLoyaltyResponseDataMember
+- GetBuyerSellerLoyaltyResponseDataMemberHistory
+- GetBuyerSellerLoyaltyResponseDataMemberNext
+- GetBuyerSellerLoyaltyResponseDataMemberNextTier
+- GetBuyerSellerLoyaltyResponseDataMemberPerks
+- GetBuyerSellerLoyaltyResponseDataMemberStanding
+- GetBuyerSellerLoyaltyResponseDataMemberTier
 - GetBuyerSellerTrustResponse
 - GetBuyerSellerTrustResponseData
 - GetBuyerSellerTrustResponseDataRating
@@ -667,15 +880,138 @@ Class | Method | HTTP request | Description
 - GetBuyerVaultMarketHistoryResponseNow
 - GetBuyerVaultMarketHistoryResponseNowMarks
 - GetBuyerVaultMarketHistoryResponseSeries
+- GetBuyerVaultMarketHistoryResponseToday
 - GetBuyerVaultMarketIndexResponse
 - GetBuyerVaultMarketIndexResponseHistory
 - GetBuyerVaultMarketIndexResponseLastClose
 - GetBuyerVaultMarketIndexResponseNow
 - GetBuyerVaultMarketInstantExitResponse
 - GetBuyerVaultMarketInstantExitResponseLevels
+- GetBuyerVaultMarketOptionAnalyticResponse
+- GetBuyerVaultMarketOptionAnalyticResponseExpiries
+- GetBuyerVaultMarketOptionAnalyticResponseExpiriesExpectedMove
+- GetBuyerVaultMarketOptionAnalyticResponseExpiriesOpenInterest
+- GetBuyerVaultMarketOptionAnalyticResponseHistoricalVol
+- GetBuyerVaultMarketOptionAnalyticResponseHistoricalVolSeries
+- GetBuyerVaultMarketOptionAnalyticResponseHistoricalVolWindows
+- GetBuyerVaultMarketOptionAnalyticResponseIv
+- GetBuyerVaultMarketOptionAnalyticResponseIvHistory
+- GetBuyerVaultMarketOptionAnalyticResponsePutCall
+- GetBuyerVaultMarketOptionAnalyticResponsePutCallTotals
+- GetBuyerVaultMarketOptionAnalyticResponseSmile
+- GetBuyerVaultMarketOptionAnalyticResponseSmileByStrike
+- GetBuyerVaultMarketOptionAnalyticResponseSmileFitted
+- GetBuyerVaultMarketOptionAnalyticResponseSmilePoints
+- GetBuyerVaultMarketOptionAnalyticResponseSurface
+- GetBuyerVaultMarketOptionAnalyticResponseSurfaceRows
+- GetBuyerVaultMarketOptionAnalyticResponseUnderlying
+- GetBuyerVaultMarketOptionChainResponse
+- GetBuyerVaultMarketOptionChainResponseExpiries
+- GetBuyerVaultMarketOptionChainResponseRows
+- GetBuyerVaultMarketOptionChainResponseRowsCall
+- GetBuyerVaultMarketOptionChainResponseSeries
+- GetBuyerVaultMarketOptionChainResponseUnderlying
+- GetBuyerVaultMarketOptionChainResponseVenue
+- GetBuyerVaultMarketOptionIvResponse
+- GetBuyerVaultMarketOptionPositionResponse
+- GetBuyerVaultMarketOptionPositionResponseAccount
+- GetBuyerVaultMarketOptionPositionResponsePositions
+- GetBuyerVaultMarketOptionPositionResponsePositionsContract
+- GetBuyerVaultMarketOptionPositionResponsePositionsGreeks
+- GetBuyerVaultMarketOptionRiskResponse
+- GetBuyerVaultMarketOptionRiskResponseBetaWeighted
+- GetBuyerVaultMarketOptionRiskResponseBetaWeightedIndex
+- GetBuyerVaultMarketOptionRiskResponseByUnderlying
+- GetBuyerVaultMarketOptionRiskResponseScenario
+- GetBuyerVaultMarketOptionRiskResponseScenarioGrid
+- GetBuyerVaultMarketOptionRiskResponseScenarioRanges
+- GetBuyerVaultMarketOptionRiskResponseTotal
+- GetBuyerVaultMarketPredictionBoardResponse
+- GetBuyerVaultMarketPredictionBoardResponseRows
+- GetBuyerVaultMarketPredictionEventResponse
+- GetBuyerVaultMarketPredictionEventResponseConversions
+- GetBuyerVaultMarketPredictionEventResponseMarkets
+- GetBuyerVaultMarketPredictionEventResponseRisk
+- GetBuyerVaultMarketPredictionLeaderboardResponse
+- GetBuyerVaultMarketPredictionLeaderboardResponseRows
+- GetBuyerVaultMarketPredictionMarketHistoryResponse
+- GetBuyerVaultMarketPredictionMarketHistoryResponseCandles
+- GetBuyerVaultMarketPredictionMarketHistoryResponseNow
+- GetBuyerVaultMarketPredictionMarketHistoryResponsePoints
+- GetBuyerVaultMarketPredictionMarketResponse
+- GetBuyerVaultMarketPredictionMarketResponseBook
+- GetBuyerVaultMarketPredictionMarketResponseBookBids
+- GetBuyerVaultMarketPredictionMarketResponsePracticeBook
+- GetBuyerVaultMarketPredictionMarketResponseRules
+- GetBuyerVaultMarketPredictionMarketResponseSettlements
+- GetBuyerVaultMarketPredictionMarketResponseTrades
+- GetBuyerVaultMarketPredictionMarketResponseVenue
+- GetBuyerVaultMarketPredictionMarketResponseVenueMissing
+- GetBuyerVaultMarketShareBasketResponse
+- GetBuyerVaultMarketShareBasketResponseMembers
+- GetBuyerVaultMarketShareBasketResponseMine
+- GetBuyerVaultMarketShareBasketResponseMineMembers
+- GetBuyerVaultMarketShareResponse
+- GetBuyerVaultMarketShareResponseAutoInvest
+- GetBuyerVaultMarketShareResponseDistributions
+- GetBuyerVaultMarketShareResponseHoldings
+- GetBuyerVaultMarketShareResponseHoldingsSeries
+- GetBuyerVaultMarketShareResponseSubscriptions
+- GetBuyerVaultMarketShareResponseTotals
+- GetBuyerVaultMarketShareResponseVenue
+- GetBuyerVaultMarketShareSeryHistoryResponse
+- GetBuyerVaultMarketShareSeryHistoryResponseAppraisals
+- GetBuyerVaultMarketShareSeryHistoryResponseCandles
+- GetBuyerVaultMarketShareSeryPerkResponse
+- GetBuyerVaultMarketShareSeryPerkResponseBadge
+- GetBuyerVaultMarketShareSeryPerkResponseViewingDays
+- GetBuyerVaultMarketShareSeryPerkResponseViewingDaysMyBooking
+- GetBuyerVaultMarketShareSeryPerkResponseVisit
+- GetBuyerVaultMarketShareSeryResponse
+- GetBuyerVaultMarketShareSeryResponseBuyouts
+- GetBuyerVaultMarketShareSeryResponseBuyoutsMyVote
+- GetBuyerVaultMarketShareSeryResponseDepth
+- GetBuyerVaultMarketShareSeryResponseDepthBids
+- GetBuyerVaultMarketShareSeryResponseDrop
+- GetBuyerVaultMarketShareSeryResponseHolders
+- GetBuyerVaultMarketShareSeryResponseHoldersDistribution
+- GetBuyerVaultMarketShareSeryResponseMarket
+- GetBuyerVaultMarketShareSeryResponseMarketIndicative
+- GetBuyerVaultMarketShareSeryResponseMarketTrading
+- GetBuyerVaultMarketShareSeryResponseMy
+- GetBuyerVaultMarketShareSeryResponseMyOrders
+- GetBuyerVaultMarketShareSeryResponseMySubscriptions
+- GetBuyerVaultMarketShareSeryResponsePerks
+- GetBuyerVaultMarketShareSeryResponsePerksViewingDays
+- GetBuyerVaultMarketShareSeryResponseTape
+- GetBuyerVaultMarketShareSeryResponseUpdates
 - GetBuyerVaultMarketWorthResponse
 - GetBuyerVaultMarketWorthResponseSellNow
 - GetBuyerVaultMarketWorthResponseSellNowBlocked
+- GetBuyerVaultMarketWorthResponseToday
+- GetBuyerWholesaleCartResponse
+- GetBuyerWholesaleCartResponseData
+- GetBuyerWholesaleCartResponseDataGroups
+- GetBuyerWholesaleCartResponseDataGroupsCheckout
+- GetBuyerWholesaleCartResponseDataGroupsCheckoutMethodsItem
+- GetBuyerWholesaleCartResponseDataGroupsMinimum
+- GetBuyerWholesaleCartResponseDataTaxExempt
+- GetBuyerWholesaleCartResponseDataViolations
+- GetBuyerWholesaleCatalogApplyResponse
+- GetBuyerWholesaleCatalogApplyResponseData
+- GetBuyerWholesaleCatalogApplyResponseDataCatalog
+- GetBuyerWholesaleCatalogApplyResponseDataPrefill
+- GetBuyerWholesaleCatalogApplyResponseDataRequirements
+- GetBuyerWholesaleCatalogApplyResponseDataRequirementsQuestions
+- GetBuyerWholesaleDropResponse
+- GetBuyerWholesaleDropResponseData
+- GetBuyerWholesaleDropResponseDataListings
+- GetBuyerWholesaleDropResponseDataReservations
+- GetBuyerWholesaleInvoicePayQuoteResponse
+- GetBuyerWholesaleInvoicePayQuoteResponseData
+- GetBuyerWholesaleInvoicePayQuoteResponseDataMethodsItem
+- GetBuyerWholesaleReorderResponse
+- GetBuyerWholesaleReorderResponseData
 - ListBuyerActivityItem
 - ListBuyerActivityResponse
 - ListBuyerAgentSessionsItem
@@ -705,6 +1041,11 @@ Class | Method | HTTP request | Description
 - ListBuyerCatalogSellersResponse
 - ListBuyerClubsItem
 - ListBuyerClubsResponse
+- ListBuyerCreationReviewableItem
+- ListBuyerCreationReviewableItemReview
+- ListBuyerCreationReviewableResponse
+- ListBuyerEventsItem
+- ListBuyerEventsResponse
 - ListBuyerFeedbackItem
 - ListBuyerFeedbackPendingItem
 - ListBuyerFeedbackPendingResponse
@@ -719,6 +1060,10 @@ Class | Method | HTTP request | Description
 - ListBuyerGiftFinderResponse
 - ListBuyerGiftSentItem
 - ListBuyerGiftSentResponse
+- ListBuyerHomeBuildersItem
+- ListBuyerHomeBuildersResponse
+- ListBuyerHomeBuildingItem
+- ListBuyerHomeBuildingResponse
 - ListBuyerHotspotsItem
 - ListBuyerHotspotsResponse
 - ListBuyerHuntsItem
@@ -737,6 +1082,8 @@ Class | Method | HTTP request | Description
 - ListBuyerLiveShipmentsResponse
 - ListBuyerLiveStreamLineupItem
 - ListBuyerLiveStreamLineupResponse
+- ListBuyerLoyaltyItem
+- ListBuyerLoyaltyResponse
 - ListBuyerMonitorMatchesItem
 - ListBuyerMonitorMatchesResponse
 - ListBuyerMonitorsItem
@@ -756,6 +1103,8 @@ Class | Method | HTTP request | Description
 - ListBuyerPacksResponse
 - ListBuyerPartiesItem
 - ListBuyerPartiesResponse
+- ListBuyerPaymentMethodsItem
+- ListBuyerPaymentMethodsResponse
 - ListBuyerProtectionPlansItem
 - ListBuyerProtectionPlansResponse
 - ListBuyerRegistriesItem
@@ -772,6 +1121,8 @@ Class | Method | HTTP request | Description
 - ListBuyerSizeMemoryPromptsResponse
 - ListBuyerSizeMemorySizesItem
 - ListBuyerSizeMemorySizesResponse
+- ListBuyerStoreListingsItem
+- ListBuyerStoreListingsResponse
 - ListBuyerSubscriptionsItem
 - ListBuyerSubscriptionsResponse
 - ListBuyerTogetherItem
@@ -788,12 +1139,49 @@ Class | Method | HTTP request | Description
 - ListBuyerVaultMarketIndexesResponse
 - ListBuyerVaultMarketInstantExitItem
 - ListBuyerVaultMarketInstantExitResponse
+- ListBuyerVaultMarketOptionCombosItem
+- ListBuyerVaultMarketOptionCombosItemLegs
+- ListBuyerVaultMarketOptionCombosResponse
+- ListBuyerVaultMarketOptionNoticesItem
+- ListBuyerVaultMarketOptionNoticesResponse
+- ListBuyerVaultMarketOptionSeriesItem
+- ListBuyerVaultMarketOptionSeriesResponse
+- ListBuyerVaultMarketOptionStrategiesItem
+- ListBuyerVaultMarketOptionStrategiesResponse
+- ListBuyerVaultMarketPredictionCommentsItem
+- ListBuyerVaultMarketPredictionCommentsItemReplies
+- ListBuyerVaultMarketPredictionCommentsItemRepliesAuthor
+- ListBuyerVaultMarketPredictionCommentsResponse
+- ListBuyerVaultMarketPredictionMarketsItem
+- ListBuyerVaultMarketPredictionMarketsItemProbability
+- ListBuyerVaultMarketPredictionMarketsResponse
+- ListBuyerVaultMarketPredictionPositionsItem
+- ListBuyerVaultMarketPredictionPositionsResponse
+- ListBuyerVaultMarketShareAutoInvestItem
+- ListBuyerVaultMarketShareAutoInvestItemTargets
+- ListBuyerVaultMarketShareAutoInvestResponse
+- ListBuyerVaultMarketShareBasketsItem
+- ListBuyerVaultMarketShareBasketsResponse
+- ListBuyerVaultMarketShareDropsItem
+- ListBuyerVaultMarketShareDropsResponse
+- ListBuyerVaultMarketShareGiftsItem
+- ListBuyerVaultMarketShareGiftsResponse
+- ListBuyerVaultMarketShareSeriesItem
+- ListBuyerVaultMarketShareSeriesItemMine
+- ListBuyerVaultMarketShareSeriesItemRights
+- ListBuyerVaultMarketShareSeriesResponse
 - ListBuyerVaultMarketWatchlistItem
 - ListBuyerVaultMarketWatchlistItemSparkline
 - ListBuyerVaultMarketWatchlistResponse
 - ListBuyerVaultResponse
 - ListBuyerVideoRequestsItem
 - ListBuyerVideoRequestsResponse
+- ListBuyerWalletPerksItem
+- ListBuyerWalletPerksResponse
+- ListBuyerWholesaleDropsItem
+- ListBuyerWholesaleDropsResponse
+- ListBuyerWholesalePrebooksItem
+- ListBuyerWholesalePrebooksResponse
 - ListBuyerWishlistItemsItem
 - ListBuyerWishlistItemsResponse
 - ListBuyerWishlistMembersItem
@@ -803,9 +1191,15 @@ Class | Method | HTTP request | Description
 - Pagination
 - UpdateBuyerCollectionSetLeaderboardResponse
 - UpdateBuyerCollectionSetLeaderboardResponseData
+- UpdateBuyerCreationReviewRequest
+- UpdateBuyerCreationReviewResponse
 - UpdateBuyerFeedbackRequest
+- UpdateBuyerPaymentMethodDefaultResponse
+- UpdateBuyerPaymentMethodDefaultResponseData
 - UpdateBuyerRegistryItemResponse
 - UpdateBuyerRegistryItemResponseData
+- UpdateBuyerWholesaleCartPoResponse
+- UpdateBuyerWholesaleCartPoResponseData
 - UpdateBuyerWishlistRequest
 - UpdateBuyerWishlistResponse
 - UpdateBuyerWishlistResponseData
@@ -835,6 +1229,7 @@ vendor/bin/phpunit
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `1.0.0`
+    - Package version: `0.2.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
 
 ## Where things are

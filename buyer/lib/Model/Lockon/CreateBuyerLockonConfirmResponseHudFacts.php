@@ -173,9 +173,9 @@ class CreateBuyerLockonConfirmResponseHudFacts implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-    const TONE_GOOD = 'good';
-    const TONE_WARN = 'warn';
     const TONE_NEUTRAL = 'neutral';
+    const TONE_WARN = 'warn';
+    const TONE_GOOD = 'good';
 
     /**
      * Gets allowable values of the enum
@@ -185,9 +185,9 @@ class CreateBuyerLockonConfirmResponseHudFacts implements ModelInterface, ArrayA
     public function getToneAllowableValues()
     {
         return [
-            self::TONE_GOOD,
-            self::TONE_WARN,
             self::TONE_NEUTRAL,
+            self::TONE_WARN,
+            self::TONE_GOOD,
         ];
     }
 

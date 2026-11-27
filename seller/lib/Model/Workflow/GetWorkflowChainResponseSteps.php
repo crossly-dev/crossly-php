@@ -61,10 +61,11 @@ class GetWorkflowChainResponseSteps implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'position' => 'float',
         'chain_id' => 'string',
+        'position' => 'float',
         'step_type' => 'string',
         'action_id' => 'string',
+        'action_config' => 'array<string,mixed>',
         'wait_ms' => 'float'
     ];
 
@@ -77,10 +78,11 @@ class GetWorkflowChainResponseSteps implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'position' => null,
         'chain_id' => null,
+        'position' => null,
         'step_type' => null,
         'action_id' => null,
+        'action_config' => null,
         'wait_ms' => null
     ];
 
@@ -112,10 +114,11 @@ class GetWorkflowChainResponseSteps implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'position' => 'position',
         'chain_id' => 'chainId',
+        'position' => 'position',
         'step_type' => 'stepType',
         'action_id' => 'actionId',
+        'action_config' => 'actionConfig',
         'wait_ms' => 'waitMs'
     ];
 
@@ -126,10 +129,11 @@ class GetWorkflowChainResponseSteps implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $setters = [
         'id' => 'setId',
-        'position' => 'setPosition',
         'chain_id' => 'setChainId',
+        'position' => 'setPosition',
         'step_type' => 'setStepType',
         'action_id' => 'setActionId',
+        'action_config' => 'setActionConfig',
         'wait_ms' => 'setWaitMs'
     ];
 
@@ -140,10 +144,11 @@ class GetWorkflowChainResponseSteps implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $getters = [
         'id' => 'getId',
-        'position' => 'getPosition',
         'chain_id' => 'getChainId',
+        'position' => 'getPosition',
         'step_type' => 'getStepType',
         'action_id' => 'getActionId',
+        'action_config' => 'getActionConfig',
         'wait_ms' => 'getWaitMs'
     ];
 
@@ -205,10 +210,11 @@ class GetWorkflowChainResponseSteps implements ModelInterface, ArrayAccess, \Jso
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['position'] = $data['position'] ?? null;
         $this->container['chain_id'] = $data['chain_id'] ?? null;
+        $this->container['position'] = $data['position'] ?? null;
         $this->container['step_type'] = $data['step_type'] ?? null;
         $this->container['action_id'] = $data['action_id'] ?? null;
+        $this->container['action_config'] = $data['action_config'] ?? null;
         $this->container['wait_ms'] = $data['wait_ms'] ?? null;
     }
 
@@ -224,14 +230,17 @@ class GetWorkflowChainResponseSteps implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['position'] === null) {
-            $invalidProperties[] = "'position' can't be null";
-        }
         if ($this->container['chain_id'] === null) {
             $invalidProperties[] = "'chain_id' can't be null";
         }
+        if ($this->container['position'] === null) {
+            $invalidProperties[] = "'position' can't be null";
+        }
         if ($this->container['step_type'] === null) {
             $invalidProperties[] = "'step_type' can't be null";
+        }
+        if ($this->container['action_config'] === null) {
+            $invalidProperties[] = "'action_config' can't be null";
         }
         return $invalidProperties;
     }
@@ -273,30 +282,6 @@ class GetWorkflowChainResponseSteps implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets position
-     *
-     * @return float
-     */
-    public function getPosition()
-    {
-        return $this->container['position'];
-    }
-
-    /**
-     * Sets position
-     *
-     * @param float $position position
-     *
-     * @return self
-     */
-    public function setPosition($position)
-    {
-        $this->container['position'] = $position;
-
-        return $this;
-    }
-
-    /**
      * Gets chain_id
      *
      * @return string
@@ -316,6 +301,30 @@ class GetWorkflowChainResponseSteps implements ModelInterface, ArrayAccess, \Jso
     public function setChainId($chain_id)
     {
         $this->container['chain_id'] = $chain_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets position
+     *
+     * @return float
+     */
+    public function getPosition()
+    {
+        return $this->container['position'];
+    }
+
+    /**
+     * Sets position
+     *
+     * @param float $position position
+     *
+     * @return self
+     */
+    public function setPosition($position)
+    {
+        $this->container['position'] = $position;
 
         return $this;
     }
@@ -364,6 +373,30 @@ class GetWorkflowChainResponseSteps implements ModelInterface, ArrayAccess, \Jso
     public function setActionId($action_id)
     {
         $this->container['action_id'] = $action_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_config
+     *
+     * @return array<string,mixed>
+     */
+    public function getActionConfig()
+    {
+        return $this->container['action_config'];
+    }
+
+    /**
+     * Sets action_config
+     *
+     * @param array<string,mixed> $action_config action_config
+     *
+     * @return self
+     */
+    public function setActionConfig($action_config)
+    {
+        $this->container['action_config'] = $action_config;
 
         return $this;
     }

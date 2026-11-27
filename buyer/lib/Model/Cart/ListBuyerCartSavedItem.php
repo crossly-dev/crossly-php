@@ -61,17 +61,20 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'quantity' => 'float',
-        'title' => 'string',
         'platform_listing_id' => 'string',
-        'seller_user_id' => 'string',
         'slug' => 'string',
+        'title' => 'string',
         'price_cents' => 'float',
+        'quantity' => 'float',
         'in_stock' => 'bool',
         'available_quantity' => 'float',
+        'seller_user_id' => 'string',
         'saved_at' => 'string',
+        'thumbnail' => 'string',
         'seller_display_name' => 'string',
-        'thumbnail' => 'string'
+        'listing_variant_id' => 'string',
+        'variant_name' => 'string',
+        'needs_option' => 'bool'
     ];
 
     /**
@@ -83,17 +86,20 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'quantity' => null,
-        'title' => null,
         'platform_listing_id' => null,
-        'seller_user_id' => null,
         'slug' => null,
+        'title' => null,
         'price_cents' => null,
+        'quantity' => null,
         'in_stock' => null,
         'available_quantity' => null,
+        'seller_user_id' => null,
         'saved_at' => null,
+        'thumbnail' => null,
         'seller_display_name' => null,
-        'thumbnail' => null
+        'listing_variant_id' => null,
+        'variant_name' => null,
+        'needs_option' => null
     ];
 
     /**
@@ -124,17 +130,20 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'quantity' => 'quantity',
-        'title' => 'title',
         'platform_listing_id' => 'platformListingId',
-        'seller_user_id' => 'sellerUserId',
         'slug' => 'slug',
+        'title' => 'title',
         'price_cents' => 'priceCents',
+        'quantity' => 'quantity',
         'in_stock' => 'inStock',
         'available_quantity' => 'availableQuantity',
+        'seller_user_id' => 'sellerUserId',
         'saved_at' => 'savedAt',
+        'thumbnail' => 'thumbnail',
         'seller_display_name' => 'sellerDisplayName',
-        'thumbnail' => 'thumbnail'
+        'listing_variant_id' => 'listingVariantId',
+        'variant_name' => 'variantName',
+        'needs_option' => 'needsOption'
     ];
 
     /**
@@ -144,17 +153,20 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'id' => 'setId',
-        'quantity' => 'setQuantity',
-        'title' => 'setTitle',
         'platform_listing_id' => 'setPlatformListingId',
-        'seller_user_id' => 'setSellerUserId',
         'slug' => 'setSlug',
+        'title' => 'setTitle',
         'price_cents' => 'setPriceCents',
+        'quantity' => 'setQuantity',
         'in_stock' => 'setInStock',
         'available_quantity' => 'setAvailableQuantity',
+        'seller_user_id' => 'setSellerUserId',
         'saved_at' => 'setSavedAt',
+        'thumbnail' => 'setThumbnail',
         'seller_display_name' => 'setSellerDisplayName',
-        'thumbnail' => 'setThumbnail'
+        'listing_variant_id' => 'setListingVariantId',
+        'variant_name' => 'setVariantName',
+        'needs_option' => 'setNeedsOption'
     ];
 
     /**
@@ -164,17 +176,20 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'id' => 'getId',
-        'quantity' => 'getQuantity',
-        'title' => 'getTitle',
         'platform_listing_id' => 'getPlatformListingId',
-        'seller_user_id' => 'getSellerUserId',
         'slug' => 'getSlug',
+        'title' => 'getTitle',
         'price_cents' => 'getPriceCents',
+        'quantity' => 'getQuantity',
         'in_stock' => 'getInStock',
         'available_quantity' => 'getAvailableQuantity',
+        'seller_user_id' => 'getSellerUserId',
         'saved_at' => 'getSavedAt',
+        'thumbnail' => 'getThumbnail',
         'seller_display_name' => 'getSellerDisplayName',
-        'thumbnail' => 'getThumbnail'
+        'listing_variant_id' => 'getListingVariantId',
+        'variant_name' => 'getVariantName',
+        'needs_option' => 'getNeedsOption'
     ];
 
     /**
@@ -235,17 +250,20 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
-        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['in_stock'] = $data['in_stock'] ?? null;
         $this->container['available_quantity'] = $data['available_quantity'] ?? null;
+        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['saved_at'] = $data['saved_at'] ?? null;
-        $this->container['seller_display_name'] = $data['seller_display_name'] ?? null;
         $this->container['thumbnail'] = $data['thumbnail'] ?? null;
+        $this->container['seller_display_name'] = $data['seller_display_name'] ?? null;
+        $this->container['listing_variant_id'] = $data['listing_variant_id'] ?? null;
+        $this->container['variant_name'] = $data['variant_name'] ?? null;
+        $this->container['needs_option'] = $data['needs_option'] ?? null;
     }
 
     /**
@@ -260,29 +278,29 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['quantity'] === null) {
-            $invalidProperties[] = "'quantity' can't be null";
-        }
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
-        }
-        if ($this->container['seller_user_id'] === null) {
-            $invalidProperties[] = "'seller_user_id' can't be null";
         }
         if ($this->container['slug'] === null) {
             $invalidProperties[] = "'slug' can't be null";
         }
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
         if ($this->container['price_cents'] === null) {
             $invalidProperties[] = "'price_cents' can't be null";
+        }
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
         }
         if ($this->container['in_stock'] === null) {
             $invalidProperties[] = "'in_stock' can't be null";
         }
         if ($this->container['available_quantity'] === null) {
             $invalidProperties[] = "'available_quantity' can't be null";
+        }
+        if ($this->container['seller_user_id'] === null) {
+            $invalidProperties[] = "'seller_user_id' can't be null";
         }
         if ($this->container['saved_at'] === null) {
             $invalidProperties[] = "'saved_at' can't be null";
@@ -327,54 +345,6 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets quantity
-     *
-     * @return float
-     */
-    public function getQuantity()
-    {
-        return $this->container['quantity'];
-    }
-
-    /**
-     * Sets quantity
-     *
-     * @param float $quantity quantity
-     *
-     * @return self
-     */
-    public function setQuantity($quantity)
-    {
-        $this->container['quantity'] = $quantity;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
      * Gets platform_listing_id
      *
      * @return string
@@ -394,30 +364,6 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setPlatformListingId($platform_listing_id)
     {
         $this->container['platform_listing_id'] = $platform_listing_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets seller_user_id
-     *
-     * @return string
-     */
-    public function getSellerUserId()
-    {
-        return $this->container['seller_user_id'];
-    }
-
-    /**
-     * Sets seller_user_id
-     *
-     * @param string $seller_user_id seller_user_id
-     *
-     * @return self
-     */
-    public function setSellerUserId($seller_user_id)
-    {
-        $this->container['seller_user_id'] = $seller_user_id;
 
         return $this;
     }
@@ -447,6 +393,30 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
      * Gets price_cents
      *
      * @return float
@@ -466,6 +436,30 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setPriceCents($price_cents)
     {
         $this->container['price_cents'] = $price_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return float
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param float $quantity quantity
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }
@@ -519,6 +513,30 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets seller_user_id
+     *
+     * @return string
+     */
+    public function getSellerUserId()
+    {
+        return $this->container['seller_user_id'];
+    }
+
+    /**
+     * Sets seller_user_id
+     *
+     * @param string $seller_user_id seller_user_id
+     *
+     * @return self
+     */
+    public function setSellerUserId($seller_user_id)
+    {
+        $this->container['seller_user_id'] = $seller_user_id;
+
+        return $this;
+    }
+
+    /**
      * Gets saved_at
      *
      * @return string
@@ -538,6 +556,30 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setSavedAt($saved_at)
     {
         $this->container['saved_at'] = $saved_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets thumbnail
+     *
+     * @return string|null
+     */
+    public function getThumbnail()
+    {
+        return $this->container['thumbnail'];
+    }
+
+    /**
+     * Sets thumbnail
+     *
+     * @param string|null $thumbnail thumbnail
+     *
+     * @return self
+     */
+    public function setThumbnail($thumbnail)
+    {
+        $this->container['thumbnail'] = $thumbnail;
 
         return $this;
     }
@@ -567,25 +609,73 @@ class ListBuyerCartSavedItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets thumbnail
+     * Gets listing_variant_id
      *
      * @return string|null
      */
-    public function getThumbnail()
+    public function getListingVariantId()
     {
-        return $this->container['thumbnail'];
+        return $this->container['listing_variant_id'];
     }
 
     /**
-     * Sets thumbnail
+     * Sets listing_variant_id
      *
-     * @param string|null $thumbnail thumbnail
+     * @param string|null $listing_variant_id The option it was saved as (catalog `variants[].id`), restored on move-to-cart; null otherwise.
      *
      * @return self
      */
-    public function setThumbnail($thumbnail)
+    public function setListingVariantId($listing_variant_id)
     {
-        $this->container['thumbnail'] = $thumbnail;
+        $this->container['listing_variant_id'] = $listing_variant_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets variant_name
+     *
+     * @return string|null
+     */
+    public function getVariantName()
+    {
+        return $this->container['variant_name'];
+    }
+
+    /**
+     * Sets variant_name
+     *
+     * @param string|null $variant_name That option's label (\"M\").
+     *
+     * @return self
+     */
+    public function setVariantName($variant_name)
+    {
+        $this->container['variant_name'] = $variant_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets needs_option
+     *
+     * @return bool|null
+     */
+    public function getNeedsOption()
+    {
+        return $this->container['needs_option'];
+    }
+
+    /**
+     * Sets needs_option
+     *
+     * @param bool|null $needs_option The listing has options and this item names none: add it again with an option (move-to-cart refuses).
+     *
+     * @return self
+     */
+    public function setNeedsOption($needs_option)
+    {
+        $this->container['needs_option'] = $needs_option;
 
         return $this;
     }

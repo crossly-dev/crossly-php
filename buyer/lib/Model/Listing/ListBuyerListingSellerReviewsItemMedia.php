@@ -60,8 +60,8 @@ class ListBuyerListingSellerReviewsItemMedia implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url' => 'string',
-        'kind' => 'string'
+        'kind' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class ListBuyerListingSellerReviewsItemMedia implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url' => null,
-        'kind' => null
+        'kind' => null,
+        'url' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class ListBuyerListingSellerReviewsItemMedia implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
-        'kind' => 'kind'
+        'kind' => 'kind',
+        'url' => 'url'
     ];
 
     /**
@@ -113,8 +113,8 @@ class ListBuyerListingSellerReviewsItemMedia implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
-        'kind' => 'setKind'
+        'kind' => 'setKind',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -123,8 +123,8 @@ class ListBuyerListingSellerReviewsItemMedia implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
-        'kind' => 'getKind'
+        'kind' => 'getKind',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -184,8 +184,8 @@ class ListBuyerListingSellerReviewsItemMedia implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->container['url'] = $data['url'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
     }
 
     /**
@@ -197,11 +197,11 @@ class ListBuyerListingSellerReviewsItemMedia implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
         if ($this->container['kind'] === null) {
             $invalidProperties[] = "'kind' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,30 +217,6 @@ class ListBuyerListingSellerReviewsItemMedia implements ModelInterface, ArrayAcc
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url url
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
-
-        return $this;
-    }
 
     /**
      * Gets kind
@@ -262,6 +238,30 @@ class ListBuyerListingSellerReviewsItemMedia implements ModelInterface, ArrayAcc
     public function setKind($kind)
     {
         $this->container['kind'] = $kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url url
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }

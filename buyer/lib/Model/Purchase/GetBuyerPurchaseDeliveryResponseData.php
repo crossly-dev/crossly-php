@@ -61,8 +61,8 @@ class GetBuyerPurchaseDeliveryResponseData implements ModelInterface, ArrayAcces
       */
     protected static $openAPITypes = [
         'pickup_point' => 'array<string,mixed>',
-        'carrier' => 'string',
         'tracking_number' => 'string',
+        'carrier' => 'string',
         'consolidation' => 'array<string,mixed>'
     ];
 
@@ -75,8 +75,8 @@ class GetBuyerPurchaseDeliveryResponseData implements ModelInterface, ArrayAcces
       */
     protected static $openAPIFormats = [
         'pickup_point' => null,
-        'carrier' => null,
         'tracking_number' => null,
+        'carrier' => null,
         'consolidation' => null
     ];
 
@@ -108,8 +108,8 @@ class GetBuyerPurchaseDeliveryResponseData implements ModelInterface, ArrayAcces
      */
     protected static $attributeMap = [
         'pickup_point' => 'pickupPoint',
-        'carrier' => 'carrier',
         'tracking_number' => 'trackingNumber',
+        'carrier' => 'carrier',
         'consolidation' => 'consolidation'
     ];
 
@@ -120,8 +120,8 @@ class GetBuyerPurchaseDeliveryResponseData implements ModelInterface, ArrayAcces
      */
     protected static $setters = [
         'pickup_point' => 'setPickupPoint',
-        'carrier' => 'setCarrier',
         'tracking_number' => 'setTrackingNumber',
+        'carrier' => 'setCarrier',
         'consolidation' => 'setConsolidation'
     ];
 
@@ -132,8 +132,8 @@ class GetBuyerPurchaseDeliveryResponseData implements ModelInterface, ArrayAcces
      */
     protected static $getters = [
         'pickup_point' => 'getPickupPoint',
-        'carrier' => 'getCarrier',
         'tracking_number' => 'getTrackingNumber',
+        'carrier' => 'getCarrier',
         'consolidation' => 'getConsolidation'
     ];
 
@@ -195,8 +195,8 @@ class GetBuyerPurchaseDeliveryResponseData implements ModelInterface, ArrayAcces
     public function __construct(array $data = null)
     {
         $this->container['pickup_point'] = $data['pickup_point'] ?? null;
-        $this->container['carrier'] = $data['carrier'] ?? null;
         $this->container['tracking_number'] = $data['tracking_number'] ?? null;
+        $this->container['carrier'] = $data['carrier'] ?? null;
         $this->container['consolidation'] = $data['consolidation'] ?? null;
     }
 
@@ -249,30 +249,6 @@ class GetBuyerPurchaseDeliveryResponseData implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets carrier
-     *
-     * @return string|null
-     */
-    public function getCarrier()
-    {
-        return $this->container['carrier'];
-    }
-
-    /**
-     * Sets carrier
-     *
-     * @param string|null $carrier carrier
-     *
-     * @return self
-     */
-    public function setCarrier($carrier)
-    {
-        $this->container['carrier'] = $carrier;
-
-        return $this;
-    }
-
-    /**
      * Gets tracking_number
      *
      * @return string|null
@@ -292,6 +268,30 @@ class GetBuyerPurchaseDeliveryResponseData implements ModelInterface, ArrayAcces
     public function setTrackingNumber($tracking_number)
     {
         $this->container['tracking_number'] = $tracking_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets carrier
+     *
+     * @return string|null
+     */
+    public function getCarrier()
+    {
+        return $this->container['carrier'];
+    }
+
+    /**
+     * Sets carrier
+     *
+     * @param string|null $carrier carrier
+     *
+     * @return self
+     */
+    public function setCarrier($carrier)
+    {
+        $this->container['carrier'] = $carrier;
 
         return $this;
     }

@@ -60,8 +60,8 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value' => 'string',
-        'ns' => 'string'
+        'ns' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'value' => null,
-        'ns' => null
+        'ns' => null,
+        'value' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value',
-        'ns' => 'ns'
+        'ns' => 'ns',
+        'value' => 'value'
     ];
 
     /**
@@ -113,8 +113,8 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue',
-        'ns' => 'setNs'
+        'ns' => 'setNs',
+        'value' => 'setValue'
     ];
 
     /**
@@ -123,8 +123,8 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue',
-        'ns' => 'getNs'
+        'ns' => 'getNs',
+        'value' => 'getValue'
     ];
 
     /**
@@ -168,8 +168,8 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    const NS_STYLE_CODE = 'style_code';
     const NS_GTIN = 'gtin';
+    const NS_STYLE_CODE = 'style_code';
     const NS_LEGO_SET = 'lego_set';
     const NS_TCGPLAYER = 'tcgplayer';
     const NS_DISCOGS = 'discogs';
@@ -183,8 +183,8 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
     public function getNsAllowableValues()
     {
         return [
-            self::NS_STYLE_CODE,
             self::NS_GTIN,
+            self::NS_STYLE_CODE,
             self::NS_LEGO_SET,
             self::NS_TCGPLAYER,
             self::NS_DISCOGS,
@@ -207,8 +207,8 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['value'] = $data['value'] ?? null;
         $this->container['ns'] = $data['ns'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -220,9 +220,6 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['value'] === null) {
-            $invalidProperties[] = "'value' can't be null";
-        }
         if ($this->container['ns'] === null) {
             $invalidProperties[] = "'ns' can't be null";
         }
@@ -235,6 +232,9 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
             );
         }
 
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -249,30 +249,6 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets value
-     *
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param string $value value
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
-
-        return $this;
-    }
 
     /**
      * Gets ns
@@ -304,6 +280,30 @@ class CreateBuyerScanResponseIdentifier implements ModelInterface, ArrayAccess, 
             );
         }
         $this->container['ns'] = $ns;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     *
+     * @param string $value value
+     *
+     * @return self
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
 
         return $this;
     }

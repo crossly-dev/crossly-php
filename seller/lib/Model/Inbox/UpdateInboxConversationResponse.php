@@ -60,7 +60,7 @@ class UpdateInboxConversationResponse implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'conversation' => '\Crossly\Model\Inbox\ListInboxItem'
+        'conversation' => '\Crossly\Model\Inbox\UpdateInboxConversationResponseConversation'
     ];
 
     /**
@@ -212,7 +212,7 @@ class UpdateInboxConversationResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets conversation
      *
-     * @return \Crossly\Model\Inbox\ListInboxItem
+     * @return \Crossly\Model\Inbox\UpdateInboxConversationResponseConversation
      */
     public function getConversation()
     {
@@ -222,7 +222,7 @@ class UpdateInboxConversationResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets conversation
      *
-     * @param \Crossly\Model\Inbox\ListInboxItem $conversation conversation
+     * @param \Crossly\Model\Inbox\UpdateInboxConversationResponseConversation $conversation conversation
      *
      * @return self
      */

@@ -72,7 +72,11 @@ class CreateVaultMarketPartnerApplyResponsePartner implements ModelInterface, Ar
         'cap_cents' => 'float',
         'applied_at' => 'string',
         'decided_at' => 'string',
-        'decision_note' => 'string'
+        'decision_note' => 'string',
+        'postal_code' => 'string',
+        'hours' => 'array<string,mixed>',
+        'services' => 'string[]',
+        'listed' => 'bool'
     ];
 
     /**
@@ -95,7 +99,11 @@ class CreateVaultMarketPartnerApplyResponsePartner implements ModelInterface, Ar
         'cap_cents' => null,
         'applied_at' => null,
         'decided_at' => null,
-        'decision_note' => null
+        'decision_note' => null,
+        'postal_code' => null,
+        'hours' => null,
+        'services' => null,
+        'listed' => null
     ];
 
     /**
@@ -137,7 +145,11 @@ class CreateVaultMarketPartnerApplyResponsePartner implements ModelInterface, Ar
         'cap_cents' => 'capCents',
         'applied_at' => 'appliedAt',
         'decided_at' => 'decidedAt',
-        'decision_note' => 'decisionNote'
+        'decision_note' => 'decisionNote',
+        'postal_code' => 'postalCode',
+        'hours' => 'hours',
+        'services' => 'services',
+        'listed' => 'listed'
     ];
 
     /**
@@ -158,7 +170,11 @@ class CreateVaultMarketPartnerApplyResponsePartner implements ModelInterface, Ar
         'cap_cents' => 'setCapCents',
         'applied_at' => 'setAppliedAt',
         'decided_at' => 'setDecidedAt',
-        'decision_note' => 'setDecisionNote'
+        'decision_note' => 'setDecisionNote',
+        'postal_code' => 'setPostalCode',
+        'hours' => 'setHours',
+        'services' => 'setServices',
+        'listed' => 'setListed'
     ];
 
     /**
@@ -179,7 +195,11 @@ class CreateVaultMarketPartnerApplyResponsePartner implements ModelInterface, Ar
         'cap_cents' => 'getCapCents',
         'applied_at' => 'getAppliedAt',
         'decided_at' => 'getDecidedAt',
-        'decision_note' => 'getDecisionNote'
+        'decision_note' => 'getDecisionNote',
+        'postal_code' => 'getPostalCode',
+        'hours' => 'getHours',
+        'services' => 'getServices',
+        'listed' => 'getListed'
     ];
 
     /**
@@ -224,8 +244,8 @@ class CreateVaultMarketPartnerApplyResponsePartner implements ModelInterface, Ar
     }
 
     const STATUS_APPLIED = 'applied';
-    const STATUS_APPROVED = 'approved';
     const STATUS_REJECTED = 'rejected';
+    const STATUS_APPROVED = 'approved';
     const STATUS_SUSPENDED = 'suspended';
 
     /**
@@ -237,8 +257,8 @@ class CreateVaultMarketPartnerApplyResponsePartner implements ModelInterface, Ar
     {
         return [
             self::STATUS_APPLIED,
-            self::STATUS_APPROVED,
             self::STATUS_REJECTED,
+            self::STATUS_APPROVED,
             self::STATUS_SUSPENDED,
         ];
     }
@@ -271,6 +291,10 @@ class CreateVaultMarketPartnerApplyResponsePartner implements ModelInterface, Ar
         $this->container['applied_at'] = $data['applied_at'] ?? null;
         $this->container['decided_at'] = $data['decided_at'] ?? null;
         $this->container['decision_note'] = $data['decision_note'] ?? null;
+        $this->container['postal_code'] = $data['postal_code'] ?? null;
+        $this->container['hours'] = $data['hours'] ?? null;
+        $this->container['services'] = $data['services'] ?? null;
+        $this->container['listed'] = $data['listed'] ?? null;
     }
 
     /**
@@ -311,6 +335,12 @@ class CreateVaultMarketPartnerApplyResponsePartner implements ModelInterface, Ar
         }
         if ($this->container['applied_at'] === null) {
             $invalidProperties[] = "'applied_at' can't be null";
+        }
+        if ($this->container['services'] === null) {
+            $invalidProperties[] = "'services' can't be null";
+        }
+        if ($this->container['listed'] === null) {
+            $invalidProperties[] = "'listed' can't be null";
         }
         return $invalidProperties;
     }
@@ -645,6 +675,102 @@ class CreateVaultMarketPartnerApplyResponsePartner implements ModelInterface, Ar
     public function setDecisionNote($decision_note)
     {
         $this->container['decision_note'] = $decision_note;
+
+        return $this;
+    }
+
+    /**
+     * Gets postal_code
+     *
+     * @return string|null
+     */
+    public function getPostalCode()
+    {
+        return $this->container['postal_code'];
+    }
+
+    /**
+     * Sets postal_code
+     *
+     * @param string|null $postal_code postal_code
+     *
+     * @return self
+     */
+    public function setPostalCode($postal_code)
+    {
+        $this->container['postal_code'] = $postal_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets hours
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getHours()
+    {
+        return $this->container['hours'];
+    }
+
+    /**
+     * Sets hours
+     *
+     * @param array<string,mixed>|null $hours hours
+     *
+     * @return self
+     */
+    public function setHours($hours)
+    {
+        $this->container['hours'] = $hours;
+
+        return $this;
+    }
+
+    /**
+     * Gets services
+     *
+     * @return string[]
+     */
+    public function getServices()
+    {
+        return $this->container['services'];
+    }
+
+    /**
+     * Sets services
+     *
+     * @param string[] $services services
+     *
+     * @return self
+     */
+    public function setServices($services)
+    {
+        $this->container['services'] = $services;
+
+        return $this;
+    }
+
+    /**
+     * Gets listed
+     *
+     * @return bool
+     */
+    public function getListed()
+    {
+        return $this->container['listed'];
+    }
+
+    /**
+     * Sets listed
+     *
+     * @param bool $listed listed
+     *
+     * @return self
+     */
+    public function setListed($listed)
+    {
+        $this->container['listed'] = $listed;
 
         return $this;
     }

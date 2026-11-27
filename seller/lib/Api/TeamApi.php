@@ -118,7 +118,7 @@ class TeamApi
     /**
      * Operation createTeamAccept
      *
-     * Accept a pending team invitation by raw token.
+     * Accept a team invitation by the raw token from its link.
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -134,7 +134,7 @@ class TeamApi
     /**
      * Operation createTeamAcceptWithHttpInfo
      *
-     * Accept a pending team invitation by raw token.
+     * Accept a team invitation by the raw token from its link.
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -346,7 +346,7 @@ class TeamApi
     /**
      * Operation createTeamAcceptAsync
      *
-     * Accept a pending team invitation by raw token.
+     * Accept a team invitation by the raw token from its link.
      *
      *
      * @throws \InvalidArgumentException
@@ -365,7 +365,7 @@ class TeamApi
     /**
      * Operation createTeamAcceptAsyncWithHttpInfo
      *
-     * Accept a pending team invitation by raw token.
+     * Accept a team invitation by the raw token from its link.
      *
      *
      * @throws \InvalidArgumentException
@@ -494,7 +494,7 @@ class TeamApi
     /**
      * Operation createTeamInvite
      *
-     * Mint a team invitation; returns the one-time accept URL.
+     * Issue a team invitation; returns the one-time accept URL (nothing is emailed).
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -510,7 +510,7 @@ class TeamApi
     /**
      * Operation createTeamInviteWithHttpInfo
      *
-     * Mint a team invitation; returns the one-time accept URL.
+     * Issue a team invitation; returns the one-time accept URL (nothing is emailed).
      *
      *
      * @throws \Crossly\ApiException on non-2xx response
@@ -722,7 +722,7 @@ class TeamApi
     /**
      * Operation createTeamInviteAsync
      *
-     * Mint a team invitation; returns the one-time accept URL.
+     * Issue a team invitation; returns the one-time accept URL (nothing is emailed).
      *
      *
      * @throws \InvalidArgumentException
@@ -741,7 +741,7 @@ class TeamApi
     /**
      * Operation createTeamInviteAsyncWithHttpInfo
      *
-     * Mint a team invitation; returns the one-time accept URL.
+     * Issue a team invitation; returns the one-time accept URL (nothing is emailed).
      *
      *
      * @throws \InvalidArgumentException

@@ -246,7 +246,7 @@ class GetAnalyticTodayResponseInbox implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets unread
      *
-     * @param float $unread Conversations not yet opened (hidden threads excluded).
+     * @param float $unread Unread conversations + unopened offers — the Unread tab's rows (services/inbox/attention.ts).
      *
      * @return self
      */
@@ -270,7 +270,7 @@ class GetAnalyticTodayResponseInbox implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets awaiting_reply
      *
-     * @param float $awaiting_reply Open threads whose newest message is the buyer's.
+     * @param float $awaiting_reply Threads and offers waiting on the seller — the Needs reply tab's rows.
      *
      * @return self
      */

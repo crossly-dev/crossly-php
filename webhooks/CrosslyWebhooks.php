@@ -26,7 +26,8 @@ namespace Crossly;
  *  3. Ignoring the timestamp. Without it a captured request replays forever.
  *     The timestamp is INSIDE the signed message, so it cannot be edited.
  *
- * No dependencies.
+ * No dependencies. WebhookVerificationError lives in its own file so a PSR-4
+ * autoloader finds it (one class per file).
  */
 final class CrosslyWebhooks
 {
@@ -135,17 +136,5 @@ final class CrosslyWebhooks
             return null;
         }
         return [$t, $v1];
-    }
-}
-
-final class WebhookVerificationError extends \Exception
-{
-    /** malformed_header | bad_signature | timestamp_out_of_tolerance | missing_secret */
-    public string $reason;
-
-    public function __construct(string $reason, string $message)
-    {
-        parent::__construct($message);
-        $this->reason = $reason;
     }
 }

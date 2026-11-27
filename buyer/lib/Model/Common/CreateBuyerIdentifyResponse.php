@@ -233,8 +233,8 @@ class CreateBuyerIdentifyResponse implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    const TIER_IDENTIFIER = 'identifier';
     const TIER_NONE = 'none';
+    const TIER_IDENTIFIER = 'identifier';
     const TIER_VISUAL = 'visual';
     const TIER_VISION = 'vision';
     const VERDICT_CROSSLY_BEST = 'crossly_best';
@@ -250,8 +250,8 @@ class CreateBuyerIdentifyResponse implements ModelInterface, ArrayAccess, \JsonS
     public function getTierAllowableValues()
     {
         return [
-            self::TIER_IDENTIFIER,
             self::TIER_NONE,
+            self::TIER_IDENTIFIER,
             self::TIER_VISUAL,
             self::TIER_VISION,
         ];

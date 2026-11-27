@@ -67,6 +67,7 @@ class GetHomeResponseLayout implements ModelInterface, ArrayAccess, \JsonSeriali
         'rotation_y' => 'float',
         'slot' => 'float',
         'set' => 'string',
+        'tint' => 'string',
         'item' => '\Crossly\Model\Home\GetHomeResponseLayoutItem'
     ];
 
@@ -85,6 +86,7 @@ class GetHomeResponseLayout implements ModelInterface, ArrayAccess, \JsonSeriali
         'rotation_y' => null,
         'slot' => null,
         'set' => null,
+        'tint' => null,
         'item' => null
     ];
 
@@ -122,6 +124,7 @@ class GetHomeResponseLayout implements ModelInterface, ArrayAccess, \JsonSeriali
         'rotation_y' => 'rotationY',
         'slot' => 'slot',
         'set' => 'set',
+        'tint' => 'tint',
         'item' => 'item'
     ];
 
@@ -138,6 +141,7 @@ class GetHomeResponseLayout implements ModelInterface, ArrayAccess, \JsonSeriali
         'rotation_y' => 'setRotationY',
         'slot' => 'setSlot',
         'set' => 'setSet',
+        'tint' => 'setTint',
         'item' => 'setItem'
     ];
 
@@ -154,6 +158,7 @@ class GetHomeResponseLayout implements ModelInterface, ArrayAccess, \JsonSeriali
         'rotation_y' => 'getRotationY',
         'slot' => 'getSlot',
         'set' => 'getSet',
+        'tint' => 'getTint',
         'item' => 'getItem'
     ];
 
@@ -200,6 +205,14 @@ class GetHomeResponseLayout implements ModelInterface, ArrayAccess, \JsonSeriali
 
     const KIND_DISPLAY = 'display';
     const KIND_PROP = 'prop';
+    const TINT_OAT = 'oat';
+    const TINT_SAGE = 'sage';
+    const TINT_FOREST = 'forest';
+    const TINT_NAVY = 'navy';
+    const TINT_CLAY = 'clay';
+    const TINT_MUSTARD = 'mustard';
+    const TINT_BLUSH = 'blush';
+    const TINT_CHARCOAL = 'charcoal';
 
     /**
      * Gets allowable values of the enum
@@ -211,6 +224,25 @@ class GetHomeResponseLayout implements ModelInterface, ArrayAccess, \JsonSeriali
         return [
             self::KIND_DISPLAY,
             self::KIND_PROP,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTintAllowableValues()
+    {
+        return [
+            self::TINT_OAT,
+            self::TINT_SAGE,
+            self::TINT_FOREST,
+            self::TINT_NAVY,
+            self::TINT_CLAY,
+            self::TINT_MUSTARD,
+            self::TINT_BLUSH,
+            self::TINT_CHARCOAL,
         ];
     }
 
@@ -236,6 +268,7 @@ class GetHomeResponseLayout implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['rotation_y'] = $data['rotation_y'] ?? null;
         $this->container['slot'] = $data['slot'] ?? null;
         $this->container['set'] = $data['set'] ?? null;
+        $this->container['tint'] = $data['tint'] ?? null;
         $this->container['item'] = $data['item'] ?? null;
     }
 
@@ -277,6 +310,15 @@ class GetHomeResponseLayout implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['rotation_y'] === null) {
             $invalidProperties[] = "'rotation_y' can't be null";
         }
+        $allowedValues = $this->getTintAllowableValues();
+        if (!is_null($this->container['tint']) && !in_array($this->container['tint'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'tint', must be one of '%s'",
+                $this->container['tint'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -473,6 +515,40 @@ class GetHomeResponseLayout implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setSet($set)
     {
         $this->container['set'] = $set;
+
+        return $this;
+    }
+
+    /**
+     * Gets tint
+     *
+     * @return string|null
+     */
+    public function getTint()
+    {
+        return $this->container['tint'];
+    }
+
+    /**
+     * Sets tint
+     *
+     * @param string|null $tint A furniture piece's colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.
+     *
+     * @return self
+     */
+    public function setTint($tint)
+    {
+        $allowedValues = $this->getTintAllowableValues();
+        if (!is_null($tint) && !in_array($tint, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tint', must be one of '%s'",
+                    $tint,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tint'] = $tint;
 
         return $this;
     }

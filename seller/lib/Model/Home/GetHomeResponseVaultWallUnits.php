@@ -351,7 +351,7 @@ class GetHomeResponseVaultWallUnits implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets book_key
      *
-     * @param string|null $book_key The book key, for a click through to its market (/shop/vault/markets/<bookKey>).
+     * @param string|null $book_key The book key, for a click through to its market (/trading/<bookKey>).
      *
      * @return self
      */

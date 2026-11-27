@@ -44,6 +44,8 @@ class UpdateWorldEmoteWheelResponseDataWheelItem
     /**
      * Possible values of this enum
      */
+    const PHONE = 'phone';
+
     const SPIN = 'spin';
 
     const WAVE = 'wave';
@@ -84,6 +86,60 @@ class UpdateWorldEmoteWheelResponseDataWheelItem
 
     const HANDSHAKE = 'handshake';
 
+    const FACEPALM = 'facepalm';
+
+    const THINK = 'think';
+
+    const LAUGH = 'laugh';
+
+    const SIGH = 'sigh';
+
+    const NO = 'no';
+
+    const FIST_PUMP = 'fist_pump';
+
+    const VICTORY = 'victory';
+
+    const YAWN = 'yawn';
+
+    const SALUTE = 'salute';
+
+    const BIG_WAVE = 'big_wave';
+
+    const BECKON = 'beckon';
+
+    const SHUSH = 'shush';
+
+    const KISS = 'kiss';
+
+    const PEACE = 'peace';
+
+    const HEART = 'heart';
+
+    const SWAY = 'sway';
+
+    const VIBE = 'vibe';
+
+    const AIR_GUITAR = 'air_guitar';
+
+    const ROBOT = 'robot';
+
+    const DISCO = 'disco';
+
+    const GAVEL = 'gavel';
+
+    const HAGGLE = 'haggle';
+
+    const ARMS_CROSSED = 'arms_crossed';
+
+    const HANDS_ON_HIPS = 'hands_on_hips';
+
+    const KNEEL = 'kneel';
+
+    const FIST_BUMP = 'fist_bump';
+
+    const DANCE_OFF = 'dance_off';
+
     const SHOWOFF = 'showoff';
 
     const MOMENTHANDSHAKE = 'moment:handshake';
@@ -99,6 +155,7 @@ class UpdateWorldEmoteWheelResponseDataWheelItem
     public static function getAllowableEnumValues()
     {
         return [
+            self::PHONE,
             self::SPIN,
             self::WAVE,
             self::POINT,
@@ -119,6 +176,33 @@ class UpdateWorldEmoteWheelResponseDataWheelItem
             self::HUG,
             self::HIGH_FIVE,
             self::HANDSHAKE,
+            self::FACEPALM,
+            self::THINK,
+            self::LAUGH,
+            self::SIGH,
+            self::NO,
+            self::FIST_PUMP,
+            self::VICTORY,
+            self::YAWN,
+            self::SALUTE,
+            self::BIG_WAVE,
+            self::BECKON,
+            self::SHUSH,
+            self::KISS,
+            self::PEACE,
+            self::HEART,
+            self::SWAY,
+            self::VIBE,
+            self::AIR_GUITAR,
+            self::ROBOT,
+            self::DISCO,
+            self::GAVEL,
+            self::HAGGLE,
+            self::ARMS_CROSSED,
+            self::HANDS_ON_HIPS,
+            self::KNEEL,
+            self::FIST_BUMP,
+            self::DANCE_OFF,
             self::SHOWOFF,
             self::MOMENTHANDSHAKE,
             self::MOMENTUNBOX,

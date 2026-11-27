@@ -234,11 +234,11 @@ class GetVaultMarketTodMyClaimResponseClaims implements ModelInterface, ArrayAcc
     }
 
     const STATUS_DRAFT = 'draft';
+    const STATUS_SUBMITTED = 'submitted';
     const STATUS_REJECTED = 'rejected';
     const STATUS_WITHDRAWN = 'withdrawn';
     const STATUS_RELEASED = 'released';
     const STATUS_WAITING = 'waiting';
-    const STATUS_SUBMITTED = 'submitted';
     const STATUS_NEEDS_INFO = 'needs_info';
     const STATUS_PARTLY_RELEASED = 'partly_released';
     const STATUS_OBJECTED = 'objected';
@@ -252,11 +252,11 @@ class GetVaultMarketTodMyClaimResponseClaims implements ModelInterface, ArrayAcc
     {
         return [
             self::STATUS_DRAFT,
+            self::STATUS_SUBMITTED,
             self::STATUS_REJECTED,
             self::STATUS_WITHDRAWN,
             self::STATUS_RELEASED,
             self::STATUS_WAITING,
-            self::STATUS_SUBMITTED,
             self::STATUS_NEEDS_INFO,
             self::STATUS_PARTLY_RELEASED,
             self::STATUS_OBJECTED,

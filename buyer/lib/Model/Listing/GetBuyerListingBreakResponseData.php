@@ -61,14 +61,14 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'status' => 'string',
         'title' => 'string',
+        'format' => 'string',
+        'status' => 'string',
         'slug' => 'string',
         'price_cents' => 'float',
-        'format' => 'string',
-        'seed' => 'string',
+        'spots_left' => 'float',
         'seed_commit' => 'string',
-        'spots_left' => 'float'
+        'seed' => 'string'
     ];
 
     /**
@@ -80,14 +80,14 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'status' => null,
         'title' => null,
+        'format' => null,
+        'status' => null,
         'slug' => null,
         'price_cents' => null,
-        'format' => null,
-        'seed' => null,
+        'spots_left' => null,
         'seed_commit' => null,
-        'spots_left' => null
+        'seed' => null
     ];
 
     /**
@@ -118,14 +118,14 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'status' => 'status',
         'title' => 'title',
+        'format' => 'format',
+        'status' => 'status',
         'slug' => 'slug',
         'price_cents' => 'priceCents',
-        'format' => 'format',
-        'seed' => 'seed',
+        'spots_left' => 'spotsLeft',
         'seed_commit' => 'seedCommit',
-        'spots_left' => 'spotsLeft'
+        'seed' => 'seed'
     ];
 
     /**
@@ -135,14 +135,14 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
      */
     protected static $setters = [
         'id' => 'setId',
-        'status' => 'setStatus',
         'title' => 'setTitle',
+        'format' => 'setFormat',
+        'status' => 'setStatus',
         'slug' => 'setSlug',
         'price_cents' => 'setPriceCents',
-        'format' => 'setFormat',
-        'seed' => 'setSeed',
+        'spots_left' => 'setSpotsLeft',
         'seed_commit' => 'setSeedCommit',
-        'spots_left' => 'setSpotsLeft'
+        'seed' => 'setSeed'
     ];
 
     /**
@@ -152,14 +152,14 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
      */
     protected static $getters = [
         'id' => 'getId',
-        'status' => 'getStatus',
         'title' => 'getTitle',
+        'format' => 'getFormat',
+        'status' => 'getStatus',
         'slug' => 'getSlug',
         'price_cents' => 'getPriceCents',
-        'format' => 'getFormat',
-        'seed' => 'getSeed',
+        'spots_left' => 'getSpotsLeft',
         'seed_commit' => 'getSeedCommit',
-        'spots_left' => 'getSpotsLeft'
+        'seed' => 'getSeed'
     ];
 
     /**
@@ -220,14 +220,14 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
-        $this->container['format'] = $data['format'] ?? null;
-        $this->container['seed'] = $data['seed'] ?? null;
-        $this->container['seed_commit'] = $data['seed_commit'] ?? null;
         $this->container['spots_left'] = $data['spots_left'] ?? null;
+        $this->container['seed_commit'] = $data['seed_commit'] ?? null;
+        $this->container['seed'] = $data['seed'] ?? null;
     }
 
     /**
@@ -242,23 +242,23 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['price_cents'] === null) {
-            $invalidProperties[] = "'price_cents' can't be null";
         }
         if ($this->container['format'] === null) {
             $invalidProperties[] = "'format' can't be null";
         }
-        if ($this->container['seed_commit'] === null) {
-            $invalidProperties[] = "'seed_commit' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['price_cents'] === null) {
+            $invalidProperties[] = "'price_cents' can't be null";
         }
         if ($this->container['spots_left'] === null) {
             $invalidProperties[] = "'spots_left' can't be null";
+        }
+        if ($this->container['seed_commit'] === null) {
+            $invalidProperties[] = "'seed_commit' can't be null";
         }
         return $invalidProperties;
     }
@@ -300,30 +300,6 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
      * Gets title
      *
      * @return string
@@ -343,6 +319,54 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
     public function setTitle($title)
     {
         $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string $format format
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
@@ -396,49 +420,25 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets format
+     * Gets spots_left
      *
-     * @return string
+     * @return float
      */
-    public function getFormat()
+    public function getSpotsLeft()
     {
-        return $this->container['format'];
+        return $this->container['spots_left'];
     }
 
     /**
-     * Sets format
+     * Sets spots_left
      *
-     * @param string $format format
+     * @param float $spots_left spots_left
      *
      * @return self
      */
-    public function setFormat($format)
+    public function setSpotsLeft($spots_left)
     {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets seed
-     *
-     * @return string|null
-     */
-    public function getSeed()
-    {
-        return $this->container['seed'];
-    }
-
-    /**
-     * Sets seed
-     *
-     * @param string|null $seed seed
-     *
-     * @return self
-     */
-    public function setSeed($seed)
-    {
-        $this->container['seed'] = $seed;
+        $this->container['spots_left'] = $spots_left;
 
         return $this;
     }
@@ -468,25 +468,25 @@ class GetBuyerListingBreakResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets spots_left
+     * Gets seed
      *
-     * @return float
+     * @return string|null
      */
-    public function getSpotsLeft()
+    public function getSeed()
     {
-        return $this->container['spots_left'];
+        return $this->container['seed'];
     }
 
     /**
-     * Sets spots_left
+     * Sets seed
      *
-     * @param float $spots_left spots_left
+     * @param string|null $seed seed
      *
      * @return self
      */
-    public function setSpotsLeft($spots_left)
+    public function setSeed($seed)
     {
-        $this->container['spots_left'] = $spots_left;
+        $this->container['seed'] = $seed;
 
         return $this;
     }

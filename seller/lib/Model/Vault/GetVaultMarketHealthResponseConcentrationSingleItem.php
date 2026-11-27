@@ -188,8 +188,8 @@ class GetVaultMarketHealthResponseConcentrationSingleItem implements ModelInterf
         return self::$openAPIModelName;
     }
 
-    const BAND_SPREAD = 'spread';
     const BAND_MODERATE = 'moderate';
+    const BAND_SPREAD = 'spread';
     const BAND__EMPTY = 'empty';
     const BAND_CONCENTRATED = 'concentrated';
 
@@ -201,8 +201,8 @@ class GetVaultMarketHealthResponseConcentrationSingleItem implements ModelInterf
     public function getBandAllowableValues()
     {
         return [
-            self::BAND_SPREAD,
             self::BAND_MODERATE,
+            self::BAND_SPREAD,
             self::BAND__EMPTY,
             self::BAND_CONCENTRATED,
         ];

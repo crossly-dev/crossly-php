@@ -61,14 +61,18 @@ class SpatialSceneResponseData implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'user_id' => 'string',
+        'kind' => 'string',
+        'category_slug' => 'string',
+        'name' => 'string',
+        'public_slug' => 'string',
+        'visibility' => 'string',
+        'settings' => '\Crossly\Model\Common\SpatialSceneResponseDataSettings',
+        'storefront_id' => 'string',
+        'showroom_position' => 'float',
+        'auto_include_inventory' => 'bool',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'inventory_item_id' => 'string',
-        'scene_id' => 'string',
-        'inventory_unit_id' => 'string',
-        'node_id' => 'string',
-        'slot_index' => 'float',
-        'pinned' => 'bool'
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -80,14 +84,18 @@ class SpatialSceneResponseData implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'user_id' => null,
+        'kind' => null,
+        'category_slug' => null,
+        'name' => null,
+        'public_slug' => null,
+        'visibility' => null,
+        'settings' => null,
+        'storefront_id' => null,
+        'showroom_position' => null,
+        'auto_include_inventory' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'inventory_item_id' => null,
-        'scene_id' => null,
-        'inventory_unit_id' => null,
-        'node_id' => null,
-        'slot_index' => null,
-        'pinned' => null
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -118,14 +126,18 @@ class SpatialSceneResponseData implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'user_id' => 'userId',
+        'kind' => 'kind',
+        'category_slug' => 'categorySlug',
+        'name' => 'name',
+        'public_slug' => 'publicSlug',
+        'visibility' => 'visibility',
+        'settings' => 'settings',
+        'storefront_id' => 'storefrontId',
+        'showroom_position' => 'showroomPosition',
+        'auto_include_inventory' => 'autoIncludeInventory',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'inventory_item_id' => 'inventoryItemId',
-        'scene_id' => 'sceneId',
-        'inventory_unit_id' => 'inventoryUnitId',
-        'node_id' => 'nodeId',
-        'slot_index' => 'slotIndex',
-        'pinned' => 'pinned'
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -135,14 +147,18 @@ class SpatialSceneResponseData implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'id' => 'setId',
+        'user_id' => 'setUserId',
+        'kind' => 'setKind',
+        'category_slug' => 'setCategorySlug',
+        'name' => 'setName',
+        'public_slug' => 'setPublicSlug',
+        'visibility' => 'setVisibility',
+        'settings' => 'setSettings',
+        'storefront_id' => 'setStorefrontId',
+        'showroom_position' => 'setShowroomPosition',
+        'auto_include_inventory' => 'setAutoIncludeInventory',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'inventory_item_id' => 'setInventoryItemId',
-        'scene_id' => 'setSceneId',
-        'inventory_unit_id' => 'setInventoryUnitId',
-        'node_id' => 'setNodeId',
-        'slot_index' => 'setSlotIndex',
-        'pinned' => 'setPinned'
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -152,14 +168,18 @@ class SpatialSceneResponseData implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'id' => 'getId',
+        'user_id' => 'getUserId',
+        'kind' => 'getKind',
+        'category_slug' => 'getCategorySlug',
+        'name' => 'getName',
+        'public_slug' => 'getPublicSlug',
+        'visibility' => 'getVisibility',
+        'settings' => 'getSettings',
+        'storefront_id' => 'getStorefrontId',
+        'showroom_position' => 'getShowroomPosition',
+        'auto_include_inventory' => 'getAutoIncludeInventory',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'inventory_item_id' => 'getInventoryItemId',
-        'scene_id' => 'getSceneId',
-        'inventory_unit_id' => 'getInventoryUnitId',
-        'node_id' => 'getNodeId',
-        'slot_index' => 'getSlotIndex',
-        'pinned' => 'getPinned'
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -220,14 +240,18 @@ class SpatialSceneResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['user_id'] = $data['user_id'] ?? null;
+        $this->container['kind'] = $data['kind'] ?? null;
+        $this->container['category_slug'] = $data['category_slug'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['public_slug'] = $data['public_slug'] ?? null;
+        $this->container['visibility'] = $data['visibility'] ?? null;
+        $this->container['settings'] = $data['settings'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
+        $this->container['showroom_position'] = $data['showroom_position'] ?? null;
+        $this->container['auto_include_inventory'] = $data['auto_include_inventory'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['inventory_item_id'] = $data['inventory_item_id'] ?? null;
-        $this->container['scene_id'] = $data['scene_id'] ?? null;
-        $this->container['inventory_unit_id'] = $data['inventory_unit_id'] ?? null;
-        $this->container['node_id'] = $data['node_id'] ?? null;
-        $this->container['slot_index'] = $data['slot_index'] ?? null;
-        $this->container['pinned'] = $data['pinned'] ?? null;
     }
 
     /**
@@ -242,26 +266,32 @@ class SpatialSceneResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['kind'] === null) {
+            $invalidProperties[] = "'kind' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['visibility'] === null) {
+            $invalidProperties[] = "'visibility' can't be null";
+        }
+        if ($this->container['settings'] === null) {
+            $invalidProperties[] = "'settings' can't be null";
+        }
+        if ($this->container['showroom_position'] === null) {
+            $invalidProperties[] = "'showroom_position' can't be null";
+        }
+        if ($this->container['auto_include_inventory'] === null) {
+            $invalidProperties[] = "'auto_include_inventory' can't be null";
+        }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['inventory_item_id'] === null) {
-            $invalidProperties[] = "'inventory_item_id' can't be null";
-        }
-        if ($this->container['scene_id'] === null) {
-            $invalidProperties[] = "'scene_id' can't be null";
-        }
-        if ($this->container['node_id'] === null) {
-            $invalidProperties[] = "'node_id' can't be null";
-        }
-        if ($this->container['slot_index'] === null) {
-            $invalidProperties[] = "'slot_index' can't be null";
-        }
-        if ($this->container['pinned'] === null) {
-            $invalidProperties[] = "'pinned' can't be null";
         }
         return $invalidProperties;
     }
@@ -298,6 +328,246 @@ class SpatialSceneResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
+     *
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     *
+     * @param string $user_id user_id
+     *
+     * @return self
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets kind
+     *
+     * @return string
+     */
+    public function getKind()
+    {
+        return $this->container['kind'];
+    }
+
+    /**
+     * Sets kind
+     *
+     * @param string $kind 'collection' | 'warehouse'  Same renderer, opposite contracts. A collection may be arranged for beauty; a warehouse must match the physical room or it is worse than no warehouse, because someone will walk to the wrong shelf.
+     *
+     * @return self
+     */
+    public function setKind($kind)
+    {
+        $this->container['kind'] = $kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets category_slug
+     *
+     * @return string|null
+     */
+    public function getCategorySlug()
+    {
+        return $this->container['category_slug'];
+    }
+
+    /**
+     * Sets category_slug
+     *
+     * @param string|null $category_slug NULL for warehouses and for the generic catch-all room.
+     *
+     * @return self
+     */
+    public function setCategorySlug($category_slug)
+    {
+        $this->container['category_slug'] = $category_slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets public_slug
+     *
+     * @return string|null
+     */
+    public function getPublicSlug()
+    {
+        return $this->container['public_slug'];
+    }
+
+    /**
+     * Sets public_slug
+     *
+     * @param string|null $public_slug Public share handle. NULL until someone chooses to share.
+     *
+     * @return self
+     */
+    public function setPublicSlug($public_slug)
+    {
+        $this->container['public_slug'] = $public_slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets visibility
+     *
+     * @return string
+     */
+    public function getVisibility()
+    {
+        return $this->container['visibility'];
+    }
+
+    /**
+     * Sets visibility
+     *
+     * @param string $visibility 'private' | 'unlisted' | 'public'  Defaults CLOSED. A collection is the one surface in this product that routinely contains things which are not for sale and were never meant to be seen by anybody — that is most of what makes it a collection.
+     *
+     * @return self
+     */
+    public function setVisibility($visibility)
+    {
+        $this->container['visibility'] = $visibility;
+
+        return $this;
+    }
+
+    /**
+     * Gets settings
+     *
+     * @return \Crossly\Model\Common\SpatialSceneResponseDataSettings
+     */
+    public function getSettings()
+    {
+        return $this->container['settings'];
+    }
+
+    /**
+     * Sets settings
+     *
+     * @param \Crossly\Model\Common\SpatialSceneResponseDataSettings $settings settings
+     *
+     * @return self
+     */
+    public function setSettings($settings)
+    {
+        $this->container['settings'] = $settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id kind='shop': the store this showroom belongs to (0830). NULL = a legacy row of the default store.
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets showroom_position
+     *
+     * @return float
+     */
+    public function getShowroomPosition()
+    {
+        return $this->container['showroom_position'];
+    }
+
+    /**
+     * Sets showroom_position
+     *
+     * @param float $showroom_position 1147 kind='shop': a store's showrooms in order; 0 = its primary (one per store, the unique index below).
+     *
+     * @return self
+     */
+    public function setShowroomPosition($showroom_position)
+    {
+        $this->container['showroom_position'] = $showroom_position;
+
+        return $this;
+    }
+
+    /**
+     * Gets auto_include_inventory
+     *
+     * @return bool
+     */
+    public function getAutoIncludeInventory()
+    {
+        return $this->container['auto_include_inventory'];
+    }
+
+    /**
+     * Sets auto_include_inventory
+     *
+     * @param bool $auto_include_inventory 1147 kind='shop': opt-in, stand every live item automatically. Off = only what is pinned shows.
+     *
+     * @return self
+     */
+    public function setAutoIncludeInventory($auto_include_inventory)
+    {
+        $this->container['auto_include_inventory'] = $auto_include_inventory;
 
         return $this;
     }
@@ -346,150 +616,6 @@ class SpatialSceneResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     public function setUpdatedAt($updated_at)
     {
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets inventory_item_id
-     *
-     * @return string
-     */
-    public function getInventoryItemId()
-    {
-        return $this->container['inventory_item_id'];
-    }
-
-    /**
-     * Sets inventory_item_id
-     *
-     * @param string $inventory_item_id inventory_item_id
-     *
-     * @return self
-     */
-    public function setInventoryItemId($inventory_item_id)
-    {
-        $this->container['inventory_item_id'] = $inventory_item_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets scene_id
-     *
-     * @return string
-     */
-    public function getSceneId()
-    {
-        return $this->container['scene_id'];
-    }
-
-    /**
-     * Sets scene_id
-     *
-     * @param string $scene_id scene_id
-     *
-     * @return self
-     */
-    public function setSceneId($scene_id)
-    {
-        $this->container['scene_id'] = $scene_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets inventory_unit_id
-     *
-     * @return string|null
-     */
-    public function getInventoryUnitId()
-    {
-        return $this->container['inventory_unit_id'];
-    }
-
-    /**
-     * Sets inventory_unit_id
-     *
-     * @param string|null $inventory_unit_id inventory_unit_id
-     *
-     * @return self
-     */
-    public function setInventoryUnitId($inventory_unit_id)
-    {
-        $this->container['inventory_unit_id'] = $inventory_unit_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets node_id
-     *
-     * @return string
-     */
-    public function getNodeId()
-    {
-        return $this->container['node_id'];
-    }
-
-    /**
-     * Sets node_id
-     *
-     * @param string $node_id node_id
-     *
-     * @return self
-     */
-    public function setNodeId($node_id)
-    {
-        $this->container['node_id'] = $node_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets slot_index
-     *
-     * @return float
-     */
-    public function getSlotIndex()
-    {
-        return $this->container['slot_index'];
-    }
-
-    /**
-     * Sets slot_index
-     *
-     * @param float $slot_index slot_index
-     *
-     * @return self
-     */
-    public function setSlotIndex($slot_index)
-    {
-        $this->container['slot_index'] = $slot_index;
-
-        return $this;
-    }
-
-    /**
-     * Gets pinned
-     *
-     * @return bool
-     */
-    public function getPinned()
-    {
-        return $this->container['pinned'];
-    }
-
-    /**
-     * Sets pinned
-     *
-     * @param bool $pinned pinned
-     *
-     * @return self
-     */
-    public function setPinned($pinned)
-    {
-        $this->container['pinned'] = $pinned;
 
         return $this;
     }

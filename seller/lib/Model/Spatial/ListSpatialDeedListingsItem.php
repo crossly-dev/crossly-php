@@ -209,9 +209,9 @@ class ListSpatialDeedListingsItem implements ModelInterface, ArrayAccess, \JsonS
     }
 
     const STATUS_ACTIVE = 'active';
-    const STATUS_FORECLOSED = 'foreclosed';
     const STATUS_GRACE = 'grace';
     const STATUS_DELINQUENT = 'delinquent';
+    const STATUS_FORECLOSED = 'foreclosed';
 
     /**
      * Gets allowable values of the enum
@@ -222,9 +222,9 @@ class ListSpatialDeedListingsItem implements ModelInterface, ArrayAccess, \JsonS
     {
         return [
             self::STATUS_ACTIVE,
-            self::STATUS_FORECLOSED,
             self::STATUS_GRACE,
             self::STATUS_DELINQUENT,
+            self::STATUS_FORECLOSED,
         ];
     }
 

@@ -239,9 +239,9 @@ class CreateBuyerLockonConfirmResponse implements ModelInterface, ArrayAccess, \
     }
 
     const IDENTITY_SOURCE_CONFIRMED = 'confirmed';
+    const IDENTITY_SOURCE_BARCODE = 'barcode';
     const IDENTITY_SOURCE_VISUAL = 'visual';
     const IDENTITY_SOURCE_OCR = 'ocr';
-    const IDENTITY_SOURCE_BARCODE = 'barcode';
     const VERDICT_CROSSLY_BEST = 'crossly_best';
     const VERDICT_OFFSITE_CHEAPER = 'offsite_cheaper';
     const VERDICT_OFFSITE_ONLY = 'offsite_only';
@@ -256,9 +256,9 @@ class CreateBuyerLockonConfirmResponse implements ModelInterface, ArrayAccess, \
     {
         return [
             self::IDENTITY_SOURCE_CONFIRMED,
+            self::IDENTITY_SOURCE_BARCODE,
             self::IDENTITY_SOURCE_VISUAL,
             self::IDENTITY_SOURCE_OCR,
-            self::IDENTITY_SOURCE_BARCODE,
         ];
     }
 

@@ -62,9 +62,9 @@ class GetBuyerTogetherResponseDataMessages implements ModelInterface, ArrayAcces
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'created_at' => 'string',
+        'me' => 'bool',
         'body' => 'string',
-        'me' => 'bool'
+        'created_at' => 'string'
     ];
 
     /**
@@ -77,9 +77,9 @@ class GetBuyerTogetherResponseDataMessages implements ModelInterface, ArrayAcces
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
-        'created_at' => null,
+        'me' => null,
         'body' => null,
-        'me' => null
+        'created_at' => null
     ];
 
     /**
@@ -111,9 +111,9 @@ class GetBuyerTogetherResponseDataMessages implements ModelInterface, ArrayAcces
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'created_at' => 'createdAt',
+        'me' => 'me',
         'body' => 'body',
-        'me' => 'me'
+        'created_at' => 'createdAt'
     ];
 
     /**
@@ -124,9 +124,9 @@ class GetBuyerTogetherResponseDataMessages implements ModelInterface, ArrayAcces
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'created_at' => 'setCreatedAt',
+        'me' => 'setMe',
         'body' => 'setBody',
-        'me' => 'setMe'
+        'created_at' => 'setCreatedAt'
     ];
 
     /**
@@ -137,9 +137,9 @@ class GetBuyerTogetherResponseDataMessages implements ModelInterface, ArrayAcces
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'created_at' => 'getCreatedAt',
+        'me' => 'getMe',
         'body' => 'getBody',
-        'me' => 'getMe'
+        'created_at' => 'getCreatedAt'
     ];
 
     /**
@@ -201,9 +201,9 @@ class GetBuyerTogetherResponseDataMessages implements ModelInterface, ArrayAcces
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['body'] = $data['body'] ?? null;
         $this->container['me'] = $data['me'] ?? null;
+        $this->container['body'] = $data['body'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
     }
 
     /**
@@ -221,14 +221,14 @@ class GetBuyerTogetherResponseDataMessages implements ModelInterface, ArrayAcces
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['me'] === null) {
+            $invalidProperties[] = "'me' can't be null";
         }
         if ($this->container['body'] === null) {
             $invalidProperties[] = "'body' can't be null";
         }
-        if ($this->container['me'] === null) {
-            $invalidProperties[] = "'me' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,25 +294,25 @@ class GetBuyerTogetherResponseDataMessages implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets created_at
+     * Gets me
      *
-     * @return string
+     * @return bool
      */
-    public function getCreatedAt()
+    public function getMe()
     {
-        return $this->container['created_at'];
+        return $this->container['me'];
     }
 
     /**
-     * Sets created_at
+     * Sets me
      *
-     * @param string $created_at created_at
+     * @param bool $me me
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setMe($me)
     {
-        $this->container['created_at'] = $created_at;
+        $this->container['me'] = $me;
 
         return $this;
     }
@@ -342,25 +342,25 @@ class GetBuyerTogetherResponseDataMessages implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets me
+     * Gets created_at
      *
-     * @return bool
+     * @return string
      */
-    public function getMe()
+    public function getCreatedAt()
     {
-        return $this->container['me'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets me
+     * Sets created_at
      *
-     * @param bool $me me
+     * @param string $created_at created_at
      *
      * @return self
      */
-    public function setMe($me)
+    public function setCreatedAt($created_at)
     {
-        $this->container['me'] = $me;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

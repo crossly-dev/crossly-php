@@ -63,19 +63,19 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'string',
         'created_at' => '\DateTime',
         'user_id' => 'string',
-        'reason' => 'string',
         'platform' => 'string',
         'listing_id' => 'string',
         'platform_listing_id' => 'string',
-        'decided_at' => '\DateTime',
+        'reason' => 'string',
         'rule_id' => 'string',
-        'floor_cents' => 'float',
         'strategy' => 'string',
         'old_price_cents' => 'float',
         'new_price_cents' => 'float',
         'changed' => 'bool',
+        'floor_cents' => 'float',
         'floor_was_net' => 'bool',
-        'approval' => 'string'
+        'approval' => 'string',
+        'decided_at' => '\DateTime'
     ];
 
     /**
@@ -89,19 +89,19 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => null,
         'created_at' => 'date-time',
         'user_id' => null,
-        'reason' => null,
         'platform' => null,
         'listing_id' => null,
         'platform_listing_id' => null,
-        'decided_at' => 'date-time',
+        'reason' => null,
         'rule_id' => null,
-        'floor_cents' => null,
         'strategy' => null,
         'old_price_cents' => null,
         'new_price_cents' => null,
         'changed' => null,
+        'floor_cents' => null,
         'floor_was_net' => null,
-        'approval' => null
+        'approval' => null,
+        'decided_at' => 'date-time'
     ];
 
     /**
@@ -134,19 +134,19 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'id',
         'created_at' => 'createdAt',
         'user_id' => 'userId',
-        'reason' => 'reason',
         'platform' => 'platform',
         'listing_id' => 'listingId',
         'platform_listing_id' => 'platformListingId',
-        'decided_at' => 'decidedAt',
+        'reason' => 'reason',
         'rule_id' => 'ruleId',
-        'floor_cents' => 'floorCents',
         'strategy' => 'strategy',
         'old_price_cents' => 'oldPriceCents',
         'new_price_cents' => 'newPriceCents',
         'changed' => 'changed',
+        'floor_cents' => 'floorCents',
         'floor_was_net' => 'floorWasNet',
-        'approval' => 'approval'
+        'approval' => 'approval',
+        'decided_at' => 'decidedAt'
     ];
 
     /**
@@ -158,19 +158,19 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
-        'reason' => 'setReason',
         'platform' => 'setPlatform',
         'listing_id' => 'setListingId',
         'platform_listing_id' => 'setPlatformListingId',
-        'decided_at' => 'setDecidedAt',
+        'reason' => 'setReason',
         'rule_id' => 'setRuleId',
-        'floor_cents' => 'setFloorCents',
         'strategy' => 'setStrategy',
         'old_price_cents' => 'setOldPriceCents',
         'new_price_cents' => 'setNewPriceCents',
         'changed' => 'setChanged',
+        'floor_cents' => 'setFloorCents',
         'floor_was_net' => 'setFloorWasNet',
-        'approval' => 'setApproval'
+        'approval' => 'setApproval',
+        'decided_at' => 'setDecidedAt'
     ];
 
     /**
@@ -182,19 +182,19 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
-        'reason' => 'getReason',
         'platform' => 'getPlatform',
         'listing_id' => 'getListingId',
         'platform_listing_id' => 'getPlatformListingId',
-        'decided_at' => 'getDecidedAt',
+        'reason' => 'getReason',
         'rule_id' => 'getRuleId',
-        'floor_cents' => 'getFloorCents',
         'strategy' => 'getStrategy',
         'old_price_cents' => 'getOldPriceCents',
         'new_price_cents' => 'getNewPriceCents',
         'changed' => 'getChanged',
+        'floor_cents' => 'getFloorCents',
         'floor_was_net' => 'getFloorWasNet',
-        'approval' => 'getApproval'
+        'approval' => 'getApproval',
+        'decided_at' => 'getDecidedAt'
     ];
 
     /**
@@ -257,19 +257,19 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
-        $this->container['reason'] = $data['reason'] ?? null;
         $this->container['platform'] = $data['platform'] ?? null;
         $this->container['listing_id'] = $data['listing_id'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
-        $this->container['decided_at'] = $data['decided_at'] ?? null;
+        $this->container['reason'] = $data['reason'] ?? null;
         $this->container['rule_id'] = $data['rule_id'] ?? null;
-        $this->container['floor_cents'] = $data['floor_cents'] ?? null;
         $this->container['strategy'] = $data['strategy'] ?? null;
         $this->container['old_price_cents'] = $data['old_price_cents'] ?? null;
         $this->container['new_price_cents'] = $data['new_price_cents'] ?? null;
         $this->container['changed'] = $data['changed'] ?? null;
+        $this->container['floor_cents'] = $data['floor_cents'] ?? null;
         $this->container['floor_was_net'] = $data['floor_was_net'] ?? null;
         $this->container['approval'] = $data['approval'] ?? null;
+        $this->container['decided_at'] = $data['decided_at'] ?? null;
     }
 
     /**
@@ -390,30 +390,6 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets reason
-     *
-     * @return string
-     */
-    public function getReason()
-    {
-        return $this->container['reason'];
-    }
-
-    /**
-     * Sets reason
-     *
-     * @param string $reason reason
-     *
-     * @return self
-     */
-    public function setReason($reason)
-    {
-        $this->container['reason'] = $reason;
-
-        return $this;
-    }
-
-    /**
      * Gets platform
      *
      * @return string|null
@@ -486,25 +462,25 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets decided_at
+     * Gets reason
      *
-     * @return \DateTime|null
+     * @return string
      */
-    public function getDecidedAt()
+    public function getReason()
     {
-        return $this->container['decided_at'];
+        return $this->container['reason'];
     }
 
     /**
-     * Sets decided_at
+     * Sets reason
      *
-     * @param \DateTime|null $decided_at decided_at
+     * @param string $reason reason
      *
      * @return self
      */
-    public function setDecidedAt($decided_at)
+    public function setReason($reason)
     {
-        $this->container['decided_at'] = $decided_at;
+        $this->container['reason'] = $reason;
 
         return $this;
     }
@@ -529,30 +505,6 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setRuleId($rule_id)
     {
         $this->container['rule_id'] = $rule_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets floor_cents
-     *
-     * @return float|null
-     */
-    public function getFloorCents()
-    {
-        return $this->container['floor_cents'];
-    }
-
-    /**
-     * Sets floor_cents
-     *
-     * @param float|null $floor_cents floor_cents
-     *
-     * @return self
-     */
-    public function setFloorCents($floor_cents)
-    {
-        $this->container['floor_cents'] = $floor_cents;
 
         return $this;
     }
@@ -654,6 +606,30 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets floor_cents
+     *
+     * @return float|null
+     */
+    public function getFloorCents()
+    {
+        return $this->container['floor_cents'];
+    }
+
+    /**
+     * Sets floor_cents
+     *
+     * @param float|null $floor_cents floor_cents
+     *
+     * @return self
+     */
+    public function setFloorCents($floor_cents)
+    {
+        $this->container['floor_cents'] = $floor_cents;
+
+        return $this;
+    }
+
+    /**
      * Gets floor_was_net
      *
      * @return bool
@@ -697,6 +673,30 @@ class ListRepriceEventsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setApproval($approval)
     {
         $this->container['approval'] = $approval;
+
+        return $this;
+    }
+
+    /**
+     * Gets decided_at
+     *
+     * @return \DateTime|null
+     */
+    public function getDecidedAt()
+    {
+        return $this->container['decided_at'];
+    }
+
+    /**
+     * Sets decided_at
+     *
+     * @param \DateTime|null $decided_at decided_at
+     *
+     * @return self
+     */
+    public function setDecidedAt($decided_at)
+    {
+        $this->container['decided_at'] = $decided_at;
 
         return $this;
     }

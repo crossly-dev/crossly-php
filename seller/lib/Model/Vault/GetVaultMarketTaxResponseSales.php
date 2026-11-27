@@ -223,8 +223,8 @@ class GetVaultMarketTaxResponseSales implements ModelInterface, ArrayAccess, \Js
     const HOW_DONATE = 'donate';
     const HOW_LENT_OUT = 'lent_out';
     const HOW_OTHER_OUT = 'other_out';
-    const TERM_LONG = 'long';
     const TERM_SHORT = 'short';
+    const TERM_LONG = 'long';
 
     /**
      * Gets allowable values of the enum
@@ -260,8 +260,8 @@ class GetVaultMarketTaxResponseSales implements ModelInterface, ArrayAccess, \Js
     public function getTermAllowableValues()
     {
         return [
-            self::TERM_LONG,
             self::TERM_SHORT,
+            self::TERM_LONG,
         ];
     }
 

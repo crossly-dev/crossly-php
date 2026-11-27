@@ -65,7 +65,7 @@ class UpdateSpatialSceneCosmeticResponseData implements ModelInterface, ArrayAcc
         'floor' => 'string',
         'cove_colour' => 'string',
         'cove_intensity' => 'float',
-        'props' => '\Crossly\Model\Spatial\UpdateSpatialSceneCosmeticResponseDataProps[]',
+        'props' => '\Crossly\Model\Showroom\GetShowroomResponseDataRoomProps[]',
         'shopfront' => 'string',
         'shopfront_colour' => 'string',
         'facade' => 'string',
@@ -253,8 +253,8 @@ class UpdateSpatialSceneCosmeticResponseData implements ModelInterface, ArrayAcc
     const FLOOR_PAINTED_METAL = 'painted_metal';
     const SHOPFRONT_FULL = 'full';
     const SHOPFRONT_NONE = 'none';
-    const SHOPFRONT_AWNING = 'awning';
     const SHOPFRONT_FASCIA = 'fascia';
+    const SHOPFRONT_AWNING = 'awning';
     const SHOPFRONT_NEON_FASCIA = 'neon_fascia';
     const SHOPFRONT_GILDED_FASCIA = 'gilded_fascia';
     const SHOPFRONT_SCALLOPED_AWNING = 'scalloped_awning';
@@ -347,8 +347,8 @@ class UpdateSpatialSceneCosmeticResponseData implements ModelInterface, ArrayAcc
         return [
             self::SHOPFRONT_FULL,
             self::SHOPFRONT_NONE,
-            self::SHOPFRONT_AWNING,
             self::SHOPFRONT_FASCIA,
+            self::SHOPFRONT_AWNING,
             self::SHOPFRONT_NEON_FASCIA,
             self::SHOPFRONT_GILDED_FASCIA,
             self::SHOPFRONT_SCALLOPED_AWNING,
@@ -707,7 +707,7 @@ class UpdateSpatialSceneCosmeticResponseData implements ModelInterface, ArrayAcc
     /**
      * Gets props
      *
-     * @return \Crossly\Model\Spatial\UpdateSpatialSceneCosmeticResponseDataProps[]|null
+     * @return \Crossly\Model\Showroom\GetShowroomResponseDataRoomProps[]|null
      */
     public function getProps()
     {
@@ -717,7 +717,7 @@ class UpdateSpatialSceneCosmeticResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets props
      *
-     * @param \Crossly\Model\Spatial\UpdateSpatialSceneCosmeticResponseDataProps[]|null $props Decorative props. Never containers — see CosmeticProp.
+     * @param \Crossly\Model\Showroom\GetShowroomResponseDataRoomProps[]|null $props Decorative props. Never containers — see CosmeticProp.
      *
      * @return self
      */

@@ -200,6 +200,7 @@ class CreateVaultMarketLearnQuizResponse implements ModelInterface, ArrayAccess,
     const CONCEPT_AUCTIONS = 'auctions';
     const CONCEPT_INDEXES = 'indexes';
     const CONCEPT_MARKS = 'marks';
+    const CONCEPT_VAULT_SHARES = 'vault-shares';
 
     /**
      * Gets allowable values of the enum
@@ -216,6 +217,7 @@ class CreateVaultMarketLearnQuizResponse implements ModelInterface, ArrayAccess,
             self::CONCEPT_AUCTIONS,
             self::CONCEPT_INDEXES,
             self::CONCEPT_MARKS,
+            self::CONCEPT_VAULT_SHARES,
         ];
     }
 

@@ -65,11 +65,11 @@ class CreateNftMarketListingResponseListing implements ModelInterface, ArrayAcce
         'updated_at' => '\DateTime',
         'status' => 'string',
         'sold_at' => '\DateTime',
-        'seller_user_id' => 'string',
         'buyer_user_id' => 'string',
         'price_cents' => 'float',
-        'merchant_id' => 'string',
+        'seller_user_id' => 'string',
         'cosmetic_id' => 'string',
+        'merchant_id' => 'string',
         'ownership_id' => 'string',
         'seller_subject_id' => 'string',
         'tx_sig' => 'string'
@@ -88,11 +88,11 @@ class CreateNftMarketListingResponseListing implements ModelInterface, ArrayAcce
         'updated_at' => 'date-time',
         'status' => null,
         'sold_at' => 'date-time',
-        'seller_user_id' => null,
         'buyer_user_id' => null,
         'price_cents' => null,
-        'merchant_id' => null,
+        'seller_user_id' => null,
         'cosmetic_id' => null,
+        'merchant_id' => null,
         'ownership_id' => null,
         'seller_subject_id' => null,
         'tx_sig' => null
@@ -130,11 +130,11 @@ class CreateNftMarketListingResponseListing implements ModelInterface, ArrayAcce
         'updated_at' => 'updatedAt',
         'status' => 'status',
         'sold_at' => 'soldAt',
-        'seller_user_id' => 'sellerUserId',
         'buyer_user_id' => 'buyerUserId',
         'price_cents' => 'priceCents',
-        'merchant_id' => 'merchantId',
+        'seller_user_id' => 'sellerUserId',
         'cosmetic_id' => 'cosmeticId',
+        'merchant_id' => 'merchantId',
         'ownership_id' => 'ownershipId',
         'seller_subject_id' => 'sellerSubjectId',
         'tx_sig' => 'txSig'
@@ -151,11 +151,11 @@ class CreateNftMarketListingResponseListing implements ModelInterface, ArrayAcce
         'updated_at' => 'setUpdatedAt',
         'status' => 'setStatus',
         'sold_at' => 'setSoldAt',
-        'seller_user_id' => 'setSellerUserId',
         'buyer_user_id' => 'setBuyerUserId',
         'price_cents' => 'setPriceCents',
-        'merchant_id' => 'setMerchantId',
+        'seller_user_id' => 'setSellerUserId',
         'cosmetic_id' => 'setCosmeticId',
+        'merchant_id' => 'setMerchantId',
         'ownership_id' => 'setOwnershipId',
         'seller_subject_id' => 'setSellerSubjectId',
         'tx_sig' => 'setTxSig'
@@ -172,11 +172,11 @@ class CreateNftMarketListingResponseListing implements ModelInterface, ArrayAcce
         'updated_at' => 'getUpdatedAt',
         'status' => 'getStatus',
         'sold_at' => 'getSoldAt',
-        'seller_user_id' => 'getSellerUserId',
         'buyer_user_id' => 'getBuyerUserId',
         'price_cents' => 'getPriceCents',
-        'merchant_id' => 'getMerchantId',
+        'seller_user_id' => 'getSellerUserId',
         'cosmetic_id' => 'getCosmeticId',
+        'merchant_id' => 'getMerchantId',
         'ownership_id' => 'getOwnershipId',
         'seller_subject_id' => 'getSellerSubjectId',
         'tx_sig' => 'getTxSig'
@@ -244,11 +244,11 @@ class CreateNftMarketListingResponseListing implements ModelInterface, ArrayAcce
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['sold_at'] = $data['sold_at'] ?? null;
-        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['buyer_user_id'] = $data['buyer_user_id'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
-        $this->container['merchant_id'] = $data['merchant_id'] ?? null;
+        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['cosmetic_id'] = $data['cosmetic_id'] ?? null;
+        $this->container['merchant_id'] = $data['merchant_id'] ?? null;
         $this->container['ownership_id'] = $data['ownership_id'] ?? null;
         $this->container['seller_subject_id'] = $data['seller_subject_id'] ?? null;
         $this->container['tx_sig'] = $data['tx_sig'] ?? null;
@@ -278,11 +278,11 @@ class CreateNftMarketListingResponseListing implements ModelInterface, ArrayAcce
         if ($this->container['price_cents'] === null) {
             $invalidProperties[] = "'price_cents' can't be null";
         }
-        if ($this->container['merchant_id'] === null) {
-            $invalidProperties[] = "'merchant_id' can't be null";
-        }
         if ($this->container['cosmetic_id'] === null) {
             $invalidProperties[] = "'cosmetic_id' can't be null";
+        }
+        if ($this->container['merchant_id'] === null) {
+            $invalidProperties[] = "'merchant_id' can't be null";
         }
         if ($this->container['ownership_id'] === null) {
             $invalidProperties[] = "'ownership_id' can't be null";
@@ -426,30 +426,6 @@ class CreateNftMarketListingResponseListing implements ModelInterface, ArrayAcce
     }
 
     /**
-     * Gets seller_user_id
-     *
-     * @return string|null
-     */
-    public function getSellerUserId()
-    {
-        return $this->container['seller_user_id'];
-    }
-
-    /**
-     * Sets seller_user_id
-     *
-     * @param string|null $seller_user_id seller_user_id
-     *
-     * @return self
-     */
-    public function setSellerUserId($seller_user_id)
-    {
-        $this->container['seller_user_id'] = $seller_user_id;
-
-        return $this;
-    }
-
-    /**
      * Gets buyer_user_id
      *
      * @return string|null
@@ -498,25 +474,25 @@ class CreateNftMarketListingResponseListing implements ModelInterface, ArrayAcce
     }
 
     /**
-     * Gets merchant_id
+     * Gets seller_user_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getMerchantId()
+    public function getSellerUserId()
     {
-        return $this->container['merchant_id'];
+        return $this->container['seller_user_id'];
     }
 
     /**
-     * Sets merchant_id
+     * Sets seller_user_id
      *
-     * @param string $merchant_id merchant_id
+     * @param string|null $seller_user_id seller_user_id
      *
      * @return self
      */
-    public function setMerchantId($merchant_id)
+    public function setSellerUserId($seller_user_id)
     {
-        $this->container['merchant_id'] = $merchant_id;
+        $this->container['seller_user_id'] = $seller_user_id;
 
         return $this;
     }
@@ -541,6 +517,30 @@ class CreateNftMarketListingResponseListing implements ModelInterface, ArrayAcce
     public function setCosmeticId($cosmetic_id)
     {
         $this->container['cosmetic_id'] = $cosmetic_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_id
+     *
+     * @return string
+     */
+    public function getMerchantId()
+    {
+        return $this->container['merchant_id'];
+    }
+
+    /**
+     * Sets merchant_id
+     *
+     * @param string $merchant_id merchant_id
+     *
+     * @return self
+     */
+    public function setMerchantId($merchant_id)
+    {
+        $this->container['merchant_id'] = $merchant_id;
 
         return $this;
     }

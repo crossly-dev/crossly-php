@@ -245,11 +245,11 @@ class ListVaultReceiptsItem implements ModelInterface, ArrayAccess, \JsonSeriali
 
     const FORM_NON_NEGOTIABLE = 'non_negotiable';
     const FORM_NEGOTIABLE = 'negotiable';
+    const STATUS_VOID = 'void';
     const STATUS_PLEDGED = 'pledged';
     const STATUS_ISSUED = 'issued';
     const STATUS_TRANSFERRED = 'transferred';
     const STATUS_SURRENDERED = 'surrendered';
-    const STATUS_VOID = 'void';
 
     /**
      * Gets allowable values of the enum
@@ -272,11 +272,11 @@ class ListVaultReceiptsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function getStatusAllowableValues()
     {
         return [
+            self::STATUS_VOID,
             self::STATUS_PLEDGED,
             self::STATUS_ISSUED,
             self::STATUS_TRANSFERRED,
             self::STATUS_SURRENDERED,
-            self::STATUS_VOID,
         ];
     }
 

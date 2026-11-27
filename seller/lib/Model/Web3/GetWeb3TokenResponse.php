@@ -248,12 +248,12 @@ class GetWeb3TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-    const CHAIN_SOLANA = 'solana';
     const CHAIN_ETHEREUM = 'ethereum';
     const CHAIN_BASE = 'base';
     const CHAIN_POLYGON = 'polygon';
     const CHAIN_ARBITRUM = 'arbitrum';
     const CHAIN_OPTIMISM = 'optimism';
+    const CHAIN_SOLANA = 'solana';
     const STANDARD_ERC721 = 'erc721';
     const STANDARD_ERC1155 = 'erc1155';
     const STANDARD_METAPLEX = 'metaplex';
@@ -269,12 +269,12 @@ class GetWeb3TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function getChainAllowableValues()
     {
         return [
-            self::CHAIN_SOLANA,
             self::CHAIN_ETHEREUM,
             self::CHAIN_BASE,
             self::CHAIN_POLYGON,
             self::CHAIN_ARBITRUM,
             self::CHAIN_OPTIMISM,
+            self::CHAIN_SOLANA,
         ];
     }
 

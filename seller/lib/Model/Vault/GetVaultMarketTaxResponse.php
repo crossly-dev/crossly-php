@@ -68,7 +68,10 @@ class GetVaultMarketTaxResponse implements ModelInterface, ArrayAccess, \JsonSer
         'gifts_out' => '\Crossly\Model\Vault\GetVaultMarketTaxResponseGiftsOut[]',
         'income' => '\Crossly\Model\Vault\GetVaultMarketTaxResponseIncome',
         'positions' => '\Crossly\Model\Vault\GetVaultMarketTaxResponsePositions[]',
-        'notes' => 'string[]'
+        'options' => '\Crossly\Model\Vault\GetVaultMarketTaxResponseOptions',
+        'notes' => 'string[]',
+        'shares' => '\Crossly\Model\Vault\GetVaultMarketTaxResponseShares',
+        'predictions' => '\Crossly\Model\Vault\GetVaultMarketTaxResponsePredictions'
     ];
 
     /**
@@ -87,7 +90,10 @@ class GetVaultMarketTaxResponse implements ModelInterface, ArrayAccess, \JsonSer
         'gifts_out' => null,
         'income' => null,
         'positions' => null,
-        'notes' => null
+        'options' => null,
+        'notes' => null,
+        'shares' => null,
+        'predictions' => null
     ];
 
     /**
@@ -125,7 +131,10 @@ class GetVaultMarketTaxResponse implements ModelInterface, ArrayAccess, \JsonSer
         'gifts_out' => 'giftsOut',
         'income' => 'income',
         'positions' => 'positions',
-        'notes' => 'notes'
+        'options' => 'options',
+        'notes' => 'notes',
+        'shares' => 'shares',
+        'predictions' => 'predictions'
     ];
 
     /**
@@ -142,7 +151,10 @@ class GetVaultMarketTaxResponse implements ModelInterface, ArrayAccess, \JsonSer
         'gifts_out' => 'setGiftsOut',
         'income' => 'setIncome',
         'positions' => 'setPositions',
-        'notes' => 'setNotes'
+        'options' => 'setOptions',
+        'notes' => 'setNotes',
+        'shares' => 'setShares',
+        'predictions' => 'setPredictions'
     ];
 
     /**
@@ -159,7 +171,10 @@ class GetVaultMarketTaxResponse implements ModelInterface, ArrayAccess, \JsonSer
         'gifts_out' => 'getGiftsOut',
         'income' => 'getIncome',
         'positions' => 'getPositions',
-        'notes' => 'getNotes'
+        'options' => 'getOptions',
+        'notes' => 'getNotes',
+        'shares' => 'getShares',
+        'predictions' => 'getPredictions'
     ];
 
     /**
@@ -227,7 +242,10 @@ class GetVaultMarketTaxResponse implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['gifts_out'] = $data['gifts_out'] ?? null;
         $this->container['income'] = $data['income'] ?? null;
         $this->container['positions'] = $data['positions'] ?? null;
+        $this->container['options'] = $data['options'] ?? null;
         $this->container['notes'] = $data['notes'] ?? null;
+        $this->container['shares'] = $data['shares'] ?? null;
+        $this->container['predictions'] = $data['predictions'] ?? null;
     }
 
     /**
@@ -474,6 +492,30 @@ class GetVaultMarketTaxResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets options
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketTaxResponseOptions|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketTaxResponseOptions|null $options options
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
      * Gets notes
      *
      * @return string[]
@@ -493,6 +535,54 @@ class GetVaultMarketTaxResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setNotes($notes)
     {
         $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets shares
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketTaxResponseShares|null
+     */
+    public function getShares()
+    {
+        return $this->container['shares'];
+    }
+
+    /**
+     * Sets shares
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketTaxResponseShares|null $shares shares
+     *
+     * @return self
+     */
+    public function setShares($shares)
+    {
+        $this->container['shares'] = $shares;
+
+        return $this;
+    }
+
+    /**
+     * Gets predictions
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketTaxResponsePredictions|null
+     */
+    public function getPredictions()
+    {
+        return $this->container['predictions'];
+    }
+
+    /**
+     * Sets predictions
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketTaxResponsePredictions|null $predictions predictions
+     *
+     * @return self
+     */
+    public function setPredictions($predictions)
+    {
+        $this->container['predictions'] = $predictions;
 
         return $this;
     }

@@ -5,11 +5,13 @@ All URIs are relative to https://crossly.net/api.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createAccount()**](AccountsApi.md#createAccount) | **POST** /v1/accounts | Connect a new platform account (kicks off OAuth or extension handshake).
+[**createConnectionCardnexusApiKey()**](AccountsApi.md#createConnectionCardnexusApiKey) | **POST** /v1/connections/cardnexus/api-key | Connect CardNexus with a personal API key (validated live before it is stored).
 [**createConnectionEmailImap()**](AccountsApi.md#createConnectionEmailImap) | **POST** /v1/connections/email/imap | Add an IMAP mailbox connection.
 [**createConnectionEmailImapTest()**](AccountsApi.md#createConnectionEmailImapTest) | **POST** /v1/connections/email/imap/test | Validate IMAP credentials without persisting.
+[**createConnectionLightspeedXToken()**](AccountsApi.md#createConnectionLightspeedXToken) | **POST** /v1/connections/lightspeed_x/token | Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
 [**createConnectionRequest()**](AccountsApi.md#createConnectionRequest) | **POST** /v1/connections/{platform}/request | Express interest in a request_only platform.
 [**createPlatformAccountConnect()**](AccountsApi.md#createPlatformAccountConnect) | **POST** /v1/platform-accounts/{platform}/connect | Revive or initiate connection for a cookie platform.
-[**createPlatformAccountDisconnect()**](AccountsApi.md#createPlatformAccountDisconnect) | **POST** /v1/platform-accounts/{platform}/disconnect | Archive every active account row for a platform.
+[**createPlatformAccountDisconnect()**](AccountsApi.md#createPlatformAccountDisconnect) | **POST** /v1/platform-accounts/{platform}/disconnect | Disconnect every account of a platform (archives the rows and deletes their stored sessions).
 [**createPlatformAccountHistoryImport()**](AccountsApi.md#createPlatformAccountHistoryImport) | **POST** /v1/platform-accounts/{platform}/history-import | Set how far back to backfill order history + active listings for a platform, and run it now.
 [**createPlatformAccountRefreshStatus()**](AccountsApi.md#createPlatformAccountRefreshStatus) | **POST** /v1/platform-accounts/refresh-status | Run on-demand healthchecks across cookie accounts.
 [**deleteAccount()**](AccountsApi.md#deleteAccount) | **DELETE** /v1/accounts/{id} | Disconnect a platform account.
@@ -17,11 +19,14 @@ Method | HTTP request | Description
 [**deleteConnectionEmailImap()**](AccountsApi.md#deleteConnectionEmailImap) | **DELETE** /v1/connections/email/imap/{id} | Remove an IMAP mailbox connection.
 [**getConnectionEmail()**](AccountsApi.md#getConnectionEmail) | **GET** /v1/connections/email | List IMAP and email-OAuth connections.
 [**getConnectionExtensionOnline()**](AccountsApi.md#getConnectionExtensionOnline) | **GET** /v1/connections/extension-online | Check if the browser extension is online.
+[**getConnectionPolicyManagementOption()**](AccountsApi.md#getConnectionPolicyManagementOption) | **GET** /v1/connections/policy-management/{connectionId}/options/{source} | List the live options a marketplace policy field offers (e.g. Allegro delivery methods).
 [**getOauthInit()**](AccountsApi.md#getOauthInit) | **GET** /v1/oauth/{platform}/init | Return the OAuth authorize URL for an API-track platform.
 [**getPlatformLimit()**](AccountsApi.md#getPlatformLimit) | **GET** /v1/platforms/limits | eBay free-tier + Etsy fees aggregate.
 [**listAccounts()**](AccountsApi.md#listAccounts) | **GET** /v1/accounts | List your connected platform accounts.
+[**listConnectionPolicyManagement()**](AccountsApi.md#listConnectionPolicyManagement) | **GET** /v1/connections/policy-management | List eBay and Etsy accounts with whether Crossly manages their policies.
 [**listConnections()**](AccountsApi.md#listConnections) | **GET** /v1/connections | List OAuth-connected API platforms.
 [**updateConnectionEmailImap()**](AccountsApi.md#updateConnectionEmailImap) | **PATCH** /v1/connections/email/imap/{id} | Edit an IMAP mailbox connection.
+[**updateConnectionPolicyManagement()**](AccountsApi.md#updateConnectionPolicyManagement) | **PUT** /v1/connections/policy-management/{connectionId} | Turn Crossly policy management on or off for one eBay or Etsy account.
 [**updatePlatformPreference()**](AccountsApi.md#updatePlatformPreference) | **PATCH** /v1/platforms/{platform}/preferences | Update per-platform connection preferences.
 
 
@@ -66,6 +71,60 @@ This endpoint does not need any parameter.
 ### Return type
 
 **\Crossly\Model\Account\CreateAccountResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createConnectionCardnexusApiKey()`
+
+```php
+createConnectionCardnexusApiKey(): \Crossly\Model\Connection\CreateConnectionCardnexusApiKeyResponse
+```
+
+Connect CardNexus with a personal API key (validated live before it is stored).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->createConnectionCardnexusApiKey();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->createConnectionCardnexusApiKey: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Model\Connection\CreateConnectionCardnexusApiKeyResponse**
 
 ### Authorization
 
@@ -182,6 +241,63 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `createConnectionLightspeedXToken()`
+
+```php
+createConnectionLightspeedXToken($create_connection_lightspeed_x_token_request): \Crossly\Model\Connection\CreateConnectionLightspeedXTokenResponse
+```
+
+Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_connection_lightspeed_x_token_request = new \Crossly\Model\Connection\CreateConnectionLightspeedXTokenRequest(); // \Crossly\Model\Connection\CreateConnectionLightspeedXTokenRequest
+
+try {
+    $result = $apiInstance->createConnectionLightspeedXToken($create_connection_lightspeed_x_token_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->createConnectionLightspeedXToken: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_connection_lightspeed_x_token_request** | **\Crossly\Model\Connection\CreateConnectionLightspeedXTokenRequest**|  |
+
+### Return type
+
+**\Crossly\Model\Connection\CreateConnectionLightspeedXTokenResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -307,7 +423,7 @@ Name | Type | Description  | Notes
 createPlatformAccountDisconnect($platform): \Crossly\Model\Platform\CreatePlatformAccountDisconnectResponse
 ```
 
-Archive every active account row for a platform.
+Disconnect every account of a platform (archives the rows and deletes their stored sessions).
 
 ### Example
 
@@ -750,6 +866,67 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `getConnectionPolicyManagementOption()`
+
+```php
+getConnectionPolicyManagementOption($connection_id, $source): \Crossly\Model\Connection\GetConnectionPolicyManagementOptionResponse
+```
+
+List the live options a marketplace policy field offers (e.g. Allegro delivery methods).
+
+For one of your managed connections, the choices a preset's `platformFields` picker offers, from the marketplace (`source` is the field's `optionsSource`, e.g. `delivery-methods`). An unknown connection or source is a 404.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connection_id = 'connection_id_example'; // string
+$source = 'source_example'; // string
+
+try {
+    $result = $apiInstance->getConnectionPolicyManagementOption($connection_id, $source);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->getConnectionPolicyManagementOption: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **connection_id** | **string**|  |
+ **source** | **string**|  |
+
+### Return type
+
+**\Crossly\Model\Connection\GetConnectionPolicyManagementOptionResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `getOauthInit()`
 
 ```php
@@ -758,7 +935,7 @@ getOauthInit($platform, $shop, $region, $site_url): \Crossly\Model\Common\GetOau
 
 Return the OAuth authorize URL for an API-track platform.
 
-Most platforms return `{ url }`. Etsy adds `{ correlationId }` (PKCE verifier stashed in Redis). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart returns `{ status: \"request_only\", requestUrl, message }` instead of a URL because per-seller OAuth needs Solution Provider approval.
+Most platforms return `{ url }` (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart returns `{ status: \"request_only\", requestUrl, message }` instead of a URL because per-seller OAuth needs Solution Provider approval.
 
 ### Example
 
@@ -923,6 +1100,62 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 
+## `listConnectionPolicyManagement()`
+
+```php
+listConnectionPolicyManagement(): \Crossly\Model\Connection\ListConnectionPolicyManagementResponse
+```
+
+List eBay and Etsy accounts with whether Crossly manages their policies.
+
+One row per connected eBay or Etsy account: `eligible` (eBay only on EBAY_US), `managed` (Crossly keeps its policies / shipping profiles in step with your default presets) and sync `notes`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listConnectionPolicyManagement();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->listConnectionPolicyManagement: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**\Crossly\Model\Connection\ListConnectionPolicyManagementResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
 ## `listConnections()`
 
 ```php
@@ -1021,6 +1254,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 **\Crossly\Model\Common\SuccessResponse**
+
+### Authorization
+
+[PersonalAccessToken](../../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+
+## `updateConnectionPolicyManagement()`
+
+```php
+updateConnectionPolicyManagement($connection_id): \Crossly\Model\Connection\ListConnectionPolicyManagementItem
+```
+
+Turn Crossly policy management on or off for one eBay or Etsy account.
+
+Body `{ managed: boolean }`. On: Crossly may overwrite that account's own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: PersonalAccessToken
+$config = Crossly\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Crossly\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connection_id = 'connection_id_example'; // string
+
+try {
+    $result = $apiInstance->updateConnectionPolicyManagement($connection_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->updateConnectionPolicyManagement: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **connection_id** | **string**|  |
+
+### Return type
+
+**\Crossly\Model\Connection\ListConnectionPolicyManagementItem**
 
 ### Authorization
 

@@ -63,7 +63,9 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
         'url' => 'string',
         'persisted' => 'bool',
         'expires_in_seconds' => 'float',
-        'provenance' => 'string'
+        'provenance' => 'string',
+        'shipping_label_url' => 'string',
+        'tracking_number' => 'string'
     ];
 
     /**
@@ -77,7 +79,9 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
         'url' => null,
         'persisted' => null,
         'expires_in_seconds' => null,
-        'provenance' => null
+        'provenance' => null,
+        'shipping_label_url' => null,
+        'tracking_number' => null
     ];
 
     /**
@@ -110,7 +114,9 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
         'url' => 'url',
         'persisted' => 'persisted',
         'expires_in_seconds' => 'expiresInSeconds',
-        'provenance' => 'provenance'
+        'provenance' => 'provenance',
+        'shipping_label_url' => 'shippingLabelUrl',
+        'tracking_number' => 'trackingNumber'
     ];
 
     /**
@@ -122,7 +128,9 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
         'url' => 'setUrl',
         'persisted' => 'setPersisted',
         'expires_in_seconds' => 'setExpiresInSeconds',
-        'provenance' => 'setProvenance'
+        'provenance' => 'setProvenance',
+        'shipping_label_url' => 'setShippingLabelUrl',
+        'tracking_number' => 'setTrackingNumber'
     ];
 
     /**
@@ -134,7 +142,9 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
         'url' => 'getUrl',
         'persisted' => 'getPersisted',
         'expires_in_seconds' => 'getExpiresInSeconds',
-        'provenance' => 'getProvenance'
+        'provenance' => 'getProvenance',
+        'shipping_label_url' => 'getShippingLabelUrl',
+        'tracking_number' => 'getTrackingNumber'
     ];
 
     /**
@@ -213,6 +223,8 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
         $this->container['persisted'] = $data['persisted'] ?? null;
         $this->container['expires_in_seconds'] = $data['expires_in_seconds'] ?? null;
         $this->container['provenance'] = $data['provenance'] ?? null;
+        $this->container['shipping_label_url'] = $data['shipping_label_url'] ?? null;
+        $this->container['tracking_number'] = $data['tracking_number'] ?? null;
     }
 
     /**
@@ -224,15 +236,6 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['persisted'] === null) {
-            $invalidProperties[] = "'persisted' can't be null";
-        }
-        if ($this->container['expires_in_seconds'] === null) {
-            $invalidProperties[] = "'expires_in_seconds' can't be null";
-        }
         if ($this->container['provenance'] === null) {
             $invalidProperties[] = "'provenance' can't be null";
         }
@@ -263,7 +266,7 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
     /**
      * Gets url
      *
-     * @return string
+     * @return string|null
      */
     public function getUrl()
     {
@@ -273,7 +276,7 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
     /**
      * Sets url
      *
-     * @param string $url url
+     * @param string|null $url url
      *
      * @return self
      */
@@ -287,7 +290,7 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
     /**
      * Gets persisted
      *
-     * @return bool
+     * @return bool|null
      */
     public function getPersisted()
     {
@@ -297,7 +300,7 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
     /**
      * Sets persisted
      *
-     * @param bool $persisted persisted
+     * @param bool|null $persisted persisted
      *
      * @return self
      */
@@ -311,7 +314,7 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
     /**
      * Gets expires_in_seconds
      *
-     * @return float
+     * @return float|null
      */
     public function getExpiresInSeconds()
     {
@@ -321,7 +324,7 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
     /**
      * Sets expires_in_seconds
      *
-     * @param float $expires_in_seconds expires_in_seconds
+     * @param float|null $expires_in_seconds expires_in_seconds
      *
      * @return self
      */
@@ -362,6 +365,54 @@ class CreateOrderPullPlatformLabelResponse implements ModelInterface, ArrayAcces
             );
         }
         $this->container['provenance'] = $provenance;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipping_label_url
+     *
+     * @return string|null
+     */
+    public function getShippingLabelUrl()
+    {
+        return $this->container['shipping_label_url'];
+    }
+
+    /**
+     * Sets shipping_label_url
+     *
+     * @param string|null $shipping_label_url shipping_label_url
+     *
+     * @return self
+     */
+    public function setShippingLabelUrl($shipping_label_url)
+    {
+        $this->container['shipping_label_url'] = $shipping_label_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_number
+     *
+     * @return string|null
+     */
+    public function getTrackingNumber()
+    {
+        return $this->container['tracking_number'];
+    }
+
+    /**
+     * Sets tracking_number
+     *
+     * @param string|null $tracking_number tracking_number
+     *
+     * @return self
+     */
+    public function setTrackingNumber($tracking_number)
+    {
+        $this->container['tracking_number'] = $tracking_number;
 
         return $this;
     }

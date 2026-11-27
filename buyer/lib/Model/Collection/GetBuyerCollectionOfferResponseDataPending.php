@@ -61,8 +61,8 @@ class GetBuyerCollectionOfferResponseDataPending implements ModelInterface, Arra
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'status' => 'string',
-        'cents' => 'float'
+        'cents' => 'float',
+        'status' => 'string'
     ];
 
     /**
@@ -74,8 +74,8 @@ class GetBuyerCollectionOfferResponseDataPending implements ModelInterface, Arra
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'status' => null,
-        'cents' => null
+        'cents' => null,
+        'status' => null
     ];
 
     /**
@@ -106,8 +106,8 @@ class GetBuyerCollectionOfferResponseDataPending implements ModelInterface, Arra
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'status' => 'status',
-        'cents' => 'cents'
+        'cents' => 'cents',
+        'status' => 'status'
     ];
 
     /**
@@ -117,8 +117,8 @@ class GetBuyerCollectionOfferResponseDataPending implements ModelInterface, Arra
      */
     protected static $setters = [
         'id' => 'setId',
-        'status' => 'setStatus',
-        'cents' => 'setCents'
+        'cents' => 'setCents',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -128,8 +128,8 @@ class GetBuyerCollectionOfferResponseDataPending implements ModelInterface, Arra
      */
     protected static $getters = [
         'id' => 'getId',
-        'status' => 'getStatus',
-        'cents' => 'getCents'
+        'cents' => 'getCents',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -190,8 +190,8 @@ class GetBuyerCollectionOfferResponseDataPending implements ModelInterface, Arra
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['cents'] = $data['cents'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -206,11 +206,11 @@ class GetBuyerCollectionOfferResponseDataPending implements ModelInterface, Arra
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         if ($this->container['cents'] === null) {
             $invalidProperties[] = "'cents' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         return $invalidProperties;
     }
@@ -252,30 +252,6 @@ class GetBuyerCollectionOfferResponseDataPending implements ModelInterface, Arra
     }
 
     /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
      * Gets cents
      *
      * @return float
@@ -295,6 +271,30 @@ class GetBuyerCollectionOfferResponseDataPending implements ModelInterface, Arra
     public function setCents($cents)
     {
         $this->container['cents'] = $cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

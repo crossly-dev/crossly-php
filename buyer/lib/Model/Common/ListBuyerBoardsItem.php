@@ -61,12 +61,12 @@ class ListBuyerBoardsItem implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'updated_at' => 'string',
-        'is_public' => 'bool',
-        'item_count' => 'float',
         'title' => 'string',
+        'is_public' => 'bool',
         'share_token' => 'string',
-        'cover_url' => 'string'
+        'cover_url' => 'string',
+        'item_count' => 'float',
+        'updated_at' => 'string'
     ];
 
     /**
@@ -78,12 +78,12 @@ class ListBuyerBoardsItem implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'updated_at' => null,
-        'is_public' => null,
-        'item_count' => null,
         'title' => null,
+        'is_public' => null,
         'share_token' => null,
-        'cover_url' => null
+        'cover_url' => null,
+        'item_count' => null,
+        'updated_at' => null
     ];
 
     /**
@@ -114,12 +114,12 @@ class ListBuyerBoardsItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'updated_at' => 'updatedAt',
-        'is_public' => 'isPublic',
-        'item_count' => 'itemCount',
         'title' => 'title',
+        'is_public' => 'isPublic',
         'share_token' => 'shareToken',
-        'cover_url' => 'coverUrl'
+        'cover_url' => 'coverUrl',
+        'item_count' => 'itemCount',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -129,12 +129,12 @@ class ListBuyerBoardsItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'id' => 'setId',
-        'updated_at' => 'setUpdatedAt',
-        'is_public' => 'setIsPublic',
-        'item_count' => 'setItemCount',
         'title' => 'setTitle',
+        'is_public' => 'setIsPublic',
         'share_token' => 'setShareToken',
-        'cover_url' => 'setCoverUrl'
+        'cover_url' => 'setCoverUrl',
+        'item_count' => 'setItemCount',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -144,12 +144,12 @@ class ListBuyerBoardsItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'id' => 'getId',
-        'updated_at' => 'getUpdatedAt',
-        'is_public' => 'getIsPublic',
-        'item_count' => 'getItemCount',
         'title' => 'getTitle',
+        'is_public' => 'getIsPublic',
         'share_token' => 'getShareToken',
-        'cover_url' => 'getCoverUrl'
+        'cover_url' => 'getCoverUrl',
+        'item_count' => 'getItemCount',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -210,12 +210,12 @@ class ListBuyerBoardsItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['is_public'] = $data['is_public'] ?? null;
-        $this->container['item_count'] = $data['item_count'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
+        $this->container['is_public'] = $data['is_public'] ?? null;
         $this->container['share_token'] = $data['share_token'] ?? null;
         $this->container['cover_url'] = $data['cover_url'] ?? null;
+        $this->container['item_count'] = $data['item_count'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
 
     /**
@@ -230,20 +230,20 @@ class ListBuyerBoardsItem implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
         if ($this->container['is_public'] === null) {
             $invalidProperties[] = "'is_public' can't be null";
         }
+        if ($this->container['share_token'] === null) {
+            $invalidProperties[] = "'share_token' can't be null";
+        }
         if ($this->container['item_count'] === null) {
             $invalidProperties[] = "'item_count' can't be null";
         }
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['share_token'] === null) {
-            $invalidProperties[] = "'share_token' can't be null";
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -285,25 +285,25 @@ class ListBuyerBoardsItem implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets updated_at
+     * Gets title
      *
      * @return string
      */
-    public function getUpdatedAt()
+    public function getTitle()
     {
-        return $this->container['updated_at'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets updated_at
+     * Sets title
      *
-     * @param string $updated_at updated_at
+     * @param string $title title
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setTitle($title)
     {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['title'] = $title;
 
         return $this;
     }
@@ -328,54 +328,6 @@ class ListBuyerBoardsItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setIsPublic($is_public)
     {
         $this->container['is_public'] = $is_public;
-
-        return $this;
-    }
-
-    /**
-     * Gets item_count
-     *
-     * @return float
-     */
-    public function getItemCount()
-    {
-        return $this->container['item_count'];
-    }
-
-    /**
-     * Sets item_count
-     *
-     * @param float $item_count item_count
-     *
-     * @return self
-     */
-    public function setItemCount($item_count)
-    {
-        $this->container['item_count'] = $item_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
 
         return $this;
     }
@@ -424,6 +376,54 @@ class ListBuyerBoardsItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCoverUrl($cover_url)
     {
         $this->container['cover_url'] = $cover_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets item_count
+     *
+     * @return float
+     */
+    public function getItemCount()
+    {
+        return $this->container['item_count'];
+    }
+
+    /**
+     * Sets item_count
+     *
+     * @param float $item_count item_count
+     *
+     * @return self
+     */
+    public function setItemCount($item_count)
+    {
+        $this->container['item_count'] = $item_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return string
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param string $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

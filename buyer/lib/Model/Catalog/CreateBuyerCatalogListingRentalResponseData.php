@@ -63,7 +63,8 @@ class CreateBuyerCatalogListingRentalResponseData implements ModelInterface, Arr
         'rental_id' => 'string',
         'client_secret' => 'string',
         'total_cents' => 'float',
-        'needs_approval' => 'bool'
+        'needs_approval' => 'bool',
+        'quote' => '\Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalResponseDataQuote'
     ];
 
     /**
@@ -77,7 +78,8 @@ class CreateBuyerCatalogListingRentalResponseData implements ModelInterface, Arr
         'rental_id' => null,
         'client_secret' => null,
         'total_cents' => null,
-        'needs_approval' => null
+        'needs_approval' => null,
+        'quote' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class CreateBuyerCatalogListingRentalResponseData implements ModelInterface, Arr
         'rental_id' => 'rentalId',
         'client_secret' => 'clientSecret',
         'total_cents' => 'totalCents',
-        'needs_approval' => 'needsApproval'
+        'needs_approval' => 'needsApproval',
+        'quote' => 'quote'
     ];
 
     /**
@@ -122,7 +125,8 @@ class CreateBuyerCatalogListingRentalResponseData implements ModelInterface, Arr
         'rental_id' => 'setRentalId',
         'client_secret' => 'setClientSecret',
         'total_cents' => 'setTotalCents',
-        'needs_approval' => 'setNeedsApproval'
+        'needs_approval' => 'setNeedsApproval',
+        'quote' => 'setQuote'
     ];
 
     /**
@@ -134,7 +138,8 @@ class CreateBuyerCatalogListingRentalResponseData implements ModelInterface, Arr
         'rental_id' => 'getRentalId',
         'client_secret' => 'getClientSecret',
         'total_cents' => 'getTotalCents',
-        'needs_approval' => 'getNeedsApproval'
+        'needs_approval' => 'getNeedsApproval',
+        'quote' => 'getQuote'
     ];
 
     /**
@@ -198,6 +203,7 @@ class CreateBuyerCatalogListingRentalResponseData implements ModelInterface, Arr
         $this->container['client_secret'] = $data['client_secret'] ?? null;
         $this->container['total_cents'] = $data['total_cents'] ?? null;
         $this->container['needs_approval'] = $data['needs_approval'] ?? null;
+        $this->container['quote'] = $data['quote'] ?? null;
     }
 
     /**
@@ -217,6 +223,9 @@ class CreateBuyerCatalogListingRentalResponseData implements ModelInterface, Arr
         }
         if ($this->container['needs_approval'] === null) {
             $invalidProperties[] = "'needs_approval' can't be null";
+        }
+        if ($this->container['quote'] === null) {
+            $invalidProperties[] = "'quote' can't be null";
         }
         return $invalidProperties;
     }
@@ -325,6 +334,30 @@ class CreateBuyerCatalogListingRentalResponseData implements ModelInterface, Arr
     public function setNeedsApproval($needs_approval)
     {
         $this->container['needs_approval'] = $needs_approval;
+
+        return $this;
+    }
+
+    /**
+     * Gets quote
+     *
+     * @return \Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalResponseDataQuote
+     */
+    public function getQuote()
+    {
+        return $this->container['quote'];
+    }
+
+    /**
+     * Sets quote
+     *
+     * @param \Crossly\Buyer\Model\Catalog\CreateBuyerCatalogListingRentalResponseDataQuote $quote quote
+     *
+     * @return self
+     */
+    public function setQuote($quote)
+    {
+        $this->container['quote'] = $quote;
 
         return $this;
     }

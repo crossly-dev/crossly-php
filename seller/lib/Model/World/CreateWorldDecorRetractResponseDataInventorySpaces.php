@@ -178,9 +178,9 @@ class CreateWorldDecorRetractResponseDataInventorySpaces implements ModelInterfa
         return self::$openAPIModelName;
     }
 
-    const KIND_SHOP = 'shop';
     const KIND_HOME = 'home';
     const KIND_STREET = 'street';
+    const KIND_SHOP = 'shop';
     const KIND_STALL = 'stall';
 
     /**
@@ -191,9 +191,9 @@ class CreateWorldDecorRetractResponseDataInventorySpaces implements ModelInterfa
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_SHOP,
             self::KIND_HOME,
             self::KIND_STREET,
+            self::KIND_SHOP,
             self::KIND_STALL,
         ];
     }

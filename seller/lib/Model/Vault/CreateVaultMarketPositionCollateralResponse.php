@@ -333,8 +333,8 @@ class CreateVaultMarketPositionCollateralResponse implements ModelInterface, Arr
         return self::$openAPIModelName;
     }
 
-    const KIND_LONG = 'long';
     const KIND_SHORT = 'short';
+    const KIND_LONG = 'long';
 
     /**
      * Gets allowable values of the enum
@@ -344,8 +344,8 @@ class CreateVaultMarketPositionCollateralResponse implements ModelInterface, Arr
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_LONG,
             self::KIND_SHORT,
+            self::KIND_LONG,
         ];
     }
 

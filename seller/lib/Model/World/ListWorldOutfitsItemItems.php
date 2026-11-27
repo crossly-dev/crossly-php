@@ -179,8 +179,8 @@ class ListWorldOutfitsItemItems implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     const DOOR_RECEIPT = 'receipt';
-    const DOOR_COSMETIC = 'cosmetic';
     const DOOR_STOCK = 'stock';
+    const DOOR_COSMETIC = 'cosmetic';
 
     /**
      * Gets allowable values of the enum
@@ -191,8 +191,8 @@ class ListWorldOutfitsItemItems implements ModelInterface, ArrayAccess, \JsonSer
     {
         return [
             self::DOOR_RECEIPT,
-            self::DOOR_COSMETIC,
             self::DOOR_STOCK,
+            self::DOOR_COSMETIC,
         ];
     }
 

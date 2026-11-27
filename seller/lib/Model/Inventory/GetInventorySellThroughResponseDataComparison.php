@@ -60,9 +60,11 @@ class GetInventorySellThroughResponseDataComparison implements ModelInterface, A
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pct_change' => 'float',
+        'pct_change' => 'mixed',
+        'pp' => 'float',
         'comparable' => 'bool',
-        'reason' => 'string'
+        'reason' => 'string',
+        'delta' => '\Crossly\Model\Analytic\GetAnalyticOverviewResponseDataKpisNetSalesDelta'
     ];
 
     /**
@@ -74,8 +76,10 @@ class GetInventorySellThroughResponseDataComparison implements ModelInterface, A
       */
     protected static $openAPIFormats = [
         'pct_change' => null,
+        'pp' => null,
         'comparable' => null,
-        'reason' => null
+        'reason' => null,
+        'delta' => null
     ];
 
     /**
@@ -106,8 +110,10 @@ class GetInventorySellThroughResponseDataComparison implements ModelInterface, A
      */
     protected static $attributeMap = [
         'pct_change' => 'pctChange',
+        'pp' => 'pp',
         'comparable' => 'comparable',
-        'reason' => 'reason'
+        'reason' => 'reason',
+        'delta' => 'delta'
     ];
 
     /**
@@ -117,8 +123,10 @@ class GetInventorySellThroughResponseDataComparison implements ModelInterface, A
      */
     protected static $setters = [
         'pct_change' => 'setPctChange',
+        'pp' => 'setPp',
         'comparable' => 'setComparable',
-        'reason' => 'setReason'
+        'reason' => 'setReason',
+        'delta' => 'setDelta'
     ];
 
     /**
@@ -128,8 +136,10 @@ class GetInventorySellThroughResponseDataComparison implements ModelInterface, A
      */
     protected static $getters = [
         'pct_change' => 'getPctChange',
+        'pp' => 'getPp',
         'comparable' => 'getComparable',
-        'reason' => 'getReason'
+        'reason' => 'getReason',
+        'delta' => 'getDelta'
     ];
 
     /**
@@ -190,8 +200,10 @@ class GetInventorySellThroughResponseDataComparison implements ModelInterface, A
     public function __construct(array $data = null)
     {
         $this->container['pct_change'] = $data['pct_change'] ?? null;
+        $this->container['pp'] = $data['pp'] ?? null;
         $this->container['comparable'] = $data['comparable'] ?? null;
         $this->container['reason'] = $data['reason'] ?? null;
+        $this->container['delta'] = $data['delta'] ?? null;
     }
 
     /**
@@ -203,8 +215,14 @@ class GetInventorySellThroughResponseDataComparison implements ModelInterface, A
     {
         $invalidProperties = [];
 
+        if ($this->container['pct_change'] === null) {
+            $invalidProperties[] = "'pct_change' can't be null";
+        }
         if ($this->container['comparable'] === null) {
             $invalidProperties[] = "'comparable' can't be null";
+        }
+        if ($this->container['delta'] === null) {
+            $invalidProperties[] = "'delta' can't be null";
         }
         return $invalidProperties;
     }
@@ -224,7 +242,7 @@ class GetInventorySellThroughResponseDataComparison implements ModelInterface, A
     /**
      * Gets pct_change
      *
-     * @return float|null
+     * @return mixed
      */
     public function getPctChange()
     {
@@ -234,13 +252,37 @@ class GetInventorySellThroughResponseDataComparison implements ModelInterface, A
     /**
      * Sets pct_change
      *
-     * @param float|null $pct_change pct_change
+     * @param mixed $pct_change Always null: a relative change of a rate is not reported. Read `pp`.
      *
      * @return self
      */
     public function setPctChange($pct_change)
     {
         $this->container['pct_change'] = $pct_change;
+
+        return $this;
+    }
+
+    /**
+     * Gets pp
+     *
+     * @return float|null
+     */
+    public function getPp()
+    {
+        return $this->container['pp'];
+    }
+
+    /**
+     * Sets pp
+     *
+     * @param float|null $pp Percentage points, null when not comparable.
+     *
+     * @return self
+     */
+    public function setPp($pp)
+    {
+        $this->container['pp'] = $pp;
 
         return $this;
     }
@@ -289,6 +331,30 @@ class GetInventorySellThroughResponseDataComparison implements ModelInterface, A
     public function setReason($reason)
     {
         $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets delta
+     *
+     * @return \Crossly\Model\Analytic\GetAnalyticOverviewResponseDataKpisNetSalesDelta
+     */
+    public function getDelta()
+    {
+        return $this->container['delta'];
+    }
+
+    /**
+     * Sets delta
+     *
+     * @param \Crossly\Model\Analytic\GetAnalyticOverviewResponseDataKpisNetSalesDelta $delta delta
+     *
+     * @return self
+     */
+    public function setDelta($delta)
+    {
+        $this->container['delta'] = $delta;
 
         return $this;
     }

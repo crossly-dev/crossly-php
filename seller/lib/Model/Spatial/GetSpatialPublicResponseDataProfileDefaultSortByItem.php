@@ -46,17 +46,23 @@ class GetSpatialPublicResponseDataProfileDefaultSortByItem
      */
     const brand = 'brand';
 
+    const label = 'label';
+
+    const status = 'status';
+
+    const age = 'age';
+
     const condition = 'condition';
 
     const size = 'size';
 
-    const status = 'status';
-
-    const label = 'label';
-
     const title = 'title';
 
     const valueOption = 'value';
+
+    const set = 'set';
+
+    const team = 'team';
 
     const year = 'year';
 
@@ -64,19 +70,13 @@ class GetSpatialPublicResponseDataProfileDefaultSortByItem
 
     const game = 'game';
 
-    const set = 'set';
-
     const franchise = 'franchise';
-
-    const team = 'team';
 
     const era = 'era';
 
     const genre = 'genre';
 
     const colour = 'colour';
-
-    const age = 'age';
 
     const exhibitor = 'exhibitor';
 
@@ -88,22 +88,22 @@ class GetSpatialPublicResponseDataProfileDefaultSortByItem
     {
         return [
             self::brand,
+            self::label,
+            self::status,
+            self::age,
             self::condition,
             self::size,
-            self::status,
-            self::label,
             self::title,
             self::valueOption,
+            self::set,
+            self::team,
             self::year,
             self::grade,
             self::game,
-            self::set,
             self::franchise,
-            self::team,
             self::era,
             self::genre,
             self::colour,
-            self::age,
             self::exhibitor
         ];
     }

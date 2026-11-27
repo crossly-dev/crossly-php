@@ -198,10 +198,10 @@ class CreateVaultMarketCreatorCohostInviteRespondResponse implements ModelInterf
         return self::$openAPIModelName;
     }
 
-    const STATUS_INVITED = 'invited';
-    const STATUS_WITHDRAWN = 'withdrawn';
     const STATUS_ACCEPTED = 'accepted';
     const STATUS_DECLINED = 'declined';
+    const STATUS_WITHDRAWN = 'withdrawn';
+    const STATUS_INVITED = 'invited';
 
     /**
      * Gets allowable values of the enum
@@ -211,10 +211,10 @@ class CreateVaultMarketCreatorCohostInviteRespondResponse implements ModelInterf
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_INVITED,
-            self::STATUS_WITHDRAWN,
             self::STATUS_ACCEPTED,
             self::STATUS_DECLINED,
+            self::STATUS_WITHDRAWN,
+            self::STATUS_INVITED,
         ];
     }
 

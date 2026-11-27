@@ -223,9 +223,9 @@ class CreateVaultMarketPortfolioMarginEnrollResponseOneOfCurrent implements Mode
         return self::$openAPIModelName;
     }
 
-    const STATE_BUY_IN = 'buy_in';
     const STATE_HEALTHY = 'healthy';
     const STATE_CALL = 'call';
+    const STATE_BUY_IN = 'buy_in';
 
     /**
      * Gets allowable values of the enum
@@ -235,9 +235,9 @@ class CreateVaultMarketPortfolioMarginEnrollResponseOneOfCurrent implements Mode
     public function getStateAllowableValues()
     {
         return [
-            self::STATE_BUY_IN,
             self::STATE_HEALTHY,
             self::STATE_CALL,
+            self::STATE_BUY_IN,
         ];
     }
 

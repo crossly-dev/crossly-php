@@ -68,7 +68,8 @@ class GetVaultMarketProofOfReserveResponseLatest implements ModelInterface, Arra
         'units' => '\Crossly\Model\Vault\GetVaultMarketProofOfReserveByDayResponseUnits',
         'loans_open' => 'float',
         'total_insured_cents' => 'float',
-        'memo' => 'string'
+        'memo' => 'string',
+        'anchor' => '\Crossly\Model\Vault\GetVaultMarketProofOfReserveResponseLatestAnchor'
     ];
 
     /**
@@ -87,7 +88,8 @@ class GetVaultMarketProofOfReserveResponseLatest implements ModelInterface, Arra
         'units' => null,
         'loans_open' => null,
         'total_insured_cents' => null,
-        'memo' => null
+        'memo' => null,
+        'anchor' => null
     ];
 
     /**
@@ -125,7 +127,8 @@ class GetVaultMarketProofOfReserveResponseLatest implements ModelInterface, Arra
         'units' => 'units',
         'loans_open' => 'loansOpen',
         'total_insured_cents' => 'totalInsuredCents',
-        'memo' => 'memo'
+        'memo' => 'memo',
+        'anchor' => 'anchor'
     ];
 
     /**
@@ -142,7 +145,8 @@ class GetVaultMarketProofOfReserveResponseLatest implements ModelInterface, Arra
         'units' => 'setUnits',
         'loans_open' => 'setLoansOpen',
         'total_insured_cents' => 'setTotalInsuredCents',
-        'memo' => 'setMemo'
+        'memo' => 'setMemo',
+        'anchor' => 'setAnchor'
     ];
 
     /**
@@ -159,7 +163,8 @@ class GetVaultMarketProofOfReserveResponseLatest implements ModelInterface, Arra
         'units' => 'getUnits',
         'loans_open' => 'getLoansOpen',
         'total_insured_cents' => 'getTotalInsuredCents',
-        'memo' => 'getMemo'
+        'memo' => 'getMemo',
+        'anchor' => 'getAnchor'
     ];
 
     /**
@@ -228,6 +233,7 @@ class GetVaultMarketProofOfReserveResponseLatest implements ModelInterface, Arra
         $this->container['loans_open'] = $data['loans_open'] ?? null;
         $this->container['total_insured_cents'] = $data['total_insured_cents'] ?? null;
         $this->container['memo'] = $data['memo'] ?? null;
+        $this->container['anchor'] = $data['anchor'] ?? null;
     }
 
     /**
@@ -265,6 +271,9 @@ class GetVaultMarketProofOfReserveResponseLatest implements ModelInterface, Arra
         }
         if ($this->container['memo'] === null) {
             $invalidProperties[] = "'memo' can't be null";
+        }
+        if ($this->container['anchor'] === null) {
+            $invalidProperties[] = "'anchor' can't be null";
         }
         return $invalidProperties;
     }
@@ -493,6 +502,30 @@ class GetVaultMarketProofOfReserveResponseLatest implements ModelInterface, Arra
     public function setMemo($memo)
     {
         $this->container['memo'] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets anchor
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketProofOfReserveResponseLatestAnchor
+     */
+    public function getAnchor()
+    {
+        return $this->container['anchor'];
+    }
+
+    /**
+     * Sets anchor
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketProofOfReserveResponseLatestAnchor $anchor anchor
+     *
+     * @return self
+     */
+    public function setAnchor($anchor)
+    {
+        $this->container['anchor'] = $anchor;
 
         return $this;
     }

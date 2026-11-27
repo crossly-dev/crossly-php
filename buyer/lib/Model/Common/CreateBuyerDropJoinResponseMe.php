@@ -213,8 +213,8 @@ class CreateBuyerDropJoinResponseMe implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    const OUTCOME_WON = 'won';
     const OUTCOME_EXPIRED = 'expired';
+    const OUTCOME_WON = 'won';
     const OUTCOME_WAITLIST = 'waitlist';
     const OUTCOME_CLAIMED = 'claimed';
 
@@ -226,8 +226,8 @@ class CreateBuyerDropJoinResponseMe implements ModelInterface, ArrayAccess, \Jso
     public function getOutcomeAllowableValues()
     {
         return [
-            self::OUTCOME_WON,
             self::OUTCOME_EXPIRED,
+            self::OUTCOME_WON,
             self::OUTCOME_WAITLIST,
             self::OUTCOME_CLAIMED,
         ];

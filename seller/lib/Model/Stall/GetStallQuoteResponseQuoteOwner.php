@@ -169,8 +169,8 @@ class GetStallQuoteResponseQuoteOwner implements ModelInterface, ArrayAccess, \J
     }
 
     const KIND_PLATFORM = 'platform';
-    const KIND_STREET = 'street';
     const KIND_PLOT = 'plot';
+    const KIND_STREET = 'street';
 
     /**
      * Gets allowable values of the enum
@@ -181,8 +181,8 @@ class GetStallQuoteResponseQuoteOwner implements ModelInterface, ArrayAccess, \J
     {
         return [
             self::KIND_PLATFORM,
-            self::KIND_STREET,
             self::KIND_PLOT,
+            self::KIND_STREET,
         ];
     }
 

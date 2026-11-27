@@ -60,10 +60,15 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order_id' => 'string',
+        'platform_cancel' => 'string',
+        'refund' => '\Crossly\Model\Order\CreateOrderCancelResponseRefund',
         'platform' => 'string',
+        'order_id' => 'string',
+        'error' => 'string',
+        'job_id' => 'string',
         'cancelled_in_crossly' => 'bool',
-        'platform_cancel' => 'string'
+        'command_id' => 'string',
+        'platform_result' => 'array<string,mixed>'
     ];
 
     /**
@@ -74,10 +79,15 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'order_id' => null,
+        'platform_cancel' => null,
+        'refund' => null,
         'platform' => null,
+        'order_id' => null,
+        'error' => null,
+        'job_id' => null,
         'cancelled_in_crossly' => null,
-        'platform_cancel' => null
+        'command_id' => null,
+        'platform_result' => null
     ];
 
     /**
@@ -107,10 +117,15 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_id' => 'orderId',
+        'platform_cancel' => 'platformCancel',
+        'refund' => 'refund',
         'platform' => 'platform',
+        'order_id' => 'orderId',
+        'error' => 'error',
+        'job_id' => 'jobId',
         'cancelled_in_crossly' => 'cancelledInCrossly',
-        'platform_cancel' => 'platformCancel'
+        'command_id' => 'commandId',
+        'platform_result' => 'platformResult'
     ];
 
     /**
@@ -119,10 +134,15 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'order_id' => 'setOrderId',
+        'platform_cancel' => 'setPlatformCancel',
+        'refund' => 'setRefund',
         'platform' => 'setPlatform',
+        'order_id' => 'setOrderId',
+        'error' => 'setError',
+        'job_id' => 'setJobId',
         'cancelled_in_crossly' => 'setCancelledInCrossly',
-        'platform_cancel' => 'setPlatformCancel'
+        'command_id' => 'setCommandId',
+        'platform_result' => 'setPlatformResult'
     ];
 
     /**
@@ -131,10 +151,15 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'order_id' => 'getOrderId',
+        'platform_cancel' => 'getPlatformCancel',
+        'refund' => 'getRefund',
         'platform' => 'getPlatform',
+        'order_id' => 'getOrderId',
+        'error' => 'getError',
+        'job_id' => 'getJobId',
         'cancelled_in_crossly' => 'getCancelledInCrossly',
-        'platform_cancel' => 'getPlatformCancel'
+        'command_id' => 'getCommandId',
+        'platform_result' => 'getPlatformResult'
     ];
 
     /**
@@ -178,6 +203,33 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    const PLATFORM_CANCEL_SENT = 'sent';
+    const PLATFORM_CANCEL_FAILED = 'failed';
+    const PLATFORM_CANCEL_QUEUED = 'queued';
+    const PLATFORM_CANCEL_RELAYED = 'relayed';
+    const PLATFORM_CANCEL_UNSUPPORTED = 'unsupported';
+    const PLATFORM_CANCEL_NO_PLATFORM_ORDER_ID = 'no_platform_order_id';
+    const PLATFORM_CANCEL_RECORDED_ONLY = 'recorded_only';
+    const PLATFORM_CANCEL_ALREADY_CANCELLED = 'already_cancelled';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformCancelAllowableValues()
+    {
+        return [
+            self::PLATFORM_CANCEL_SENT,
+            self::PLATFORM_CANCEL_FAILED,
+            self::PLATFORM_CANCEL_QUEUED,
+            self::PLATFORM_CANCEL_RELAYED,
+            self::PLATFORM_CANCEL_UNSUPPORTED,
+            self::PLATFORM_CANCEL_NO_PLATFORM_ORDER_ID,
+            self::PLATFORM_CANCEL_RECORDED_ONLY,
+            self::PLATFORM_CANCEL_ALREADY_CANCELLED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -194,10 +246,15 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_id'] = $data['order_id'] ?? null;
-        $this->container['platform'] = $data['platform'] ?? null;
-        $this->container['cancelled_in_crossly'] = $data['cancelled_in_crossly'] ?? null;
         $this->container['platform_cancel'] = $data['platform_cancel'] ?? null;
+        $this->container['refund'] = $data['refund'] ?? null;
+        $this->container['platform'] = $data['platform'] ?? null;
+        $this->container['order_id'] = $data['order_id'] ?? null;
+        $this->container['error'] = $data['error'] ?? null;
+        $this->container['job_id'] = $data['job_id'] ?? null;
+        $this->container['cancelled_in_crossly'] = $data['cancelled_in_crossly'] ?? null;
+        $this->container['command_id'] = $data['command_id'] ?? null;
+        $this->container['platform_result'] = $data['platform_result'] ?? null;
     }
 
     /**
@@ -209,17 +266,26 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['order_id'] === null) {
-            $invalidProperties[] = "'order_id' can't be null";
+        if ($this->container['platform_cancel'] === null) {
+            $invalidProperties[] = "'platform_cancel' can't be null";
         }
+        $allowedValues = $this->getPlatformCancelAllowableValues();
+        if (!is_null($this->container['platform_cancel']) && !in_array($this->container['platform_cancel'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform_cancel', must be one of '%s'",
+                $this->container['platform_cancel'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['platform'] === null) {
             $invalidProperties[] = "'platform' can't be null";
         }
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
+        }
         if ($this->container['cancelled_in_crossly'] === null) {
             $invalidProperties[] = "'cancelled_in_crossly' can't be null";
-        }
-        if ($this->container['platform_cancel'] === null) {
-            $invalidProperties[] = "'platform_cancel' can't be null";
         }
         return $invalidProperties;
     }
@@ -237,25 +303,59 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets order_id
+     * Gets platform_cancel
      *
      * @return string
      */
-    public function getOrderId()
+    public function getPlatformCancel()
     {
-        return $this->container['order_id'];
+        return $this->container['platform_cancel'];
     }
 
     /**
-     * Sets order_id
+     * Sets platform_cancel
      *
-     * @param string $order_id order_id
+     * @param string $platform_cancel The marketplace outcome, or already_cancelled when the order was cancelled before this call.
      *
      * @return self
      */
-    public function setOrderId($order_id)
+    public function setPlatformCancel($platform_cancel)
     {
-        $this->container['order_id'] = $order_id;
+        $allowedValues = $this->getPlatformCancelAllowableValues();
+        if (!in_array($platform_cancel, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform_cancel', must be one of '%s'",
+                    $platform_cancel,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['platform_cancel'] = $platform_cancel;
+
+        return $this;
+    }
+
+    /**
+     * Gets refund
+     *
+     * @return \Crossly\Model\Order\CreateOrderCancelResponseRefund|null
+     */
+    public function getRefund()
+    {
+        return $this->container['refund'];
+    }
+
+    /**
+     * Sets refund
+     *
+     * @param \Crossly\Model\Order\CreateOrderCancelResponseRefund|null $refund refund
+     *
+     * @return self
+     */
+    public function setRefund($refund)
+    {
+        $this->container['refund'] = $refund;
 
         return $this;
     }
@@ -285,6 +385,78 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets order_id
+     *
+     * @return string
+     */
+    public function getOrderId()
+    {
+        return $this->container['order_id'];
+    }
+
+    /**
+     * Sets order_id
+     *
+     * @param string $order_id order_id
+     *
+     * @return self
+     */
+    public function setOrderId($order_id)
+    {
+        $this->container['order_id'] = $order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets error
+     *
+     * @return string|null
+     */
+    public function getError()
+    {
+        return $this->container['error'];
+    }
+
+    /**
+     * Sets error
+     *
+     * @param string|null $error The platform's error, VERBATIM. Deliberately not summarised — the marketplace names what it objected to, and summarising throws that away. eBay reason codes are now fetched per order via checkCancelEligibility rather than guessed, but a rejection can still happen (order state changed between the probe and the cancel), and this is how it gets diagnosed.
+     *
+     * @return self
+     */
+    public function setError($error)
+    {
+        $this->container['error'] = $error;
+
+        return $this;
+    }
+
+    /**
+     * Gets job_id
+     *
+     * @return string|null
+     */
+    public function getJobId()
+    {
+        return $this->container['job_id'];
+    }
+
+    /**
+     * Sets job_id
+     *
+     * @param string|null $job_id Cookie track only.
+     *
+     * @return self
+     */
+    public function setJobId($job_id)
+    {
+        $this->container['job_id'] = $job_id;
+
+        return $this;
+    }
+
+    /**
      * Gets cancelled_in_crossly
      *
      * @return bool
@@ -297,7 +469,7 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets cancelled_in_crossly
      *
-     * @param bool $cancelled_in_crossly cancelled_in_crossly
+     * @param bool $cancelled_in_crossly True unless the cancel was relayed to the managing app (then false until it completes).
      *
      * @return self
      */
@@ -309,25 +481,49 @@ class CreateOrderCancelResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets platform_cancel
+     * Gets command_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getPlatformCancel()
+    public function getCommandId()
     {
-        return $this->container['platform_cancel'];
+        return $this->container['command_id'];
     }
 
     /**
-     * Sets platform_cancel
+     * Sets command_id
      *
-     * @param string $platform_cancel platform_cancel
+     * @param string|null $command_id platformCancel 'relayed': the app command tracking it.
      *
      * @return self
      */
-    public function setPlatformCancel($platform_cancel)
+    public function setCommandId($command_id)
     {
-        $this->container['platform_cancel'] = $platform_cancel;
+        $this->container['command_id'] = $command_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_result
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getPlatformResult()
+    {
+        return $this->container['platform_result'];
+    }
+
+    /**
+     * Sets platform_result
+     *
+     * @param array<string,mixed>|null $platform_result Platform payload (e.g. eBay's cancellationId) when it answered.
+     *
+     * @return self
+     */
+    public function setPlatformResult($platform_result)
+    {
+        $this->container['platform_result'] = $platform_result;
 
         return $this;
     }

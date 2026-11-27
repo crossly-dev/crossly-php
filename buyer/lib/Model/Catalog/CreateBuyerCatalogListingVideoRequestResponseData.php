@@ -62,11 +62,11 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
     protected static $openAPITypes = [
         'id' => 'string',
         'created_at' => '\DateTime',
-        'video_url' => 'string',
         'status' => 'string',
+        'video_url' => 'string',
         'platform_listing_id' => 'string',
-        'seller_user_id' => 'string',
         'buyer_user_id' => 'string',
+        'seller_user_id' => 'string',
         'note' => 'string',
         'answered_at' => '\DateTime',
         'seller_note' => 'string'
@@ -82,11 +82,11 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
     protected static $openAPIFormats = [
         'id' => null,
         'created_at' => 'date-time',
-        'video_url' => null,
         'status' => null,
+        'video_url' => null,
         'platform_listing_id' => null,
-        'seller_user_id' => null,
         'buyer_user_id' => null,
+        'seller_user_id' => null,
         'note' => null,
         'answered_at' => 'date-time',
         'seller_note' => null
@@ -121,11 +121,11 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
     protected static $attributeMap = [
         'id' => 'id',
         'created_at' => 'createdAt',
-        'video_url' => 'videoUrl',
         'status' => 'status',
+        'video_url' => 'videoUrl',
         'platform_listing_id' => 'platformListingId',
-        'seller_user_id' => 'sellerUserId',
         'buyer_user_id' => 'buyerUserId',
+        'seller_user_id' => 'sellerUserId',
         'note' => 'note',
         'answered_at' => 'answeredAt',
         'seller_note' => 'sellerNote'
@@ -139,11 +139,11 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
     protected static $setters = [
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
-        'video_url' => 'setVideoUrl',
         'status' => 'setStatus',
+        'video_url' => 'setVideoUrl',
         'platform_listing_id' => 'setPlatformListingId',
-        'seller_user_id' => 'setSellerUserId',
         'buyer_user_id' => 'setBuyerUserId',
+        'seller_user_id' => 'setSellerUserId',
         'note' => 'setNote',
         'answered_at' => 'setAnsweredAt',
         'seller_note' => 'setSellerNote'
@@ -157,11 +157,11 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
     protected static $getters = [
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
-        'video_url' => 'getVideoUrl',
         'status' => 'getStatus',
+        'video_url' => 'getVideoUrl',
         'platform_listing_id' => 'getPlatformListingId',
-        'seller_user_id' => 'getSellerUserId',
         'buyer_user_id' => 'getBuyerUserId',
+        'seller_user_id' => 'getSellerUserId',
         'note' => 'getNote',
         'answered_at' => 'getAnsweredAt',
         'seller_note' => 'getSellerNote'
@@ -226,11 +226,11 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['video_url'] = $data['video_url'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['video_url'] = $data['video_url'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
-        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['buyer_user_id'] = $data['buyer_user_id'] ?? null;
+        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['note'] = $data['note'] ?? null;
         $this->container['answered_at'] = $data['answered_at'] ?? null;
         $this->container['seller_note'] = $data['seller_note'] ?? null;
@@ -257,11 +257,11 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
         }
-        if ($this->container['seller_user_id'] === null) {
-            $invalidProperties[] = "'seller_user_id' can't be null";
-        }
         if ($this->container['buyer_user_id'] === null) {
             $invalidProperties[] = "'buyer_user_id' can't be null";
+        }
+        if ($this->container['seller_user_id'] === null) {
+            $invalidProperties[] = "'seller_user_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -327,30 +327,6 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
     }
 
     /**
-     * Gets video_url
-     *
-     * @return string|null
-     */
-    public function getVideoUrl()
-    {
-        return $this->container['video_url'];
-    }
-
-    /**
-     * Sets video_url
-     *
-     * @param string|null $video_url video_url
-     *
-     * @return self
-     */
-    public function setVideoUrl($video_url)
-    {
-        $this->container['video_url'] = $video_url;
-
-        return $this;
-    }
-
-    /**
      * Gets status
      *
      * @return string
@@ -370,6 +346,30 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
     public function setStatus($status)
     {
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_url
+     *
+     * @return string|null
+     */
+    public function getVideoUrl()
+    {
+        return $this->container['video_url'];
+    }
+
+    /**
+     * Sets video_url
+     *
+     * @param string|null $video_url video_url
+     *
+     * @return self
+     */
+    public function setVideoUrl($video_url)
+    {
+        $this->container['video_url'] = $video_url;
 
         return $this;
     }
@@ -399,30 +399,6 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
     }
 
     /**
-     * Gets seller_user_id
-     *
-     * @return string
-     */
-    public function getSellerUserId()
-    {
-        return $this->container['seller_user_id'];
-    }
-
-    /**
-     * Sets seller_user_id
-     *
-     * @param string $seller_user_id seller_user_id
-     *
-     * @return self
-     */
-    public function setSellerUserId($seller_user_id)
-    {
-        $this->container['seller_user_id'] = $seller_user_id;
-
-        return $this;
-    }
-
-    /**
      * Gets buyer_user_id
      *
      * @return string
@@ -442,6 +418,30 @@ class CreateBuyerCatalogListingVideoRequestResponseData implements ModelInterfac
     public function setBuyerUserId($buyer_user_id)
     {
         $this->container['buyer_user_id'] = $buyer_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_user_id
+     *
+     * @return string
+     */
+    public function getSellerUserId()
+    {
+        return $this->container['seller_user_id'];
+    }
+
+    /**
+     * Sets seller_user_id
+     *
+     * @param string $seller_user_id seller_user_id
+     *
+     * @return self
+     */
+    public function setSellerUserId($seller_user_id)
+    {
+        $this->container['seller_user_id'] = $seller_user_id;
 
         return $this;
     }

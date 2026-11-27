@@ -62,12 +62,13 @@ class ListGameHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'id' => 'string',
         'title' => 'string',
-        'shop' => '\Crossly\Model\Common\SlugName',
+        'shop' => '\Crossly\Model\Common\NameSlug',
         'stall' => '\Crossly\Model\Game\ListGameHuntsItemStall',
         'tokens' => 'float',
         'reward' => 'string',
         'ends_at' => 'string',
-        'finishers' => 'float'
+        'finishers' => 'float',
+        'rules' => '\Crossly\Model\Game\ListGameHuntsItemRules'
     ];
 
     /**
@@ -85,7 +86,8 @@ class ListGameHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'tokens' => null,
         'reward' => null,
         'ends_at' => null,
-        'finishers' => null
+        'finishers' => null,
+        'rules' => null
     ];
 
     /**
@@ -122,7 +124,8 @@ class ListGameHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'tokens' => 'tokens',
         'reward' => 'reward',
         'ends_at' => 'endsAt',
-        'finishers' => 'finishers'
+        'finishers' => 'finishers',
+        'rules' => 'rules'
     ];
 
     /**
@@ -138,7 +141,8 @@ class ListGameHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'tokens' => 'setTokens',
         'reward' => 'setReward',
         'ends_at' => 'setEndsAt',
-        'finishers' => 'setFinishers'
+        'finishers' => 'setFinishers',
+        'rules' => 'setRules'
     ];
 
     /**
@@ -154,7 +158,8 @@ class ListGameHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         'tokens' => 'getTokens',
         'reward' => 'getReward',
         'ends_at' => 'getEndsAt',
-        'finishers' => 'getFinishers'
+        'finishers' => 'getFinishers',
+        'rules' => 'getRules'
     ];
 
     /**
@@ -222,6 +227,7 @@ class ListGameHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->container['reward'] = $data['reward'] ?? null;
         $this->container['ends_at'] = $data['ends_at'] ?? null;
         $this->container['finishers'] = $data['finishers'] ?? null;
+        $this->container['rules'] = $data['rules'] ?? null;
     }
 
     /**
@@ -320,7 +326,7 @@ class ListGameHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets shop
      *
-     * @return \Crossly\Model\Common\SlugName
+     * @return \Crossly\Model\Common\NameSlug
      */
     public function getShop()
     {
@@ -330,7 +336,7 @@ class ListGameHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets shop
      *
-     * @param \Crossly\Model\Common\SlugName $shop shop
+     * @param \Crossly\Model\Common\NameSlug $shop shop
      *
      * @return self
      */
@@ -457,6 +463,30 @@ class ListGameHuntsItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setFinishers($finishers)
     {
         $this->container['finishers'] = $finishers;
+
+        return $this;
+    }
+
+    /**
+     * Gets rules
+     *
+     * @return \Crossly\Model\Game\ListGameHuntsItemRules|null
+     */
+    public function getRules()
+    {
+        return $this->container['rules'];
+    }
+
+    /**
+     * Sets rules
+     *
+     * @param \Crossly\Model\Game\ListGameHuntsItemRules|null $rules rules
+     *
+     * @return self
+     */
+    public function setRules($rules)
+    {
+        $this->container['rules'] = $rules;
 
         return $this;
     }

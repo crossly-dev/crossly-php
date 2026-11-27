@@ -178,9 +178,9 @@ class CreateOrderImportResponseResults implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    const REASON_UNSUPPORTED_PLATFORM = 'unsupported_platform';
     const REASON_NOT_CONNECTED = 'not_connected';
     const REASON_UNKNOWN_PLATFORM = 'unknown_platform';
+    const REASON_UNSUPPORTED_PLATFORM = 'unsupported_platform';
 
     /**
      * Gets allowable values of the enum
@@ -190,9 +190,9 @@ class CreateOrderImportResponseResults implements ModelInterface, ArrayAccess, \
     public function getReasonAllowableValues()
     {
         return [
-            self::REASON_UNSUPPORTED_PLATFORM,
             self::REASON_NOT_CONNECTED,
             self::REASON_UNKNOWN_PLATFORM,
+            self::REASON_UNSUPPORTED_PLATFORM,
         ];
     }
 

@@ -61,14 +61,14 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'group' => '\Crossly\Buyer\Model\Collection\GetBuyerCollectionSetResponseDataGroup',
-        'leaderboard' => '\Crossly\Buyer\Model\Collection\GetBuyerCollectionSetResponseDataLeaderboard[]',
-        'missing' => 'float',
-        'pieces' => '\Crossly\Buyer\Model\Collection\GetBuyerCollectionSetResponseDataPieces[]',
-        'leaderboard_opt_in' => 'bool',
         'pct' => 'float',
+        'pieces' => '\Crossly\Buyer\Model\Collection\GetBuyerCollectionSetResponseDataPieces[]',
+        'missing' => 'float',
         'missing_cost_cents' => 'float',
         'missing_unpriced' => 'float',
-        'my_rank' => 'float'
+        'leaderboard' => '\Crossly\Buyer\Model\Collection\GetBuyerCollectionSetResponseDataLeaderboard[]',
+        'my_rank' => 'float',
+        'leaderboard_opt_in' => 'bool'
     ];
 
     /**
@@ -80,14 +80,14 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'group' => null,
-        'leaderboard' => null,
-        'missing' => null,
-        'pieces' => null,
-        'leaderboard_opt_in' => null,
         'pct' => null,
+        'pieces' => null,
+        'missing' => null,
         'missing_cost_cents' => null,
         'missing_unpriced' => null,
-        'my_rank' => null
+        'leaderboard' => null,
+        'my_rank' => null,
+        'leaderboard_opt_in' => null
     ];
 
     /**
@@ -118,14 +118,14 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'group' => 'group',
-        'leaderboard' => 'leaderboard',
-        'missing' => 'missing',
-        'pieces' => 'pieces',
-        'leaderboard_opt_in' => 'leaderboardOptIn',
         'pct' => 'pct',
+        'pieces' => 'pieces',
+        'missing' => 'missing',
         'missing_cost_cents' => 'missingCostCents',
         'missing_unpriced' => 'missingUnpriced',
-        'my_rank' => 'myRank'
+        'leaderboard' => 'leaderboard',
+        'my_rank' => 'myRank',
+        'leaderboard_opt_in' => 'leaderboardOptIn'
     ];
 
     /**
@@ -135,14 +135,14 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'group' => 'setGroup',
-        'leaderboard' => 'setLeaderboard',
-        'missing' => 'setMissing',
-        'pieces' => 'setPieces',
-        'leaderboard_opt_in' => 'setLeaderboardOptIn',
         'pct' => 'setPct',
+        'pieces' => 'setPieces',
+        'missing' => 'setMissing',
         'missing_cost_cents' => 'setMissingCostCents',
         'missing_unpriced' => 'setMissingUnpriced',
-        'my_rank' => 'setMyRank'
+        'leaderboard' => 'setLeaderboard',
+        'my_rank' => 'setMyRank',
+        'leaderboard_opt_in' => 'setLeaderboardOptIn'
     ];
 
     /**
@@ -152,14 +152,14 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'group' => 'getGroup',
-        'leaderboard' => 'getLeaderboard',
-        'missing' => 'getMissing',
-        'pieces' => 'getPieces',
-        'leaderboard_opt_in' => 'getLeaderboardOptIn',
         'pct' => 'getPct',
+        'pieces' => 'getPieces',
+        'missing' => 'getMissing',
         'missing_cost_cents' => 'getMissingCostCents',
         'missing_unpriced' => 'getMissingUnpriced',
-        'my_rank' => 'getMyRank'
+        'leaderboard' => 'getLeaderboard',
+        'my_rank' => 'getMyRank',
+        'leaderboard_opt_in' => 'getLeaderboardOptIn'
     ];
 
     /**
@@ -220,14 +220,14 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
     public function __construct(array $data = null)
     {
         $this->container['group'] = $data['group'] ?? null;
-        $this->container['leaderboard'] = $data['leaderboard'] ?? null;
-        $this->container['missing'] = $data['missing'] ?? null;
-        $this->container['pieces'] = $data['pieces'] ?? null;
-        $this->container['leaderboard_opt_in'] = $data['leaderboard_opt_in'] ?? null;
         $this->container['pct'] = $data['pct'] ?? null;
+        $this->container['pieces'] = $data['pieces'] ?? null;
+        $this->container['missing'] = $data['missing'] ?? null;
         $this->container['missing_cost_cents'] = $data['missing_cost_cents'] ?? null;
         $this->container['missing_unpriced'] = $data['missing_unpriced'] ?? null;
+        $this->container['leaderboard'] = $data['leaderboard'] ?? null;
         $this->container['my_rank'] = $data['my_rank'] ?? null;
+        $this->container['leaderboard_opt_in'] = $data['leaderboard_opt_in'] ?? null;
     }
 
     /**
@@ -242,26 +242,26 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
         if ($this->container['group'] === null) {
             $invalidProperties[] = "'group' can't be null";
         }
-        if ($this->container['leaderboard'] === null) {
-            $invalidProperties[] = "'leaderboard' can't be null";
-        }
-        if ($this->container['missing'] === null) {
-            $invalidProperties[] = "'missing' can't be null";
+        if ($this->container['pct'] === null) {
+            $invalidProperties[] = "'pct' can't be null";
         }
         if ($this->container['pieces'] === null) {
             $invalidProperties[] = "'pieces' can't be null";
         }
-        if ($this->container['leaderboard_opt_in'] === null) {
-            $invalidProperties[] = "'leaderboard_opt_in' can't be null";
-        }
-        if ($this->container['pct'] === null) {
-            $invalidProperties[] = "'pct' can't be null";
+        if ($this->container['missing'] === null) {
+            $invalidProperties[] = "'missing' can't be null";
         }
         if ($this->container['missing_cost_cents'] === null) {
             $invalidProperties[] = "'missing_cost_cents' can't be null";
         }
         if ($this->container['missing_unpriced'] === null) {
             $invalidProperties[] = "'missing_unpriced' can't be null";
+        }
+        if ($this->container['leaderboard'] === null) {
+            $invalidProperties[] = "'leaderboard' can't be null";
+        }
+        if ($this->container['leaderboard_opt_in'] === null) {
+            $invalidProperties[] = "'leaderboard_opt_in' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,49 +303,25 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets leaderboard
-     *
-     * @return \Crossly\Buyer\Model\Collection\GetBuyerCollectionSetResponseDataLeaderboard[]
-     */
-    public function getLeaderboard()
-    {
-        return $this->container['leaderboard'];
-    }
-
-    /**
-     * Sets leaderboard
-     *
-     * @param \Crossly\Buyer\Model\Collection\GetBuyerCollectionSetResponseDataLeaderboard[] $leaderboard leaderboard
-     *
-     * @return self
-     */
-    public function setLeaderboard($leaderboard)
-    {
-        $this->container['leaderboard'] = $leaderboard;
-
-        return $this;
-    }
-
-    /**
-     * Gets missing
+     * Gets pct
      *
      * @return float
      */
-    public function getMissing()
+    public function getPct()
     {
-        return $this->container['missing'];
+        return $this->container['pct'];
     }
 
     /**
-     * Sets missing
+     * Sets pct
      *
-     * @param float $missing missing
+     * @param float $pct pct
      *
      * @return self
      */
-    public function setMissing($missing)
+    public function setPct($pct)
     {
-        $this->container['missing'] = $missing;
+        $this->container['pct'] = $pct;
 
         return $this;
     }
@@ -375,49 +351,25 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets leaderboard_opt_in
-     *
-     * @return bool
-     */
-    public function getLeaderboardOptIn()
-    {
-        return $this->container['leaderboard_opt_in'];
-    }
-
-    /**
-     * Sets leaderboard_opt_in
-     *
-     * @param bool $leaderboard_opt_in leaderboard_opt_in
-     *
-     * @return self
-     */
-    public function setLeaderboardOptIn($leaderboard_opt_in)
-    {
-        $this->container['leaderboard_opt_in'] = $leaderboard_opt_in;
-
-        return $this;
-    }
-
-    /**
-     * Gets pct
+     * Gets missing
      *
      * @return float
      */
-    public function getPct()
+    public function getMissing()
     {
-        return $this->container['pct'];
+        return $this->container['missing'];
     }
 
     /**
-     * Sets pct
+     * Sets missing
      *
-     * @param float $pct pct
+     * @param float $missing missing
      *
      * @return self
      */
-    public function setPct($pct)
+    public function setMissing($missing)
     {
-        $this->container['pct'] = $pct;
+        $this->container['missing'] = $missing;
 
         return $this;
     }
@@ -471,6 +423,30 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
     }
 
     /**
+     * Gets leaderboard
+     *
+     * @return \Crossly\Buyer\Model\Collection\GetBuyerCollectionSetResponseDataLeaderboard[]
+     */
+    public function getLeaderboard()
+    {
+        return $this->container['leaderboard'];
+    }
+
+    /**
+     * Sets leaderboard
+     *
+     * @param \Crossly\Buyer\Model\Collection\GetBuyerCollectionSetResponseDataLeaderboard[] $leaderboard leaderboard
+     *
+     * @return self
+     */
+    public function setLeaderboard($leaderboard)
+    {
+        $this->container['leaderboard'] = $leaderboard;
+
+        return $this;
+    }
+
+    /**
      * Gets my_rank
      *
      * @return float|null
@@ -490,6 +466,30 @@ class GetBuyerCollectionSetResponseData implements ModelInterface, ArrayAccess, 
     public function setMyRank($my_rank)
     {
         $this->container['my_rank'] = $my_rank;
+
+        return $this;
+    }
+
+    /**
+     * Gets leaderboard_opt_in
+     *
+     * @return bool
+     */
+    public function getLeaderboardOptIn()
+    {
+        return $this->container['leaderboard_opt_in'];
+    }
+
+    /**
+     * Sets leaderboard_opt_in
+     *
+     * @param bool $leaderboard_opt_in leaderboard_opt_in
+     *
+     * @return self
+     */
+    public function setLeaderboardOptIn($leaderboard_opt_in)
+    {
+        $this->container['leaderboard_opt_in'] = $leaderboard_opt_in;
 
         return $this;
     }

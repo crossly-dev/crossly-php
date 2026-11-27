@@ -206,7 +206,7 @@ class CreateEmbedKeyRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $this->container['name'] = $data['name'] ?? null;
         $this->container['allowed_origins'] = $data['allowed_origins'] ?? null;
-        $this->container['environment'] = $data['environment'] ?? 'live';
+        $this->container['environment'] = $data['environment'] ?? null;
     }
 
     /**
@@ -321,7 +321,7 @@ class CreateEmbedKeyRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets environment
      *
-     * @param string|null $environment environment
+     * @param string|null $environment Omit for this server's own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.
      *
      * @return self
      */

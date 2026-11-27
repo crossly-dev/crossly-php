@@ -178,8 +178,8 @@ class CreateWorldInteractiveAssetResponseData implements ModelInterface, ArrayAc
         return self::$openAPIModelName;
     }
 
-    const KIND_PNG = 'png';
     const KIND_GLB = 'glb';
+    const KIND_PNG = 'png';
     const KIND_WAV = 'wav';
 
     /**
@@ -190,8 +190,8 @@ class CreateWorldInteractiveAssetResponseData implements ModelInterface, ArrayAc
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_PNG,
             self::KIND_GLB,
+            self::KIND_PNG,
             self::KIND_WAV,
         ];
     }

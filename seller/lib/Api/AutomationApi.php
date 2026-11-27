@@ -124,6 +124,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Automation\ListAutomationRulesItem|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function createAutomationRule()
     {
@@ -140,6 +141,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Automation\ListAutomationRulesItem|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createAutomationRuleWithHttpInfo()
     {
@@ -351,6 +353,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAutomationRuleAsync()
     {
@@ -370,6 +373,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAutomationRuleAsyncWithHttpInfo()
     {
@@ -415,6 +419,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createAutomationRuleRequest()
     {
@@ -501,6 +506,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Automation\CreateAutomationRuleImportResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function createAutomationRuleImport($activate = false)
     {
@@ -518,6 +524,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Automation\CreateAutomationRuleImportResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createAutomationRuleImportWithHttpInfo($activate = false)
     {
@@ -730,6 +737,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAutomationRuleImportAsync($activate = false)
     {
@@ -750,6 +758,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAutomationRuleImportAsyncWithHttpInfo($activate = false)
     {
@@ -796,6 +805,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createAutomationRuleImportRequest($activate = false)
     {
@@ -893,6 +903,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Automation\CreateAutomationRuleRunNowResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function createAutomationRuleRunNow($id)
     {
@@ -910,6 +921,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Automation\CreateAutomationRuleRunNowResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createAutomationRuleRunNowWithHttpInfo($id)
     {
@@ -1122,6 +1134,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAutomationRuleRunNowAsync($id)
     {
@@ -1142,6 +1155,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAutomationRuleRunNowAsyncWithHttpInfo($id)
     {
@@ -1188,6 +1202,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createAutomationRuleRunNowRequest($id)
     {
@@ -1287,7 +1302,8 @@ class AutomationApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Crossly\Model\Automation\UpdateAutomationRuleResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @return \Crossly\Model\Automation\GetAutomationRuleResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function createAutomationRuleToggle($id)
     {
@@ -1304,7 +1320,8 @@ class AutomationApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Crossly\Model\Automation\UpdateAutomationRuleResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Crossly\Model\Automation\GetAutomationRuleResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createAutomationRuleToggleWithHttpInfo($id)
     {
@@ -1347,14 +1364,14 @@ class AutomationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Crossly\Model\Automation\UpdateAutomationRuleResponse' === '\SplFileObject') {
+                    if ('\Crossly\Model\Automation\GetAutomationRuleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Crossly\Model\Automation\UpdateAutomationRuleResponse', []),
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Automation\GetAutomationRuleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1432,7 +1449,7 @@ class AutomationApi
                     ];
             }
 
-            $returnType = '\Crossly\Model\Automation\UpdateAutomationRuleResponse';
+            $returnType = '\Crossly\Model\Automation\GetAutomationRuleResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1450,7 +1467,7 @@ class AutomationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Crossly\Model\Automation\UpdateAutomationRuleResponse',
+                        '\Crossly\Model\Automation\GetAutomationRuleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1517,6 +1534,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAutomationRuleToggleAsync($id)
     {
@@ -1537,10 +1555,11 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAutomationRuleToggleAsyncWithHttpInfo($id)
     {
-        $returnType = '\Crossly\Model\Automation\UpdateAutomationRuleResponse';
+        $returnType = '\Crossly\Model\Automation\GetAutomationRuleResponse';
         $request = $this->createAutomationRuleToggleRequest($id);
 
         return $this->client
@@ -1583,6 +1602,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createAutomationRuleToggleRequest($id)
     {
@@ -1682,6 +1702,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Automation\CreateAutomationRuleValidateRecipeResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function createAutomationRuleValidateRecipe()
     {
@@ -1698,6 +1719,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Automation\CreateAutomationRuleValidateRecipeResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createAutomationRuleValidateRecipeWithHttpInfo()
     {
@@ -1909,6 +1931,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAutomationRuleValidateRecipeAsync()
     {
@@ -1928,6 +1951,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAutomationRuleValidateRecipeAsyncWithHttpInfo()
     {
@@ -1973,6 +1997,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createAutomationRuleValidateRecipeRequest()
     {
@@ -2849,6 +2874,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Common\OkResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function deleteAutomationRule($id)
     {
@@ -2866,6 +2892,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Common\OkResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function deleteAutomationRuleWithHttpInfo($id)
     {
@@ -3078,6 +3105,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteAutomationRuleAsync($id)
     {
@@ -3098,6 +3126,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteAutomationRuleAsyncWithHttpInfo($id)
     {
@@ -3144,6 +3173,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function deleteAutomationRuleRequest($id)
     {
@@ -3620,6 +3650,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Automation\GetAutomationRuleResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function getAutomationRule($id)
     {
@@ -3637,6 +3668,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Automation\GetAutomationRuleResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getAutomationRuleWithHttpInfo($id)
     {
@@ -3849,6 +3881,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getAutomationRuleAsync($id)
     {
@@ -3869,6 +3902,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getAutomationRuleAsyncWithHttpInfo($id)
     {
@@ -3915,6 +3949,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getAutomationRuleRequest($id)
     {
@@ -4014,6 +4049,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Automation\GetAutomationRuleExportResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function getAutomationRuleExport()
     {
@@ -4030,6 +4066,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Automation\GetAutomationRuleExportResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getAutomationRuleExportWithHttpInfo()
     {
@@ -4241,6 +4278,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getAutomationRuleExportAsync()
     {
@@ -4260,6 +4298,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getAutomationRuleExportAsyncWithHttpInfo()
     {
@@ -4305,6 +4344,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getAutomationRuleExportRequest()
     {
@@ -4391,6 +4431,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Automation\GetAutomationRuleExportByIdResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function getAutomationRuleExportById($id)
     {
@@ -4408,6 +4449,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Automation\GetAutomationRuleExportByIdResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getAutomationRuleExportByIdWithHttpInfo($id)
     {
@@ -4620,6 +4662,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getAutomationRuleExportByIdAsync($id)
     {
@@ -4640,6 +4683,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getAutomationRuleExportByIdAsyncWithHttpInfo($id)
     {
@@ -4686,6 +4730,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getAutomationRuleExportByIdRequest($id)
     {
@@ -4785,6 +4830,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Automation\ListAutomationRulesResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function listAutomationRules()
     {
@@ -4801,6 +4847,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Automation\ListAutomationRulesResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function listAutomationRulesWithHttpInfo()
     {
@@ -5012,6 +5059,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listAutomationRulesAsync()
     {
@@ -5031,6 +5079,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listAutomationRulesAsyncWithHttpInfo()
     {
@@ -5076,6 +5125,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function listAutomationRulesRequest()
     {
@@ -5164,6 +5214,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Crossly\Model\Automation\ListAutomationRunsResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function listAutomationRuns($rule_id = null, $chain_id = null, $limit = 100)
     {
@@ -5183,6 +5234,7 @@ class AutomationApi
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Model\Automation\ListAutomationRunsResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function listAutomationRunsWithHttpInfo($rule_id = null, $chain_id = null, $limit = 100)
     {
@@ -5397,6 +5449,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listAutomationRunsAsync($rule_id = null, $chain_id = null, $limit = 100)
     {
@@ -5419,6 +5472,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function listAutomationRunsAsyncWithHttpInfo($rule_id = null, $chain_id = null, $limit = 100)
     {
@@ -5467,6 +5521,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function listAutomationRunsRequest($rule_id = null, $chain_id = null, $limit = 100)
     {
@@ -5968,7 +6023,8 @@ class AutomationApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Crossly\Model\Automation\UpdateAutomationRuleResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @return \Crossly\Model\Automation\GetAutomationRuleResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error
+     * @deprecated
      */
     public function updateAutomationRule($id)
     {
@@ -5985,7 +6041,8 @@ class AutomationApi
      *
      * @throws \Crossly\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Crossly\Model\Automation\UpdateAutomationRuleResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Crossly\Model\Automation\GetAutomationRuleResponse|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error|\Crossly\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function updateAutomationRuleWithHttpInfo($id)
     {
@@ -6028,14 +6085,14 @@ class AutomationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Crossly\Model\Automation\UpdateAutomationRuleResponse' === '\SplFileObject') {
+                    if ('\Crossly\Model\Automation\GetAutomationRuleResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Crossly\Model\Automation\UpdateAutomationRuleResponse', []),
+                        ObjectSerializer::deserialize($content, '\Crossly\Model\Automation\GetAutomationRuleResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6113,7 +6170,7 @@ class AutomationApi
                     ];
             }
 
-            $returnType = '\Crossly\Model\Automation\UpdateAutomationRuleResponse';
+            $returnType = '\Crossly\Model\Automation\GetAutomationRuleResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6131,7 +6188,7 @@ class AutomationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Crossly\Model\Automation\UpdateAutomationRuleResponse',
+                        '\Crossly\Model\Automation\GetAutomationRuleResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6198,6 +6255,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function updateAutomationRuleAsync($id)
     {
@@ -6218,10 +6276,11 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function updateAutomationRuleAsyncWithHttpInfo($id)
     {
-        $returnType = '\Crossly\Model\Automation\UpdateAutomationRuleResponse';
+        $returnType = '\Crossly\Model\Automation\GetAutomationRuleResponse';
         $request = $this->updateAutomationRuleRequest($id);
 
         return $this->client
@@ -6264,6 +6323,7 @@ class AutomationApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function updateAutomationRuleRequest($id)
     {

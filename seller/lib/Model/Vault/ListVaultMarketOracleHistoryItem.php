@@ -264,8 +264,8 @@ class ListVaultMarketOracleHistoryItem implements ModelInterface, ArrayAccess, \
     }
 
     const STATUS_SKIPPED = 'skipped';
-    const STATUS_FAILED = 'failed';
     const STATUS_PUBLISHED = 'published';
+    const STATUS_FAILED = 'failed';
 
     /**
      * Gets allowable values of the enum
@@ -276,8 +276,8 @@ class ListVaultMarketOracleHistoryItem implements ModelInterface, ArrayAccess, \
     {
         return [
             self::STATUS_SKIPPED,
-            self::STATUS_FAILED,
             self::STATUS_PUBLISHED,
+            self::STATUS_FAILED,
         ];
     }
 

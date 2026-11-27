@@ -243,8 +243,8 @@ class ListVaultMarketPriceWidgetsItem implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
-    const KIND_MARK = 'mark';
     const KIND_INDEX = 'index';
+    const KIND_MARK = 'mark';
     const RANGE__1Y = '1y';
     const RANGE__1M = '1m';
     const RANGE__3M = '3m';
@@ -264,8 +264,8 @@ class ListVaultMarketPriceWidgetsItem implements ModelInterface, ArrayAccess, \J
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_MARK,
             self::KIND_INDEX,
+            self::KIND_MARK,
         ];
     }
 

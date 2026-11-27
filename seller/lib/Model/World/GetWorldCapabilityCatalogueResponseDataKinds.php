@@ -184,12 +184,14 @@ class GetWorldCapabilityCatalogueResponseDataKinds implements ModelInterface, Ar
     }
 
     const REVIEW_ALWAYS = 'always';
-    const REVIEW_ASSET = 'asset';
     const REVIEW_NEVER = 'never';
+    const REVIEW_ASSET = 'asset';
     const KIND_PORTAL = 'portal';
-    const KIND_DISPLAY = 'display';
+    const KIND_INTERACTIVE = 'interactive';
     const KIND_PLACE = 'place';
+    const KIND_DISPLAY = 'display';
     const KIND_BADGE = 'badge';
+    const KIND_PERK = 'perk';
     const KIND_WEAR = 'wear';
     const KIND_EMOTE = 'emote';
     const KIND_ROOM_THEME = 'room_theme';
@@ -197,8 +199,6 @@ class GetWorldCapabilityCatalogueResponseDataKinds implements ModelInterface, Ar
     const KIND_GATE = 'gate';
     const KIND_QUEST = 'quest';
     const KIND_GAME_PASS = 'game_pass';
-    const KIND_PERK = 'perk';
-    const KIND_INTERACTIVE = 'interactive';
 
     /**
      * Gets allowable values of the enum
@@ -209,8 +209,8 @@ class GetWorldCapabilityCatalogueResponseDataKinds implements ModelInterface, Ar
     {
         return [
             self::REVIEW_ALWAYS,
-            self::REVIEW_ASSET,
             self::REVIEW_NEVER,
+            self::REVIEW_ASSET,
         ];
     }
 
@@ -223,9 +223,11 @@ class GetWorldCapabilityCatalogueResponseDataKinds implements ModelInterface, Ar
     {
         return [
             self::KIND_PORTAL,
-            self::KIND_DISPLAY,
+            self::KIND_INTERACTIVE,
             self::KIND_PLACE,
+            self::KIND_DISPLAY,
             self::KIND_BADGE,
+            self::KIND_PERK,
             self::KIND_WEAR,
             self::KIND_EMOTE,
             self::KIND_ROOM_THEME,
@@ -233,8 +235,6 @@ class GetWorldCapabilityCatalogueResponseDataKinds implements ModelInterface, Ar
             self::KIND_GATE,
             self::KIND_QUEST,
             self::KIND_GAME_PASS,
-            self::KIND_PERK,
-            self::KIND_INTERACTIVE,
         ];
     }
 

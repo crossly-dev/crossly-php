@@ -268,11 +268,11 @@ class GetVaultAttestationResponseAttestations implements ModelInterface, ArrayAc
         return self::$openAPIModelName;
     }
 
+    const KIND_OTHER = 'other';
     const KIND_PHYSICAL_COUNT = 'physical_count';
     const KIND_INSURANCE_CERTIFICATE = 'insurance_certificate';
     const KIND_SOC1_TYPE2 = 'soc1_type2';
     const KIND_SOC2 = 'soc2';
-    const KIND_OTHER = 'other';
 
     /**
      * Gets allowable values of the enum
@@ -282,11 +282,11 @@ class GetVaultAttestationResponseAttestations implements ModelInterface, ArrayAc
     public function getKindAllowableValues()
     {
         return [
+            self::KIND_OTHER,
             self::KIND_PHYSICAL_COUNT,
             self::KIND_INSURANCE_CERTIFICATE,
             self::KIND_SOC1_TYPE2,
             self::KIND_SOC2,
-            self::KIND_OTHER,
         ];
     }
 

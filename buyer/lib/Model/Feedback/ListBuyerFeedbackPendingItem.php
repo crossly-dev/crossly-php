@@ -62,11 +62,11 @@ class ListBuyerFeedbackPendingItem implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'purchase_id' => 'string',
         'item_title' => 'string',
-        'shipped_at' => 'string',
-        'delivered_at' => 'string',
         'image_url' => 'string',
-        'seller_name' => 'string',
-        'ordered_at' => 'string'
+        'delivered_at' => 'string',
+        'shipped_at' => 'string',
+        'ordered_at' => 'string',
+        'seller_name' => 'string'
     ];
 
     /**
@@ -79,11 +79,11 @@ class ListBuyerFeedbackPendingItem implements ModelInterface, ArrayAccess, \Json
     protected static $openAPIFormats = [
         'purchase_id' => null,
         'item_title' => null,
-        'shipped_at' => null,
-        'delivered_at' => null,
         'image_url' => null,
-        'seller_name' => null,
-        'ordered_at' => null
+        'delivered_at' => null,
+        'shipped_at' => null,
+        'ordered_at' => null,
+        'seller_name' => null
     ];
 
     /**
@@ -115,11 +115,11 @@ class ListBuyerFeedbackPendingItem implements ModelInterface, ArrayAccess, \Json
     protected static $attributeMap = [
         'purchase_id' => 'purchaseId',
         'item_title' => 'itemTitle',
-        'shipped_at' => 'shippedAt',
-        'delivered_at' => 'deliveredAt',
         'image_url' => 'imageUrl',
-        'seller_name' => 'sellerName',
-        'ordered_at' => 'orderedAt'
+        'delivered_at' => 'deliveredAt',
+        'shipped_at' => 'shippedAt',
+        'ordered_at' => 'orderedAt',
+        'seller_name' => 'sellerName'
     ];
 
     /**
@@ -130,11 +130,11 @@ class ListBuyerFeedbackPendingItem implements ModelInterface, ArrayAccess, \Json
     protected static $setters = [
         'purchase_id' => 'setPurchaseId',
         'item_title' => 'setItemTitle',
-        'shipped_at' => 'setShippedAt',
-        'delivered_at' => 'setDeliveredAt',
         'image_url' => 'setImageUrl',
-        'seller_name' => 'setSellerName',
-        'ordered_at' => 'setOrderedAt'
+        'delivered_at' => 'setDeliveredAt',
+        'shipped_at' => 'setShippedAt',
+        'ordered_at' => 'setOrderedAt',
+        'seller_name' => 'setSellerName'
     ];
 
     /**
@@ -145,11 +145,11 @@ class ListBuyerFeedbackPendingItem implements ModelInterface, ArrayAccess, \Json
     protected static $getters = [
         'purchase_id' => 'getPurchaseId',
         'item_title' => 'getItemTitle',
-        'shipped_at' => 'getShippedAt',
-        'delivered_at' => 'getDeliveredAt',
         'image_url' => 'getImageUrl',
-        'seller_name' => 'getSellerName',
-        'ordered_at' => 'getOrderedAt'
+        'delivered_at' => 'getDeliveredAt',
+        'shipped_at' => 'getShippedAt',
+        'ordered_at' => 'getOrderedAt',
+        'seller_name' => 'getSellerName'
     ];
 
     /**
@@ -211,11 +211,11 @@ class ListBuyerFeedbackPendingItem implements ModelInterface, ArrayAccess, \Json
     {
         $this->container['purchase_id'] = $data['purchase_id'] ?? null;
         $this->container['item_title'] = $data['item_title'] ?? null;
-        $this->container['shipped_at'] = $data['shipped_at'] ?? null;
-        $this->container['delivered_at'] = $data['delivered_at'] ?? null;
         $this->container['image_url'] = $data['image_url'] ?? null;
-        $this->container['seller_name'] = $data['seller_name'] ?? null;
+        $this->container['delivered_at'] = $data['delivered_at'] ?? null;
+        $this->container['shipped_at'] = $data['shipped_at'] ?? null;
         $this->container['ordered_at'] = $data['ordered_at'] ?? null;
+        $this->container['seller_name'] = $data['seller_name'] ?? null;
     }
 
     /**
@@ -297,25 +297,25 @@ class ListBuyerFeedbackPendingItem implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets shipped_at
+     * Gets image_url
      *
      * @return string|null
      */
-    public function getShippedAt()
+    public function getImageUrl()
     {
-        return $this->container['shipped_at'];
+        return $this->container['image_url'];
     }
 
     /**
-     * Sets shipped_at
+     * Sets image_url
      *
-     * @param string|null $shipped_at shipped_at
+     * @param string|null $image_url image_url
      *
      * @return self
      */
-    public function setShippedAt($shipped_at)
+    public function setImageUrl($image_url)
     {
-        $this->container['shipped_at'] = $shipped_at;
+        $this->container['image_url'] = $image_url;
 
         return $this;
     }
@@ -345,49 +345,25 @@ class ListBuyerFeedbackPendingItem implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets image_url
+     * Gets shipped_at
      *
      * @return string|null
      */
-    public function getImageUrl()
+    public function getShippedAt()
     {
-        return $this->container['image_url'];
+        return $this->container['shipped_at'];
     }
 
     /**
-     * Sets image_url
+     * Sets shipped_at
      *
-     * @param string|null $image_url image_url
+     * @param string|null $shipped_at shipped_at
      *
      * @return self
      */
-    public function setImageUrl($image_url)
+    public function setShippedAt($shipped_at)
     {
-        $this->container['image_url'] = $image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets seller_name
-     *
-     * @return string|null
-     */
-    public function getSellerName()
-    {
-        return $this->container['seller_name'];
-    }
-
-    /**
-     * Sets seller_name
-     *
-     * @param string|null $seller_name seller_name
-     *
-     * @return self
-     */
-    public function setSellerName($seller_name)
-    {
-        $this->container['seller_name'] = $seller_name;
+        $this->container['shipped_at'] = $shipped_at;
 
         return $this;
     }
@@ -412,6 +388,30 @@ class ListBuyerFeedbackPendingItem implements ModelInterface, ArrayAccess, \Json
     public function setOrderedAt($ordered_at)
     {
         $this->container['ordered_at'] = $ordered_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_name
+     *
+     * @return string|null
+     */
+    public function getSellerName()
+    {
+        return $this->container['seller_name'];
+    }
+
+    /**
+     * Sets seller_name
+     *
+     * @param string|null $seller_name seller_name
+     *
+     * @return self
+     */
+    public function setSellerName($seller_name)
+    {
+        $this->container['seller_name'] = $seller_name;
 
         return $this;
     }

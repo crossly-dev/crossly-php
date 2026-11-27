@@ -61,10 +61,18 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'buckets' => '\Crossly\Model\Inventory\GetInventoryAgingResponseDataBuckets[]',
-        'worst' => '\Crossly\Model\Inventory\GetInventoryAgingResponseDataWorst[]',
+        'worst' => '\Crossly\Model\Analytic\GetAnalyticInventoryResponseDataWorst[]',
         'stuck_capital_cents' => 'float',
+        'attention_cost_cents' => 'float',
+        'over90_cost_cents' => 'float',
+        'over90_listed_value_cents' => 'float',
         'total_items' => 'float',
-        'total_units' => 'float'
+        'total_units' => 'float',
+        'cost_known_items' => 'float',
+        'cost_unknown_items' => 'float',
+        'listed_value_cents' => 'float',
+        'market_value_cents' => 'float',
+        'size_by' => 'string'
     ];
 
     /**
@@ -78,8 +86,16 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
         'buckets' => null,
         'worst' => null,
         'stuck_capital_cents' => null,
+        'attention_cost_cents' => null,
+        'over90_cost_cents' => null,
+        'over90_listed_value_cents' => null,
         'total_items' => null,
-        'total_units' => null
+        'total_units' => null,
+        'cost_known_items' => null,
+        'cost_unknown_items' => null,
+        'listed_value_cents' => null,
+        'market_value_cents' => null,
+        'size_by' => null
     ];
 
     /**
@@ -112,8 +128,16 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
         'buckets' => 'buckets',
         'worst' => 'worst',
         'stuck_capital_cents' => 'stuckCapitalCents',
+        'attention_cost_cents' => 'attentionCostCents',
+        'over90_cost_cents' => 'over90CostCents',
+        'over90_listed_value_cents' => 'over90ListedValueCents',
         'total_items' => 'totalItems',
-        'total_units' => 'totalUnits'
+        'total_units' => 'totalUnits',
+        'cost_known_items' => 'costKnownItems',
+        'cost_unknown_items' => 'costUnknownItems',
+        'listed_value_cents' => 'listedValueCents',
+        'market_value_cents' => 'marketValueCents',
+        'size_by' => 'sizeBy'
     ];
 
     /**
@@ -125,8 +149,16 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
         'buckets' => 'setBuckets',
         'worst' => 'setWorst',
         'stuck_capital_cents' => 'setStuckCapitalCents',
+        'attention_cost_cents' => 'setAttentionCostCents',
+        'over90_cost_cents' => 'setOver90CostCents',
+        'over90_listed_value_cents' => 'setOver90ListedValueCents',
         'total_items' => 'setTotalItems',
-        'total_units' => 'setTotalUnits'
+        'total_units' => 'setTotalUnits',
+        'cost_known_items' => 'setCostKnownItems',
+        'cost_unknown_items' => 'setCostUnknownItems',
+        'listed_value_cents' => 'setListedValueCents',
+        'market_value_cents' => 'setMarketValueCents',
+        'size_by' => 'setSizeBy'
     ];
 
     /**
@@ -138,8 +170,16 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
         'buckets' => 'getBuckets',
         'worst' => 'getWorst',
         'stuck_capital_cents' => 'getStuckCapitalCents',
+        'attention_cost_cents' => 'getAttentionCostCents',
+        'over90_cost_cents' => 'getOver90CostCents',
+        'over90_listed_value_cents' => 'getOver90ListedValueCents',
         'total_items' => 'getTotalItems',
-        'total_units' => 'getTotalUnits'
+        'total_units' => 'getTotalUnits',
+        'cost_known_items' => 'getCostKnownItems',
+        'cost_unknown_items' => 'getCostUnknownItems',
+        'listed_value_cents' => 'getListedValueCents',
+        'market_value_cents' => 'getMarketValueCents',
+        'size_by' => 'getSizeBy'
     ];
 
     /**
@@ -183,6 +223,23 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
+    const SIZE_BY_valueOption = 'value';
+    const SIZE_BY_cost = 'cost';
+    const SIZE_BY_units = 'units';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSizeByAllowableValues()
+    {
+        return [
+            self::SIZE_BY_valueOption,
+            self::SIZE_BY_cost,
+            self::SIZE_BY_units,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -202,8 +259,16 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
         $this->container['buckets'] = $data['buckets'] ?? null;
         $this->container['worst'] = $data['worst'] ?? null;
         $this->container['stuck_capital_cents'] = $data['stuck_capital_cents'] ?? null;
+        $this->container['attention_cost_cents'] = $data['attention_cost_cents'] ?? null;
+        $this->container['over90_cost_cents'] = $data['over90_cost_cents'] ?? null;
+        $this->container['over90_listed_value_cents'] = $data['over90_listed_value_cents'] ?? null;
         $this->container['total_items'] = $data['total_items'] ?? null;
         $this->container['total_units'] = $data['total_units'] ?? null;
+        $this->container['cost_known_items'] = $data['cost_known_items'] ?? null;
+        $this->container['cost_unknown_items'] = $data['cost_unknown_items'] ?? null;
+        $this->container['listed_value_cents'] = $data['listed_value_cents'] ?? null;
+        $this->container['market_value_cents'] = $data['market_value_cents'] ?? null;
+        $this->container['size_by'] = $data['size_by'] ?? null;
     }
 
     /**
@@ -224,12 +289,42 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['stuck_capital_cents'] === null) {
             $invalidProperties[] = "'stuck_capital_cents' can't be null";
         }
+        if ($this->container['attention_cost_cents'] === null) {
+            $invalidProperties[] = "'attention_cost_cents' can't be null";
+        }
+        if ($this->container['over90_cost_cents'] === null) {
+            $invalidProperties[] = "'over90_cost_cents' can't be null";
+        }
+        if ($this->container['over90_listed_value_cents'] === null) {
+            $invalidProperties[] = "'over90_listed_value_cents' can't be null";
+        }
         if ($this->container['total_items'] === null) {
             $invalidProperties[] = "'total_items' can't be null";
         }
         if ($this->container['total_units'] === null) {
             $invalidProperties[] = "'total_units' can't be null";
         }
+        if ($this->container['cost_known_items'] === null) {
+            $invalidProperties[] = "'cost_known_items' can't be null";
+        }
+        if ($this->container['cost_unknown_items'] === null) {
+            $invalidProperties[] = "'cost_unknown_items' can't be null";
+        }
+        if ($this->container['listed_value_cents'] === null) {
+            $invalidProperties[] = "'listed_value_cents' can't be null";
+        }
+        if ($this->container['size_by'] === null) {
+            $invalidProperties[] = "'size_by' can't be null";
+        }
+        $allowedValues = $this->getSizeByAllowableValues();
+        if (!is_null($this->container['size_by']) && !in_array($this->container['size_by'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'size_by', must be one of '%s'",
+                $this->container['size_by'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -272,7 +367,7 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets worst
      *
-     * @return \Crossly\Model\Inventory\GetInventoryAgingResponseDataWorst[]
+     * @return \Crossly\Model\Analytic\GetAnalyticInventoryResponseDataWorst[]
      */
     public function getWorst()
     {
@@ -282,7 +377,7 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets worst
      *
-     * @param \Crossly\Model\Inventory\GetInventoryAgingResponseDataWorst[] $worst worst
+     * @param \Crossly\Model\Analytic\GetAnalyticInventoryResponseDataWorst[] $worst worst
      *
      * @return self
      */
@@ -306,13 +401,85 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets stuck_capital_cents
      *
-     * @param float $stuck_capital_cents stuck_capital_cents
+     * @param float $stuck_capital_cents Cost of stock 30+ days listed or unlisted (30-90 + 90+ + unlisted): the same number as attentionCostCents. Not \"older than three months\"; that is over90CostCents.
      *
      * @return self
      */
     public function setStuckCapitalCents($stuck_capital_cents)
     {
         $this->container['stuck_capital_cents'] = $stuck_capital_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets attention_cost_cents
+     *
+     * @return float
+     */
+    public function getAttentionCostCents()
+    {
+        return $this->container['attention_cost_cents'];
+    }
+
+    /**
+     * Sets attention_cost_cents
+     *
+     * @param float $attention_cost_cents attention_cost_cents
+     *
+     * @return self
+     */
+    public function setAttentionCostCents($attention_cost_cents)
+    {
+        $this->container['attention_cost_cents'] = $attention_cost_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets over90_cost_cents
+     *
+     * @return float
+     */
+    public function getOver90CostCents()
+    {
+        return $this->container['over90_cost_cents'];
+    }
+
+    /**
+     * Sets over90_cost_cents
+     *
+     * @param float $over90_cost_cents over90_cost_cents
+     *
+     * @return self
+     */
+    public function setOver90CostCents($over90_cost_cents)
+    {
+        $this->container['over90_cost_cents'] = $over90_cost_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets over90_listed_value_cents
+     *
+     * @return float
+     */
+    public function getOver90ListedValueCents()
+    {
+        return $this->container['over90_listed_value_cents'];
+    }
+
+    /**
+     * Sets over90_listed_value_cents
+     *
+     * @param float $over90_listed_value_cents over90_listed_value_cents
+     *
+     * @return self
+     */
+    public function setOver90ListedValueCents($over90_listed_value_cents)
+    {
+        $this->container['over90_listed_value_cents'] = $over90_listed_value_cents;
 
         return $this;
     }
@@ -361,6 +528,136 @@ class GetInventoryAgingResponseData implements ModelInterface, ArrayAccess, \Jso
     public function setTotalUnits($total_units)
     {
         $this->container['total_units'] = $total_units;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_known_items
+     *
+     * @return float
+     */
+    public function getCostKnownItems()
+    {
+        return $this->container['cost_known_items'];
+    }
+
+    /**
+     * Sets cost_known_items
+     *
+     * @param float $cost_known_items cost_known_items
+     *
+     * @return self
+     */
+    public function setCostKnownItems($cost_known_items)
+    {
+        $this->container['cost_known_items'] = $cost_known_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_unknown_items
+     *
+     * @return float
+     */
+    public function getCostUnknownItems()
+    {
+        return $this->container['cost_unknown_items'];
+    }
+
+    /**
+     * Sets cost_unknown_items
+     *
+     * @param float $cost_unknown_items cost_unknown_items
+     *
+     * @return self
+     */
+    public function setCostUnknownItems($cost_unknown_items)
+    {
+        $this->container['cost_unknown_items'] = $cost_unknown_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets listed_value_cents
+     *
+     * @return float
+     */
+    public function getListedValueCents()
+    {
+        return $this->container['listed_value_cents'];
+    }
+
+    /**
+     * Sets listed_value_cents
+     *
+     * @param float $listed_value_cents listed_value_cents
+     *
+     * @return self
+     */
+    public function setListedValueCents($listed_value_cents)
+    {
+        $this->container['listed_value_cents'] = $listed_value_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets market_value_cents
+     *
+     * @return float|null
+     */
+    public function getMarketValueCents()
+    {
+        return $this->container['market_value_cents'];
+    }
+
+    /**
+     * Sets market_value_cents
+     *
+     * @param float|null $market_value_cents market_value_cents
+     *
+     * @return self
+     */
+    public function setMarketValueCents($market_value_cents)
+    {
+        $this->container['market_value_cents'] = $market_value_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets size_by
+     *
+     * @return string
+     */
+    public function getSizeBy()
+    {
+        return $this->container['size_by'];
+    }
+
+    /**
+     * Sets size_by
+     *
+     * @param string $size_by size_by
+     *
+     * @return self
+     */
+    public function setSizeBy($size_by)
+    {
+        $allowedValues = $this->getSizeByAllowableValues();
+        if (!in_array($size_by, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'size_by', must be one of '%s'",
+                    $size_by,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['size_by'] = $size_by;
 
         return $this;
     }

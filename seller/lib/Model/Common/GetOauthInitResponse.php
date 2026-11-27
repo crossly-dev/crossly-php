@@ -61,7 +61,6 @@ class GetOauthInitResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'url' => 'string',
-        'correlation_id' => 'string',
         'one_shot' => 'bool',
         'status' => 'string',
         'request_url' => 'string',
@@ -77,7 +76,6 @@ class GetOauthInitResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'url' => null,
-        'correlation_id' => null,
         'one_shot' => null,
         'status' => null,
         'request_url' => null,
@@ -112,7 +110,6 @@ class GetOauthInitResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'url' => 'url',
-        'correlation_id' => 'correlationId',
         'one_shot' => 'oneShot',
         'status' => 'status',
         'request_url' => 'requestUrl',
@@ -126,7 +123,6 @@ class GetOauthInitResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'url' => 'setUrl',
-        'correlation_id' => 'setCorrelationId',
         'one_shot' => 'setOneShot',
         'status' => 'setStatus',
         'request_url' => 'setRequestUrl',
@@ -140,7 +136,6 @@ class GetOauthInitResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'url' => 'getUrl',
-        'correlation_id' => 'getCorrelationId',
         'one_shot' => 'getOneShot',
         'status' => 'getStatus',
         'request_url' => 'getRequestUrl',
@@ -205,7 +200,6 @@ class GetOauthInitResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->container['url'] = $data['url'] ?? null;
-        $this->container['correlation_id'] = $data['correlation_id'] ?? null;
         $this->container['one_shot'] = $data['one_shot'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['request_url'] = $data['request_url'] ?? null;
@@ -256,30 +250,6 @@ class GetOauthInitResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setUrl($url)
     {
         $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets correlation_id
-     *
-     * @return string|null
-     */
-    public function getCorrelationId()
-    {
-        return $this->container['correlation_id'];
-    }
-
-    /**
-     * Sets correlation_id
-     *
-     * @param string|null $correlation_id correlation_id
-     *
-     * @return self
-     */
-    public function setCorrelationId($correlation_id)
-    {
-        $this->container['correlation_id'] = $correlation_id;
 
         return $this;
     }

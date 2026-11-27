@@ -61,7 +61,7 @@ class CreateAutomationRuleImportResponseErrors implements ModelInterface, ArrayA
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'errors' => 'array<string,mixed>[]'
+        'errors' => 'mixed[]'
     ];
 
     /**
@@ -245,7 +245,7 @@ class CreateAutomationRuleImportResponseErrors implements ModelInterface, ArrayA
     /**
      * Gets errors
      *
-     * @return array<string,mixed>[]
+     * @return mixed[]
      */
     public function getErrors()
     {
@@ -255,7 +255,7 @@ class CreateAutomationRuleImportResponseErrors implements ModelInterface, ArrayA
     /**
      * Sets errors
      *
-     * @param array<string,mixed>[] $errors errors
+     * @param mixed[] $errors errors
      *
      * @return self
      */

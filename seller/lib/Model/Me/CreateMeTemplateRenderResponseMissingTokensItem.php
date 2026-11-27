@@ -48,6 +48,10 @@ class CreateMeTemplateRenderResponseMissingTokensItem
 
     const BRAND = 'brand';
 
+    const CATEGORY = 'category';
+
+    const MONTH = 'month';
+
     const SKU = 'sku';
 
     const CONDITION = 'condition';
@@ -62,15 +66,11 @@ class CreateMeTemplateRenderResponseMissingTokensItem
 
     const PRICE = 'price';
 
-    const CATEGORY = 'category';
-
     const YEAR = 'year';
 
     const MODEL = 'model';
 
     const ITEM_NAME = 'item_name';
-
-    const MONTH = 'month';
 
     /**
      * Gets allowable values of the enum
@@ -81,6 +81,8 @@ class CreateMeTemplateRenderResponseMissingTokensItem
         return [
             self::DATE,
             self::BRAND,
+            self::CATEGORY,
+            self::MONTH,
             self::SKU,
             self::CONDITION,
             self::SIZE,
@@ -88,11 +90,9 @@ class CreateMeTemplateRenderResponseMissingTokensItem
             self::STYLE,
             self::COLOR,
             self::PRICE,
-            self::CATEGORY,
             self::YEAR,
             self::MODEL,
-            self::ITEM_NAME,
-            self::MONTH
+            self::ITEM_NAME
         ];
     }
 }

@@ -61,21 +61,21 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
-        'status' => 'string',
-        'assigned_at' => 'string',
         'title' => 'string',
-        'seller' => '\Crossly\Buyer\Model\Breaks\GetBuyerBreakResponseDataSeller',
+        'product' => 'string',
+        'format' => 'string',
+        'status' => 'string',
         'slug' => 'string',
         'price_cents' => 'float',
-        'format' => 'string',
         'stream_id' => 'string',
-        'seed' => 'string',
-        'product' => 'string',
-        'seed_commit' => 'string',
+        'seller' => '\Crossly\Buyer\Model\Breaks\GetBuyerBreakResponseDataSeller',
         'spots' => '\Crossly\Buyer\Model\Breaks\GetBuyerBreakResponseDataSpots[]',
         'spots_left' => 'float',
-        'draw' => '\Crossly\Buyer\Model\Breaks\GetBuyerBreakResponseDataDraw[]'
+        'seed_commit' => 'string',
+        'seed' => 'string',
+        'draw' => '\Crossly\Buyer\Model\Breaks\GetBuyerBreakResponseDataDraw[]',
+        'created_at' => 'string',
+        'assigned_at' => 'string'
     ];
 
     /**
@@ -87,21 +87,21 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
-        'status' => null,
-        'assigned_at' => null,
         'title' => null,
-        'seller' => null,
+        'product' => null,
+        'format' => null,
+        'status' => null,
         'slug' => null,
         'price_cents' => null,
-        'format' => null,
         'stream_id' => null,
-        'seed' => null,
-        'product' => null,
-        'seed_commit' => null,
+        'seller' => null,
         'spots' => null,
         'spots_left' => null,
-        'draw' => null
+        'seed_commit' => null,
+        'seed' => null,
+        'draw' => null,
+        'created_at' => null,
+        'assigned_at' => null
     ];
 
     /**
@@ -132,21 +132,21 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'status' => 'status',
-        'assigned_at' => 'assignedAt',
         'title' => 'title',
-        'seller' => 'seller',
+        'product' => 'product',
+        'format' => 'format',
+        'status' => 'status',
         'slug' => 'slug',
         'price_cents' => 'priceCents',
-        'format' => 'format',
         'stream_id' => 'streamId',
-        'seed' => 'seed',
-        'product' => 'product',
-        'seed_commit' => 'seedCommit',
+        'seller' => 'seller',
         'spots' => 'spots',
         'spots_left' => 'spotsLeft',
-        'draw' => 'draw'
+        'seed_commit' => 'seedCommit',
+        'seed' => 'seed',
+        'draw' => 'draw',
+        'created_at' => 'createdAt',
+        'assigned_at' => 'assignedAt'
     ];
 
     /**
@@ -156,21 +156,21 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'status' => 'setStatus',
-        'assigned_at' => 'setAssignedAt',
         'title' => 'setTitle',
-        'seller' => 'setSeller',
+        'product' => 'setProduct',
+        'format' => 'setFormat',
+        'status' => 'setStatus',
         'slug' => 'setSlug',
         'price_cents' => 'setPriceCents',
-        'format' => 'setFormat',
         'stream_id' => 'setStreamId',
-        'seed' => 'setSeed',
-        'product' => 'setProduct',
-        'seed_commit' => 'setSeedCommit',
+        'seller' => 'setSeller',
         'spots' => 'setSpots',
         'spots_left' => 'setSpotsLeft',
-        'draw' => 'setDraw'
+        'seed_commit' => 'setSeedCommit',
+        'seed' => 'setSeed',
+        'draw' => 'setDraw',
+        'created_at' => 'setCreatedAt',
+        'assigned_at' => 'setAssignedAt'
     ];
 
     /**
@@ -180,21 +180,21 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'status' => 'getStatus',
-        'assigned_at' => 'getAssignedAt',
         'title' => 'getTitle',
-        'seller' => 'getSeller',
+        'product' => 'getProduct',
+        'format' => 'getFormat',
+        'status' => 'getStatus',
         'slug' => 'getSlug',
         'price_cents' => 'getPriceCents',
-        'format' => 'getFormat',
         'stream_id' => 'getStreamId',
-        'seed' => 'getSeed',
-        'product' => 'getProduct',
-        'seed_commit' => 'getSeedCommit',
+        'seller' => 'getSeller',
         'spots' => 'getSpots',
         'spots_left' => 'getSpotsLeft',
-        'draw' => 'getDraw'
+        'seed_commit' => 'getSeedCommit',
+        'seed' => 'getSeed',
+        'draw' => 'getDraw',
+        'created_at' => 'getCreatedAt',
+        'assigned_at' => 'getAssignedAt'
     ];
 
     /**
@@ -255,21 +255,21 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['assigned_at'] = $data['assigned_at'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
-        $this->container['seller'] = $data['seller'] ?? null;
+        $this->container['product'] = $data['product'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
-        $this->container['format'] = $data['format'] ?? null;
         $this->container['stream_id'] = $data['stream_id'] ?? null;
-        $this->container['seed'] = $data['seed'] ?? null;
-        $this->container['product'] = $data['product'] ?? null;
-        $this->container['seed_commit'] = $data['seed_commit'] ?? null;
+        $this->container['seller'] = $data['seller'] ?? null;
         $this->container['spots'] = $data['spots'] ?? null;
         $this->container['spots_left'] = $data['spots_left'] ?? null;
+        $this->container['seed_commit'] = $data['seed_commit'] ?? null;
+        $this->container['seed'] = $data['seed'] ?? null;
         $this->container['draw'] = $data['draw'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['assigned_at'] = $data['assigned_at'] ?? null;
     }
 
     /**
@@ -284,32 +284,32 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['seller'] === null) {
-            $invalidProperties[] = "'seller' can't be null";
-        }
-        if ($this->container['price_cents'] === null) {
-            $invalidProperties[] = "'price_cents' can't be null";
         }
         if ($this->container['format'] === null) {
             $invalidProperties[] = "'format' can't be null";
         }
-        if ($this->container['seed_commit'] === null) {
-            $invalidProperties[] = "'seed_commit' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['price_cents'] === null) {
+            $invalidProperties[] = "'price_cents' can't be null";
+        }
+        if ($this->container['seller'] === null) {
+            $invalidProperties[] = "'seller' can't be null";
         }
         if ($this->container['spots'] === null) {
             $invalidProperties[] = "'spots' can't be null";
         }
         if ($this->container['spots_left'] === null) {
             $invalidProperties[] = "'spots_left' can't be null";
+        }
+        if ($this->container['seed_commit'] === null) {
+            $invalidProperties[] = "'seed_commit' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -351,78 +351,6 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets created_at
-     *
-     * @return string
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param string $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets assigned_at
-     *
-     * @return string|null
-     */
-    public function getAssignedAt()
-    {
-        return $this->container['assigned_at'];
-    }
-
-    /**
-     * Sets assigned_at
-     *
-     * @param string|null $assigned_at assigned_at
-     *
-     * @return self
-     */
-    public function setAssignedAt($assigned_at)
-    {
-        $this->container['assigned_at'] = $assigned_at;
-
-        return $this;
-    }
-
-    /**
      * Gets title
      *
      * @return string
@@ -447,25 +375,73 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets seller
+     * Gets product
      *
-     * @return \Crossly\Buyer\Model\Breaks\GetBuyerBreakResponseDataSeller
+     * @return string|null
      */
-    public function getSeller()
+    public function getProduct()
     {
-        return $this->container['seller'];
+        return $this->container['product'];
     }
 
     /**
-     * Sets seller
+     * Sets product
      *
-     * @param \Crossly\Buyer\Model\Breaks\GetBuyerBreakResponseDataSeller $seller seller
+     * @param string|null $product product
      *
      * @return self
      */
-    public function setSeller($seller)
+    public function setProduct($product)
     {
-        $this->container['seller'] = $seller;
+        $this->container['product'] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string $format format
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
@@ -519,30 +495,6 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets format
-     *
-     * @return string
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string $format format
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
      * Gets stream_id
      *
      * @return string|null
@@ -567,73 +519,25 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets seed
+     * Gets seller
      *
-     * @return string|null
+     * @return \Crossly\Buyer\Model\Breaks\GetBuyerBreakResponseDataSeller
      */
-    public function getSeed()
+    public function getSeller()
     {
-        return $this->container['seed'];
+        return $this->container['seller'];
     }
 
     /**
-     * Sets seed
+     * Sets seller
      *
-     * @param string|null $seed seed
+     * @param \Crossly\Buyer\Model\Breaks\GetBuyerBreakResponseDataSeller $seller seller
      *
      * @return self
      */
-    public function setSeed($seed)
+    public function setSeller($seller)
     {
-        $this->container['seed'] = $seed;
-
-        return $this;
-    }
-
-    /**
-     * Gets product
-     *
-     * @return string|null
-     */
-    public function getProduct()
-    {
-        return $this->container['product'];
-    }
-
-    /**
-     * Sets product
-     *
-     * @param string|null $product product
-     *
-     * @return self
-     */
-    public function setProduct($product)
-    {
-        $this->container['product'] = $product;
-
-        return $this;
-    }
-
-    /**
-     * Gets seed_commit
-     *
-     * @return string
-     */
-    public function getSeedCommit()
-    {
-        return $this->container['seed_commit'];
-    }
-
-    /**
-     * Sets seed_commit
-     *
-     * @param string $seed_commit seed_commit
-     *
-     * @return self
-     */
-    public function setSeedCommit($seed_commit)
-    {
-        $this->container['seed_commit'] = $seed_commit;
+        $this->container['seller'] = $seller;
 
         return $this;
     }
@@ -687,6 +591,54 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets seed_commit
+     *
+     * @return string
+     */
+    public function getSeedCommit()
+    {
+        return $this->container['seed_commit'];
+    }
+
+    /**
+     * Sets seed_commit
+     *
+     * @param string $seed_commit seed_commit
+     *
+     * @return self
+     */
+    public function setSeedCommit($seed_commit)
+    {
+        $this->container['seed_commit'] = $seed_commit;
+
+        return $this;
+    }
+
+    /**
+     * Gets seed
+     *
+     * @return string|null
+     */
+    public function getSeed()
+    {
+        return $this->container['seed'];
+    }
+
+    /**
+     * Sets seed
+     *
+     * @param string|null $seed seed
+     *
+     * @return self
+     */
+    public function setSeed($seed)
+    {
+        $this->container['seed'] = $seed;
+
+        return $this;
+    }
+
+    /**
      * Gets draw
      *
      * @return \Crossly\Buyer\Model\Breaks\GetBuyerBreakResponseDataDraw[]|null
@@ -706,6 +658,54 @@ class GetBuyerBreakResponseData implements ModelInterface, ArrayAccess, \JsonSer
     public function setDraw($draw)
     {
         $this->container['draw'] = $draw;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets assigned_at
+     *
+     * @return string|null
+     */
+    public function getAssignedAt()
+    {
+        return $this->container['assigned_at'];
+    }
+
+    /**
+     * Sets assigned_at
+     *
+     * @param string|null $assigned_at assigned_at
+     *
+     * @return self
+     */
+    public function setAssignedAt($assigned_at)
+    {
+        $this->container['assigned_at'] = $assigned_at;
 
         return $this;
     }

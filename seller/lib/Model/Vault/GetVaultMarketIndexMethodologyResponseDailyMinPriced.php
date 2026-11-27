@@ -63,9 +63,9 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced implements ModelInter
         'custom' => 'float',
         'brand' => 'float',
         'category' => 'float',
+        'segment' => 'float',
         'curated' => 'float',
-        'composite' => 'float',
-        'segment' => 'float'
+        'composite' => 'float'
     ];
 
     /**
@@ -79,9 +79,9 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced implements ModelInter
         'custom' => null,
         'brand' => null,
         'category' => null,
+        'segment' => null,
         'curated' => null,
-        'composite' => null,
-        'segment' => null
+        'composite' => null
     ];
 
     /**
@@ -114,9 +114,9 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced implements ModelInter
         'custom' => 'custom',
         'brand' => 'brand',
         'category' => 'category',
+        'segment' => 'segment',
         'curated' => 'curated',
-        'composite' => 'composite',
-        'segment' => 'segment'
+        'composite' => 'composite'
     ];
 
     /**
@@ -128,9 +128,9 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced implements ModelInter
         'custom' => 'setCustom',
         'brand' => 'setBrand',
         'category' => 'setCategory',
+        'segment' => 'setSegment',
         'curated' => 'setCurated',
-        'composite' => 'setComposite',
-        'segment' => 'setSegment'
+        'composite' => 'setComposite'
     ];
 
     /**
@@ -142,9 +142,9 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced implements ModelInter
         'custom' => 'getCustom',
         'brand' => 'getBrand',
         'category' => 'getCategory',
+        'segment' => 'getSegment',
         'curated' => 'getCurated',
-        'composite' => 'getComposite',
-        'segment' => 'getSegment'
+        'composite' => 'getComposite'
     ];
 
     /**
@@ -207,9 +207,9 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced implements ModelInter
         $this->container['custom'] = $data['custom'] ?? null;
         $this->container['brand'] = $data['brand'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
+        $this->container['segment'] = $data['segment'] ?? null;
         $this->container['curated'] = $data['curated'] ?? null;
         $this->container['composite'] = $data['composite'] ?? null;
-        $this->container['segment'] = $data['segment'] ?? null;
     }
 
     /**
@@ -230,14 +230,14 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced implements ModelInter
         if ($this->container['category'] === null) {
             $invalidProperties[] = "'category' can't be null";
         }
+        if ($this->container['segment'] === null) {
+            $invalidProperties[] = "'segment' can't be null";
+        }
         if ($this->container['curated'] === null) {
             $invalidProperties[] = "'curated' can't be null";
         }
         if ($this->container['composite'] === null) {
             $invalidProperties[] = "'composite' can't be null";
-        }
-        if ($this->container['segment'] === null) {
-            $invalidProperties[] = "'segment' can't be null";
         }
         return $invalidProperties;
     }
@@ -327,6 +327,30 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced implements ModelInter
     }
 
     /**
+     * Gets segment
+     *
+     * @return float
+     */
+    public function getSegment()
+    {
+        return $this->container['segment'];
+    }
+
+    /**
+     * Sets segment
+     *
+     * @param float $segment segment
+     *
+     * @return self
+     */
+    public function setSegment($segment)
+    {
+        $this->container['segment'] = $segment;
+
+        return $this;
+    }
+
+    /**
      * Gets curated
      *
      * @return float
@@ -370,30 +394,6 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced implements ModelInter
     public function setComposite($composite)
     {
         $this->container['composite'] = $composite;
-
-        return $this;
-    }
-
-    /**
-     * Gets segment
-     *
-     * @return float
-     */
-    public function getSegment()
-    {
-        return $this->container['segment'];
-    }
-
-    /**
-     * Sets segment
-     *
-     * @param float $segment segment
-     *
-     * @return self
-     */
-    public function setSegment($segment)
-    {
-        $this->container['segment'] = $segment;
 
         return $this;
     }

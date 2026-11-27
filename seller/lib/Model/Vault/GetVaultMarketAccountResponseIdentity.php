@@ -61,7 +61,8 @@ class GetVaultMarketAccountResponseIdentity implements ModelInterface, ArrayAcce
       */
     protected static $openAPITypes = [
         'verified' => 'bool',
-        'status' => 'string'
+        'status' => 'string',
+        'retry' => 'bool'
     ];
 
     /**
@@ -73,7 +74,8 @@ class GetVaultMarketAccountResponseIdentity implements ModelInterface, ArrayAcce
       */
     protected static $openAPIFormats = [
         'verified' => null,
-        'status' => null
+        'status' => null,
+        'retry' => null
     ];
 
     /**
@@ -104,7 +106,8 @@ class GetVaultMarketAccountResponseIdentity implements ModelInterface, ArrayAcce
      */
     protected static $attributeMap = [
         'verified' => 'verified',
-        'status' => 'status'
+        'status' => 'status',
+        'retry' => 'retry'
     ];
 
     /**
@@ -114,7 +117,8 @@ class GetVaultMarketAccountResponseIdentity implements ModelInterface, ArrayAcce
      */
     protected static $setters = [
         'verified' => 'setVerified',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'retry' => 'setRetry'
     ];
 
     /**
@@ -124,7 +128,8 @@ class GetVaultMarketAccountResponseIdentity implements ModelInterface, ArrayAcce
      */
     protected static $getters = [
         'verified' => 'getVerified',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'retry' => 'getRetry'
     ];
 
     /**
@@ -186,6 +191,7 @@ class GetVaultMarketAccountResponseIdentity implements ModelInterface, ArrayAcce
     {
         $this->container['verified'] = $data['verified'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+        $this->container['retry'] = $data['retry'] ?? null;
     }
 
     /**
@@ -199,6 +205,9 @@ class GetVaultMarketAccountResponseIdentity implements ModelInterface, ArrayAcce
 
         if ($this->container['verified'] === null) {
             $invalidProperties[] = "'verified' can't be null";
+        }
+        if ($this->container['retry'] === null) {
+            $invalidProperties[] = "'retry' can't be null";
         }
         return $invalidProperties;
     }
@@ -259,6 +268,30 @@ class GetVaultMarketAccountResponseIdentity implements ModelInterface, ArrayAcce
     public function setStatus($status)
     {
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets retry
+     *
+     * @return bool
+     */
+    public function getRetry()
+    {
+        return $this->container['retry'];
+    }
+
+    /**
+     * Sets retry
+     *
+     * @param bool $retry retry
+     *
+     * @return self
+     */
+    public function setRetry($retry)
+    {
+        $this->container['retry'] = $retry;
 
         return $this;
     }

@@ -60,10 +60,17 @@ class GetVaultMarketAccountResponseGates implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
+        'shares' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns',
         'custody' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns',
         'lending' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns',
         'leverage' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns',
-        'staking' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns'
+        'staking' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns',
+        'shares_partner' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns',
+        'shares_self' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns',
+        'options_routing' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns',
+        'options_venue' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns',
+        'prediction_partner' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns',
+        'prediction_self' => '\Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns'
     ];
 
     /**
@@ -74,10 +81,17 @@ class GetVaultMarketAccountResponseGates implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'shares' => null,
         'custody' => null,
         'lending' => null,
         'leverage' => null,
-        'staking' => null
+        'staking' => null,
+        'shares_partner' => null,
+        'shares_self' => null,
+        'options_routing' => null,
+        'options_venue' => null,
+        'prediction_partner' => null,
+        'prediction_self' => null
     ];
 
     /**
@@ -107,10 +121,17 @@ class GetVaultMarketAccountResponseGates implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
+        'shares' => 'shares',
         'custody' => 'custody',
         'lending' => 'lending',
         'leverage' => 'leverage',
-        'staking' => 'staking'
+        'staking' => 'staking',
+        'shares_partner' => 'shares_partner',
+        'shares_self' => 'shares_self',
+        'options_routing' => 'options_routing',
+        'options_venue' => 'options_venue',
+        'prediction_partner' => 'prediction_partner',
+        'prediction_self' => 'prediction_self'
     ];
 
     /**
@@ -119,10 +140,17 @@ class GetVaultMarketAccountResponseGates implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
+        'shares' => 'setShares',
         'custody' => 'setCustody',
         'lending' => 'setLending',
         'leverage' => 'setLeverage',
-        'staking' => 'setStaking'
+        'staking' => 'setStaking',
+        'shares_partner' => 'setSharesPartner',
+        'shares_self' => 'setSharesSelf',
+        'options_routing' => 'setOptionsRouting',
+        'options_venue' => 'setOptionsVenue',
+        'prediction_partner' => 'setPredictionPartner',
+        'prediction_self' => 'setPredictionSelf'
     ];
 
     /**
@@ -131,10 +159,17 @@ class GetVaultMarketAccountResponseGates implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
+        'shares' => 'getShares',
         'custody' => 'getCustody',
         'lending' => 'getLending',
         'leverage' => 'getLeverage',
-        'staking' => 'getStaking'
+        'staking' => 'getStaking',
+        'shares_partner' => 'getSharesPartner',
+        'shares_self' => 'getSharesSelf',
+        'options_routing' => 'getOptionsRouting',
+        'options_venue' => 'getOptionsVenue',
+        'prediction_partner' => 'getPredictionPartner',
+        'prediction_self' => 'getPredictionSelf'
     ];
 
     /**
@@ -194,10 +229,17 @@ class GetVaultMarketAccountResponseGates implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
+        $this->container['shares'] = $data['shares'] ?? null;
         $this->container['custody'] = $data['custody'] ?? null;
         $this->container['lending'] = $data['lending'] ?? null;
         $this->container['leverage'] = $data['leverage'] ?? null;
         $this->container['staking'] = $data['staking'] ?? null;
+        $this->container['shares_partner'] = $data['shares_partner'] ?? null;
+        $this->container['shares_self'] = $data['shares_self'] ?? null;
+        $this->container['options_routing'] = $data['options_routing'] ?? null;
+        $this->container['options_venue'] = $data['options_venue'] ?? null;
+        $this->container['prediction_partner'] = $data['prediction_partner'] ?? null;
+        $this->container['prediction_self'] = $data['prediction_self'] ?? null;
     }
 
     /**
@@ -209,6 +251,9 @@ class GetVaultMarketAccountResponseGates implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['shares'] === null) {
+            $invalidProperties[] = "'shares' can't be null";
+        }
         if ($this->container['custody'] === null) {
             $invalidProperties[] = "'custody' can't be null";
         }
@@ -220,6 +265,24 @@ class GetVaultMarketAccountResponseGates implements ModelInterface, ArrayAccess,
         }
         if ($this->container['staking'] === null) {
             $invalidProperties[] = "'staking' can't be null";
+        }
+        if ($this->container['shares_partner'] === null) {
+            $invalidProperties[] = "'shares_partner' can't be null";
+        }
+        if ($this->container['shares_self'] === null) {
+            $invalidProperties[] = "'shares_self' can't be null";
+        }
+        if ($this->container['options_routing'] === null) {
+            $invalidProperties[] = "'options_routing' can't be null";
+        }
+        if ($this->container['options_venue'] === null) {
+            $invalidProperties[] = "'options_venue' can't be null";
+        }
+        if ($this->container['prediction_partner'] === null) {
+            $invalidProperties[] = "'prediction_partner' can't be null";
+        }
+        if ($this->container['prediction_self'] === null) {
+            $invalidProperties[] = "'prediction_self' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,6 +298,30 @@ class GetVaultMarketAccountResponseGates implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets shares
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns
+     */
+    public function getShares()
+    {
+        return $this->container['shares'];
+    }
+
+    /**
+     * Sets shares
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns $shares shares
+     *
+     * @return self
+     */
+    public function setShares($shares)
+    {
+        $this->container['shares'] = $shares;
+
+        return $this;
+    }
 
     /**
      * Gets custody
@@ -328,6 +415,150 @@ class GetVaultMarketAccountResponseGates implements ModelInterface, ArrayAccess,
     public function setStaking($staking)
     {
         $this->container['staking'] = $staking;
+
+        return $this;
+    }
+
+    /**
+     * Gets shares_partner
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns
+     */
+    public function getSharesPartner()
+    {
+        return $this->container['shares_partner'];
+    }
+
+    /**
+     * Sets shares_partner
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns $shares_partner shares_partner
+     *
+     * @return self
+     */
+    public function setSharesPartner($shares_partner)
+    {
+        $this->container['shares_partner'] = $shares_partner;
+
+        return $this;
+    }
+
+    /**
+     * Gets shares_self
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns
+     */
+    public function getSharesSelf()
+    {
+        return $this->container['shares_self'];
+    }
+
+    /**
+     * Sets shares_self
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns $shares_self shares_self
+     *
+     * @return self
+     */
+    public function setSharesSelf($shares_self)
+    {
+        $this->container['shares_self'] = $shares_self;
+
+        return $this;
+    }
+
+    /**
+     * Gets options_routing
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns
+     */
+    public function getOptionsRouting()
+    {
+        return $this->container['options_routing'];
+    }
+
+    /**
+     * Sets options_routing
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns $options_routing options_routing
+     *
+     * @return self
+     */
+    public function setOptionsRouting($options_routing)
+    {
+        $this->container['options_routing'] = $options_routing;
+
+        return $this;
+    }
+
+    /**
+     * Gets options_venue
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns
+     */
+    public function getOptionsVenue()
+    {
+        return $this->container['options_venue'];
+    }
+
+    /**
+     * Sets options_venue
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns $options_venue options_venue
+     *
+     * @return self
+     */
+    public function setOptionsVenue($options_venue)
+    {
+        $this->container['options_venue'] = $options_venue;
+
+        return $this;
+    }
+
+    /**
+     * Gets prediction_partner
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns
+     */
+    public function getPredictionPartner()
+    {
+        return $this->container['prediction_partner'];
+    }
+
+    /**
+     * Sets prediction_partner
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns $prediction_partner prediction_partner
+     *
+     * @return self
+     */
+    public function setPredictionPartner($prediction_partner)
+    {
+        $this->container['prediction_partner'] = $prediction_partner;
+
+        return $this;
+    }
+
+    /**
+     * Gets prediction_self
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns
+     */
+    public function getPredictionSelf()
+    {
+        return $this->container['prediction_self'];
+    }
+
+    /**
+     * Sets prediction_self
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketGradeToVaultItemGatesGradingRuns $prediction_self prediction_self
+     *
+     * @return self
+     */
+    public function setPredictionSelf($prediction_self)
+    {
+        $this->container['prediction_self'] = $prediction_self;
 
         return $this;
     }

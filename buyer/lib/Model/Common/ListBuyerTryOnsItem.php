@@ -61,10 +61,10 @@ class ListBuyerTryOnsItem implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
-        'status' => 'string',
         'listing_id' => 'string',
         'result_url' => 'string',
+        'status' => 'string',
+        'created_at' => 'string',
         'listing_title' => 'string'
     ];
 
@@ -77,10 +77,10 @@ class ListBuyerTryOnsItem implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
-        'status' => null,
         'listing_id' => null,
         'result_url' => null,
+        'status' => null,
+        'created_at' => null,
         'listing_title' => null
     ];
 
@@ -112,10 +112,10 @@ class ListBuyerTryOnsItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'status' => 'status',
         'listing_id' => 'listingId',
         'result_url' => 'resultUrl',
+        'status' => 'status',
+        'created_at' => 'createdAt',
         'listing_title' => 'listingTitle'
     ];
 
@@ -126,10 +126,10 @@ class ListBuyerTryOnsItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'status' => 'setStatus',
         'listing_id' => 'setListingId',
         'result_url' => 'setResultUrl',
+        'status' => 'setStatus',
+        'created_at' => 'setCreatedAt',
         'listing_title' => 'setListingTitle'
     ];
 
@@ -140,10 +140,10 @@ class ListBuyerTryOnsItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'status' => 'getStatus',
         'listing_id' => 'getListingId',
         'result_url' => 'getResultUrl',
+        'status' => 'getStatus',
+        'created_at' => 'getCreatedAt',
         'listing_title' => 'getListingTitle'
     ];
 
@@ -205,10 +205,10 @@ class ListBuyerTryOnsItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['listing_id'] = $data['listing_id'] ?? null;
         $this->container['result_url'] = $data['result_url'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['listing_title'] = $data['listing_title'] ?? null;
     }
 
@@ -224,14 +224,14 @@ class ListBuyerTryOnsItem implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['listing_id'] === null) {
+            $invalidProperties[] = "'listing_id' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['listing_id'] === null) {
-            $invalidProperties[] = "'listing_id' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -268,54 +268,6 @@ class ListBuyerTryOnsItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return string
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param string $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
 
         return $this;
     }
@@ -364,6 +316,54 @@ class ListBuyerTryOnsItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setResultUrl($result_url)
     {
         $this->container['result_url'] = $result_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

@@ -64,20 +64,20 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'string',
         'created_at' => '\DateTime',
         'status' => 'string',
-        'reason' => 'string',
-        'received_at' => '\DateTime',
         'carrier' => 'string',
         'shipped_at' => '\DateTime',
         'refunded_at' => '\DateTime',
-        'fit' => 'string',
-        'seller_user_id' => 'string',
         'buyer_user_id' => 'string',
-        'purchase_id' => 'string',
+        'reason' => 'string',
+        'received_at' => '\DateTime',
         'label_url' => 'string',
+        'seller_user_id' => 'string',
         'refund_stripe_id' => 'string',
+        'purchase_id' => 'string',
         'note' => 'string',
         'fee_cents' => 'float',
         'tracking_code' => 'string',
+        'fit' => 'string',
         'refund_cents' => 'float',
         'prepaid_label' => 'bool'
     ];
@@ -94,20 +94,20 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => null,
         'created_at' => 'date-time',
         'status' => null,
-        'reason' => null,
-        'received_at' => 'date-time',
         'carrier' => null,
         'shipped_at' => 'date-time',
         'refunded_at' => 'date-time',
-        'fit' => null,
-        'seller_user_id' => null,
         'buyer_user_id' => null,
-        'purchase_id' => null,
+        'reason' => null,
+        'received_at' => 'date-time',
         'label_url' => null,
+        'seller_user_id' => null,
         'refund_stripe_id' => null,
+        'purchase_id' => null,
         'note' => null,
         'fee_cents' => null,
         'tracking_code' => null,
+        'fit' => null,
         'refund_cents' => null,
         'prepaid_label' => null
     ];
@@ -143,20 +143,20 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'id',
         'created_at' => 'createdAt',
         'status' => 'status',
-        'reason' => 'reason',
-        'received_at' => 'receivedAt',
         'carrier' => 'carrier',
         'shipped_at' => 'shippedAt',
         'refunded_at' => 'refundedAt',
-        'fit' => 'fit',
-        'seller_user_id' => 'sellerUserId',
         'buyer_user_id' => 'buyerUserId',
-        'purchase_id' => 'purchaseId',
+        'reason' => 'reason',
+        'received_at' => 'receivedAt',
         'label_url' => 'labelUrl',
+        'seller_user_id' => 'sellerUserId',
         'refund_stripe_id' => 'refundStripeId',
+        'purchase_id' => 'purchaseId',
         'note' => 'note',
         'fee_cents' => 'feeCents',
         'tracking_code' => 'trackingCode',
+        'fit' => 'fit',
         'refund_cents' => 'refundCents',
         'prepaid_label' => 'prepaidLabel'
     ];
@@ -171,20 +171,20 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'status' => 'setStatus',
-        'reason' => 'setReason',
-        'received_at' => 'setReceivedAt',
         'carrier' => 'setCarrier',
         'shipped_at' => 'setShippedAt',
         'refunded_at' => 'setRefundedAt',
-        'fit' => 'setFit',
-        'seller_user_id' => 'setSellerUserId',
         'buyer_user_id' => 'setBuyerUserId',
-        'purchase_id' => 'setPurchaseId',
+        'reason' => 'setReason',
+        'received_at' => 'setReceivedAt',
         'label_url' => 'setLabelUrl',
+        'seller_user_id' => 'setSellerUserId',
         'refund_stripe_id' => 'setRefundStripeId',
+        'purchase_id' => 'setPurchaseId',
         'note' => 'setNote',
         'fee_cents' => 'setFeeCents',
         'tracking_code' => 'setTrackingCode',
+        'fit' => 'setFit',
         'refund_cents' => 'setRefundCents',
         'prepaid_label' => 'setPrepaidLabel'
     ];
@@ -199,20 +199,20 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'status' => 'getStatus',
-        'reason' => 'getReason',
-        'received_at' => 'getReceivedAt',
         'carrier' => 'getCarrier',
         'shipped_at' => 'getShippedAt',
         'refunded_at' => 'getRefundedAt',
-        'fit' => 'getFit',
-        'seller_user_id' => 'getSellerUserId',
         'buyer_user_id' => 'getBuyerUserId',
-        'purchase_id' => 'getPurchaseId',
+        'reason' => 'getReason',
+        'received_at' => 'getReceivedAt',
         'label_url' => 'getLabelUrl',
+        'seller_user_id' => 'getSellerUserId',
         'refund_stripe_id' => 'getRefundStripeId',
+        'purchase_id' => 'getPurchaseId',
         'note' => 'getNote',
         'fee_cents' => 'getFeeCents',
         'tracking_code' => 'getTrackingCode',
+        'fit' => 'getFit',
         'refund_cents' => 'getRefundCents',
         'prepaid_label' => 'getPrepaidLabel'
     ];
@@ -278,20 +278,20 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['reason'] = $data['reason'] ?? null;
-        $this->container['received_at'] = $data['received_at'] ?? null;
         $this->container['carrier'] = $data['carrier'] ?? null;
         $this->container['shipped_at'] = $data['shipped_at'] ?? null;
         $this->container['refunded_at'] = $data['refunded_at'] ?? null;
-        $this->container['fit'] = $data['fit'] ?? null;
-        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['buyer_user_id'] = $data['buyer_user_id'] ?? null;
-        $this->container['purchase_id'] = $data['purchase_id'] ?? null;
+        $this->container['reason'] = $data['reason'] ?? null;
+        $this->container['received_at'] = $data['received_at'] ?? null;
         $this->container['label_url'] = $data['label_url'] ?? null;
+        $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['refund_stripe_id'] = $data['refund_stripe_id'] ?? null;
+        $this->container['purchase_id'] = $data['purchase_id'] ?? null;
         $this->container['note'] = $data['note'] ?? null;
         $this->container['fee_cents'] = $data['fee_cents'] ?? null;
         $this->container['tracking_code'] = $data['tracking_code'] ?? null;
+        $this->container['fit'] = $data['fit'] ?? null;
         $this->container['refund_cents'] = $data['refund_cents'] ?? null;
         $this->container['prepaid_label'] = $data['prepaid_label'] ?? null;
     }
@@ -314,14 +314,14 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
+        if ($this->container['buyer_user_id'] === null) {
+            $invalidProperties[] = "'buyer_user_id' can't be null";
+        }
         if ($this->container['reason'] === null) {
             $invalidProperties[] = "'reason' can't be null";
         }
         if ($this->container['seller_user_id'] === null) {
             $invalidProperties[] = "'seller_user_id' can't be null";
-        }
-        if ($this->container['buyer_user_id'] === null) {
-            $invalidProperties[] = "'buyer_user_id' can't be null";
         }
         if ($this->container['purchase_id'] === null) {
             $invalidProperties[] = "'purchase_id' can't be null";
@@ -447,54 +447,6 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets reason
-     *
-     * @return string
-     */
-    public function getReason()
-    {
-        return $this->container['reason'];
-    }
-
-    /**
-     * Sets reason
-     *
-     * @param string $reason reason
-     *
-     * @return self
-     */
-    public function setReason($reason)
-    {
-        $this->container['reason'] = $reason;
-
-        return $this;
-    }
-
-    /**
-     * Gets received_at
-     *
-     * @return \DateTime|null
-     */
-    public function getReceivedAt()
-    {
-        return $this->container['received_at'];
-    }
-
-    /**
-     * Sets received_at
-     *
-     * @param \DateTime|null $received_at received_at
-     *
-     * @return self
-     */
-    public function setReceivedAt($received_at)
-    {
-        $this->container['received_at'] = $received_at;
-
-        return $this;
-    }
-
-    /**
      * Gets carrier
      *
      * @return string|null
@@ -567,54 +519,6 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets fit
-     *
-     * @return string|null
-     */
-    public function getFit()
-    {
-        return $this->container['fit'];
-    }
-
-    /**
-     * Sets fit
-     *
-     * @param string|null $fit fit
-     *
-     * @return self
-     */
-    public function setFit($fit)
-    {
-        $this->container['fit'] = $fit;
-
-        return $this;
-    }
-
-    /**
-     * Gets seller_user_id
-     *
-     * @return string
-     */
-    public function getSellerUserId()
-    {
-        return $this->container['seller_user_id'];
-    }
-
-    /**
-     * Sets seller_user_id
-     *
-     * @param string $seller_user_id seller_user_id
-     *
-     * @return self
-     */
-    public function setSellerUserId($seller_user_id)
-    {
-        $this->container['seller_user_id'] = $seller_user_id;
-
-        return $this;
-    }
-
-    /**
      * Gets buyer_user_id
      *
      * @return string
@@ -639,25 +543,49 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets purchase_id
+     * Gets reason
      *
      * @return string
      */
-    public function getPurchaseId()
+    public function getReason()
     {
-        return $this->container['purchase_id'];
+        return $this->container['reason'];
     }
 
     /**
-     * Sets purchase_id
+     * Sets reason
      *
-     * @param string $purchase_id purchase_id
+     * @param string $reason reason
      *
      * @return self
      */
-    public function setPurchaseId($purchase_id)
+    public function setReason($reason)
     {
-        $this->container['purchase_id'] = $purchase_id;
+        $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets received_at
+     *
+     * @return \DateTime|null
+     */
+    public function getReceivedAt()
+    {
+        return $this->container['received_at'];
+    }
+
+    /**
+     * Sets received_at
+     *
+     * @param \DateTime|null $received_at received_at
+     *
+     * @return self
+     */
+    public function setReceivedAt($received_at)
+    {
+        $this->container['received_at'] = $received_at;
 
         return $this;
     }
@@ -687,6 +615,30 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets seller_user_id
+     *
+     * @return string
+     */
+    public function getSellerUserId()
+    {
+        return $this->container['seller_user_id'];
+    }
+
+    /**
+     * Sets seller_user_id
+     *
+     * @param string $seller_user_id seller_user_id
+     *
+     * @return self
+     */
+    public function setSellerUserId($seller_user_id)
+    {
+        $this->container['seller_user_id'] = $seller_user_id;
+
+        return $this;
+    }
+
+    /**
      * Gets refund_stripe_id
      *
      * @return string|null
@@ -706,6 +658,30 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setRefundStripeId($refund_stripe_id)
     {
         $this->container['refund_stripe_id'] = $refund_stripe_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets purchase_id
+     *
+     * @return string
+     */
+    public function getPurchaseId()
+    {
+        return $this->container['purchase_id'];
+    }
+
+    /**
+     * Sets purchase_id
+     *
+     * @param string $purchase_id purchase_id
+     *
+     * @return self
+     */
+    public function setPurchaseId($purchase_id)
+    {
+        $this->container['purchase_id'] = $purchase_id;
 
         return $this;
     }
@@ -778,6 +754,30 @@ class ListPolicyReturnsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTrackingCode($tracking_code)
     {
         $this->container['tracking_code'] = $tracking_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets fit
+     *
+     * @return string|null
+     */
+    public function getFit()
+    {
+        return $this->container['fit'];
+    }
+
+    /**
+     * Sets fit
+     *
+     * @param string|null $fit fit
+     *
+     * @return self
+     */
+    public function setFit($fit)
+    {
+        $this->container['fit'] = $fit;
 
         return $this;
     }

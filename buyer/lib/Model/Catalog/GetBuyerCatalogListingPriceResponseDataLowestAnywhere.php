@@ -60,7 +60,8 @@ class GetBuyerCatalogListingPriceResponseDataLowestAnywhere implements ModelInte
       * @var string[]
       */
     protected static $openAPITypes = [
-        'platforms' => 'string[]'
+        'platforms' => 'string[]',
+        'platform_names' => 'string[]'
     ];
 
     /**
@@ -71,7 +72,8 @@ class GetBuyerCatalogListingPriceResponseDataLowestAnywhere implements ModelInte
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'platforms' => null
+        'platforms' => null,
+        'platform_names' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class GetBuyerCatalogListingPriceResponseDataLowestAnywhere implements ModelInte
      * @var string[]
      */
     protected static $attributeMap = [
-        'platforms' => 'platforms'
+        'platforms' => 'platforms',
+        'platform_names' => 'platformNames'
     ];
 
     /**
@@ -110,7 +113,8 @@ class GetBuyerCatalogListingPriceResponseDataLowestAnywhere implements ModelInte
      * @var string[]
      */
     protected static $setters = [
-        'platforms' => 'setPlatforms'
+        'platforms' => 'setPlatforms',
+        'platform_names' => 'setPlatformNames'
     ];
 
     /**
@@ -119,7 +123,8 @@ class GetBuyerCatalogListingPriceResponseDataLowestAnywhere implements ModelInte
      * @var string[]
      */
     protected static $getters = [
-        'platforms' => 'getPlatforms'
+        'platforms' => 'getPlatforms',
+        'platform_names' => 'getPlatformNames'
     ];
 
     /**
@@ -180,6 +185,7 @@ class GetBuyerCatalogListingPriceResponseDataLowestAnywhere implements ModelInte
     public function __construct(array $data = null)
     {
         $this->container['platforms'] = $data['platforms'] ?? null;
+        $this->container['platform_names'] = $data['platform_names'] ?? null;
     }
 
     /**
@@ -229,6 +235,30 @@ class GetBuyerCatalogListingPriceResponseDataLowestAnywhere implements ModelInte
     public function setPlatforms($platforms)
     {
         $this->container['platforms'] = $platforms;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_names
+     *
+     * @return string[]|null
+     */
+    public function getPlatformNames()
+    {
+        return $this->container['platform_names'];
+    }
+
+    /**
+     * Sets platform_names
+     *
+     * @param string[]|null $platform_names platform_names
+     *
+     * @return self
+     */
+    public function setPlatformNames($platform_names)
+    {
+        $this->container['platform_names'] = $platform_names;
 
         return $this;
     }

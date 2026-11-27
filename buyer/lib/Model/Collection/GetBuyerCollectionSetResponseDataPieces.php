@@ -60,12 +60,12 @@ class GetBuyerCollectionSetResponseDataPieces implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'number' => 'float',
+        'sku_id' => 'string',
         'title' => 'string',
         'image_url' => 'string',
-        'sku_id' => 'string',
-        'best_ask_cents' => 'float',
-        'owned' => 'bool'
+        'number' => 'float',
+        'owned' => 'bool',
+        'best_ask_cents' => 'float'
     ];
 
     /**
@@ -76,12 +76,12 @@ class GetBuyerCollectionSetResponseDataPieces implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'number' => null,
+        'sku_id' => null,
         'title' => null,
         'image_url' => null,
-        'sku_id' => null,
-        'best_ask_cents' => null,
-        'owned' => null
+        'number' => null,
+        'owned' => null,
+        'best_ask_cents' => null
     ];
 
     /**
@@ -111,12 +111,12 @@ class GetBuyerCollectionSetResponseDataPieces implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'number' => 'number',
+        'sku_id' => 'skuId',
         'title' => 'title',
         'image_url' => 'imageUrl',
-        'sku_id' => 'skuId',
-        'best_ask_cents' => 'bestAskCents',
-        'owned' => 'owned'
+        'number' => 'number',
+        'owned' => 'owned',
+        'best_ask_cents' => 'bestAskCents'
     ];
 
     /**
@@ -125,12 +125,12 @@ class GetBuyerCollectionSetResponseDataPieces implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'number' => 'setNumber',
+        'sku_id' => 'setSkuId',
         'title' => 'setTitle',
         'image_url' => 'setImageUrl',
-        'sku_id' => 'setSkuId',
-        'best_ask_cents' => 'setBestAskCents',
-        'owned' => 'setOwned'
+        'number' => 'setNumber',
+        'owned' => 'setOwned',
+        'best_ask_cents' => 'setBestAskCents'
     ];
 
     /**
@@ -139,12 +139,12 @@ class GetBuyerCollectionSetResponseDataPieces implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'number' => 'getNumber',
+        'sku_id' => 'getSkuId',
         'title' => 'getTitle',
         'image_url' => 'getImageUrl',
-        'sku_id' => 'getSkuId',
-        'best_ask_cents' => 'getBestAskCents',
-        'owned' => 'getOwned'
+        'number' => 'getNumber',
+        'owned' => 'getOwned',
+        'best_ask_cents' => 'getBestAskCents'
     ];
 
     /**
@@ -204,12 +204,12 @@ class GetBuyerCollectionSetResponseDataPieces implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->container['number'] = $data['number'] ?? null;
+        $this->container['sku_id'] = $data['sku_id'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['image_url'] = $data['image_url'] ?? null;
-        $this->container['sku_id'] = $data['sku_id'] ?? null;
-        $this->container['best_ask_cents'] = $data['best_ask_cents'] ?? null;
+        $this->container['number'] = $data['number'] ?? null;
         $this->container['owned'] = $data['owned'] ?? null;
+        $this->container['best_ask_cents'] = $data['best_ask_cents'] ?? null;
     }
 
     /**
@@ -221,14 +221,14 @@ class GetBuyerCollectionSetResponseDataPieces implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['number'] === null) {
-            $invalidProperties[] = "'number' can't be null";
+        if ($this->container['sku_id'] === null) {
+            $invalidProperties[] = "'sku_id' can't be null";
         }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
         }
-        if ($this->container['sku_id'] === null) {
-            $invalidProperties[] = "'sku_id' can't be null";
+        if ($this->container['number'] === null) {
+            $invalidProperties[] = "'number' can't be null";
         }
         if ($this->container['owned'] === null) {
             $invalidProperties[] = "'owned' can't be null";
@@ -249,25 +249,25 @@ class GetBuyerCollectionSetResponseDataPieces implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets number
+     * Gets sku_id
      *
-     * @return float
+     * @return string
      */
-    public function getNumber()
+    public function getSkuId()
     {
-        return $this->container['number'];
+        return $this->container['sku_id'];
     }
 
     /**
-     * Sets number
+     * Sets sku_id
      *
-     * @param float $number number
+     * @param string $sku_id sku_id
      *
      * @return self
      */
-    public function setNumber($number)
+    public function setSkuId($sku_id)
     {
-        $this->container['number'] = $number;
+        $this->container['sku_id'] = $sku_id;
 
         return $this;
     }
@@ -321,49 +321,25 @@ class GetBuyerCollectionSetResponseDataPieces implements ModelInterface, ArrayAc
     }
 
     /**
-     * Gets sku_id
+     * Gets number
      *
-     * @return string
+     * @return float
      */
-    public function getSkuId()
+    public function getNumber()
     {
-        return $this->container['sku_id'];
+        return $this->container['number'];
     }
 
     /**
-     * Sets sku_id
+     * Sets number
      *
-     * @param string $sku_id sku_id
+     * @param float $number number
      *
      * @return self
      */
-    public function setSkuId($sku_id)
+    public function setNumber($number)
     {
-        $this->container['sku_id'] = $sku_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets best_ask_cents
-     *
-     * @return float|null
-     */
-    public function getBestAskCents()
-    {
-        return $this->container['best_ask_cents'];
-    }
-
-    /**
-     * Sets best_ask_cents
-     *
-     * @param float|null $best_ask_cents best_ask_cents
-     *
-     * @return self
-     */
-    public function setBestAskCents($best_ask_cents)
-    {
-        $this->container['best_ask_cents'] = $best_ask_cents;
+        $this->container['number'] = $number;
 
         return $this;
     }
@@ -388,6 +364,30 @@ class GetBuyerCollectionSetResponseDataPieces implements ModelInterface, ArrayAc
     public function setOwned($owned)
     {
         $this->container['owned'] = $owned;
+
+        return $this;
+    }
+
+    /**
+     * Gets best_ask_cents
+     *
+     * @return float|null
+     */
+    public function getBestAskCents()
+    {
+        return $this->container['best_ask_cents'];
+    }
+
+    /**
+     * Sets best_ask_cents
+     *
+     * @param float|null $best_ask_cents best_ask_cents
+     *
+     * @return self
+     */
+    public function setBestAskCents($best_ask_cents)
+    {
+        $this->container['best_ask_cents'] = $best_ask_cents;
 
         return $this;
     }

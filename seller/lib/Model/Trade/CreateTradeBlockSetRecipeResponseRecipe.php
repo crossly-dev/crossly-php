@@ -65,14 +65,14 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
         'active' => 'bool',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'note' => 'string',
+        'version' => 'float',
         'reviewed_at' => '\DateTime',
+        'note' => 'string',
+        'members' => '\Crossly\Model\Trade\CreateTradeBlockSetRecipeResponseRecipeMembers[]',
         'merchant_id' => 'string',
         'creator_subject_id' => 'string',
         'output_cosmetic_id' => 'string',
-        'version' => 'float',
-        'frozen_at' => '\DateTime',
-        'members' => '\Crossly\Model\Trade\CreateTradeBlockSetRecipeResponseRecipeMembers[]'
+        'frozen_at' => '\DateTime'
     ];
 
     /**
@@ -88,14 +88,14 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
         'active' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'note' => null,
+        'version' => null,
         'reviewed_at' => 'date-time',
+        'note' => null,
+        'members' => null,
         'merchant_id' => null,
         'creator_subject_id' => null,
         'output_cosmetic_id' => null,
-        'version' => null,
-        'frozen_at' => 'date-time',
-        'members' => null
+        'frozen_at' => 'date-time'
     ];
 
     /**
@@ -130,14 +130,14 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
         'active' => 'active',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
-        'note' => 'note',
+        'version' => 'version',
         'reviewed_at' => 'reviewedAt',
+        'note' => 'note',
+        'members' => 'members',
         'merchant_id' => 'merchantId',
         'creator_subject_id' => 'creatorSubjectId',
         'output_cosmetic_id' => 'outputCosmeticId',
-        'version' => 'version',
-        'frozen_at' => 'frozenAt',
-        'members' => 'members'
+        'frozen_at' => 'frozenAt'
     ];
 
     /**
@@ -151,14 +151,14 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
         'active' => 'setActive',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'note' => 'setNote',
+        'version' => 'setVersion',
         'reviewed_at' => 'setReviewedAt',
+        'note' => 'setNote',
+        'members' => 'setMembers',
         'merchant_id' => 'setMerchantId',
         'creator_subject_id' => 'setCreatorSubjectId',
         'output_cosmetic_id' => 'setOutputCosmeticId',
-        'version' => 'setVersion',
-        'frozen_at' => 'setFrozenAt',
-        'members' => 'setMembers'
+        'frozen_at' => 'setFrozenAt'
     ];
 
     /**
@@ -172,14 +172,14 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
         'active' => 'getActive',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'note' => 'getNote',
+        'version' => 'getVersion',
         'reviewed_at' => 'getReviewedAt',
+        'note' => 'getNote',
+        'members' => 'getMembers',
         'merchant_id' => 'getMerchantId',
         'creator_subject_id' => 'getCreatorSubjectId',
         'output_cosmetic_id' => 'getOutputCosmeticId',
-        'version' => 'getVersion',
-        'frozen_at' => 'getFrozenAt',
-        'members' => 'getMembers'
+        'frozen_at' => 'getFrozenAt'
     ];
 
     /**
@@ -244,14 +244,14 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
         $this->container['active'] = $data['active'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['note'] = $data['note'] ?? null;
+        $this->container['version'] = $data['version'] ?? null;
         $this->container['reviewed_at'] = $data['reviewed_at'] ?? null;
+        $this->container['note'] = $data['note'] ?? null;
+        $this->container['members'] = $data['members'] ?? null;
         $this->container['merchant_id'] = $data['merchant_id'] ?? null;
         $this->container['creator_subject_id'] = $data['creator_subject_id'] ?? null;
         $this->container['output_cosmetic_id'] = $data['output_cosmetic_id'] ?? null;
-        $this->container['version'] = $data['version'] ?? null;
         $this->container['frozen_at'] = $data['frozen_at'] ?? null;
-        $this->container['members'] = $data['members'] ?? null;
     }
 
     /**
@@ -278,6 +278,12 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
+        }
+        if ($this->container['members'] === null) {
+            $invalidProperties[] = "'members' can't be null";
+        }
         if ($this->container['merchant_id'] === null) {
             $invalidProperties[] = "'merchant_id' can't be null";
         }
@@ -286,12 +292,6 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
         }
         if ($this->container['output_cosmetic_id'] === null) {
             $invalidProperties[] = "'output_cosmetic_id' can't be null";
-        }
-        if ($this->container['version'] === null) {
-            $invalidProperties[] = "'version' can't be null";
-        }
-        if ($this->container['members'] === null) {
-            $invalidProperties[] = "'members' can't be null";
         }
         return $invalidProperties;
     }
@@ -429,25 +429,25 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
     }
 
     /**
-     * Gets note
+     * Gets version
      *
-     * @return string|null
+     * @return float
      */
-    public function getNote()
+    public function getVersion()
     {
-        return $this->container['note'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets note
+     * Sets version
      *
-     * @param string|null $note note
+     * @param float $version version
      *
      * @return self
      */
-    public function setNote($note)
+    public function setVersion($version)
     {
-        $this->container['note'] = $note;
+        $this->container['version'] = $version;
 
         return $this;
     }
@@ -472,6 +472,54 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
     public function setReviewedAt($reviewed_at)
     {
         $this->container['reviewed_at'] = $reviewed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets note
+     *
+     * @return string|null
+     */
+    public function getNote()
+    {
+        return $this->container['note'];
+    }
+
+    /**
+     * Sets note
+     *
+     * @param string|null $note note
+     *
+     * @return self
+     */
+    public function setNote($note)
+    {
+        $this->container['note'] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Gets members
+     *
+     * @return \Crossly\Model\Trade\CreateTradeBlockSetRecipeResponseRecipeMembers[]
+     */
+    public function getMembers()
+    {
+        return $this->container['members'];
+    }
+
+    /**
+     * Sets members
+     *
+     * @param \Crossly\Model\Trade\CreateTradeBlockSetRecipeResponseRecipeMembers[] $members members
+     *
+     * @return self
+     */
+    public function setMembers($members)
+    {
+        $this->container['members'] = $members;
 
         return $this;
     }
@@ -549,30 +597,6 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
     }
 
     /**
-     * Gets version
-     *
-     * @return float
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param float $version version
-     *
-     * @return self
-     */
-    public function setVersion($version)
-    {
-        $this->container['version'] = $version;
-
-        return $this;
-    }
-
-    /**
      * Gets frozen_at
      *
      * @return \DateTime|null
@@ -592,30 +616,6 @@ class CreateTradeBlockSetRecipeResponseRecipe implements ModelInterface, ArrayAc
     public function setFrozenAt($frozen_at)
     {
         $this->container['frozen_at'] = $frozen_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets members
-     *
-     * @return \Crossly\Model\Trade\CreateTradeBlockSetRecipeResponseRecipeMembers[]
-     */
-    public function getMembers()
-    {
-        return $this->container['members'];
-    }
-
-    /**
-     * Sets members
-     *
-     * @param \Crossly\Model\Trade\CreateTradeBlockSetRecipeResponseRecipeMembers[] $members members
-     *
-     * @return self
-     */
-    public function setMembers($members)
-    {
-        $this->container['members'] = $members;
 
         return $this;
     }

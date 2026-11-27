@@ -61,8 +61,8 @@ class CreateBuyerOfferRespondResponseData implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'offer_id' => 'string',
-        'redeemable' => 'bool'
+        'redeemable' => 'bool',
+        'offer_id' => 'string'
     ];
 
     /**
@@ -74,8 +74,8 @@ class CreateBuyerOfferRespondResponseData implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'offer_id' => null,
-        'redeemable' => null
+        'redeemable' => null,
+        'offer_id' => null
     ];
 
     /**
@@ -106,8 +106,8 @@ class CreateBuyerOfferRespondResponseData implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'offer_id' => 'offerId',
-        'redeemable' => 'redeemable'
+        'redeemable' => 'redeemable',
+        'offer_id' => 'offerId'
     ];
 
     /**
@@ -117,8 +117,8 @@ class CreateBuyerOfferRespondResponseData implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'offer_id' => 'setOfferId',
-        'redeemable' => 'setRedeemable'
+        'redeemable' => 'setRedeemable',
+        'offer_id' => 'setOfferId'
     ];
 
     /**
@@ -128,8 +128,8 @@ class CreateBuyerOfferRespondResponseData implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'offer_id' => 'getOfferId',
-        'redeemable' => 'getRedeemable'
+        'redeemable' => 'getRedeemable',
+        'offer_id' => 'getOfferId'
     ];
 
     /**
@@ -190,8 +190,8 @@ class CreateBuyerOfferRespondResponseData implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['offer_id'] = $data['offer_id'] ?? null;
         $this->container['redeemable'] = $data['redeemable'] ?? null;
+        $this->container['offer_id'] = $data['offer_id'] ?? null;
     }
 
     /**
@@ -246,30 +246,6 @@ class CreateBuyerOfferRespondResponseData implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets offer_id
-     *
-     * @return string|null
-     */
-    public function getOfferId()
-    {
-        return $this->container['offer_id'];
-    }
-
-    /**
-     * Sets offer_id
-     *
-     * @param string|null $offer_id Countered: the id of YOUR new offer, now waiting on the seller.
-     *
-     * @return self
-     */
-    public function setOfferId($offer_id)
-    {
-        $this->container['offer_id'] = $offer_id;
-
-        return $this;
-    }
-
-    /**
      * Gets redeemable
      *
      * @return bool|null
@@ -289,6 +265,30 @@ class CreateBuyerOfferRespondResponseData implements ModelInterface, ArrayAccess
     public function setRedeemable($redeemable)
     {
         $this->container['redeemable'] = $redeemable;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer_id
+     *
+     * @return string|null
+     */
+    public function getOfferId()
+    {
+        return $this->container['offer_id'];
+    }
+
+    /**
+     * Sets offer_id
+     *
+     * @param string|null $offer_id Countered: the id of YOUR new offer, now waiting on the seller.
+     *
+     * @return self
+     */
+    public function setOfferId($offer_id)
+    {
+        $this->container['offer_id'] = $offer_id;
 
         return $this;
     }

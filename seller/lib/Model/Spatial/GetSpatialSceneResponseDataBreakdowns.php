@@ -169,22 +169,22 @@ class GetSpatialSceneResponseDataBreakdowns implements ModelInterface, ArrayAcce
     }
 
     const FACET_brand = 'brand';
+    const FACET_label = 'label';
+    const FACET_status = 'status';
+    const FACET_age = 'age';
     const FACET_condition = 'condition';
     const FACET_size = 'size';
-    const FACET_status = 'status';
-    const FACET_label = 'label';
     const FACET_title = 'title';
     const FACET_valueOption = 'value';
+    const FACET_set = 'set';
+    const FACET_team = 'team';
     const FACET_year = 'year';
     const FACET_grade = 'grade';
     const FACET_game = 'game';
-    const FACET_set = 'set';
     const FACET_franchise = 'franchise';
-    const FACET_team = 'team';
     const FACET_era = 'era';
     const FACET_genre = 'genre';
     const FACET_colour = 'colour';
-    const FACET_age = 'age';
     const FACET_exhibitor = 'exhibitor';
 
     /**
@@ -196,22 +196,22 @@ class GetSpatialSceneResponseDataBreakdowns implements ModelInterface, ArrayAcce
     {
         return [
             self::FACET_brand,
+            self::FACET_label,
+            self::FACET_status,
+            self::FACET_age,
             self::FACET_condition,
             self::FACET_size,
-            self::FACET_status,
-            self::FACET_label,
             self::FACET_title,
             self::FACET_valueOption,
+            self::FACET_set,
+            self::FACET_team,
             self::FACET_year,
             self::FACET_grade,
             self::FACET_game,
-            self::FACET_set,
             self::FACET_franchise,
-            self::FACET_team,
             self::FACET_era,
             self::FACET_genre,
             self::FACET_colour,
-            self::FACET_age,
             self::FACET_exhibitor,
         ];
     }

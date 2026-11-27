@@ -188,12 +188,12 @@ class CreateVaultMarketPaperMissionMarkCheckResponse implements ModelInterface, 
         return self::$openAPIModelName;
     }
 
+    const ANSWER_C = 'C';
     const ANSWER_A = 'A';
     const ANSWER_B = 'B';
-    const ANSWER_C = 'C';
+    const QUALITY_C = 'C';
     const QUALITY_A = 'A';
     const QUALITY_B = 'B';
-    const QUALITY_C = 'C';
 
     /**
      * Gets allowable values of the enum
@@ -203,9 +203,9 @@ class CreateVaultMarketPaperMissionMarkCheckResponse implements ModelInterface, 
     public function getAnswerAllowableValues()
     {
         return [
+            self::ANSWER_C,
             self::ANSWER_A,
             self::ANSWER_B,
-            self::ANSWER_C,
         ];
     }
 
@@ -217,9 +217,9 @@ class CreateVaultMarketPaperMissionMarkCheckResponse implements ModelInterface, 
     public function getQualityAllowableValues()
     {
         return [
+            self::QUALITY_C,
             self::QUALITY_A,
             self::QUALITY_B,
-            self::QUALITY_C,
         ];
     }
 

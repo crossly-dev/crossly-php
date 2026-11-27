@@ -60,6 +60,7 @@ class UpdateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
+        'warnings' => '\Crossly\Model\Listing\CreateListingResponseWarnings[]',
         'jobs' => '\Crossly\Model\Listing\UpdateListingResponseJobs[]'
     ];
 
@@ -71,6 +72,7 @@ class UpdateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'warnings' => null,
         'jobs' => null
     ];
 
@@ -101,6 +103,7 @@ class UpdateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'warnings' => 'warnings',
         'jobs' => 'jobs'
     ];
 
@@ -110,6 +113,7 @@ class UpdateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'warnings' => 'setWarnings',
         'jobs' => 'setJobs'
     ];
 
@@ -119,6 +123,7 @@ class UpdateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'warnings' => 'getWarnings',
         'jobs' => 'getJobs'
     ];
 
@@ -179,6 +184,7 @@ class UpdateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
+        $this->container['warnings'] = $data['warnings'] ?? null;
         $this->container['jobs'] = $data['jobs'] ?? null;
     }
 
@@ -208,6 +214,30 @@ class UpdateListingResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets warnings
+     *
+     * @return \Crossly\Model\Listing\CreateListingResponseWarnings[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \Crossly\Model\Listing\CreateListingResponseWarnings[]|null $warnings warnings
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        $this->container['warnings'] = $warnings;
+
+        return $this;
+    }
 
     /**
      * Gets jobs

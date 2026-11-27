@@ -60,16 +60,16 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
+        'transform' => '\Crossly\Model\Spatial\CreateSpatialSceneNodeResponseDataTransform',
         'id' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'transform' => '\Crossly\Model\Spatial\CreateSpatialSceneNodeResponseDataTransform',
         'label' => 'string',
         'sort' => 'float',
-        'segment' => 'string',
         'scene_id' => 'string',
         'parent_id' => 'string',
-        'unit_key' => 'string'
+        'unit_key' => 'string',
+        'segment' => 'string'
     ];
 
     /**
@@ -80,16 +80,16 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'transform' => null,
         'id' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'transform' => null,
         'label' => null,
         'sort' => null,
-        'segment' => null,
         'scene_id' => null,
         'parent_id' => null,
-        'unit_key' => null
+        'unit_key' => null,
+        'segment' => null
     ];
 
     /**
@@ -119,16 +119,16 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
+        'transform' => 'transform',
         'id' => 'id',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
-        'transform' => 'transform',
         'label' => 'label',
         'sort' => 'sort',
-        'segment' => 'segment',
         'scene_id' => 'sceneId',
         'parent_id' => 'parentId',
-        'unit_key' => 'unitKey'
+        'unit_key' => 'unitKey',
+        'segment' => 'segment'
     ];
 
     /**
@@ -137,16 +137,16 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
+        'transform' => 'setTransform',
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'transform' => 'setTransform',
         'label' => 'setLabel',
         'sort' => 'setSort',
-        'segment' => 'setSegment',
         'scene_id' => 'setSceneId',
         'parent_id' => 'setParentId',
-        'unit_key' => 'setUnitKey'
+        'unit_key' => 'setUnitKey',
+        'segment' => 'setSegment'
     ];
 
     /**
@@ -155,16 +155,16 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
+        'transform' => 'getTransform',
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'transform' => 'getTransform',
         'label' => 'getLabel',
         'sort' => 'getSort',
-        'segment' => 'getSegment',
         'scene_id' => 'getSceneId',
         'parent_id' => 'getParentId',
-        'unit_key' => 'getUnitKey'
+        'unit_key' => 'getUnitKey',
+        'segment' => 'getSegment'
     ];
 
     /**
@@ -224,16 +224,16 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
+        $this->container['transform'] = $data['transform'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
-        $this->container['transform'] = $data['transform'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
         $this->container['sort'] = $data['sort'] ?? null;
-        $this->container['segment'] = $data['segment'] ?? null;
         $this->container['scene_id'] = $data['scene_id'] ?? null;
         $this->container['parent_id'] = $data['parent_id'] ?? null;
         $this->container['unit_key'] = $data['unit_key'] ?? null;
+        $this->container['segment'] = $data['segment'] ?? null;
     }
 
     /**
@@ -245,6 +245,9 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['transform'] === null) {
+            $invalidProperties[] = "'transform' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -253,9 +256,6 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['transform'] === null) {
-            $invalidProperties[] = "'transform' can't be null";
         }
         if ($this->container['sort'] === null) {
             $invalidProperties[] = "'sort' can't be null";
@@ -280,6 +280,30 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets transform
+     *
+     * @return \Crossly\Model\Spatial\CreateSpatialSceneNodeResponseDataTransform
+     */
+    public function getTransform()
+    {
+        return $this->container['transform'];
+    }
+
+    /**
+     * Sets transform
+     *
+     * @param \Crossly\Model\Spatial\CreateSpatialSceneNodeResponseDataTransform $transform transform
+     *
+     * @return self
+     */
+    public function setTransform($transform)
+    {
+        $this->container['transform'] = $transform;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -354,30 +378,6 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets transform
-     *
-     * @return \Crossly\Model\Spatial\CreateSpatialSceneNodeResponseDataTransform
-     */
-    public function getTransform()
-    {
-        return $this->container['transform'];
-    }
-
-    /**
-     * Sets transform
-     *
-     * @param \Crossly\Model\Spatial\CreateSpatialSceneNodeResponseDataTransform $transform transform
-     *
-     * @return self
-     */
-    public function setTransform($transform)
-    {
-        $this->container['transform'] = $transform;
-
-        return $this;
-    }
-
-    /**
      * Gets label
      *
      * @return string|null
@@ -421,30 +421,6 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
     public function setSort($sort)
     {
         $this->container['sort'] = $sort;
-
-        return $this;
-    }
-
-    /**
-     * Gets segment
-     *
-     * @return string|null
-     */
-    public function getSegment()
-    {
-        return $this->container['segment'];
-    }
-
-    /**
-     * Sets segment
-     *
-     * @param string|null $segment segment
-     *
-     * @return self
-     */
-    public function setSegment($segment)
-    {
-        $this->container['segment'] = $segment;
 
         return $this;
     }
@@ -517,6 +493,30 @@ class CreateSpatialSceneNodeResponseData implements ModelInterface, ArrayAccess,
     public function setUnitKey($unit_key)
     {
         $this->container['unit_key'] = $unit_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets segment
+     *
+     * @return string|null
+     */
+    public function getSegment()
+    {
+        return $this->container['segment'];
+    }
+
+    /**
+     * Sets segment
+     *
+     * @param string|null $segment segment
+     *
+     * @return self
+     */
+    public function setSegment($segment)
+    {
+        $this->container['segment'] = $segment;
 
         return $this;
     }

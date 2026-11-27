@@ -164,8 +164,8 @@ class UpdateWorldConventionStatusResponseData implements ModelInterface, ArrayAc
     }
 
     const STATUS_LIVE = 'live';
-    const STATUS_OPEN = 'open';
     const STATUS_CANCELLED = 'cancelled';
+    const STATUS_OPEN = 'open';
     const STATUS_ENDED = 'ended';
 
     /**
@@ -177,8 +177,8 @@ class UpdateWorldConventionStatusResponseData implements ModelInterface, ArrayAc
     {
         return [
             self::STATUS_LIVE,
-            self::STATUS_OPEN,
             self::STATUS_CANCELLED,
+            self::STATUS_OPEN,
             self::STATUS_ENDED,
         ];
     }

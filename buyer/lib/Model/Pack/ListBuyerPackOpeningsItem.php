@@ -61,18 +61,18 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'pack_title' => 'string',
+        'pack_slug' => 'string',
         'status' => 'string',
         'price_cents' => 'float',
-        'image_url' => 'string',
-        'vault_item_id' => 'string',
-        'opened_at' => 'string',
-        'tier_name' => 'string',
         'value_cents' => 'float',
         'buyback_cents' => 'float',
         'item_title' => 'string',
-        'proof' => '\Crossly\Buyer\Model\Pack\ListBuyerPackOpeningsItemProof',
-        'pack_title' => 'string',
-        'pack_slug' => 'string'
+        'image_url' => 'string',
+        'tier_name' => 'string',
+        'vault_item_id' => 'string',
+        'opened_at' => 'string',
+        'proof' => '\Crossly\Buyer\Model\Pack\ListBuyerPackOpeningsItemProof'
     ];
 
     /**
@@ -84,18 +84,18 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'pack_title' => null,
+        'pack_slug' => null,
         'status' => null,
         'price_cents' => null,
-        'image_url' => null,
-        'vault_item_id' => null,
-        'opened_at' => null,
-        'tier_name' => null,
         'value_cents' => null,
         'buyback_cents' => null,
         'item_title' => null,
-        'proof' => null,
-        'pack_title' => null,
-        'pack_slug' => null
+        'image_url' => null,
+        'tier_name' => null,
+        'vault_item_id' => null,
+        'opened_at' => null,
+        'proof' => null
     ];
 
     /**
@@ -126,18 +126,18 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'pack_title' => 'packTitle',
+        'pack_slug' => 'packSlug',
         'status' => 'status',
         'price_cents' => 'priceCents',
-        'image_url' => 'imageUrl',
-        'vault_item_id' => 'vaultItemId',
-        'opened_at' => 'openedAt',
-        'tier_name' => 'tierName',
         'value_cents' => 'valueCents',
         'buyback_cents' => 'buybackCents',
         'item_title' => 'itemTitle',
-        'proof' => 'proof',
-        'pack_title' => 'packTitle',
-        'pack_slug' => 'packSlug'
+        'image_url' => 'imageUrl',
+        'tier_name' => 'tierName',
+        'vault_item_id' => 'vaultItemId',
+        'opened_at' => 'openedAt',
+        'proof' => 'proof'
     ];
 
     /**
@@ -147,18 +147,18 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'id' => 'setId',
+        'pack_title' => 'setPackTitle',
+        'pack_slug' => 'setPackSlug',
         'status' => 'setStatus',
         'price_cents' => 'setPriceCents',
-        'image_url' => 'setImageUrl',
-        'vault_item_id' => 'setVaultItemId',
-        'opened_at' => 'setOpenedAt',
-        'tier_name' => 'setTierName',
         'value_cents' => 'setValueCents',
         'buyback_cents' => 'setBuybackCents',
         'item_title' => 'setItemTitle',
-        'proof' => 'setProof',
-        'pack_title' => 'setPackTitle',
-        'pack_slug' => 'setPackSlug'
+        'image_url' => 'setImageUrl',
+        'tier_name' => 'setTierName',
+        'vault_item_id' => 'setVaultItemId',
+        'opened_at' => 'setOpenedAt',
+        'proof' => 'setProof'
     ];
 
     /**
@@ -168,18 +168,18 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'id' => 'getId',
+        'pack_title' => 'getPackTitle',
+        'pack_slug' => 'getPackSlug',
         'status' => 'getStatus',
         'price_cents' => 'getPriceCents',
-        'image_url' => 'getImageUrl',
-        'vault_item_id' => 'getVaultItemId',
-        'opened_at' => 'getOpenedAt',
-        'tier_name' => 'getTierName',
         'value_cents' => 'getValueCents',
         'buyback_cents' => 'getBuybackCents',
         'item_title' => 'getItemTitle',
-        'proof' => 'getProof',
-        'pack_title' => 'getPackTitle',
-        'pack_slug' => 'getPackSlug'
+        'image_url' => 'getImageUrl',
+        'tier_name' => 'getTierName',
+        'vault_item_id' => 'getVaultItemId',
+        'opened_at' => 'getOpenedAt',
+        'proof' => 'getProof'
     ];
 
     /**
@@ -240,18 +240,18 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
+        $this->container['pack_title'] = $data['pack_title'] ?? null;
+        $this->container['pack_slug'] = $data['pack_slug'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
-        $this->container['image_url'] = $data['image_url'] ?? null;
-        $this->container['vault_item_id'] = $data['vault_item_id'] ?? null;
-        $this->container['opened_at'] = $data['opened_at'] ?? null;
-        $this->container['tier_name'] = $data['tier_name'] ?? null;
         $this->container['value_cents'] = $data['value_cents'] ?? null;
         $this->container['buyback_cents'] = $data['buyback_cents'] ?? null;
         $this->container['item_title'] = $data['item_title'] ?? null;
+        $this->container['image_url'] = $data['image_url'] ?? null;
+        $this->container['tier_name'] = $data['tier_name'] ?? null;
+        $this->container['vault_item_id'] = $data['vault_item_id'] ?? null;
+        $this->container['opened_at'] = $data['opened_at'] ?? null;
         $this->container['proof'] = $data['proof'] ?? null;
-        $this->container['pack_title'] = $data['pack_title'] ?? null;
-        $this->container['pack_slug'] = $data['pack_slug'] ?? null;
     }
 
     /**
@@ -266,6 +266,12 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
+        if ($this->container['pack_title'] === null) {
+            $invalidProperties[] = "'pack_title' can't be null";
+        }
+        if ($this->container['pack_slug'] === null) {
+            $invalidProperties[] = "'pack_slug' can't be null";
+        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -274,12 +280,6 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
         }
         if ($this->container['proof'] === null) {
             $invalidProperties[] = "'proof' can't be null";
-        }
-        if ($this->container['pack_title'] === null) {
-            $invalidProperties[] = "'pack_title' can't be null";
-        }
-        if ($this->container['pack_slug'] === null) {
-            $invalidProperties[] = "'pack_slug' can't be null";
         }
         return $invalidProperties;
     }
@@ -316,6 +316,54 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets pack_title
+     *
+     * @return string
+     */
+    public function getPackTitle()
+    {
+        return $this->container['pack_title'];
+    }
+
+    /**
+     * Sets pack_title
+     *
+     * @param string $pack_title pack_title
+     *
+     * @return self
+     */
+    public function setPackTitle($pack_title)
+    {
+        $this->container['pack_title'] = $pack_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets pack_slug
+     *
+     * @return string
+     */
+    public function getPackSlug()
+    {
+        return $this->container['pack_slug'];
+    }
+
+    /**
+     * Sets pack_slug
+     *
+     * @param string $pack_slug pack_slug
+     *
+     * @return self
+     */
+    public function setPackSlug($pack_slug)
+    {
+        $this->container['pack_slug'] = $pack_slug;
 
         return $this;
     }
@@ -364,102 +412,6 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
     public function setPriceCents($price_cents)
     {
         $this->container['price_cents'] = $price_cents;
-
-        return $this;
-    }
-
-    /**
-     * Gets image_url
-     *
-     * @return string|null
-     */
-    public function getImageUrl()
-    {
-        return $this->container['image_url'];
-    }
-
-    /**
-     * Sets image_url
-     *
-     * @param string|null $image_url image_url
-     *
-     * @return self
-     */
-    public function setImageUrl($image_url)
-    {
-        $this->container['image_url'] = $image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets vault_item_id
-     *
-     * @return string|null
-     */
-    public function getVaultItemId()
-    {
-        return $this->container['vault_item_id'];
-    }
-
-    /**
-     * Sets vault_item_id
-     *
-     * @param string|null $vault_item_id vault_item_id
-     *
-     * @return self
-     */
-    public function setVaultItemId($vault_item_id)
-    {
-        $this->container['vault_item_id'] = $vault_item_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets opened_at
-     *
-     * @return string|null
-     */
-    public function getOpenedAt()
-    {
-        return $this->container['opened_at'];
-    }
-
-    /**
-     * Sets opened_at
-     *
-     * @param string|null $opened_at opened_at
-     *
-     * @return self
-     */
-    public function setOpenedAt($opened_at)
-    {
-        $this->container['opened_at'] = $opened_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets tier_name
-     *
-     * @return string|null
-     */
-    public function getTierName()
-    {
-        return $this->container['tier_name'];
-    }
-
-    /**
-     * Sets tier_name
-     *
-     * @param string|null $tier_name tier_name
-     *
-     * @return self
-     */
-    public function setTierName($tier_name)
-    {
-        $this->container['tier_name'] = $tier_name;
 
         return $this;
     }
@@ -537,6 +489,102 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets image_url
+     *
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     *
+     * @param string|null $image_url image_url
+     *
+     * @return self
+     */
+    public function setImageUrl($image_url)
+    {
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets tier_name
+     *
+     * @return string|null
+     */
+    public function getTierName()
+    {
+        return $this->container['tier_name'];
+    }
+
+    /**
+     * Sets tier_name
+     *
+     * @param string|null $tier_name tier_name
+     *
+     * @return self
+     */
+    public function setTierName($tier_name)
+    {
+        $this->container['tier_name'] = $tier_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets vault_item_id
+     *
+     * @return string|null
+     */
+    public function getVaultItemId()
+    {
+        return $this->container['vault_item_id'];
+    }
+
+    /**
+     * Sets vault_item_id
+     *
+     * @param string|null $vault_item_id vault_item_id
+     *
+     * @return self
+     */
+    public function setVaultItemId($vault_item_id)
+    {
+        $this->container['vault_item_id'] = $vault_item_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets opened_at
+     *
+     * @return string|null
+     */
+    public function getOpenedAt()
+    {
+        return $this->container['opened_at'];
+    }
+
+    /**
+     * Sets opened_at
+     *
+     * @param string|null $opened_at opened_at
+     *
+     * @return self
+     */
+    public function setOpenedAt($opened_at)
+    {
+        $this->container['opened_at'] = $opened_at;
+
+        return $this;
+    }
+
+    /**
      * Gets proof
      *
      * @return \Crossly\Buyer\Model\Pack\ListBuyerPackOpeningsItemProof
@@ -556,54 +604,6 @@ class ListBuyerPackOpeningsItem implements ModelInterface, ArrayAccess, \JsonSer
     public function setProof($proof)
     {
         $this->container['proof'] = $proof;
-
-        return $this;
-    }
-
-    /**
-     * Gets pack_title
-     *
-     * @return string
-     */
-    public function getPackTitle()
-    {
-        return $this->container['pack_title'];
-    }
-
-    /**
-     * Sets pack_title
-     *
-     * @param string $pack_title pack_title
-     *
-     * @return self
-     */
-    public function setPackTitle($pack_title)
-    {
-        $this->container['pack_title'] = $pack_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets pack_slug
-     *
-     * @return string
-     */
-    public function getPackSlug()
-    {
-        return $this->container['pack_slug'];
-    }
-
-    /**
-     * Sets pack_slug
-     *
-     * @param string $pack_slug pack_slug
-     *
-     * @return self
-     */
-    public function setPackSlug($pack_slug)
-    {
-        $this->container['pack_slug'] = $pack_slug;
 
         return $this;
     }

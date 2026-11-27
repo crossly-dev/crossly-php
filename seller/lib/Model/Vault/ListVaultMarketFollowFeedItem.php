@@ -64,11 +64,12 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
         'kind' => 'string',
         'verb' => 'string',
         'at' => 'string',
+        'by' => '\Crossly\Model\Vault\ListVaultMarketFollowFeedItemBy',
         'book_key' => 'string',
         'name' => 'string',
         'label' => 'string',
         'image_url' => 'string',
-        'mark' => '\Crossly\Model\Vault\ListVaultMarketFeedItemMark',
+        'mark' => '\Crossly\Model\Vault\ListVaultMarketOpeningItemMark',
         'exhibition' => '\Crossly\Model\Vault\ListVaultMarketFollowFeedItemExhibition',
         'buy_href' => 'string'
     ];
@@ -85,6 +86,7 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
         'kind' => null,
         'verb' => null,
         'at' => null,
+        'by' => null,
         'book_key' => null,
         'name' => null,
         'label' => null,
@@ -125,6 +127,7 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
         'kind' => 'kind',
         'verb' => 'verb',
         'at' => 'at',
+        'by' => 'by',
         'book_key' => 'bookKey',
         'name' => 'name',
         'label' => 'label',
@@ -144,6 +147,7 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
         'kind' => 'setKind',
         'verb' => 'setVerb',
         'at' => 'setAt',
+        'by' => 'setBy',
         'book_key' => 'setBookKey',
         'name' => 'setName',
         'label' => 'setLabel',
@@ -163,6 +167,7 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
         'kind' => 'getKind',
         'verb' => 'getVerb',
         'at' => 'getAt',
+        'by' => 'getBy',
         'book_key' => 'getBookKey',
         'name' => 'getName',
         'label' => 'getLabel',
@@ -213,8 +218,8 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    const KIND_DEPOSIT = 'deposit';
     const KIND_SALE = 'sale';
+    const KIND_DEPOSIT = 'deposit';
     const KIND_BUY = 'buy';
     const KIND_HALL_LOAN = 'hall_loan';
 
@@ -226,8 +231,8 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_DEPOSIT,
             self::KIND_SALE,
+            self::KIND_DEPOSIT,
             self::KIND_BUY,
             self::KIND_HALL_LOAN,
         ];
@@ -252,6 +257,7 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
         $this->container['kind'] = $data['kind'] ?? null;
         $this->container['verb'] = $data['verb'] ?? null;
         $this->container['at'] = $data['at'] ?? null;
+        $this->container['by'] = $data['by'] ?? null;
         $this->container['book_key'] = $data['book_key'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['label'] = $data['label'] ?? null;
@@ -290,6 +296,9 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
         }
         if ($this->container['at'] === null) {
             $invalidProperties[] = "'at' can't be null";
+        }
+        if ($this->container['by'] === null) {
+            $invalidProperties[] = "'by' can't be null";
         }
         if ($this->container['book_key'] === null) {
             $invalidProperties[] = "'book_key' can't be null";
@@ -422,6 +431,30 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
+     * Gets by
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketFollowFeedItemBy
+     */
+    public function getBy()
+    {
+        return $this->container['by'];
+    }
+
+    /**
+     * Sets by
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketFollowFeedItemBy $by by
+     *
+     * @return self
+     */
+    public function setBy($by)
+    {
+        $this->container['by'] = $by;
+
+        return $this;
+    }
+
+    /**
      * Gets book_key
      *
      * @return string
@@ -520,7 +553,7 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets mark
      *
-     * @return \Crossly\Model\Vault\ListVaultMarketFeedItemMark
+     * @return \Crossly\Model\Vault\ListVaultMarketOpeningItemMark
      */
     public function getMark()
     {
@@ -530,7 +563,7 @@ class ListVaultMarketFollowFeedItem implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets mark
      *
-     * @param \Crossly\Model\Vault\ListVaultMarketFeedItemMark $mark mark
+     * @param \Crossly\Model\Vault\ListVaultMarketOpeningItemMark $mark mark
      *
      * @return self
      */

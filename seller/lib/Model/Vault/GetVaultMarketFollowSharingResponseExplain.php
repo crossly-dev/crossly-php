@@ -62,9 +62,9 @@ class GetVaultMarketFollowSharingResponseExplain implements ModelInterface, Arra
     protected static $openAPITypes = [
         'orders' => 'string',
         'sales' => 'string',
-        'hall_loans' => 'string',
         'leaderboard' => 'string',
-        'deposits' => 'string'
+        'deposits' => 'string',
+        'hall_loans' => 'string'
     ];
 
     /**
@@ -77,9 +77,9 @@ class GetVaultMarketFollowSharingResponseExplain implements ModelInterface, Arra
     protected static $openAPIFormats = [
         'orders' => null,
         'sales' => null,
-        'hall_loans' => null,
         'leaderboard' => null,
-        'deposits' => null
+        'deposits' => null,
+        'hall_loans' => null
     ];
 
     /**
@@ -111,9 +111,9 @@ class GetVaultMarketFollowSharingResponseExplain implements ModelInterface, Arra
     protected static $attributeMap = [
         'orders' => 'orders',
         'sales' => 'sales',
-        'hall_loans' => 'hallLoans',
         'leaderboard' => 'leaderboard',
-        'deposits' => 'deposits'
+        'deposits' => 'deposits',
+        'hall_loans' => 'hallLoans'
     ];
 
     /**
@@ -124,9 +124,9 @@ class GetVaultMarketFollowSharingResponseExplain implements ModelInterface, Arra
     protected static $setters = [
         'orders' => 'setOrders',
         'sales' => 'setSales',
-        'hall_loans' => 'setHallLoans',
         'leaderboard' => 'setLeaderboard',
-        'deposits' => 'setDeposits'
+        'deposits' => 'setDeposits',
+        'hall_loans' => 'setHallLoans'
     ];
 
     /**
@@ -137,9 +137,9 @@ class GetVaultMarketFollowSharingResponseExplain implements ModelInterface, Arra
     protected static $getters = [
         'orders' => 'getOrders',
         'sales' => 'getSales',
-        'hall_loans' => 'getHallLoans',
         'leaderboard' => 'getLeaderboard',
-        'deposits' => 'getDeposits'
+        'deposits' => 'getDeposits',
+        'hall_loans' => 'getHallLoans'
     ];
 
     /**
@@ -201,9 +201,9 @@ class GetVaultMarketFollowSharingResponseExplain implements ModelInterface, Arra
     {
         $this->container['orders'] = $data['orders'] ?? null;
         $this->container['sales'] = $data['sales'] ?? null;
-        $this->container['hall_loans'] = $data['hall_loans'] ?? null;
         $this->container['leaderboard'] = $data['leaderboard'] ?? null;
         $this->container['deposits'] = $data['deposits'] ?? null;
+        $this->container['hall_loans'] = $data['hall_loans'] ?? null;
     }
 
     /**
@@ -221,14 +221,14 @@ class GetVaultMarketFollowSharingResponseExplain implements ModelInterface, Arra
         if ($this->container['sales'] === null) {
             $invalidProperties[] = "'sales' can't be null";
         }
-        if ($this->container['hall_loans'] === null) {
-            $invalidProperties[] = "'hall_loans' can't be null";
-        }
         if ($this->container['leaderboard'] === null) {
             $invalidProperties[] = "'leaderboard' can't be null";
         }
         if ($this->container['deposits'] === null) {
             $invalidProperties[] = "'deposits' can't be null";
+        }
+        if ($this->container['hall_loans'] === null) {
+            $invalidProperties[] = "'hall_loans' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,30 +294,6 @@ class GetVaultMarketFollowSharingResponseExplain implements ModelInterface, Arra
     }
 
     /**
-     * Gets hall_loans
-     *
-     * @return string
-     */
-    public function getHallLoans()
-    {
-        return $this->container['hall_loans'];
-    }
-
-    /**
-     * Sets hall_loans
-     *
-     * @param string $hall_loans hall_loans
-     *
-     * @return self
-     */
-    public function setHallLoans($hall_loans)
-    {
-        $this->container['hall_loans'] = $hall_loans;
-
-        return $this;
-    }
-
-    /**
      * Gets leaderboard
      *
      * @return string
@@ -361,6 +337,30 @@ class GetVaultMarketFollowSharingResponseExplain implements ModelInterface, Arra
     public function setDeposits($deposits)
     {
         $this->container['deposits'] = $deposits;
+
+        return $this;
+    }
+
+    /**
+     * Gets hall_loans
+     *
+     * @return string
+     */
+    public function getHallLoans()
+    {
+        return $this->container['hall_loans'];
+    }
+
+    /**
+     * Sets hall_loans
+     *
+     * @param string $hall_loans hall_loans
+     *
+     * @return self
+     */
+    public function setHallLoans($hall_loans)
+    {
+        $this->container['hall_loans'] = $hall_loans;
 
         return $this;
     }

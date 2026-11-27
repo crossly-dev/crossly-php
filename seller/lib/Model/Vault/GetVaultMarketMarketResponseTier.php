@@ -218,13 +218,13 @@ class GetVaultMarketMarketResponseTier implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    const TIER_STANDARD = 'standard';
     const TIER_CLOSED = 'closed';
+    const TIER_STANDARD = 'standard';
     const TIER_DEEP = 'deep';
     const TIER_THIN = 'thin';
+    const LIQUIDITY_TIER_C = 'C';
     const LIQUIDITY_TIER_A = 'A';
     const LIQUIDITY_TIER_B = 'B';
-    const LIQUIDITY_TIER_C = 'C';
     const LIQUIDITY_TIER_D = 'D';
 
     /**
@@ -235,8 +235,8 @@ class GetVaultMarketMarketResponseTier implements ModelInterface, ArrayAccess, \
     public function getTierAllowableValues()
     {
         return [
-            self::TIER_STANDARD,
             self::TIER_CLOSED,
+            self::TIER_STANDARD,
             self::TIER_DEEP,
             self::TIER_THIN,
         ];
@@ -250,9 +250,9 @@ class GetVaultMarketMarketResponseTier implements ModelInterface, ArrayAccess, \
     public function getLiquidityTierAllowableValues()
     {
         return [
+            self::LIQUIDITY_TIER_C,
             self::LIQUIDITY_TIER_A,
             self::LIQUIDITY_TIER_B,
-            self::LIQUIDITY_TIER_C,
             self::LIQUIDITY_TIER_D,
         ];
     }

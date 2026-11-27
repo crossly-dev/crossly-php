@@ -208,11 +208,11 @@ class ListStreetDropsItem implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    const STATUS_SCHEDULED = 'scheduled';
     const STATUS_CANCELLED = 'cancelled';
+    const STATUS_SCHEDULED = 'scheduled';
     const STATUS_CLOSED = 'closed';
-    const STATUS_RELEASED = 'released';
     const STATUS_LINE_OPEN = 'line_open';
+    const STATUS_RELEASED = 'released';
 
     /**
      * Gets allowable values of the enum
@@ -222,11 +222,11 @@ class ListStreetDropsItem implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_SCHEDULED,
             self::STATUS_CANCELLED,
+            self::STATUS_SCHEDULED,
             self::STATUS_CLOSED,
-            self::STATUS_RELEASED,
             self::STATUS_LINE_OPEN,
+            self::STATUS_RELEASED,
         ];
     }
 

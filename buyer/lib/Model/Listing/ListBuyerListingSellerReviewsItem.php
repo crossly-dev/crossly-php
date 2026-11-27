@@ -61,13 +61,13 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
-        'item' => '\Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemItem',
-        'body' => 'string',
         'rating' => 'float',
-        'seller_reply' => 'string',
+        'body' => 'string',
         'media' => '\Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemMedia[]',
-        'reviewer' => 'string'
+        'seller_reply' => 'string',
+        'reviewer' => 'string',
+        'item' => '\Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemItem',
+        'created_at' => 'string'
     ];
 
     /**
@@ -79,13 +79,13 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
-        'item' => null,
-        'body' => null,
         'rating' => null,
-        'seller_reply' => null,
+        'body' => null,
         'media' => null,
-        'reviewer' => null
+        'seller_reply' => null,
+        'reviewer' => null,
+        'item' => null,
+        'created_at' => null
     ];
 
     /**
@@ -116,13 +116,13 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'item' => 'item',
-        'body' => 'body',
         'rating' => 'rating',
-        'seller_reply' => 'sellerReply',
+        'body' => 'body',
         'media' => 'media',
-        'reviewer' => 'reviewer'
+        'seller_reply' => 'sellerReply',
+        'reviewer' => 'reviewer',
+        'item' => 'item',
+        'created_at' => 'createdAt'
     ];
 
     /**
@@ -132,13 +132,13 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'item' => 'setItem',
-        'body' => 'setBody',
         'rating' => 'setRating',
-        'seller_reply' => 'setSellerReply',
+        'body' => 'setBody',
         'media' => 'setMedia',
-        'reviewer' => 'setReviewer'
+        'seller_reply' => 'setSellerReply',
+        'reviewer' => 'setReviewer',
+        'item' => 'setItem',
+        'created_at' => 'setCreatedAt'
     ];
 
     /**
@@ -148,13 +148,13 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'item' => 'getItem',
-        'body' => 'getBody',
         'rating' => 'getRating',
-        'seller_reply' => 'getSellerReply',
+        'body' => 'getBody',
         'media' => 'getMedia',
-        'reviewer' => 'getReviewer'
+        'seller_reply' => 'getSellerReply',
+        'reviewer' => 'getReviewer',
+        'item' => 'getItem',
+        'created_at' => 'getCreatedAt'
     ];
 
     /**
@@ -215,13 +215,13 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['item'] = $data['item'] ?? null;
-        $this->container['body'] = $data['body'] ?? null;
         $this->container['rating'] = $data['rating'] ?? null;
-        $this->container['seller_reply'] = $data['seller_reply'] ?? null;
+        $this->container['body'] = $data['body'] ?? null;
         $this->container['media'] = $data['media'] ?? null;
+        $this->container['seller_reply'] = $data['seller_reply'] ?? null;
         $this->container['reviewer'] = $data['reviewer'] ?? null;
+        $this->container['item'] = $data['item'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
     }
 
     /**
@@ -236,17 +236,17 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['item'] === null) {
-            $invalidProperties[] = "'item' can't be null";
-        }
         if ($this->container['rating'] === null) {
             $invalidProperties[] = "'rating' can't be null";
         }
         if ($this->container['media'] === null) {
             $invalidProperties[] = "'media' can't be null";
+        }
+        if ($this->container['item'] === null) {
+            $invalidProperties[] = "'item' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -288,49 +288,25 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets created_at
+     * Gets rating
      *
-     * @return string
+     * @return float
      */
-    public function getCreatedAt()
+    public function getRating()
     {
-        return $this->container['created_at'];
+        return $this->container['rating'];
     }
 
     /**
-     * Sets created_at
+     * Sets rating
      *
-     * @param string $created_at created_at
+     * @param float $rating rating
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setRating($rating)
     {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets item
-     *
-     * @return \Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemItem
-     */
-    public function getItem()
-    {
-        return $this->container['item'];
-    }
-
-    /**
-     * Sets item
-     *
-     * @param \Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemItem $item item
-     *
-     * @return self
-     */
-    public function setItem($item)
-    {
-        $this->container['item'] = $item;
+        $this->container['rating'] = $rating;
 
         return $this;
     }
@@ -360,25 +336,25 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets rating
+     * Gets media
      *
-     * @return float
+     * @return \Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemMedia[]
      */
-    public function getRating()
+    public function getMedia()
     {
-        return $this->container['rating'];
+        return $this->container['media'];
     }
 
     /**
-     * Sets rating
+     * Sets media
      *
-     * @param float $rating rating
+     * @param \Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemMedia[] $media media
      *
      * @return self
      */
-    public function setRating($rating)
+    public function setMedia($media)
     {
-        $this->container['rating'] = $rating;
+        $this->container['media'] = $media;
 
         return $this;
     }
@@ -408,30 +384,6 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets media
-     *
-     * @return \Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemMedia[]
-     */
-    public function getMedia()
-    {
-        return $this->container['media'];
-    }
-
-    /**
-     * Sets media
-     *
-     * @param \Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemMedia[] $media media
-     *
-     * @return self
-     */
-    public function setMedia($media)
-    {
-        $this->container['media'] = $media;
-
-        return $this;
-    }
-
-    /**
      * Gets reviewer
      *
      * @return string|null
@@ -451,6 +403,54 @@ class ListBuyerListingSellerReviewsItem implements ModelInterface, ArrayAccess, 
     public function setReviewer($reviewer)
     {
         $this->container['reviewer'] = $reviewer;
+
+        return $this;
+    }
+
+    /**
+     * Gets item
+     *
+     * @return \Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemItem
+     */
+    public function getItem()
+    {
+        return $this->container['item'];
+    }
+
+    /**
+     * Sets item
+     *
+     * @param \Crossly\Buyer\Model\Listing\ListBuyerListingSellerReviewsItemItem $item item
+     *
+     * @return self
+     */
+    public function setItem($item)
+    {
+        $this->container['item'] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

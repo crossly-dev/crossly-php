@@ -61,6 +61,7 @@ class ListVaultMarketFollowLeaderboardsItem implements ModelInterface, ArrayAcce
       */
     protected static $openAPITypes = [
         'rank' => 'float',
+        'person' => '\Crossly\Model\Vault\ListVaultMarketFollowLeaderboardsItemPerson',
         'return_bps' => 'float',
         'volatility_bps' => 'float',
         'risk_adjusted' => 'float',
@@ -79,6 +80,7 @@ class ListVaultMarketFollowLeaderboardsItem implements ModelInterface, ArrayAcce
       */
     protected static $openAPIFormats = [
         'rank' => null,
+        'person' => null,
         'return_bps' => null,
         'volatility_bps' => null,
         'risk_adjusted' => null,
@@ -116,6 +118,7 @@ class ListVaultMarketFollowLeaderboardsItem implements ModelInterface, ArrayAcce
      */
     protected static $attributeMap = [
         'rank' => 'rank',
+        'person' => 'person',
         'return_bps' => 'returnBps',
         'volatility_bps' => 'volatilityBps',
         'risk_adjusted' => 'riskAdjusted',
@@ -132,6 +135,7 @@ class ListVaultMarketFollowLeaderboardsItem implements ModelInterface, ArrayAcce
      */
     protected static $setters = [
         'rank' => 'setRank',
+        'person' => 'setPerson',
         'return_bps' => 'setReturnBps',
         'volatility_bps' => 'setVolatilityBps',
         'risk_adjusted' => 'setRiskAdjusted',
@@ -148,6 +152,7 @@ class ListVaultMarketFollowLeaderboardsItem implements ModelInterface, ArrayAcce
      */
     protected static $getters = [
         'rank' => 'getRank',
+        'person' => 'getPerson',
         'return_bps' => 'getReturnBps',
         'volatility_bps' => 'getVolatilityBps',
         'risk_adjusted' => 'getRiskAdjusted',
@@ -215,6 +220,7 @@ class ListVaultMarketFollowLeaderboardsItem implements ModelInterface, ArrayAcce
     public function __construct(array $data = null)
     {
         $this->container['rank'] = $data['rank'] ?? null;
+        $this->container['person'] = $data['person'] ?? null;
         $this->container['return_bps'] = $data['return_bps'] ?? null;
         $this->container['volatility_bps'] = $data['volatility_bps'] ?? null;
         $this->container['risk_adjusted'] = $data['risk_adjusted'] ?? null;
@@ -235,6 +241,9 @@ class ListVaultMarketFollowLeaderboardsItem implements ModelInterface, ArrayAcce
 
         if ($this->container['rank'] === null) {
             $invalidProperties[] = "'rank' can't be null";
+        }
+        if ($this->container['person'] === null) {
+            $invalidProperties[] = "'person' can't be null";
         }
         if ($this->container['return_bps'] === null) {
             $invalidProperties[] = "'return_bps' can't be null";
@@ -292,6 +301,30 @@ class ListVaultMarketFollowLeaderboardsItem implements ModelInterface, ArrayAcce
     public function setRank($rank)
     {
         $this->container['rank'] = $rank;
+
+        return $this;
+    }
+
+    /**
+     * Gets person
+     *
+     * @return \Crossly\Model\Vault\ListVaultMarketFollowLeaderboardsItemPerson
+     */
+    public function getPerson()
+    {
+        return $this->container['person'];
+    }
+
+    /**
+     * Sets person
+     *
+     * @param \Crossly\Model\Vault\ListVaultMarketFollowLeaderboardsItemPerson $person person
+     *
+     * @return self
+     */
+    public function setPerson($person)
+    {
+        $this->container['person'] = $person;
 
         return $this;
     }

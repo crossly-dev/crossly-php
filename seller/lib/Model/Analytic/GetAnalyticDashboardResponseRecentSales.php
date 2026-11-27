@@ -63,13 +63,12 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
         'sale_id' => 'string',
         'platform' => 'string',
         'platform_order_id' => 'string',
+        'details_pending' => 'bool',
         'sale_price' => 'float',
         'platform_fee' => 'float',
         'shipping_cost' => 'float',
         'cost_of_goods' => 'float',
         'net_profit' => 'float',
-        'detected_by' => 'string',
-        'detected_at' => '\DateTime',
         'item_title' => 'string',
         'item_image' => 'string'
     ];
@@ -85,13 +84,12 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
         'sale_id' => null,
         'platform' => null,
         'platform_order_id' => null,
+        'details_pending' => null,
         'sale_price' => null,
         'platform_fee' => null,
         'shipping_cost' => null,
         'cost_of_goods' => null,
         'net_profit' => null,
-        'detected_by' => null,
-        'detected_at' => 'date-time',
         'item_title' => null,
         'item_image' => null
     ];
@@ -126,13 +124,12 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
         'sale_id' => 'saleId',
         'platform' => 'platform',
         'platform_order_id' => 'platformOrderId',
+        'details_pending' => 'detailsPending',
         'sale_price' => 'salePrice',
         'platform_fee' => 'platformFee',
         'shipping_cost' => 'shippingCost',
         'cost_of_goods' => 'costOfGoods',
         'net_profit' => 'netProfit',
-        'detected_by' => 'detectedBy',
-        'detected_at' => 'detectedAt',
         'item_title' => 'itemTitle',
         'item_image' => 'itemImage'
     ];
@@ -146,13 +143,12 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
         'sale_id' => 'setSaleId',
         'platform' => 'setPlatform',
         'platform_order_id' => 'setPlatformOrderId',
+        'details_pending' => 'setDetailsPending',
         'sale_price' => 'setSalePrice',
         'platform_fee' => 'setPlatformFee',
         'shipping_cost' => 'setShippingCost',
         'cost_of_goods' => 'setCostOfGoods',
         'net_profit' => 'setNetProfit',
-        'detected_by' => 'setDetectedBy',
-        'detected_at' => 'setDetectedAt',
         'item_title' => 'setItemTitle',
         'item_image' => 'setItemImage'
     ];
@@ -166,13 +162,12 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
         'sale_id' => 'getSaleId',
         'platform' => 'getPlatform',
         'platform_order_id' => 'getPlatformOrderId',
+        'details_pending' => 'getDetailsPending',
         'sale_price' => 'getSalePrice',
         'platform_fee' => 'getPlatformFee',
         'shipping_cost' => 'getShippingCost',
         'cost_of_goods' => 'getCostOfGoods',
         'net_profit' => 'getNetProfit',
-        'detected_by' => 'getDetectedBy',
-        'detected_at' => 'getDetectedAt',
         'item_title' => 'getItemTitle',
         'item_image' => 'getItemImage'
     ];
@@ -237,13 +232,12 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
         $this->container['sale_id'] = $data['sale_id'] ?? null;
         $this->container['platform'] = $data['platform'] ?? null;
         $this->container['platform_order_id'] = $data['platform_order_id'] ?? null;
+        $this->container['details_pending'] = $data['details_pending'] ?? null;
         $this->container['sale_price'] = $data['sale_price'] ?? null;
         $this->container['platform_fee'] = $data['platform_fee'] ?? null;
         $this->container['shipping_cost'] = $data['shipping_cost'] ?? null;
         $this->container['cost_of_goods'] = $data['cost_of_goods'] ?? null;
         $this->container['net_profit'] = $data['net_profit'] ?? null;
-        $this->container['detected_by'] = $data['detected_by'] ?? null;
-        $this->container['detected_at'] = $data['detected_at'] ?? null;
         $this->container['item_title'] = $data['item_title'] ?? null;
         $this->container['item_image'] = $data['item_image'] ?? null;
     }
@@ -263,14 +257,8 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
         if ($this->container['platform'] === null) {
             $invalidProperties[] = "'platform' can't be null";
         }
-        if ($this->container['detected_by'] === null) {
-            $invalidProperties[] = "'detected_by' can't be null";
-        }
-        if ($this->container['detected_at'] === null) {
-            $invalidProperties[] = "'detected_at' can't be null";
-        }
-        if ($this->container['item_image'] === null) {
-            $invalidProperties[] = "'item_image' can't be null";
+        if ($this->container['details_pending'] === null) {
+            $invalidProperties[] = "'details_pending' can't be null";
         }
         return $invalidProperties;
     }
@@ -355,6 +343,30 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
     public function setPlatformOrderId($platform_order_id)
     {
         $this->container['platform_order_id'] = $platform_order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets details_pending
+     *
+     * @return bool
+     */
+    public function getDetailsPending()
+    {
+        return $this->container['details_pending'];
+    }
+
+    /**
+     * Sets details_pending
+     *
+     * @param bool $details_pending details_pending
+     *
+     * @return self
+     */
+    public function setDetailsPending($details_pending)
+    {
+        $this->container['details_pending'] = $details_pending;
 
         return $this;
     }
@@ -480,54 +492,6 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
     }
 
     /**
-     * Gets detected_by
-     *
-     * @return string
-     */
-    public function getDetectedBy()
-    {
-        return $this->container['detected_by'];
-    }
-
-    /**
-     * Sets detected_by
-     *
-     * @param string $detected_by detected_by
-     *
-     * @return self
-     */
-    public function setDetectedBy($detected_by)
-    {
-        $this->container['detected_by'] = $detected_by;
-
-        return $this;
-    }
-
-    /**
-     * Gets detected_at
-     *
-     * @return \DateTime
-     */
-    public function getDetectedAt()
-    {
-        return $this->container['detected_at'];
-    }
-
-    /**
-     * Sets detected_at
-     *
-     * @param \DateTime $detected_at detected_at
-     *
-     * @return self
-     */
-    public function setDetectedAt($detected_at)
-    {
-        $this->container['detected_at'] = $detected_at;
-
-        return $this;
-    }
-
-    /**
      * Gets item_title
      *
      * @return string|null
@@ -554,7 +518,7 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
     /**
      * Gets item_image
      *
-     * @return string
+     * @return string|null
      */
     public function getItemImage()
     {
@@ -564,7 +528,7 @@ class GetAnalyticDashboardResponseRecentSales implements ModelInterface, ArrayAc
     /**
      * Sets item_image
      *
-     * @param string $item_image item_image
+     * @param string|null $item_image item_image
      *
      * @return self
      */

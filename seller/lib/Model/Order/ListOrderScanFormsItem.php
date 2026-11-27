@@ -66,10 +66,10 @@ class ListOrderScanFormsItem implements ModelInterface, ArrayAccess, \JsonSerial
         'status' => 'string',
         'carrier' => 'string',
         'order_ids' => 'string[]',
-        'document_url' => 'string',
-        'shippo_manifest_id' => 'string',
+        'warnings' => 'string[]',
         'ship_date' => 'string',
-        'warnings' => 'string[]'
+        'shippo_manifest_id' => 'string',
+        'document_url' => 'string'
     ];
 
     /**
@@ -86,10 +86,10 @@ class ListOrderScanFormsItem implements ModelInterface, ArrayAccess, \JsonSerial
         'status' => null,
         'carrier' => null,
         'order_ids' => null,
-        'document_url' => null,
-        'shippo_manifest_id' => null,
+        'warnings' => null,
         'ship_date' => null,
-        'warnings' => null
+        'shippo_manifest_id' => null,
+        'document_url' => null
     ];
 
     /**
@@ -125,10 +125,10 @@ class ListOrderScanFormsItem implements ModelInterface, ArrayAccess, \JsonSerial
         'status' => 'status',
         'carrier' => 'carrier',
         'order_ids' => 'orderIds',
-        'document_url' => 'documentUrl',
-        'shippo_manifest_id' => 'shippoManifestId',
+        'warnings' => 'warnings',
         'ship_date' => 'shipDate',
-        'warnings' => 'warnings'
+        'shippo_manifest_id' => 'shippoManifestId',
+        'document_url' => 'documentUrl'
     ];
 
     /**
@@ -143,10 +143,10 @@ class ListOrderScanFormsItem implements ModelInterface, ArrayAccess, \JsonSerial
         'status' => 'setStatus',
         'carrier' => 'setCarrier',
         'order_ids' => 'setOrderIds',
-        'document_url' => 'setDocumentUrl',
-        'shippo_manifest_id' => 'setShippoManifestId',
+        'warnings' => 'setWarnings',
         'ship_date' => 'setShipDate',
-        'warnings' => 'setWarnings'
+        'shippo_manifest_id' => 'setShippoManifestId',
+        'document_url' => 'setDocumentUrl'
     ];
 
     /**
@@ -161,10 +161,10 @@ class ListOrderScanFormsItem implements ModelInterface, ArrayAccess, \JsonSerial
         'status' => 'getStatus',
         'carrier' => 'getCarrier',
         'order_ids' => 'getOrderIds',
-        'document_url' => 'getDocumentUrl',
-        'shippo_manifest_id' => 'getShippoManifestId',
+        'warnings' => 'getWarnings',
         'ship_date' => 'getShipDate',
-        'warnings' => 'getWarnings'
+        'shippo_manifest_id' => 'getShippoManifestId',
+        'document_url' => 'getDocumentUrl'
     ];
 
     /**
@@ -230,10 +230,10 @@ class ListOrderScanFormsItem implements ModelInterface, ArrayAccess, \JsonSerial
         $this->container['status'] = $data['status'] ?? null;
         $this->container['carrier'] = $data['carrier'] ?? null;
         $this->container['order_ids'] = $data['order_ids'] ?? null;
-        $this->container['document_url'] = $data['document_url'] ?? null;
-        $this->container['shippo_manifest_id'] = $data['shippo_manifest_id'] ?? null;
-        $this->container['ship_date'] = $data['ship_date'] ?? null;
         $this->container['warnings'] = $data['warnings'] ?? null;
+        $this->container['ship_date'] = $data['ship_date'] ?? null;
+        $this->container['shippo_manifest_id'] = $data['shippo_manifest_id'] ?? null;
+        $this->container['document_url'] = $data['document_url'] ?? null;
     }
 
     /**
@@ -263,14 +263,14 @@ class ListOrderScanFormsItem implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['order_ids'] === null) {
             $invalidProperties[] = "'order_ids' can't be null";
         }
-        if ($this->container['shippo_manifest_id'] === null) {
-            $invalidProperties[] = "'shippo_manifest_id' can't be null";
+        if ($this->container['warnings'] === null) {
+            $invalidProperties[] = "'warnings' can't be null";
         }
         if ($this->container['ship_date'] === null) {
             $invalidProperties[] = "'ship_date' can't be null";
         }
-        if ($this->container['warnings'] === null) {
-            $invalidProperties[] = "'warnings' can't be null";
+        if ($this->container['shippo_manifest_id'] === null) {
+            $invalidProperties[] = "'shippo_manifest_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -432,49 +432,25 @@ class ListOrderScanFormsItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets document_url
+     * Gets warnings
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getDocumentUrl()
+    public function getWarnings()
     {
-        return $this->container['document_url'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets document_url
+     * Sets warnings
      *
-     * @param string|null $document_url document_url
+     * @param string[] $warnings warnings
      *
      * @return self
      */
-    public function setDocumentUrl($document_url)
+    public function setWarnings($warnings)
     {
-        $this->container['document_url'] = $document_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets shippo_manifest_id
-     *
-     * @return string
-     */
-    public function getShippoManifestId()
-    {
-        return $this->container['shippo_manifest_id'];
-    }
-
-    /**
-     * Sets shippo_manifest_id
-     *
-     * @param string $shippo_manifest_id shippo_manifest_id
-     *
-     * @return self
-     */
-    public function setShippoManifestId($shippo_manifest_id)
-    {
-        $this->container['shippo_manifest_id'] = $shippo_manifest_id;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }
@@ -504,25 +480,49 @@ class ListOrderScanFormsItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets warnings
+     * Gets shippo_manifest_id
      *
-     * @return string[]
+     * @return string
      */
-    public function getWarnings()
+    public function getShippoManifestId()
     {
-        return $this->container['warnings'];
+        return $this->container['shippo_manifest_id'];
     }
 
     /**
-     * Sets warnings
+     * Sets shippo_manifest_id
      *
-     * @param string[] $warnings warnings
+     * @param string $shippo_manifest_id shippo_manifest_id
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setShippoManifestId($shippo_manifest_id)
     {
-        $this->container['warnings'] = $warnings;
+        $this->container['shippo_manifest_id'] = $shippo_manifest_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_url
+     *
+     * @return string|null
+     */
+    public function getDocumentUrl()
+    {
+        return $this->container['document_url'];
+    }
+
+    /**
+     * Sets document_url
+     *
+     * @param string|null $document_url document_url
+     *
+     * @return self
+     */
+    public function setDocumentUrl($document_url)
+    {
+        $this->container['document_url'] = $document_url;
 
         return $this;
     }

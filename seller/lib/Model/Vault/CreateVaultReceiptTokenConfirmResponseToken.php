@@ -271,9 +271,9 @@ class CreateVaultReceiptTokenConfirmResponseToken implements ModelInterface, Arr
     const STATUS_PENDING = 'pending';
     const STATUS_LIVE = 'live';
     const STATUS_EXPIRED = 'expired';
+    const STATUS_CONFLICT = 'conflict';
     const STATUS_FROZEN = 'frozen';
     const STATUS_BURNED = 'burned';
-    const STATUS_CONFLICT = 'conflict';
 
     /**
      * Gets allowable values of the enum
@@ -286,9 +286,9 @@ class CreateVaultReceiptTokenConfirmResponseToken implements ModelInterface, Arr
             self::STATUS_PENDING,
             self::STATUS_LIVE,
             self::STATUS_EXPIRED,
+            self::STATUS_CONFLICT,
             self::STATUS_FROZEN,
             self::STATUS_BURNED,
-            self::STATUS_CONFLICT,
         ];
     }
 

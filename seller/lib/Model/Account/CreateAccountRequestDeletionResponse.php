@@ -62,7 +62,8 @@ class CreateAccountRequestDeletionResponse implements ModelInterface, ArrayAcces
     protected static $openAPITypes = [
         'id' => 'string',
         'scheduled_for' => '\DateTime',
-        'grace_days' => 'float'
+        'grace_days' => 'float',
+        'subscriptions_ending' => 'float'
     ];
 
     /**
@@ -75,7 +76,8 @@ class CreateAccountRequestDeletionResponse implements ModelInterface, ArrayAcces
     protected static $openAPIFormats = [
         'id' => null,
         'scheduled_for' => 'date-time',
-        'grace_days' => null
+        'grace_days' => null,
+        'subscriptions_ending' => null
     ];
 
     /**
@@ -107,7 +109,8 @@ class CreateAccountRequestDeletionResponse implements ModelInterface, ArrayAcces
     protected static $attributeMap = [
         'id' => 'id',
         'scheduled_for' => 'scheduledFor',
-        'grace_days' => 'graceDays'
+        'grace_days' => 'graceDays',
+        'subscriptions_ending' => 'subscriptionsEnding'
     ];
 
     /**
@@ -118,7 +121,8 @@ class CreateAccountRequestDeletionResponse implements ModelInterface, ArrayAcces
     protected static $setters = [
         'id' => 'setId',
         'scheduled_for' => 'setScheduledFor',
-        'grace_days' => 'setGraceDays'
+        'grace_days' => 'setGraceDays',
+        'subscriptions_ending' => 'setSubscriptionsEnding'
     ];
 
     /**
@@ -129,7 +133,8 @@ class CreateAccountRequestDeletionResponse implements ModelInterface, ArrayAcces
     protected static $getters = [
         'id' => 'getId',
         'scheduled_for' => 'getScheduledFor',
-        'grace_days' => 'getGraceDays'
+        'grace_days' => 'getGraceDays',
+        'subscriptions_ending' => 'getSubscriptionsEnding'
     ];
 
     /**
@@ -192,6 +197,7 @@ class CreateAccountRequestDeletionResponse implements ModelInterface, ArrayAcces
         $this->container['id'] = $data['id'] ?? null;
         $this->container['scheduled_for'] = $data['scheduled_for'] ?? null;
         $this->container['grace_days'] = $data['grace_days'] ?? null;
+        $this->container['subscriptions_ending'] = $data['subscriptions_ending'] ?? null;
     }
 
     /**
@@ -211,6 +217,9 @@ class CreateAccountRequestDeletionResponse implements ModelInterface, ArrayAcces
         }
         if ($this->container['grace_days'] === null) {
             $invalidProperties[] = "'grace_days' can't be null";
+        }
+        if ($this->container['subscriptions_ending'] === null) {
+            $invalidProperties[] = "'subscriptions_ending' can't be null";
         }
         return $invalidProperties;
     }
@@ -295,6 +304,30 @@ class CreateAccountRequestDeletionResponse implements ModelInterface, ArrayAcces
     public function setGraceDays($grace_days)
     {
         $this->container['grace_days'] = $grace_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscriptions_ending
+     *
+     * @return float
+     */
+    public function getSubscriptionsEnding()
+    {
+        return $this->container['subscriptions_ending'];
+    }
+
+    /**
+     * Sets subscriptions_ending
+     *
+     * @param float $subscriptions_ending subscriptions_ending
+     *
+     * @return self
+     */
+    public function setSubscriptionsEnding($subscriptions_ending)
+    {
+        $this->container['subscriptions_ending'] = $subscriptions_ending;
 
         return $this;
     }

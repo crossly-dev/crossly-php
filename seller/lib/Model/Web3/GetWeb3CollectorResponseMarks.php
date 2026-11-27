@@ -190,9 +190,9 @@ class GetWeb3CollectorResponseMarks implements ModelInterface, ArrayAccess, \Jso
 
     const SOURCE_CROSSLY = 'crossly';
     const SOURCE_CARD = 'card';
-    const SOURCE_TENSOR = 'tensor';
-    const SOURCE_MAGIC_EDEN = 'magic_eden';
     const SOURCE_RARIBLE = 'rarible';
+    const SOURCE_MAGIC_EDEN = 'magic_eden';
+    const SOURCE_TENSOR = 'tensor';
 
     /**
      * Gets allowable values of the enum
@@ -204,9 +204,9 @@ class GetWeb3CollectorResponseMarks implements ModelInterface, ArrayAccess, \Jso
         return [
             self::SOURCE_CROSSLY,
             self::SOURCE_CARD,
-            self::SOURCE_TENSOR,
-            self::SOURCE_MAGIC_EDEN,
             self::SOURCE_RARIBLE,
+            self::SOURCE_MAGIC_EDEN,
+            self::SOURCE_TENSOR,
         ];
     }
 

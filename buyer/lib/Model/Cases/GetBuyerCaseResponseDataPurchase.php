@@ -61,8 +61,8 @@ class GetBuyerCaseResponseDataPurchase implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'status' => 'string',
         'buyer_paid_cents' => 'float',
+        'status' => 'string',
         'refund_status' => 'string',
         'refund_amount_cents' => 'float'
     ];
@@ -76,8 +76,8 @@ class GetBuyerCaseResponseDataPurchase implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'status' => null,
         'buyer_paid_cents' => null,
+        'status' => null,
         'refund_status' => null,
         'refund_amount_cents' => null
     ];
@@ -110,8 +110,8 @@ class GetBuyerCaseResponseDataPurchase implements ModelInterface, ArrayAccess, \
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'status' => 'status',
         'buyer_paid_cents' => 'buyerPaidCents',
+        'status' => 'status',
         'refund_status' => 'refundStatus',
         'refund_amount_cents' => 'refundAmountCents'
     ];
@@ -123,8 +123,8 @@ class GetBuyerCaseResponseDataPurchase implements ModelInterface, ArrayAccess, \
      */
     protected static $setters = [
         'id' => 'setId',
-        'status' => 'setStatus',
         'buyer_paid_cents' => 'setBuyerPaidCents',
+        'status' => 'setStatus',
         'refund_status' => 'setRefundStatus',
         'refund_amount_cents' => 'setRefundAmountCents'
     ];
@@ -136,8 +136,8 @@ class GetBuyerCaseResponseDataPurchase implements ModelInterface, ArrayAccess, \
      */
     protected static $getters = [
         'id' => 'getId',
-        'status' => 'getStatus',
         'buyer_paid_cents' => 'getBuyerPaidCents',
+        'status' => 'getStatus',
         'refund_status' => 'getRefundStatus',
         'refund_amount_cents' => 'getRefundAmountCents'
     ];
@@ -200,8 +200,8 @@ class GetBuyerCaseResponseDataPurchase implements ModelInterface, ArrayAccess, \
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['buyer_paid_cents'] = $data['buyer_paid_cents'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['refund_status'] = $data['refund_status'] ?? null;
         $this->container['refund_amount_cents'] = $data['refund_amount_cents'] ?? null;
     }
@@ -218,11 +218,11 @@ class GetBuyerCaseResponseDataPurchase implements ModelInterface, ArrayAccess, \
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         if ($this->container['buyer_paid_cents'] === null) {
             $invalidProperties[] = "'buyer_paid_cents' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         return $invalidProperties;
     }
@@ -264,30 +264,6 @@ class GetBuyerCaseResponseDataPurchase implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
      * Gets buyer_paid_cents
      *
      * @return float
@@ -307,6 +283,30 @@ class GetBuyerCaseResponseDataPurchase implements ModelInterface, ArrayAccess, \
     public function setBuyerPaidCents($buyer_paid_cents)
     {
         $this->container['buyer_paid_cents'] = $buyer_paid_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

@@ -65,8 +65,8 @@ class ListVaultMarketRecurringRunsItem implements ModelInterface, ArrayAccess, \
         'id' => 'string',
         'user_id' => 'string',
         'status' => 'string',
-        'reason' => 'string',
         'order_id' => 'string',
+        'reason' => 'string',
         'mark_cents' => 'float',
         'limit_cents' => 'float',
         'filled_cents' => 'float',
@@ -87,8 +87,8 @@ class ListVaultMarketRecurringRunsItem implements ModelInterface, ArrayAccess, \
         'id' => null,
         'user_id' => null,
         'status' => null,
-        'reason' => null,
         'order_id' => null,
+        'reason' => null,
         'mark_cents' => null,
         'limit_cents' => null,
         'filled_cents' => null,
@@ -128,8 +128,8 @@ class ListVaultMarketRecurringRunsItem implements ModelInterface, ArrayAccess, \
         'id' => 'id',
         'user_id' => 'userId',
         'status' => 'status',
-        'reason' => 'reason',
         'order_id' => 'orderId',
+        'reason' => 'reason',
         'mark_cents' => 'markCents',
         'limit_cents' => 'limitCents',
         'filled_cents' => 'filledCents',
@@ -148,8 +148,8 @@ class ListVaultMarketRecurringRunsItem implements ModelInterface, ArrayAccess, \
         'id' => 'setId',
         'user_id' => 'setUserId',
         'status' => 'setStatus',
-        'reason' => 'setReason',
         'order_id' => 'setOrderId',
+        'reason' => 'setReason',
         'mark_cents' => 'setMarkCents',
         'limit_cents' => 'setLimitCents',
         'filled_cents' => 'setFilledCents',
@@ -168,8 +168,8 @@ class ListVaultMarketRecurringRunsItem implements ModelInterface, ArrayAccess, \
         'id' => 'getId',
         'user_id' => 'getUserId',
         'status' => 'getStatus',
-        'reason' => 'getReason',
         'order_id' => 'getOrderId',
+        'reason' => 'getReason',
         'mark_cents' => 'getMarkCents',
         'limit_cents' => 'getLimitCents',
         'filled_cents' => 'getFilledCents',
@@ -239,8 +239,8 @@ class ListVaultMarketRecurringRunsItem implements ModelInterface, ArrayAccess, \
         $this->container['id'] = $data['id'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['reason'] = $data['reason'] ?? null;
         $this->container['order_id'] = $data['order_id'] ?? null;
+        $this->container['reason'] = $data['reason'] ?? null;
         $this->container['mark_cents'] = $data['mark_cents'] ?? null;
         $this->container['limit_cents'] = $data['limit_cents'] ?? null;
         $this->container['filled_cents'] = $data['filled_cents'] ?? null;
@@ -414,30 +414,6 @@ class ListVaultMarketRecurringRunsItem implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets reason
-     *
-     * @return string|null
-     */
-    public function getReason()
-    {
-        return $this->container['reason'];
-    }
-
-    /**
-     * Sets reason
-     *
-     * @param string|null $reason reason
-     *
-     * @return self
-     */
-    public function setReason($reason)
-    {
-        $this->container['reason'] = $reason;
-
-        return $this;
-    }
-
-    /**
      * Gets order_id
      *
      * @return string|null
@@ -457,6 +433,30 @@ class ListVaultMarketRecurringRunsItem implements ModelInterface, ArrayAccess, \
     public function setOrderId($order_id)
     {
         $this->container['order_id'] = $order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason
+     *
+     * @return string|null
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /**
+     * Sets reason
+     *
+     * @param string|null $reason reason
+     *
+     * @return self
+     */
+    public function setReason($reason)
+    {
+        $this->container['reason'] = $reason;
 
         return $this;
     }

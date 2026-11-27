@@ -44,13 +44,13 @@ class GetWorldCapabilityCatalogueResponseDataKindsClientsItem
     /**
      * Possible values of this enum
      */
-    const WEB = 'web';
-
     const APP = 'app';
 
-    const GODOT = 'godot';
-
     const API = 'api';
+
+    const WEB = 'web';
+
+    const GODOT = 'godot';
 
     const RUNNER = 'runner';
 
@@ -61,10 +61,10 @@ class GetWorldCapabilityCatalogueResponseDataKindsClientsItem
     public static function getAllowableEnumValues()
     {
         return [
-            self::WEB,
             self::APP,
-            self::GODOT,
             self::API,
+            self::WEB,
+            self::GODOT,
             self::RUNNER
         ];
     }

@@ -62,7 +62,8 @@ class GetAnalyticDashboardResponseRevenue implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'current' => 'float',
         'previous' => 'float',
-        'pct_change' => 'float'
+        'pct_change' => 'float',
+        'delta' => '\Crossly\Model\Analytic\GetAnalyticOverviewResponseDataKpisNetSalesDelta'
     ];
 
     /**
@@ -75,7 +76,8 @@ class GetAnalyticDashboardResponseRevenue implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'current' => null,
         'previous' => null,
-        'pct_change' => null
+        'pct_change' => null,
+        'delta' => null
     ];
 
     /**
@@ -107,7 +109,8 @@ class GetAnalyticDashboardResponseRevenue implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'current' => 'current',
         'previous' => 'previous',
-        'pct_change' => 'pctChange'
+        'pct_change' => 'pctChange',
+        'delta' => 'delta'
     ];
 
     /**
@@ -118,7 +121,8 @@ class GetAnalyticDashboardResponseRevenue implements ModelInterface, ArrayAccess
     protected static $setters = [
         'current' => 'setCurrent',
         'previous' => 'setPrevious',
-        'pct_change' => 'setPctChange'
+        'pct_change' => 'setPctChange',
+        'delta' => 'setDelta'
     ];
 
     /**
@@ -129,7 +133,8 @@ class GetAnalyticDashboardResponseRevenue implements ModelInterface, ArrayAccess
     protected static $getters = [
         'current' => 'getCurrent',
         'previous' => 'getPrevious',
-        'pct_change' => 'getPctChange'
+        'pct_change' => 'getPctChange',
+        'delta' => 'getDelta'
     ];
 
     /**
@@ -192,6 +197,7 @@ class GetAnalyticDashboardResponseRevenue implements ModelInterface, ArrayAccess
         $this->container['current'] = $data['current'] ?? null;
         $this->container['previous'] = $data['previous'] ?? null;
         $this->container['pct_change'] = $data['pct_change'] ?? null;
+        $this->container['delta'] = $data['delta'] ?? null;
     }
 
     /**
@@ -208,6 +214,9 @@ class GetAnalyticDashboardResponseRevenue implements ModelInterface, ArrayAccess
         }
         if ($this->container['previous'] === null) {
             $invalidProperties[] = "'previous' can't be null";
+        }
+        if ($this->container['delta'] === null) {
+            $invalidProperties[] = "'delta' can't be null";
         }
         return $invalidProperties;
     }
@@ -292,6 +301,30 @@ class GetAnalyticDashboardResponseRevenue implements ModelInterface, ArrayAccess
     public function setPctChange($pct_change)
     {
         $this->container['pct_change'] = $pct_change;
+
+        return $this;
+    }
+
+    /**
+     * Gets delta
+     *
+     * @return \Crossly\Model\Analytic\GetAnalyticOverviewResponseDataKpisNetSalesDelta
+     */
+    public function getDelta()
+    {
+        return $this->container['delta'];
+    }
+
+    /**
+     * Sets delta
+     *
+     * @param \Crossly\Model\Analytic\GetAnalyticOverviewResponseDataKpisNetSalesDelta $delta delta
+     *
+     * @return self
+     */
+    public function setDelta($delta)
+    {
+        $this->container['delta'] = $delta;
 
         return $this;
     }

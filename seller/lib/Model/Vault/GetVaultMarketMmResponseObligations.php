@@ -65,10 +65,10 @@ class GetVaultMarketMmResponseObligations implements ModelInterface, ArrayAccess
         'user_id' => 'string',
         'day' => 'string',
         'reasons' => 'string[]',
+        'program' => 'string',
         'tier' => 'string',
         'book_key' => 'string',
         'level' => 'string',
-        'program' => 'string',
         'samples' => 'float',
         'in_spread' => 'float',
         'in_half_spread' => 'float',
@@ -93,10 +93,10 @@ class GetVaultMarketMmResponseObligations implements ModelInterface, ArrayAccess
         'user_id' => null,
         'day' => null,
         'reasons' => null,
+        'program' => null,
         'tier' => null,
         'book_key' => null,
         'level' => null,
-        'program' => null,
         'samples' => null,
         'in_spread' => null,
         'in_half_spread' => null,
@@ -140,10 +140,10 @@ class GetVaultMarketMmResponseObligations implements ModelInterface, ArrayAccess
         'user_id' => 'userId',
         'day' => 'day',
         'reasons' => 'reasons',
+        'program' => 'program',
         'tier' => 'tier',
         'book_key' => 'bookKey',
         'level' => 'level',
-        'program' => 'program',
         'samples' => 'samples',
         'in_spread' => 'inSpread',
         'in_half_spread' => 'inHalfSpread',
@@ -166,10 +166,10 @@ class GetVaultMarketMmResponseObligations implements ModelInterface, ArrayAccess
         'user_id' => 'setUserId',
         'day' => 'setDay',
         'reasons' => 'setReasons',
+        'program' => 'setProgram',
         'tier' => 'setTier',
         'book_key' => 'setBookKey',
         'level' => 'setLevel',
-        'program' => 'setProgram',
         'samples' => 'setSamples',
         'in_spread' => 'setInSpread',
         'in_half_spread' => 'setInHalfSpread',
@@ -192,10 +192,10 @@ class GetVaultMarketMmResponseObligations implements ModelInterface, ArrayAccess
         'user_id' => 'getUserId',
         'day' => 'getDay',
         'reasons' => 'getReasons',
+        'program' => 'getProgram',
         'tier' => 'getTier',
         'book_key' => 'getBookKey',
         'level' => 'getLevel',
-        'program' => 'getProgram',
         'samples' => 'getSamples',
         'in_spread' => 'getInSpread',
         'in_half_spread' => 'getInHalfSpread',
@@ -269,10 +269,10 @@ class GetVaultMarketMmResponseObligations implements ModelInterface, ArrayAccess
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['day'] = $data['day'] ?? null;
         $this->container['reasons'] = $data['reasons'] ?? null;
+        $this->container['program'] = $data['program'] ?? null;
         $this->container['tier'] = $data['tier'] ?? null;
         $this->container['book_key'] = $data['book_key'] ?? null;
         $this->container['level'] = $data['level'] ?? null;
-        $this->container['program'] = $data['program'] ?? null;
         $this->container['samples'] = $data['samples'] ?? null;
         $this->container['in_spread'] = $data['in_spread'] ?? null;
         $this->container['in_half_spread'] = $data['in_half_spread'] ?? null;
@@ -302,11 +302,11 @@ class GetVaultMarketMmResponseObligations implements ModelInterface, ArrayAccess
         if ($this->container['day'] === null) {
             $invalidProperties[] = "'day' can't be null";
         }
-        if ($this->container['book_key'] === null) {
-            $invalidProperties[] = "'book_key' can't be null";
-        }
         if ($this->container['program'] === null) {
             $invalidProperties[] = "'program' can't be null";
+        }
+        if ($this->container['book_key'] === null) {
+            $invalidProperties[] = "'book_key' can't be null";
         }
         if ($this->container['samples'] === null) {
             $invalidProperties[] = "'samples' can't be null";
@@ -465,6 +465,30 @@ class GetVaultMarketMmResponseObligations implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets program
+     *
+     * @return string
+     */
+    public function getProgram()
+    {
+        return $this->container['program'];
+    }
+
+    /**
+     * Sets program
+     *
+     * @param string $program program
+     *
+     * @return self
+     */
+    public function setProgram($program)
+    {
+        $this->container['program'] = $program;
+
+        return $this;
+    }
+
+    /**
      * Gets tier
      *
      * @return string|null
@@ -532,30 +556,6 @@ class GetVaultMarketMmResponseObligations implements ModelInterface, ArrayAccess
     public function setLevel($level)
     {
         $this->container['level'] = $level;
-
-        return $this;
-    }
-
-    /**
-     * Gets program
-     *
-     * @return string
-     */
-    public function getProgram()
-    {
-        return $this->container['program'];
-    }
-
-    /**
-     * Sets program
-     *
-     * @param string $program program
-     *
-     * @return self
-     */
-    public function setProgram($program)
-    {
-        $this->container['program'] = $program;
 
         return $this;
     }

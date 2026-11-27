@@ -189,10 +189,10 @@ class GetSpatialSpaceResponseDataWarehouseUnits implements ModelInterface, Array
     }
 
     const SEGMENT_KIND_LEVEL = 'level';
+    const SEGMENT_KIND_BIN = 'bin';
     const SEGMENT_KIND_ZONE = 'zone';
     const SEGMENT_KIND_AISLE = 'aisle';
     const SEGMENT_KIND_BAY = 'bay';
-    const SEGMENT_KIND_BIN = 'bin';
 
     /**
      * Gets allowable values of the enum
@@ -203,10 +203,10 @@ class GetSpatialSpaceResponseDataWarehouseUnits implements ModelInterface, Array
     {
         return [
             self::SEGMENT_KIND_LEVEL,
+            self::SEGMENT_KIND_BIN,
             self::SEGMENT_KIND_ZONE,
             self::SEGMENT_KIND_AISLE,
             self::SEGMENT_KIND_BAY,
-            self::SEGMENT_KIND_BIN,
         ];
     }
 

@@ -62,7 +62,7 @@ class GetVaultMarketUnitStoryResponse implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'unit' => '\Crossly\Model\Vault\GetVaultMarketUnitStoryResponseUnit',
         'holder' => '\Crossly\Model\Vault\GetVaultMarketUnitStoryResponseHolder',
-        'mark' => '\Crossly\Model\Vault\ListVaultMarketFeedItemMark',
+        'mark' => '\Crossly\Model\Vault\ListVaultMarketOpeningItemMark',
         'viewer' => 'string',
         'shareable' => 'bool',
         'share_url' => 'string',
@@ -213,8 +213,8 @@ class GetVaultMarketUnitStoryResponse implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
-    const VIEWER_HOLDER = 'holder';
     const VIEWER__PUBLIC = 'public';
+    const VIEWER_HOLDER = 'holder';
 
     /**
      * Gets allowable values of the enum
@@ -224,8 +224,8 @@ class GetVaultMarketUnitStoryResponse implements ModelInterface, ArrayAccess, \J
     public function getViewerAllowableValues()
     {
         return [
-            self::VIEWER_HOLDER,
             self::VIEWER__PUBLIC,
+            self::VIEWER_HOLDER,
         ];
     }
 
@@ -368,7 +368,7 @@ class GetVaultMarketUnitStoryResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets mark
      *
-     * @return \Crossly\Model\Vault\ListVaultMarketFeedItemMark
+     * @return \Crossly\Model\Vault\ListVaultMarketOpeningItemMark
      */
     public function getMark()
     {
@@ -378,7 +378,7 @@ class GetVaultMarketUnitStoryResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets mark
      *
-     * @param \Crossly\Model\Vault\ListVaultMarketFeedItemMark $mark mark
+     * @param \Crossly\Model\Vault\ListVaultMarketOpeningItemMark $mark mark
      *
      * @return self
      */

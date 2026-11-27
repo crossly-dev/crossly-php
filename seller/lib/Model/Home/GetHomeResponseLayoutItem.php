@@ -70,7 +70,8 @@ class GetHomeResponseLayoutItem implements ModelInterface, ArrayAccess, \JsonSer
         'found' => 'string',
         'object' => 'string',
         'market' => 'string',
-        'visitors' => 'bool'
+        'visitors' => 'bool',
+        'trade_post_id' => 'string'
     ];
 
     /**
@@ -91,7 +92,8 @@ class GetHomeResponseLayoutItem implements ModelInterface, ArrayAccess, \JsonSer
         'found' => null,
         'object' => null,
         'market' => null,
-        'visitors' => null
+        'visitors' => null,
+        'trade_post_id' => null
     ];
 
     /**
@@ -131,7 +133,8 @@ class GetHomeResponseLayoutItem implements ModelInterface, ArrayAccess, \JsonSer
         'found' => 'found',
         'object' => 'object',
         'market' => 'market',
-        'visitors' => 'visitors'
+        'visitors' => 'visitors',
+        'trade_post_id' => 'tradePostId'
     ];
 
     /**
@@ -150,7 +153,8 @@ class GetHomeResponseLayoutItem implements ModelInterface, ArrayAccess, \JsonSer
         'found' => 'setFound',
         'object' => 'setObject',
         'market' => 'setMarket',
-        'visitors' => 'setVisitors'
+        'visitors' => 'setVisitors',
+        'trade_post_id' => 'setTradePostId'
     ];
 
     /**
@@ -169,7 +173,8 @@ class GetHomeResponseLayoutItem implements ModelInterface, ArrayAccess, \JsonSer
         'found' => 'getFound',
         'object' => 'getObject',
         'market' => 'getMarket',
-        'visitors' => 'getVisitors'
+        'visitors' => 'getVisitors',
+        'trade_post_id' => 'getTradePostId'
     ];
 
     /**
@@ -240,6 +245,7 @@ class GetHomeResponseLayoutItem implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['object'] = $data['object'] ?? null;
         $this->container['market'] = $data['market'] ?? null;
         $this->container['visitors'] = $data['visitors'] ?? null;
+        $this->container['trade_post_id'] = $data['trade_post_id'] ?? null;
     }
 
     /**
@@ -498,7 +504,7 @@ class GetHomeResponseLayoutItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets market
      *
-     * @param string|null $market A `vault` ref: the unit's market (a book key), so a click opens /shop/vault/markets/<market>.
+     * @param string|null $market A `vault` ref: the unit's market (a book key), so a click opens /trading/<market>.
      *
      * @return self
      */
@@ -529,6 +535,30 @@ class GetHomeResponseLayoutItem implements ModelInterface, ArrayAccess, \JsonSer
     public function setVisitors($visitors)
     {
         $this->container['visitors'] = $visitors;
+
+        return $this;
+    }
+
+    /**
+     * Gets trade_post_id
+     *
+     * @return string|null
+     */
+    public function getTradePostId()
+    {
+        return $this->container['trade_post_id'];
+    }
+
+    /**
+     * Sets trade_post_id
+     *
+     * @param string|null $trade_post_id The owner's open Trade Block post for this same product (trade-posts.ts): \"Offer a trade\" opens it.
+     *
+     * @return self
+     */
+    public function setTradePostId($trade_post_id)
+    {
+        $this->container['trade_post_id'] = $trade_post_id;
 
         return $this;
     }

@@ -62,6 +62,7 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'run_id' => 'string',
         'photo_identifier' => '\Crossly\Model\Magic\CreateMagicScanResponsePhotoIdentifier',
+        'match_reference' => '\Crossly\Model\Magic\CreateMagicScanResponseMatchReference',
         'ebay_match' => '\Crossly\Model\Magic\CreateMagicScanResponseEbayMatch',
         'top_hits' => '\Crossly\Model\Magic\CreateMagicScanResponseTopHits[]',
         'ebay_hits' => '\Crossly\Model\Magic\CreateMagicScanResponseEbayHits[]',
@@ -69,7 +70,8 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'image_urls' => 'string[]',
         'vision_aspects' => 'array<string,mixed>',
         'possible_duplicates' => '\Crossly\Model\Magic\CreateMagicScanResponsePossibleDuplicates[]',
-        'cached' => 'bool'
+        'cached' => 'bool',
+        'vision_calls_used' => 'float'
     ];
 
     /**
@@ -82,6 +84,7 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPIFormats = [
         'run_id' => null,
         'photo_identifier' => null,
+        'match_reference' => null,
         'ebay_match' => null,
         'top_hits' => null,
         'ebay_hits' => null,
@@ -89,7 +92,8 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'image_urls' => null,
         'vision_aspects' => null,
         'possible_duplicates' => null,
-        'cached' => null
+        'cached' => null,
+        'vision_calls_used' => null
     ];
 
     /**
@@ -121,6 +125,7 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'run_id' => 'runId',
         'photo_identifier' => 'photoIdentifier',
+        'match_reference' => 'matchReference',
         'ebay_match' => 'ebayMatch',
         'top_hits' => 'topHits',
         'ebay_hits' => 'ebayHits',
@@ -128,7 +133,8 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'image_urls' => 'imageUrls',
         'vision_aspects' => 'visionAspects',
         'possible_duplicates' => 'possibleDuplicates',
-        'cached' => 'cached'
+        'cached' => 'cached',
+        'vision_calls_used' => 'visionCallsUsed'
     ];
 
     /**
@@ -139,6 +145,7 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'run_id' => 'setRunId',
         'photo_identifier' => 'setPhotoIdentifier',
+        'match_reference' => 'setMatchReference',
         'ebay_match' => 'setEbayMatch',
         'top_hits' => 'setTopHits',
         'ebay_hits' => 'setEbayHits',
@@ -146,7 +153,8 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'image_urls' => 'setImageUrls',
         'vision_aspects' => 'setVisionAspects',
         'possible_duplicates' => 'setPossibleDuplicates',
-        'cached' => 'setCached'
+        'cached' => 'setCached',
+        'vision_calls_used' => 'setVisionCallsUsed'
     ];
 
     /**
@@ -157,6 +165,7 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'run_id' => 'getRunId',
         'photo_identifier' => 'getPhotoIdentifier',
+        'match_reference' => 'getMatchReference',
         'ebay_match' => 'getEbayMatch',
         'top_hits' => 'getTopHits',
         'ebay_hits' => 'getEbayHits',
@@ -164,7 +173,8 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'image_urls' => 'getImageUrls',
         'vision_aspects' => 'getVisionAspects',
         'possible_duplicates' => 'getPossibleDuplicates',
-        'cached' => 'getCached'
+        'cached' => 'getCached',
+        'vision_calls_used' => 'getVisionCallsUsed'
     ];
 
     /**
@@ -226,6 +236,7 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->container['run_id'] = $data['run_id'] ?? null;
         $this->container['photo_identifier'] = $data['photo_identifier'] ?? null;
+        $this->container['match_reference'] = $data['match_reference'] ?? null;
         $this->container['ebay_match'] = $data['ebay_match'] ?? null;
         $this->container['top_hits'] = $data['top_hits'] ?? null;
         $this->container['ebay_hits'] = $data['ebay_hits'] ?? null;
@@ -234,6 +245,7 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
         $this->container['vision_aspects'] = $data['vision_aspects'] ?? null;
         $this->container['possible_duplicates'] = $data['possible_duplicates'] ?? null;
         $this->container['cached'] = $data['cached'] ?? null;
+        $this->container['vision_calls_used'] = $data['vision_calls_used'] ?? null;
     }
 
     /**
@@ -328,6 +340,30 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setPhotoIdentifier($photo_identifier)
     {
         $this->container['photo_identifier'] = $photo_identifier;
+
+        return $this;
+    }
+
+    /**
+     * Gets match_reference
+     *
+     * @return \Crossly\Model\Magic\CreateMagicScanResponseMatchReference|null
+     */
+    public function getMatchReference()
+    {
+        return $this->container['match_reference'];
+    }
+
+    /**
+     * Sets match_reference
+     *
+     * @param \Crossly\Model\Magic\CreateMagicScanResponseMatchReference|null $match_reference match_reference
+     *
+     * @return self
+     */
+    public function setMatchReference($match_reference)
+    {
+        $this->container['match_reference'] = $match_reference;
 
         return $this;
     }
@@ -520,6 +556,30 @@ class CreateMagicScanResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function setCached($cached)
     {
         $this->container['cached'] = $cached;
+
+        return $this;
+    }
+
+    /**
+     * Gets vision_calls_used
+     *
+     * @return float|null
+     */
+    public function getVisionCallsUsed()
+    {
+        return $this->container['vision_calls_used'];
+    }
+
+    /**
+     * Sets vision_calls_used
+     *
+     * @param float|null $vision_calls_used Monthly vision calls (vision-quota.ts) this scan spent: the seller's Activity Log shows them as credits used. 0 for a single-photo scan and for a re-scan of the same photos.
+     *
+     * @return self
+     */
+    public function setVisionCallsUsed($vision_calls_used)
+    {
+        $this->container['vision_calls_used'] = $vision_calls_used;
 
         return $this;
     }

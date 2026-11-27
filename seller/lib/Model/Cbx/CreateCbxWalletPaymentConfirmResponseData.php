@@ -213,8 +213,8 @@ class CreateCbxWalletPaymentConfirmResponseData implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    const RELEASE_DECISION_REVIEW = 'review';
     const RELEASE_DECISION_RELEASE = 'release';
+    const RELEASE_DECISION_REVIEW = 'review';
     const RELEASE_DECISION_REFUSE = 'refuse';
 
     /**
@@ -225,8 +225,8 @@ class CreateCbxWalletPaymentConfirmResponseData implements ModelInterface, Array
     public function getReleaseDecisionAllowableValues()
     {
         return [
-            self::RELEASE_DECISION_REVIEW,
             self::RELEASE_DECISION_RELEASE,
+            self::RELEASE_DECISION_REVIEW,
             self::RELEASE_DECISION_REFUSE,
         ];
     }

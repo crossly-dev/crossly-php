@@ -1,4 +1,5 @@
 {
+    "version": "0.2.0",
     "description": "The buyer-facing Crossly API — cart, orders, wishlists, offers, cashback. A DIFFERENT principal from the seller API: authenticated by a buyer OAuth token scoped `buyer:*` and resolved by `resolveBuyer`. A seller Personal Access Token will NOT authenticate these endpoints.",
     "keywords": [
         "openapitools",

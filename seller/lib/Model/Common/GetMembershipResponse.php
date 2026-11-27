@@ -63,7 +63,8 @@ class GetMembershipResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'tier' => 'string',
         'active' => 'bool',
         'started_at' => '\DateTime',
-        'ends_at' => '\DateTime'
+        'ends_at' => '\DateTime',
+        'benefits' => '\Crossly\Model\Common\GetMembershipResponseBenefits'
     ];
 
     /**
@@ -77,7 +78,8 @@ class GetMembershipResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'tier' => null,
         'active' => null,
         'started_at' => 'date-time',
-        'ends_at' => 'date-time'
+        'ends_at' => 'date-time',
+        'benefits' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class GetMembershipResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'tier' => 'tier',
         'active' => 'active',
         'started_at' => 'startedAt',
-        'ends_at' => 'endsAt'
+        'ends_at' => 'endsAt',
+        'benefits' => 'benefits'
     ];
 
     /**
@@ -122,7 +125,8 @@ class GetMembershipResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'tier' => 'setTier',
         'active' => 'setActive',
         'started_at' => 'setStartedAt',
-        'ends_at' => 'setEndsAt'
+        'ends_at' => 'setEndsAt',
+        'benefits' => 'setBenefits'
     ];
 
     /**
@@ -134,7 +138,8 @@ class GetMembershipResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'tier' => 'getTier',
         'active' => 'getActive',
         'started_at' => 'getStartedAt',
-        'ends_at' => 'getEndsAt'
+        'ends_at' => 'getEndsAt',
+        'benefits' => 'getBenefits'
     ];
 
     /**
@@ -178,8 +183,8 @@ class GetMembershipResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    const TIER_CLASSIC = 'classic';
     const TIER_PRO = 'pro';
+    const TIER_CLASSIC = 'classic';
 
     /**
      * Gets allowable values of the enum
@@ -189,8 +194,8 @@ class GetMembershipResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function getTierAllowableValues()
     {
         return [
-            self::TIER_CLASSIC,
             self::TIER_PRO,
+            self::TIER_CLASSIC,
         ];
     }
 
@@ -213,6 +218,7 @@ class GetMembershipResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['active'] = $data['active'] ?? null;
         $this->container['started_at'] = $data['started_at'] ?? null;
         $this->container['ends_at'] = $data['ends_at'] ?? null;
+        $this->container['benefits'] = $data['benefits'] ?? null;
     }
 
     /**
@@ -353,6 +359,30 @@ class GetMembershipResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setEndsAt($ends_at)
     {
         $this->container['ends_at'] = $ends_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets benefits
+     *
+     * @return \Crossly\Model\Common\GetMembershipResponseBenefits|null
+     */
+    public function getBenefits()
+    {
+        return $this->container['benefits'];
+    }
+
+    /**
+     * Sets benefits
+     *
+     * @param \Crossly\Model\Common\GetMembershipResponseBenefits|null $benefits benefits
+     *
+     * @return self
+     */
+    public function setBenefits($benefits)
+    {
+        $this->container['benefits'] = $benefits;
 
         return $this;
     }

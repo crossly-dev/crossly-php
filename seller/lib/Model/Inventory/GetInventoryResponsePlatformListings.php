@@ -62,17 +62,19 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     protected static $openAPITypes = [
         'id' => 'string',
         'user_id' => 'string',
-        'quantity' => 'float',
-        'status' => 'string',
         'platform' => 'string',
-        'error_message' => 'string',
-        'listing_id' => 'string',
-        'marketplace_id' => 'string',
         'account_slot' => 'float',
+        'status' => 'string',
+        'marketplace_id' => 'string',
+        'origin' => 'string',
+        'views' => 'float',
+        'favorites' => 'float',
+        'quantity' => 'float',
         'inventory_item_id' => 'string',
         'currency' => 'string',
         'delisted_at' => '\DateTime',
         'sold_at' => '\DateTime',
+        'listing_id' => 'string',
         'platform_listing_id' => 'string',
         'platform_listing_url' => 'string',
         'stock_location' => 'string',
@@ -80,13 +82,22 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         'shared_at' => '\DateTime',
         'delist_reason' => 'string',
         'last_checked_at' => '\DateTime',
-        'views' => 'float',
-        'favorites' => 'float',
         'comments_count' => 'float',
+        'impressions' => 'float',
+        'ctr_bps' => 'float',
+        'views_semantics' => 'string',
         'last_stats_synced_at' => '\DateTime',
+        'error_message' => 'string',
+        'delist_requested_at' => '\DateTime',
+        'delist_requested_reason' => 'string',
+        'delist_failed_at' => '\DateTime',
+        'delist_error' => 'string',
+        'delist_error_code' => 'string',
         'listed_price' => 'string',
         'crossly_price_usd_cents' => 'float',
         'crossly_price_fx_as_of' => 'string',
+        'bundle_promo' => '\Crossly\Model\Inventory\GetInventoryResponsePlatformListingsBundlePromo',
+        'storefront_id' => 'string',
         'hashtags' => 'string[]',
         'is_draft' => 'bool',
         'scheduled_publish_at' => '\DateTime',
@@ -106,7 +117,6 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         'best_offer_auto_decline_cents' => 'float',
         'aesthetic_tags' => 'string[]',
         'personalization' => '\Crossly\Model\Inventory\GetInventoryResponsePlatformListingsPersonalization',
-        'digital_file' => '\Crossly\Model\Inventory\GetInventoryResponsePlatformListingsDigitalFile',
         'try_days' => 'float',
         'try_fee_cents' => 'float',
         'subscribe_discount_bps' => 'float',
@@ -155,17 +165,19 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     protected static $openAPIFormats = [
         'id' => null,
         'user_id' => null,
-        'quantity' => null,
-        'status' => null,
         'platform' => null,
-        'error_message' => null,
-        'listing_id' => null,
-        'marketplace_id' => null,
         'account_slot' => null,
+        'status' => null,
+        'marketplace_id' => null,
+        'origin' => null,
+        'views' => null,
+        'favorites' => null,
+        'quantity' => null,
         'inventory_item_id' => null,
         'currency' => null,
         'delisted_at' => 'date-time',
         'sold_at' => 'date-time',
+        'listing_id' => null,
         'platform_listing_id' => null,
         'platform_listing_url' => null,
         'stock_location' => null,
@@ -173,13 +185,22 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         'shared_at' => 'date-time',
         'delist_reason' => null,
         'last_checked_at' => 'date-time',
-        'views' => null,
-        'favorites' => null,
         'comments_count' => null,
+        'impressions' => null,
+        'ctr_bps' => null,
+        'views_semantics' => null,
         'last_stats_synced_at' => 'date-time',
+        'error_message' => null,
+        'delist_requested_at' => 'date-time',
+        'delist_requested_reason' => null,
+        'delist_failed_at' => 'date-time',
+        'delist_error' => null,
+        'delist_error_code' => null,
         'listed_price' => null,
         'crossly_price_usd_cents' => null,
         'crossly_price_fx_as_of' => null,
+        'bundle_promo' => null,
+        'storefront_id' => null,
         'hashtags' => null,
         'is_draft' => null,
         'scheduled_publish_at' => 'date-time',
@@ -199,7 +220,6 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         'best_offer_auto_decline_cents' => null,
         'aesthetic_tags' => null,
         'personalization' => null,
-        'digital_file' => null,
         'try_days' => null,
         'try_fee_cents' => null,
         'subscribe_discount_bps' => null,
@@ -267,17 +287,19 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     protected static $attributeMap = [
         'id' => 'id',
         'user_id' => 'userId',
-        'quantity' => 'quantity',
-        'status' => 'status',
         'platform' => 'platform',
-        'error_message' => 'errorMessage',
-        'listing_id' => 'listingId',
-        'marketplace_id' => 'marketplaceId',
         'account_slot' => 'accountSlot',
+        'status' => 'status',
+        'marketplace_id' => 'marketplaceId',
+        'origin' => 'origin',
+        'views' => 'views',
+        'favorites' => 'favorites',
+        'quantity' => 'quantity',
         'inventory_item_id' => 'inventoryItemId',
         'currency' => 'currency',
         'delisted_at' => 'delistedAt',
         'sold_at' => 'soldAt',
+        'listing_id' => 'listingId',
         'platform_listing_id' => 'platformListingId',
         'platform_listing_url' => 'platformListingUrl',
         'stock_location' => 'stockLocation',
@@ -285,13 +307,22 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         'shared_at' => 'sharedAt',
         'delist_reason' => 'delistReason',
         'last_checked_at' => 'lastCheckedAt',
-        'views' => 'views',
-        'favorites' => 'favorites',
         'comments_count' => 'commentsCount',
+        'impressions' => 'impressions',
+        'ctr_bps' => 'ctrBps',
+        'views_semantics' => 'viewsSemantics',
         'last_stats_synced_at' => 'lastStatsSyncedAt',
+        'error_message' => 'errorMessage',
+        'delist_requested_at' => 'delistRequestedAt',
+        'delist_requested_reason' => 'delistRequestedReason',
+        'delist_failed_at' => 'delistFailedAt',
+        'delist_error' => 'delistError',
+        'delist_error_code' => 'delistErrorCode',
         'listed_price' => 'listedPrice',
         'crossly_price_usd_cents' => 'crosslyPriceUsdCents',
         'crossly_price_fx_as_of' => 'crosslyPriceFxAsOf',
+        'bundle_promo' => 'bundlePromo',
+        'storefront_id' => 'storefrontId',
         'hashtags' => 'hashtags',
         'is_draft' => 'isDraft',
         'scheduled_publish_at' => 'scheduledPublishAt',
@@ -311,7 +342,6 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         'best_offer_auto_decline_cents' => 'bestOfferAutoDeclineCents',
         'aesthetic_tags' => 'aestheticTags',
         'personalization' => 'personalization',
-        'digital_file' => 'digitalFile',
         'try_days' => 'tryDays',
         'try_fee_cents' => 'tryFeeCents',
         'subscribe_discount_bps' => 'subscribeDiscountBps',
@@ -358,17 +388,19 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     protected static $setters = [
         'id' => 'setId',
         'user_id' => 'setUserId',
-        'quantity' => 'setQuantity',
-        'status' => 'setStatus',
         'platform' => 'setPlatform',
-        'error_message' => 'setErrorMessage',
-        'listing_id' => 'setListingId',
-        'marketplace_id' => 'setMarketplaceId',
         'account_slot' => 'setAccountSlot',
+        'status' => 'setStatus',
+        'marketplace_id' => 'setMarketplaceId',
+        'origin' => 'setOrigin',
+        'views' => 'setViews',
+        'favorites' => 'setFavorites',
+        'quantity' => 'setQuantity',
         'inventory_item_id' => 'setInventoryItemId',
         'currency' => 'setCurrency',
         'delisted_at' => 'setDelistedAt',
         'sold_at' => 'setSoldAt',
+        'listing_id' => 'setListingId',
         'platform_listing_id' => 'setPlatformListingId',
         'platform_listing_url' => 'setPlatformListingUrl',
         'stock_location' => 'setStockLocation',
@@ -376,13 +408,22 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         'shared_at' => 'setSharedAt',
         'delist_reason' => 'setDelistReason',
         'last_checked_at' => 'setLastCheckedAt',
-        'views' => 'setViews',
-        'favorites' => 'setFavorites',
         'comments_count' => 'setCommentsCount',
+        'impressions' => 'setImpressions',
+        'ctr_bps' => 'setCtrBps',
+        'views_semantics' => 'setViewsSemantics',
         'last_stats_synced_at' => 'setLastStatsSyncedAt',
+        'error_message' => 'setErrorMessage',
+        'delist_requested_at' => 'setDelistRequestedAt',
+        'delist_requested_reason' => 'setDelistRequestedReason',
+        'delist_failed_at' => 'setDelistFailedAt',
+        'delist_error' => 'setDelistError',
+        'delist_error_code' => 'setDelistErrorCode',
         'listed_price' => 'setListedPrice',
         'crossly_price_usd_cents' => 'setCrosslyPriceUsdCents',
         'crossly_price_fx_as_of' => 'setCrosslyPriceFxAsOf',
+        'bundle_promo' => 'setBundlePromo',
+        'storefront_id' => 'setStorefrontId',
         'hashtags' => 'setHashtags',
         'is_draft' => 'setIsDraft',
         'scheduled_publish_at' => 'setScheduledPublishAt',
@@ -402,7 +443,6 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         'best_offer_auto_decline_cents' => 'setBestOfferAutoDeclineCents',
         'aesthetic_tags' => 'setAestheticTags',
         'personalization' => 'setPersonalization',
-        'digital_file' => 'setDigitalFile',
         'try_days' => 'setTryDays',
         'try_fee_cents' => 'setTryFeeCents',
         'subscribe_discount_bps' => 'setSubscribeDiscountBps',
@@ -449,17 +489,19 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     protected static $getters = [
         'id' => 'getId',
         'user_id' => 'getUserId',
-        'quantity' => 'getQuantity',
-        'status' => 'getStatus',
         'platform' => 'getPlatform',
-        'error_message' => 'getErrorMessage',
-        'listing_id' => 'getListingId',
-        'marketplace_id' => 'getMarketplaceId',
         'account_slot' => 'getAccountSlot',
+        'status' => 'getStatus',
+        'marketplace_id' => 'getMarketplaceId',
+        'origin' => 'getOrigin',
+        'views' => 'getViews',
+        'favorites' => 'getFavorites',
+        'quantity' => 'getQuantity',
         'inventory_item_id' => 'getInventoryItemId',
         'currency' => 'getCurrency',
         'delisted_at' => 'getDelistedAt',
         'sold_at' => 'getSoldAt',
+        'listing_id' => 'getListingId',
         'platform_listing_id' => 'getPlatformListingId',
         'platform_listing_url' => 'getPlatformListingUrl',
         'stock_location' => 'getStockLocation',
@@ -467,13 +509,22 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         'shared_at' => 'getSharedAt',
         'delist_reason' => 'getDelistReason',
         'last_checked_at' => 'getLastCheckedAt',
-        'views' => 'getViews',
-        'favorites' => 'getFavorites',
         'comments_count' => 'getCommentsCount',
+        'impressions' => 'getImpressions',
+        'ctr_bps' => 'getCtrBps',
+        'views_semantics' => 'getViewsSemantics',
         'last_stats_synced_at' => 'getLastStatsSyncedAt',
+        'error_message' => 'getErrorMessage',
+        'delist_requested_at' => 'getDelistRequestedAt',
+        'delist_requested_reason' => 'getDelistRequestedReason',
+        'delist_failed_at' => 'getDelistFailedAt',
+        'delist_error' => 'getDelistError',
+        'delist_error_code' => 'getDelistErrorCode',
         'listed_price' => 'getListedPrice',
         'crossly_price_usd_cents' => 'getCrosslyPriceUsdCents',
         'crossly_price_fx_as_of' => 'getCrosslyPriceFxAsOf',
+        'bundle_promo' => 'getBundlePromo',
+        'storefront_id' => 'getStorefrontId',
         'hashtags' => 'getHashtags',
         'is_draft' => 'getIsDraft',
         'scheduled_publish_at' => 'getScheduledPublishAt',
@@ -493,7 +544,6 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         'best_offer_auto_decline_cents' => 'getBestOfferAutoDeclineCents',
         'aesthetic_tags' => 'getAestheticTags',
         'personalization' => 'getPersonalization',
-        'digital_file' => 'getDigitalFile',
         'try_days' => 'getTryDays',
         'try_fee_cents' => 'getTryFeeCents',
         'subscribe_discount_bps' => 'getSubscribeDiscountBps',
@@ -573,6 +623,46 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
+    const ORIGIN_UNKNOWN = 'unknown';
+    const ORIGIN_PUBLISHED = 'published';
+    const ORIGIN_IMPORTED = 'imported';
+    const ORIGIN_EXTERNAL_STUB = 'external_stub';
+    const ORIGIN_APP_LINKED = 'app_linked';
+    const VIEWS_SEMANTICS_LIFETIME = 'lifetime';
+    const VIEWS_SEMANTICS_ROLLING7D = 'rolling7d';
+    const VIEWS_SEMANTICS_ROLLING30D = 'rolling30d';
+    const VIEWS_SEMANTICS_CLICKS = 'clicks';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOriginAllowableValues()
+    {
+        return [
+            self::ORIGIN_UNKNOWN,
+            self::ORIGIN_PUBLISHED,
+            self::ORIGIN_IMPORTED,
+            self::ORIGIN_EXTERNAL_STUB,
+            self::ORIGIN_APP_LINKED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getViewsSemanticsAllowableValues()
+    {
+        return [
+            self::VIEWS_SEMANTICS_LIFETIME,
+            self::VIEWS_SEMANTICS_ROLLING7D,
+            self::VIEWS_SEMANTICS_ROLLING30D,
+            self::VIEWS_SEMANTICS_CLICKS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -591,17 +681,19 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
         $this->container['platform'] = $data['platform'] ?? null;
-        $this->container['error_message'] = $data['error_message'] ?? null;
-        $this->container['listing_id'] = $data['listing_id'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
         $this->container['account_slot'] = $data['account_slot'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
+        $this->container['origin'] = $data['origin'] ?? null;
+        $this->container['views'] = $data['views'] ?? null;
+        $this->container['favorites'] = $data['favorites'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['inventory_item_id'] = $data['inventory_item_id'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['delisted_at'] = $data['delisted_at'] ?? null;
         $this->container['sold_at'] = $data['sold_at'] ?? null;
+        $this->container['listing_id'] = $data['listing_id'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
         $this->container['platform_listing_url'] = $data['platform_listing_url'] ?? null;
         $this->container['stock_location'] = $data['stock_location'] ?? null;
@@ -609,13 +701,22 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         $this->container['shared_at'] = $data['shared_at'] ?? null;
         $this->container['delist_reason'] = $data['delist_reason'] ?? null;
         $this->container['last_checked_at'] = $data['last_checked_at'] ?? null;
-        $this->container['views'] = $data['views'] ?? null;
-        $this->container['favorites'] = $data['favorites'] ?? null;
         $this->container['comments_count'] = $data['comments_count'] ?? null;
+        $this->container['impressions'] = $data['impressions'] ?? null;
+        $this->container['ctr_bps'] = $data['ctr_bps'] ?? null;
+        $this->container['views_semantics'] = $data['views_semantics'] ?? null;
         $this->container['last_stats_synced_at'] = $data['last_stats_synced_at'] ?? null;
+        $this->container['error_message'] = $data['error_message'] ?? null;
+        $this->container['delist_requested_at'] = $data['delist_requested_at'] ?? null;
+        $this->container['delist_requested_reason'] = $data['delist_requested_reason'] ?? null;
+        $this->container['delist_failed_at'] = $data['delist_failed_at'] ?? null;
+        $this->container['delist_error'] = $data['delist_error'] ?? null;
+        $this->container['delist_error_code'] = $data['delist_error_code'] ?? null;
         $this->container['listed_price'] = $data['listed_price'] ?? null;
         $this->container['crossly_price_usd_cents'] = $data['crossly_price_usd_cents'] ?? null;
         $this->container['crossly_price_fx_as_of'] = $data['crossly_price_fx_as_of'] ?? null;
+        $this->container['bundle_promo'] = $data['bundle_promo'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
         $this->container['hashtags'] = $data['hashtags'] ?? null;
         $this->container['is_draft'] = $data['is_draft'] ?? null;
         $this->container['scheduled_publish_at'] = $data['scheduled_publish_at'] ?? null;
@@ -635,7 +736,6 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         $this->container['best_offer_auto_decline_cents'] = $data['best_offer_auto_decline_cents'] ?? null;
         $this->container['aesthetic_tags'] = $data['aesthetic_tags'] ?? null;
         $this->container['personalization'] = $data['personalization'] ?? null;
-        $this->container['digital_file'] = $data['digital_file'] ?? null;
         $this->container['try_days'] = $data['try_days'] ?? null;
         $this->container['try_fee_cents'] = $data['try_fee_cents'] ?? null;
         $this->container['subscribe_discount_bps'] = $data['subscribe_discount_bps'] ?? null;
@@ -689,20 +789,38 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
         }
-        if ($this->container['quantity'] === null) {
-            $invalidProperties[] = "'quantity' can't be null";
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        if ($this->container['account_slot'] === null) {
+            $invalidProperties[] = "'account_slot' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['platform'] === null) {
-            $invalidProperties[] = "'platform' can't be null";
+        if ($this->container['origin'] === null) {
+            $invalidProperties[] = "'origin' can't be null";
+        }
+        $allowedValues = $this->getOriginAllowableValues();
+        if (!is_null($this->container['origin']) && !in_array($this->container['origin'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'origin', must be one of '%s'",
+                $this->container['origin'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['views'] === null) {
+            $invalidProperties[] = "'views' can't be null";
+        }
+        if ($this->container['favorites'] === null) {
+            $invalidProperties[] = "'favorites' can't be null";
+        }
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
         }
         if ($this->container['listing_id'] === null) {
             $invalidProperties[] = "'listing_id' can't be null";
-        }
-        if ($this->container['account_slot'] === null) {
-            $invalidProperties[] = "'account_slot' can't be null";
         }
         if ($this->container['platform_listing_id'] === null) {
             $invalidProperties[] = "'platform_listing_id' can't be null";
@@ -710,15 +828,18 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
         if ($this->container['stock_location'] === null) {
             $invalidProperties[] = "'stock_location' can't be null";
         }
-        if ($this->container['views'] === null) {
-            $invalidProperties[] = "'views' can't be null";
-        }
-        if ($this->container['favorites'] === null) {
-            $invalidProperties[] = "'favorites' can't be null";
-        }
         if ($this->container['comments_count'] === null) {
             $invalidProperties[] = "'comments_count' can't be null";
         }
+        $allowedValues = $this->getViewsSemanticsAllowableValues();
+        if (!is_null($this->container['views_semantics']) && !in_array($this->container['views_semantics'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'views_semantics', must be one of '%s'",
+                $this->container['views_semantics'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['is_draft'] === null) {
             $invalidProperties[] = "'is_draft' can't be null";
         }
@@ -813,25 +934,49 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets quantity
+     * Gets platform
      *
-     * @return float
+     * @return string
      */
-    public function getQuantity()
+    public function getPlatform()
     {
-        return $this->container['quantity'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets quantity
+     * Sets platform
      *
-     * @param float $quantity quantity
+     * @param string $platform platform
      *
      * @return self
      */
-    public function setQuantity($quantity)
+    public function setPlatform($platform)
     {
-        $this->container['quantity'] = $quantity;
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_slot
+     *
+     * @return float
+     */
+    public function getAccountSlot()
+    {
+        return $this->container['account_slot'];
+    }
+
+    /**
+     * Sets account_slot
+     *
+     * @param float $account_slot account_slot
+     *
+     * @return self
+     */
+    public function setAccountSlot($account_slot)
+    {
+        $this->container['account_slot'] = $account_slot;
 
         return $this;
     }
@@ -861,78 +1006,6 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets platform
-     *
-     * @return string
-     */
-    public function getPlatform()
-    {
-        return $this->container['platform'];
-    }
-
-    /**
-     * Sets platform
-     *
-     * @param string $platform platform
-     *
-     * @return self
-     */
-    public function setPlatform($platform)
-    {
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets error_message
-     *
-     * @return string|null
-     */
-    public function getErrorMessage()
-    {
-        return $this->container['error_message'];
-    }
-
-    /**
-     * Sets error_message
-     *
-     * @param string|null $error_message error_message
-     *
-     * @return self
-     */
-    public function setErrorMessage($error_message)
-    {
-        $this->container['error_message'] = $error_message;
-
-        return $this;
-    }
-
-    /**
-     * Gets listing_id
-     *
-     * @return string
-     */
-    public function getListingId()
-    {
-        return $this->container['listing_id'];
-    }
-
-    /**
-     * Sets listing_id
-     *
-     * @param string $listing_id listing_id
-     *
-     * @return self
-     */
-    public function setListingId($listing_id)
-    {
-        $this->container['listing_id'] = $listing_id;
-
-        return $this;
-    }
-
-    /**
      * Gets marketplace_id
      *
      * @return string|null
@@ -957,25 +1030,107 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets account_slot
+     * Gets origin
      *
-     * @return float
+     * @return string
      */
-    public function getAccountSlot()
+    public function getOrigin()
     {
-        return $this->container['account_slot'];
+        return $this->container['origin'];
     }
 
     /**
-     * Sets account_slot
+     * Sets origin
      *
-     * @param float $account_slot account_slot
+     * @param string $origin origin
      *
      * @return self
      */
-    public function setAccountSlot($account_slot)
+    public function setOrigin($origin)
     {
-        $this->container['account_slot'] = $account_slot;
+        $allowedValues = $this->getOriginAllowableValues();
+        if (!in_array($origin, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'origin', must be one of '%s'",
+                    $origin,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['origin'] = $origin;
+
+        return $this;
+    }
+
+    /**
+     * Gets views
+     *
+     * @return float
+     */
+    public function getViews()
+    {
+        return $this->container['views'];
+    }
+
+    /**
+     * Sets views
+     *
+     * @param float $views views
+     *
+     * @return self
+     */
+    public function setViews($views)
+    {
+        $this->container['views'] = $views;
+
+        return $this;
+    }
+
+    /**
+     * Gets favorites
+     *
+     * @return float
+     */
+    public function getFavorites()
+    {
+        return $this->container['favorites'];
+    }
+
+    /**
+     * Sets favorites
+     *
+     * @param float $favorites favorites
+     *
+     * @return self
+     */
+    public function setFavorites($favorites)
+    {
+        $this->container['favorites'] = $favorites;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return float
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param float $quantity quantity
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }
@@ -1072,6 +1227,30 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     public function setSoldAt($sold_at)
     {
         $this->container['sold_at'] = $sold_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets listing_id
+     *
+     * @return string
+     */
+    public function getListingId()
+    {
+        return $this->container['listing_id'];
+    }
+
+    /**
+     * Sets listing_id
+     *
+     * @param string $listing_id listing_id
+     *
+     * @return self
+     */
+    public function setListingId($listing_id)
+    {
+        $this->container['listing_id'] = $listing_id;
 
         return $this;
     }
@@ -1245,54 +1424,6 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets views
-     *
-     * @return float
-     */
-    public function getViews()
-    {
-        return $this->container['views'];
-    }
-
-    /**
-     * Sets views
-     *
-     * @param float $views views
-     *
-     * @return self
-     */
-    public function setViews($views)
-    {
-        $this->container['views'] = $views;
-
-        return $this;
-    }
-
-    /**
-     * Gets favorites
-     *
-     * @return float
-     */
-    public function getFavorites()
-    {
-        return $this->container['favorites'];
-    }
-
-    /**
-     * Sets favorites
-     *
-     * @param float $favorites favorites
-     *
-     * @return self
-     */
-    public function setFavorites($favorites)
-    {
-        $this->container['favorites'] = $favorites;
-
-        return $this;
-    }
-
-    /**
      * Gets comments_count
      *
      * @return float
@@ -1317,6 +1448,88 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     }
 
     /**
+     * Gets impressions
+     *
+     * @return float|null
+     */
+    public function getImpressions()
+    {
+        return $this->container['impressions'];
+    }
+
+    /**
+     * Sets impressions
+     *
+     * @param float|null $impressions impressions
+     *
+     * @return self
+     */
+    public function setImpressions($impressions)
+    {
+        $this->container['impressions'] = $impressions;
+
+        return $this;
+    }
+
+    /**
+     * Gets ctr_bps
+     *
+     * @return float|null
+     */
+    public function getCtrBps()
+    {
+        return $this->container['ctr_bps'];
+    }
+
+    /**
+     * Sets ctr_bps
+     *
+     * @param float|null $ctr_bps ctr_bps
+     *
+     * @return self
+     */
+    public function setCtrBps($ctr_bps)
+    {
+        $this->container['ctr_bps'] = $ctr_bps;
+
+        return $this;
+    }
+
+    /**
+     * Gets views_semantics
+     *
+     * @return string|null
+     */
+    public function getViewsSemantics()
+    {
+        return $this->container['views_semantics'];
+    }
+
+    /**
+     * Sets views_semantics
+     *
+     * @param string|null $views_semantics views_semantics
+     *
+     * @return self
+     */
+    public function setViewsSemantics($views_semantics)
+    {
+        $allowedValues = $this->getViewsSemanticsAllowableValues();
+        if (!is_null($views_semantics) && !in_array($views_semantics, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'views_semantics', must be one of '%s'",
+                    $views_semantics,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['views_semantics'] = $views_semantics;
+
+        return $this;
+    }
+
+    /**
      * Gets last_stats_synced_at
      *
      * @return \DateTime|null
@@ -1336,6 +1549,150 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     public function setLastStatsSyncedAt($last_stats_synced_at)
     {
         $this->container['last_stats_synced_at'] = $last_stats_synced_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_message
+     *
+     * @return string|null
+     */
+    public function getErrorMessage()
+    {
+        return $this->container['error_message'];
+    }
+
+    /**
+     * Sets error_message
+     *
+     * @param string|null $error_message error_message
+     *
+     * @return self
+     */
+    public function setErrorMessage($error_message)
+    {
+        $this->container['error_message'] = $error_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets delist_requested_at
+     *
+     * @return \DateTime|null
+     */
+    public function getDelistRequestedAt()
+    {
+        return $this->container['delist_requested_at'];
+    }
+
+    /**
+     * Sets delist_requested_at
+     *
+     * @param \DateTime|null $delist_requested_at delist_requested_at
+     *
+     * @return self
+     */
+    public function setDelistRequestedAt($delist_requested_at)
+    {
+        $this->container['delist_requested_at'] = $delist_requested_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets delist_requested_reason
+     *
+     * @return string|null
+     */
+    public function getDelistRequestedReason()
+    {
+        return $this->container['delist_requested_reason'];
+    }
+
+    /**
+     * Sets delist_requested_reason
+     *
+     * @param string|null $delist_requested_reason delist_requested_reason
+     *
+     * @return self
+     */
+    public function setDelistRequestedReason($delist_requested_reason)
+    {
+        $this->container['delist_requested_reason'] = $delist_requested_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets delist_failed_at
+     *
+     * @return \DateTime|null
+     */
+    public function getDelistFailedAt()
+    {
+        return $this->container['delist_failed_at'];
+    }
+
+    /**
+     * Sets delist_failed_at
+     *
+     * @param \DateTime|null $delist_failed_at delist_failed_at
+     *
+     * @return self
+     */
+    public function setDelistFailedAt($delist_failed_at)
+    {
+        $this->container['delist_failed_at'] = $delist_failed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets delist_error
+     *
+     * @return string|null
+     */
+    public function getDelistError()
+    {
+        return $this->container['delist_error'];
+    }
+
+    /**
+     * Sets delist_error
+     *
+     * @param string|null $delist_error delist_error
+     *
+     * @return self
+     */
+    public function setDelistError($delist_error)
+    {
+        $this->container['delist_error'] = $delist_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets delist_error_code
+     *
+     * @return string|null
+     */
+    public function getDelistErrorCode()
+    {
+        return $this->container['delist_error_code'];
+    }
+
+    /**
+     * Sets delist_error_code
+     *
+     * @param string|null $delist_error_code delist_error_code
+     *
+     * @return self
+     */
+    public function setDelistErrorCode($delist_error_code)
+    {
+        $this->container['delist_error_code'] = $delist_error_code;
 
         return $this;
     }
@@ -1408,6 +1765,54 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     public function setCrosslyPriceFxAsOf($crossly_price_fx_as_of)
     {
         $this->container['crossly_price_fx_as_of'] = $crossly_price_fx_as_of;
+
+        return $this;
+    }
+
+    /**
+     * Gets bundle_promo
+     *
+     * @return \Crossly\Model\Inventory\GetInventoryResponsePlatformListingsBundlePromo|null
+     */
+    public function getBundlePromo()
+    {
+        return $this->container['bundle_promo'];
+    }
+
+    /**
+     * Sets bundle_promo
+     *
+     * @param \Crossly\Model\Inventory\GetInventoryResponsePlatformListingsBundlePromo|null $bundle_promo bundle_promo
+     *
+     * @return self
+     */
+    public function setBundlePromo($bundle_promo)
+    {
+        $this->container['bundle_promo'] = $bundle_promo;
+
+        return $this;
+    }
+
+    /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id storefront_id
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
 
         return $this;
     }
@@ -1864,30 +2269,6 @@ class GetInventoryResponsePlatformListings implements ModelInterface, ArrayAcces
     public function setPersonalization($personalization)
     {
         $this->container['personalization'] = $personalization;
-
-        return $this;
-    }
-
-    /**
-     * Gets digital_file
-     *
-     * @return \Crossly\Model\Inventory\GetInventoryResponsePlatformListingsDigitalFile|null
-     */
-    public function getDigitalFile()
-    {
-        return $this->container['digital_file'];
-    }
-
-    /**
-     * Sets digital_file
-     *
-     * @param \Crossly\Model\Inventory\GetInventoryResponsePlatformListingsDigitalFile|null $digital_file digital_file
-     *
-     * @return self
-     */
-    public function setDigitalFile($digital_file)
-    {
-        $this->container['digital_file'] = $digital_file;
 
         return $this;
     }

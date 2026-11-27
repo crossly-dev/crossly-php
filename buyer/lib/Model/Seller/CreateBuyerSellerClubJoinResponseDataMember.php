@@ -60,11 +60,11 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
       * @var string[]
       */
     protected static $openAPITypes = [
-        'tier' => 'string',
-        'joined_at' => 'string',
-        'discount_bps' => 'float',
         'spend_cents' => 'float',
-        'next' => '\Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataMemberNext'
+        'tier' => 'string',
+        'discount_bps' => 'float',
+        'next' => '\Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataMemberNext',
+        'joined_at' => 'string'
     ];
 
     /**
@@ -75,11 +75,11 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'tier' => null,
-        'joined_at' => null,
-        'discount_bps' => null,
         'spend_cents' => null,
-        'next' => null
+        'tier' => null,
+        'discount_bps' => null,
+        'next' => null,
+        'joined_at' => null
     ];
 
     /**
@@ -109,11 +109,11 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
      * @var string[]
      */
     protected static $attributeMap = [
-        'tier' => 'tier',
-        'joined_at' => 'joinedAt',
-        'discount_bps' => 'discountBps',
         'spend_cents' => 'spendCents',
-        'next' => 'next'
+        'tier' => 'tier',
+        'discount_bps' => 'discountBps',
+        'next' => 'next',
+        'joined_at' => 'joinedAt'
     ];
 
     /**
@@ -122,11 +122,11 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
      * @var string[]
      */
     protected static $setters = [
-        'tier' => 'setTier',
-        'joined_at' => 'setJoinedAt',
-        'discount_bps' => 'setDiscountBps',
         'spend_cents' => 'setSpendCents',
-        'next' => 'setNext'
+        'tier' => 'setTier',
+        'discount_bps' => 'setDiscountBps',
+        'next' => 'setNext',
+        'joined_at' => 'setJoinedAt'
     ];
 
     /**
@@ -135,11 +135,11 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
      * @var string[]
      */
     protected static $getters = [
-        'tier' => 'getTier',
-        'joined_at' => 'getJoinedAt',
-        'discount_bps' => 'getDiscountBps',
         'spend_cents' => 'getSpendCents',
-        'next' => 'getNext'
+        'tier' => 'getTier',
+        'discount_bps' => 'getDiscountBps',
+        'next' => 'getNext',
+        'joined_at' => 'getJoinedAt'
     ];
 
     /**
@@ -199,11 +199,11 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
      */
     public function __construct(array $data = null)
     {
-        $this->container['tier'] = $data['tier'] ?? null;
-        $this->container['joined_at'] = $data['joined_at'] ?? null;
-        $this->container['discount_bps'] = $data['discount_bps'] ?? null;
         $this->container['spend_cents'] = $data['spend_cents'] ?? null;
+        $this->container['tier'] = $data['tier'] ?? null;
+        $this->container['discount_bps'] = $data['discount_bps'] ?? null;
         $this->container['next'] = $data['next'] ?? null;
+        $this->container['joined_at'] = $data['joined_at'] ?? null;
     }
 
     /**
@@ -215,14 +215,14 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
     {
         $invalidProperties = [];
 
-        if ($this->container['joined_at'] === null) {
-            $invalidProperties[] = "'joined_at' can't be null";
+        if ($this->container['spend_cents'] === null) {
+            $invalidProperties[] = "'spend_cents' can't be null";
         }
         if ($this->container['discount_bps'] === null) {
             $invalidProperties[] = "'discount_bps' can't be null";
         }
-        if ($this->container['spend_cents'] === null) {
-            $invalidProperties[] = "'spend_cents' can't be null";
+        if ($this->container['joined_at'] === null) {
+            $invalidProperties[] = "'joined_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -238,6 +238,30 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets spend_cents
+     *
+     * @return float
+     */
+    public function getSpendCents()
+    {
+        return $this->container['spend_cents'];
+    }
+
+    /**
+     * Sets spend_cents
+     *
+     * @param float $spend_cents spend_cents
+     *
+     * @return self
+     */
+    public function setSpendCents($spend_cents)
+    {
+        $this->container['spend_cents'] = $spend_cents;
+
+        return $this;
+    }
 
     /**
      * Gets tier
@@ -259,30 +283,6 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
     public function setTier($tier)
     {
         $this->container['tier'] = $tier;
-
-        return $this;
-    }
-
-    /**
-     * Gets joined_at
-     *
-     * @return string
-     */
-    public function getJoinedAt()
-    {
-        return $this->container['joined_at'];
-    }
-
-    /**
-     * Sets joined_at
-     *
-     * @param string $joined_at joined_at
-     *
-     * @return self
-     */
-    public function setJoinedAt($joined_at)
-    {
-        $this->container['joined_at'] = $joined_at;
 
         return $this;
     }
@@ -312,30 +312,6 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
     }
 
     /**
-     * Gets spend_cents
-     *
-     * @return float
-     */
-    public function getSpendCents()
-    {
-        return $this->container['spend_cents'];
-    }
-
-    /**
-     * Sets spend_cents
-     *
-     * @param float $spend_cents spend_cents
-     *
-     * @return self
-     */
-    public function setSpendCents($spend_cents)
-    {
-        $this->container['spend_cents'] = $spend_cents;
-
-        return $this;
-    }
-
-    /**
      * Gets next
      *
      * @return \Crossly\Buyer\Model\Seller\CreateBuyerSellerClubJoinResponseDataMemberNext|null
@@ -355,6 +331,30 @@ class CreateBuyerSellerClubJoinResponseDataMember implements ModelInterface, Arr
     public function setNext($next)
     {
         $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets joined_at
+     *
+     * @return string
+     */
+    public function getJoinedAt()
+    {
+        return $this->container['joined_at'];
+    }
+
+    /**
+     * Sets joined_at
+     *
+     * @param string $joined_at joined_at
+     *
+     * @return self
+     */
+    public function setJoinedAt($joined_at)
+    {
+        $this->container['joined_at'] = $joined_at;
 
         return $this;
     }

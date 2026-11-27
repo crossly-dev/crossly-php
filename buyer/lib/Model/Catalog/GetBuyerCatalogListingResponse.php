@@ -63,12 +63,14 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         'slug' => 'string',
         'title' => 'string',
         'description' => 'string',
+        'description_blocks' => '\Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingResponseDescriptionBlocksItem[]',
         'price_cents' => 'float',
         'compare_at_cents' => 'float',
         'currency' => 'string',
         'status' => 'string',
         'available' => 'bool',
         'quantity_available' => 'float',
+        'variants' => '\Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingResponseVariants[]',
         'condition' => 'string',
         'brand' => 'string',
         'size' => 'string',
@@ -78,7 +80,8 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         'images' => 'string[]',
         'seller_username' => 'string',
         'seller_display_name' => 'string',
-        'listed_at' => 'string'
+        'listed_at' => 'string',
+        'token_gate' => '\Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingResponseTokenGate'
     ];
 
     /**
@@ -92,12 +95,14 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         'slug' => null,
         'title' => null,
         'description' => null,
+        'description_blocks' => null,
         'price_cents' => null,
         'compare_at_cents' => null,
         'currency' => null,
         'status' => null,
         'available' => null,
         'quantity_available' => null,
+        'variants' => null,
         'condition' => null,
         'brand' => null,
         'size' => null,
@@ -107,7 +112,8 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         'images' => null,
         'seller_username' => null,
         'seller_display_name' => null,
-        'listed_at' => null
+        'listed_at' => null,
+        'token_gate' => null
     ];
 
     /**
@@ -140,12 +146,14 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         'slug' => 'slug',
         'title' => 'title',
         'description' => 'description',
+        'description_blocks' => 'descriptionBlocks',
         'price_cents' => 'priceCents',
         'compare_at_cents' => 'compareAtCents',
         'currency' => 'currency',
         'status' => 'status',
         'available' => 'available',
         'quantity_available' => 'quantityAvailable',
+        'variants' => 'variants',
         'condition' => 'condition',
         'brand' => 'brand',
         'size' => 'size',
@@ -155,7 +163,8 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         'images' => 'images',
         'seller_username' => 'sellerUsername',
         'seller_display_name' => 'sellerDisplayName',
-        'listed_at' => 'listedAt'
+        'listed_at' => 'listedAt',
+        'token_gate' => 'tokenGate'
     ];
 
     /**
@@ -167,12 +176,14 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         'slug' => 'setSlug',
         'title' => 'setTitle',
         'description' => 'setDescription',
+        'description_blocks' => 'setDescriptionBlocks',
         'price_cents' => 'setPriceCents',
         'compare_at_cents' => 'setCompareAtCents',
         'currency' => 'setCurrency',
         'status' => 'setStatus',
         'available' => 'setAvailable',
         'quantity_available' => 'setQuantityAvailable',
+        'variants' => 'setVariants',
         'condition' => 'setCondition',
         'brand' => 'setBrand',
         'size' => 'setSize',
@@ -182,7 +193,8 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         'images' => 'setImages',
         'seller_username' => 'setSellerUsername',
         'seller_display_name' => 'setSellerDisplayName',
-        'listed_at' => 'setListedAt'
+        'listed_at' => 'setListedAt',
+        'token_gate' => 'setTokenGate'
     ];
 
     /**
@@ -194,12 +206,14 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         'slug' => 'getSlug',
         'title' => 'getTitle',
         'description' => 'getDescription',
+        'description_blocks' => 'getDescriptionBlocks',
         'price_cents' => 'getPriceCents',
         'compare_at_cents' => 'getCompareAtCents',
         'currency' => 'getCurrency',
         'status' => 'getStatus',
         'available' => 'getAvailable',
         'quantity_available' => 'getQuantityAvailable',
+        'variants' => 'getVariants',
         'condition' => 'getCondition',
         'brand' => 'getBrand',
         'size' => 'getSize',
@@ -209,7 +223,8 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         'images' => 'getImages',
         'seller_username' => 'getSellerUsername',
         'seller_display_name' => 'getSellerDisplayName',
-        'listed_at' => 'getListedAt'
+        'listed_at' => 'getListedAt',
+        'token_gate' => 'getTokenGate'
     ];
 
     /**
@@ -272,12 +287,14 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         $this->container['slug'] = $data['slug'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
+        $this->container['description_blocks'] = $data['description_blocks'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['compare_at_cents'] = $data['compare_at_cents'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['available'] = $data['available'] ?? null;
         $this->container['quantity_available'] = $data['quantity_available'] ?? null;
+        $this->container['variants'] = $data['variants'] ?? null;
         $this->container['condition'] = $data['condition'] ?? null;
         $this->container['brand'] = $data['brand'] ?? null;
         $this->container['size'] = $data['size'] ?? null;
@@ -288,6 +305,7 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         $this->container['seller_username'] = $data['seller_username'] ?? null;
         $this->container['seller_display_name'] = $data['seller_display_name'] ?? null;
         $this->container['listed_at'] = $data['listed_at'] ?? null;
+        $this->container['token_gate'] = $data['token_gate'] ?? null;
     }
 
     /**
@@ -304,6 +322,9 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
         }
         if ($this->container['title'] === null) {
             $invalidProperties[] = "'title' can't be null";
+        }
+        if ($this->container['description_blocks'] === null) {
+            $invalidProperties[] = "'description_blocks' can't be null";
         }
         if ($this->container['price_cents'] === null) {
             $invalidProperties[] = "'price_cents' can't be null";
@@ -406,6 +427,30 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
     public function setDescription($description)
     {
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets description_blocks
+     *
+     * @return \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingResponseDescriptionBlocksItem[]
+     */
+    public function getDescriptionBlocks()
+    {
+        return $this->container['description_blocks'];
+    }
+
+    /**
+     * Sets description_blocks
+     *
+     * @param \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingResponseDescriptionBlocksItem[] $description_blocks description_blocks
+     *
+     * @return self
+     */
+    public function setDescriptionBlocks($description_blocks)
+    {
+        $this->container['description_blocks'] = $description_blocks;
 
         return $this;
     }
@@ -550,6 +595,30 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
     public function setQuantityAvailable($quantity_available)
     {
         $this->container['quantity_available'] = $quantity_available;
+
+        return $this;
+    }
+
+    /**
+     * Gets variants
+     *
+     * @return \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingResponseVariants[]|null
+     */
+    public function getVariants()
+    {
+        return $this->container['variants'];
+    }
+
+    /**
+     * Sets variants
+     *
+     * @param \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingResponseVariants[]|null $variants variants
+     *
+     * @return self
+     */
+    public function setVariants($variants)
+    {
+        $this->container['variants'] = $variants;
 
         return $this;
     }
@@ -790,6 +859,30 @@ class GetBuyerCatalogListingResponse implements ModelInterface, ArrayAccess, \Js
     public function setListedAt($listed_at)
     {
         $this->container['listed_at'] = $listed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets token_gate
+     *
+     * @return \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingResponseTokenGate|null
+     */
+    public function getTokenGate()
+    {
+        return $this->container['token_gate'];
+    }
+
+    /**
+     * Sets token_gate
+     *
+     * @param \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingResponseTokenGate|null $token_gate token_gate
+     *
+     * @return self
+     */
+    public function setTokenGate($token_gate)
+    {
+        $this->container['token_gate'] = $token_gate;
 
         return $this;
     }

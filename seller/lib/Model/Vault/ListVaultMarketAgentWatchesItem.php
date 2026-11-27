@@ -223,10 +223,10 @@ class ListVaultMarketAgentWatchesItem implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
-    const METRIC_MARK = 'mark';
     const METRIC_ASK = 'ask';
-    const METRIC_BID = 'bid';
     const METRIC_LAST = 'last';
+    const METRIC_MARK = 'mark';
+    const METRIC_BID = 'bid';
     const DIRECTION_ABOVE = 'above';
     const DIRECTION_BELOW = 'below';
     const STATUS_LIVE = 'live';
@@ -242,10 +242,10 @@ class ListVaultMarketAgentWatchesItem implements ModelInterface, ArrayAccess, \J
     public function getMetricAllowableValues()
     {
         return [
-            self::METRIC_MARK,
             self::METRIC_ASK,
-            self::METRIC_BID,
             self::METRIC_LAST,
+            self::METRIC_MARK,
+            self::METRIC_BID,
         ];
     }
 

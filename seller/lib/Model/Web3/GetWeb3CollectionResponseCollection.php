@@ -65,20 +65,20 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
         'description' => 'string',
         'category' => 'string',
         'slug' => 'string',
-        'hidden_at' => '\DateTime',
         'image_url' => 'string',
+        'verified' => 'bool',
+        'hidden_at' => '\DateTime',
         'refreshed_at' => '\DateTime',
         'external_url' => 'string',
         'chain' => 'string',
         'contract' => 'string',
-        'first_seen_at' => '\DateTime',
         'token_type' => 'string',
         'total_supply' => 'string',
         'featured_rank' => 'float',
+        'first_seen_at' => '\DateTime',
         'banner_url' => 'string',
         'twitter' => 'string',
         'discord' => 'string',
-        'verified' => 'bool',
         'deployed_block' => 'float',
         'collectors' => 'float',
         'indexed_at' => '\DateTime',
@@ -105,20 +105,20 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
         'description' => null,
         'category' => null,
         'slug' => null,
-        'hidden_at' => 'date-time',
         'image_url' => null,
+        'verified' => null,
+        'hidden_at' => 'date-time',
         'refreshed_at' => 'date-time',
         'external_url' => null,
         'chain' => null,
         'contract' => null,
-        'first_seen_at' => 'date-time',
         'token_type' => null,
         'total_supply' => null,
         'featured_rank' => null,
+        'first_seen_at' => 'date-time',
         'banner_url' => null,
         'twitter' => null,
         'discord' => null,
-        'verified' => null,
         'deployed_block' => null,
         'collectors' => null,
         'indexed_at' => 'date-time',
@@ -164,20 +164,20 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
         'description' => 'description',
         'category' => 'category',
         'slug' => 'slug',
-        'hidden_at' => 'hiddenAt',
         'image_url' => 'imageUrl',
+        'verified' => 'verified',
+        'hidden_at' => 'hiddenAt',
         'refreshed_at' => 'refreshedAt',
         'external_url' => 'externalUrl',
         'chain' => 'chain',
         'contract' => 'contract',
-        'first_seen_at' => 'firstSeenAt',
         'token_type' => 'tokenType',
         'total_supply' => 'totalSupply',
         'featured_rank' => 'featuredRank',
+        'first_seen_at' => 'firstSeenAt',
         'banner_url' => 'bannerUrl',
         'twitter' => 'twitter',
         'discord' => 'discord',
-        'verified' => 'verified',
         'deployed_block' => 'deployedBlock',
         'collectors' => 'collectors',
         'indexed_at' => 'indexedAt',
@@ -202,20 +202,20 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
         'description' => 'setDescription',
         'category' => 'setCategory',
         'slug' => 'setSlug',
-        'hidden_at' => 'setHiddenAt',
         'image_url' => 'setImageUrl',
+        'verified' => 'setVerified',
+        'hidden_at' => 'setHiddenAt',
         'refreshed_at' => 'setRefreshedAt',
         'external_url' => 'setExternalUrl',
         'chain' => 'setChain',
         'contract' => 'setContract',
-        'first_seen_at' => 'setFirstSeenAt',
         'token_type' => 'setTokenType',
         'total_supply' => 'setTotalSupply',
         'featured_rank' => 'setFeaturedRank',
+        'first_seen_at' => 'setFirstSeenAt',
         'banner_url' => 'setBannerUrl',
         'twitter' => 'setTwitter',
         'discord' => 'setDiscord',
-        'verified' => 'setVerified',
         'deployed_block' => 'setDeployedBlock',
         'collectors' => 'setCollectors',
         'indexed_at' => 'setIndexedAt',
@@ -240,20 +240,20 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
         'description' => 'getDescription',
         'category' => 'getCategory',
         'slug' => 'getSlug',
-        'hidden_at' => 'getHiddenAt',
         'image_url' => 'getImageUrl',
+        'verified' => 'getVerified',
+        'hidden_at' => 'getHiddenAt',
         'refreshed_at' => 'getRefreshedAt',
         'external_url' => 'getExternalUrl',
         'chain' => 'getChain',
         'contract' => 'getContract',
-        'first_seen_at' => 'getFirstSeenAt',
         'token_type' => 'getTokenType',
         'total_supply' => 'getTotalSupply',
         'featured_rank' => 'getFeaturedRank',
+        'first_seen_at' => 'getFirstSeenAt',
         'banner_url' => 'getBannerUrl',
         'twitter' => 'getTwitter',
         'discord' => 'getDiscord',
-        'verified' => 'getVerified',
         'deployed_block' => 'getDeployedBlock',
         'collectors' => 'getCollectors',
         'indexed_at' => 'getIndexedAt',
@@ -329,20 +329,20 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
         $this->container['description'] = $data['description'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
         $this->container['slug'] = $data['slug'] ?? null;
-        $this->container['hidden_at'] = $data['hidden_at'] ?? null;
         $this->container['image_url'] = $data['image_url'] ?? null;
+        $this->container['verified'] = $data['verified'] ?? null;
+        $this->container['hidden_at'] = $data['hidden_at'] ?? null;
         $this->container['refreshed_at'] = $data['refreshed_at'] ?? null;
         $this->container['external_url'] = $data['external_url'] ?? null;
         $this->container['chain'] = $data['chain'] ?? null;
         $this->container['contract'] = $data['contract'] ?? null;
-        $this->container['first_seen_at'] = $data['first_seen_at'] ?? null;
         $this->container['token_type'] = $data['token_type'] ?? null;
         $this->container['total_supply'] = $data['total_supply'] ?? null;
         $this->container['featured_rank'] = $data['featured_rank'] ?? null;
+        $this->container['first_seen_at'] = $data['first_seen_at'] ?? null;
         $this->container['banner_url'] = $data['banner_url'] ?? null;
         $this->container['twitter'] = $data['twitter'] ?? null;
         $this->container['discord'] = $data['discord'] ?? null;
-        $this->container['verified'] = $data['verified'] ?? null;
         $this->container['deployed_block'] = $data['deployed_block'] ?? null;
         $this->container['collectors'] = $data['collectors'] ?? null;
         $this->container['indexed_at'] = $data['indexed_at'] ?? null;
@@ -365,6 +365,9 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['verified'] === null) {
+            $invalidProperties[] = "'verified' can't be null";
+        }
         if ($this->container['refreshed_at'] === null) {
             $invalidProperties[] = "'refreshed_at' can't be null";
         }
@@ -376,9 +379,6 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
         }
         if ($this->container['first_seen_at'] === null) {
             $invalidProperties[] = "'first_seen_at' can't be null";
-        }
-        if ($this->container['verified'] === null) {
-            $invalidProperties[] = "'verified' can't be null";
         }
         if ($this->container['collectors'] === null) {
             $invalidProperties[] = "'collectors' can't be null";
@@ -519,30 +519,6 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets hidden_at
-     *
-     * @return \DateTime|null
-     */
-    public function getHiddenAt()
-    {
-        return $this->container['hidden_at'];
-    }
-
-    /**
-     * Sets hidden_at
-     *
-     * @param \DateTime|null $hidden_at hidden_at
-     *
-     * @return self
-     */
-    public function setHiddenAt($hidden_at)
-    {
-        $this->container['hidden_at'] = $hidden_at;
-
-        return $this;
-    }
-
-    /**
      * Gets image_url
      *
      * @return string|null
@@ -562,6 +538,54 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
     public function setImageUrl($image_url)
     {
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets verified
+     *
+     * @return bool
+     */
+    public function getVerified()
+    {
+        return $this->container['verified'];
+    }
+
+    /**
+     * Sets verified
+     *
+     * @param bool $verified verified
+     *
+     * @return self
+     */
+    public function setVerified($verified)
+    {
+        $this->container['verified'] = $verified;
+
+        return $this;
+    }
+
+    /**
+     * Gets hidden_at
+     *
+     * @return \DateTime|null
+     */
+    public function getHiddenAt()
+    {
+        return $this->container['hidden_at'];
+    }
+
+    /**
+     * Sets hidden_at
+     *
+     * @param \DateTime|null $hidden_at hidden_at
+     *
+     * @return self
+     */
+    public function setHiddenAt($hidden_at)
+    {
+        $this->container['hidden_at'] = $hidden_at;
 
         return $this;
     }
@@ -663,30 +687,6 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets first_seen_at
-     *
-     * @return \DateTime
-     */
-    public function getFirstSeenAt()
-    {
-        return $this->container['first_seen_at'];
-    }
-
-    /**
-     * Sets first_seen_at
-     *
-     * @param \DateTime $first_seen_at first_seen_at
-     *
-     * @return self
-     */
-    public function setFirstSeenAt($first_seen_at)
-    {
-        $this->container['first_seen_at'] = $first_seen_at;
-
-        return $this;
-    }
-
-    /**
      * Gets token_type
      *
      * @return string|null
@@ -759,6 +759,30 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets first_seen_at
+     *
+     * @return \DateTime
+     */
+    public function getFirstSeenAt()
+    {
+        return $this->container['first_seen_at'];
+    }
+
+    /**
+     * Sets first_seen_at
+     *
+     * @param \DateTime $first_seen_at first_seen_at
+     *
+     * @return self
+     */
+    public function setFirstSeenAt($first_seen_at)
+    {
+        $this->container['first_seen_at'] = $first_seen_at;
+
+        return $this;
+    }
+
+    /**
      * Gets banner_url
      *
      * @return string|null
@@ -826,30 +850,6 @@ class GetWeb3CollectionResponseCollection implements ModelInterface, ArrayAccess
     public function setDiscord($discord)
     {
         $this->container['discord'] = $discord;
-
-        return $this;
-    }
-
-    /**
-     * Gets verified
-     *
-     * @return bool
-     */
-    public function getVerified()
-    {
-        return $this->container['verified'];
-    }
-
-    /**
-     * Sets verified
-     *
-     * @param bool $verified verified
-     *
-     * @return self
-     */
-    public function setVerified($verified)
-    {
-        $this->container['verified'] = $verified;
 
         return $this;
     }

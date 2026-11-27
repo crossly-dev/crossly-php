@@ -61,7 +61,11 @@ class CreateOrderRefundResponse implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'refund_id' => 'string',
-        'amount' => 'float'
+        'amount' => 'float',
+        'id' => 'string',
+        'total_refunded' => 'float',
+        'remaining' => 'float',
+        'replayed' => 'bool'
     ];
 
     /**
@@ -73,7 +77,11 @@ class CreateOrderRefundResponse implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'refund_id' => null,
-        'amount' => null
+        'amount' => null,
+        'id' => null,
+        'total_refunded' => null,
+        'remaining' => null,
+        'replayed' => null
     ];
 
     /**
@@ -104,7 +112,11 @@ class CreateOrderRefundResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'refund_id' => 'refundId',
-        'amount' => 'amount'
+        'amount' => 'amount',
+        'id' => 'id',
+        'total_refunded' => 'totalRefunded',
+        'remaining' => 'remaining',
+        'replayed' => 'replayed'
     ];
 
     /**
@@ -114,7 +126,11 @@ class CreateOrderRefundResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'refund_id' => 'setRefundId',
-        'amount' => 'setAmount'
+        'amount' => 'setAmount',
+        'id' => 'setId',
+        'total_refunded' => 'setTotalRefunded',
+        'remaining' => 'setRemaining',
+        'replayed' => 'setReplayed'
     ];
 
     /**
@@ -124,7 +140,11 @@ class CreateOrderRefundResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'refund_id' => 'getRefundId',
-        'amount' => 'getAmount'
+        'amount' => 'getAmount',
+        'id' => 'getId',
+        'total_refunded' => 'getTotalRefunded',
+        'remaining' => 'getRemaining',
+        'replayed' => 'getReplayed'
     ];
 
     /**
@@ -186,6 +206,10 @@ class CreateOrderRefundResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->container['refund_id'] = $data['refund_id'] ?? null;
         $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['total_refunded'] = $data['total_refunded'] ?? null;
+        $this->container['remaining'] = $data['remaining'] ?? null;
+        $this->container['replayed'] = $data['replayed'] ?? null;
     }
 
     /**
@@ -202,6 +226,15 @@ class CreateOrderRefundResponse implements ModelInterface, ArrayAccess, \JsonSer
         }
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['total_refunded'] === null) {
+            $invalidProperties[] = "'total_refunded' can't be null";
+        }
+        if ($this->container['replayed'] === null) {
+            $invalidProperties[] = "'replayed' can't be null";
         }
         return $invalidProperties;
     }
@@ -262,6 +295,102 @@ class CreateOrderRefundResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setAmount($amount)
     {
         $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_refunded
+     *
+     * @return float
+     */
+    public function getTotalRefunded()
+    {
+        return $this->container['total_refunded'];
+    }
+
+    /**
+     * Sets total_refunded
+     *
+     * @param float $total_refunded total_refunded
+     *
+     * @return self
+     */
+    public function setTotalRefunded($total_refunded)
+    {
+        $this->container['total_refunded'] = $total_refunded;
+
+        return $this;
+    }
+
+    /**
+     * Gets remaining
+     *
+     * @return float|null
+     */
+    public function getRemaining()
+    {
+        return $this->container['remaining'];
+    }
+
+    /**
+     * Sets remaining
+     *
+     * @param float|null $remaining remaining
+     *
+     * @return self
+     */
+    public function setRemaining($remaining)
+    {
+        $this->container['remaining'] = $remaining;
+
+        return $this;
+    }
+
+    /**
+     * Gets replayed
+     *
+     * @return bool
+     */
+    public function getReplayed()
+    {
+        return $this->container['replayed'];
+    }
+
+    /**
+     * Sets replayed
+     *
+     * @param bool $replayed replayed
+     *
+     * @return self
+     */
+    public function setReplayed($replayed)
+    {
+        $this->container['replayed'] = $replayed;
 
         return $this;
     }

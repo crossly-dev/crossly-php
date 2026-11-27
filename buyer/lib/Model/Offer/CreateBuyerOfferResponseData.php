@@ -60,8 +60,8 @@ class CreateBuyerOfferResponseData implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'offer' => '\Crossly\Buyer\Model\Offer\CreateBuyerOfferResponseDataOffer',
-        'ok' => 'bool'
+        'ok' => 'bool',
+        'offer' => '\Crossly\Buyer\Model\Offer\CreateBuyerOfferResponseDataOffer'
     ];
 
     /**
@@ -72,8 +72,8 @@ class CreateBuyerOfferResponseData implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'offer' => null,
-        'ok' => null
+        'ok' => null,
+        'offer' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CreateBuyerOfferResponseData implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'offer' => 'offer',
-        'ok' => 'ok'
+        'ok' => 'ok',
+        'offer' => 'offer'
     ];
 
     /**
@@ -113,8 +113,8 @@ class CreateBuyerOfferResponseData implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'offer' => 'setOffer',
-        'ok' => 'setOk'
+        'ok' => 'setOk',
+        'offer' => 'setOffer'
     ];
 
     /**
@@ -123,8 +123,8 @@ class CreateBuyerOfferResponseData implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'offer' => 'getOffer',
-        'ok' => 'getOk'
+        'ok' => 'getOk',
+        'offer' => 'getOffer'
     ];
 
     /**
@@ -184,8 +184,8 @@ class CreateBuyerOfferResponseData implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['offer'] = $data['offer'] ?? null;
         $this->container['ok'] = $data['ok'] ?? null;
+        $this->container['offer'] = $data['offer'] ?? null;
     }
 
     /**
@@ -197,11 +197,11 @@ class CreateBuyerOfferResponseData implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['offer'] === null) {
-            $invalidProperties[] = "'offer' can't be null";
-        }
         if ($this->container['ok'] === null) {
             $invalidProperties[] = "'ok' can't be null";
+        }
+        if ($this->container['offer'] === null) {
+            $invalidProperties[] = "'offer' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,30 +217,6 @@ class CreateBuyerOfferResponseData implements ModelInterface, ArrayAccess, \Json
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets offer
-     *
-     * @return \Crossly\Buyer\Model\Offer\CreateBuyerOfferResponseDataOffer
-     */
-    public function getOffer()
-    {
-        return $this->container['offer'];
-    }
-
-    /**
-     * Sets offer
-     *
-     * @param \Crossly\Buyer\Model\Offer\CreateBuyerOfferResponseDataOffer $offer offer
-     *
-     * @return self
-     */
-    public function setOffer($offer)
-    {
-        $this->container['offer'] = $offer;
-
-        return $this;
-    }
 
     /**
      * Gets ok
@@ -262,6 +238,30 @@ class CreateBuyerOfferResponseData implements ModelInterface, ArrayAccess, \Json
     public function setOk($ok)
     {
         $this->container['ok'] = $ok;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer
+     *
+     * @return \Crossly\Buyer\Model\Offer\CreateBuyerOfferResponseDataOffer
+     */
+    public function getOffer()
+    {
+        return $this->container['offer'];
+    }
+
+    /**
+     * Sets offer
+     *
+     * @param \Crossly\Buyer\Model\Offer\CreateBuyerOfferResponseDataOffer $offer offer
+     *
+     * @return self
+     */
+    public function setOffer($offer)
+    {
+        $this->container['offer'] = $offer;
 
         return $this;
     }

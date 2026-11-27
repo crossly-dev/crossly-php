@@ -283,11 +283,11 @@ class ListWorldDecorCatalogueItem implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    const SURFACE_SHOP = 'shop';
     const SURFACE_HOME = 'home';
     const SURFACE_STREET = 'street';
-    const SURFACE_STALL = 'stall';
+    const SURFACE_SHOP = 'shop';
     const SURFACE_AVATAR = 'avatar';
+    const SURFACE_STALL = 'stall';
 
     /**
      * Gets allowable values of the enum
@@ -297,11 +297,11 @@ class ListWorldDecorCatalogueItem implements ModelInterface, ArrayAccess, \JsonS
     public function getSurfaceAllowableValues()
     {
         return [
-            self::SURFACE_SHOP,
             self::SURFACE_HOME,
             self::SURFACE_STREET,
-            self::SURFACE_STALL,
+            self::SURFACE_SHOP,
             self::SURFACE_AVATAR,
+            self::SURFACE_STALL,
         ];
     }
 

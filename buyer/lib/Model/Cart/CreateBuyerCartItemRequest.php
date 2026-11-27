@@ -62,6 +62,7 @@ class CreateBuyerCartItemRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPITypes = [
         'listing_slug' => 'string',
         'quantity' => 'int',
+        'listing_variant_id' => 'string',
         'via' => 'string'
     ];
 
@@ -75,6 +76,7 @@ class CreateBuyerCartItemRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'listing_slug' => null,
         'quantity' => null,
+        'listing_variant_id' => null,
         'via' => null
     ];
 
@@ -107,6 +109,7 @@ class CreateBuyerCartItemRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'listing_slug' => 'listingSlug',
         'quantity' => 'quantity',
+        'listing_variant_id' => 'listingVariantId',
         'via' => 'via'
     ];
 
@@ -118,6 +121,7 @@ class CreateBuyerCartItemRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $setters = [
         'listing_slug' => 'setListingSlug',
         'quantity' => 'setQuantity',
+        'listing_variant_id' => 'setListingVariantId',
         'via' => 'setVia'
     ];
 
@@ -129,6 +133,7 @@ class CreateBuyerCartItemRequest implements ModelInterface, ArrayAccess, \JsonSe
     protected static $getters = [
         'listing_slug' => 'getListingSlug',
         'quantity' => 'getQuantity',
+        'listing_variant_id' => 'getListingVariantId',
         'via' => 'getVia'
     ];
 
@@ -191,6 +196,7 @@ class CreateBuyerCartItemRequest implements ModelInterface, ArrayAccess, \JsonSe
     {
         $this->container['listing_slug'] = $data['listing_slug'] ?? null;
         $this->container['quantity'] = $data['quantity'] ?? 1;
+        $this->container['listing_variant_id'] = $data['listing_variant_id'] ?? null;
         $this->container['via'] = $data['via'] ?? null;
     }
 
@@ -281,6 +287,30 @@ class CreateBuyerCartItemRequest implements ModelInterface, ArrayAccess, \JsonSe
         }
 
         $this->container['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Gets listing_variant_id
+     *
+     * @return string|null
+     */
+    public function getListingVariantId()
+    {
+        return $this->container['listing_variant_id'];
+    }
+
+    /**
+     * Sets listing_variant_id
+     *
+     * @param string|null $listing_variant_id The option (variants[].id) on a listing with options.
+     *
+     * @return self
+     */
+    public function setListingVariantId($listing_variant_id)
+    {
+        $this->container['listing_variant_id'] = $listing_variant_id;
 
         return $this;
     }

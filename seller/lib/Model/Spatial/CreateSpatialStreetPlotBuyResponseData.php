@@ -60,10 +60,15 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
+        'done' => 'bool',
+        'payment_id' => 'string',
+        'requires_action' => 'bool',
+        'client_secret' => 'string',
         'deed_id' => 'string',
         'address' => 'string',
         'price_cents' => 'float',
-        'paid_through' => 'string'
+        'paid_through' => 'string',
+        'placed' => '\Crossly\Model\World\CreateWorldMarketPlotRentResponseDataOneOf2Placed'
     ];
 
     /**
@@ -74,10 +79,15 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'done' => null,
+        'payment_id' => null,
+        'requires_action' => null,
+        'client_secret' => null,
         'deed_id' => null,
         'address' => null,
         'price_cents' => null,
-        'paid_through' => null
+        'paid_through' => null,
+        'placed' => null
     ];
 
     /**
@@ -107,10 +117,15 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
+        'done' => 'done',
+        'payment_id' => 'paymentId',
+        'requires_action' => 'requiresAction',
+        'client_secret' => 'clientSecret',
         'deed_id' => 'deedId',
         'address' => 'address',
         'price_cents' => 'priceCents',
-        'paid_through' => 'paidThrough'
+        'paid_through' => 'paidThrough',
+        'placed' => 'placed'
     ];
 
     /**
@@ -119,10 +134,15 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
+        'done' => 'setDone',
+        'payment_id' => 'setPaymentId',
+        'requires_action' => 'setRequiresAction',
+        'client_secret' => 'setClientSecret',
         'deed_id' => 'setDeedId',
         'address' => 'setAddress',
         'price_cents' => 'setPriceCents',
-        'paid_through' => 'setPaidThrough'
+        'paid_through' => 'setPaidThrough',
+        'placed' => 'setPlaced'
     ];
 
     /**
@@ -131,10 +151,15 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
+        'done' => 'getDone',
+        'payment_id' => 'getPaymentId',
+        'requires_action' => 'getRequiresAction',
+        'client_secret' => 'getClientSecret',
         'deed_id' => 'getDeedId',
         'address' => 'getAddress',
         'price_cents' => 'getPriceCents',
-        'paid_through' => 'getPaidThrough'
+        'paid_through' => 'getPaidThrough',
+        'placed' => 'getPlaced'
     ];
 
     /**
@@ -194,10 +219,15 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
+        $this->container['done'] = $data['done'] ?? null;
+        $this->container['payment_id'] = $data['payment_id'] ?? null;
+        $this->container['requires_action'] = $data['requires_action'] ?? null;
+        $this->container['client_secret'] = $data['client_secret'] ?? null;
         $this->container['deed_id'] = $data['deed_id'] ?? null;
         $this->container['address'] = $data['address'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['paid_through'] = $data['paid_through'] ?? null;
+        $this->container['placed'] = $data['placed'] ?? null;
     }
 
     /**
@@ -209,18 +239,6 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['deed_id'] === null) {
-            $invalidProperties[] = "'deed_id' can't be null";
-        }
-        if ($this->container['address'] === null) {
-            $invalidProperties[] = "'address' can't be null";
-        }
-        if ($this->container['price_cents'] === null) {
-            $invalidProperties[] = "'price_cents' can't be null";
-        }
-        if ($this->container['paid_through'] === null) {
-            $invalidProperties[] = "'paid_through' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -237,9 +255,105 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
 
 
     /**
+     * Gets done
+     *
+     * @return bool|null
+     */
+    public function getDone()
+    {
+        return $this->container['done'];
+    }
+
+    /**
+     * Sets done
+     *
+     * @param bool|null $done done
+     *
+     * @return self
+     */
+    public function setDone($done)
+    {
+        $this->container['done'] = $done;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_id
+     *
+     * @return string|null
+     */
+    public function getPaymentId()
+    {
+        return $this->container['payment_id'];
+    }
+
+    /**
+     * Sets payment_id
+     *
+     * @param string|null $payment_id payment_id
+     *
+     * @return self
+     */
+    public function setPaymentId($payment_id)
+    {
+        $this->container['payment_id'] = $payment_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets requires_action
+     *
+     * @return bool|null
+     */
+    public function getRequiresAction()
+    {
+        return $this->container['requires_action'];
+    }
+
+    /**
+     * Sets requires_action
+     *
+     * @param bool|null $requires_action requires_action
+     *
+     * @return self
+     */
+    public function setRequiresAction($requires_action)
+    {
+        $this->container['requires_action'] = $requires_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_secret
+     *
+     * @return string|null
+     */
+    public function getClientSecret()
+    {
+        return $this->container['client_secret'];
+    }
+
+    /**
+     * Sets client_secret
+     *
+     * @param string|null $client_secret client_secret
+     *
+     * @return self
+     */
+    public function setClientSecret($client_secret)
+    {
+        $this->container['client_secret'] = $client_secret;
+
+        return $this;
+    }
+
+    /**
      * Gets deed_id
      *
-     * @return string
+     * @return string|null
      */
     public function getDeedId()
     {
@@ -249,7 +363,7 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets deed_id
      *
-     * @param string $deed_id deed_id
+     * @param string|null $deed_id deed_id
      *
      * @return self
      */
@@ -263,7 +377,7 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
     /**
      * Gets address
      *
-     * @return string
+     * @return string|null
      */
     public function getAddress()
     {
@@ -273,7 +387,7 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets address
      *
-     * @param string $address address
+     * @param string|null $address address
      *
      * @return self
      */
@@ -287,7 +401,7 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
     /**
      * Gets price_cents
      *
-     * @return float
+     * @return float|null
      */
     public function getPriceCents()
     {
@@ -297,7 +411,7 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets price_cents
      *
-     * @param float $price_cents price_cents
+     * @param float|null $price_cents price_cents
      *
      * @return self
      */
@@ -311,7 +425,7 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
     /**
      * Gets paid_through
      *
-     * @return string
+     * @return string|null
      */
     public function getPaidThrough()
     {
@@ -321,13 +435,37 @@ class CreateSpatialStreetPlotBuyResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets paid_through
      *
-     * @param string $paid_through paid_through
+     * @param string|null $paid_through paid_through
      *
      * @return self
      */
     public function setPaidThrough($paid_through)
     {
         $this->container['paid_through'] = $paid_through;
+
+        return $this;
+    }
+
+    /**
+     * Gets placed
+     *
+     * @return \Crossly\Model\World\CreateWorldMarketPlotRentResponseDataOneOf2Placed|null
+     */
+    public function getPlaced()
+    {
+        return $this->container['placed'];
+    }
+
+    /**
+     * Sets placed
+     *
+     * @param \Crossly\Model\World\CreateWorldMarketPlotRentResponseDataOneOf2Placed|null $placed placed
+     *
+     * @return self
+     */
+    public function setPlaced($placed)
+    {
+        $this->container['placed'] = $placed;
 
         return $this;
     }

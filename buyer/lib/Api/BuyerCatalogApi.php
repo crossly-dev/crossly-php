@@ -4729,6 +4729,7 @@ class BuyerCatalogApi
      *
      * @param  string $slug slug (required)
      * @param  string $zip zip (optional)
+     * @param  string $state state (optional)
      * @param  string $country country (optional)
      * @param  int $quantity quantity (optional)
      *
@@ -4736,9 +4737,9 @@ class BuyerCatalogApi
      * @throws \InvalidArgumentException
      * @return \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingShippingResponse|\Crossly\Buyer\Model\Common\Error|\Crossly\Buyer\Model\Common\Error|\Crossly\Buyer\Model\Common\Error|\Crossly\Buyer\Model\Common\Error|\Crossly\Buyer\Model\Common\Error|\Crossly\Buyer\Model\Common\Error
      */
-    public function getBuyerCatalogListingShipping($slug, $zip = null, $country = null, $quantity = null)
+    public function getBuyerCatalogListingShipping($slug, $zip = null, $state = null, $country = null, $quantity = null)
     {
-        list($response) = $this->getBuyerCatalogListingShippingWithHttpInfo($slug, $zip, $country, $quantity);
+        list($response) = $this->getBuyerCatalogListingShippingWithHttpInfo($slug, $zip, $state, $country, $quantity);
         return $response;
     }
 
@@ -4749,6 +4750,7 @@ class BuyerCatalogApi
      *
      * @param  string $slug (required)
      * @param  string $zip (optional)
+     * @param  string $state (optional)
      * @param  string $country (optional)
      * @param  int $quantity (optional)
      *
@@ -4756,9 +4758,9 @@ class BuyerCatalogApi
      * @throws \InvalidArgumentException
      * @return array of \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingShippingResponse|\Crossly\Buyer\Model\Common\Error|\Crossly\Buyer\Model\Common\Error|\Crossly\Buyer\Model\Common\Error|\Crossly\Buyer\Model\Common\Error|\Crossly\Buyer\Model\Common\Error|\Crossly\Buyer\Model\Common\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBuyerCatalogListingShippingWithHttpInfo($slug, $zip = null, $country = null, $quantity = null)
+    public function getBuyerCatalogListingShippingWithHttpInfo($slug, $zip = null, $state = null, $country = null, $quantity = null)
     {
-        $request = $this->getBuyerCatalogListingShippingRequest($slug, $zip, $country, $quantity);
+        $request = $this->getBuyerCatalogListingShippingRequest($slug, $zip, $state, $country, $quantity);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4965,15 +4967,16 @@ class BuyerCatalogApi
      *
      * @param  string $slug (required)
      * @param  string $zip (optional)
+     * @param  string $state (optional)
      * @param  string $country (optional)
      * @param  int $quantity (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBuyerCatalogListingShippingAsync($slug, $zip = null, $country = null, $quantity = null)
+    public function getBuyerCatalogListingShippingAsync($slug, $zip = null, $state = null, $country = null, $quantity = null)
     {
-        return $this->getBuyerCatalogListingShippingAsyncWithHttpInfo($slug, $zip, $country, $quantity)
+        return $this->getBuyerCatalogListingShippingAsyncWithHttpInfo($slug, $zip, $state, $country, $quantity)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4988,16 +4991,17 @@ class BuyerCatalogApi
      *
      * @param  string $slug (required)
      * @param  string $zip (optional)
+     * @param  string $state (optional)
      * @param  string $country (optional)
      * @param  int $quantity (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBuyerCatalogListingShippingAsyncWithHttpInfo($slug, $zip = null, $country = null, $quantity = null)
+    public function getBuyerCatalogListingShippingAsyncWithHttpInfo($slug, $zip = null, $state = null, $country = null, $quantity = null)
     {
         $returnType = '\Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingShippingResponse';
-        $request = $this->getBuyerCatalogListingShippingRequest($slug, $zip, $country, $quantity);
+        $request = $this->getBuyerCatalogListingShippingRequest($slug, $zip, $state, $country, $quantity);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5037,13 +5041,14 @@ class BuyerCatalogApi
      *
      * @param  string $slug (required)
      * @param  string $zip (optional)
+     * @param  string $state (optional)
      * @param  string $country (optional)
      * @param  int $quantity (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBuyerCatalogListingShippingRequest($slug, $zip = null, $country = null, $quantity = null)
+    public function getBuyerCatalogListingShippingRequest($slug, $zip = null, $state = null, $country = null, $quantity = null)
     {
         // verify the required parameter 'slug' is set
         if ($slug === null || (is_array($slug) && count($slug) === 0)) {
@@ -5051,6 +5056,10 @@ class BuyerCatalogApi
                 'Missing the required parameter $slug when calling getBuyerCatalogListingShipping'
             );
         }
+        if ($state !== null && strlen($state) > 60) {
+            throw new \InvalidArgumentException('invalid length for "$state" when calling BuyerCatalogApi.getBuyerCatalogListingShipping, must be smaller than or equal to 60.');
+        }
+
         if ($country !== null && strlen($country) > 2) {
             throw new \InvalidArgumentException('invalid length for "$country" when calling BuyerCatalogApi.getBuyerCatalogListingShipping, must be smaller than or equal to 2.');
         }
@@ -5082,6 +5091,17 @@ class BuyerCatalogApi
             }
             else {
                 $queryParams['zip'] = $zip;
+            }
+        }
+        // query params
+        if ($state !== null) {
+            if('form' === 'form' && is_array($state)) {
+                foreach($state as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['state'] = $state;
             }
         }
         // query params

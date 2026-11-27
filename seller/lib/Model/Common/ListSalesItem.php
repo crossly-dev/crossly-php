@@ -60,29 +60,34 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'app_share' => '\Crossly\Model\Order\GetOrderResponseAppShare',
         'id' => 'string',
         'user_id' => 'string',
         'platform' => 'string',
-        'cancelled_at' => '\DateTime',
-        'order_id' => 'string',
-        'listing_id' => 'string',
+        'net_profit' => 'string',
+        'shipping_cost' => 'string',
+        'shipping_charged' => 'string',
         'inventory_item_id' => 'string',
         'currency' => 'string',
+        'listing_id' => 'string',
         'platform_listing_id' => 'string',
+        'storefront_id' => 'string',
         'platform_order_id' => 'string',
         'cost_of_goods' => 'string',
+        'cancelled_at' => '\DateTime',
         'deleted_at' => '\DateTime',
+        'order_id' => 'string',
         'sale_price' => 'string',
         'platform_fee' => 'string',
-        'shipping_cost' => 'string',
-        'net_profit' => 'string',
         'tax_collected' => 'string',
-        'shipping_charged' => 'string',
         'fee_source' => 'string',
         'detected_by' => 'string',
         'detected_at' => '\DateTime',
         'documents' => '\Crossly\Model\Common\ListSalesItemDocuments[]',
-        'refunded_amount' => 'string'
+        'refunded_amount' => 'string',
+        'details_pending' => 'bool',
+        'variant_sku' => 'string',
+        'variant_id' => 'string'
     ];
 
     /**
@@ -93,29 +98,34 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'app_share' => null,
         'id' => null,
         'user_id' => null,
         'platform' => null,
-        'cancelled_at' => 'date-time',
-        'order_id' => null,
-        'listing_id' => null,
+        'net_profit' => null,
+        'shipping_cost' => null,
+        'shipping_charged' => null,
         'inventory_item_id' => null,
         'currency' => null,
+        'listing_id' => null,
         'platform_listing_id' => null,
+        'storefront_id' => null,
         'platform_order_id' => null,
         'cost_of_goods' => null,
+        'cancelled_at' => 'date-time',
         'deleted_at' => 'date-time',
+        'order_id' => null,
         'sale_price' => null,
         'platform_fee' => null,
-        'shipping_cost' => null,
-        'net_profit' => null,
         'tax_collected' => null,
-        'shipping_charged' => null,
         'fee_source' => null,
         'detected_by' => null,
         'detected_at' => 'date-time',
         'documents' => null,
-        'refunded_amount' => null
+        'refunded_amount' => null,
+        'details_pending' => null,
+        'variant_sku' => null,
+        'variant_id' => null
     ];
 
     /**
@@ -145,29 +155,34 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'app_share' => 'appShare',
         'id' => 'id',
         'user_id' => 'userId',
         'platform' => 'platform',
-        'cancelled_at' => 'cancelledAt',
-        'order_id' => 'orderId',
-        'listing_id' => 'listingId',
+        'net_profit' => 'netProfit',
+        'shipping_cost' => 'shippingCost',
+        'shipping_charged' => 'shippingCharged',
         'inventory_item_id' => 'inventoryItemId',
         'currency' => 'currency',
+        'listing_id' => 'listingId',
         'platform_listing_id' => 'platformListingId',
+        'storefront_id' => 'storefrontId',
         'platform_order_id' => 'platformOrderId',
         'cost_of_goods' => 'costOfGoods',
+        'cancelled_at' => 'cancelledAt',
         'deleted_at' => 'deletedAt',
+        'order_id' => 'orderId',
         'sale_price' => 'salePrice',
         'platform_fee' => 'platformFee',
-        'shipping_cost' => 'shippingCost',
-        'net_profit' => 'netProfit',
         'tax_collected' => 'taxCollected',
-        'shipping_charged' => 'shippingCharged',
         'fee_source' => 'feeSource',
         'detected_by' => 'detectedBy',
         'detected_at' => 'detectedAt',
         'documents' => 'documents',
-        'refunded_amount' => 'refundedAmount'
+        'refunded_amount' => 'refundedAmount',
+        'details_pending' => 'detailsPending',
+        'variant_sku' => 'variantSku',
+        'variant_id' => 'variantId'
     ];
 
     /**
@@ -176,29 +191,34 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'app_share' => 'setAppShare',
         'id' => 'setId',
         'user_id' => 'setUserId',
         'platform' => 'setPlatform',
-        'cancelled_at' => 'setCancelledAt',
-        'order_id' => 'setOrderId',
-        'listing_id' => 'setListingId',
+        'net_profit' => 'setNetProfit',
+        'shipping_cost' => 'setShippingCost',
+        'shipping_charged' => 'setShippingCharged',
         'inventory_item_id' => 'setInventoryItemId',
         'currency' => 'setCurrency',
+        'listing_id' => 'setListingId',
         'platform_listing_id' => 'setPlatformListingId',
+        'storefront_id' => 'setStorefrontId',
         'platform_order_id' => 'setPlatformOrderId',
         'cost_of_goods' => 'setCostOfGoods',
+        'cancelled_at' => 'setCancelledAt',
         'deleted_at' => 'setDeletedAt',
+        'order_id' => 'setOrderId',
         'sale_price' => 'setSalePrice',
         'platform_fee' => 'setPlatformFee',
-        'shipping_cost' => 'setShippingCost',
-        'net_profit' => 'setNetProfit',
         'tax_collected' => 'setTaxCollected',
-        'shipping_charged' => 'setShippingCharged',
         'fee_source' => 'setFeeSource',
         'detected_by' => 'setDetectedBy',
         'detected_at' => 'setDetectedAt',
         'documents' => 'setDocuments',
-        'refunded_amount' => 'setRefundedAmount'
+        'refunded_amount' => 'setRefundedAmount',
+        'details_pending' => 'setDetailsPending',
+        'variant_sku' => 'setVariantSku',
+        'variant_id' => 'setVariantId'
     ];
 
     /**
@@ -207,29 +227,34 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'app_share' => 'getAppShare',
         'id' => 'getId',
         'user_id' => 'getUserId',
         'platform' => 'getPlatform',
-        'cancelled_at' => 'getCancelledAt',
-        'order_id' => 'getOrderId',
-        'listing_id' => 'getListingId',
+        'net_profit' => 'getNetProfit',
+        'shipping_cost' => 'getShippingCost',
+        'shipping_charged' => 'getShippingCharged',
         'inventory_item_id' => 'getInventoryItemId',
         'currency' => 'getCurrency',
+        'listing_id' => 'getListingId',
         'platform_listing_id' => 'getPlatformListingId',
+        'storefront_id' => 'getStorefrontId',
         'platform_order_id' => 'getPlatformOrderId',
         'cost_of_goods' => 'getCostOfGoods',
+        'cancelled_at' => 'getCancelledAt',
         'deleted_at' => 'getDeletedAt',
+        'order_id' => 'getOrderId',
         'sale_price' => 'getSalePrice',
         'platform_fee' => 'getPlatformFee',
-        'shipping_cost' => 'getShippingCost',
-        'net_profit' => 'getNetProfit',
         'tax_collected' => 'getTaxCollected',
-        'shipping_charged' => 'getShippingCharged',
         'fee_source' => 'getFeeSource',
         'detected_by' => 'getDetectedBy',
         'detected_at' => 'getDetectedAt',
         'documents' => 'getDocuments',
-        'refunded_amount' => 'getRefundedAmount'
+        'refunded_amount' => 'getRefundedAmount',
+        'details_pending' => 'getDetailsPending',
+        'variant_sku' => 'getVariantSku',
+        'variant_id' => 'getVariantId'
     ];
 
     /**
@@ -289,29 +314,34 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['app_share'] = $data['app_share'] ?? null;
         $this->container['id'] = $data['id'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
         $this->container['platform'] = $data['platform'] ?? null;
-        $this->container['cancelled_at'] = $data['cancelled_at'] ?? null;
-        $this->container['order_id'] = $data['order_id'] ?? null;
-        $this->container['listing_id'] = $data['listing_id'] ?? null;
+        $this->container['net_profit'] = $data['net_profit'] ?? null;
+        $this->container['shipping_cost'] = $data['shipping_cost'] ?? null;
+        $this->container['shipping_charged'] = $data['shipping_charged'] ?? null;
         $this->container['inventory_item_id'] = $data['inventory_item_id'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['listing_id'] = $data['listing_id'] ?? null;
         $this->container['platform_listing_id'] = $data['platform_listing_id'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
         $this->container['platform_order_id'] = $data['platform_order_id'] ?? null;
         $this->container['cost_of_goods'] = $data['cost_of_goods'] ?? null;
+        $this->container['cancelled_at'] = $data['cancelled_at'] ?? null;
         $this->container['deleted_at'] = $data['deleted_at'] ?? null;
+        $this->container['order_id'] = $data['order_id'] ?? null;
         $this->container['sale_price'] = $data['sale_price'] ?? null;
         $this->container['platform_fee'] = $data['platform_fee'] ?? null;
-        $this->container['shipping_cost'] = $data['shipping_cost'] ?? null;
-        $this->container['net_profit'] = $data['net_profit'] ?? null;
         $this->container['tax_collected'] = $data['tax_collected'] ?? null;
-        $this->container['shipping_charged'] = $data['shipping_charged'] ?? null;
         $this->container['fee_source'] = $data['fee_source'] ?? null;
         $this->container['detected_by'] = $data['detected_by'] ?? null;
         $this->container['detected_at'] = $data['detected_at'] ?? null;
         $this->container['documents'] = $data['documents'] ?? null;
         $this->container['refunded_amount'] = $data['refunded_amount'] ?? null;
+        $this->container['details_pending'] = $data['details_pending'] ?? null;
+        $this->container['variant_sku'] = $data['variant_sku'] ?? null;
+        $this->container['variant_id'] = $data['variant_id'] ?? null;
     }
 
     /**
@@ -338,6 +368,9 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['detected_at'] === null) {
             $invalidProperties[] = "'detected_at' can't be null";
         }
+        if ($this->container['details_pending'] === null) {
+            $invalidProperties[] = "'details_pending' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -352,6 +385,30 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets app_share
+     *
+     * @return \Crossly\Model\Order\GetOrderResponseAppShare|null
+     */
+    public function getAppShare()
+    {
+        return $this->container['app_share'];
+    }
+
+    /**
+     * Sets app_share
+     *
+     * @param \Crossly\Model\Order\GetOrderResponseAppShare|null $app_share app_share
+     *
+     * @return self
+     */
+    public function setAppShare($app_share)
+    {
+        $this->container['app_share'] = $app_share;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -426,73 +483,73 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets cancelled_at
+     * Gets net_profit
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getCancelledAt()
+    public function getNetProfit()
     {
-        return $this->container['cancelled_at'];
+        return $this->container['net_profit'];
     }
 
     /**
-     * Sets cancelled_at
+     * Sets net_profit
      *
-     * @param \DateTime|null $cancelled_at cancelled_at
+     * @param string|null $net_profit net_profit
      *
      * @return self
      */
-    public function setCancelledAt($cancelled_at)
+    public function setNetProfit($net_profit)
     {
-        $this->container['cancelled_at'] = $cancelled_at;
+        $this->container['net_profit'] = $net_profit;
 
         return $this;
     }
 
     /**
-     * Gets order_id
+     * Gets shipping_cost
      *
      * @return string|null
      */
-    public function getOrderId()
+    public function getShippingCost()
     {
-        return $this->container['order_id'];
+        return $this->container['shipping_cost'];
     }
 
     /**
-     * Sets order_id
+     * Sets shipping_cost
      *
-     * @param string|null $order_id order_id
+     * @param string|null $shipping_cost shipping_cost
      *
      * @return self
      */
-    public function setOrderId($order_id)
+    public function setShippingCost($shipping_cost)
     {
-        $this->container['order_id'] = $order_id;
+        $this->container['shipping_cost'] = $shipping_cost;
 
         return $this;
     }
 
     /**
-     * Gets listing_id
+     * Gets shipping_charged
      *
      * @return string|null
      */
-    public function getListingId()
+    public function getShippingCharged()
     {
-        return $this->container['listing_id'];
+        return $this->container['shipping_charged'];
     }
 
     /**
-     * Sets listing_id
+     * Sets shipping_charged
      *
-     * @param string|null $listing_id listing_id
+     * @param string|null $shipping_charged shipping_charged
      *
      * @return self
      */
-    public function setListingId($listing_id)
+    public function setShippingCharged($shipping_charged)
     {
-        $this->container['listing_id'] = $listing_id;
+        $this->container['shipping_charged'] = $shipping_charged;
 
         return $this;
     }
@@ -546,6 +603,30 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets listing_id
+     *
+     * @return string|null
+     */
+    public function getListingId()
+    {
+        return $this->container['listing_id'];
+    }
+
+    /**
+     * Sets listing_id
+     *
+     * @param string|null $listing_id listing_id
+     *
+     * @return self
+     */
+    public function setListingId($listing_id)
+    {
+        $this->container['listing_id'] = $listing_id;
+
+        return $this;
+    }
+
+    /**
      * Gets platform_listing_id
      *
      * @return string|null
@@ -565,6 +646,30 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPlatformListingId($platform_listing_id)
     {
         $this->container['platform_listing_id'] = $platform_listing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id storefront_id
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
 
         return $this;
     }
@@ -618,6 +723,30 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets cancelled_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCancelledAt()
+    {
+        return $this->container['cancelled_at'];
+    }
+
+    /**
+     * Sets cancelled_at
+     *
+     * @param \DateTime|null $cancelled_at cancelled_at
+     *
+     * @return self
+     */
+    public function setCancelledAt($cancelled_at)
+    {
+        $this->container['cancelled_at'] = $cancelled_at;
+
+        return $this;
+    }
+
+    /**
      * Gets deleted_at
      *
      * @return \DateTime|null
@@ -637,6 +766,30 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeletedAt($deleted_at)
     {
         $this->container['deleted_at'] = $deleted_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_id
+     *
+     * @return string|null
+     */
+    public function getOrderId()
+    {
+        return $this->container['order_id'];
+    }
+
+    /**
+     * Sets order_id
+     *
+     * @param string|null $order_id order_id
+     *
+     * @return self
+     */
+    public function setOrderId($order_id)
+    {
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }
@@ -690,54 +843,6 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets shipping_cost
-     *
-     * @return string|null
-     */
-    public function getShippingCost()
-    {
-        return $this->container['shipping_cost'];
-    }
-
-    /**
-     * Sets shipping_cost
-     *
-     * @param string|null $shipping_cost shipping_cost
-     *
-     * @return self
-     */
-    public function setShippingCost($shipping_cost)
-    {
-        $this->container['shipping_cost'] = $shipping_cost;
-
-        return $this;
-    }
-
-    /**
-     * Gets net_profit
-     *
-     * @return string|null
-     */
-    public function getNetProfit()
-    {
-        return $this->container['net_profit'];
-    }
-
-    /**
-     * Sets net_profit
-     *
-     * @param string|null $net_profit net_profit
-     *
-     * @return self
-     */
-    public function setNetProfit($net_profit)
-    {
-        $this->container['net_profit'] = $net_profit;
-
-        return $this;
-    }
-
-    /**
      * Gets tax_collected
      *
      * @return string|null
@@ -757,30 +862,6 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxCollected($tax_collected)
     {
         $this->container['tax_collected'] = $tax_collected;
-
-        return $this;
-    }
-
-    /**
-     * Gets shipping_charged
-     *
-     * @return string|null
-     */
-    public function getShippingCharged()
-    {
-        return $this->container['shipping_charged'];
-    }
-
-    /**
-     * Sets shipping_charged
-     *
-     * @param string|null $shipping_charged shipping_charged
-     *
-     * @return self
-     */
-    public function setShippingCharged($shipping_charged)
-    {
-        $this->container['shipping_charged'] = $shipping_charged;
 
         return $this;
     }
@@ -901,6 +982,78 @@ class ListSalesItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRefundedAmount($refunded_amount)
     {
         $this->container['refunded_amount'] = $refunded_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets details_pending
+     *
+     * @return bool
+     */
+    public function getDetailsPending()
+    {
+        return $this->container['details_pending'];
+    }
+
+    /**
+     * Sets details_pending
+     *
+     * @param bool $details_pending details_pending
+     *
+     * @return self
+     */
+    public function setDetailsPending($details_pending)
+    {
+        $this->container['details_pending'] = $details_pending;
+
+        return $this;
+    }
+
+    /**
+     * Gets variant_sku
+     *
+     * @return string|null
+     */
+    public function getVariantSku()
+    {
+        return $this->container['variant_sku'];
+    }
+
+    /**
+     * Sets variant_sku
+     *
+     * @param string|null $variant_sku variant_sku
+     *
+     * @return self
+     */
+    public function setVariantSku($variant_sku)
+    {
+        $this->container['variant_sku'] = $variant_sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets variant_id
+     *
+     * @return string|null
+     */
+    public function getVariantId()
+    {
+        return $this->container['variant_id'];
+    }
+
+    /**
+     * Sets variant_id
+     *
+     * @param string|null $variant_id variant_id
+     *
+     * @return self
+     */
+    public function setVariantId($variant_id)
+    {
+        $this->container['variant_id'] = $variant_id;
 
         return $this;
     }

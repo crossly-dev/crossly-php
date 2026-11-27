@@ -60,7 +60,8 @@ class GetVaultMarketPartnerMeResponse implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'partnership' => '\Crossly\Model\Vault\GetVaultMarketPartnerMeResponsePartnership'
+        'partnership' => '\Crossly\Model\Vault\GetVaultMarketPartnerMeResponsePartnership',
+        'identity' => '\Crossly\Model\Vault\GetVaultMarketPartnerMeResponseIdentity'
     ];
 
     /**
@@ -71,7 +72,8 @@ class GetVaultMarketPartnerMeResponse implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'partnership' => null
+        'partnership' => null,
+        'identity' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class GetVaultMarketPartnerMeResponse implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'partnership' => 'partnership'
+        'partnership' => 'partnership',
+        'identity' => 'identity'
     ];
 
     /**
@@ -110,7 +113,8 @@ class GetVaultMarketPartnerMeResponse implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'partnership' => 'setPartnership'
+        'partnership' => 'setPartnership',
+        'identity' => 'setIdentity'
     ];
 
     /**
@@ -119,7 +123,8 @@ class GetVaultMarketPartnerMeResponse implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'partnership' => 'getPartnership'
+        'partnership' => 'getPartnership',
+        'identity' => 'getIdentity'
     ];
 
     /**
@@ -180,6 +185,7 @@ class GetVaultMarketPartnerMeResponse implements ModelInterface, ArrayAccess, \J
     public function __construct(array $data = null)
     {
         $this->container['partnership'] = $data['partnership'] ?? null;
+        $this->container['identity'] = $data['identity'] ?? null;
     }
 
     /**
@@ -191,6 +197,9 @@ class GetVaultMarketPartnerMeResponse implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
+        if ($this->container['identity'] === null) {
+            $invalidProperties[] = "'identity' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -226,6 +235,30 @@ class GetVaultMarketPartnerMeResponse implements ModelInterface, ArrayAccess, \J
     public function setPartnership($partnership)
     {
         $this->container['partnership'] = $partnership;
+
+        return $this;
+    }
+
+    /**
+     * Gets identity
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketPartnerMeResponseIdentity
+     */
+    public function getIdentity()
+    {
+        return $this->container['identity'];
+    }
+
+    /**
+     * Sets identity
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketPartnerMeResponseIdentity $identity identity
+     *
+     * @return self
+     */
+    public function setIdentity($identity)
+    {
+        $this->container['identity'] = $identity;
 
         return $this;
     }

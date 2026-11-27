@@ -60,7 +60,7 @@ class GetPatScopeResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'scopes' => '\Crossly\Model\Common\GetPatScopeResponseScopes[]'
+        'scopes' => '\Crossly\Model\App\ListAppsItemCapabilities[]'
     ];
 
     /**
@@ -212,7 +212,7 @@ class GetPatScopeResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets scopes
      *
-     * @return \Crossly\Model\Common\GetPatScopeResponseScopes[]
+     * @return \Crossly\Model\App\ListAppsItemCapabilities[]
      */
     public function getScopes()
     {
@@ -222,7 +222,7 @@ class GetPatScopeResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets scopes
      *
-     * @param \Crossly\Model\Common\GetPatScopeResponseScopes[] $scopes scopes
+     * @param \Crossly\Model\App\ListAppsItemCapabilities[] $scopes scopes
      *
      * @return self
      */

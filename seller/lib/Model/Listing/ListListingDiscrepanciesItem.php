@@ -64,12 +64,12 @@ class ListListingDiscrepanciesItem implements ModelInterface, ArrayAccess, \Json
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'user_id' => 'string',
-        'source' => 'string',
         'platform' => 'string',
-        'listing_id' => 'string',
+        'account_slot' => 'float',
         'marketplace_id' => 'string',
         'last_error' => 'string',
-        'account_slot' => 'float',
+        'source' => 'string',
+        'listing_id' => 'string',
         'field' => 'string',
         'our_value' => 'string',
         'remote_value' => 'string',
@@ -91,12 +91,12 @@ class ListListingDiscrepanciesItem implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
         'user_id' => null,
-        'source' => null,
         'platform' => null,
-        'listing_id' => null,
+        'account_slot' => null,
         'marketplace_id' => null,
         'last_error' => null,
-        'account_slot' => null,
+        'source' => null,
+        'listing_id' => null,
         'field' => null,
         'our_value' => null,
         'remote_value' => null,
@@ -137,12 +137,12 @@ class ListListingDiscrepanciesItem implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
         'user_id' => 'userId',
-        'source' => 'source',
         'platform' => 'platform',
-        'listing_id' => 'listingId',
+        'account_slot' => 'accountSlot',
         'marketplace_id' => 'marketplaceId',
         'last_error' => 'lastError',
-        'account_slot' => 'accountSlot',
+        'source' => 'source',
+        'listing_id' => 'listingId',
         'field' => 'field',
         'our_value' => 'ourValue',
         'remote_value' => 'remoteValue',
@@ -162,12 +162,12 @@ class ListListingDiscrepanciesItem implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
         'user_id' => 'setUserId',
-        'source' => 'setSource',
         'platform' => 'setPlatform',
-        'listing_id' => 'setListingId',
+        'account_slot' => 'setAccountSlot',
         'marketplace_id' => 'setMarketplaceId',
         'last_error' => 'setLastError',
-        'account_slot' => 'setAccountSlot',
+        'source' => 'setSource',
+        'listing_id' => 'setListingId',
         'field' => 'setField',
         'our_value' => 'setOurValue',
         'remote_value' => 'setRemoteValue',
@@ -187,12 +187,12 @@ class ListListingDiscrepanciesItem implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
         'user_id' => 'getUserId',
-        'source' => 'getSource',
         'platform' => 'getPlatform',
-        'listing_id' => 'getListingId',
+        'account_slot' => 'getAccountSlot',
         'marketplace_id' => 'getMarketplaceId',
         'last_error' => 'getLastError',
-        'account_slot' => 'getAccountSlot',
+        'source' => 'getSource',
+        'listing_id' => 'getListingId',
         'field' => 'getField',
         'our_value' => 'getOurValue',
         'remote_value' => 'getRemoteValue',
@@ -263,12 +263,12 @@ class ListListingDiscrepanciesItem implements ModelInterface, ArrayAccess, \Json
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
-        $this->container['source'] = $data['source'] ?? null;
         $this->container['platform'] = $data['platform'] ?? null;
-        $this->container['listing_id'] = $data['listing_id'] ?? null;
+        $this->container['account_slot'] = $data['account_slot'] ?? null;
         $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
         $this->container['last_error'] = $data['last_error'] ?? null;
-        $this->container['account_slot'] = $data['account_slot'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
+        $this->container['listing_id'] = $data['listing_id'] ?? null;
         $this->container['field'] = $data['field'] ?? null;
         $this->container['our_value'] = $data['our_value'] ?? null;
         $this->container['remote_value'] = $data['remote_value'] ?? null;
@@ -299,20 +299,20 @@ class ListListingDiscrepanciesItem implements ModelInterface, ArrayAccess, \Json
         if ($this->container['user_id'] === null) {
             $invalidProperties[] = "'user_id' can't be null";
         }
-        if ($this->container['source'] === null) {
-            $invalidProperties[] = "'source' can't be null";
-        }
         if ($this->container['platform'] === null) {
             $invalidProperties[] = "'platform' can't be null";
         }
-        if ($this->container['listing_id'] === null) {
-            $invalidProperties[] = "'listing_id' can't be null";
+        if ($this->container['account_slot'] === null) {
+            $invalidProperties[] = "'account_slot' can't be null";
         }
         if ($this->container['marketplace_id'] === null) {
             $invalidProperties[] = "'marketplace_id' can't be null";
         }
-        if ($this->container['account_slot'] === null) {
-            $invalidProperties[] = "'account_slot' can't be null";
+        if ($this->container['source'] === null) {
+            $invalidProperties[] = "'source' can't be null";
+        }
+        if ($this->container['listing_id'] === null) {
+            $invalidProperties[] = "'listing_id' can't be null";
         }
         if ($this->container['field'] === null) {
             $invalidProperties[] = "'field' can't be null";
@@ -435,30 +435,6 @@ class ListListingDiscrepanciesItem implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets source
-     *
-     * @return string
-     */
-    public function getSource()
-    {
-        return $this->container['source'];
-    }
-
-    /**
-     * Sets source
-     *
-     * @param string $source source
-     *
-     * @return self
-     */
-    public function setSource($source)
-    {
-        $this->container['source'] = $source;
-
-        return $this;
-    }
-
-    /**
      * Gets platform
      *
      * @return string
@@ -483,25 +459,25 @@ class ListListingDiscrepanciesItem implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets listing_id
+     * Gets account_slot
      *
-     * @return string
+     * @return float
      */
-    public function getListingId()
+    public function getAccountSlot()
     {
-        return $this->container['listing_id'];
+        return $this->container['account_slot'];
     }
 
     /**
-     * Sets listing_id
+     * Sets account_slot
      *
-     * @param string $listing_id listing_id
+     * @param float $account_slot account_slot
      *
      * @return self
      */
-    public function setListingId($listing_id)
+    public function setAccountSlot($account_slot)
     {
-        $this->container['listing_id'] = $listing_id;
+        $this->container['account_slot'] = $account_slot;
 
         return $this;
     }
@@ -555,25 +531,49 @@ class ListListingDiscrepanciesItem implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets account_slot
+     * Gets source
      *
-     * @return float
+     * @return string
      */
-    public function getAccountSlot()
+    public function getSource()
     {
-        return $this->container['account_slot'];
+        return $this->container['source'];
     }
 
     /**
-     * Sets account_slot
+     * Sets source
      *
-     * @param float $account_slot account_slot
+     * @param string $source source
      *
      * @return self
      */
-    public function setAccountSlot($account_slot)
+    public function setSource($source)
     {
-        $this->container['account_slot'] = $account_slot;
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets listing_id
+     *
+     * @return string
+     */
+    public function getListingId()
+    {
+        return $this->container['listing_id'];
+    }
+
+    /**
+     * Sets listing_id
+     *
+     * @param string $listing_id listing_id
+     *
+     * @return self
+     */
+    public function setListingId($listing_id)
+    {
+        $this->container['listing_id'] = $listing_id;
 
         return $this;
     }

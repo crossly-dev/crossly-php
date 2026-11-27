@@ -60,10 +60,10 @@ class GetBuyerImpactResponseData implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'co2_kg' => 'float',
-        'water_l' => 'float',
         'items_bought' => 'float',
-        'items_with_figures' => 'float'
+        'items_with_figures' => 'float',
+        'co2_kg' => 'float',
+        'water_l' => 'float'
     ];
 
     /**
@@ -74,10 +74,10 @@ class GetBuyerImpactResponseData implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'co2_kg' => null,
-        'water_l' => null,
         'items_bought' => null,
-        'items_with_figures' => null
+        'items_with_figures' => null,
+        'co2_kg' => null,
+        'water_l' => null
     ];
 
     /**
@@ -107,10 +107,10 @@ class GetBuyerImpactResponseData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'co2_kg' => 'co2Kg',
-        'water_l' => 'waterL',
         'items_bought' => 'itemsBought',
-        'items_with_figures' => 'itemsWithFigures'
+        'items_with_figures' => 'itemsWithFigures',
+        'co2_kg' => 'co2Kg',
+        'water_l' => 'waterL'
     ];
 
     /**
@@ -119,10 +119,10 @@ class GetBuyerImpactResponseData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'co2_kg' => 'setCo2Kg',
-        'water_l' => 'setWaterL',
         'items_bought' => 'setItemsBought',
-        'items_with_figures' => 'setItemsWithFigures'
+        'items_with_figures' => 'setItemsWithFigures',
+        'co2_kg' => 'setCo2Kg',
+        'water_l' => 'setWaterL'
     ];
 
     /**
@@ -131,10 +131,10 @@ class GetBuyerImpactResponseData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'co2_kg' => 'getCo2Kg',
-        'water_l' => 'getWaterL',
         'items_bought' => 'getItemsBought',
-        'items_with_figures' => 'getItemsWithFigures'
+        'items_with_figures' => 'getItemsWithFigures',
+        'co2_kg' => 'getCo2Kg',
+        'water_l' => 'getWaterL'
     ];
 
     /**
@@ -194,10 +194,10 @@ class GetBuyerImpactResponseData implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['co2_kg'] = $data['co2_kg'] ?? null;
-        $this->container['water_l'] = $data['water_l'] ?? null;
         $this->container['items_bought'] = $data['items_bought'] ?? null;
         $this->container['items_with_figures'] = $data['items_with_figures'] ?? null;
+        $this->container['co2_kg'] = $data['co2_kg'] ?? null;
+        $this->container['water_l'] = $data['water_l'] ?? null;
     }
 
     /**
@@ -209,17 +209,17 @@ class GetBuyerImpactResponseData implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['co2_kg'] === null) {
-            $invalidProperties[] = "'co2_kg' can't be null";
-        }
-        if ($this->container['water_l'] === null) {
-            $invalidProperties[] = "'water_l' can't be null";
-        }
         if ($this->container['items_bought'] === null) {
             $invalidProperties[] = "'items_bought' can't be null";
         }
         if ($this->container['items_with_figures'] === null) {
             $invalidProperties[] = "'items_with_figures' can't be null";
+        }
+        if ($this->container['co2_kg'] === null) {
+            $invalidProperties[] = "'co2_kg' can't be null";
+        }
+        if ($this->container['water_l'] === null) {
+            $invalidProperties[] = "'water_l' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,54 +235,6 @@ class GetBuyerImpactResponseData implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets co2_kg
-     *
-     * @return float
-     */
-    public function getCo2Kg()
-    {
-        return $this->container['co2_kg'];
-    }
-
-    /**
-     * Sets co2_kg
-     *
-     * @param float $co2_kg co2_kg
-     *
-     * @return self
-     */
-    public function setCo2Kg($co2_kg)
-    {
-        $this->container['co2_kg'] = $co2_kg;
-
-        return $this;
-    }
-
-    /**
-     * Gets water_l
-     *
-     * @return float
-     */
-    public function getWaterL()
-    {
-        return $this->container['water_l'];
-    }
-
-    /**
-     * Sets water_l
-     *
-     * @param float $water_l water_l
-     *
-     * @return self
-     */
-    public function setWaterL($water_l)
-    {
-        $this->container['water_l'] = $water_l;
-
-        return $this;
-    }
 
     /**
      * Gets items_bought
@@ -328,6 +280,54 @@ class GetBuyerImpactResponseData implements ModelInterface, ArrayAccess, \JsonSe
     public function setItemsWithFigures($items_with_figures)
     {
         $this->container['items_with_figures'] = $items_with_figures;
+
+        return $this;
+    }
+
+    /**
+     * Gets co2_kg
+     *
+     * @return float
+     */
+    public function getCo2Kg()
+    {
+        return $this->container['co2_kg'];
+    }
+
+    /**
+     * Sets co2_kg
+     *
+     * @param float $co2_kg co2_kg
+     *
+     * @return self
+     */
+    public function setCo2Kg($co2_kg)
+    {
+        $this->container['co2_kg'] = $co2_kg;
+
+        return $this;
+    }
+
+    /**
+     * Gets water_l
+     *
+     * @return float
+     */
+    public function getWaterL()
+    {
+        return $this->container['water_l'];
+    }
+
+    /**
+     * Sets water_l
+     *
+     * @param float $water_l water_l
+     *
+     * @return self
+     */
+    public function setWaterL($water_l)
+    {
+        $this->container['water_l'] = $water_l;
 
         return $this;
     }

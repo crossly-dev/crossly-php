@@ -226,9 +226,9 @@ class ListListingAiDetectionsItem implements ModelInterface, ArrayAccess, \JsonS
     const VERDICT_REVIEW = 'review';
     const VERDICT_AI = 'ai';
     const VERDICT_CLEAR = 'clear';
-    const STATUS_FLAGGED = 'flagged';
     const STATUS_REVIEW = 'review';
     const STATUS_CLEAR = 'clear';
+    const STATUS_FLAGGED = 'flagged';
     const STATUS_DISPUTED = 'disputed';
     const STATUS_CLEARED = 'cleared';
     const RESOLUTION_AI = 'ai';
@@ -256,9 +256,9 @@ class ListListingAiDetectionsItem implements ModelInterface, ArrayAccess, \JsonS
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_FLAGGED,
             self::STATUS_REVIEW,
             self::STATUS_CLEAR,
+            self::STATUS_FLAGGED,
             self::STATUS_DISPUTED,
             self::STATUS_CLEARED,
         ];

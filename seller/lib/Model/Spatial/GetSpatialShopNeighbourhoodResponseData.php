@@ -63,8 +63,6 @@ class GetSpatialShopNeighbourhoodResponseData implements ModelInterface, ArrayAc
         'shop' => 'mixed',
         'home' => 'mixed',
         'suggested' => 'string',
-        'can_move' => 'bool',
-        'move' => 'mixed',
         'options' => '\Crossly\Model\Common\ListNeighbourhoodsItem[]'
     ];
 
@@ -79,8 +77,6 @@ class GetSpatialShopNeighbourhoodResponseData implements ModelInterface, ArrayAc
         'shop' => null,
         'home' => null,
         'suggested' => null,
-        'can_move' => null,
-        'move' => null,
         'options' => null
     ];
 
@@ -114,8 +110,6 @@ class GetSpatialShopNeighbourhoodResponseData implements ModelInterface, ArrayAc
         'shop' => 'shop',
         'home' => 'home',
         'suggested' => 'suggested',
-        'can_move' => 'canMove',
-        'move' => 'move',
         'options' => 'options'
     ];
 
@@ -128,8 +122,6 @@ class GetSpatialShopNeighbourhoodResponseData implements ModelInterface, ArrayAc
         'shop' => 'setShop',
         'home' => 'setHome',
         'suggested' => 'setSuggested',
-        'can_move' => 'setCanMove',
-        'move' => 'setMove',
         'options' => 'setOptions'
     ];
 
@@ -142,8 +134,6 @@ class GetSpatialShopNeighbourhoodResponseData implements ModelInterface, ArrayAc
         'shop' => 'getShop',
         'home' => 'getHome',
         'suggested' => 'getSuggested',
-        'can_move' => 'getCanMove',
-        'move' => 'getMove',
         'options' => 'getOptions'
     ];
 
@@ -226,8 +216,6 @@ class GetSpatialShopNeighbourhoodResponseData implements ModelInterface, ArrayAc
         $this->container['shop'] = $data['shop'] ?? null;
         $this->container['home'] = $data['home'] ?? null;
         $this->container['suggested'] = $data['suggested'] ?? null;
-        $this->container['can_move'] = $data['can_move'] ?? null;
-        $this->container['move'] = $data['move'] ?? null;
         $this->container['options'] = $data['options'] ?? null;
     }
 
@@ -252,9 +240,6 @@ class GetSpatialShopNeighbourhoodResponseData implements ModelInterface, ArrayAc
             );
         }
 
-        if ($this->container['can_move'] === null) {
-            $invalidProperties[] = "'can_move' can't be null";
-        }
         if ($this->container['options'] === null) {
             $invalidProperties[] = "'options' can't be null";
         }
@@ -351,54 +336,6 @@ class GetSpatialShopNeighbourhoodResponseData implements ModelInterface, ArrayAc
             );
         }
         $this->container['suggested'] = $suggested;
-
-        return $this;
-    }
-
-    /**
-     * Gets can_move
-     *
-     * @return bool
-     */
-    public function getCanMove()
-    {
-        return $this->container['can_move'];
-    }
-
-    /**
-     * Sets can_move
-     *
-     * @param bool $can_move can_move
-     *
-     * @return self
-     */
-    public function setCanMove($can_move)
-    {
-        $this->container['can_move'] = $can_move;
-
-        return $this;
-    }
-
-    /**
-     * Gets move
-     *
-     * @return mixed|null
-     */
-    public function getMove()
-    {
-        return $this->container['move'];
-    }
-
-    /**
-     * Sets move
-     *
-     * @param mixed|null $move move
-     *
-     * @return self
-     */
-    public function setMove($move)
-    {
-        $this->container['move'] = $move;
 
         return $this;
     }

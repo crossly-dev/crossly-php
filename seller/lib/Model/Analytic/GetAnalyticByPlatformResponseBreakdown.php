@@ -64,7 +64,12 @@ class GetAnalyticByPlatformResponseBreakdown implements ModelInterface, ArrayAcc
         'sales' => 'float',
         'revenue' => 'float',
         'fees' => 'float',
-        'net_profit' => 'float'
+        'net_profit' => 'float',
+        'pending_details_count' => 'float',
+        'net_sales_cents' => 'float',
+        'fees_cents' => 'float',
+        'net_profit_cents' => 'float',
+        'share' => 'float'
     ];
 
     /**
@@ -79,7 +84,12 @@ class GetAnalyticByPlatformResponseBreakdown implements ModelInterface, ArrayAcc
         'sales' => null,
         'revenue' => null,
         'fees' => null,
-        'net_profit' => null
+        'net_profit' => null,
+        'pending_details_count' => null,
+        'net_sales_cents' => null,
+        'fees_cents' => null,
+        'net_profit_cents' => null,
+        'share' => null
     ];
 
     /**
@@ -113,7 +123,12 @@ class GetAnalyticByPlatformResponseBreakdown implements ModelInterface, ArrayAcc
         'sales' => 'sales',
         'revenue' => 'revenue',
         'fees' => 'fees',
-        'net_profit' => 'netProfit'
+        'net_profit' => 'netProfit',
+        'pending_details_count' => 'pendingDetailsCount',
+        'net_sales_cents' => 'netSalesCents',
+        'fees_cents' => 'feesCents',
+        'net_profit_cents' => 'netProfitCents',
+        'share' => 'share'
     ];
 
     /**
@@ -126,7 +141,12 @@ class GetAnalyticByPlatformResponseBreakdown implements ModelInterface, ArrayAcc
         'sales' => 'setSales',
         'revenue' => 'setRevenue',
         'fees' => 'setFees',
-        'net_profit' => 'setNetProfit'
+        'net_profit' => 'setNetProfit',
+        'pending_details_count' => 'setPendingDetailsCount',
+        'net_sales_cents' => 'setNetSalesCents',
+        'fees_cents' => 'setFeesCents',
+        'net_profit_cents' => 'setNetProfitCents',
+        'share' => 'setShare'
     ];
 
     /**
@@ -139,7 +159,12 @@ class GetAnalyticByPlatformResponseBreakdown implements ModelInterface, ArrayAcc
         'sales' => 'getSales',
         'revenue' => 'getRevenue',
         'fees' => 'getFees',
-        'net_profit' => 'getNetProfit'
+        'net_profit' => 'getNetProfit',
+        'pending_details_count' => 'getPendingDetailsCount',
+        'net_sales_cents' => 'getNetSalesCents',
+        'fees_cents' => 'getFeesCents',
+        'net_profit_cents' => 'getNetProfitCents',
+        'share' => 'getShare'
     ];
 
     /**
@@ -204,6 +229,11 @@ class GetAnalyticByPlatformResponseBreakdown implements ModelInterface, ArrayAcc
         $this->container['revenue'] = $data['revenue'] ?? null;
         $this->container['fees'] = $data['fees'] ?? null;
         $this->container['net_profit'] = $data['net_profit'] ?? null;
+        $this->container['pending_details_count'] = $data['pending_details_count'] ?? null;
+        $this->container['net_sales_cents'] = $data['net_sales_cents'] ?? null;
+        $this->container['fees_cents'] = $data['fees_cents'] ?? null;
+        $this->container['net_profit_cents'] = $data['net_profit_cents'] ?? null;
+        $this->container['share'] = $data['share'] ?? null;
     }
 
     /**
@@ -229,6 +259,21 @@ class GetAnalyticByPlatformResponseBreakdown implements ModelInterface, ArrayAcc
         }
         if ($this->container['net_profit'] === null) {
             $invalidProperties[] = "'net_profit' can't be null";
+        }
+        if ($this->container['pending_details_count'] === null) {
+            $invalidProperties[] = "'pending_details_count' can't be null";
+        }
+        if ($this->container['net_sales_cents'] === null) {
+            $invalidProperties[] = "'net_sales_cents' can't be null";
+        }
+        if ($this->container['fees_cents'] === null) {
+            $invalidProperties[] = "'fees_cents' can't be null";
+        }
+        if ($this->container['net_profit_cents'] === null) {
+            $invalidProperties[] = "'net_profit_cents' can't be null";
+        }
+        if ($this->container['share'] === null) {
+            $invalidProperties[] = "'share' can't be null";
         }
         return $invalidProperties;
     }
@@ -361,6 +406,126 @@ class GetAnalyticByPlatformResponseBreakdown implements ModelInterface, ArrayAcc
     public function setNetProfit($net_profit)
     {
         $this->container['net_profit'] = $net_profit;
+
+        return $this;
+    }
+
+    /**
+     * Gets pending_details_count
+     *
+     * @return float
+     */
+    public function getPendingDetailsCount()
+    {
+        return $this->container['pending_details_count'];
+    }
+
+    /**
+     * Sets pending_details_count
+     *
+     * @param float $pending_details_count pending_details_count
+     *
+     * @return self
+     */
+    public function setPendingDetailsCount($pending_details_count)
+    {
+        $this->container['pending_details_count'] = $pending_details_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets net_sales_cents
+     *
+     * @return float
+     */
+    public function getNetSalesCents()
+    {
+        return $this->container['net_sales_cents'];
+    }
+
+    /**
+     * Sets net_sales_cents
+     *
+     * @param float $net_sales_cents net_sales_cents
+     *
+     * @return self
+     */
+    public function setNetSalesCents($net_sales_cents)
+    {
+        $this->container['net_sales_cents'] = $net_sales_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets fees_cents
+     *
+     * @return float
+     */
+    public function getFeesCents()
+    {
+        return $this->container['fees_cents'];
+    }
+
+    /**
+     * Sets fees_cents
+     *
+     * @param float $fees_cents fees_cents
+     *
+     * @return self
+     */
+    public function setFeesCents($fees_cents)
+    {
+        $this->container['fees_cents'] = $fees_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets net_profit_cents
+     *
+     * @return float
+     */
+    public function getNetProfitCents()
+    {
+        return $this->container['net_profit_cents'];
+    }
+
+    /**
+     * Sets net_profit_cents
+     *
+     * @param float $net_profit_cents net_profit_cents
+     *
+     * @return self
+     */
+    public function setNetProfitCents($net_profit_cents)
+    {
+        $this->container['net_profit_cents'] = $net_profit_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets share
+     *
+     * @return float
+     */
+    public function getShare()
+    {
+        return $this->container['share'];
+    }
+
+    /**
+     * Sets share
+     *
+     * @param float $share share
+     *
+     * @return self
+     */
+    public function setShare($share)
+    {
+        $this->container['share'] = $share;
 
         return $this;
     }

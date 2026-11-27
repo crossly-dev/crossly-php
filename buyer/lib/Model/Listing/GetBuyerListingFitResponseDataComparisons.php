@@ -60,8 +60,8 @@ class GetBuyerListingFitResponseDataComparisons implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'label' => 'string',
         'ref_id' => 'string',
+        'label' => 'string',
         'result' => '\Crossly\Buyer\Model\Listing\GetBuyerListingFitResponseDataComparisonsResult'
     ];
 
@@ -73,8 +73,8 @@ class GetBuyerListingFitResponseDataComparisons implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'label' => null,
         'ref_id' => null,
+        'label' => null,
         'result' => null
     ];
 
@@ -105,8 +105,8 @@ class GetBuyerListingFitResponseDataComparisons implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'label' => 'label',
         'ref_id' => 'refId',
+        'label' => 'label',
         'result' => 'result'
     ];
 
@@ -116,8 +116,8 @@ class GetBuyerListingFitResponseDataComparisons implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'label' => 'setLabel',
         'ref_id' => 'setRefId',
+        'label' => 'setLabel',
         'result' => 'setResult'
     ];
 
@@ -127,8 +127,8 @@ class GetBuyerListingFitResponseDataComparisons implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'label' => 'getLabel',
         'ref_id' => 'getRefId',
+        'label' => 'getLabel',
         'result' => 'getResult'
     ];
 
@@ -189,8 +189,8 @@ class GetBuyerListingFitResponseDataComparisons implements ModelInterface, Array
      */
     public function __construct(array $data = null)
     {
-        $this->container['label'] = $data['label'] ?? null;
         $this->container['ref_id'] = $data['ref_id'] ?? null;
+        $this->container['label'] = $data['label'] ?? null;
         $this->container['result'] = $data['result'] ?? null;
     }
 
@@ -203,11 +203,11 @@ class GetBuyerListingFitResponseDataComparisons implements ModelInterface, Array
     {
         $invalidProperties = [];
 
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
         if ($this->container['ref_id'] === null) {
             $invalidProperties[] = "'ref_id' can't be null";
+        }
+        if ($this->container['label'] === null) {
+            $invalidProperties[] = "'label' can't be null";
         }
         if ($this->container['result'] === null) {
             $invalidProperties[] = "'result' can't be null";
@@ -226,30 +226,6 @@ class GetBuyerListingFitResponseDataComparisons implements ModelInterface, Array
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets label
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string $label label
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        $this->container['label'] = $label;
-
-        return $this;
-    }
 
     /**
      * Gets ref_id
@@ -271,6 +247,30 @@ class GetBuyerListingFitResponseDataComparisons implements ModelInterface, Array
     public function setRefId($ref_id)
     {
         $this->container['ref_id'] = $ref_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label label
+     *
+     * @return self
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }

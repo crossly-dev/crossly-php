@@ -61,8 +61,8 @@ class CreateVaultMarketProQuoteResponse implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'book_key' => 'string',
-        'bid' => '\Crossly\Model\Vault\CreateVaultMarketProQuoteResponseBid',
-        'ask' => '\Crossly\Model\Vault\CreateVaultMarketProQuoteResponseBid'
+        'bid' => '\Crossly\Model\Common\OrderIdError',
+        'ask' => '\Crossly\Model\Common\OrderIdError'
     ];
 
     /**
@@ -254,7 +254,7 @@ class CreateVaultMarketProQuoteResponse implements ModelInterface, ArrayAccess, 
     /**
      * Gets bid
      *
-     * @return \Crossly\Model\Vault\CreateVaultMarketProQuoteResponseBid
+     * @return \Crossly\Model\Common\OrderIdError
      */
     public function getBid()
     {
@@ -264,7 +264,7 @@ class CreateVaultMarketProQuoteResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets bid
      *
-     * @param \Crossly\Model\Vault\CreateVaultMarketProQuoteResponseBid $bid bid
+     * @param \Crossly\Model\Common\OrderIdError $bid bid
      *
      * @return self
      */
@@ -278,7 +278,7 @@ class CreateVaultMarketProQuoteResponse implements ModelInterface, ArrayAccess, 
     /**
      * Gets ask
      *
-     * @return \Crossly\Model\Vault\CreateVaultMarketProQuoteResponseBid
+     * @return \Crossly\Model\Common\OrderIdError
      */
     public function getAsk()
     {
@@ -288,7 +288,7 @@ class CreateVaultMarketProQuoteResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets ask
      *
-     * @param \Crossly\Model\Vault\CreateVaultMarketProQuoteResponseBid $ask ask
+     * @param \Crossly\Model\Common\OrderIdError $ask ask
      *
      * @return self
      */

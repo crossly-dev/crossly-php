@@ -60,10 +60,10 @@ class CreateBuyerAuctionBidResponseData implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ends_at' => 'string',
-        'current_bid_cents' => 'float',
         'ok' => 'bool',
-        'leading' => 'bool'
+        'leading' => 'bool',
+        'current_bid_cents' => 'float',
+        'ends_at' => 'string'
     ];
 
     /**
@@ -74,10 +74,10 @@ class CreateBuyerAuctionBidResponseData implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ends_at' => null,
-        'current_bid_cents' => null,
         'ok' => null,
-        'leading' => null
+        'leading' => null,
+        'current_bid_cents' => null,
+        'ends_at' => null
     ];
 
     /**
@@ -107,10 +107,10 @@ class CreateBuyerAuctionBidResponseData implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'ends_at' => 'endsAt',
-        'current_bid_cents' => 'currentBidCents',
         'ok' => 'ok',
-        'leading' => 'leading'
+        'leading' => 'leading',
+        'current_bid_cents' => 'currentBidCents',
+        'ends_at' => 'endsAt'
     ];
 
     /**
@@ -119,10 +119,10 @@ class CreateBuyerAuctionBidResponseData implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'ends_at' => 'setEndsAt',
-        'current_bid_cents' => 'setCurrentBidCents',
         'ok' => 'setOk',
-        'leading' => 'setLeading'
+        'leading' => 'setLeading',
+        'current_bid_cents' => 'setCurrentBidCents',
+        'ends_at' => 'setEndsAt'
     ];
 
     /**
@@ -131,10 +131,10 @@ class CreateBuyerAuctionBidResponseData implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'ends_at' => 'getEndsAt',
-        'current_bid_cents' => 'getCurrentBidCents',
         'ok' => 'getOk',
-        'leading' => 'getLeading'
+        'leading' => 'getLeading',
+        'current_bid_cents' => 'getCurrentBidCents',
+        'ends_at' => 'getEndsAt'
     ];
 
     /**
@@ -194,10 +194,10 @@ class CreateBuyerAuctionBidResponseData implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['ends_at'] = $data['ends_at'] ?? null;
-        $this->container['current_bid_cents'] = $data['current_bid_cents'] ?? null;
         $this->container['ok'] = $data['ok'] ?? null;
         $this->container['leading'] = $data['leading'] ?? null;
+        $this->container['current_bid_cents'] = $data['current_bid_cents'] ?? null;
+        $this->container['ends_at'] = $data['ends_at'] ?? null;
     }
 
     /**
@@ -209,17 +209,17 @@ class CreateBuyerAuctionBidResponseData implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['ends_at'] === null) {
-            $invalidProperties[] = "'ends_at' can't be null";
-        }
-        if ($this->container['current_bid_cents'] === null) {
-            $invalidProperties[] = "'current_bid_cents' can't be null";
-        }
         if ($this->container['ok'] === null) {
             $invalidProperties[] = "'ok' can't be null";
         }
         if ($this->container['leading'] === null) {
             $invalidProperties[] = "'leading' can't be null";
+        }
+        if ($this->container['current_bid_cents'] === null) {
+            $invalidProperties[] = "'current_bid_cents' can't be null";
+        }
+        if ($this->container['ends_at'] === null) {
+            $invalidProperties[] = "'ends_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -235,54 +235,6 @@ class CreateBuyerAuctionBidResponseData implements ModelInterface, ArrayAccess, 
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets ends_at
-     *
-     * @return string
-     */
-    public function getEndsAt()
-    {
-        return $this->container['ends_at'];
-    }
-
-    /**
-     * Sets ends_at
-     *
-     * @param string $ends_at Possibly extended by anti-sniping.
-     *
-     * @return self
-     */
-    public function setEndsAt($ends_at)
-    {
-        $this->container['ends_at'] = $ends_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets current_bid_cents
-     *
-     * @return float
-     */
-    public function getCurrentBidCents()
-    {
-        return $this->container['current_bid_cents'];
-    }
-
-    /**
-     * Sets current_bid_cents
-     *
-     * @param float $current_bid_cents The price now, in cents, after proxy bidding resolved.
-     *
-     * @return self
-     */
-    public function setCurrentBidCents($current_bid_cents)
-    {
-        $this->container['current_bid_cents'] = $current_bid_cents;
-
-        return $this;
-    }
 
     /**
      * Gets ok
@@ -328,6 +280,54 @@ class CreateBuyerAuctionBidResponseData implements ModelInterface, ArrayAccess, 
     public function setLeading($leading)
     {
         $this->container['leading'] = $leading;
+
+        return $this;
+    }
+
+    /**
+     * Gets current_bid_cents
+     *
+     * @return float
+     */
+    public function getCurrentBidCents()
+    {
+        return $this->container['current_bid_cents'];
+    }
+
+    /**
+     * Sets current_bid_cents
+     *
+     * @param float $current_bid_cents The price now, in cents, after proxy bidding resolved.
+     *
+     * @return self
+     */
+    public function setCurrentBidCents($current_bid_cents)
+    {
+        $this->container['current_bid_cents'] = $current_bid_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets ends_at
+     *
+     * @return string
+     */
+    public function getEndsAt()
+    {
+        return $this->container['ends_at'];
+    }
+
+    /**
+     * Sets ends_at
+     *
+     * @param string $ends_at Possibly extended by anti-sniping.
+     *
+     * @return self
+     */
+    public function setEndsAt($ends_at)
+    {
+        $this->container['ends_at'] = $ends_at;
 
         return $this;
     }

@@ -64,7 +64,7 @@ class GetAnalyticDashboardResponseTop5ItemsByRevenue implements ModelInterface, 
         'platform' => 'string',
         'sale_price' => 'float',
         'net_profit' => 'float',
-        'detected_at' => '\DateTime',
+        'revenue' => 'float',
         'item_title' => 'string',
         'item_image' => 'string'
     ];
@@ -81,7 +81,7 @@ class GetAnalyticDashboardResponseTop5ItemsByRevenue implements ModelInterface, 
         'platform' => null,
         'sale_price' => null,
         'net_profit' => null,
-        'detected_at' => 'date-time',
+        'revenue' => null,
         'item_title' => null,
         'item_image' => null
     ];
@@ -117,7 +117,7 @@ class GetAnalyticDashboardResponseTop5ItemsByRevenue implements ModelInterface, 
         'platform' => 'platform',
         'sale_price' => 'salePrice',
         'net_profit' => 'netProfit',
-        'detected_at' => 'detectedAt',
+        'revenue' => 'revenue',
         'item_title' => 'itemTitle',
         'item_image' => 'itemImage'
     ];
@@ -132,7 +132,7 @@ class GetAnalyticDashboardResponseTop5ItemsByRevenue implements ModelInterface, 
         'platform' => 'setPlatform',
         'sale_price' => 'setSalePrice',
         'net_profit' => 'setNetProfit',
-        'detected_at' => 'setDetectedAt',
+        'revenue' => 'setRevenue',
         'item_title' => 'setItemTitle',
         'item_image' => 'setItemImage'
     ];
@@ -147,7 +147,7 @@ class GetAnalyticDashboardResponseTop5ItemsByRevenue implements ModelInterface, 
         'platform' => 'getPlatform',
         'sale_price' => 'getSalePrice',
         'net_profit' => 'getNetProfit',
-        'detected_at' => 'getDetectedAt',
+        'revenue' => 'getRevenue',
         'item_title' => 'getItemTitle',
         'item_image' => 'getItemImage'
     ];
@@ -213,7 +213,7 @@ class GetAnalyticDashboardResponseTop5ItemsByRevenue implements ModelInterface, 
         $this->container['platform'] = $data['platform'] ?? null;
         $this->container['sale_price'] = $data['sale_price'] ?? null;
         $this->container['net_profit'] = $data['net_profit'] ?? null;
-        $this->container['detected_at'] = $data['detected_at'] ?? null;
+        $this->container['revenue'] = $data['revenue'] ?? null;
         $this->container['item_title'] = $data['item_title'] ?? null;
         $this->container['item_image'] = $data['item_image'] ?? null;
     }
@@ -233,11 +233,8 @@ class GetAnalyticDashboardResponseTop5ItemsByRevenue implements ModelInterface, 
         if ($this->container['platform'] === null) {
             $invalidProperties[] = "'platform' can't be null";
         }
-        if ($this->container['detected_at'] === null) {
-            $invalidProperties[] = "'detected_at' can't be null";
-        }
-        if ($this->container['item_image'] === null) {
-            $invalidProperties[] = "'item_image' can't be null";
+        if ($this->container['revenue'] === null) {
+            $invalidProperties[] = "'revenue' can't be null";
         }
         return $invalidProperties;
     }
@@ -351,25 +348,25 @@ class GetAnalyticDashboardResponseTop5ItemsByRevenue implements ModelInterface, 
     }
 
     /**
-     * Gets detected_at
+     * Gets revenue
      *
-     * @return \DateTime
+     * @return float
      */
-    public function getDetectedAt()
+    public function getRevenue()
     {
-        return $this->container['detected_at'];
+        return $this->container['revenue'];
     }
 
     /**
-     * Sets detected_at
+     * Sets revenue
      *
-     * @param \DateTime $detected_at detected_at
+     * @param float $revenue revenue
      *
      * @return self
      */
-    public function setDetectedAt($detected_at)
+    public function setRevenue($revenue)
     {
-        $this->container['detected_at'] = $detected_at;
+        $this->container['revenue'] = $revenue;
 
         return $this;
     }
@@ -401,7 +398,7 @@ class GetAnalyticDashboardResponseTop5ItemsByRevenue implements ModelInterface, 
     /**
      * Gets item_image
      *
-     * @return string
+     * @return string|null
      */
     public function getItemImage()
     {
@@ -411,7 +408,7 @@ class GetAnalyticDashboardResponseTop5ItemsByRevenue implements ModelInterface, 
     /**
      * Sets item_image
      *
-     * @param string $item_image item_image
+     * @param string|null $item_image item_image
      *
      * @return self
      */

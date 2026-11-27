@@ -61,11 +61,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
       */
     protected static $openAPITypes = [
         'verdict' => 'string',
-        'sales' => 'float',
         'median_cents' => 'float',
-        'days' => 'float',
         'low_cents' => 'float',
         'high_cents' => 'float',
+        'sales' => 'float',
+        'days' => 'float',
         'last_sold_at' => 'string'
     ];
 
@@ -78,11 +78,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
       */
     protected static $openAPIFormats = [
         'verdict' => null,
-        'sales' => null,
         'median_cents' => null,
-        'days' => null,
         'low_cents' => null,
         'high_cents' => null,
+        'sales' => null,
+        'days' => null,
         'last_sold_at' => null
     ];
 
@@ -114,11 +114,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
      */
     protected static $attributeMap = [
         'verdict' => 'verdict',
-        'sales' => 'sales',
         'median_cents' => 'medianCents',
-        'days' => 'days',
         'low_cents' => 'lowCents',
         'high_cents' => 'highCents',
+        'sales' => 'sales',
+        'days' => 'days',
         'last_sold_at' => 'lastSoldAt'
     ];
 
@@ -129,11 +129,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
      */
     protected static $setters = [
         'verdict' => 'setVerdict',
-        'sales' => 'setSales',
         'median_cents' => 'setMedianCents',
-        'days' => 'setDays',
         'low_cents' => 'setLowCents',
         'high_cents' => 'setHighCents',
+        'sales' => 'setSales',
+        'days' => 'setDays',
         'last_sold_at' => 'setLastSoldAt'
     ];
 
@@ -144,11 +144,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
      */
     protected static $getters = [
         'verdict' => 'getVerdict',
-        'sales' => 'getSales',
         'median_cents' => 'getMedianCents',
-        'days' => 'getDays',
         'low_cents' => 'getLowCents',
         'high_cents' => 'getHighCents',
+        'sales' => 'getSales',
+        'days' => 'getDays',
         'last_sold_at' => 'getLastSoldAt'
     ];
 
@@ -193,9 +193,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
         return self::$openAPIModelName;
     }
 
-    const VERDICT_HIGH = 'high';
-    const VERDICT_FAIR = 'fair';
     const VERDICT_GOOD = 'good';
+    const VERDICT_FAIR = 'fair';
+    const VERDICT_HIGH = 'high';
     const VERDICT_GREAT = 'great';
 
     /**
@@ -206,9 +206,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
     public function getVerdictAllowableValues()
     {
         return [
-            self::VERDICT_HIGH,
-            self::VERDICT_FAIR,
             self::VERDICT_GOOD,
+            self::VERDICT_FAIR,
+            self::VERDICT_HIGH,
             self::VERDICT_GREAT,
         ];
     }
@@ -229,11 +229,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
     public function __construct(array $data = null)
     {
         $this->container['verdict'] = $data['verdict'] ?? null;
-        $this->container['sales'] = $data['sales'] ?? null;
         $this->container['median_cents'] = $data['median_cents'] ?? null;
-        $this->container['days'] = $data['days'] ?? null;
         $this->container['low_cents'] = $data['low_cents'] ?? null;
         $this->container['high_cents'] = $data['high_cents'] ?? null;
+        $this->container['sales'] = $data['sales'] ?? null;
+        $this->container['days'] = $data['days'] ?? null;
         $this->container['last_sold_at'] = $data['last_sold_at'] ?? null;
     }
 
@@ -258,20 +258,20 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
             );
         }
 
-        if ($this->container['sales'] === null) {
-            $invalidProperties[] = "'sales' can't be null";
-        }
         if ($this->container['median_cents'] === null) {
             $invalidProperties[] = "'median_cents' can't be null";
-        }
-        if ($this->container['days'] === null) {
-            $invalidProperties[] = "'days' can't be null";
         }
         if ($this->container['low_cents'] === null) {
             $invalidProperties[] = "'low_cents' can't be null";
         }
         if ($this->container['high_cents'] === null) {
             $invalidProperties[] = "'high_cents' can't be null";
+        }
+        if ($this->container['sales'] === null) {
+            $invalidProperties[] = "'sales' can't be null";
+        }
+        if ($this->container['days'] === null) {
+            $invalidProperties[] = "'days' can't be null";
         }
         if ($this->container['last_sold_at'] === null) {
             $invalidProperties[] = "'last_sold_at' can't be null";
@@ -326,30 +326,6 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
     }
 
     /**
-     * Gets sales
-     *
-     * @return float
-     */
-    public function getSales()
-    {
-        return $this->container['sales'];
-    }
-
-    /**
-     * Sets sales
-     *
-     * @param float $sales sales
-     *
-     * @return self
-     */
-    public function setSales($sales)
-    {
-        $this->container['sales'] = $sales;
-
-        return $this;
-    }
-
-    /**
      * Gets median_cents
      *
      * @return float
@@ -369,30 +345,6 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
     public function setMedianCents($median_cents)
     {
         $this->container['median_cents'] = $median_cents;
-
-        return $this;
-    }
-
-    /**
-     * Gets days
-     *
-     * @return float
-     */
-    public function getDays()
-    {
-        return $this->container['days'];
-    }
-
-    /**
-     * Sets days
-     *
-     * @param float $days days
-     *
-     * @return self
-     */
-    public function setDays($days)
-    {
-        $this->container['days'] = $days;
 
         return $this;
     }
@@ -441,6 +393,54 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck implements ModelInterfac
     public function setHighCents($high_cents)
     {
         $this->container['high_cents'] = $high_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets sales
+     *
+     * @return float
+     */
+    public function getSales()
+    {
+        return $this->container['sales'];
+    }
+
+    /**
+     * Sets sales
+     *
+     * @param float $sales sales
+     *
+     * @return self
+     */
+    public function setSales($sales)
+    {
+        $this->container['sales'] = $sales;
+
+        return $this;
+    }
+
+    /**
+     * Gets days
+     *
+     * @return float
+     */
+    public function getDays()
+    {
+        return $this->container['days'];
+    }
+
+    /**
+     * Sets days
+     *
+     * @param float $days days
+     *
+     * @return self
+     */
+    public function setDays($days)
+    {
+        $this->container['days'] = $days;
 
         return $this;
     }

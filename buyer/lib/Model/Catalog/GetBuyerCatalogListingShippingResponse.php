@@ -70,8 +70,12 @@ class GetBuyerCatalogListingShippingResponse implements ModelInterface, ArrayAcc
         'destination_country' => 'string',
         'ships_to_country' => 'bool',
         'no_ship_reason' => 'string',
+        'no_ship_message' => 'string',
+        'rule' => 'array<string,mixed>',
+        'partial' => 'bool',
         'services' => '\Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingShippingResponseServices[]',
         'default_service_id' => 'string',
+        'calculated_at_checkout' => 'bool',
         'international' => '\Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingShippingResponseInternational',
         'import_charges_note' => 'bool'
     ];
@@ -94,8 +98,12 @@ class GetBuyerCatalogListingShippingResponse implements ModelInterface, ArrayAcc
         'destination_country' => null,
         'ships_to_country' => null,
         'no_ship_reason' => null,
+        'no_ship_message' => null,
+        'rule' => null,
+        'partial' => null,
         'services' => null,
         'default_service_id' => null,
+        'calculated_at_checkout' => null,
         'international' => null,
         'import_charges_note' => null
     ];
@@ -137,8 +145,12 @@ class GetBuyerCatalogListingShippingResponse implements ModelInterface, ArrayAcc
         'destination_country' => 'destinationCountry',
         'ships_to_country' => 'shipsToCountry',
         'no_ship_reason' => 'noShipReason',
+        'no_ship_message' => 'noShipMessage',
+        'rule' => 'rule',
+        'partial' => 'partial',
         'services' => 'services',
         'default_service_id' => 'defaultServiceId',
+        'calculated_at_checkout' => 'calculatedAtCheckout',
         'international' => 'international',
         'import_charges_note' => 'importChargesNote'
     ];
@@ -159,8 +171,12 @@ class GetBuyerCatalogListingShippingResponse implements ModelInterface, ArrayAcc
         'destination_country' => 'setDestinationCountry',
         'ships_to_country' => 'setShipsToCountry',
         'no_ship_reason' => 'setNoShipReason',
+        'no_ship_message' => 'setNoShipMessage',
+        'rule' => 'setRule',
+        'partial' => 'setPartial',
         'services' => 'setServices',
         'default_service_id' => 'setDefaultServiceId',
+        'calculated_at_checkout' => 'setCalculatedAtCheckout',
         'international' => 'setInternational',
         'import_charges_note' => 'setImportChargesNote'
     ];
@@ -181,8 +197,12 @@ class GetBuyerCatalogListingShippingResponse implements ModelInterface, ArrayAcc
         'destination_country' => 'getDestinationCountry',
         'ships_to_country' => 'getShipsToCountry',
         'no_ship_reason' => 'getNoShipReason',
+        'no_ship_message' => 'getNoShipMessage',
+        'rule' => 'getRule',
+        'partial' => 'getPartial',
         'services' => 'getServices',
         'default_service_id' => 'getDefaultServiceId',
+        'calculated_at_checkout' => 'getCalculatedAtCheckout',
         'international' => 'getInternational',
         'import_charges_note' => 'getImportChargesNote'
     ];
@@ -254,8 +274,12 @@ class GetBuyerCatalogListingShippingResponse implements ModelInterface, ArrayAcc
         $this->container['destination_country'] = $data['destination_country'] ?? null;
         $this->container['ships_to_country'] = $data['ships_to_country'] ?? null;
         $this->container['no_ship_reason'] = $data['no_ship_reason'] ?? null;
+        $this->container['no_ship_message'] = $data['no_ship_message'] ?? null;
+        $this->container['rule'] = $data['rule'] ?? null;
+        $this->container['partial'] = $data['partial'] ?? null;
         $this->container['services'] = $data['services'] ?? null;
         $this->container['default_service_id'] = $data['default_service_id'] ?? null;
+        $this->container['calculated_at_checkout'] = $data['calculated_at_checkout'] ?? null;
         $this->container['international'] = $data['international'] ?? null;
         $this->container['import_charges_note'] = $data['import_charges_note'] ?? null;
     }
@@ -277,6 +301,9 @@ class GetBuyerCatalogListingShippingResponse implements ModelInterface, ArrayAcc
         }
         if ($this->container['ships_to_country'] === null) {
             $invalidProperties[] = "'ships_to_country' can't be null";
+        }
+        if ($this->container['partial'] === null) {
+            $invalidProperties[] = "'partial' can't be null";
         }
         if ($this->container['services'] === null) {
             $invalidProperties[] = "'services' can't be null";
@@ -543,6 +570,78 @@ class GetBuyerCatalogListingShippingResponse implements ModelInterface, ArrayAcc
     }
 
     /**
+     * Gets no_ship_message
+     *
+     * @return string|null
+     */
+    public function getNoShipMessage()
+    {
+        return $this->container['no_ship_message'];
+    }
+
+    /**
+     * Sets no_ship_message
+     *
+     * @param string|null $no_ship_message Why it doesn't ship here, as the buyer should read it; null when it does.
+     *
+     * @return self
+     */
+    public function setNoShipMessage($no_ship_message)
+    {
+        $this->container['no_ship_message'] = $no_ship_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets rule
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getRule()
+    {
+        return $this->container['rule'];
+    }
+
+    /**
+     * Sets rule
+     *
+     * @param array<string,mixed>|null $rule The seller's ship-to rule that decided a refusal; null when none did.
+     *
+     * @return self
+     */
+    public function setRule($rule)
+    {
+        $this->container['rule'] = $rule;
+
+        return $this;
+    }
+
+    /**
+     * Gets partial
+     *
+     * @return bool
+     */
+    public function getPartial()
+    {
+        return $this->container['partial'];
+    }
+
+    /**
+     * Sets partial
+     *
+     * @param bool $partial True when a fuller address (ZIP / postcode) could change the answer.
+     *
+     * @return self
+     */
+    public function setPartial($partial)
+    {
+        $this->container['partial'] = $partial;
+
+        return $this;
+    }
+
+    /**
      * Gets services
      *
      * @return \Crossly\Buyer\Model\Catalog\GetBuyerCatalogListingShippingResponseServices[]
@@ -586,6 +685,30 @@ class GetBuyerCatalogListingShippingResponse implements ModelInterface, ArrayAcc
     public function setDefaultServiceId($default_service_id)
     {
         $this->container['default_service_id'] = $default_service_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets calculated_at_checkout
+     *
+     * @return bool|null
+     */
+    public function getCalculatedAtCheckout()
+    {
+        return $this->container['calculated_at_checkout'];
+    }
+
+    /**
+     * Sets calculated_at_checkout
+     *
+     * @param bool|null $calculated_at_checkout Buyer pays: calculated: no live label rate for this destination yet (give a ZIP); `cents` is null.
+     *
+     * @return self
+     */
+    public function setCalculatedAtCheckout($calculated_at_checkout)
+    {
+        $this->container['calculated_at_checkout'] = $calculated_at_checkout;
 
         return $this;
     }

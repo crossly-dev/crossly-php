@@ -60,9 +60,9 @@ class ListBuyerCatalogListingSoldHistoryItem implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
+        'price_cents' => 'float',
         'quantity' => 'float',
-        'sold_at' => 'string',
-        'price_cents' => 'float'
+        'sold_at' => 'string'
     ];
 
     /**
@@ -73,9 +73,9 @@ class ListBuyerCatalogListingSoldHistoryItem implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'price_cents' => null,
         'quantity' => null,
-        'sold_at' => null,
-        'price_cents' => null
+        'sold_at' => null
     ];
 
     /**
@@ -105,9 +105,9 @@ class ListBuyerCatalogListingSoldHistoryItem implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
+        'price_cents' => 'priceCents',
         'quantity' => 'quantity',
-        'sold_at' => 'soldAt',
-        'price_cents' => 'priceCents'
+        'sold_at' => 'soldAt'
     ];
 
     /**
@@ -116,9 +116,9 @@ class ListBuyerCatalogListingSoldHistoryItem implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
+        'price_cents' => 'setPriceCents',
         'quantity' => 'setQuantity',
-        'sold_at' => 'setSoldAt',
-        'price_cents' => 'setPriceCents'
+        'sold_at' => 'setSoldAt'
     ];
 
     /**
@@ -127,9 +127,9 @@ class ListBuyerCatalogListingSoldHistoryItem implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
+        'price_cents' => 'getPriceCents',
         'quantity' => 'getQuantity',
-        'sold_at' => 'getSoldAt',
-        'price_cents' => 'getPriceCents'
+        'sold_at' => 'getSoldAt'
     ];
 
     /**
@@ -189,9 +189,9 @@ class ListBuyerCatalogListingSoldHistoryItem implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
+        $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['quantity'] = $data['quantity'] ?? null;
         $this->container['sold_at'] = $data['sold_at'] ?? null;
-        $this->container['price_cents'] = $data['price_cents'] ?? null;
     }
 
     /**
@@ -203,14 +203,14 @@ class ListBuyerCatalogListingSoldHistoryItem implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        if ($this->container['price_cents'] === null) {
+            $invalidProperties[] = "'price_cents' can't be null";
+        }
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
         }
         if ($this->container['sold_at'] === null) {
             $invalidProperties[] = "'sold_at' can't be null";
-        }
-        if ($this->container['price_cents'] === null) {
-            $invalidProperties[] = "'price_cents' can't be null";
         }
         return $invalidProperties;
     }
@@ -226,6 +226,30 @@ class ListBuyerCatalogListingSoldHistoryItem implements ModelInterface, ArrayAcc
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets price_cents
+     *
+     * @return float
+     */
+    public function getPriceCents()
+    {
+        return $this->container['price_cents'];
+    }
+
+    /**
+     * Sets price_cents
+     *
+     * @param float $price_cents Per-unit item price the buyer paid, in cents — excludes shipping and tax.
+     *
+     * @return self
+     */
+    public function setPriceCents($price_cents)
+    {
+        $this->container['price_cents'] = $price_cents;
+
+        return $this;
+    }
 
     /**
      * Gets quantity
@@ -271,30 +295,6 @@ class ListBuyerCatalogListingSoldHistoryItem implements ModelInterface, ArrayAcc
     public function setSoldAt($sold_at)
     {
         $this->container['sold_at'] = $sold_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets price_cents
-     *
-     * @return float
-     */
-    public function getPriceCents()
-    {
-        return $this->container['price_cents'];
-    }
-
-    /**
-     * Sets price_cents
-     *
-     * @param float $price_cents Per-unit item price the buyer paid, in cents — excludes shipping and tax.
-     *
-     * @return self
-     */
-    public function setPriceCents($price_cents)
-    {
-        $this->container['price_cents'] = $price_cents;
 
         return $this;
     }

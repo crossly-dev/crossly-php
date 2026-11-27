@@ -60,10 +60,11 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'current' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThrough',
-        'previous' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThrough',
+        'current' => '\Crossly\Model\Inventory\GetInventorySellThroughResponseDataCurrent',
+        'previous' => '\Crossly\Model\Inventory\GetInventorySellThroughResponseDataCurrent',
         'comparison' => '\Crossly\Model\Inventory\GetInventorySellThroughResponseDataComparison',
-        'window' => '\Crossly\Model\Inventory\GetInventorySellThroughResponseDataWindow'
+        'window' => '\Crossly\Model\Common\StartEnd',
+        'cohort' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThroughCohort'
     ];
 
     /**
@@ -77,7 +78,8 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
         'current' => null,
         'previous' => null,
         'comparison' => null,
-        'window' => null
+        'window' => null,
+        'cohort' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
         'current' => 'current',
         'previous' => 'previous',
         'comparison' => 'comparison',
-        'window' => 'window'
+        'window' => 'window',
+        'cohort' => 'cohort'
     ];
 
     /**
@@ -122,7 +125,8 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
         'current' => 'setCurrent',
         'previous' => 'setPrevious',
         'comparison' => 'setComparison',
-        'window' => 'setWindow'
+        'window' => 'setWindow',
+        'cohort' => 'setCohort'
     ];
 
     /**
@@ -134,7 +138,8 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
         'current' => 'getCurrent',
         'previous' => 'getPrevious',
         'comparison' => 'getComparison',
-        'window' => 'getWindow'
+        'window' => 'getWindow',
+        'cohort' => 'getCohort'
     ];
 
     /**
@@ -198,6 +203,7 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
         $this->container['previous'] = $data['previous'] ?? null;
         $this->container['comparison'] = $data['comparison'] ?? null;
         $this->container['window'] = $data['window'] ?? null;
+        $this->container['cohort'] = $data['cohort'] ?? null;
     }
 
     /**
@@ -221,6 +227,9 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
         if ($this->container['window'] === null) {
             $invalidProperties[] = "'window' can't be null";
         }
+        if ($this->container['cohort'] === null) {
+            $invalidProperties[] = "'cohort' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -239,7 +248,7 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
     /**
      * Gets current
      *
-     * @return \Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThrough
+     * @return \Crossly\Model\Inventory\GetInventorySellThroughResponseDataCurrent
      */
     public function getCurrent()
     {
@@ -249,7 +258,7 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
     /**
      * Sets current
      *
-     * @param \Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThrough $current current
+     * @param \Crossly\Model\Inventory\GetInventorySellThroughResponseDataCurrent $current current
      *
      * @return self
      */
@@ -263,7 +272,7 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
     /**
      * Gets previous
      *
-     * @return \Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThrough
+     * @return \Crossly\Model\Inventory\GetInventorySellThroughResponseDataCurrent
      */
     public function getPrevious()
     {
@@ -273,7 +282,7 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
     /**
      * Sets previous
      *
-     * @param \Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThrough $previous previous
+     * @param \Crossly\Model\Inventory\GetInventorySellThroughResponseDataCurrent $previous previous
      *
      * @return self
      */
@@ -311,7 +320,7 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
     /**
      * Gets window
      *
-     * @return \Crossly\Model\Inventory\GetInventorySellThroughResponseDataWindow
+     * @return \Crossly\Model\Common\StartEnd
      */
     public function getWindow()
     {
@@ -321,13 +330,37 @@ class GetInventorySellThroughResponseData implements ModelInterface, ArrayAccess
     /**
      * Sets window
      *
-     * @param \Crossly\Model\Inventory\GetInventorySellThroughResponseDataWindow $window window
+     * @param \Crossly\Model\Common\StartEnd $window window
      *
      * @return self
      */
     public function setWindow($window)
     {
         $this->container['window'] = $window;
+
+        return $this;
+    }
+
+    /**
+     * Gets cohort
+     *
+     * @return \Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThroughCohort
+     */
+    public function getCohort()
+    {
+        return $this->container['cohort'];
+    }
+
+    /**
+     * Sets cohort
+     *
+     * @param \Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThroughCohort $cohort cohort
+     *
+     * @return self
+     */
+    public function setCohort($cohort)
+    {
+        $this->container['cohort'] = $cohort;
 
         return $this;
     }

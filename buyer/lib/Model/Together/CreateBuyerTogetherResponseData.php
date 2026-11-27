@@ -60,8 +60,8 @@ class CreateBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'code' => 'string'
+        'code' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class CreateBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'code' => null
+        'code' => null,
+        'id' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class CreateBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'code' => 'code'
+        'code' => 'code',
+        'id' => 'id'
     ];
 
     /**
@@ -113,8 +113,8 @@ class CreateBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'code' => 'setCode'
+        'code' => 'setCode',
+        'id' => 'setId'
     ];
 
     /**
@@ -123,8 +123,8 @@ class CreateBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'code' => 'getCode'
+        'code' => 'getCode',
+        'id' => 'getId'
     ];
 
     /**
@@ -184,8 +184,8 @@ class CreateBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['code'] = $data['code'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -197,11 +197,11 @@ class CreateBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['code'] === null) {
             $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,30 +217,6 @@ class CreateBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \J
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets code
@@ -262,6 +238,30 @@ class CreateBuyerTogetherResponseData implements ModelInterface, ArrayAccess, \J
     public function setCode($code)
     {
         $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

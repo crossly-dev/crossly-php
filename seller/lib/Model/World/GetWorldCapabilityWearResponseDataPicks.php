@@ -61,8 +61,8 @@ class GetWorldCapabilityWearResponseDataPicks implements ModelInterface, ArrayAc
       */
     protected static $openAPITypes = [
         'body' => 'string',
-        'legs' => 'string',
         'head' => 'string',
+        'legs' => 'string',
         'feet' => 'string',
         'back' => 'string'
     ];
@@ -76,8 +76,8 @@ class GetWorldCapabilityWearResponseDataPicks implements ModelInterface, ArrayAc
       */
     protected static $openAPIFormats = [
         'body' => null,
-        'legs' => null,
         'head' => null,
+        'legs' => null,
         'feet' => null,
         'back' => null
     ];
@@ -110,8 +110,8 @@ class GetWorldCapabilityWearResponseDataPicks implements ModelInterface, ArrayAc
      */
     protected static $attributeMap = [
         'body' => 'body',
-        'legs' => 'legs',
         'head' => 'head',
+        'legs' => 'legs',
         'feet' => 'feet',
         'back' => 'back'
     ];
@@ -123,8 +123,8 @@ class GetWorldCapabilityWearResponseDataPicks implements ModelInterface, ArrayAc
      */
     protected static $setters = [
         'body' => 'setBody',
-        'legs' => 'setLegs',
         'head' => 'setHead',
+        'legs' => 'setLegs',
         'feet' => 'setFeet',
         'back' => 'setBack'
     ];
@@ -136,8 +136,8 @@ class GetWorldCapabilityWearResponseDataPicks implements ModelInterface, ArrayAc
      */
     protected static $getters = [
         'body' => 'getBody',
-        'legs' => 'getLegs',
         'head' => 'getHead',
+        'legs' => 'getLegs',
         'feet' => 'getFeet',
         'back' => 'getBack'
     ];
@@ -200,8 +200,8 @@ class GetWorldCapabilityWearResponseDataPicks implements ModelInterface, ArrayAc
     public function __construct(array $data = null)
     {
         $this->container['body'] = $data['body'] ?? null;
-        $this->container['legs'] = $data['legs'] ?? null;
         $this->container['head'] = $data['head'] ?? null;
+        $this->container['legs'] = $data['legs'] ?? null;
         $this->container['feet'] = $data['feet'] ?? null;
         $this->container['back'] = $data['back'] ?? null;
     }
@@ -255,30 +255,6 @@ class GetWorldCapabilityWearResponseDataPicks implements ModelInterface, ArrayAc
     }
 
     /**
-     * Gets legs
-     *
-     * @return string|null
-     */
-    public function getLegs()
-    {
-        return $this->container['legs'];
-    }
-
-    /**
-     * Sets legs
-     *
-     * @param string|null $legs legs
-     *
-     * @return self
-     */
-    public function setLegs($legs)
-    {
-        $this->container['legs'] = $legs;
-
-        return $this;
-    }
-
-    /**
      * Gets head
      *
      * @return string|null
@@ -298,6 +274,30 @@ class GetWorldCapabilityWearResponseDataPicks implements ModelInterface, ArrayAc
     public function setHead($head)
     {
         $this->container['head'] = $head;
+
+        return $this;
+    }
+
+    /**
+     * Gets legs
+     *
+     * @return string|null
+     */
+    public function getLegs()
+    {
+        return $this->container['legs'];
+    }
+
+    /**
+     * Sets legs
+     *
+     * @param string|null $legs legs
+     *
+     * @return self
+     */
+    public function setLegs($legs)
+    {
+        $this->container['legs'] = $legs;
 
         return $this;
     }

@@ -61,15 +61,15 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'status' => 'string',
-        'orders' => '\Crossly\Buyer\Model\Live\ListBuyerLiveShipmentsItemOrders[]',
-        'carrier' => 'string',
-        'tracking_number' => 'string',
-        'label_url' => 'string',
         'stream_id' => 'string',
-        'refunded_postage_cents' => 'float',
         'stream_title' => 'string',
-        'buyer_name' => 'string'
+        'status' => 'string',
+        'buyer_name' => 'string',
+        'tracking_number' => 'string',
+        'carrier' => 'string',
+        'label_url' => 'string',
+        'refunded_postage_cents' => 'float',
+        'orders' => '\Crossly\Buyer\Model\Live\ListBuyerLiveShipmentsItemOrders[]'
     ];
 
     /**
@@ -81,15 +81,15 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'status' => null,
-        'orders' => null,
-        'carrier' => null,
-        'tracking_number' => null,
-        'label_url' => null,
         'stream_id' => null,
-        'refunded_postage_cents' => null,
         'stream_title' => null,
-        'buyer_name' => null
+        'status' => null,
+        'buyer_name' => null,
+        'tracking_number' => null,
+        'carrier' => null,
+        'label_url' => null,
+        'refunded_postage_cents' => null,
+        'orders' => null
     ];
 
     /**
@@ -120,15 +120,15 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'status' => 'status',
-        'orders' => 'orders',
-        'carrier' => 'carrier',
-        'tracking_number' => 'trackingNumber',
-        'label_url' => 'labelUrl',
         'stream_id' => 'streamId',
-        'refunded_postage_cents' => 'refundedPostageCents',
         'stream_title' => 'streamTitle',
-        'buyer_name' => 'buyerName'
+        'status' => 'status',
+        'buyer_name' => 'buyerName',
+        'tracking_number' => 'trackingNumber',
+        'carrier' => 'carrier',
+        'label_url' => 'labelUrl',
+        'refunded_postage_cents' => 'refundedPostageCents',
+        'orders' => 'orders'
     ];
 
     /**
@@ -138,15 +138,15 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'id' => 'setId',
-        'status' => 'setStatus',
-        'orders' => 'setOrders',
-        'carrier' => 'setCarrier',
-        'tracking_number' => 'setTrackingNumber',
-        'label_url' => 'setLabelUrl',
         'stream_id' => 'setStreamId',
-        'refunded_postage_cents' => 'setRefundedPostageCents',
         'stream_title' => 'setStreamTitle',
-        'buyer_name' => 'setBuyerName'
+        'status' => 'setStatus',
+        'buyer_name' => 'setBuyerName',
+        'tracking_number' => 'setTrackingNumber',
+        'carrier' => 'setCarrier',
+        'label_url' => 'setLabelUrl',
+        'refunded_postage_cents' => 'setRefundedPostageCents',
+        'orders' => 'setOrders'
     ];
 
     /**
@@ -156,15 +156,15 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'id' => 'getId',
-        'status' => 'getStatus',
-        'orders' => 'getOrders',
-        'carrier' => 'getCarrier',
-        'tracking_number' => 'getTrackingNumber',
-        'label_url' => 'getLabelUrl',
         'stream_id' => 'getStreamId',
-        'refunded_postage_cents' => 'getRefundedPostageCents',
         'stream_title' => 'getStreamTitle',
-        'buyer_name' => 'getBuyerName'
+        'status' => 'getStatus',
+        'buyer_name' => 'getBuyerName',
+        'tracking_number' => 'getTrackingNumber',
+        'carrier' => 'getCarrier',
+        'label_url' => 'getLabelUrl',
+        'refunded_postage_cents' => 'getRefundedPostageCents',
+        'orders' => 'getOrders'
     ];
 
     /**
@@ -225,15 +225,15 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['orders'] = $data['orders'] ?? null;
-        $this->container['carrier'] = $data['carrier'] ?? null;
-        $this->container['tracking_number'] = $data['tracking_number'] ?? null;
-        $this->container['label_url'] = $data['label_url'] ?? null;
         $this->container['stream_id'] = $data['stream_id'] ?? null;
-        $this->container['refunded_postage_cents'] = $data['refunded_postage_cents'] ?? null;
         $this->container['stream_title'] = $data['stream_title'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
         $this->container['buyer_name'] = $data['buyer_name'] ?? null;
+        $this->container['tracking_number'] = $data['tracking_number'] ?? null;
+        $this->container['carrier'] = $data['carrier'] ?? null;
+        $this->container['label_url'] = $data['label_url'] ?? null;
+        $this->container['refunded_postage_cents'] = $data['refunded_postage_cents'] ?? null;
+        $this->container['orders'] = $data['orders'] ?? null;
     }
 
     /**
@@ -248,20 +248,20 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['orders'] === null) {
-            $invalidProperties[] = "'orders' can't be null";
-        }
         if ($this->container['stream_id'] === null) {
             $invalidProperties[] = "'stream_id' can't be null";
+        }
+        if ($this->container['stream_title'] === null) {
+            $invalidProperties[] = "'stream_title' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         if ($this->container['refunded_postage_cents'] === null) {
             $invalidProperties[] = "'refunded_postage_cents' can't be null";
         }
-        if ($this->container['stream_title'] === null) {
-            $invalidProperties[] = "'stream_title' can't be null";
+        if ($this->container['orders'] === null) {
+            $invalidProperties[] = "'orders' can't be null";
         }
         return $invalidProperties;
     }
@@ -303,126 +303,6 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets orders
-     *
-     * @return \Crossly\Buyer\Model\Live\ListBuyerLiveShipmentsItemOrders[]
-     */
-    public function getOrders()
-    {
-        return $this->container['orders'];
-    }
-
-    /**
-     * Sets orders
-     *
-     * @param \Crossly\Buyer\Model\Live\ListBuyerLiveShipmentsItemOrders[] $orders orders
-     *
-     * @return self
-     */
-    public function setOrders($orders)
-    {
-        $this->container['orders'] = $orders;
-
-        return $this;
-    }
-
-    /**
-     * Gets carrier
-     *
-     * @return string|null
-     */
-    public function getCarrier()
-    {
-        return $this->container['carrier'];
-    }
-
-    /**
-     * Sets carrier
-     *
-     * @param string|null $carrier carrier
-     *
-     * @return self
-     */
-    public function setCarrier($carrier)
-    {
-        $this->container['carrier'] = $carrier;
-
-        return $this;
-    }
-
-    /**
-     * Gets tracking_number
-     *
-     * @return string|null
-     */
-    public function getTrackingNumber()
-    {
-        return $this->container['tracking_number'];
-    }
-
-    /**
-     * Sets tracking_number
-     *
-     * @param string|null $tracking_number tracking_number
-     *
-     * @return self
-     */
-    public function setTrackingNumber($tracking_number)
-    {
-        $this->container['tracking_number'] = $tracking_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets label_url
-     *
-     * @return string|null
-     */
-    public function getLabelUrl()
-    {
-        return $this->container['label_url'];
-    }
-
-    /**
-     * Sets label_url
-     *
-     * @param string|null $label_url label_url
-     *
-     * @return self
-     */
-    public function setLabelUrl($label_url)
-    {
-        $this->container['label_url'] = $label_url;
-
-        return $this;
-    }
-
-    /**
      * Gets stream_id
      *
      * @return string
@@ -442,30 +322,6 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setStreamId($stream_id)
     {
         $this->container['stream_id'] = $stream_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets refunded_postage_cents
-     *
-     * @return float
-     */
-    public function getRefundedPostageCents()
-    {
-        return $this->container['refunded_postage_cents'];
-    }
-
-    /**
-     * Sets refunded_postage_cents
-     *
-     * @param float $refunded_postage_cents refunded_postage_cents
-     *
-     * @return self
-     */
-    public function setRefundedPostageCents($refunded_postage_cents)
-    {
-        $this->container['refunded_postage_cents'] = $refunded_postage_cents;
 
         return $this;
     }
@@ -495,6 +351,30 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
      * Gets buyer_name
      *
      * @return string|null
@@ -514,6 +394,126 @@ class ListBuyerLiveShipmentsItem implements ModelInterface, ArrayAccess, \JsonSe
     public function setBuyerName($buyer_name)
     {
         $this->container['buyer_name'] = $buyer_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_number
+     *
+     * @return string|null
+     */
+    public function getTrackingNumber()
+    {
+        return $this->container['tracking_number'];
+    }
+
+    /**
+     * Sets tracking_number
+     *
+     * @param string|null $tracking_number tracking_number
+     *
+     * @return self
+     */
+    public function setTrackingNumber($tracking_number)
+    {
+        $this->container['tracking_number'] = $tracking_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets carrier
+     *
+     * @return string|null
+     */
+    public function getCarrier()
+    {
+        return $this->container['carrier'];
+    }
+
+    /**
+     * Sets carrier
+     *
+     * @param string|null $carrier carrier
+     *
+     * @return self
+     */
+    public function setCarrier($carrier)
+    {
+        $this->container['carrier'] = $carrier;
+
+        return $this;
+    }
+
+    /**
+     * Gets label_url
+     *
+     * @return string|null
+     */
+    public function getLabelUrl()
+    {
+        return $this->container['label_url'];
+    }
+
+    /**
+     * Sets label_url
+     *
+     * @param string|null $label_url label_url
+     *
+     * @return self
+     */
+    public function setLabelUrl($label_url)
+    {
+        $this->container['label_url'] = $label_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets refunded_postage_cents
+     *
+     * @return float
+     */
+    public function getRefundedPostageCents()
+    {
+        return $this->container['refunded_postage_cents'];
+    }
+
+    /**
+     * Sets refunded_postage_cents
+     *
+     * @param float $refunded_postage_cents refunded_postage_cents
+     *
+     * @return self
+     */
+    public function setRefundedPostageCents($refunded_postage_cents)
+    {
+        $this->container['refunded_postage_cents'] = $refunded_postage_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets orders
+     *
+     * @return \Crossly\Buyer\Model\Live\ListBuyerLiveShipmentsItemOrders[]
+     */
+    public function getOrders()
+    {
+        return $this->container['orders'];
+    }
+
+    /**
+     * Sets orders
+     *
+     * @param \Crossly\Buyer\Model\Live\ListBuyerLiveShipmentsItemOrders[] $orders orders
+     *
+     * @return self
+     */
+    public function setOrders($orders)
+    {
+        $this->container['orders'] = $orders;
 
         return $this;
     }

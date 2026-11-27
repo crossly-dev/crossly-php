@@ -60,8 +60,8 @@ class GetBuyerCaseResponseData implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\Crossly\Buyer\Model\Cases\GetBuyerCaseResponseDataMessages[]',
         'case' => '\Crossly\Buyer\Model\Cases\GetBuyerCaseResponseDataCase',
+        'messages' => '\Crossly\Buyer\Model\Cases\GetBuyerCaseResponseDataMessages[]',
         'purchase' => '\Crossly\Buyer\Model\Cases\GetBuyerCaseResponseDataPurchase',
         'return_shipment' => '\Crossly\Buyer\Model\Cases\GetBuyerCaseResponseDataReturnShipment'
     ];
@@ -74,8 +74,8 @@ class GetBuyerCaseResponseData implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'messages' => null,
         'case' => null,
+        'messages' => null,
         'purchase' => null,
         'return_shipment' => null
     ];
@@ -107,8 +107,8 @@ class GetBuyerCaseResponseData implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'messages' => 'messages',
         'case' => 'case',
+        'messages' => 'messages',
         'purchase' => 'purchase',
         'return_shipment' => 'returnShipment'
     ];
@@ -119,8 +119,8 @@ class GetBuyerCaseResponseData implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'messages' => 'setMessages',
         'case' => 'setCase',
+        'messages' => 'setMessages',
         'purchase' => 'setPurchase',
         'return_shipment' => 'setReturnShipment'
     ];
@@ -131,8 +131,8 @@ class GetBuyerCaseResponseData implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'messages' => 'getMessages',
         'case' => 'getCase',
+        'messages' => 'getMessages',
         'purchase' => 'getPurchase',
         'return_shipment' => 'getReturnShipment'
     ];
@@ -194,8 +194,8 @@ class GetBuyerCaseResponseData implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['messages'] = $data['messages'] ?? null;
         $this->container['case'] = $data['case'] ?? null;
+        $this->container['messages'] = $data['messages'] ?? null;
         $this->container['purchase'] = $data['purchase'] ?? null;
         $this->container['return_shipment'] = $data['return_shipment'] ?? null;
     }
@@ -209,11 +209,11 @@ class GetBuyerCaseResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['messages'] === null) {
-            $invalidProperties[] = "'messages' can't be null";
-        }
         if ($this->container['case'] === null) {
             $invalidProperties[] = "'case' can't be null";
+        }
+        if ($this->container['messages'] === null) {
+            $invalidProperties[] = "'messages' can't be null";
         }
         return $invalidProperties;
     }
@@ -229,30 +229,6 @@ class GetBuyerCaseResponseData implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets messages
-     *
-     * @return \Crossly\Buyer\Model\Cases\GetBuyerCaseResponseDataMessages[]
-     */
-    public function getMessages()
-    {
-        return $this->container['messages'];
-    }
-
-    /**
-     * Sets messages
-     *
-     * @param \Crossly\Buyer\Model\Cases\GetBuyerCaseResponseDataMessages[] $messages messages
-     *
-     * @return self
-     */
-    public function setMessages($messages)
-    {
-        $this->container['messages'] = $messages;
-
-        return $this;
-    }
 
     /**
      * Gets case
@@ -274,6 +250,30 @@ class GetBuyerCaseResponseData implements ModelInterface, ArrayAccess, \JsonSeri
     public function setCase($case)
     {
         $this->container['case'] = $case;
+
+        return $this;
+    }
+
+    /**
+     * Gets messages
+     *
+     * @return \Crossly\Buyer\Model\Cases\GetBuyerCaseResponseDataMessages[]
+     */
+    public function getMessages()
+    {
+        return $this->container['messages'];
+    }
+
+    /**
+     * Sets messages
+     *
+     * @param \Crossly\Buyer\Model\Cases\GetBuyerCaseResponseDataMessages[] $messages messages
+     *
+     * @return self
+     */
+    public function setMessages($messages)
+    {
+        $this->container['messages'] = $messages;
 
         return $this;
     }

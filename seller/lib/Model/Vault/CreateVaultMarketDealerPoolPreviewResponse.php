@@ -189,14 +189,14 @@ class CreateVaultMarketDealerPoolPreviewResponse implements ModelInterface, Arra
     }
 
     const BID_LIMIT_FLOOR = 'floor';
+    const BID_LIMIT_CEILING = 'ceiling';
     const BID_LIMIT_NO_UNITS = 'no_units';
     const BID_LIMIT_NO_CASH = 'no_cash';
-    const BID_LIMIT_CEILING = 'ceiling';
     const BID_LIMIT_CURVE_END = 'curve_end';
     const ASK_LIMIT_FLOOR = 'floor';
+    const ASK_LIMIT_CEILING = 'ceiling';
     const ASK_LIMIT_NO_UNITS = 'no_units';
     const ASK_LIMIT_NO_CASH = 'no_cash';
-    const ASK_LIMIT_CEILING = 'ceiling';
     const ASK_LIMIT_CURVE_END = 'curve_end';
 
     /**
@@ -208,9 +208,9 @@ class CreateVaultMarketDealerPoolPreviewResponse implements ModelInterface, Arra
     {
         return [
             self::BID_LIMIT_FLOOR,
+            self::BID_LIMIT_CEILING,
             self::BID_LIMIT_NO_UNITS,
             self::BID_LIMIT_NO_CASH,
-            self::BID_LIMIT_CEILING,
             self::BID_LIMIT_CURVE_END,
         ];
     }
@@ -224,9 +224,9 @@ class CreateVaultMarketDealerPoolPreviewResponse implements ModelInterface, Arra
     {
         return [
             self::ASK_LIMIT_FLOOR,
+            self::ASK_LIMIT_CEILING,
             self::ASK_LIMIT_NO_UNITS,
             self::ASK_LIMIT_NO_CASH,
-            self::ASK_LIMIT_CEILING,
             self::ASK_LIMIT_CURVE_END,
         ];
     }

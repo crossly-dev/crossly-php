@@ -168,9 +168,9 @@ class CreateCbxSubjectSpendPlanResponseDataLegs implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    const SOURCE_GRANTED = 'granted';
     const SOURCE_EARNED = 'earned';
     const SOURCE_CONNECTED = 'connected';
+    const SOURCE_GRANTED = 'granted';
 
     /**
      * Gets allowable values of the enum
@@ -180,9 +180,9 @@ class CreateCbxSubjectSpendPlanResponseDataLegs implements ModelInterface, Array
     public function getSourceAllowableValues()
     {
         return [
-            self::SOURCE_GRANTED,
             self::SOURCE_EARNED,
             self::SOURCE_CONNECTED,
+            self::SOURCE_GRANTED,
         ];
     }
 

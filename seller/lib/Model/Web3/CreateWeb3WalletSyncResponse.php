@@ -60,7 +60,7 @@ class CreateWeb3WalletSyncResponse implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'summary' => '\Crossly\Model\Web3\CreateWeb3WalletSyncResponseSummary'
+        'summary' => '\Crossly\Model\Web3\CreateWeb3StoreWalletSyncResponseData'
     ];
 
     /**
@@ -212,7 +212,7 @@ class CreateWeb3WalletSyncResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets summary
      *
-     * @return \Crossly\Model\Web3\CreateWeb3WalletSyncResponseSummary
+     * @return \Crossly\Model\Web3\CreateWeb3StoreWalletSyncResponseData
      */
     public function getSummary()
     {
@@ -222,7 +222,7 @@ class CreateWeb3WalletSyncResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets summary
      *
-     * @param \Crossly\Model\Web3\CreateWeb3WalletSyncResponseSummary $summary summary
+     * @param \Crossly\Model\Web3\CreateWeb3StoreWalletSyncResponseData $summary summary
      *
      * @return self
      */

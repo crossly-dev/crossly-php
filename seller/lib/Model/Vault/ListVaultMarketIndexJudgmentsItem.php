@@ -194,8 +194,8 @@ class ListVaultMarketIndexJudgmentsItem implements ModelInterface, ArrayAccess, 
     }
 
     const ACTION_METHOD = 'method';
-    const ACTION_HALT = 'halt';
     const ACTION_RESUME = 'resume';
+    const ACTION_HALT = 'halt';
     const ACTION_EXCLUDE_KEY = 'exclude_key';
     const ACTION_VOID_TRADE = 'void_trade';
     const ACTION_RESTATE = 'restate';
@@ -210,8 +210,8 @@ class ListVaultMarketIndexJudgmentsItem implements ModelInterface, ArrayAccess, 
     {
         return [
             self::ACTION_METHOD,
-            self::ACTION_HALT,
             self::ACTION_RESUME,
+            self::ACTION_HALT,
             self::ACTION_EXCLUDE_KEY,
             self::ACTION_VOID_TRADE,
             self::ACTION_RESTATE,

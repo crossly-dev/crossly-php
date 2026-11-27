@@ -178,8 +178,8 @@ class CreateVaultMarketInstantExitResponse implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
-    const STATUS_FILLED = 'filled';
     const STATUS_MISSED = 'missed';
+    const STATUS_FILLED = 'filled';
 
     /**
      * Gets allowable values of the enum
@@ -189,8 +189,8 @@ class CreateVaultMarketInstantExitResponse implements ModelInterface, ArrayAcces
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_FILLED,
             self::STATUS_MISSED,
+            self::STATUS_FILLED,
         ];
     }
 

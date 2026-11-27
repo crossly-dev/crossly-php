@@ -193,8 +193,8 @@ class GetSpatialPartyResponsePartyMembers implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const ROLE_MEMBER = 'member';
     const ROLE_LEADER = 'leader';
+    const ROLE_MEMBER = 'member';
 
     /**
      * Gets allowable values of the enum
@@ -204,8 +204,8 @@ class GetSpatialPartyResponsePartyMembers implements ModelInterface, ArrayAccess
     public function getRoleAllowableValues()
     {
         return [
-            self::ROLE_MEMBER,
             self::ROLE_LEADER,
+            self::ROLE_MEMBER,
         ];
     }
 

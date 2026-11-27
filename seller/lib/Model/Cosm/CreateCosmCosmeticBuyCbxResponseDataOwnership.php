@@ -62,15 +62,15 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
     protected static $openAPITypes = [
         'id' => 'string',
         'acquired_at' => '\DateTime',
-        'retired_at' => '\DateTime',
-        'merchant_id' => 'string',
         'cosmetic_id' => 'string',
+        'merchant_id' => 'string',
+        'retired_at' => '\DateTime',
         'subject_id' => 'string',
-        'ledger_id' => 'string',
-        'edition_number' => 'float',
         'acquired_via' => 'string',
         'bound' => 'bool',
         'paid_cents' => 'float',
+        'ledger_id' => 'string',
+        'edition_number' => 'float',
         'payment_ref' => 'string',
         'retired_reason' => 'string',
         'request_ref' => 'string'
@@ -86,15 +86,15 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
     protected static $openAPIFormats = [
         'id' => null,
         'acquired_at' => 'date-time',
-        'retired_at' => 'date-time',
-        'merchant_id' => null,
         'cosmetic_id' => null,
+        'merchant_id' => null,
+        'retired_at' => 'date-time',
         'subject_id' => null,
-        'ledger_id' => null,
-        'edition_number' => null,
         'acquired_via' => null,
         'bound' => null,
         'paid_cents' => null,
+        'ledger_id' => null,
+        'edition_number' => null,
         'payment_ref' => null,
         'retired_reason' => null,
         'request_ref' => null
@@ -129,15 +129,15 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
     protected static $attributeMap = [
         'id' => 'id',
         'acquired_at' => 'acquiredAt',
-        'retired_at' => 'retiredAt',
-        'merchant_id' => 'merchantId',
         'cosmetic_id' => 'cosmeticId',
+        'merchant_id' => 'merchantId',
+        'retired_at' => 'retiredAt',
         'subject_id' => 'subjectId',
-        'ledger_id' => 'ledgerId',
-        'edition_number' => 'editionNumber',
         'acquired_via' => 'acquiredVia',
         'bound' => 'bound',
         'paid_cents' => 'paidCents',
+        'ledger_id' => 'ledgerId',
+        'edition_number' => 'editionNumber',
         'payment_ref' => 'paymentRef',
         'retired_reason' => 'retiredReason',
         'request_ref' => 'requestRef'
@@ -151,15 +151,15 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
     protected static $setters = [
         'id' => 'setId',
         'acquired_at' => 'setAcquiredAt',
-        'retired_at' => 'setRetiredAt',
-        'merchant_id' => 'setMerchantId',
         'cosmetic_id' => 'setCosmeticId',
+        'merchant_id' => 'setMerchantId',
+        'retired_at' => 'setRetiredAt',
         'subject_id' => 'setSubjectId',
-        'ledger_id' => 'setLedgerId',
-        'edition_number' => 'setEditionNumber',
         'acquired_via' => 'setAcquiredVia',
         'bound' => 'setBound',
         'paid_cents' => 'setPaidCents',
+        'ledger_id' => 'setLedgerId',
+        'edition_number' => 'setEditionNumber',
         'payment_ref' => 'setPaymentRef',
         'retired_reason' => 'setRetiredReason',
         'request_ref' => 'setRequestRef'
@@ -173,15 +173,15 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
     protected static $getters = [
         'id' => 'getId',
         'acquired_at' => 'getAcquiredAt',
-        'retired_at' => 'getRetiredAt',
-        'merchant_id' => 'getMerchantId',
         'cosmetic_id' => 'getCosmeticId',
+        'merchant_id' => 'getMerchantId',
+        'retired_at' => 'getRetiredAt',
         'subject_id' => 'getSubjectId',
-        'ledger_id' => 'getLedgerId',
-        'edition_number' => 'getEditionNumber',
         'acquired_via' => 'getAcquiredVia',
         'bound' => 'getBound',
         'paid_cents' => 'getPaidCents',
+        'ledger_id' => 'getLedgerId',
+        'edition_number' => 'getEditionNumber',
         'payment_ref' => 'getPaymentRef',
         'retired_reason' => 'getRetiredReason',
         'request_ref' => 'getRequestRef'
@@ -246,15 +246,15 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['acquired_at'] = $data['acquired_at'] ?? null;
-        $this->container['retired_at'] = $data['retired_at'] ?? null;
-        $this->container['merchant_id'] = $data['merchant_id'] ?? null;
         $this->container['cosmetic_id'] = $data['cosmetic_id'] ?? null;
+        $this->container['merchant_id'] = $data['merchant_id'] ?? null;
+        $this->container['retired_at'] = $data['retired_at'] ?? null;
         $this->container['subject_id'] = $data['subject_id'] ?? null;
-        $this->container['ledger_id'] = $data['ledger_id'] ?? null;
-        $this->container['edition_number'] = $data['edition_number'] ?? null;
         $this->container['acquired_via'] = $data['acquired_via'] ?? null;
         $this->container['bound'] = $data['bound'] ?? null;
         $this->container['paid_cents'] = $data['paid_cents'] ?? null;
+        $this->container['ledger_id'] = $data['ledger_id'] ?? null;
+        $this->container['edition_number'] = $data['edition_number'] ?? null;
         $this->container['payment_ref'] = $data['payment_ref'] ?? null;
         $this->container['retired_reason'] = $data['retired_reason'] ?? null;
         $this->container['request_ref'] = $data['request_ref'] ?? null;
@@ -275,11 +275,11 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
         if ($this->container['acquired_at'] === null) {
             $invalidProperties[] = "'acquired_at' can't be null";
         }
-        if ($this->container['merchant_id'] === null) {
-            $invalidProperties[] = "'merchant_id' can't be null";
-        }
         if ($this->container['cosmetic_id'] === null) {
             $invalidProperties[] = "'cosmetic_id' can't be null";
+        }
+        if ($this->container['merchant_id'] === null) {
+            $invalidProperties[] = "'merchant_id' can't be null";
         }
         if ($this->container['subject_id'] === null) {
             $invalidProperties[] = "'subject_id' can't be null";
@@ -354,25 +354,25 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
     }
 
     /**
-     * Gets retired_at
+     * Gets cosmetic_id
      *
-     * @return \DateTime|null
+     * @return string
      */
-    public function getRetiredAt()
+    public function getCosmeticId()
     {
-        return $this->container['retired_at'];
+        return $this->container['cosmetic_id'];
     }
 
     /**
-     * Sets retired_at
+     * Sets cosmetic_id
      *
-     * @param \DateTime|null $retired_at retired_at
+     * @param string $cosmetic_id cosmetic_id
      *
      * @return self
      */
-    public function setRetiredAt($retired_at)
+    public function setCosmeticId($cosmetic_id)
     {
-        $this->container['retired_at'] = $retired_at;
+        $this->container['cosmetic_id'] = $cosmetic_id;
 
         return $this;
     }
@@ -402,25 +402,25 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
     }
 
     /**
-     * Gets cosmetic_id
+     * Gets retired_at
      *
-     * @return string
+     * @return \DateTime|null
      */
-    public function getCosmeticId()
+    public function getRetiredAt()
     {
-        return $this->container['cosmetic_id'];
+        return $this->container['retired_at'];
     }
 
     /**
-     * Sets cosmetic_id
+     * Sets retired_at
      *
-     * @param string $cosmetic_id cosmetic_id
+     * @param \DateTime|null $retired_at retired_at
      *
      * @return self
      */
-    public function setCosmeticId($cosmetic_id)
+    public function setRetiredAt($retired_at)
     {
-        $this->container['cosmetic_id'] = $cosmetic_id;
+        $this->container['retired_at'] = $retired_at;
 
         return $this;
     }
@@ -445,54 +445,6 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
     public function setSubjectId($subject_id)
     {
         $this->container['subject_id'] = $subject_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets ledger_id
-     *
-     * @return string|null
-     */
-    public function getLedgerId()
-    {
-        return $this->container['ledger_id'];
-    }
-
-    /**
-     * Sets ledger_id
-     *
-     * @param string|null $ledger_id ledger_id
-     *
-     * @return self
-     */
-    public function setLedgerId($ledger_id)
-    {
-        $this->container['ledger_id'] = $ledger_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets edition_number
-     *
-     * @return float|null
-     */
-    public function getEditionNumber()
-    {
-        return $this->container['edition_number'];
-    }
-
-    /**
-     * Sets edition_number
-     *
-     * @param float|null $edition_number edition_number
-     *
-     * @return self
-     */
-    public function setEditionNumber($edition_number)
-    {
-        $this->container['edition_number'] = $edition_number;
 
         return $this;
     }
@@ -565,6 +517,54 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership implements ModelInterface, A
     public function setPaidCents($paid_cents)
     {
         $this->container['paid_cents'] = $paid_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets ledger_id
+     *
+     * @return string|null
+     */
+    public function getLedgerId()
+    {
+        return $this->container['ledger_id'];
+    }
+
+    /**
+     * Sets ledger_id
+     *
+     * @param string|null $ledger_id ledger_id
+     *
+     * @return self
+     */
+    public function setLedgerId($ledger_id)
+    {
+        $this->container['ledger_id'] = $ledger_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets edition_number
+     *
+     * @return float|null
+     */
+    public function getEditionNumber()
+    {
+        return $this->container['edition_number'];
+    }
+
+    /**
+     * Sets edition_number
+     *
+     * @param float|null $edition_number edition_number
+     *
+     * @return self
+     */
+    public function setEditionNumber($edition_number)
+    {
+        $this->container['edition_number'] = $edition_number;
 
         return $this;
     }

@@ -63,26 +63,46 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'string',
         'name' => 'string',
         'created_at' => '\DateTime',
-        'status' => 'string',
+        'updated_at' => '\DateTime',
         'description' => 'string',
+        'status' => 'string',
+        'released_at' => '\DateTime',
+        'published' => 'bool',
+        'storefront_id' => 'string',
         'ends_at' => '\DateTime',
+        'event_id' => 'string',
+        'format' => 'string',
+        'config' => 'array<string,mixed>',
         'seller_user_id' => 'string',
         'cover_image_url' => 'string',
-        'published_at' => '\DateTime',
-        'reviewed_at' => '\DateTime',
-        'review_note' => 'string',
-        'supplier_name' => 'string',
-        'partner_id' => 'string',
-        'published' => 'bool',
         'platform_listing_ids' => 'string[]',
         'drop_at' => '\DateTime',
+        'partner_id' => 'string',
         'wholesale_unit_cost_cents' => 'float',
         'units_purchased' => 'float',
+        'supplier_name' => 'string',
         'po_reference' => 'string',
         'retail_unit_price_cents' => 'float',
         'buyer_api_enabled' => 'bool',
         'per_customer_limit' => 'float',
         'preview_from' => '\DateTime',
+        'published_at' => '\DateTime',
+        'review_note' => 'string',
+        'reviewed_at' => '\DateTime',
+        'placements' => 'string[]',
+        'announce_at' => '\DateTime',
+        'countdown_at' => '\DateTime',
+        'paused_at' => '\DateTime',
+        'live_stream_id' => 'string',
+        'spatial_drop_id' => 'string',
+        'timezone' => 'string',
+        'featured_status' => 'string',
+        'audience' => 'string',
+        'audience_catalog_id' => 'string',
+        'drop_kind' => 'string',
+        'deposit_bps' => 'float',
+        'ship_by' => 'string',
+        'balance_net_days' => 'float',
         'listing_count' => 'float'
     ];
 
@@ -97,26 +117,46 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => null,
         'name' => null,
         'created_at' => 'date-time',
-        'status' => null,
+        'updated_at' => 'date-time',
         'description' => null,
+        'status' => null,
+        'released_at' => 'date-time',
+        'published' => null,
+        'storefront_id' => null,
         'ends_at' => 'date-time',
+        'event_id' => null,
+        'format' => null,
+        'config' => null,
         'seller_user_id' => null,
         'cover_image_url' => null,
-        'published_at' => 'date-time',
-        'reviewed_at' => 'date-time',
-        'review_note' => null,
-        'supplier_name' => null,
-        'partner_id' => null,
-        'published' => null,
         'platform_listing_ids' => null,
         'drop_at' => 'date-time',
+        'partner_id' => null,
         'wholesale_unit_cost_cents' => null,
         'units_purchased' => null,
+        'supplier_name' => null,
         'po_reference' => null,
         'retail_unit_price_cents' => null,
         'buyer_api_enabled' => null,
         'per_customer_limit' => null,
         'preview_from' => 'date-time',
+        'published_at' => 'date-time',
+        'review_note' => null,
+        'reviewed_at' => 'date-time',
+        'placements' => null,
+        'announce_at' => 'date-time',
+        'countdown_at' => 'date-time',
+        'paused_at' => 'date-time',
+        'live_stream_id' => null,
+        'spatial_drop_id' => null,
+        'timezone' => null,
+        'featured_status' => null,
+        'audience' => null,
+        'audience_catalog_id' => null,
+        'drop_kind' => null,
+        'deposit_bps' => null,
+        'ship_by' => null,
+        'balance_net_days' => null,
         'listing_count' => null
     ];
 
@@ -150,26 +190,46 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'id',
         'name' => 'name',
         'created_at' => 'createdAt',
-        'status' => 'status',
+        'updated_at' => 'updatedAt',
         'description' => 'description',
+        'status' => 'status',
+        'released_at' => 'releasedAt',
+        'published' => 'published',
+        'storefront_id' => 'storefrontId',
         'ends_at' => 'endsAt',
+        'event_id' => 'eventId',
+        'format' => 'format',
+        'config' => 'config',
         'seller_user_id' => 'sellerUserId',
         'cover_image_url' => 'coverImageUrl',
-        'published_at' => 'publishedAt',
-        'reviewed_at' => 'reviewedAt',
-        'review_note' => 'reviewNote',
-        'supplier_name' => 'supplierName',
-        'partner_id' => 'partnerId',
-        'published' => 'published',
         'platform_listing_ids' => 'platformListingIds',
         'drop_at' => 'dropAt',
+        'partner_id' => 'partnerId',
         'wholesale_unit_cost_cents' => 'wholesaleUnitCostCents',
         'units_purchased' => 'unitsPurchased',
+        'supplier_name' => 'supplierName',
         'po_reference' => 'poReference',
         'retail_unit_price_cents' => 'retailUnitPriceCents',
         'buyer_api_enabled' => 'buyerApiEnabled',
         'per_customer_limit' => 'perCustomerLimit',
         'preview_from' => 'previewFrom',
+        'published_at' => 'publishedAt',
+        'review_note' => 'reviewNote',
+        'reviewed_at' => 'reviewedAt',
+        'placements' => 'placements',
+        'announce_at' => 'announceAt',
+        'countdown_at' => 'countdownAt',
+        'paused_at' => 'pausedAt',
+        'live_stream_id' => 'liveStreamId',
+        'spatial_drop_id' => 'spatialDropId',
+        'timezone' => 'timezone',
+        'featured_status' => 'featuredStatus',
+        'audience' => 'audience',
+        'audience_catalog_id' => 'audienceCatalogId',
+        'drop_kind' => 'dropKind',
+        'deposit_bps' => 'depositBps',
+        'ship_by' => 'shipBy',
+        'balance_net_days' => 'balanceNetDays',
         'listing_count' => 'listingCount'
     ];
 
@@ -182,26 +242,46 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'setId',
         'name' => 'setName',
         'created_at' => 'setCreatedAt',
-        'status' => 'setStatus',
+        'updated_at' => 'setUpdatedAt',
         'description' => 'setDescription',
+        'status' => 'setStatus',
+        'released_at' => 'setReleasedAt',
+        'published' => 'setPublished',
+        'storefront_id' => 'setStorefrontId',
         'ends_at' => 'setEndsAt',
+        'event_id' => 'setEventId',
+        'format' => 'setFormat',
+        'config' => 'setConfig',
         'seller_user_id' => 'setSellerUserId',
         'cover_image_url' => 'setCoverImageUrl',
-        'published_at' => 'setPublishedAt',
-        'reviewed_at' => 'setReviewedAt',
-        'review_note' => 'setReviewNote',
-        'supplier_name' => 'setSupplierName',
-        'partner_id' => 'setPartnerId',
-        'published' => 'setPublished',
         'platform_listing_ids' => 'setPlatformListingIds',
         'drop_at' => 'setDropAt',
+        'partner_id' => 'setPartnerId',
         'wholesale_unit_cost_cents' => 'setWholesaleUnitCostCents',
         'units_purchased' => 'setUnitsPurchased',
+        'supplier_name' => 'setSupplierName',
         'po_reference' => 'setPoReference',
         'retail_unit_price_cents' => 'setRetailUnitPriceCents',
         'buyer_api_enabled' => 'setBuyerApiEnabled',
         'per_customer_limit' => 'setPerCustomerLimit',
         'preview_from' => 'setPreviewFrom',
+        'published_at' => 'setPublishedAt',
+        'review_note' => 'setReviewNote',
+        'reviewed_at' => 'setReviewedAt',
+        'placements' => 'setPlacements',
+        'announce_at' => 'setAnnounceAt',
+        'countdown_at' => 'setCountdownAt',
+        'paused_at' => 'setPausedAt',
+        'live_stream_id' => 'setLiveStreamId',
+        'spatial_drop_id' => 'setSpatialDropId',
+        'timezone' => 'setTimezone',
+        'featured_status' => 'setFeaturedStatus',
+        'audience' => 'setAudience',
+        'audience_catalog_id' => 'setAudienceCatalogId',
+        'drop_kind' => 'setDropKind',
+        'deposit_bps' => 'setDepositBps',
+        'ship_by' => 'setShipBy',
+        'balance_net_days' => 'setBalanceNetDays',
         'listing_count' => 'setListingCount'
     ];
 
@@ -214,26 +294,46 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'getId',
         'name' => 'getName',
         'created_at' => 'getCreatedAt',
-        'status' => 'getStatus',
+        'updated_at' => 'getUpdatedAt',
         'description' => 'getDescription',
+        'status' => 'getStatus',
+        'released_at' => 'getReleasedAt',
+        'published' => 'getPublished',
+        'storefront_id' => 'getStorefrontId',
         'ends_at' => 'getEndsAt',
+        'event_id' => 'getEventId',
+        'format' => 'getFormat',
+        'config' => 'getConfig',
         'seller_user_id' => 'getSellerUserId',
         'cover_image_url' => 'getCoverImageUrl',
-        'published_at' => 'getPublishedAt',
-        'reviewed_at' => 'getReviewedAt',
-        'review_note' => 'getReviewNote',
-        'supplier_name' => 'getSupplierName',
-        'partner_id' => 'getPartnerId',
-        'published' => 'getPublished',
         'platform_listing_ids' => 'getPlatformListingIds',
         'drop_at' => 'getDropAt',
+        'partner_id' => 'getPartnerId',
         'wholesale_unit_cost_cents' => 'getWholesaleUnitCostCents',
         'units_purchased' => 'getUnitsPurchased',
+        'supplier_name' => 'getSupplierName',
         'po_reference' => 'getPoReference',
         'retail_unit_price_cents' => 'getRetailUnitPriceCents',
         'buyer_api_enabled' => 'getBuyerApiEnabled',
         'per_customer_limit' => 'getPerCustomerLimit',
         'preview_from' => 'getPreviewFrom',
+        'published_at' => 'getPublishedAt',
+        'review_note' => 'getReviewNote',
+        'reviewed_at' => 'getReviewedAt',
+        'placements' => 'getPlacements',
+        'announce_at' => 'getAnnounceAt',
+        'countdown_at' => 'getCountdownAt',
+        'paused_at' => 'getPausedAt',
+        'live_stream_id' => 'getLiveStreamId',
+        'spatial_drop_id' => 'getSpatialDropId',
+        'timezone' => 'getTimezone',
+        'featured_status' => 'getFeaturedStatus',
+        'audience' => 'getAudience',
+        'audience_catalog_id' => 'getAudienceCatalogId',
+        'drop_kind' => 'getDropKind',
+        'deposit_bps' => 'getDepositBps',
+        'ship_by' => 'getShipBy',
+        'balance_net_days' => 'getBalanceNetDays',
         'listing_count' => 'getListingCount'
     ];
 
@@ -297,26 +397,46 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
+        $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['released_at'] = $data['released_at'] ?? null;
+        $this->container['published'] = $data['published'] ?? null;
+        $this->container['storefront_id'] = $data['storefront_id'] ?? null;
         $this->container['ends_at'] = $data['ends_at'] ?? null;
+        $this->container['event_id'] = $data['event_id'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
+        $this->container['config'] = $data['config'] ?? null;
         $this->container['seller_user_id'] = $data['seller_user_id'] ?? null;
         $this->container['cover_image_url'] = $data['cover_image_url'] ?? null;
-        $this->container['published_at'] = $data['published_at'] ?? null;
-        $this->container['reviewed_at'] = $data['reviewed_at'] ?? null;
-        $this->container['review_note'] = $data['review_note'] ?? null;
-        $this->container['supplier_name'] = $data['supplier_name'] ?? null;
-        $this->container['partner_id'] = $data['partner_id'] ?? null;
-        $this->container['published'] = $data['published'] ?? null;
         $this->container['platform_listing_ids'] = $data['platform_listing_ids'] ?? null;
         $this->container['drop_at'] = $data['drop_at'] ?? null;
+        $this->container['partner_id'] = $data['partner_id'] ?? null;
         $this->container['wholesale_unit_cost_cents'] = $data['wholesale_unit_cost_cents'] ?? null;
         $this->container['units_purchased'] = $data['units_purchased'] ?? null;
+        $this->container['supplier_name'] = $data['supplier_name'] ?? null;
         $this->container['po_reference'] = $data['po_reference'] ?? null;
         $this->container['retail_unit_price_cents'] = $data['retail_unit_price_cents'] ?? null;
         $this->container['buyer_api_enabled'] = $data['buyer_api_enabled'] ?? null;
         $this->container['per_customer_limit'] = $data['per_customer_limit'] ?? null;
         $this->container['preview_from'] = $data['preview_from'] ?? null;
+        $this->container['published_at'] = $data['published_at'] ?? null;
+        $this->container['review_note'] = $data['review_note'] ?? null;
+        $this->container['reviewed_at'] = $data['reviewed_at'] ?? null;
+        $this->container['placements'] = $data['placements'] ?? null;
+        $this->container['announce_at'] = $data['announce_at'] ?? null;
+        $this->container['countdown_at'] = $data['countdown_at'] ?? null;
+        $this->container['paused_at'] = $data['paused_at'] ?? null;
+        $this->container['live_stream_id'] = $data['live_stream_id'] ?? null;
+        $this->container['spatial_drop_id'] = $data['spatial_drop_id'] ?? null;
+        $this->container['timezone'] = $data['timezone'] ?? null;
+        $this->container['featured_status'] = $data['featured_status'] ?? null;
+        $this->container['audience'] = $data['audience'] ?? null;
+        $this->container['audience_catalog_id'] = $data['audience_catalog_id'] ?? null;
+        $this->container['drop_kind'] = $data['drop_kind'] ?? null;
+        $this->container['deposit_bps'] = $data['deposit_bps'] ?? null;
+        $this->container['ship_by'] = $data['ship_by'] ?? null;
+        $this->container['balance_net_days'] = $data['balance_net_days'] ?? null;
         $this->container['listing_count'] = $data['listing_count'] ?? null;
     }
 
@@ -338,20 +458,38 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['seller_user_id'] === null) {
-            $invalidProperties[] = "'seller_user_id' can't be null";
-        }
         if ($this->container['published'] === null) {
             $invalidProperties[] = "'published' can't be null";
+        }
+        if ($this->container['format'] === null) {
+            $invalidProperties[] = "'format' can't be null";
+        }
+        if ($this->container['config'] === null) {
+            $invalidProperties[] = "'config' can't be null";
+        }
+        if ($this->container['seller_user_id'] === null) {
+            $invalidProperties[] = "'seller_user_id' can't be null";
         }
         if ($this->container['drop_at'] === null) {
             $invalidProperties[] = "'drop_at' can't be null";
         }
         if ($this->container['buyer_api_enabled'] === null) {
             $invalidProperties[] = "'buyer_api_enabled' can't be null";
+        }
+        if ($this->container['placements'] === null) {
+            $invalidProperties[] = "'placements' can't be null";
+        }
+        if ($this->container['audience'] === null) {
+            $invalidProperties[] = "'audience' can't be null";
+        }
+        if ($this->container['drop_kind'] === null) {
+            $invalidProperties[] = "'drop_kind' can't be null";
         }
         if ($this->container['listing_count'] === null) {
             $invalidProperties[] = "'listing_count' can't be null";
@@ -444,25 +582,25 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets status
+     * Gets updated_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getStatus()
+    public function getUpdatedAt()
     {
-        return $this->container['status'];
+        return $this->container['updated_at'];
     }
 
     /**
-     * Sets status
+     * Sets updated_at
      *
-     * @param string $status status
+     * @param \DateTime $updated_at updated_at
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setUpdatedAt($updated_at)
     {
-        $this->container['status'] = $status;
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
@@ -492,6 +630,102 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets released_at
+     *
+     * @return \DateTime|null
+     */
+    public function getReleasedAt()
+    {
+        return $this->container['released_at'];
+    }
+
+    /**
+     * Sets released_at
+     *
+     * @param \DateTime|null $released_at released_at
+     *
+     * @return self
+     */
+    public function setReleasedAt($released_at)
+    {
+        $this->container['released_at'] = $released_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets published
+     *
+     * @return bool
+     */
+    public function getPublished()
+    {
+        return $this->container['published'];
+    }
+
+    /**
+     * Sets published
+     *
+     * @param bool $published published
+     *
+     * @return self
+     */
+    public function setPublished($published)
+    {
+        $this->container['published'] = $published;
+
+        return $this;
+    }
+
+    /**
+     * Gets storefront_id
+     *
+     * @return string|null
+     */
+    public function getStorefrontId()
+    {
+        return $this->container['storefront_id'];
+    }
+
+    /**
+     * Sets storefront_id
+     *
+     * @param string|null $storefront_id storefront_id
+     *
+     * @return self
+     */
+    public function setStorefrontId($storefront_id)
+    {
+        $this->container['storefront_id'] = $storefront_id;
+
+        return $this;
+    }
+
+    /**
      * Gets ends_at
      *
      * @return \DateTime|null
@@ -511,6 +745,78 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setEndsAt($ends_at)
     {
         $this->container['ends_at'] = $ends_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_id
+     *
+     * @return string|null
+     */
+    public function getEventId()
+    {
+        return $this->container['event_id'];
+    }
+
+    /**
+     * Sets event_id
+     *
+     * @param string|null $event_id event_id
+     *
+     * @return self
+     */
+    public function setEventId($event_id)
+    {
+        $this->container['event_id'] = $event_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string $format format
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets config
+     *
+     * @return array<string,mixed>
+     */
+    public function getConfig()
+    {
+        return $this->container['config'];
+    }
+
+    /**
+     * Sets config
+     *
+     * @param array<string,mixed> $config config
+     *
+     * @return self
+     */
+    public function setConfig($config)
+    {
+        $this->container['config'] = $config;
 
         return $this;
     }
@@ -564,150 +870,6 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets published_at
-     *
-     * @return \DateTime|null
-     */
-    public function getPublishedAt()
-    {
-        return $this->container['published_at'];
-    }
-
-    /**
-     * Sets published_at
-     *
-     * @param \DateTime|null $published_at published_at
-     *
-     * @return self
-     */
-    public function setPublishedAt($published_at)
-    {
-        $this->container['published_at'] = $published_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets reviewed_at
-     *
-     * @return \DateTime|null
-     */
-    public function getReviewedAt()
-    {
-        return $this->container['reviewed_at'];
-    }
-
-    /**
-     * Sets reviewed_at
-     *
-     * @param \DateTime|null $reviewed_at reviewed_at
-     *
-     * @return self
-     */
-    public function setReviewedAt($reviewed_at)
-    {
-        $this->container['reviewed_at'] = $reviewed_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets review_note
-     *
-     * @return string|null
-     */
-    public function getReviewNote()
-    {
-        return $this->container['review_note'];
-    }
-
-    /**
-     * Sets review_note
-     *
-     * @param string|null $review_note review_note
-     *
-     * @return self
-     */
-    public function setReviewNote($review_note)
-    {
-        $this->container['review_note'] = $review_note;
-
-        return $this;
-    }
-
-    /**
-     * Gets supplier_name
-     *
-     * @return string|null
-     */
-    public function getSupplierName()
-    {
-        return $this->container['supplier_name'];
-    }
-
-    /**
-     * Sets supplier_name
-     *
-     * @param string|null $supplier_name supplier_name
-     *
-     * @return self
-     */
-    public function setSupplierName($supplier_name)
-    {
-        $this->container['supplier_name'] = $supplier_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets partner_id
-     *
-     * @return string|null
-     */
-    public function getPartnerId()
-    {
-        return $this->container['partner_id'];
-    }
-
-    /**
-     * Sets partner_id
-     *
-     * @param string|null $partner_id partner_id
-     *
-     * @return self
-     */
-    public function setPartnerId($partner_id)
-    {
-        $this->container['partner_id'] = $partner_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets published
-     *
-     * @return bool
-     */
-    public function getPublished()
-    {
-        return $this->container['published'];
-    }
-
-    /**
-     * Sets published
-     *
-     * @param bool $published published
-     *
-     * @return self
-     */
-    public function setPublished($published)
-    {
-        $this->container['published'] = $published;
-
-        return $this;
-    }
-
-    /**
      * Gets platform_listing_ids
      *
      * @return string[]|null
@@ -756,6 +918,30 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets partner_id
+     *
+     * @return string|null
+     */
+    public function getPartnerId()
+    {
+        return $this->container['partner_id'];
+    }
+
+    /**
+     * Sets partner_id
+     *
+     * @param string|null $partner_id partner_id
+     *
+     * @return self
+     */
+    public function setPartnerId($partner_id)
+    {
+        $this->container['partner_id'] = $partner_id;
+
+        return $this;
+    }
+
+    /**
      * Gets wholesale_unit_cost_cents
      *
      * @return float|null
@@ -799,6 +985,30 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setUnitsPurchased($units_purchased)
     {
         $this->container['units_purchased'] = $units_purchased;
+
+        return $this;
+    }
+
+    /**
+     * Gets supplier_name
+     *
+     * @return string|null
+     */
+    public function getSupplierName()
+    {
+        return $this->container['supplier_name'];
+    }
+
+    /**
+     * Sets supplier_name
+     *
+     * @param string|null $supplier_name supplier_name
+     *
+     * @return self
+     */
+    public function setSupplierName($supplier_name)
+    {
+        $this->container['supplier_name'] = $supplier_name;
 
         return $this;
     }
@@ -919,6 +1129,414 @@ class ListBrandDropsItem implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPreviewFrom($preview_from)
     {
         $this->container['preview_from'] = $preview_from;
+
+        return $this;
+    }
+
+    /**
+     * Gets published_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPublishedAt()
+    {
+        return $this->container['published_at'];
+    }
+
+    /**
+     * Sets published_at
+     *
+     * @param \DateTime|null $published_at published_at
+     *
+     * @return self
+     */
+    public function setPublishedAt($published_at)
+    {
+        $this->container['published_at'] = $published_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets review_note
+     *
+     * @return string|null
+     */
+    public function getReviewNote()
+    {
+        return $this->container['review_note'];
+    }
+
+    /**
+     * Sets review_note
+     *
+     * @param string|null $review_note review_note
+     *
+     * @return self
+     */
+    public function setReviewNote($review_note)
+    {
+        $this->container['review_note'] = $review_note;
+
+        return $this;
+    }
+
+    /**
+     * Gets reviewed_at
+     *
+     * @return \DateTime|null
+     */
+    public function getReviewedAt()
+    {
+        return $this->container['reviewed_at'];
+    }
+
+    /**
+     * Sets reviewed_at
+     *
+     * @param \DateTime|null $reviewed_at reviewed_at
+     *
+     * @return self
+     */
+    public function setReviewedAt($reviewed_at)
+    {
+        $this->container['reviewed_at'] = $reviewed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets placements
+     *
+     * @return string[]
+     */
+    public function getPlacements()
+    {
+        return $this->container['placements'];
+    }
+
+    /**
+     * Sets placements
+     *
+     * @param string[] $placements placements
+     *
+     * @return self
+     */
+    public function setPlacements($placements)
+    {
+        $this->container['placements'] = $placements;
+
+        return $this;
+    }
+
+    /**
+     * Gets announce_at
+     *
+     * @return \DateTime|null
+     */
+    public function getAnnounceAt()
+    {
+        return $this->container['announce_at'];
+    }
+
+    /**
+     * Sets announce_at
+     *
+     * @param \DateTime|null $announce_at announce_at
+     *
+     * @return self
+     */
+    public function setAnnounceAt($announce_at)
+    {
+        $this->container['announce_at'] = $announce_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets countdown_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCountdownAt()
+    {
+        return $this->container['countdown_at'];
+    }
+
+    /**
+     * Sets countdown_at
+     *
+     * @param \DateTime|null $countdown_at countdown_at
+     *
+     * @return self
+     */
+    public function setCountdownAt($countdown_at)
+    {
+        $this->container['countdown_at'] = $countdown_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets paused_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPausedAt()
+    {
+        return $this->container['paused_at'];
+    }
+
+    /**
+     * Sets paused_at
+     *
+     * @param \DateTime|null $paused_at paused_at
+     *
+     * @return self
+     */
+    public function setPausedAt($paused_at)
+    {
+        $this->container['paused_at'] = $paused_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets live_stream_id
+     *
+     * @return string|null
+     */
+    public function getLiveStreamId()
+    {
+        return $this->container['live_stream_id'];
+    }
+
+    /**
+     * Sets live_stream_id
+     *
+     * @param string|null $live_stream_id live_stream_id
+     *
+     * @return self
+     */
+    public function setLiveStreamId($live_stream_id)
+    {
+        $this->container['live_stream_id'] = $live_stream_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets spatial_drop_id
+     *
+     * @return string|null
+     */
+    public function getSpatialDropId()
+    {
+        return $this->container['spatial_drop_id'];
+    }
+
+    /**
+     * Sets spatial_drop_id
+     *
+     * @param string|null $spatial_drop_id spatial_drop_id
+     *
+     * @return self
+     */
+    public function setSpatialDropId($spatial_drop_id)
+    {
+        $this->container['spatial_drop_id'] = $spatial_drop_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezone
+     *
+     * @return string|null
+     */
+    public function getTimezone()
+    {
+        return $this->container['timezone'];
+    }
+
+    /**
+     * Sets timezone
+     *
+     * @param string|null $timezone timezone
+     *
+     * @return self
+     */
+    public function setTimezone($timezone)
+    {
+        $this->container['timezone'] = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets featured_status
+     *
+     * @return string|null
+     */
+    public function getFeaturedStatus()
+    {
+        return $this->container['featured_status'];
+    }
+
+    /**
+     * Sets featured_status
+     *
+     * @param string|null $featured_status featured_status
+     *
+     * @return self
+     */
+    public function setFeaturedStatus($featured_status)
+    {
+        $this->container['featured_status'] = $featured_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets audience
+     *
+     * @return string
+     */
+    public function getAudience()
+    {
+        return $this->container['audience'];
+    }
+
+    /**
+     * Sets audience
+     *
+     * @param string $audience audience
+     *
+     * @return self
+     */
+    public function setAudience($audience)
+    {
+        $this->container['audience'] = $audience;
+
+        return $this;
+    }
+
+    /**
+     * Gets audience_catalog_id
+     *
+     * @return string|null
+     */
+    public function getAudienceCatalogId()
+    {
+        return $this->container['audience_catalog_id'];
+    }
+
+    /**
+     * Sets audience_catalog_id
+     *
+     * @param string|null $audience_catalog_id audience_catalog_id
+     *
+     * @return self
+     */
+    public function setAudienceCatalogId($audience_catalog_id)
+    {
+        $this->container['audience_catalog_id'] = $audience_catalog_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets drop_kind
+     *
+     * @return string
+     */
+    public function getDropKind()
+    {
+        return $this->container['drop_kind'];
+    }
+
+    /**
+     * Sets drop_kind
+     *
+     * @param string $drop_kind drop_kind
+     *
+     * @return self
+     */
+    public function setDropKind($drop_kind)
+    {
+        $this->container['drop_kind'] = $drop_kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets deposit_bps
+     *
+     * @return float|null
+     */
+    public function getDepositBps()
+    {
+        return $this->container['deposit_bps'];
+    }
+
+    /**
+     * Sets deposit_bps
+     *
+     * @param float|null $deposit_bps deposit_bps
+     *
+     * @return self
+     */
+    public function setDepositBps($deposit_bps)
+    {
+        $this->container['deposit_bps'] = $deposit_bps;
+
+        return $this;
+    }
+
+    /**
+     * Gets ship_by
+     *
+     * @return string|null
+     */
+    public function getShipBy()
+    {
+        return $this->container['ship_by'];
+    }
+
+    /**
+     * Sets ship_by
+     *
+     * @param string|null $ship_by ship_by
+     *
+     * @return self
+     */
+    public function setShipBy($ship_by)
+    {
+        $this->container['ship_by'] = $ship_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets balance_net_days
+     *
+     * @return float|null
+     */
+    public function getBalanceNetDays()
+    {
+        return $this->container['balance_net_days'];
+    }
+
+    /**
+     * Sets balance_net_days
+     *
+     * @param float|null $balance_net_days balance_net_days
+     *
+     * @return self
+     */
+    public function setBalanceNetDays($balance_net_days)
+    {
+        $this->container['balance_net_days'] = $balance_net_days;
 
         return $this;
     }

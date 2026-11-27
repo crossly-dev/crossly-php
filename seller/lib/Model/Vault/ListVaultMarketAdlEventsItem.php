@@ -223,12 +223,12 @@ class ListVaultMarketAdlEventsItem implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    const KIND_UNIT = 'unit';
     const KIND_CASH = 'cash';
+    const KIND_UNIT = 'unit';
     const ROLE_BANKRUPT = 'bankrupt';
     const ROLE_COUNTERPARTY = 'counterparty';
-    const SIDE_LONG = 'long';
     const SIDE_SHORT = 'short';
+    const SIDE_LONG = 'long';
 
     /**
      * Gets allowable values of the enum
@@ -238,8 +238,8 @@ class ListVaultMarketAdlEventsItem implements ModelInterface, ArrayAccess, \Json
     public function getKindAllowableValues()
     {
         return [
-            self::KIND_UNIT,
             self::KIND_CASH,
+            self::KIND_UNIT,
         ];
     }
 
@@ -264,8 +264,8 @@ class ListVaultMarketAdlEventsItem implements ModelInterface, ArrayAccess, \Json
     public function getSideAllowableValues()
     {
         return [
-            self::SIDE_LONG,
             self::SIDE_SHORT,
+            self::SIDE_LONG,
         ];
     }
 

@@ -65,12 +65,12 @@ class CreateProductionCandidateAcceptResponseCandidate implements ModelInterface
         'updated_at' => '\DateTime',
         'status' => 'string',
         'retail_price_cents' => 'float',
-        'creator_user_id' => 'string',
-        'completed_at' => '\DateTime',
         'accepted_at' => '\DateTime',
+        'completed_at' => '\DateTime',
+        'creator_user_id' => 'string',
+        'cosmetic_id' => 'string',
         'merchant_id' => 'string',
         'creator_subject_id' => 'string',
-        'cosmetic_id' => 'string',
         'edition_size' => 'float',
         'unit_cost_cents' => 'float',
         'run_cost_cents' => 'float',
@@ -99,12 +99,12 @@ class CreateProductionCandidateAcceptResponseCandidate implements ModelInterface
         'updated_at' => 'date-time',
         'status' => null,
         'retail_price_cents' => null,
-        'creator_user_id' => null,
-        'completed_at' => 'date-time',
         'accepted_at' => 'date-time',
+        'completed_at' => 'date-time',
+        'creator_user_id' => null,
+        'cosmetic_id' => null,
         'merchant_id' => null,
         'creator_subject_id' => null,
-        'cosmetic_id' => null,
         'edition_size' => null,
         'unit_cost_cents' => null,
         'run_cost_cents' => null,
@@ -152,12 +152,12 @@ class CreateProductionCandidateAcceptResponseCandidate implements ModelInterface
         'updated_at' => 'updatedAt',
         'status' => 'status',
         'retail_price_cents' => 'retailPriceCents',
-        'creator_user_id' => 'creatorUserId',
-        'completed_at' => 'completedAt',
         'accepted_at' => 'acceptedAt',
+        'completed_at' => 'completedAt',
+        'creator_user_id' => 'creatorUserId',
+        'cosmetic_id' => 'cosmeticId',
         'merchant_id' => 'merchantId',
         'creator_subject_id' => 'creatorSubjectId',
-        'cosmetic_id' => 'cosmeticId',
         'edition_size' => 'editionSize',
         'unit_cost_cents' => 'unitCostCents',
         'run_cost_cents' => 'runCostCents',
@@ -184,12 +184,12 @@ class CreateProductionCandidateAcceptResponseCandidate implements ModelInterface
         'updated_at' => 'setUpdatedAt',
         'status' => 'setStatus',
         'retail_price_cents' => 'setRetailPriceCents',
-        'creator_user_id' => 'setCreatorUserId',
-        'completed_at' => 'setCompletedAt',
         'accepted_at' => 'setAcceptedAt',
+        'completed_at' => 'setCompletedAt',
+        'creator_user_id' => 'setCreatorUserId',
+        'cosmetic_id' => 'setCosmeticId',
         'merchant_id' => 'setMerchantId',
         'creator_subject_id' => 'setCreatorSubjectId',
-        'cosmetic_id' => 'setCosmeticId',
         'edition_size' => 'setEditionSize',
         'unit_cost_cents' => 'setUnitCostCents',
         'run_cost_cents' => 'setRunCostCents',
@@ -216,12 +216,12 @@ class CreateProductionCandidateAcceptResponseCandidate implements ModelInterface
         'updated_at' => 'getUpdatedAt',
         'status' => 'getStatus',
         'retail_price_cents' => 'getRetailPriceCents',
-        'creator_user_id' => 'getCreatorUserId',
-        'completed_at' => 'getCompletedAt',
         'accepted_at' => 'getAcceptedAt',
+        'completed_at' => 'getCompletedAt',
+        'creator_user_id' => 'getCreatorUserId',
+        'cosmetic_id' => 'getCosmeticId',
         'merchant_id' => 'getMerchantId',
         'creator_subject_id' => 'getCreatorSubjectId',
-        'cosmetic_id' => 'getCosmeticId',
         'edition_size' => 'getEditionSize',
         'unit_cost_cents' => 'getUnitCostCents',
         'run_cost_cents' => 'getRunCostCents',
@@ -299,12 +299,12 @@ class CreateProductionCandidateAcceptResponseCandidate implements ModelInterface
         $this->container['updated_at'] = $data['updated_at'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['retail_price_cents'] = $data['retail_price_cents'] ?? null;
-        $this->container['creator_user_id'] = $data['creator_user_id'] ?? null;
-        $this->container['completed_at'] = $data['completed_at'] ?? null;
         $this->container['accepted_at'] = $data['accepted_at'] ?? null;
+        $this->container['completed_at'] = $data['completed_at'] ?? null;
+        $this->container['creator_user_id'] = $data['creator_user_id'] ?? null;
+        $this->container['cosmetic_id'] = $data['cosmetic_id'] ?? null;
         $this->container['merchant_id'] = $data['merchant_id'] ?? null;
         $this->container['creator_subject_id'] = $data['creator_subject_id'] ?? null;
-        $this->container['cosmetic_id'] = $data['cosmetic_id'] ?? null;
         $this->container['edition_size'] = $data['edition_size'] ?? null;
         $this->container['unit_cost_cents'] = $data['unit_cost_cents'] ?? null;
         $this->container['run_cost_cents'] = $data['run_cost_cents'] ?? null;
@@ -341,14 +341,14 @@ class CreateProductionCandidateAcceptResponseCandidate implements ModelInterface
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
+        if ($this->container['cosmetic_id'] === null) {
+            $invalidProperties[] = "'cosmetic_id' can't be null";
+        }
         if ($this->container['merchant_id'] === null) {
             $invalidProperties[] = "'merchant_id' can't be null";
         }
         if ($this->container['creator_subject_id'] === null) {
             $invalidProperties[] = "'creator_subject_id' can't be null";
-        }
-        if ($this->container['cosmetic_id'] === null) {
-            $invalidProperties[] = "'cosmetic_id' can't be null";
         }
         if ($this->container['designer_royalty_bps'] === null) {
             $invalidProperties[] = "'designer_royalty_bps' can't be null";
@@ -498,25 +498,25 @@ class CreateProductionCandidateAcceptResponseCandidate implements ModelInterface
     }
 
     /**
-     * Gets creator_user_id
+     * Gets accepted_at
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getCreatorUserId()
+    public function getAcceptedAt()
     {
-        return $this->container['creator_user_id'];
+        return $this->container['accepted_at'];
     }
 
     /**
-     * Sets creator_user_id
+     * Sets accepted_at
      *
-     * @param string|null $creator_user_id creator_user_id
+     * @param \DateTime|null $accepted_at accepted_at
      *
      * @return self
      */
-    public function setCreatorUserId($creator_user_id)
+    public function setAcceptedAt($accepted_at)
     {
-        $this->container['creator_user_id'] = $creator_user_id;
+        $this->container['accepted_at'] = $accepted_at;
 
         return $this;
     }
@@ -546,25 +546,49 @@ class CreateProductionCandidateAcceptResponseCandidate implements ModelInterface
     }
 
     /**
-     * Gets accepted_at
+     * Gets creator_user_id
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getAcceptedAt()
+    public function getCreatorUserId()
     {
-        return $this->container['accepted_at'];
+        return $this->container['creator_user_id'];
     }
 
     /**
-     * Sets accepted_at
+     * Sets creator_user_id
      *
-     * @param \DateTime|null $accepted_at accepted_at
+     * @param string|null $creator_user_id creator_user_id
      *
      * @return self
      */
-    public function setAcceptedAt($accepted_at)
+    public function setCreatorUserId($creator_user_id)
     {
-        $this->container['accepted_at'] = $accepted_at;
+        $this->container['creator_user_id'] = $creator_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets cosmetic_id
+     *
+     * @return string
+     */
+    public function getCosmeticId()
+    {
+        return $this->container['cosmetic_id'];
+    }
+
+    /**
+     * Sets cosmetic_id
+     *
+     * @param string $cosmetic_id cosmetic_id
+     *
+     * @return self
+     */
+    public function setCosmeticId($cosmetic_id)
+    {
+        $this->container['cosmetic_id'] = $cosmetic_id;
 
         return $this;
     }
@@ -613,30 +637,6 @@ class CreateProductionCandidateAcceptResponseCandidate implements ModelInterface
     public function setCreatorSubjectId($creator_subject_id)
     {
         $this->container['creator_subject_id'] = $creator_subject_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets cosmetic_id
-     *
-     * @return string
-     */
-    public function getCosmeticId()
-    {
-        return $this->container['cosmetic_id'];
-    }
-
-    /**
-     * Sets cosmetic_id
-     *
-     * @param string $cosmetic_id cosmetic_id
-     *
-     * @return self
-     */
-    public function setCosmeticId($cosmetic_id)
-    {
-        $this->container['cosmetic_id'] = $cosmetic_id;
 
         return $this;
     }

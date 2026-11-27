@@ -64,9 +64,9 @@ class GetTaxonomyCategoryAspectResponseAspects implements ModelInterface, ArrayA
         'data_type' => 'string',
         'enum_values' => 'string[]',
         'required' => 'bool',
-        'cardinality' => 'string',
         'varies_by_aspect' => 'bool',
         'max_length' => 'float',
+        'cardinality' => 'string',
         'selection_only' => 'bool'
     ];
 
@@ -82,9 +82,9 @@ class GetTaxonomyCategoryAspectResponseAspects implements ModelInterface, ArrayA
         'data_type' => null,
         'enum_values' => null,
         'required' => null,
-        'cardinality' => null,
         'varies_by_aspect' => null,
         'max_length' => null,
+        'cardinality' => null,
         'selection_only' => null
     ];
 
@@ -119,9 +119,9 @@ class GetTaxonomyCategoryAspectResponseAspects implements ModelInterface, ArrayA
         'data_type' => 'dataType',
         'enum_values' => 'enumValues',
         'required' => 'required',
-        'cardinality' => 'cardinality',
         'varies_by_aspect' => 'variesByAspect',
         'max_length' => 'maxLength',
+        'cardinality' => 'cardinality',
         'selection_only' => 'selectionOnly'
     ];
 
@@ -135,9 +135,9 @@ class GetTaxonomyCategoryAspectResponseAspects implements ModelInterface, ArrayA
         'data_type' => 'setDataType',
         'enum_values' => 'setEnumValues',
         'required' => 'setRequired',
-        'cardinality' => 'setCardinality',
         'varies_by_aspect' => 'setVariesByAspect',
         'max_length' => 'setMaxLength',
+        'cardinality' => 'setCardinality',
         'selection_only' => 'setSelectionOnly'
     ];
 
@@ -151,9 +151,9 @@ class GetTaxonomyCategoryAspectResponseAspects implements ModelInterface, ArrayA
         'data_type' => 'getDataType',
         'enum_values' => 'getEnumValues',
         'required' => 'getRequired',
-        'cardinality' => 'getCardinality',
         'varies_by_aspect' => 'getVariesByAspect',
         'max_length' => 'getMaxLength',
+        'cardinality' => 'getCardinality',
         'selection_only' => 'getSelectionOnly'
     ];
 
@@ -218,9 +218,9 @@ class GetTaxonomyCategoryAspectResponseAspects implements ModelInterface, ArrayA
         $this->container['data_type'] = $data['data_type'] ?? null;
         $this->container['enum_values'] = $data['enum_values'] ?? null;
         $this->container['required'] = $data['required'] ?? null;
-        $this->container['cardinality'] = $data['cardinality'] ?? null;
         $this->container['varies_by_aspect'] = $data['varies_by_aspect'] ?? null;
         $this->container['max_length'] = $data['max_length'] ?? null;
+        $this->container['cardinality'] = $data['cardinality'] ?? null;
         $this->container['selection_only'] = $data['selection_only'] ?? null;
     }
 
@@ -360,30 +360,6 @@ class GetTaxonomyCategoryAspectResponseAspects implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets cardinality
-     *
-     * @return string
-     */
-    public function getCardinality()
-    {
-        return $this->container['cardinality'];
-    }
-
-    /**
-     * Sets cardinality
-     *
-     * @param string $cardinality Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.
-     *
-     * @return self
-     */
-    public function setCardinality($cardinality)
-    {
-        $this->container['cardinality'] = $cardinality;
-
-        return $this;
-    }
-
-    /**
      * Gets varies_by_aspect
      *
      * @return bool|null
@@ -427,6 +403,30 @@ class GetTaxonomyCategoryAspectResponseAspects implements ModelInterface, ArrayA
     public function setMaxLength($max_length)
     {
         $this->container['max_length'] = $max_length;
+
+        return $this;
+    }
+
+    /**
+     * Gets cardinality
+     *
+     * @return string
+     */
+    public function getCardinality()
+    {
+        return $this->container['cardinality'];
+    }
+
+    /**
+     * Sets cardinality
+     *
+     * @param string $cardinality Cardinality — SINGLE_VALUE / MULTIPLE_VALUES.
+     *
+     * @return self
+     */
+    public function setCardinality($cardinality)
+    {
+        $this->container['cardinality'] = $cardinality;
 
         return $this;
     }

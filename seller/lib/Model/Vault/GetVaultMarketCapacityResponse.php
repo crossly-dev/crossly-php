@@ -70,7 +70,7 @@ class GetVaultMarketCapacityResponse implements ModelInterface, ArrayAccess, \Js
         'planned_cents' => 'float',
         'days_to_complete' => 'float',
         'unpriced' => 'string[]',
-        'per_key' => 'mixed[]',
+        'per_key' => '\Crossly\Model\Vault\GetVaultMarketCapacityResponsePerKeyItem[]',
         'notes' => 'string[]'
     ];
 
@@ -551,7 +551,7 @@ class GetVaultMarketCapacityResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets per_key
      *
-     * @return mixed[]
+     * @return \Crossly\Model\Vault\GetVaultMarketCapacityResponsePerKeyItem[]
      */
     public function getPerKey()
     {
@@ -561,7 +561,7 @@ class GetVaultMarketCapacityResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets per_key
      *
-     * @param mixed[] $per_key per_key
+     * @param \Crossly\Model\Vault\GetVaultMarketCapacityResponsePerKeyItem[] $per_key per_key
      *
      * @return self
      */

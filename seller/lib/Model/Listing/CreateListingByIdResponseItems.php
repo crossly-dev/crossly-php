@@ -88,7 +88,7 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'status' => 'string',
         'condition' => 'string',
         'grade_key' => 'string',
-        'grading' => '\Crossly\Model\Grading\ListGradingSubmissionsItemGrading',
+        'grading' => '\Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading',
         'brand' => 'string',
         'size' => 'string',
         'material' => 'string',
@@ -118,6 +118,8 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'automation_blocked_rule_ids' => 'string[]',
         'automation_assigned_chain_ids' => 'string[]',
         'automation_blocked_chain_ids' => 'string[]',
+        'workflow_blocked_ids' => 'string[]',
+        'workflow_assigned_ids' => 'string[]',
         'hs_code' => 'string',
         'country_of_origin' => 'string',
         'price_floor_cents' => 'float',
@@ -128,6 +130,9 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'source' => 'string',
         'duplicate_of_listing_id' => 'string',
         'client_draft_id' => 'string',
+        'attributed_oauth_app_id' => 'string',
+        'attributed_grant_id' => 'string',
+        'quota_bucket' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
     ];
@@ -198,6 +203,8 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'automation_blocked_rule_ids' => null,
         'automation_assigned_chain_ids' => null,
         'automation_blocked_chain_ids' => null,
+        'workflow_blocked_ids' => null,
+        'workflow_assigned_ids' => null,
         'hs_code' => null,
         'country_of_origin' => null,
         'price_floor_cents' => null,
@@ -208,6 +215,9 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'source' => null,
         'duplicate_of_listing_id' => null,
         'client_draft_id' => null,
+        'attributed_oauth_app_id' => null,
+        'attributed_grant_id' => null,
+        'quota_bucket' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time'
     ];
@@ -297,6 +307,8 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'automation_blocked_rule_ids' => 'automationBlockedRuleIds',
         'automation_assigned_chain_ids' => 'automationAssignedChainIds',
         'automation_blocked_chain_ids' => 'automationBlockedChainIds',
+        'workflow_blocked_ids' => 'workflowBlockedIds',
+        'workflow_assigned_ids' => 'workflowAssignedIds',
         'hs_code' => 'hsCode',
         'country_of_origin' => 'countryOfOrigin',
         'price_floor_cents' => 'priceFloorCents',
@@ -307,6 +319,9 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'source' => 'source',
         'duplicate_of_listing_id' => 'duplicateOfListingId',
         'client_draft_id' => 'clientDraftId',
+        'attributed_oauth_app_id' => 'attributedOauthAppId',
+        'attributed_grant_id' => 'attributedGrantId',
+        'quota_bucket' => 'quotaBucket',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt'
     ];
@@ -375,6 +390,8 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'automation_blocked_rule_ids' => 'setAutomationBlockedRuleIds',
         'automation_assigned_chain_ids' => 'setAutomationAssignedChainIds',
         'automation_blocked_chain_ids' => 'setAutomationBlockedChainIds',
+        'workflow_blocked_ids' => 'setWorkflowBlockedIds',
+        'workflow_assigned_ids' => 'setWorkflowAssignedIds',
         'hs_code' => 'setHsCode',
         'country_of_origin' => 'setCountryOfOrigin',
         'price_floor_cents' => 'setPriceFloorCents',
@@ -385,6 +402,9 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'source' => 'setSource',
         'duplicate_of_listing_id' => 'setDuplicateOfListingId',
         'client_draft_id' => 'setClientDraftId',
+        'attributed_oauth_app_id' => 'setAttributedOauthAppId',
+        'attributed_grant_id' => 'setAttributedGrantId',
+        'quota_bucket' => 'setQuotaBucket',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     ];
@@ -453,6 +473,8 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'automation_blocked_rule_ids' => 'getAutomationBlockedRuleIds',
         'automation_assigned_chain_ids' => 'getAutomationAssignedChainIds',
         'automation_blocked_chain_ids' => 'getAutomationBlockedChainIds',
+        'workflow_blocked_ids' => 'getWorkflowBlockedIds',
+        'workflow_assigned_ids' => 'getWorkflowAssignedIds',
         'hs_code' => 'getHsCode',
         'country_of_origin' => 'getCountryOfOrigin',
         'price_floor_cents' => 'getPriceFloorCents',
@@ -463,6 +485,9 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         'source' => 'getSource',
         'duplicate_of_listing_id' => 'getDuplicateOfListingId',
         'client_draft_id' => 'getClientDraftId',
+        'attributed_oauth_app_id' => 'getAttributedOauthAppId',
+        'attributed_grant_id' => 'getAttributedGrantId',
+        'quota_bucket' => 'getQuotaBucket',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     ];
@@ -599,6 +624,8 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         $this->container['automation_blocked_rule_ids'] = $data['automation_blocked_rule_ids'] ?? null;
         $this->container['automation_assigned_chain_ids'] = $data['automation_assigned_chain_ids'] ?? null;
         $this->container['automation_blocked_chain_ids'] = $data['automation_blocked_chain_ids'] ?? null;
+        $this->container['workflow_blocked_ids'] = $data['workflow_blocked_ids'] ?? null;
+        $this->container['workflow_assigned_ids'] = $data['workflow_assigned_ids'] ?? null;
         $this->container['hs_code'] = $data['hs_code'] ?? null;
         $this->container['country_of_origin'] = $data['country_of_origin'] ?? null;
         $this->container['price_floor_cents'] = $data['price_floor_cents'] ?? null;
@@ -609,6 +636,9 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         $this->container['source'] = $data['source'] ?? null;
         $this->container['duplicate_of_listing_id'] = $data['duplicate_of_listing_id'] ?? null;
         $this->container['client_draft_id'] = $data['client_draft_id'] ?? null;
+        $this->container['attributed_oauth_app_id'] = $data['attributed_oauth_app_id'] ?? null;
+        $this->container['attributed_grant_id'] = $data['attributed_grant_id'] ?? null;
+        $this->container['quota_bucket'] = $data['quota_bucket'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
         $this->container['updated_at'] = $data['updated_at'] ?? null;
     }
@@ -693,6 +723,12 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
         }
         if ($this->container['automation_blocked_chain_ids'] === null) {
             $invalidProperties[] = "'automation_blocked_chain_ids' can't be null";
+        }
+        if ($this->container['workflow_blocked_ids'] === null) {
+            $invalidProperties[] = "'workflow_blocked_ids' can't be null";
+        }
+        if ($this->container['workflow_assigned_ids'] === null) {
+            $invalidProperties[] = "'workflow_assigned_ids' can't be null";
         }
         if ($this->container['floor_is_net'] === null) {
             $invalidProperties[] = "'floor_is_net' can't be null";
@@ -1396,7 +1432,7 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets grading
      *
-     * @return \Crossly\Model\Grading\ListGradingSubmissionsItemGrading|null
+     * @return \Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading|null
      */
     public function getGrading()
     {
@@ -1406,7 +1442,7 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets grading
      *
-     * @param \Crossly\Model\Grading\ListGradingSubmissionsItemGrading|null $grading grading
+     * @param \Crossly\Model\Bulk\CreateBulkBatchItemResponseGrading|null $grading grading
      *
      * @return self
      */
@@ -2124,6 +2160,54 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
+     * Gets workflow_blocked_ids
+     *
+     * @return string[]
+     */
+    public function getWorkflowBlockedIds()
+    {
+        return $this->container['workflow_blocked_ids'];
+    }
+
+    /**
+     * Sets workflow_blocked_ids
+     *
+     * @param string[] $workflow_blocked_ids Per-listing workflow overrides (migration 1099, docs/WORKFLOWS.md §10): the automation_* rule/chain ids above map here on conversion; `find.listings` and listing action nodes honour them.   workflowBlockedIds  — workflows (workflows.id) this listing is exempt from  workflowAssignedIds — workflows this listing is force-included in
+     *
+     * @return self
+     */
+    public function setWorkflowBlockedIds($workflow_blocked_ids)
+    {
+        $this->container['workflow_blocked_ids'] = $workflow_blocked_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets workflow_assigned_ids
+     *
+     * @return string[]
+     */
+    public function getWorkflowAssignedIds()
+    {
+        return $this->container['workflow_assigned_ids'];
+    }
+
+    /**
+     * Sets workflow_assigned_ids
+     *
+     * @param string[] $workflow_assigned_ids workflow_assigned_ids
+     *
+     * @return self
+     */
+    public function setWorkflowAssignedIds($workflow_assigned_ids)
+    {
+        $this->container['workflow_assigned_ids'] = $workflow_assigned_ids;
+
+        return $this;
+    }
+
+    /**
      * Gets hs_code
      *
      * @return string|null
@@ -2359,6 +2443,78 @@ class CreateListingByIdResponseItems implements ModelInterface, ArrayAccess, \Js
     public function setClientDraftId($client_draft_id)
     {
         $this->container['client_draft_id'] = $client_draft_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributed_oauth_app_id
+     *
+     * @return string|null
+     */
+    public function getAttributedOauthAppId()
+    {
+        return $this->container['attributed_oauth_app_id'];
+    }
+
+    /**
+     * Sets attributed_oauth_app_id
+     *
+     * @param string|null $attributed_oauth_app_id The third-party OAuth app that created this listing (via its access token), if any — the anchor for developer revenue-share: the app that created the item earns a cut of its sales. Stamped once at create time (first writer wins, never overwritten); null for the web app, a PAT, or anything first-party. `attributedGrantId` pins the specific install whose agreed terms apply. See services/developer-earnings/.
+     *
+     * @return self
+     */
+    public function setAttributedOauthAppId($attributed_oauth_app_id)
+    {
+        $this->container['attributed_oauth_app_id'] = $attributed_oauth_app_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributed_grant_id
+     *
+     * @return string|null
+     */
+    public function getAttributedGrantId()
+    {
+        return $this->container['attributed_grant_id'];
+    }
+
+    /**
+     * Sets attributed_grant_id
+     *
+     * @param string|null $attributed_grant_id attributed_grant_id
+     *
+     * @return self
+     */
+    public function setAttributedGrantId($attributed_grant_id)
+    {
+        $this->container['attributed_grant_id'] = $attributed_grant_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets quota_bucket
+     *
+     * @return string|null
+     */
+    public function getQuotaBucket()
+    {
+        return $this->container['quota_bucket'];
+    }
+
+    /**
+     * Sets quota_bucket
+     *
+     * @param string|null $quota_bucket Which quota this listing is counted in (migration 1064): 'app_allowance' = the attributed app's per-seller allowance (services/app-allowance/), 'plan' = the seller's plan, null = created before allowances / by no app (plan rules). Stays 'app_allowance' after an unlink (grandfathered, no longer counted).
+     *
+     * @return self
+     */
+    public function setQuotaBucket($quota_bucket)
+    {
+        $this->container['quota_bucket'] = $quota_bucket;
 
         return $this;
     }

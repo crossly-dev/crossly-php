@@ -62,7 +62,7 @@ class GetSpatialPropertyResponseData implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'enabled' => 'bool',
         'deeds' => '\Crossly\Model\Spatial\GetSpatialPropertyResponseDataDeeds[]',
-        'tenancies' => '\Crossly\Model\Spatial\CreateSpatialPropertyDeedLeaseResponseData[]'
+        'tenancies' => '\Crossly\Model\Spatial\GetSpatialPropertyResponseDataTenancies[]'
     ];
 
     /**
@@ -278,7 +278,7 @@ class GetSpatialPropertyResponseData implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets tenancies
      *
-     * @return \Crossly\Model\Spatial\CreateSpatialPropertyDeedLeaseResponseData[]
+     * @return \Crossly\Model\Spatial\GetSpatialPropertyResponseDataTenancies[]
      */
     public function getTenancies()
     {
@@ -288,7 +288,7 @@ class GetSpatialPropertyResponseData implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets tenancies
      *
-     * @param \Crossly\Model\Spatial\CreateSpatialPropertyDeedLeaseResponseData[] $tenancies tenancies
+     * @param \Crossly\Model\Spatial\GetSpatialPropertyResponseDataTenancies[] $tenancies tenancies
      *
      * @return self
      */

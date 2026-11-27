@@ -62,15 +62,15 @@ class CreateWorldSpaceEventResponseData implements ModelInterface, ArrayAccess, 
     protected static $openAPITypes = [
         'id' => 'string',
         'created_at' => '\DateTime',
-        'cancelled_at' => '\DateTime',
         'title' => 'string',
         'ends_at' => '\DateTime',
+        'cancelled_at' => '\DateTime',
         'kind' => 'string',
         'starts_at' => '\DateTime',
-        'reminded_at' => '\DateTime',
         'created_by' => 'string',
         'about' => 'string',
         'space_id' => 'string',
+        'reminded_at' => '\DateTime',
         'club_only' => 'bool'
     ];
 
@@ -84,15 +84,15 @@ class CreateWorldSpaceEventResponseData implements ModelInterface, ArrayAccess, 
     protected static $openAPIFormats = [
         'id' => null,
         'created_at' => 'date-time',
-        'cancelled_at' => 'date-time',
         'title' => null,
         'ends_at' => 'date-time',
+        'cancelled_at' => 'date-time',
         'kind' => null,
         'starts_at' => 'date-time',
-        'reminded_at' => 'date-time',
         'created_by' => null,
         'about' => null,
         'space_id' => null,
+        'reminded_at' => 'date-time',
         'club_only' => null
     ];
 
@@ -125,15 +125,15 @@ class CreateWorldSpaceEventResponseData implements ModelInterface, ArrayAccess, 
     protected static $attributeMap = [
         'id' => 'id',
         'created_at' => 'createdAt',
-        'cancelled_at' => 'cancelledAt',
         'title' => 'title',
         'ends_at' => 'endsAt',
+        'cancelled_at' => 'cancelledAt',
         'kind' => 'kind',
         'starts_at' => 'startsAt',
-        'reminded_at' => 'remindedAt',
         'created_by' => 'createdBy',
         'about' => 'about',
         'space_id' => 'spaceId',
+        'reminded_at' => 'remindedAt',
         'club_only' => 'clubOnly'
     ];
 
@@ -145,15 +145,15 @@ class CreateWorldSpaceEventResponseData implements ModelInterface, ArrayAccess, 
     protected static $setters = [
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
-        'cancelled_at' => 'setCancelledAt',
         'title' => 'setTitle',
         'ends_at' => 'setEndsAt',
+        'cancelled_at' => 'setCancelledAt',
         'kind' => 'setKind',
         'starts_at' => 'setStartsAt',
-        'reminded_at' => 'setRemindedAt',
         'created_by' => 'setCreatedBy',
         'about' => 'setAbout',
         'space_id' => 'setSpaceId',
+        'reminded_at' => 'setRemindedAt',
         'club_only' => 'setClubOnly'
     ];
 
@@ -165,15 +165,15 @@ class CreateWorldSpaceEventResponseData implements ModelInterface, ArrayAccess, 
     protected static $getters = [
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
-        'cancelled_at' => 'getCancelledAt',
         'title' => 'getTitle',
         'ends_at' => 'getEndsAt',
+        'cancelled_at' => 'getCancelledAt',
         'kind' => 'getKind',
         'starts_at' => 'getStartsAt',
-        'reminded_at' => 'getRemindedAt',
         'created_by' => 'getCreatedBy',
         'about' => 'getAbout',
         'space_id' => 'getSpaceId',
+        'reminded_at' => 'getRemindedAt',
         'club_only' => 'getClubOnly'
     ];
 
@@ -236,15 +236,15 @@ class CreateWorldSpaceEventResponseData implements ModelInterface, ArrayAccess, 
     {
         $this->container['id'] = $data['id'] ?? null;
         $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['cancelled_at'] = $data['cancelled_at'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['ends_at'] = $data['ends_at'] ?? null;
+        $this->container['cancelled_at'] = $data['cancelled_at'] ?? null;
         $this->container['kind'] = $data['kind'] ?? null;
         $this->container['starts_at'] = $data['starts_at'] ?? null;
-        $this->container['reminded_at'] = $data['reminded_at'] ?? null;
         $this->container['created_by'] = $data['created_by'] ?? null;
         $this->container['about'] = $data['about'] ?? null;
         $this->container['space_id'] = $data['space_id'] ?? null;
+        $this->container['reminded_at'] = $data['reminded_at'] ?? null;
         $this->container['club_only'] = $data['club_only'] ?? null;
     }
 
@@ -345,30 +345,6 @@ class CreateWorldSpaceEventResponseData implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets cancelled_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCancelledAt()
-    {
-        return $this->container['cancelled_at'];
-    }
-
-    /**
-     * Sets cancelled_at
-     *
-     * @param \DateTime|null $cancelled_at cancelled_at
-     *
-     * @return self
-     */
-    public function setCancelledAt($cancelled_at)
-    {
-        $this->container['cancelled_at'] = $cancelled_at;
-
-        return $this;
-    }
-
-    /**
      * Gets title
      *
      * @return string
@@ -417,6 +393,30 @@ class CreateWorldSpaceEventResponseData implements ModelInterface, ArrayAccess, 
     }
 
     /**
+     * Gets cancelled_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCancelledAt()
+    {
+        return $this->container['cancelled_at'];
+    }
+
+    /**
+     * Sets cancelled_at
+     *
+     * @param \DateTime|null $cancelled_at cancelled_at
+     *
+     * @return self
+     */
+    public function setCancelledAt($cancelled_at)
+    {
+        $this->container['cancelled_at'] = $cancelled_at;
+
+        return $this;
+    }
+
+    /**
      * Gets kind
      *
      * @return string
@@ -460,30 +460,6 @@ class CreateWorldSpaceEventResponseData implements ModelInterface, ArrayAccess, 
     public function setStartsAt($starts_at)
     {
         $this->container['starts_at'] = $starts_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets reminded_at
-     *
-     * @return \DateTime|null
-     */
-    public function getRemindedAt()
-    {
-        return $this->container['reminded_at'];
-    }
-
-    /**
-     * Sets reminded_at
-     *
-     * @param \DateTime|null $reminded_at reminded_at
-     *
-     * @return self
-     */
-    public function setRemindedAt($reminded_at)
-    {
-        $this->container['reminded_at'] = $reminded_at;
 
         return $this;
     }
@@ -556,6 +532,30 @@ class CreateWorldSpaceEventResponseData implements ModelInterface, ArrayAccess, 
     public function setSpaceId($space_id)
     {
         $this->container['space_id'] = $space_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets reminded_at
+     *
+     * @return \DateTime|null
+     */
+    public function getRemindedAt()
+    {
+        return $this->container['reminded_at'];
+    }
+
+    /**
+     * Sets reminded_at
+     *
+     * @param \DateTime|null $reminded_at reminded_at
+     *
+     * @return self
+     */
+    public function setRemindedAt($reminded_at)
+    {
+        $this->container['reminded_at'] = $reminded_at;
 
         return $this;
     }

@@ -223,8 +223,8 @@ class ListJobAppraisalsItem implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    const RAIL_BUCKS = 'bucks';
     const RAIL_CBX = 'cbx';
+    const RAIL_BUCKS = 'bucks';
 
     /**
      * Gets allowable values of the enum
@@ -234,8 +234,8 @@ class ListJobAppraisalsItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function getRailAllowableValues()
     {
         return [
-            self::RAIL_BUCKS,
             self::RAIL_CBX,
+            self::RAIL_BUCKS,
         ];
     }
 

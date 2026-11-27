@@ -390,7 +390,7 @@ class CreateMagicScanResponseEbayHits implements ModelInterface, ArrayAccess, \J
     /**
      * Sets price_cents
      *
-     * @param float|null $price_cents Normalized cents. eBay returns string + currency on `price.value`.
+     * @param float|null $price_cents Integer cents.
      *
      * @return self
      */
@@ -462,7 +462,7 @@ class CreateMagicScanResponseEbayHits implements ModelInterface, ArrayAccess, \J
     /**
      * Sets category_id
      *
-     * @param string|null $category_id Top-level category eBay assigned to the match (id + path).
+     * @param string|null $category_id The category the marketplace filed the match under (id + path), when the provider returns it.
      *
      * @return self
      */
@@ -558,7 +558,7 @@ class CreateMagicScanResponseEbayHits implements ModelInterface, ArrayAccess, \J
     /**
      * Sets aspects
      *
-     * @param array<string,mixed>|null $aspects Loosely-typed aspect bag — Brand, Color, Material, etc. when eBay inlines them. Always inspected defensively by the synthesizer.
+     * @param array<string,mixed>|null $aspects Item specifics, when the provider returns them. Always read defensively.
      *
      * @return self
      */

@@ -63,6 +63,7 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'revenue' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseRevenue',
         'profit' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseRevenue',
         'sold_items_count' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseRevenue',
+        'pending_details_count' => 'float',
         'cancelled_count' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseRevenue',
         'cancel_rate' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseCancelRate',
         'refunded_amount' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseRevenue',
@@ -71,7 +72,9 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'avg_sale_price' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseRevenue',
         'sell_through_rate' => 'float',
         'sell_through' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThrough',
+        'sell_through_cohort' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThroughCohort',
         'avg_days_to_sell' => 'float',
+        'median_days_to_sell' => 'float',
         'sales_by_platform' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseSalesByPlatform[]',
         'avg_sale_price_by_platform' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseAvgSalePriceByPlatform[]',
         'revenue_by_day' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseRevenueByDay[]',
@@ -80,7 +83,8 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'top_brands' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseTopCategories[]',
         'top5_items_by_revenue' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseTop5ItemsByRevenue[]',
         'recent_sales' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponseRecentSales[]',
-        'available_labels' => 'string[]'
+        'available_labels' => 'string[]',
+        'period' => '\Crossly\Model\Analytic\GetAnalyticDashboardResponsePeriod'
     ];
 
     /**
@@ -94,6 +98,7 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'revenue' => null,
         'profit' => null,
         'sold_items_count' => null,
+        'pending_details_count' => null,
         'cancelled_count' => null,
         'cancel_rate' => null,
         'refunded_amount' => null,
@@ -102,7 +107,9 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'avg_sale_price' => null,
         'sell_through_rate' => null,
         'sell_through' => null,
+        'sell_through_cohort' => null,
         'avg_days_to_sell' => null,
+        'median_days_to_sell' => null,
         'sales_by_platform' => null,
         'avg_sale_price_by_platform' => null,
         'revenue_by_day' => null,
@@ -111,7 +118,8 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'top_brands' => null,
         'top5_items_by_revenue' => null,
         'recent_sales' => null,
-        'available_labels' => null
+        'available_labels' => null,
+        'period' => null
     ];
 
     /**
@@ -144,6 +152,7 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'revenue' => 'revenue',
         'profit' => 'profit',
         'sold_items_count' => 'soldItemsCount',
+        'pending_details_count' => 'pendingDetailsCount',
         'cancelled_count' => 'cancelledCount',
         'cancel_rate' => 'cancelRate',
         'refunded_amount' => 'refundedAmount',
@@ -152,7 +161,9 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'avg_sale_price' => 'avgSalePrice',
         'sell_through_rate' => 'sellThroughRate',
         'sell_through' => 'sellThrough',
+        'sell_through_cohort' => 'sellThroughCohort',
         'avg_days_to_sell' => 'avgDaysToSell',
+        'median_days_to_sell' => 'medianDaysToSell',
         'sales_by_platform' => 'salesByPlatform',
         'avg_sale_price_by_platform' => 'avgSalePriceByPlatform',
         'revenue_by_day' => 'revenueByDay',
@@ -161,7 +172,8 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'top_brands' => 'topBrands',
         'top5_items_by_revenue' => 'top5ItemsByRevenue',
         'recent_sales' => 'recentSales',
-        'available_labels' => 'availableLabels'
+        'available_labels' => 'availableLabels',
+        'period' => 'period'
     ];
 
     /**
@@ -173,6 +185,7 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'revenue' => 'setRevenue',
         'profit' => 'setProfit',
         'sold_items_count' => 'setSoldItemsCount',
+        'pending_details_count' => 'setPendingDetailsCount',
         'cancelled_count' => 'setCancelledCount',
         'cancel_rate' => 'setCancelRate',
         'refunded_amount' => 'setRefundedAmount',
@@ -181,7 +194,9 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'avg_sale_price' => 'setAvgSalePrice',
         'sell_through_rate' => 'setSellThroughRate',
         'sell_through' => 'setSellThrough',
+        'sell_through_cohort' => 'setSellThroughCohort',
         'avg_days_to_sell' => 'setAvgDaysToSell',
+        'median_days_to_sell' => 'setMedianDaysToSell',
         'sales_by_platform' => 'setSalesByPlatform',
         'avg_sale_price_by_platform' => 'setAvgSalePriceByPlatform',
         'revenue_by_day' => 'setRevenueByDay',
@@ -190,7 +205,8 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'top_brands' => 'setTopBrands',
         'top5_items_by_revenue' => 'setTop5ItemsByRevenue',
         'recent_sales' => 'setRecentSales',
-        'available_labels' => 'setAvailableLabels'
+        'available_labels' => 'setAvailableLabels',
+        'period' => 'setPeriod'
     ];
 
     /**
@@ -202,6 +218,7 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'revenue' => 'getRevenue',
         'profit' => 'getProfit',
         'sold_items_count' => 'getSoldItemsCount',
+        'pending_details_count' => 'getPendingDetailsCount',
         'cancelled_count' => 'getCancelledCount',
         'cancel_rate' => 'getCancelRate',
         'refunded_amount' => 'getRefundedAmount',
@@ -210,7 +227,9 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'avg_sale_price' => 'getAvgSalePrice',
         'sell_through_rate' => 'getSellThroughRate',
         'sell_through' => 'getSellThrough',
+        'sell_through_cohort' => 'getSellThroughCohort',
         'avg_days_to_sell' => 'getAvgDaysToSell',
+        'median_days_to_sell' => 'getMedianDaysToSell',
         'sales_by_platform' => 'getSalesByPlatform',
         'avg_sale_price_by_platform' => 'getAvgSalePriceByPlatform',
         'revenue_by_day' => 'getRevenueByDay',
@@ -219,7 +238,8 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         'top_brands' => 'getTopBrands',
         'top5_items_by_revenue' => 'getTop5ItemsByRevenue',
         'recent_sales' => 'getRecentSales',
-        'available_labels' => 'getAvailableLabels'
+        'available_labels' => 'getAvailableLabels',
+        'period' => 'getPeriod'
     ];
 
     /**
@@ -282,6 +302,7 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         $this->container['revenue'] = $data['revenue'] ?? null;
         $this->container['profit'] = $data['profit'] ?? null;
         $this->container['sold_items_count'] = $data['sold_items_count'] ?? null;
+        $this->container['pending_details_count'] = $data['pending_details_count'] ?? null;
         $this->container['cancelled_count'] = $data['cancelled_count'] ?? null;
         $this->container['cancel_rate'] = $data['cancel_rate'] ?? null;
         $this->container['refunded_amount'] = $data['refunded_amount'] ?? null;
@@ -290,7 +311,9 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         $this->container['avg_sale_price'] = $data['avg_sale_price'] ?? null;
         $this->container['sell_through_rate'] = $data['sell_through_rate'] ?? null;
         $this->container['sell_through'] = $data['sell_through'] ?? null;
+        $this->container['sell_through_cohort'] = $data['sell_through_cohort'] ?? null;
         $this->container['avg_days_to_sell'] = $data['avg_days_to_sell'] ?? null;
+        $this->container['median_days_to_sell'] = $data['median_days_to_sell'] ?? null;
         $this->container['sales_by_platform'] = $data['sales_by_platform'] ?? null;
         $this->container['avg_sale_price_by_platform'] = $data['avg_sale_price_by_platform'] ?? null;
         $this->container['revenue_by_day'] = $data['revenue_by_day'] ?? null;
@@ -300,6 +323,7 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         $this->container['top5_items_by_revenue'] = $data['top5_items_by_revenue'] ?? null;
         $this->container['recent_sales'] = $data['recent_sales'] ?? null;
         $this->container['available_labels'] = $data['available_labels'] ?? null;
+        $this->container['period'] = $data['period'] ?? null;
     }
 
     /**
@@ -319,6 +343,9 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         }
         if ($this->container['sold_items_count'] === null) {
             $invalidProperties[] = "'sold_items_count' can't be null";
+        }
+        if ($this->container['pending_details_count'] === null) {
+            $invalidProperties[] = "'pending_details_count' can't be null";
         }
         if ($this->container['cancelled_count'] === null) {
             $invalidProperties[] = "'cancelled_count' can't be null";
@@ -340,6 +367,9 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         }
         if ($this->container['sell_through'] === null) {
             $invalidProperties[] = "'sell_through' can't be null";
+        }
+        if ($this->container['sell_through_cohort'] === null) {
+            $invalidProperties[] = "'sell_through_cohort' can't be null";
         }
         if ($this->container['sales_by_platform'] === null) {
             $invalidProperties[] = "'sales_by_platform' can't be null";
@@ -367,6 +397,9 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
         }
         if ($this->container['available_labels'] === null) {
             $invalidProperties[] = "'available_labels' can't be null";
+        }
+        if ($this->container['period'] === null) {
+            $invalidProperties[] = "'period' can't be null";
         }
         return $invalidProperties;
     }
@@ -451,6 +484,30 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
     public function setSoldItemsCount($sold_items_count)
     {
         $this->container['sold_items_count'] = $sold_items_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets pending_details_count
+     *
+     * @return float
+     */
+    public function getPendingDetailsCount()
+    {
+        return $this->container['pending_details_count'];
+    }
+
+    /**
+     * Sets pending_details_count
+     *
+     * @param float $pending_details_count \"N sales pending details\": in the period, not in revenue/profit/avg.
+     *
+     * @return self
+     */
+    public function setPendingDetailsCount($pending_details_count)
+    {
+        $this->container['pending_details_count'] = $pending_details_count;
 
         return $this;
     }
@@ -612,7 +669,7 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets sell_through_rate
      *
-     * @param float|null $sell_through_rate sell_through_rate
+     * @param float|null $sell_through_rate 0–100 (legacy unit). The full cohort is `sellThroughCohort`.
      *
      * @return self
      */
@@ -648,6 +705,30 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets sell_through_cohort
+     *
+     * @return \Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThroughCohort
+     */
+    public function getSellThroughCohort()
+    {
+        return $this->container['sell_through_cohort'];
+    }
+
+    /**
+     * Sets sell_through_cohort
+     *
+     * @param \Crossly\Model\Analytic\GetAnalyticDashboardResponseSellThroughCohort $sell_through_cohort sell_through_cohort
+     *
+     * @return self
+     */
+    public function setSellThroughCohort($sell_through_cohort)
+    {
+        $this->container['sell_through_cohort'] = $sell_through_cohort;
+
+        return $this;
+    }
+
+    /**
      * Gets avg_days_to_sell
      *
      * @return float|null
@@ -667,6 +748,30 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
     public function setAvgDaysToSell($avg_days_to_sell)
     {
         $this->container['avg_days_to_sell'] = $avg_days_to_sell;
+
+        return $this;
+    }
+
+    /**
+     * Gets median_days_to_sell
+     *
+     * @return float|null
+     */
+    public function getMedianDaysToSell()
+    {
+        return $this->container['median_days_to_sell'];
+    }
+
+    /**
+     * Sets median_days_to_sell
+     *
+     * @param float|null $median_days_to_sell median_days_to_sell
+     *
+     * @return self
+     */
+    public function setMedianDaysToSell($median_days_to_sell)
+    {
+        $this->container['median_days_to_sell'] = $median_days_to_sell;
 
         return $this;
     }
@@ -883,6 +988,30 @@ class GetAnalyticDashboardResponse implements ModelInterface, ArrayAccess, \Json
     public function setAvailableLabels($available_labels)
     {
         $this->container['available_labels'] = $available_labels;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return \Crossly\Model\Analytic\GetAnalyticDashboardResponsePeriod
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param \Crossly\Model\Analytic\GetAnalyticDashboardResponsePeriod $period period
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        $this->container['period'] = $period;
 
         return $this;
     }

@@ -67,6 +67,7 @@ class GetVaultMarketRiskReportResponse implements ModelInterface, ArrayAccess, \
         'lvar' => '\Crossly\Model\Vault\GetVaultMarketRiskReportResponseLvar',
         'stress' => '\Crossly\Model\Vault\GetVaultMarketRiskReportResponseStress',
         'concentration' => '\Crossly\Model\Vault\GetVaultMarketRiskReportResponseConcentration',
+        'counterparty' => '\Crossly\Model\Vault\GetVaultMarketRiskReportResponseCounterparty',
         'partner_dcm' => '\Crossly\Model\Vault\GetVaultMarketRiskReportResponsePartnerDcm'
     ];
 
@@ -85,6 +86,7 @@ class GetVaultMarketRiskReportResponse implements ModelInterface, ArrayAccess, \
         'lvar' => null,
         'stress' => null,
         'concentration' => null,
+        'counterparty' => null,
         'partner_dcm' => null
     ];
 
@@ -122,6 +124,7 @@ class GetVaultMarketRiskReportResponse implements ModelInterface, ArrayAccess, \
         'lvar' => 'lvar',
         'stress' => 'stress',
         'concentration' => 'concentration',
+        'counterparty' => 'counterparty',
         'partner_dcm' => 'partnerDcm'
     ];
 
@@ -138,6 +141,7 @@ class GetVaultMarketRiskReportResponse implements ModelInterface, ArrayAccess, \
         'lvar' => 'setLvar',
         'stress' => 'setStress',
         'concentration' => 'setConcentration',
+        'counterparty' => 'setCounterparty',
         'partner_dcm' => 'setPartnerDcm'
     ];
 
@@ -154,6 +158,7 @@ class GetVaultMarketRiskReportResponse implements ModelInterface, ArrayAccess, \
         'lvar' => 'getLvar',
         'stress' => 'getStress',
         'concentration' => 'getConcentration',
+        'counterparty' => 'getCounterparty',
         'partner_dcm' => 'getPartnerDcm'
     ];
 
@@ -221,6 +226,7 @@ class GetVaultMarketRiskReportResponse implements ModelInterface, ArrayAccess, \
         $this->container['lvar'] = $data['lvar'] ?? null;
         $this->container['stress'] = $data['stress'] ?? null;
         $this->container['concentration'] = $data['concentration'] ?? null;
+        $this->container['counterparty'] = $data['counterparty'] ?? null;
         $this->container['partner_dcm'] = $data['partner_dcm'] ?? null;
     }
 
@@ -253,6 +259,9 @@ class GetVaultMarketRiskReportResponse implements ModelInterface, ArrayAccess, \
         }
         if ($this->container['concentration'] === null) {
             $invalidProperties[] = "'concentration' can't be null";
+        }
+        if ($this->container['counterparty'] === null) {
+            $invalidProperties[] = "'counterparty' can't be null";
         }
         if ($this->container['partner_dcm'] === null) {
             $invalidProperties[] = "'partner_dcm' can't be null";
@@ -436,6 +445,30 @@ class GetVaultMarketRiskReportResponse implements ModelInterface, ArrayAccess, \
     public function setConcentration($concentration)
     {
         $this->container['concentration'] = $concentration;
+
+        return $this;
+    }
+
+    /**
+     * Gets counterparty
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketRiskReportResponseCounterparty
+     */
+    public function getCounterparty()
+    {
+        return $this->container['counterparty'];
+    }
+
+    /**
+     * Sets counterparty
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketRiskReportResponseCounterparty $counterparty counterparty
+     *
+     * @return self
+     */
+    public function setCounterparty($counterparty)
+    {
+        $this->container['counterparty'] = $counterparty;
 
         return $this;
     }

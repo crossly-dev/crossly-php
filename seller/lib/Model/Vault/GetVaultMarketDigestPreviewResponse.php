@@ -64,7 +64,8 @@ class GetVaultMarketDigestPreviewResponse implements ModelInterface, ArrayAccess
         'week' => 'string',
         'value' => '\Crossly\Model\Vault\GetVaultMarketDigestPreviewResponseValue',
         'offers' => '\Crossly\Model\Vault\GetVaultMarketDigestPreviewResponseOffers[]',
-        'first_marks' => '\Crossly\Model\Vault\GetVaultMarketDigestPreviewResponseFirstMarks[]'
+        'first_marks' => '\Crossly\Model\Vault\GetVaultMarketDigestPreviewResponseFirstMarks[]',
+        'learn' => '\Crossly\Model\Vault\GetVaultMarketDigestPreviewResponseLearn'
     ];
 
     /**
@@ -79,7 +80,8 @@ class GetVaultMarketDigestPreviewResponse implements ModelInterface, ArrayAccess
         'week' => null,
         'value' => null,
         'offers' => null,
-        'first_marks' => null
+        'first_marks' => null,
+        'learn' => null
     ];
 
     /**
@@ -113,7 +115,8 @@ class GetVaultMarketDigestPreviewResponse implements ModelInterface, ArrayAccess
         'week' => 'week',
         'value' => 'value',
         'offers' => 'offers',
-        'first_marks' => 'firstMarks'
+        'first_marks' => 'firstMarks',
+        'learn' => 'learn'
     ];
 
     /**
@@ -126,7 +129,8 @@ class GetVaultMarketDigestPreviewResponse implements ModelInterface, ArrayAccess
         'week' => 'setWeek',
         'value' => 'setValue',
         'offers' => 'setOffers',
-        'first_marks' => 'setFirstMarks'
+        'first_marks' => 'setFirstMarks',
+        'learn' => 'setLearn'
     ];
 
     /**
@@ -139,7 +143,8 @@ class GetVaultMarketDigestPreviewResponse implements ModelInterface, ArrayAccess
         'week' => 'getWeek',
         'value' => 'getValue',
         'offers' => 'getOffers',
-        'first_marks' => 'getFirstMarks'
+        'first_marks' => 'getFirstMarks',
+        'learn' => 'getLearn'
     ];
 
     /**
@@ -204,6 +209,7 @@ class GetVaultMarketDigestPreviewResponse implements ModelInterface, ArrayAccess
         $this->container['value'] = $data['value'] ?? null;
         $this->container['offers'] = $data['offers'] ?? null;
         $this->container['first_marks'] = $data['first_marks'] ?? null;
+        $this->container['learn'] = $data['learn'] ?? null;
     }
 
     /**
@@ -229,6 +235,9 @@ class GetVaultMarketDigestPreviewResponse implements ModelInterface, ArrayAccess
         }
         if ($this->container['first_marks'] === null) {
             $invalidProperties[] = "'first_marks' can't be null";
+        }
+        if ($this->container['learn'] === null) {
+            $invalidProperties[] = "'learn' can't be null";
         }
         return $invalidProperties;
     }
@@ -361,6 +370,30 @@ class GetVaultMarketDigestPreviewResponse implements ModelInterface, ArrayAccess
     public function setFirstMarks($first_marks)
     {
         $this->container['first_marks'] = $first_marks;
+
+        return $this;
+    }
+
+    /**
+     * Gets learn
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketDigestPreviewResponseLearn
+     */
+    public function getLearn()
+    {
+        return $this->container['learn'];
+    }
+
+    /**
+     * Sets learn
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketDigestPreviewResponseLearn $learn learn
+     *
+     * @return self
+     */
+    public function setLearn($learn)
+    {
+        $this->container['learn'] = $learn;
 
         return $this;
     }

@@ -61,17 +61,17 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'created_at' => 'string',
+        'purchase_id' => 'string',
         'status' => 'string',
         'title' => 'string',
-        'purchase_id' => 'string',
+        'term_months' => 'float',
+        'coverage' => 'string',
         'terms_url' => 'string',
         'price_cents' => 'float',
         'refund_cents' => 'float',
-        'term_months' => 'float',
-        'coverage' => 'string',
         'contract_id' => 'string',
-        'item_title' => 'string'
+        'item_title' => 'string',
+        'created_at' => 'string'
     ];
 
     /**
@@ -83,17 +83,17 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'created_at' => null,
+        'purchase_id' => null,
         'status' => null,
         'title' => null,
-        'purchase_id' => null,
+        'term_months' => null,
+        'coverage' => null,
         'terms_url' => null,
         'price_cents' => null,
         'refund_cents' => null,
-        'term_months' => null,
-        'coverage' => null,
         'contract_id' => null,
-        'item_title' => null
+        'item_title' => null,
+        'created_at' => null
     ];
 
     /**
@@ -124,17 +124,17 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'created_at' => 'createdAt',
+        'purchase_id' => 'purchaseId',
         'status' => 'status',
         'title' => 'title',
-        'purchase_id' => 'purchaseId',
+        'term_months' => 'termMonths',
+        'coverage' => 'coverage',
         'terms_url' => 'termsUrl',
         'price_cents' => 'priceCents',
         'refund_cents' => 'refundCents',
-        'term_months' => 'termMonths',
-        'coverage' => 'coverage',
         'contract_id' => 'contractId',
-        'item_title' => 'itemTitle'
+        'item_title' => 'itemTitle',
+        'created_at' => 'createdAt'
     ];
 
     /**
@@ -144,17 +144,17 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
+        'purchase_id' => 'setPurchaseId',
         'status' => 'setStatus',
         'title' => 'setTitle',
-        'purchase_id' => 'setPurchaseId',
+        'term_months' => 'setTermMonths',
+        'coverage' => 'setCoverage',
         'terms_url' => 'setTermsUrl',
         'price_cents' => 'setPriceCents',
         'refund_cents' => 'setRefundCents',
-        'term_months' => 'setTermMonths',
-        'coverage' => 'setCoverage',
         'contract_id' => 'setContractId',
-        'item_title' => 'setItemTitle'
+        'item_title' => 'setItemTitle',
+        'created_at' => 'setCreatedAt'
     ];
 
     /**
@@ -164,17 +164,17 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
+        'purchase_id' => 'getPurchaseId',
         'status' => 'getStatus',
         'title' => 'getTitle',
-        'purchase_id' => 'getPurchaseId',
+        'term_months' => 'getTermMonths',
+        'coverage' => 'getCoverage',
         'terms_url' => 'getTermsUrl',
         'price_cents' => 'getPriceCents',
         'refund_cents' => 'getRefundCents',
-        'term_months' => 'getTermMonths',
-        'coverage' => 'getCoverage',
         'contract_id' => 'getContractId',
-        'item_title' => 'getItemTitle'
+        'item_title' => 'getItemTitle',
+        'created_at' => 'getCreatedAt'
     ];
 
     /**
@@ -235,17 +235,17 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
+        $this->container['purchase_id'] = $data['purchase_id'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
-        $this->container['purchase_id'] = $data['purchase_id'] ?? null;
+        $this->container['term_months'] = $data['term_months'] ?? null;
+        $this->container['coverage'] = $data['coverage'] ?? null;
         $this->container['terms_url'] = $data['terms_url'] ?? null;
         $this->container['price_cents'] = $data['price_cents'] ?? null;
         $this->container['refund_cents'] = $data['refund_cents'] ?? null;
-        $this->container['term_months'] = $data['term_months'] ?? null;
-        $this->container['coverage'] = $data['coverage'] ?? null;
         $this->container['contract_id'] = $data['contract_id'] ?? null;
         $this->container['item_title'] = $data['item_title'] ?? null;
+        $this->container['created_at'] = $data['created_at'] ?? null;
     }
 
     /**
@@ -260,9 +260,6 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -271,6 +268,9 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
         }
         if ($this->container['price_cents'] === null) {
             $invalidProperties[] = "'price_cents' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -312,25 +312,25 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets created_at
+     * Gets purchase_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getCreatedAt()
+    public function getPurchaseId()
     {
-        return $this->container['created_at'];
+        return $this->container['purchase_id'];
     }
 
     /**
-     * Sets created_at
+     * Sets purchase_id
      *
-     * @param string $created_at created_at
+     * @param string|null $purchase_id purchase_id
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setPurchaseId($purchase_id)
     {
-        $this->container['created_at'] = $created_at;
+        $this->container['purchase_id'] = $purchase_id;
 
         return $this;
     }
@@ -384,25 +384,49 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets purchase_id
+     * Gets term_months
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getPurchaseId()
+    public function getTermMonths()
     {
-        return $this->container['purchase_id'];
+        return $this->container['term_months'];
     }
 
     /**
-     * Sets purchase_id
+     * Sets term_months
      *
-     * @param string|null $purchase_id purchase_id
+     * @param float|null $term_months term_months
      *
      * @return self
      */
-    public function setPurchaseId($purchase_id)
+    public function setTermMonths($term_months)
     {
-        $this->container['purchase_id'] = $purchase_id;
+        $this->container['term_months'] = $term_months;
+
+        return $this;
+    }
+
+    /**
+     * Gets coverage
+     *
+     * @return string|null
+     */
+    public function getCoverage()
+    {
+        return $this->container['coverage'];
+    }
+
+    /**
+     * Sets coverage
+     *
+     * @param string|null $coverage coverage
+     *
+     * @return self
+     */
+    public function setCoverage($coverage)
+    {
+        $this->container['coverage'] = $coverage;
 
         return $this;
     }
@@ -480,54 +504,6 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets term_months
-     *
-     * @return float|null
-     */
-    public function getTermMonths()
-    {
-        return $this->container['term_months'];
-    }
-
-    /**
-     * Sets term_months
-     *
-     * @param float|null $term_months term_months
-     *
-     * @return self
-     */
-    public function setTermMonths($term_months)
-    {
-        $this->container['term_months'] = $term_months;
-
-        return $this;
-    }
-
-    /**
-     * Gets coverage
-     *
-     * @return string|null
-     */
-    public function getCoverage()
-    {
-        return $this->container['coverage'];
-    }
-
-    /**
-     * Sets coverage
-     *
-     * @param string|null $coverage coverage
-     *
-     * @return self
-     */
-    public function setCoverage($coverage)
-    {
-        $this->container['coverage'] = $coverage;
-
-        return $this;
-    }
-
-    /**
      * Gets contract_id
      *
      * @return string|null
@@ -571,6 +547,30 @@ class ListBuyerProtectionPlansItem implements ModelInterface, ArrayAccess, \Json
     public function setItemTitle($item_title)
     {
         $this->container['item_title'] = $item_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

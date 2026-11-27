@@ -174,9 +174,9 @@ class CreateSpatialStreetOwnedUpkeepResponseData implements ModelInterface, Arra
     }
 
     const UPKEEP_ACTIVE = 'active';
-    const UPKEEP_FORECLOSED = 'foreclosed';
     const UPKEEP_GRACE = 'grace';
     const UPKEEP_DELINQUENT = 'delinquent';
+    const UPKEEP_FORECLOSED = 'foreclosed';
 
     /**
      * Gets allowable values of the enum
@@ -187,9 +187,9 @@ class CreateSpatialStreetOwnedUpkeepResponseData implements ModelInterface, Arra
     {
         return [
             self::UPKEEP_ACTIVE,
-            self::UPKEEP_FORECLOSED,
             self::UPKEEP_GRACE,
             self::UPKEEP_DELINQUENT,
+            self::UPKEEP_FORECLOSED,
         ];
     }
 

@@ -68,7 +68,8 @@ class GetVaultMarketTodResponse implements ModelInterface, ArrayAccess, \JsonSer
         'beneficiaries' => '\Crossly\Model\Vault\GetVaultMarketTodResponseBeneficiaries[]',
         'shares_problem' => 'string',
         'units' => '\Crossly\Model\Vault\GetVaultMarketTodResponseUnits[]',
-        'claims' => '\Crossly\Model\Vault\GetVaultMarketTodResponseClaims[]'
+        'claims' => '\Crossly\Model\Vault\GetVaultMarketTodResponseClaims[]',
+        'vault_shares' => '\Crossly\Model\Vault\GetVaultMarketTodResponseVaultShares'
     ];
 
     /**
@@ -87,7 +88,8 @@ class GetVaultMarketTodResponse implements ModelInterface, ArrayAccess, \JsonSer
         'beneficiaries' => null,
         'shares_problem' => null,
         'units' => null,
-        'claims' => null
+        'claims' => null,
+        'vault_shares' => null
     ];
 
     /**
@@ -125,7 +127,8 @@ class GetVaultMarketTodResponse implements ModelInterface, ArrayAccess, \JsonSer
         'beneficiaries' => 'beneficiaries',
         'shares_problem' => 'sharesProblem',
         'units' => 'units',
-        'claims' => 'claims'
+        'claims' => 'claims',
+        'vault_shares' => 'vaultShares'
     ];
 
     /**
@@ -142,7 +145,8 @@ class GetVaultMarketTodResponse implements ModelInterface, ArrayAccess, \JsonSer
         'beneficiaries' => 'setBeneficiaries',
         'shares_problem' => 'setSharesProblem',
         'units' => 'setUnits',
-        'claims' => 'setClaims'
+        'claims' => 'setClaims',
+        'vault_shares' => 'setVaultShares'
     ];
 
     /**
@@ -159,7 +163,8 @@ class GetVaultMarketTodResponse implements ModelInterface, ArrayAccess, \JsonSer
         'beneficiaries' => 'getBeneficiaries',
         'shares_problem' => 'getSharesProblem',
         'units' => 'getUnits',
-        'claims' => 'getClaims'
+        'claims' => 'getClaims',
+        'vault_shares' => 'getVaultShares'
     ];
 
     /**
@@ -228,6 +233,7 @@ class GetVaultMarketTodResponse implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['shares_problem'] = $data['shares_problem'] ?? null;
         $this->container['units'] = $data['units'] ?? null;
         $this->container['claims'] = $data['claims'] ?? null;
+        $this->container['vault_shares'] = $data['vault_shares'] ?? null;
     }
 
     /**
@@ -487,6 +493,30 @@ class GetVaultMarketTodResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function setClaims($claims)
     {
         $this->container['claims'] = $claims;
+
+        return $this;
+    }
+
+    /**
+     * Gets vault_shares
+     *
+     * @return \Crossly\Model\Vault\GetVaultMarketTodResponseVaultShares|null
+     */
+    public function getVaultShares()
+    {
+        return $this->container['vault_shares'];
+    }
+
+    /**
+     * Sets vault_shares
+     *
+     * @param \Crossly\Model\Vault\GetVaultMarketTodResponseVaultShares|null $vault_shares vault_shares
+     *
+     * @return self
+     */
+    public function setVaultShares($vault_shares)
+    {
+        $this->container['vault_shares'] = $vault_shares;
 
         return $this;
     }

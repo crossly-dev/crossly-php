@@ -252,11 +252,11 @@ class ListMarketBullionItem implements ModelInterface, ArrayAccess, \JsonSeriali
     const METAL_SILVER = 'silver';
     const METAL_PLATINUM = 'platinum';
     const METAL_PALLADIUM = 'palladium';
-    const FORM_ROUND = 'round';
     const FORM_BULLION_COIN = 'bullion_coin';
     const FORM_BAR = 'bar';
-    const SIZE_QUARTER = 'quarter';
+    const FORM_ROUND = 'round';
     const SIZE_FRACTIONAL = 'fractional';
+    const SIZE_QUARTER = 'quarter';
     const SIZE_HALF = 'half';
     const SIZE_ONE = 'one';
     const SIZE_TWO_FIVE = 'two-five';
@@ -287,9 +287,9 @@ class ListMarketBullionItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function getFormAllowableValues()
     {
         return [
-            self::FORM_ROUND,
             self::FORM_BULLION_COIN,
             self::FORM_BAR,
+            self::FORM_ROUND,
         ];
     }
 
@@ -301,8 +301,8 @@ class ListMarketBullionItem implements ModelInterface, ArrayAccess, \JsonSeriali
     public function getSizeAllowableValues()
     {
         return [
-            self::SIZE_QUARTER,
             self::SIZE_FRACTIONAL,
+            self::SIZE_QUARTER,
             self::SIZE_HALF,
             self::SIZE_ONE,
             self::SIZE_TWO_FIVE,
